@@ -1,0 +1,63 @@
+# ==============================================================================
+# SEGURANÇA & PRIVACIDADE (hunt-source-leak)
+# ==============================================================================
+
+# Variáveis de ambiente com credenciais e segredos
+.env
+.env.local
+.env.development
+.env.production
+*.env
+
+# Configurações internas do Antigravity / IA
+.agents/
+
+# Arquivos de processo / deploy específicos
+Procfile
+
+# Testes locais e suites com credenciais
+test_auth_security.py
+tests/
+
+# Documentos internos de planejamento, rascunhos e especificações
+mudanca.md
+arquitetura_pedagogica_curso_ia.md
+docs/
+
+
+# Cache Python e compilação
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Ambientes virtuais
+venv/
+.venv/
+ENV/
+env/
+
+# IDEs e arquivos do sistema operacional
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

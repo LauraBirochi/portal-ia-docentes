@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- ================================================================
+     NÍVEL 1: DASHBOARD CENTRAL DO MINICURSO (HOME)
+     ================================================================ -->
+<section id="view-dashboard" class="view-section {% if active_view == 'cockpit' %}view-hidden{% endif %}">
+  {% include 'dashboard.html' %}
+</section>
+
+<!-- ================================================================
+     NÍVEL 2: COCKPIT DA AULA (MÓDULO 1) – 5 ABAS DE FOCO
+     ================================================================ -->
+<section id="view-cockpit" class="view-section {% if active_view != 'cockpit' %}view-hidden{% endif %}">
+  {% include 'cockpit.html' %}
+</section>
+{% endblock %}

@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação de Slides – Minicurso de IA (Módulo {{ meeting_id or 1 }})</title>
+
+  <!-- Tipografia de Alto Impacto para Projeção -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. VARIÁVEIS VISUAIS & PALETA WARM WALNUT PROJETOR
+       ========================================================================== */
+    :root {
+      --bg-canvas: #100d0a;
+      --bg-stage: #1a1511;
+      --bg-card: #251e18;
+      --bg-card-subtle: #1e1813;
+      --bg-card-highlight: #342920;
+      --border-subtle: #3a2f24;
+      --border-highlight: #5a4938;
+      --border-amber: #d4a373;
+      --border-red: #8b3a3a;
+      --border-green: #3d7a4a;
+
+      --text-main: #fcf9f2;
+      --text-secondary: #dbcaa8;
+      --text-muted: #9c8a77;
+      --text-amber: #e5b078;
+      --text-green: #98d87a;
+      --text-red: #f28b82;
+
+      --accent-warm: #d4a373;
+      --accent-glow: rgba(212, 163, 115, 0.12);
+
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    /* ==========================================================================
+       2. TOPBAR DE CONTROLES DO PROJETOR (LAYOUT PREMIUM)
+       ========================================================================== */
+    .projector-topbar {
+      height: 60px;
+      min-height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      background: rgba(18, 14, 11, 0.97);
+      border-bottom: 1px solid rgba(212, 163, 115, 0.2);
+      font-size: 0.88rem;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .projector-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-card-highlight);
+      border: 1px solid var(--border-highlight);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .projector-brand span.tag {
+      background: rgba(212, 163, 115, 0.12);
+      color: var(--text-amber);
+      padding: 0.22rem 0.65rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: 1px solid rgba(212, 163, 115, 0.3);
+    }
+
+    .topbar-meta-team {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .topbar-meta-team strong {
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .topbar-v-divider {
+      width: 1px;
+      height: 22px;
+      background: var(--border-subtle);
+      margin: 0 0.35rem;
+    }
+
+    .projector-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .control-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(30, 24, 19, 0.6);
+      padding: 0.25rem 0.35rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .slide-counter-badge {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text-amber);
+      padding: 0.35rem 0.85rem;
+      background: #14100c;
+      border: 1px solid rgba(212, 163, 115, 0.25);
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-slide-nav {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.42rem 0.85rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.84rem;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .btn-slide-nav:hover:not(:disabled) {
+      background: var(--accent-warm);
+      color: #1a140e;
+      border-color: var(--accent-warm);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(212, 163, 115, 0.2);
+    }
+
+    .btn-slide-nav:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .btn-slide-nav:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      border-color: var(--border-subtle);
+    }
+
+    .btn-notes-toggle.active {
+      background: var(--text-amber);
+      color: #1a140e;
+      border-color: var(--text-amber);
+      box-shadow: 0 0 15px rgba(229, 176, 120, 0.35);
+    }
+
+    .btn-interval-nav {
+      background: rgba(212, 163, 115, 0.08);
+      border-color: rgba(212, 163, 115, 0.25);
+      color: var(--text-amber);
+    }
+
+    .btn-interval-nav.active {
+      background: var(--text-amber);
+      color: #1a140e;
+      border-color: var(--text-amber);
+      box-shadow: 0 0 15px rgba(229, 176, 120, 0.35);
+    }
+
+    .btn-exit-nav {
+      color: var(--text-muted);
+      border-color: transparent;
+      background: transparent;
+    }
+
+    .btn-exit-nav:hover {
+      background: rgba(242, 139, 130, 0.12) !important;
+      color: var(--text-red) !important;
+      border-color: var(--border-red) !important;
+    }
+
+    .kbd-chip {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-secondary);
+      margin-left: 0.15rem;
+    }
+
+    .btn-slide-nav:hover .kbd-chip {
+      background: rgba(0, 0, 0, 0.2);
+      color: #1a140e;
+      border-color: rgba(0, 0, 0, 0.25);
+    }
+
+    /* ==========================================================================
+       3. PALCO FIXO 16:9 (1920 x 1080 STAGE CANVAS)
+       ========================================================================== */
+    .deck-viewport {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #201a14 0%, #100d0a 100%);
+    }
+
+    .deck-stage {
+      width: 1920px;
+      height: 1080px;
+      min-width: 1920px;
+      min-height: 1080px;
+      position: absolute;
+      transform-origin: center center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 80px;
+    }
+
+    .slide-card {
+      width: 100%;
+      height: 100%;
+      background: var(--bg-stage);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 100px var(--accent-glow);
+      animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.99);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ==========================================================================
+       4. CABEÇALHOS & ETIQUETAS DO SLIDE
+       ========================================================================== */
+    .slide-header {
+      margin-bottom: 20px;
+    }
+
+    .slide-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card-highlight);
+      color: var(--text-amber);
+      padding: 0.45rem 1.25rem;
+      border-radius: var(--radius-pill);
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--border-highlight);
+      margin-bottom: 14px;
+    }
+
+    .slide-title {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .slide-subtitle {
+      font-size: 1.75rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      font-weight: 400;
+    }
+
+    .slide-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       5. RODAPÉ DO SLIDE
+       ========================================================================== */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 2px solid var(--border-subtle);
+      padding-top: 20px;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+    }
+
+    .slide-footer-keys {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .key-badge {
+      background: var(--bg-card-highlight);
+      color: var(--text-main);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* ==========================================================================
+       6. LAYOUTS DOS 16 SLIDES
+       ========================================================================== */
+
+    /* --- TIPO 1: CAPA --- */
+    .layout-capa {
+      text-align: center;
+      width: 100%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .capa-icon {
+      font-size: 4.8rem;
+      margin-bottom: 1.25rem;
+      filter: drop-shadow(0 0 25px rgba(212, 163, 115, 0.45));
+    }
+
+    .capa-title {
+      font-family: var(--font-display);
+      font-size: 4.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      max-width: 24ch;
+    }
+
+    .capa-sub {
+      font-size: 2.1rem;
+      color: var(--text-amber);
+      margin-bottom: 2.5rem;
+      max-width: 32ch;
+      line-height: 1.35;
+    }
+
+    .capa-tags {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .capa-chip {
+      background: var(--bg-card);
+      border: 2px solid var(--border-highlight);
+      color: var(--text-secondary);
+      font-size: 1.35rem;
+      font-weight: 600;
+      padding: 0.7rem 1.8rem;
+      border-radius: var(--radius-pill);
+    }
+
+    /* --- TIPO 2: APRESENTAÇÃO / CARDS DE DESTAQUE --- */
+    .grid-3cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    .card-item-destaque {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .card-item-destaque .icon {
+      font-size: 3.6rem;
+      background: var(--bg-stage);
+      width: fit-content;
+      padding: 0.8rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-highlight);
+    }
+
+    .card-item-destaque h4 {
+      font-size: 2rem;
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .card-item-destaque p {
+      font-size: 1.45rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* --- TIPO 3: CRONOGRAMA 7 ENCONTROS --- */
+    .cronograma-full-track {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .cronograma-col-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 380px;
+      text-align: center;
+    }
+
+    .cronograma-col-card.current {
+      border-color: var(--border-amber);
+      background: #2b2219;
+      box-shadow: 0 10px 30px rgba(212, 163, 115, 0.2);
+    }
+
+    .crono-date-badge {
+      background: var(--bg-card-highlight);
+      color: var(--text-amber);
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 1.25rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-highlight);
+    }
+
+    .crono-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0.75rem 0 0.35rem 0;
+    }
+
+    .crono-tema {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .crono-status {
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.3rem;
+      border-radius: 6px;
+      background: var(--bg-stage);
+      color: var(--text-muted);
+    }
+
+    .cronograma-col-card.current .crono-status {
+      background: var(--accent-warm);
+      color: #1a140e;
+    }
+
+    /* --- TIPO 4: FORA DE ESCOPO (NÃO vs SIM) --- */
+    .grid-escopo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      width: 100%;
+    }
+
+    .box-escopo {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .box-escopo.nao {
+      border: 2px solid var(--border-red);
+      background: rgba(139, 58, 58, 0.08);
+    }
+
+    .box-escopo.sim {
+      border: 2px solid var(--border-green);
+      background: rgba(61, 122, 74, 0.08);
+    }
+
+    .box-escopo-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .box-escopo.nao .box-escopo-header {
+      color: var(--text-red);
+    }
+
+    .box-escopo.sim .box-escopo-header {
+      color: var(--text-green);
+    }
+
+    .escopo-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .escopo-list li {
+      font-size: 1.45rem;
+      line-height: 1.4;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    /* --- TIPO 5: COMPARATIVO --- */
+    .grid-comparativo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      width: 100%;
+    }
+
+    .box-comparativo {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .box-comparativo.highlight {
+      background: #2b2219;
+      border-color: var(--border-amber);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .box-comp-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+      border-bottom: 2px solid var(--border-subtle);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .formula-tag {
+      background: #14100c;
+      border: 2px dashed var(--border-highlight);
+      color: var(--text-amber);
+      font-family: var(--font-mono);
+      font-size: 1.45rem;
+      font-weight: 700;
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .box-comp-desc {
+      font-size: 1.45rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .box-comp-exemplo {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      background: rgba(0, 0, 0, 0.25);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--accent-warm);
+    }
+
+    /* --- TIPO 6: GLOSSÁRIO ILUSTRADO (3 CARDS) --- */
+    .grid-glossario-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    .card-glossario-item {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .glossario-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .glossario-header .icon {
+      font-size: 3rem;
+      background: var(--bg-stage);
+      padding: 0.6rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-highlight);
+    }
+
+    .glossario-header h4 {
+      font-size: 2.1rem;
+      color: var(--text-main);
+      font-family: var(--font-display);
+    }
+
+    .glossario-resumo {
+      background: var(--bg-card-highlight);
+      color: var(--text-amber);
+      font-size: 1.35rem;
+      font-weight: 700;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--accent-warm);
+    }
+
+    .glossario-expl {
+      font-size: 1.4rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* --- TIPO 7: GRID 2x2 EXEMPLOS REAIS --- */
+    .grid-exemplos-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .exemplo-card-item {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2.25rem;
+      display: flex;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .exemplo-icon {
+      font-size: 3.8rem;
+      background: var(--bg-stage);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-highlight);
+    }
+
+    .exemplo-info h4 {
+      font-size: 1.8rem;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+    }
+
+    .exemplo-badge {
+      display: inline-block;
+      font-size: 1.15rem;
+      color: var(--text-amber);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .exemplo-desc {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* --- TIPO 8: ATIVIDADES & PASSOS NO LABORATÓRIO --- */
+    .layout-atividade-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 3rem;
+      width: 100%;
+      align-items: center;
+    }
+
+    .atividade-badge-box {
+      background: #2b2219;
+      border: 2px solid var(--border-amber);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .atividade-badge-box .icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+    }
+
+    .atividade-badge-box h3 {
+      font-size: 2.4rem;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+
+    .atividade-badge-box p {
+      font-size: 1.5rem;
+      color: var(--text-amber);
+      font-weight: 600;
+    }
+
+    .atividade-passos-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .passo-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.35rem 2rem;
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .passo-num {
+      background: var(--accent-warm);
+      color: #1a140e;
+      font-weight: 800;
+      font-size: 1.4rem;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* --- TIPO 9: INTERVALO --- */
+    .layout-intervalo-box {
+      background: linear-gradient(135deg, #2c221a 0%, #1c1510 100%);
+      border: 2px solid var(--border-amber);
+      border-radius: var(--radius-lg);
+      padding: 4rem;
+      text-align: center;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .layout-intervalo-box .icon {
+      font-size: 6rem;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 20px rgba(212, 163, 115, 0.4));
+    }
+
+    .layout-intervalo-box h3 {
+      font-size: 3.4rem;
+      font-family: var(--font-display);
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+    }
+
+    .layout-intervalo-box ul {
+      list-style: none;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      text-align: left;
+      margin-top: 2rem;
+    }
+
+    .layout-intervalo-box li {
+      font-size: 1.6rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* --- TIPO 10: DUAS COLUNAS GERAIS --- */
+    .grid-colunas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      width: 100%;
+    }
+
+    .card-coluna {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem;
+    }
+
+    .card-col-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--text-amber);
+      border-bottom: 2px solid var(--border-subtle);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .card-col-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .card-col-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      font-size: 1.5rem;
+      line-height: 1.45;
+      color: var(--text-secondary);
+    }
+
+    .card-col-list li span.bullet {
+      color: var(--accent-warm);
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    /* --- TIPO 11: FECHAMENTO --- */
+    .layout-fechamento-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    .fechamento-banner-card {
+      background: linear-gradient(135deg, #2b2219 0%, #1e1711 100%);
+      border: 2px solid var(--border-amber);
+      border-radius: var(--radius-lg);
+      padding: 3rem 3.5rem;
+      text-align: center;
+    }
+
+    .fechamento-banner-card h3 {
+      font-size: 2.5rem;
+      color: var(--text-main);
+      line-height: 1.35;
+      font-family: var(--font-display);
+      margin-bottom: 0.5rem;
+    }
+
+    .fechamento-next-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .fechamento-next-icon {
+      font-size: 4rem;
+      color: var(--text-amber);
+    }
+
+    .fechamento-next-info h4 {
+      font-size: 1.4rem;
+      color: var(--text-amber);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+    }
+
+    .fechamento-next-info p {
+      font-size: 1.85rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       7. PAINEL DE NOTAS DO PROFESSOR (DRAWER SUSPENSO)
+       ========================================================================== */
+    .presenter-notes-drawer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(20, 16, 12, 0.98);
+      border-top: 2px solid var(--border-amber);
+      padding: 1.5rem 2.5rem;
+      z-index: 100;
+      box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.8);
+      transform: translateY(105%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(12px);
+      max-height: 40vh;
+      overflow-y: auto;
+    }
+
+    .presenter-notes-drawer.open {
+      transform: translateY(0);
+    }
+
+    .notes-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.5rem;
+    }
+
+    .notes-drawer-title {
+      color: var(--text-amber);
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .notes-drawer-content {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .notes-drawer-content strong {
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       8. MODAL / OVERLAY DE INTERVALO PEDAGÓGICO (ATALHO: TECLA I)
+       ========================================================================== */
+    .interval-overlay-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(16px);
+      background: rgba(16, 13, 10, 0.94);
+      animation: fadeInInterval 0.25s ease-out;
+    }
+
+    @keyframes fadeInInterval {
+      from {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .interval-content-card {
+      background: var(--bg-stage);
+      border: 2px solid var(--border-amber);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 4.5rem;
+      max-width: 1050px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 80px rgba(212, 163, 115, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .interval-icon {
+      font-size: 4.5rem;
+      filter: drop-shadow(0 0 25px rgba(212, 163, 115, 0.5));
+      animation: bouncePulse 2.5s infinite ease-in-out;
+    }
+
+    @keyframes bouncePulse {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-6px) scale(1.04);
+      }
+    }
+
+    .interval-title {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0;
+    }
+
+    .interval-badge {
+      background: var(--bg-card-highlight);
+      border: 1px solid var(--border-highlight);
+      color: var(--text-amber);
+      padding: 0.45rem 1.5rem;
+      border-radius: var(--radius-pill);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .interval-tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      width: 100%;
+      margin: 1.25rem 0;
+      text-align: left;
+    }
+
+    .interval-tip-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .interval-tip-card .icon {
+      font-size: 2rem;
+    }
+
+    .interval-tip-card h4 {
+      color: var(--text-main);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .interval-tip-card p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* ==========================================================================
+       9. REGRAS DE RESPONSIVIDADE (NOTEBOOKS, TABLETS E MOBILE)
+       ========================================================================== */
+    @media (max-width: 1400px) {
+      .projector-topbar {
+        padding: 0 1.25rem;
+      }
+      .brand-title {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .projector-topbar {
+        padding: 0 1rem;
+        height: 56px;
+        min-height: 56px;
+      }
+      .brand-title {
+        font-size: 0.95rem;
+      }
+      .kbd-chip {
+        display: none;
+      }
+      .btn-slide-nav {
+        padding: 0.38rem 0.65rem;
+        font-size: 0.82rem;
+      }
+      .interval-content-card {
+        padding: 3rem 2.5rem;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .projector-topbar {
+        height: 52px;
+        min-height: 52px;
+        padding: 0 0.75rem;
+      }
+      .topbar-v-divider {
+        display: none;
+      }
+      .control-cluster {
+        background: transparent;
+        border: none;
+        padding: 0;
+        gap: 0.25rem;
+      }
+      .btn-text-full {
+        display: none;
+      }
+      .btn-slide-nav {
+        padding: 0.35rem 0.55rem;
+        font-size: 0.82rem;
+        min-width: 34px;
+        justify-content: center;
+      }
+      .slide-counter-badge {
+        padding: 0.3rem 0.55rem;
+        font-size: 0.8rem;
+        margin: 0;
+      }
+      .presenter-notes-drawer {
+        padding: 1.25rem 1.5rem;
+        max-height: 50vh;
+      }
+      .notes-drawer-content {
+        font-size: 1.05rem;
+      }
+      .interval-content-card {
+        padding: 2.25rem 1.75rem;
+        max-height: 88vh;
+        overflow-y: auto;
+      }
+      .interval-title {
+        font-size: 2.2rem;
+      }
+      .interval-badge {
+        font-size: 1rem;
+        padding: 0.35rem 1rem;
+      }
+      .interval-tips-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .projector-topbar {
+        height: 48px;
+        min-height: 48px;
+        padding: 0 0.5rem;
+      }
+      .projector-brand span.tag {
+        display: none;
+      }
+      .brand-title {
+        display: none;
+      }
+      .brand-icon-box {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+      }
+      .projector-controls {
+        gap: 0.2rem;
+      }
+      .control-cluster {
+        gap: 0.15rem;
+      }
+      .slide-counter-badge {
+        padding: 0.25rem 0.4rem;
+        font-size: 0.75rem;
+        font-family: var(--font-mono);
+      }
+      .btn-slide-nav {
+        padding: 0.3rem 0.45rem;
+        font-size: 0.78rem;
+        min-width: 30px;
+      }
+      .presenter-notes-drawer {
+        padding: 1rem 1.2rem;
+        max-height: 60vh;
+      }
+      .notes-drawer-title {
+        font-size: 0.95rem;
+      }
+      .notes-drawer-content {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+      .interval-content-card {
+        padding: 1.75rem 1.25rem;
+        gap: 1rem;
+      }
+      .interval-icon {
+        font-size: 3.5rem;
+      }
+      .interval-title {
+        font-size: 1.8rem;
+      }
+      .interval-badge {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.8rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .projector-topbar {
+        padding: 0 0.35rem;
+      }
+      .projector-brand {
+        gap: 0.4rem;
+      }
+      .slide-counter-badge {
+        padding: 0.2rem 0.3rem;
+        font-size: 0.7rem;
+      }
+      .btn-slide-nav {
+        padding: 0.25rem 0.35rem;
+        font-size: 0.72rem;
+        min-width: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Topbar de Controles do Apresentador (Layout Refinado & Responsivo) -->
+  <header class="projector-topbar">
+    <div class="projector-brand">
+      <div class="brand-icon-box">🖥️</div>
+      <span class="brand-title">Projetor de Aula</span>
+      <span class="tag">Módulo {{ meeting_id or 1 }}</span>
+    </div>
+
+    <div class="projector-controls">
+      <!-- Cluster 1: Navegação de Slides -->
+      <div class="control-cluster">
+        <button class="btn-slide-nav" id="btn-prev" title="Slide anterior (Atalho: ← ou PageUp)">
+          <span>←</span> <span class="btn-text-full">Anterior</span> <kbd class="kbd-chip">←</kbd>
+        </button>
+        <span id="slide-counter" class="slide-counter-badge">Slide 1 de 21</span>
+        <button class="btn-slide-nav" id="btn-next" title="Próximo slide (Atalho: → ou Espaço)">
+          <span class="btn-text-full">Próximo</span> <span>→</span> <kbd class="kbd-chip">→</kbd>
+        </button>
+      </div>
+
+      <div class="topbar-v-divider"></div>
+
+      <!-- Cluster 2: Ferramentas Docentes -->
+      <div class="control-cluster">
+        <button class="btn-slide-nav btn-notes-toggle" id="btn-notes"
+          title="Abrir/Fechar notas pedagógicas da fala (Atalho: P ou N)">
+          <span>🎙️</span> <span class="btn-text-full">Notas</span> <kbd class="kbd-chip">P</kbd>
+        </button>
+        <button class="btn-slide-nav btn-interval-nav" id="btn-interval"
+          title="Abrir/Fechar tela de intervalo e café (Atalho: I)">
+          <span>☕</span> <span class="btn-text-full">Intervalo</span> <kbd class="kbd-chip">I</kbd>
+        </button>
+      </div>
+
+      <div class="topbar-v-divider"></div>
+
+      <!-- Cluster 3: Utilitários & Saída -->
+      <button class="btn-slide-nav" id="btn-fullscreen" title="Modo Tela Cheia (Atalho: F)">
+        <span>⛶</span> <span class="btn-text-full">Tela Cheia</span> <kbd class="kbd-chip">F</kbd>
+      </button>
+      <a href="{{ url_for('dashboard') }}" class="btn-slide-nav btn-exit-nav" title="Voltar ao Painel Docente">
+        <span>✕</span> <span class="btn-text-full">Sair</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Viewport e Palco Fixo 16:9 (1920x1080) -->
+  <main class="deck-viewport" id="deck-viewport">
+    <div class="deck-stage" id="deck-stage">
+      <div id="slide-container" class="slide-card">
+        <!-- Renderizado dinamicamente pelo JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Gaveta de Notas da Professora (Ativada com P / N) -->
+  <div id="notes-drawer" class="presenter-notes-drawer">
+    <div class="notes-drawer-header">
+      <div class="notes-drawer-title">
+        <span>🎙️</span>
+        <span id="notes-title">Notas Pedagógicas do Slide</span>
+      </div>
+      <button id="btn-close-notes" class="btn-slide-nav" style="padding: 0.2rem 0.6rem; font-size: 0.75rem;">✕ Fechar
+        Notas</button>
+    </div>
+    <div id="notes-body" class="notes-drawer-content">
+      <!-- Conteúdo da fala sugerida e tempo -->
+    </div>
+  </div>
+
+  <!-- Overlay de Intervalo Pedagógico (Atalho: Tecla I) -->
+  <div id="interval-overlay" class="interval-overlay-stage" style="display: none;">
+    <div class="interval-content-card">
+      <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: -0.5rem;">
+        <button id="btn-close-interval" class="btn-slide-nav" style="padding: 0.35rem 0.8rem; font-size: 0.85rem;" title="Fechar intervalo (Atalho: Esc ou I)">✕ Fechar (I)</button>
+      </div>
+      <div class="interval-icon">☕</div>
+      <h2 class="interval-title">Intervalo Pedagógico</h2>
+      <div class="interval-badge">Pausa de 15 Minutos • Café & Descanso Cognitivo</div>
+
+      <div class="interval-tips-grid">
+        <div class="interval-tip-card">
+          <span class="icon">💧</span>
+          <h4>Hidratação & Café</h4>
+          <p>Aproveite para tomar água, um cafezinho e esticar as pernas.</p>
+        </div>
+        <div class="interval-tip-card">
+          <span class="icon">💻</span>
+          <h4>Preparação do Laboratório</h4>
+          <p>Laura & Maria estão ligando os computadores e checando a conexão.</p>
+        </div>
+        <div class="interval-tip-card">
+          <span class="icon">🚀</span>
+          <h4>Na Volta: Mão na Massa</h4>
+          <p>Cada um sentará em uma máquina para iniciar a nossa primeira oficina prática!</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dados e Lógica dos Slides -->
+  <script src="{{ url_for('static', filename='js/data/encontro' ~ (meeting_id or 1) ~ '-data.js') }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const data = window.CURSO_IA_CURRENT_DATA || window.ENCONTRO_1_DATA || {};
+      const slides = (data && data.slidesComNotas) ? data.slidesComNotas : [];
+      let currentIndex = 0;
+
+      const container = document.getElementById('slide-container');
+      const counter = document.getElementById('slide-counter');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnInterval = document.getElementById('btn-interval');
+      const intervalOverlay = document.getElementById('interval-overlay');
+      const btnCloseInterval = document.getElementById('btn-close-interval');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesTitle = document.getElementById('notes-title');
+      const notesBody = document.getElementById('notes-body');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const deckStage = document.getElementById('deck-stage');
+
+      // =======================================================================
+      // 1. ESCALONAMENTO RESPONSIVO DO PALCO 16:9 (1920x1080)
+      // =======================================================================
+      function fitStageToViewport() {
+        if (!deckStage) return;
+        const topbar = document.querySelector('.projector-topbar');
+        const topbarHeight = topbar ? topbar.offsetHeight : 60;
+        const availWidth = window.innerWidth;
+        const availHeight = window.innerHeight - topbarHeight;
+        const marginX = window.innerWidth <= 640 ? 8 : (window.innerWidth <= 1200 ? 16 : 24);
+        const marginY = window.innerWidth <= 640 ? 8 : (window.innerWidth <= 1200 ? 12 : 20);
+        const scale = Math.min((availWidth - marginX) / 1920, (availHeight - marginY) / 1080);
+        deckStage.style.transform = `scale(${Math.max(0.1, scale)})`;
+      }
+
+      window.addEventListener('resize', fitStageToViewport);
+      window.addEventListener('orientationchange', () => setTimeout(fitStageToViewport, 120));
+      document.addEventListener('fullscreenchange', () => setTimeout(fitStageToViewport, 120));
+      fitStageToViewport();
+
+      // =======================================================================
+      // 2. MOTOR DE RENDERIZAÇÃO COMPLETO DOS 16 SLIDES
+      // =======================================================================
+      function renderSlide(index) {
+        if (!slides.length) return;
+        const s = slides[index];
+        let bodyHTML = '';
+
+        // TIPO 1: Capa de Abertura
+        if (s.tipo === 'capa') {
+          bodyHTML = `
+            <div class="layout-capa">
+              <div class="capa-icon">✨</div>
+              <h1 class="capa-title">${s.titulo}</h1>
+              <p class="capa-sub">${s.subtitulo}</p>
+              <div class="capa-tags">
+                ${(s.detalhes || []).map(d => `<span class="capa-chip">${d}</span>`).join('')}
+              </div>
+            </div>
+          `;
+        }
+        // TIPO 2: Apresentação & Compromisso (3 Cards)
+        else if (s.tipo === 'apresentacao' && s.itensDestaque) {
+          bodyHTML = `
+            <div class="grid-3cards">
+              ${s.itensDestaque.map(item => `
+                <div class="card-item-destaque">
+                  <div class="icon">${item.icone}</div>
+                  <h4>${item.titulo}</h4>
+                  <p>${item.desc}</p>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+        // TIPO 3: Cronograma Completo dos 7 Encontros
+        else if (s.tipo === 'cronograma' && s.encontros) {
+          bodyHTML = `
+            <div class="cronograma-full-track">
+              ${s.encontros.map(e => `
+                <div class="cronograma-col-card ${e.num === '1' ? 'current' : ''}">
+                  <span class="crono-date-badge">${e.data}</span>
+                  <div class="crono-num">Encontro ${e.num}</div>
+                  <div class="crono-tema">${e.tema}</div>
+                  <div class="crono-status">${e.status}</div>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+        // TIPO 4: Pilares do Aprendizado (3 Cards)
+        else if (s.tipo === 'pilares' && s.pilares) {
+          bodyHTML = `
+            <div class="grid-3cards">
+              ${s.pilares.map(p => `
+                <div class="card-item-destaque" style="border-top: 4px solid var(--accent-warm);">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="icon">${p.icone}</span>
+                    <span style="font-family: var(--font-mono); font-size: 2.2rem; font-weight: 800; color: var(--text-amber);">0${p.num}</span>
+                  </div>
+                  <h4>${p.titulo}</h4>
+                  <p>${p.desc}</p>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+        // TIPO 5: O que NÃO É este curso (Fora de Escopo)
+        else if (s.tipo === 'fora-escopo' && s.comparacao) {
+          bodyHTML = `
+            <div class="grid-escopo">
+              <div class="box-escopo nao">
+                <div class="box-escopo-header">
+                  <span>❌</span>
+                  <span>O Que NÃO Faremos</span>
+                </div>
+                <ul class="escopo-list">
+                  ${s.comparacao.nao.map(item => `
+                    <li>
+                      <span style="color: var(--text-red); font-weight: bold;">✕</span>
+                      <span>${item}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <div class="box-escopo sim">
+                <div class="box-escopo-header">
+                  <span>✅</span>
+                  <span>O Nosso Foco Real</span>
+                </div>
+                <ul class="escopo-list">
+                  ${s.comparacao.sim.map(item => `
+                    <li>
+                      <span style="color: var(--text-green); font-weight: bold;">✓</span>
+                      <span>${item}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+            </div>
+          `;
+        }
+        // TIPO 6: Requisito do E-mail para o ChatGPT
+        else if (s.tipo === 'requisito-email' && s.pontosChave) {
+          bodyHTML = `
+            <div class="grid-3cards">
+              ${s.pontosChave.map(pt => `
+                <div class="card-item-destaque" style="border-color: var(--border-amber); background: #261f18;">
+                  <div class="icon">${pt.icone}</div>
+                  <h4>${pt.titulo}</h4>
+                  <p>${pt.desc}</p>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+        // TIPO 7: Quebra-Gelo (Mitos vs Realidade)
+        else if (s.tipo === 'quebra-gelo' && s.colunas) {
+          bodyHTML = `
+            <div class="grid-colunas">
+              ${s.colunas.map(col => `
+                <div class="card-coluna">
+                  <div class="card-col-header">
+                    <span>${col.icone || '📌'}</span>
+                    <span>${col.tag}</span>
+                  </div>
+                  <ul class="card-col-list">
+                    ${col.itens.map(item => `
+                      <li>
+                        <span class="bullet">•</span>
+                        <span>${item}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+        // TIPO 8: Comparativo (Programação Clássica vs Machine Learning)
+        else if (s.tipo === 'comparativo') {
+          bodyHTML = `
+            <div class="grid-comparativo">
+              <div class="box-comparativo">
+                <div>
+                  <div class="box-comp-header">
+                    <span>⚙️</span>
+                    <span>${s.caixa1.titulo}</span>
+                  </div>
+                  <div class="formula-tag">${s.caixa1.formula}</div>
+                  <p class="box-comp-desc"><strong>Analogia:</strong> ${s.caixa1.analogia}</p>
+                </div>
+                <div class="box-comp-exemplo">
+                  <strong>Exemplos do cotidiano:</strong> ${s.caixa1.exemplo}
+                </div>
+              </div>
+
+              <div class="box-comparativo highlight">
+                <div>
+                  <div class="box-comp-header" style="color: var(--text-amber);">
+                    <span>🧠</span>
+                    <span>${s.caixa2.titulo}</span>
+                  </div>
+                  <div class="formula-tag" style="border-color: var(--border-amber); color: var(--text-main);">${s.caixa2.formula}</div>
+                  <p class="box-comp-desc"><strong>Analogia:</strong> ${s.caixa2.analogia}</p>
+                </div>
+                <div class="box-comp-exemplo" style="border-left-color: var(--border-amber);">
+                  <strong>Exemplos do cotidiano:</strong> ${s.caixa2.exemplo}
+                </div>
+              </div>
+            </div>
+          `;
+        }
+        // TIPO 9: Tipos de IA (ANI vs AGI)
+        else if (s.tipo === 'tipos-ia' && s.colunas) {
+          bodyHTML = `
+            <div class="grid-colunas">
+              ${s.colunas.map(col => `
+                <div class="card-coluna">
+                  <div class="card-col-header">
+                    <span>${col.icone || '📌'}</span>
+                    <span>${col.tag}</span>
+                  </div>
+                  <ul class="card-col-list">
+                    ${col.itens.map(item => `
+                      <li>
+                        <span class="bullet">•</span>
+                        <span>${item}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+        // TIPO 10 e 11: Glossário Ilustrado Descomplicado
+        else if (s.tipo === 'glossario' && s.termos) {
+          bodyHTML = `
+            <div class="grid-glossario-3">
+              ${s.termos.map(t => `
+                <div class="card-glossario-item">
+                  <div class="glossario-header">
+                    <span class="icon">${t.icone}</span>
+                    <h4>${t.termo}</h4>
+                  </div>
+                  <div class="glossario-resumo">${t.significado}</div>
+                  <p class="glossario-expl">${t.explicacao}</p>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+        // TIPO 12: Grid de Exemplos da IA Invisível (2x2)
+        else if (s.tipo === 'grid-exemplos' && s.exemplos) {
+          bodyHTML = `
+            <div class="grid-exemplos-4">
+              ${s.exemplos.map(ex => `
+                <div class="exemplo-card-item">
+                  <div class="exemplo-icon">${ex.icone || '📱'}</div>
+                  <div class="exemplo-info">
+                    <span class="exemplo-badge">${ex.app}</span>
+                    <h4>${ex.nome}</h4>
+                    <p class="exemplo-desc">${ex.papel}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+        // TIPO 13: Intervalo Pedagógico
+        else if (s.tipo === 'intervalo') {
+          bodyHTML = `
+            <div class="layout-intervalo-box">
+              <div class="icon">☕</div>
+              <h3>Pausa para Café & Checagem das Máquinas</h3>
+              <p style="font-size: 1.8rem; color: var(--text-amber);">15 Minutos de Descanso Cognitivo</p>
+              <ul>
+                <li><span>💧</span> Beba água e estique as pernas</li>
+                <li><span>💻</span> Laura & Maria estarão ligando os computadores</li>
+                <li><span>🚀</span> Na volta: início da nossa primeira prática no laboratório!</li>
+              </ul>
+            </div>
+          `;
+        }
+        // TIPO 14: Missão 1 - Garantir E-mail
+        else if (s.tipo === 'missao-email' && s.passos) {
+          bodyHTML = `
+            <div class="grid-colunas" style="align-items: center;">
+              <div class="card-coluna" style="border-color: var(--border-amber); background: #251e18;">
+                <div class="card-col-header">
+                  <span>🎯</span>
+                  <span>Passo a Passo no Computador</span>
+                </div>
+                <ul class="card-col-list">
+                  ${s.passos.map(p => `
+                    <li>
+                      <span class="bullet" style="color: var(--text-amber);">✓</span>
+                      <span>${p}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <div class="card-coluna" style="background: var(--bg-card-subtle); display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 3rem;">
+                <div style="font-size: 5rem; margin-bottom: 1rem;">🔐</div>
+                <h3 style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 1rem;">Não lembra a senha?</h3>
+                <p style="font-size: 1.45rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.5rem;">
+                  Não passe aperto sozinho! Levante a mão que a <strong>Laura ou a Maria</strong> vão até a sua mesa para ajudar a redefinir ou criar uma conta novinha na hora.
+                </p>
+                <span class="slide-tag" style="margin: 0 auto; background: var(--bg-stage);">Suporte Individual nas Mesas</span>
+              </div>
+            </div>
+          `;
+        }
+        // TIPO 15: Missão 2 - Portfólio Digital
+        else if (s.tipo === 'missao-portfolio' && s.passos) {
+          bodyHTML = `
+            <div class="grid-colunas" style="align-items: center;">
+              <div class="card-coluna">
+                <div class="card-col-header" style="color: var(--text-green);">
+                  <span>📝</span>
+                  <span>Roteiro da Atividade 1 (0,5 pt)</span>
+                </div>
+                <ul class="card-col-list">
+                  ${s.passos.map(p => `
+                    <li>
+                      <span class="bullet" style="color: var(--text-green);">•</span>
+                      <span>${p}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <div class="card-coluna" style="background: linear-gradient(135deg, #1f281e 0%, #171d16 100%); border-color: var(--border-green); padding: 3rem; text-align: center;">
+                <div style="font-size: 4.5rem; margin-bottom: 1rem;">🩺</div>
+                <h3 style="font-size: 2.2rem; color: var(--text-green); margin-bottom: 1rem;">O Raio-X da IA</h3>
+                <p style="font-size: 1.4rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.5rem;">
+                  Escolha 2 aplicativos que você usa (Waze, Spotify, Nubank, Netflix) e descreva os dados coletados e o benefício que a IA entrega.
+                </p>
+                <div style="background: rgba(0,0,0,0.3); border: 1px dashed var(--border-green); padding: 1rem; border-radius: var(--radius-md); font-size: 1.25rem; color: var(--text-secondary);">
+                  💡 Vale 0,5 ponto para compor sua Certificação de 32 Horas!
+                </div>
+              </div>
+            </div>
+          `;
+        }
+        // TIPO 16: Síntese e Fechamento
+        else if (s.tipo === 'fechamento') {
+          bodyHTML = `
+            <div class="layout-fechamento-wrap">
+              <div class="fechamento-banner-card">
+                <span style="font-size: 3.5rem; display: block; margin-bottom: 0.75rem;">🎓</span>
+                <h3>"${s.conclusao}"</h3>
+              </div>
+
+              <div class="fechamento-next-card">
+                <div class="fechamento-next-icon">📅</div>
+                <div class="fechamento-next-info">
+                  <h4>Próximo Encontro Presencial</h4>
+                  <p>${s.proximoEncontro}</p>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 0.5rem;">
+                ${(s.lembretesFinais || []).map(lembrete => `
+                  <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 1.25rem 2rem; border-radius: var(--radius-pill); font-size: 1.35rem; color: var(--text-amber); font-weight: 600;">
+                    ⭐ ${lembrete}
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+        // Fallback para colunas genéricas
+        else if (s.colunas) {
+          bodyHTML = `
+            <div class="grid-colunas">
+              ${s.colunas.map(col => `
+                <div class="card-coluna">
+                  <div class="card-col-header">
+                    <span>${col.icone || '📌'}</span>
+                    <span>${col.tag}</span>
+                  </div>
+                  <ul class="card-col-list">
+                    ${col.itens.map(item => `
+                      <li>
+                        <span class="bullet">•</span>
+                        <span>${item}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+        // Fallback genérico
+        else {
+          bodyHTML = `
+            <div style="font-size: 2rem; line-height: 1.6; color: var(--text-secondary); width: 100%;">
+              <p>${s.subtitulo || ''}</p>
+            </div>
+          `;
+        }
+
+        // Montagem do Slide no Card
+        container.innerHTML = `
+          <div>
+            <div class="slide-header">
+              <span class="slide-tag">${s.categoria || 'Módulo 1'} • Slide ${s.numero} de ${slides.length}</span>
+              <h2 class="slide-title">${s.titulo}</h2>
+              ${s.subtitulo && s.tipo !== 'capa' ? `<p class="slide-subtitle">${s.subtitulo}</p>` : ''}
+            </div>
+          </div>
+
+          <div class="slide-body">
+            ${bodyHTML}
+          </div>
+
+          <div class="slide-footer">
+            <span>Minicurso de Extensão: Inteligência Artificial • Encontro 1 Presencial (32h)</span>
+            <div class="slide-footer-keys">
+              Navegar: <span class="key-badge">←</span> <span class="key-badge">→</span> | Tela cheia: <span class="key-badge">F</span> | Notas: <span class="key-badge">P</span> | Intervalo: <span class="key-badge">I</span>
+            </div>
+          </div>
+        `;
+
+        // Atualização dos Controles
+        counter.textContent = `Slide ${index + 1} de ${slides.length}`;
+        btnPrev.disabled = (index === 0);
+        btnNext.disabled = (index === slides.length - 1);
+
+        // Atualização da Gaveta de Notas da Professora
+        if (s.notasProfessora) {
+          notesTitle.textContent = `Slide ${s.numero}: ${s.titulo} (Tempo Sugerido: ${s.notasProfessora.tempoSugerido})`;
+          notesBody.innerHTML = `
+            <p style="margin-bottom: 0.75rem;"><strong>🎯 Objetivo Pedagógico:</strong> ${s.notasProfessora.objetivoSlide}</p>
+            <p style="margin-bottom: 0.5rem;"><strong>🎙️ O que falar para a turma:</strong></p>
+            <blockquote style="background: rgba(0,0,0,0.3); border-left: 4px solid var(--text-amber); padding: 0.75rem 1.25rem; border-radius: 4px; font-style: italic; color: var(--text-main); font-size: 1.15rem; line-height: 1.5;">
+              ${s.notasProfessora.oQueFalar}
+            </blockquote>
+          `;
+        }
+      }
+
+      // =======================================================================
+      // 3. NAVEGAÇÃO ENTRE OS SLIDES
+      // =======================================================================
+      function nextSlide() {
+        if (currentIndex < slides.length - 1) {
+          currentIndex++;
+          renderSlide(currentIndex);
+        }
+      }
+
+      function prevSlide() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          renderSlide(currentIndex);
+        }
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => { });
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      }
+
+      function toggleNotes() {
+        notesDrawer.classList.toggle('open');
+        btnNotes.classList.toggle('active');
+      }
+
+      function toggleInterval() {
+        if (!intervalOverlay) return;
+        const isHidden = (intervalOverlay.style.display === 'none' || !intervalOverlay.style.display);
+        intervalOverlay.style.display = isHidden ? 'flex' : 'none';
+        if (btnInterval) btnInterval.classList.toggle('active', isHidden);
+      }
+
+      btnNext.addEventListener('click', nextSlide);
+      btnPrev.addEventListener('click', prevSlide);
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+      btnNotes.addEventListener('click', toggleNotes);
+      btnCloseNotes.addEventListener('click', toggleNotes);
+      if (btnInterval) btnInterval.addEventListener('click', toggleInterval);
+      if (btnCloseInterval) btnCloseInterval.addEventListener('click', toggleInterval);
+      if (intervalOverlay) {
+        intervalOverlay.addEventListener('click', (e) => {
+          if (e.target === intervalOverlay) toggleInterval();
+        });
+      }
+
+      // =======================================================================
+      // 4. ATALHOS DE TECLADO COMPLETOS
+      // =======================================================================
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          prevSlide();
+        } else if (e.key === 'f' || e.key === 'F') {
+          e.preventDefault();
+          toggleFullscreen();
+        } else if (e.key === 'p' || e.key === 'P' || e.key === 'n' || e.key === 'N') {
+          e.preventDefault();
+          toggleNotes();
+        } else if (e.key === 'i' || e.key === 'I') {
+          e.preventDefault();
+          toggleInterval();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          currentIndex = 0;
+          renderSlide(currentIndex);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          currentIndex = slides.length - 1;
+          renderSlide(currentIndex);
+        } else if (e.key === 'Escape') {
+          if (intervalOverlay && intervalOverlay.style.display === 'flex') {
+            toggleInterval();
+          } else if (notesDrawer.classList.contains('open')) {
+            toggleNotes();
+          }
+        }
+      });
+
+      // =======================================================================
+      // 5. SUPORTE A SWIPE / TOUCH EM TELAS MÓVEIS E TABLETS
+      // =======================================================================
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchEndX - touchStartX;
+        if (Math.abs(diff) > 50) {
+          if (diff < 0) nextSlide(); // Deslizar para esquerda -> Próximo
+          else prevSlide();          // Deslizar para direita -> Anterior
+        }
+      }, { passive: true });
+
+      // Suporte a parâmetro de URL ?slide=X (1-indexed)
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramSlide = parseInt(urlParams.get('slide'), 10);
+      if (!isNaN(paramSlide) && paramSlide >= 1 && paramSlide <= slides.length) {
+        currentIndex = paramSlide - 1;
+      }
+
+      // Inicializa o slide
+      renderSlide(currentIndex);
+    });
+  </script>
+</body>
+
+</html>

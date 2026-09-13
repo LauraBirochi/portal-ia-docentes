@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesso Restrito – Portal de Apoio Docente (Minicurso de IA)</title>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Estilos da Aplicação -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+
+  <style>
+    /* Estilos Dedicados da Página de Autenticação */
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: radial-gradient(circle at 50% 20%, rgba(216, 199, 168, 0.35) 0%, var(--bg-canvas) 70%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Elementos decorativos de fundo sutis */
+    .login-wrapper::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      top: -100px;
+      right: -100px;
+      background: radial-gradient(circle, rgba(128, 106, 78, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .login-wrapper::after {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      bottom: -80px;
+      left: -80px;
+      background: radial-gradient(circle, rgba(90, 122, 82, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 440px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-lg), 0 20px 40px -15px rgba(63, 56, 47, 0.12);
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(8px);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: fadeInLogin 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInLogin {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background: var(--accent-subtle-light);
+      border: 1px solid var(--accent-subtle);
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--badge-text);
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .login-icon-wrap {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 1rem;
+      background: var(--bg-subtle-warm);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .login-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+      line-height: 1.25;
+    }
+
+    .login-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Mensagens de Alerta (Flash) */
+    .flash-container {
+      margin-bottom: 1.25rem;
+    }
+
+    .flash-alert {
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.86rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      line-height: 1.4;
+      animation: alertSlide 0.3s ease-out;
+    }
+
+    @keyframes alertSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .flash-alert.error {
+      background: #fdf2f2;
+      border: 1px solid #f8d7da;
+      color: #9c2727;
+    }
+
+    [data-theme="dark"] .flash-alert.error {
+      background: #2d1818;
+      border-color: #5c2828;
+      color: #fca5a5;
+    }
+
+    .flash-alert.info {
+      background: var(--info-subtle);
+      border: 1px solid #c9dbe9;
+      color: var(--info);
+    }
+
+    .flash-alert.success {
+      background: var(--success-subtle);
+      border: 1px solid #c3dbc0;
+      color: var(--success);
+    }
+
+    /* Formulário */
+    .form-group {
+      margin-bottom: 1.25rem;
+      text-align: left;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.45rem;
+      letter-spacing: 0.01em;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.8rem 1rem 0.8rem 2.75rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-main);
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: all var(--transition);
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent);
+      background: var(--bg-surface);
+      box-shadow: 0 0 0 3px rgba(128, 106, 78, 0.18);
+    }
+
+    .form-input::placeholder {
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+
+    /* Botão de Ação */
+    .btn-submit {
+      width: 100%;
+      padding: 0.85rem 1.25rem;
+      margin-top: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent-text);
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-submit:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    /* Rodapé do Card */
+    .login-footer {
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .login-footer-info {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .login-meta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .theme-toggle-login {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 0.35rem 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all var(--transition);
+    }
+
+    .theme-toggle-login:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-focus);
+    }
+  </style>
+</head>
+
+<body class="mode-trabalho">
+
+  <div class="login-wrapper">
+
+    <div class="login-card">
+
+      <div class="login-header">
+        <div class="login-icon-wrap">
+          👩‍🏫
+        </div>
+        <div class="login-badge">
+          🛡️ Área Restrita da Co-Docência
+        </div>
+        <h1 class="login-title">Portal de Apoio Docente</h1>
+        <p class="login-subtitle">Minicurso de Inteligência Artificial (32h)</p>
+      </div>
+
+      <!-- Exibição de Mensagens Flash (Alertas de Autenticação) -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="flash-container">
+        {% for category, message in messages %}
+        <div class="flash-alert {{ category }}">
+          <span>
+            {% if category == 'error' %}⚠️{% elif category == 'success' %}✅{% else %}ℹ️{% endif %}
+          </span>
+          <div>{{ message }}</div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+
+      <!-- Formulário Seguro de Autenticação -->
+      <form action="{{ url_for('login') }}" method="POST" autocomplete="on">
+        <!-- Campo Oculto para Redirecionamento Pós-Login Seguro -->
+        <input type="hidden" name="next" value="{{ next or '' }}">
+
+        <div class="form-group">
+          <label for="username" class="form-label">Usuário Autorizado</label>
+          <div class="input-wrapper">
+            <span class="input-icon">👤</span>
+            <input type="text" id="username" name="username" class="form-input" placeholder="Digite seu usuário"
+              value="{{ initial_user or '' }}" required autofocus autocomplete="username">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Senha de Acesso</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="password" name="password" class="form-input"
+              placeholder="Digite sua senha pessoal" required autocomplete="current-password">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <span>Acessar Cockpit Docente</span>
+          <span style="font-size: 1.1rem;">➔</span>
+        </button>
+
+      </form>
+
+      <div class="login-footer">
+        <div class="login-meta-actions">
+          <div class="login-footer-info">
+            <span>🔒</span>
+            <span>Acesso individual autenticado</span>
+          </div>
+
+          <button id="btn-theme-toggle" class="theme-toggle-login" title="Alternar tema claro/escuro">
+            <span>🌙</span>
+            <span>Tema</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Gerenciador Simples de Tema Claro/Escuro para a Tela de Login
+    (function () {
+      const themeBtn = document.getElementById('btn-theme-toggle');
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+
+      function updateThemeBtnIcon(theme) {
+        if (!themeBtn) return;
+        themeBtn.querySelector('span').textContent = theme === 'dark' ? '☀️' : '🌙';
+      }
+
+      updateThemeBtnIcon(savedTheme);
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme') || 'light';
+          const nextTheme = current === 'light' ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', nextTheme);
+          localStorage.setItem('theme', nextTheme);
+          updateThemeBtnIcon(nextTheme);
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,218 @@
+<!-- ================================================================
+     NÍVEL 2: COCKPIT DA AULA (UNIVERSAL DATA-DRIVEN – ABAS ADAPTADAS POR PERFIL)
+     ================================================================ -->
+
+<!-- Barra Superior do Cockpit (Sem cronômetros) -->
+<div class="cockpit-header-bar">
+  <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+    <button id="btn-back-dashboard" class="btn-back-dashboard" title="Retornar ao Dashboard Geral">
+      ← Voltar ao Painel Geral
+    </button>
+    <div>
+      <span id="cockpit-module-chip" class="chip chip-warm">Encontro {{ active_meeting_id or 1 }} • 3 Horas</span>
+      <strong id="cockpit-module-title" style="margin-left: 0.5rem; color: var(--text-main); font-size: 1.1rem;">
+        Módulo {{ active_meeting_id or 1 }}: Desmistificando a IA
+      </strong>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+    <!-- Botão de Abertura dos Slides para o Computador 1 (Projetor) -->
+    <a href="{{ url_for('slides', meeting_id=active_meeting_id or 1) }}" target="_blank" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+      <span>🖥️</span> <strong>Abrir Slides no Projetor</strong>
+    </a>
+  </div>
+</div>
+
+<!-- ==============================================================
+     BARRA STICKY DAS ABAS DE FOCO (RBAC: COORDENADOR vs DOCENTES)
+     ============================================================== -->
+<nav class="cockpit-tabs-container" aria-label="Navegação das Abas do Cockpit">
+  <div class="cockpit-tabs-list">
+    <button class="cockpit-tab-btn active" data-tab="fio-meada">
+      <span>🎯</span> 1. Fio da Meada
+    </button>
+    <button class="cockpit-tab-btn" data-tab="slides">
+      <span>🖥️</span> 2. Slides & Roteiro
+    </button>
+    
+    {% if not is_coordinator %}
+    <!-- Abas exclusivas da Dupla Docente (Laura & Maria) -->
+    <button class="cockpit-tab-btn docente-tab" data-tab="atividades">
+      <span>🧪</span> 3. Atividades & Gabarito
+    </button>
+    <button class="cockpit-tab-btn docente-tab" data-tab="perguntas">
+      <span>⚠️</span> 4. Perguntas dos Alunos
+    </button>
+    {% endif %}
+
+    <!-- Aba Parecer do Professor (Visão Adaptada para ambos) -->
+    <button class="cockpit-tab-btn" data-tab="anotacoes">
+      <span>📝</span> {% if is_coordinator %}3.{% else %}5.{% endif %} Parecer do Professor
+    </button>
+  </div>
+</nav>
+
+<!-- ==============================================================
+     PAINEL 1: 🎯 O FIO DA MEADA (NARRATIVA & CONCEITOS)
+     ============================================================== -->
+<div id="tab-fio-meada" class="tab-content-panel active">
+  <div id="cockpit-fio-meada-container">
+    <!-- Renderizado dinamicamente por cockpit-renderer.js -->
+  </div>
+</div>
+
+<!-- ==============================================================
+     PAINEL 2: 🖥️ SLIDES & ROTEIRO VISUAL
+     ============================================================== -->
+<div id="tab-slides" class="tab-content-panel">
+  <div class="pedagogical-highlight-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <h3 id="cockpit-slides-header-title" style="font-size: 1.25rem; color: var(--text-main);">Apresentação de Slides da Aula (Modo Projetor)</h3>
+      <p style="font-size: 0.9rem; color: var(--text-secondary);">
+        Projetados para o <strong>Computador 1 (Projetor)</strong>. Cada ficha abaixo contém o roteiro sugerido da fala para a condução da aula.
+      </p>
+    </div>
+    <a href="{{ url_for('slides', meeting_id=active_meeting_id or 1) }}" target="_blank" class="btn btn-primary" style="text-decoration: none;">
+      🖥️ Abrir Slides em Tela Cheia (16:9)
+    </a>
+  </div>
+
+  <!-- Container dinâmico populado via JavaScript -->
+  <div id="cockpit-slides-list" style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem;">
+    <!-- Renderizado dinamicamente por cockpit-renderer.js -->
+  </div>
+</div>
+
+{% if not is_coordinator %}
+<!-- ==============================================================
+     PAINEL 3: 🧪 ATIVIDADES & GABARITO COMENTADO (DOCENTES ONLY)
+     ============================================================== -->
+<div id="tab-atividades" class="tab-content-panel">
+  <div id="cockpit-gabarito-container">
+    <!-- Renderizado dinamicamente por cockpit-renderer.js -->
+  </div>
+</div>
+
+<!-- ==============================================================
+     PAINEL 4: ⚠️ PERGUNTAS DOS ALUNOS & ARMADILHAS (DOCENTES ONLY)
+     ============================================================== -->
+<div id="tab-perguntas" class="tab-content-panel">
+  <div id="cockpit-perguntas-container">
+    <!-- Renderizado dinamicamente por cockpit-renderer.js -->
+  </div>
+</div>
+{% endif %}
+
+<!-- ==============================================================
+     PAINEL 5: 📝 PARECER DO PROFESSOR (COORDENADOR ESCRITA / DOCENTES LEITURA)
+     ============================================================== -->
+<div id="tab-anotacoes" class="tab-content-panel">
+  <div class="notes-workspace-card">
+
+    {% if is_coordinator %}
+      <!-- VISÃO DO COORDENADOR (LÚCIO) - MODO GESTÃO E EMISSÃO DE PARECER -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.25rem 0.65rem; background: var(--accent-subtle-light); border: 1px solid var(--accent-subtle); border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 600; color: var(--badge-text); margin-bottom: 0.5rem;">
+            ✍️ Painel de Parecer da Coordenação
+          </div>
+          <h3 id="cockpit-notes-title" style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 0.3rem;">
+            Parecer do Professor – Avaliação Pedagógica
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary);">
+            Como Coordenador, consulte abaixo o parecer atualmente enviado, edite novas considerações ou exclua se desejar. As professoras Laura & Maria visualizam suas diretrizes em modo de consulta.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button id="btn-save-parecer" class="btn btn-primary btn-sm" title="Salvar parecer no servidor para as docentes">
+            💾 Salvar Parecer
+          </button>
+          <button id="btn-delete-parecer" class="btn btn-sm" style="color: #c93b3b; border-color: #f8d7da; background: #fff5f5;" title="Excluir o parecer atual do encontro">
+            🗑️ Excluir Parecer
+          </button>
+          <button id="btn-export-notes" class="btn btn-sm" title="Baixar parecer em TXT">
+            📄 Exportar TXT
+          </button>
+        </div>
+      </div>
+
+      <!-- Card do Parecer Atual Publicado (Visível para o Coordenador) -->
+      <div id="coord-parecer-current-card" style="background: var(--bg-surface); border: 1.5px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; border-bottom: 1px dashed var(--border); padding-bottom: 0.4rem;">
+          <strong style="font-size: 0.86rem; color: var(--text-secondary);">
+            📋 Parecer Atual Publicado para o Encontro {{ active_meeting_id or 1 }}:
+          </strong>
+          <span style="font-size: 0.78rem; color: var(--text-muted);" id="coord-parecer-data">
+            Carregando...
+          </span>
+        </div>
+        <div id="coord-parecer-preview" style="font-size: 0.92rem; line-height: 1.6; color: var(--text-main); white-space: pre-wrap;">
+          Nenhum parecer enviado ainda.
+        </div>
+      </div>
+
+      <!-- Área de Edição/Redação do Coordenador -->
+      <label for="shared-notes-textarea" style="display: block; font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem;">
+        Redigir ou Alterar Parecer Oficial:
+      </label>
+      <textarea 
+        id="shared-notes-textarea" 
+        class="notes-textarea" 
+        placeholder="Escreva aqui suas considerações pedagógicas, pontos fortes do material, sugestões de condução dos slides ou ajustes recomendados para este encontro..."
+        rows="7"
+      ></textarea>
+
+      <div class="notes-status-indicator" style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; font-size: 0.82rem; color: var(--text-muted);">
+        <span id="notes-save-status">✓ Carregando parecer do servidor...</span>
+        <span>☁️ Sincronizado centralmente no servidor</span>
+      </div>
+
+    {% else %}
+      <!-- VISÃO DAS DOCENTES (LAURA & MARIA) - MODO SOMENTE LEITURA -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.25rem 0.65rem; background: var(--info-subtle); border: 1px solid #c9dbe9; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 600; color: var(--info); margin-bottom: 0.5rem;">
+            🔒 Parecer Oficial da Coordenação (Modo Leitura)
+          </div>
+          <h3 id="cockpit-notes-title" style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 0.3rem;">
+            Parecer do Professor (Coordenação Pedagógica)
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary);">
+            Orientações, feedbacks e apontamentos pedagógicos emitidos pelo Coordenador <strong>Lúcio Rodrigo</strong> para o Encontro {{ active_meeting_id or 1 }}.
+          </p>
+        </div>
+
+        <button id="btn-export-notes" class="btn btn-sm" title="Baixar parecer em arquivo de texto">
+          📄 Baixar Parecer em TXT
+        </button>
+      </div>
+
+      <!-- Card de Visualização do Parecer para as Docentes -->
+      <div id="docente-parecer-card" style="background: var(--bg-surface); border: 1.5px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; border-bottom: 1px dashed var(--border); padding-bottom: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+            <span>👤</span> <strong id="parecer-autor-display">Lúcio Rodrigo (Coordenação)</strong>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted);" id="parecer-data-display">
+            Sincronizando...
+          </div>
+        </div>
+        
+        <div id="docente-parecer-content" style="font-size: 0.95rem; line-height: 1.65; color: var(--text-main); white-space: pre-wrap; min-height: 80px;">
+          Carregando parecer oficial...
+        </div>
+      </div>
+
+      <!-- Container dos Papéis por Bloco (Divisão Docente) -->
+      <div id="cockpit-papeis-container">
+        <!-- Renderizado dinamicamente por cockpit-renderer.js -->
+      </div>
+
+      <!-- Textarea oculta para suporte a exportação -->
+      <textarea id="shared-notes-textarea" style="display: none;"></textarea>
+    {% endif %}
+
+  </div>
+</div>

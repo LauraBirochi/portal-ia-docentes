@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Portal de Apoio Docente – Minicurso de Inteligência Artificial{% endblock %}</title>
+
+  <!-- Estilos Acolhedores (Warm Paper & Walnut) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+  {% block extra_head %}{% endblock %}
+
+  <!-- Contexto do Usuário Autenticado (RBAC) -->
+  <script>
+    window.CURRENT_USER = {{ {
+      'username': current_username,
+      'name': current_user.name if current_user else '',
+      'role': current_user.role if current_user else '',
+      'is_coordinator': is_coordinator
+    } | tojson }};
+  </script>
+</head>
+
+<body data-user-role="{{ current_user.role if current_user else '' }}" data-user-name="{{ current_user.name if current_user else '' }}">
+
+  <div class="app-layout">
+
+    <!-- Topbar Global -->
+    {% include 'components/header.html' %}
+
+    <!-- Área Principal de Conteúdo -->
+    <main class="workbook-container" style="max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem;">
+      {% block content %}{% endblock %}
+    </main>
+
+  </div>
+
+  <!-- Scripts da Aplicação (Dados por Encontro & Renderizador Modular) -->
+  <script src="{{ url_for('static', filename='js/data/encontro' ~ (active_meeting_id or 1) ~ '-data.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/cockpit-renderer.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!-- Calendário Geral & Inspetor Dinâmico dos 7 Encontros -->
+<div class="timeline-card">
+  <div class="timeline-header">
+    <div>
+      <h3 style="font-size: 1.25rem; color: var(--text-main); margin-bottom: 0.25rem;">
+        🗓️ Calendário dos 7 Encontros Presenciais (3h cada)
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--text-secondary);">
+        Clique em qualquer encontro para consultar os objetivos e acessar o cockpit pedagógico da aula.
+      </p>
+    </div>
+    <span class="chip chip-warm">7 Encontros Presenciais • 21 Horas</span>
+  </div>
+
+  <!-- Trilho dos 7 Encontros -->
+  <div class="timeline-track" id="meeting-timeline-track">
+    {% for m in meetings.values() %}
+      <div class="timeline-step {% if m.num == 1 %}active{% endif %}" data-meeting="{{ m.num }}">
+        <span class="timeline-step-badge {% if m.isReady %}badge-date{% else %}badge-upcoming{% endif %}">
+          {{ m.date }}
+        </span>
+        <div class="timeline-step-num">Encontro {{ m.num }}</div>
+        <div class="timeline-step-date">
+          {% if m.num == 1 %}Gênese da IA & Ética
+          {% elif m.num == 2 %}Acesso & Prompts Básicos
+          {% elif m.num in [3, 4, 5, 6] %}Criação de Prompts
+          {% elif m.num == 7 %}Fechamento & Avaliação
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Inspetor Dinâmico do Encontro Selecionado -->
+  <div id="meeting-inspector-container" class="meeting-inspector-card">
+    <div class="meeting-inspector-top">
+      <div class="module-meta-tags" id="inspector-tags">
+        <span class="chip chip-warm" id="inspector-badge-status">{{ meetings[1].statusBadge }}</span>
+        <span class="chip" id="inspector-date">📅 {{ meetings[1].date }}</span>
+        <span class="chip" id="inspector-duration">⏱️ {{ meetings[1].duration }}</span>
+        <span class="chip" id="inspector-location">📍 {{ meetings[1].location }}</span>
+      </div>
+    </div>
+
+    <h3 class="meeting-inspector-title" id="inspector-title">
+      {{ meetings[1].title }}
+    </h3>
+
+    <p class="meeting-inspector-desc" id="inspector-desc">
+      {{ meetings[1].desc }}
+    </p>
+
+    <div class="meeting-inspector-actions" id="inspector-actions">
+      <span style="font-size: 0.88rem; color: var(--text-muted);" id="inspector-action-tip">
+        {{ meetings[1].actionTip }}
+      </span>
+      <button id="btn-enter-cockpit" class="btn btn-primary" style="font-size: 0.95rem; padding: 0.65rem 1.35rem;">
+        Entrar no Cockpit da Aula ➔
+      </button>
+    </div>
+  </div>
+</div>

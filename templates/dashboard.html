@@ -1,0 +1,44 @@
+<!-- ================================================================
+     NÍVEL 1: DASHBOARD CENTRAL DO MINICURSO (HOME)
+     ================================================================ -->
+<div class="dashboard-hero">
+  <div class="dashboard-hero-header">
+    <div>
+      <div class="module-meta-tags">
+        <span class="chip chip-warm">Minicurso de Extensão Universitária</span>
+        <span class="chip">{{ team.horas_totais }}</span>
+        <span class="chip">{{ team.horas_detalhes }}</span>
+      </div>
+      <h1 class="module-title" style="font-size: 2.2rem; margin-top: 0.5rem;">
+        Portal de Co-Docência & Apoio Pedagógico
+      </h1>
+      <p class="module-subtitle">
+        Ambiente centralizador para Laura, Maria e a Coordenação planejarem os encontros, alinharem os conceitos pedagógicos e conduzirem as aulas do minicurso.
+      </p>
+    </div>
+
+    <!-- Indicador do Modo Atual -->
+    <div id="current-mode-indicator" class="chip chip-warm" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+      🛠️ Modo Trabalho (Preparação Docente)
+    </div>
+  </div>
+
+  <!-- Faixa da Equipe -->
+  <div class="dashboard-team-strip">
+    <div class="team-member-item">
+      <span>👥 <strong>Docentes:</strong></span>
+      <span>{{ team.docentes }}</span>
+    </div>
+    <div class="team-member-item" style="border-left: 1px solid var(--border); padding-left: 1.25rem;">
+      <span>🎓 <strong>Coordenação:</strong></span>
+      <span>{{ team.coordenacao }}</span>
+    </div>
+    <div class="team-member-item" style="border-left: 1px solid var(--border); padding-left: 1.25rem;">
+      <span>📍 <strong>Local:</strong></span>
+      <span>{{ team.local }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Calendário Geral & Inspetor Dinâmico -->
+{% include 'components/timeline.html' %}

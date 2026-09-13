@@ -1,0 +1,649 @@
+/* ==========================================================================
+   IDENTIDADE VISUAL: WARM PAPER & WALNUT (ACOLHEDORA & EDITORIAL)
+   Portal de Apoio Docente – Minicurso de Inteligência Artificial
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Paleta Acolhedora & Orgânica Solicitada */
+  --bg-canvas: #f7f3ea;          /* Fundo geral da aplicação */
+  --bg-surface: #fffdf8;         /* Cards e áreas de conteúdo */
+  --bg-surface-hover: #f5eedf;   /* Hover em superfícies */
+  --bg-subtle: #efe8da;          /* Menus e seções secundárias */
+  --bg-subtle-warm: #fbf8f0;     /* Fundo sutil quente */
+  --bg-sidebar: #efe8da;         /* Fundo do Offcanvas / Sidebar */
+  
+  --text-main: #3f382f;          /* Textos principais (café escuro legível) */
+  --text-secondary: #635849;     /* Textos secundários */
+  --text-muted: #8c7d6b;         /* Legendas e textos atenuados */
+  --text-sidebar: #3f382f;
+  --text-sidebar-muted: #6b5f4f;
+  
+  --border: #e5dbc9;             /* Bordas suaves */
+  --border-focus: #806a4e;       /* Borda em foco */
+  --border-sidebar: #d8c7a8;     /* Borda do menu lateral */
+  
+  /* Acentos de Destaque */
+  --accent: #806a4e;             /* Botões e elementos importantes (Avelã/Noz) */
+  --accent-hover: #675238;
+  --accent-text: #fffdf8;
+  --accent-subtle: #d8c7a8;      /* Destaques e badges suaves (Trigo/Âmbar) */
+  --accent-subtle-light: #f5ebd9;
+  
+  --badge-bg: #e8dcc4;
+  --badge-text: #5e4c34;
+  
+  --success: #5a7a52;            /* Verde folha / oliva suave */
+  --success-subtle: #eff4ec;
+  --warning: #9e672f;            /* Âmbar terracota */
+  --warning-subtle: #fcf4eb;
+  --info: #647b91;               /* Azul ardósia suave */
+  --info-subtle: #edf3f8;
+
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 3px rgba(63, 56, 47, 0.05);
+  --shadow-md: 0 4px 14px rgba(63, 56, 47, 0.07);
+  --shadow-lg: 0 14px 32px rgba(63, 56, 47, 0.12);
+  
+  --sidebar-width: 320px;
+  --transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] {
+  /* Modo Noturno Quente / Café Espresso */
+  --bg-canvas: #1e1a16;
+  --bg-surface: #28231e;
+  --bg-surface-hover: #342e27;
+  --bg-subtle: #241f1a;
+  --bg-subtle-warm: #2c2620;
+  --bg-sidebar: #241f1a;
+  
+  --text-main: #f7f3ea;
+  --text-secondary: #d8c7a8;
+  --text-muted: #a69885;
+  --text-sidebar: #f7f3ea;
+  --text-sidebar-muted: #b8a892;
+  
+  --border: #3d352b;
+  --border-focus: #d8c7a8;
+  --border-sidebar: #3d352b;
+  
+  --accent: #c4a984;
+  --accent-hover: #d8c7a8;
+  --accent-text: #1e1a16;
+  --accent-subtle: #4a3f31;
+  --accent-subtle-light: #3d3326;
+  
+  --badge-bg: #3d3326;
+  --badge-text: #d8c7a8;
+  
+  --success: #82a878;
+  --success-subtle: #243521;
+  --warning: #d99252;
+  --warning-subtle: #382414;
+  --info: #8ca3bc;
+  --info-subtle: #1f2b38;
+}
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Tipografia */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+h1 { font-size: 1.85rem; line-height: 1.25; }
+h2 { font-size: 1.35rem; line-height: 1.3; }
+h3 { font-size: 1.1rem; line-height: 1.4; }
+
+p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   ESTRUTURA DO APLICATIVO COM OFFCANVAS
+   ========================================================================== */
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--bg-canvas);
+}
+
+/* Backdrop do Offcanvas */
+.sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(63, 56, 47, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+
+.sidebar-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Offcanvas Drawer à Esquerda */
+.app-sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--bg-sidebar);
+  color: var(--text-sidebar);
+  border-right: 1px solid var(--border-sidebar);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  transform: translateX(-100%);
+  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: none;
+}
+
+.app-sidebar.open {
+  transform: translateX(0);
+  box-shadow: var(--shadow-lg);
+}
+
+.sidebar-header {
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--border-sidebar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background-color: var(--bg-subtle);
+}
+
+.sidebar-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sidebar-brand-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent);
+  color: var(--accent-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.sidebar-brand-info strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.sidebar-brand-info span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Botão de Fechar o Offcanvas */
+.btn-sidebar-close {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all var(--transition);
+}
+
+.btn-sidebar-close:hover {
+  background-color: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+.sidebar-content {
+  flex: 1;
+  padding: 1.25rem 1rem;
+  overflow-y: auto;
+}
+
+.sidebar-section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 0.5rem 0.6rem 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-module-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-sidebar);
+  text-decoration: none;
+  transition: all var(--transition);
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar-module-item:hover {
+  background-color: var(--bg-surface);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+.sidebar-module-item.active {
+  background-color: var(--bg-surface);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-module-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  white-space: nowrap;
+}
+
+.sidebar-module-item.active .sidebar-module-badge {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+/* ==========================================================================
+   ÁREA PRINCIPAL DO CONTEÚDO
+   ========================================================================== */
+
+.app-main-wrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-canvas);
+  transition: margin var(--transition);
+}
+
+/* Topbar Superior */
+.topbar {
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* Botão para Abrir o Offcanvas */
+.btn-sidebar-open {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all var(--transition);
+}
+
+.btn-sidebar-open:hover {
+  background-color: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+.breadcrumb {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb strong {
+  color: var(--text-main);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ==========================================================================
+   SUB-BARRA HORIZONTAL STICKY DE RASTREAMENTO DOS SUBMÓDULOS
+   ========================================================================== */
+
+.submodule-sticky-nav {
+  position: sticky;
+  top: 57px; /* Logo abaixo da topbar */
+  z-index: 35;
+  background-color: rgba(255, 253, 248, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.65rem 2rem;
+}
+
+.subnav-pills-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.subnav-pills-container::-webkit-scrollbar {
+  display: none;
+}
+
+.subnav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.subnav-pill:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--accent-subtle);
+  color: var(--text-main);
+}
+
+.subnav-pill.active {
+  background-color: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Conteúdo do Caderno Docente */
+.workbook-container {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 5rem;
+  flex: 1;
+}
+
+/* Botão Padrão */
+.btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.btn:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--text-muted);
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* Rodapé */
+.app-footer {
+  border-top: 1px solid var(--border);
+  background-color: var(--bg-surface);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Toast de Notificação */
+.toast-msg {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--text-main);
+  color: var(--bg-surface);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 200;
+}
+
+.toast-msg.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   CSS DE IMPRESSÃO (@media print)
+   ========================================================================== */
+
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+  }
+
+  .app-sidebar,
+  .sidebar-backdrop,
+  .topbar,
+  .submodule-sticky-nav,
+  .app-footer,
+  .btn,
+  .slide-controls-bar,
+  .toast-msg {
+    display: none !important;
+  }
+
+  .app-main-wrapper {
+    margin-left: 0 !important;
+  }
+
+  .workbook-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .module-header-card,
+  .plan-block-card,
+  .slide-presentation-box,
+  .teacher-notes-panel,
+  .doc-card,
+  .resource-card {
+    border: 1px solid #d8c7a8 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .slides-view-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .slide-stage-ocean {
+    background: #fdfaf4 !important;
+    color: #000000 !important;
+    border: 1px solid #d8c7a8 !important;
+  }
+
+  /* Expandir e formatar acordeões técnicos na impressão */
+  .tech-detail-accordion {
+    display: block !important;
+    border: 1px solid #d8c7a8 !important;
+    background: #ffffff !important;
+    break-inside: avoid;
+  }
+
+  .tech-detail-summary {
+    display: block !important;
+    font-weight: bold !important;
+    color: #3f382f !important;
+    border-bottom: 1px solid #d8c7a8 !important;
+  }
+
+  .tech-detail-summary::after {
+    display: none !important;
+  }
+
+  .tech-detail-body {
+    display: flex !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .tech-topic-card {
+    border: 1px solid #e0d5c1 !important;
+    border-left: 3px solid #806a4e !important;
+    background: #faf8f2 !important;
+    break-inside: avoid;
+  }
+
+  .teacher-assign-row {
+    background: #faf8f2 !important;
+    border: 1px solid #d8c7a8 !important;
+    break-inside: avoid;
+  }
+
+  .teacher-pill-group {
+    background: #ffffff !important;
+    border: 1px solid #d8c7a8 !important;
+  }
+
+  .teacher-radio:checked + .pill-label {
+    background: #806a4e !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* Responsividade Mobile */
+@media (max-width: 860px) {
+  .topbar {
+    padding: 0.75rem 1rem;
+  }
+  
+  .submodule-sticky-nav {
+    padding: 0.5rem 1rem;
+  }
+
+  .workbook-container {
+    padding: 1.25rem 1rem;
+  }
+}
