@@ -1,14 +1,12 @@
 """
 Portal de Apoio Docente & Co-Docência – Minicurso de Inteligência Artificial (32h)
-Servidor Flask modularizado com autenticação segura, controle de papéis (RBAC) e Parecer do Professor.
+Servidor Flask 100% Stateless com autenticação segura e controle de papéis (RBAC).
 """
 
 import os
-import json
 import secrets
 import functools
 import urllib.parse
-from datetime import datetime
 from dotenv import load_dotenv
 from flask import (
     Flask, render_template, jsonify, request, redirect,
@@ -36,8 +34,6 @@ app.config.update(
     ),                                      # Transmite o cookie apenas por HTTPS em produção
     PERMANENT_SESSION_LIFETIME=60 * 60 * 8  # Sessão ativa por 8 horas de trabalho docente
 )
-
-PARECERES_FILE = os.path.join(os.path.dirname(__file__), 'data', 'pareceres.json')
 
 # ==============================================================================
 # BASE DE USUÁRIOS AUTORIZADOS (3 Usuários com Senhas Criptografadas)
@@ -87,25 +83,6 @@ def load_authorized_users():
 USERS_DB = load_authorized_users()
 
 
-# ==============================================================================
-# PERSISTÊNCIA CENTRALIZADA DE PARECERES (data/pareceres.json)
-# ==============================================================================
-def get_pareceres_data():
-    """Lê os pareceres salvos no arquivo JSON."""
-    if not os.path.exists(PARECERES_FILE):
-        return {}
-    try:
-        with open(PARECERES_FILE, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except Exception:
-        return {}
-
-
-def save_pareceres_data(data):
-    """Salva os pareceres no arquivo JSON."""
-    os.makedirs(os.path.dirname(PARECERES_FILE), exist_ok=True)
-    with open(PARECERES_FILE, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
 
 
 # ==============================================================================
@@ -155,25 +132,7 @@ def login_required(f):
     return decorated_function
 
 
-def coordinator_required(f):
-    """
-    Decorador de Controle de Acesso Baseado em Papel (RBAC).
-    Permite acesso apenas a usuários com papel 'Coordenação'.
-    """
-    @functools.wraps(f)
-    def decorated_function(*args, **kwargs):
-        username = session.get('user')
-        user_record = USERS_DB.get(username) if username else None
-        if not user_record or user_record.get('role') != 'Coordenação':
-            if request.path.startswith('/api/'):
-                return jsonify({
-                    "error": "Forbidden",
-                    "message": "Apenas a Coordenação possui permissão para emitir e salvar pareceres."
-                }), 403
-            flash("Acesso restrito à Coordenação.", "error")
-            return redirect(url_for('dashboard'))
-        return f(*args, **kwargs)
-    return decorated_function
+
 
 
 @app.context_processor
@@ -415,69 +374,7 @@ def api_auth_status():
     })
 
 
-@app.route('/api/parecer/<int:meeting_id>', methods=['GET'])
-@login_required
-def api_get_parecer(meeting_id):
-    """Retorna o parecer do coordenador para o encontro especificado (leitura aberta para docentes e coordenação)."""
-    pareceres = get_pareceres_data()
-    parecer = pareceres.get(str(meeting_id)) or {
-        "meeting_id": meeting_id,
-        "texto": "",
-        "autor": "Lúcio Rodrigo (Coordenação)",
-        "atualizado_em": ""
-    }
-    return jsonify(parecer)
 
-
-@app.route('/api/parecer/<int:meeting_id>', methods=['POST'])
-@login_required
-@coordinator_required
-def api_save_parecer(meeting_id):
-    """Salva o parecer oficial do encontro (permissão exclusiva da Coordenação)."""
-    data = request.get_json(silent=True) or request.form
-    texto = (data.get('texto') or '').strip()
-    
-    username = session.get('user')
-    user_record = USERS_DB.get(username, {})
-    autor = user_record.get('name', 'Coordenação')
-    
-    now_str = datetime.now().strftime('%d/%m/%Y às %H:%M')
-    
-    pareceres = get_pareceres_data()
-    pareceres[str(meeting_id)] = {
-        "meeting_id": meeting_id,
-        "texto": texto,
-        "autor": autor,
-        "atualizado_em": now_str
-    }
-    save_pareceres_data(pareceres)
-    
-    return jsonify({
-        "success": True,
-        "message": "Parecer salvo com sucesso pela Coordenação.",
-        "parecer": pareceres[str(meeting_id)]
-    })
-
-
-@app.route('/api/parecer/<int:meeting_id>', methods=['DELETE'])
-@login_required
-@coordinator_required
-def api_delete_parecer(meeting_id):
-    """Exclui o parecer oficial do encontro (permissão exclusiva da Coordenação)."""
-    pareceres = get_pareceres_data()
-    pareceres[str(meeting_id)] = {
-        "meeting_id": meeting_id,
-        "texto": "",
-        "autor": "Lúcio Rodrigo (Coordenação)",
-        "atualizado_em": ""
-    }
-    save_pareceres_data(pareceres)
-    
-    return jsonify({
-        "success": True,
-        "message": "Parecer excluído com sucesso pela Coordenação.",
-        "parecer": pareceres[str(meeting_id)]
-    })
 
 
 if __name__ == '__main__':

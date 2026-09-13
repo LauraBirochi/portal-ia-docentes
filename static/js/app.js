@@ -246,189 +246,87 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // 5. PARECER DO PROFESSOR: SINCRONIZAÇÃO CENTRALIZADA COM O SERVIDOR (RBAC)
+  // 5. PARECER DO PROFESSOR & ANOTAÇÕES (EXPORTAÇÃO DIRETA EM TXT - STATELESS)
   // =========================================================================
   const notesTextarea = document.getElementById('shared-notes-textarea');
-  const notesStatusEl = document.getElementById('notes-save-status');
-  const btnSaveParecer = document.getElementById('btn-save-parecer');
-  const btnDeleteParecer = document.getElementById('btn-delete-parecer');
   const btnExportNotes = document.getElementById('btn-export-notes');
-  const docenteParecerContent = document.getElementById('docente-parecer-content');
-  const parecerAutorDisplay = document.getElementById('parecer-autor-display');
-  const parecerDataDisplay = document.getElementById('parecer-data-display');
-  const coordParecerPreview = document.getElementById('coord-parecer-preview');
-  const coordParecerData = document.getElementById('coord-parecer-data');
+  const notesCharCount = document.getElementById('notes-char-count');
 
-  const isCoordinator = window.CURRENT_USER && window.CURRENT_USER.is_coordinator;
   const currentMeetingId = 1; // Padrão Encontro 1
 
-  // Carrega o parecer centralizado a partir da API Flask
-  function loadParecerFromServer(meetingId = currentMeetingId) {
-    fetch(`/api/parecer/${meetingId}`)
-      .then(res => {
-        if (!res.ok) throw new Error('Falha ao carregar parecer');
-        return res.json();
-      })
-      .then(data => {
-        const texto = data.texto || '';
-        const autor = data.autor || 'Coordenação Pedagógica';
-        const dataAtualizacao = data.atualizado_em || '';
-
-        if (notesTextarea) {
-          notesTextarea.value = texto;
-        }
-
-        if (isCoordinator) {
-          // Visão do Coordenador: atualiza o preview do parecer anterior
-          if (coordParecerPreview) {
-            if (texto.trim()) {
-              coordParecerPreview.textContent = texto;
-            } else {
-              coordParecerPreview.innerHTML = '<em style="color: var(--text-muted);">Nenhum parecer enviado ainda para este encontro.</em>';
-            }
-          }
-          if (coordParecerData) {
-            coordParecerData.textContent = dataAtualizacao ? `Último envio: ${dataAtualizacao}` : 'Sem parecer ativo';
-          }
-          if (notesStatusEl) {
-            notesStatusEl.textContent = dataAtualizacao 
-              ? `✓ Parecer ativo no servidor (${dataAtualizacao})` 
-              : '✓ Pronto para redigir seu parecer.';
-          }
-        } else {
-          // Visão Docente (Laura & Maria) - Somente Leitura
-          if (docenteParecerContent) {
-            if (texto.trim()) {
-              docenteParecerContent.textContent = texto;
-            } else {
-              docenteParecerContent.innerHTML = '<em style="color: var(--text-muted);">Nenhum apontamento ou parecer emitido até o momento para este encontro.</em>';
-            }
-          }
-          if (parecerAutorDisplay) parecerAutorDisplay.textContent = autor;
-          if (parecerDataDisplay) parecerDataDisplay.textContent = dataAtualizacao ? `Atualizado em: ${dataAtualizacao}` : 'Aguardando parecer';
-        }
-      })
-      .catch(err => {
-        console.error('Erro ao buscar parecer:', err);
-        if (notesStatusEl) notesStatusEl.textContent = '⚠️ Erro ao sincronizar parecer.';
-      });
-  }
-
-  // Função para salvar o parecer no servidor (Exclusivo da Coordenação)
-  function saveParecerToServer(meetingId = currentMeetingId, manualTrigger = false) {
-    if (!isCoordinator || !notesTextarea) return;
-
-    if (notesStatusEl) notesStatusEl.textContent = 'Salvando no servidor...';
-
-    const texto = notesTextarea.value;
-
-    fetch(`/api/parecer/${meetingId}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ texto: texto })
-    })
-    .then(res => {
-      if (!res.ok) throw new Error('Não autorizado ou erro no servidor');
-      return res.json();
-    })
-    .then(result => {
-      const dataHora = result.parecer?.atualizado_em || 'agora';
-      if (notesStatusEl) {
-        notesStatusEl.textContent = `✓ Parecer salvo com sucesso no servidor (${dataHora})`;
-      }
-      if (coordParecerPreview) {
-        coordParecerPreview.textContent = texto.trim() || 'Nenhum parecer enviado ainda para este encontro.';
-      }
-      if (coordParecerData) {
-        coordParecerData.textContent = `Último envio: ${dataHora}`;
-      }
-      if (manualTrigger && window.showToast) {
-        window.showToast('✅ Parecer oficial publicado com sucesso!');
-      }
-    })
-    .catch(err => {
-      console.error('Erro ao salvar parecer:', err);
-      if (notesStatusEl) {
-        notesStatusEl.textContent = '❌ Erro ao salvar no servidor. Tente novamente.';
-      }
-    });
-  }
-
-  // Função para excluir o parecer no servidor (Exclusivo da Coordenação)
-  function deleteParecerFromServer(meetingId = currentMeetingId) {
-    if (!isCoordinator) return;
-
-    if (!confirm('Tem certeza que deseja excluir o parecer oficial deste encontro? As docentes deixarão de visualizá-lo.')) {
-      return;
+  // Restaura rascunho da sessão local (se houver)
+  if (notesTextarea) {
+    const savedDraft = localStorage.getItem(`draft_parecer_meeting_${currentMeetingId}`);
+    if (savedDraft) {
+      notesTextarea.value = savedDraft;
     }
 
-    if (notesStatusEl) notesStatusEl.textContent = 'Excluindo parecer...';
-
-    fetch(`/api/parecer/${meetingId}`, {
-      method: 'DELETE'
-    })
-    .then(res => {
-      if (!res.ok) throw new Error('Não autorizado ou erro ao excluir');
-      return res.json();
-    })
-    .then(result => {
-      if (notesTextarea) notesTextarea.value = '';
-      if (coordParecerPreview) coordParecerPreview.innerHTML = '<em style="color: var(--text-muted);">Nenhum parecer enviado ainda para este encontro.</em>';
-      if (coordParecerData) coordParecerData.textContent = 'Sem parecer ativo';
-      if (notesStatusEl) notesStatusEl.textContent = '✓ Parecer excluído com sucesso do servidor.';
-      if (window.showToast) {
-        window.showToast('🗑️ Parecer oficial excluído.');
+    function updateCharCount() {
+      const len = notesTextarea.value.length;
+      if (notesCharCount) {
+        notesCharCount.textContent = `${len} caracter${len === 1 ? '' : 'es'} digitado${len === 1 ? '' : 's'}`;
       }
-    })
-    .catch(err => {
-      console.error('Erro ao excluir parecer:', err);
-      if (notesStatusEl) notesStatusEl.textContent = '❌ Erro ao excluir parecer.';
-    });
-  }
+    }
 
-  // Inicializa carregamento do parecer
-  loadParecerFromServer(1);
+    updateCharCount();
 
-  // Eventos de escrita e exclusão da Coordenação
-  if (isCoordinator && notesTextarea) {
-    let saveTimeout = null;
+    // Salva rascunho no localStorage do navegador para segurança do usuário
     notesTextarea.addEventListener('input', () => {
-      if (notesStatusEl) notesStatusEl.textContent = 'Digitando parecer...';
-      clearTimeout(saveTimeout);
-      saveTimeout = setTimeout(() => {
-        saveParecerToServer(1, false);
-      }, 800);
+      localStorage.setItem(`draft_parecer_meeting_${currentMeetingId}`, notesTextarea.value);
+      updateCharCount();
     });
-
-    if (btnSaveParecer) {
-      btnSaveParecer.addEventListener('click', () => {
-        saveParecerToServer(1, true);
-      });
-    }
-
-    if (btnDeleteParecer) {
-      btnDeleteParecer.addEventListener('click', () => {
-        deleteParecerFromServer(1);
-      });
-    }
   }
 
-  // Exportar parecer em TXT
+  // Exportação direta e instantânea em arquivo .txt (Blob UTF-8)
   if (btnExportNotes) {
     btnExportNotes.addEventListener('click', () => {
-      const textoConteudo = notesTextarea ? notesTextarea.value : (docenteParecerContent ? docenteParecerContent.textContent : '');
-      const tituloHeader = `========================================================\nPORTAL DE APOIO DOCENTE - MINICURSO DE IA (32H)\nPARECER PEDAGÓGICO - ENCONTRO 1\n========================================================\n\n`;
-      const fullText = tituloHeader + (textoConteudo || 'Sem conteúdo.');
+      const textoConteudo = notesTextarea ? notesTextarea.value.trim() : '';
       
-      const blob = new Blob([fullText], { type: 'text/plain;charset=utf-8' });
+      if (!textoConteudo) {
+        if (window.showToast) {
+          window.showToast('⚠️ Digite seu parecer ou anotações antes de exportar.');
+        }
+        if (notesTextarea) notesTextarea.focus();
+        return;
+      }
+
+      const agora = new Date();
+      const dataFormatada = agora.toLocaleDateString('pt-BR');
+      const horaFormatada = agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      
+      const usuarioAtual = (window.CURRENT_USER && window.CURRENT_USER.name) || 'Docente / Coordenação';
+      const papelAtual = (window.CURRENT_USER && window.CURRENT_USER.role) || 'Equipe Pedagógica';
+
+      const cabecalho = 
+`================================================================================
+PORTAL DE APOIO DOCENTE & CO-DOCÊNCIA – MINICURSO DE IA (32H)
+DOCUMENTO DE PARECER PEDAGÓGICO / ANOTAÇÕES DO ENCONTRO
+================================================================================
+Encontro: Encontro 1 – Desmistificando a IA (3 Horas)
+Emissor: ${usuarioAtual} (${papelAtual})
+Data de Exportação: ${dataFormatada} às ${horaFormatada}
+================================================================================
+
+CONTEÚDO DO PARECER / ANOTAÇÕES PEDAGÓGICAS:
+--------------------------------------------------------------------------------
+${textoConteudo}
+--------------------------------------------------------------------------------
+Fim do documento exportado.
+`;
+
+      const blob = new Blob([cabecalho], { type: 'text/plain;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'Parecer_Pedagogico_Encontro_1_Minicurso_IA.txt';
+      a.download = `Parecer_Pedagogico_Encontro_${currentMeetingId}_Minicurso_IA.txt`;
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
+
+      if (window.showToast) {
+        window.showToast('📄 Parecer exportado com sucesso em .txt!');
+      }
     });
   }
 
