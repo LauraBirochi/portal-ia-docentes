@@ -15,10 +15,6 @@
 # Arquivos de processo / deploy específicos
 Procfile
 
-# Testes locais e suites com credenciais
-test_auth_security.py
-tests/
-
 # Documentos internos de planejamento, rascunhos e especificações
 mudanca.md
 arquitetura_pedagogica_curso_ia.md

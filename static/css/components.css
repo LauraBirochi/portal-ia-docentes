@@ -1818,3 +1818,270 @@ body.mode-aula .timer-container {
   box-shadow: 0 0 0 3px rgba(128, 106, 78, 0.15);
 }
 
+/* ==========================================================================
+   BLOCOS TEMÁTICOS RECOLHÍVEIS (ACCORDION) - SLIDES & ROTEIRO VISUAL
+   Aprimoramento UX/UI via Design Critique
+   ========================================================================== */
+
+/* Barra de Controle Superior (Expandir / Recolher Todos) */
+.topic-groups-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.topic-groups-toolbar-info {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.topic-groups-count {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.topic-groups-tip {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.topic-groups-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-group-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text-secondary);
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-group-action:hover {
+  background: var(--bg-surface-hover);
+  color: var(--text-main);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.btn-group-action:active {
+  transform: translateY(0);
+}
+
+/* Cartão do Bloco Temático */
+.topic-group-card {
+  background: var(--bg-card-subtle);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+  overflow: hidden;
+}
+
+.topic-group-card:hover {
+  border-color: var(--accent-subtle);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.topic-group-card.is-collapsed {
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+}
+
+/* Botão de Cabeçalho do Bloco (Trigger do Accordion) */
+.topic-group-header-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.4rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  gap: 1rem;
+  transition: background var(--transition);
+}
+
+.topic-group-header-btn:hover {
+  background: var(--bg-surface-hover);
+}
+
+.topic-group-header-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.topic-group-header-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.topic-group-icon {
+  font-size: 1.6rem;
+  background: var(--bg-surface);
+  padding: 0.4rem 0.65rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.topic-group-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.topic-group-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.topic-group-title {
+  font-size: 1.15rem;
+  color: var(--text-main);
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.topic-group-range-badge {
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  padding: 0.15rem 0.55rem !important;
+}
+
+.topic-group-sub {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0.25rem 0 0 0;
+  line-height: 1.4;
+}
+
+/* Meta-informações e Chevron */
+.topic-group-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.topic-group-meta-pill {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.topic-group-count-pill {
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-subtle-light);
+  border-color: var(--accent-subtle);
+}
+
+[data-theme="dark"] .topic-group-count-pill {
+  background: var(--accent-subtle);
+  color: #f7f3ea;
+}
+
+.topic-group-chevron {
+  font-size: 1.3rem;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background var(--transition);
+}
+
+.topic-group-header-btn:hover .topic-group-chevron {
+  border-color: var(--accent);
+  background: var(--accent-subtle-light);
+}
+
+.topic-group-chevron.rotated {
+  transform: rotate(-90deg);
+}
+
+/* Corpo do Bloco (Slides) */
+.topic-group-body {
+  padding: 0 1.4rem 1.4rem 1.4rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+  transition: opacity 0.2s ease;
+}
+
+.topic-group-body.collapsed {
+  display: none;
+}
+
+.topic-group-slides-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Responsividade para Telas Menores */
+@media (max-width: 768px) {
+  .topic-groups-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .topic-group-header-btn {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .topic-group-header-meta {
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border);
+  }
+  
+  .topic-group-body {
+    padding: 1rem;
+  }
+}
+

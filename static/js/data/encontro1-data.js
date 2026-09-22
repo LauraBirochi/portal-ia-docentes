@@ -1,930 +1,1108 @@
 /**
- * Base de Dados Completa – Módulo do Encontro 1 (21 Slides)
- * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32 Horas Total)
- * Tema: Warm Paper & Walnut
+ * Base de Dados Unificada – Módulo do Encontro 1 (27 Slides Atualizados)
+ * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
+ * 
+ * ARQUITETURA MODULAR:
+ * Os dados deste módulo foram decompostos em submódulos especializados em /data/encontro-1/:
+ * - meta.js: Metadados curriculares e blocos temáticos
+ * - narrativa.js: Fio da meada, 3 atos e glossário alinhado
+ * - dossies.js: Dossiês científicos e normativos (Turing, Tesler, PBIA, PL 2338)
+ * - deck-slides.js: 27 slides com notas pedagógicas da professora
+ * - atividades.js: Atividade 1 no Portfólio Digital e gabaritos
+ * - faq-duvidas.js: 9 perguntas dos alunos e armadilhas conceituais
+ * - papeis.js: Divisão de momentos da co-docência (Laura & Maria)
  */
 
-const ENCONTRO_1_DATA = {
-  moduloInfo: {
-    numero: 1,
-    total: 7,
-    titulo: "Desmistificando a IA: Da Ficção Científica à Realidade",
-    subtitulo: "Fundamentos, a inteligência invisível do dia a dia, desconstrução de mitos e como as máquinas aprendem",
-    cargaHoraria: "Encontro 1 • 3 horas presenciais (180 min)",
-    modalidade: "Presencial em Laboratório X",
-    publico: "Iniciantes e público geral (sem pré-requisitos técnicos)",
-    ferramentaPrincipal: "Navegador Web + Template do Portfólio Digital individual",
-    avaliacao: "Atividade 1 no Portfólio Digital Contínuo (0,5 ponto)"
-  },
+(function (global) {
+  'use strict';
 
-  // =========================================================================
-  // ABA 1: O FIO DA MEADA (NARRATIVA & CONCEITOS)
-  // =========================================================================
-  fioDaMeada: {
-    objetivoCentral: "Qual é a grande mensagem que os alunos precisam levar hoje?",
-    mensagemChave: "A IA já faz parte da nossa vida há anos sem que a gente perceba; ela não é mágica nem tem consciência: é matemática, probabilidade e reconhecimento de padrões em dados.",
-    explicacaoObjetivo: "Nosso objetivo hoje não é ensinar código ou fórmulas, mas dar à turma o discernimento para reconhecer a IA invisível que já opera no bolso, separar os mitos do cinema da tecnologia real e entender a lógica de aprendizado por dados.",
-    atos: [
+  // 1. Dossiês Científicos e Jurídicos
+  const dossies = {
+    turingDartmouth: {
+      titulo: "Gênese Histórica e Epistemológica da Inteligência Artificial (1950–1956)",
+      resumo: "Como os trabalhos seminais de Alan Turing, John McCarthy, Marvin Minsky e Claude Shannon estabeleceram as bases da computação neural e simbólica.",
+      topicos: [
+        {
+          titulo: "1. O Artigo Seminal de Turing (1950) e o Jogo da Imitação",
+          conteudo: "Em 1950, Alan M. Turing publicou na revista <em>Mind</em> o artigo <em>'Computing Machinery and Intelligence'</em>. Turing contornou a armadilha filosófica de definir 'pensamento biológico' propondo o <strong>Jogo da Imitação (The Imitation Game)</strong>, hoje conhecido como Teste de Turing: se um interrogador humano não conseguir distinguir as respostas textuais de uma máquina das de um humano, o comportamento da máquina é funcionalmente inteligente."
+        },
+        {
+          titulo: "2. O Workshop de Dartmouth (1956) e a Criação da Disciplina",
+          conteudo: "No verão de 1956, John McCarthy (Dartmouth), Marvin Minsky (Harvard), Nathaniel Rochester (IBM) e Claude Shannon (Bell Labs) submeteram a proposta da <em>'Dartmouth Summer Research Project on Artificial Intelligence'</em>. Foi nessa proposta que a expressão <strong>'Artificial Intelligence'</strong> foi cunhada formalmente com a premissa de que: <em>'cada aspecto da aprendizagem ou qualquer outro traço de inteligência pode, em princípio, ser tão precisamente descrito que uma máquina possa ser programada para simulá-lo'</em>."
+        },
+        {
+          titulo: "3. As Três Ondas da IA: Simbólica, Conexionista e Generativa",
+          conteudo: "A evolução histórica divide-se em 3 eras:<br>• <strong>1ª Onda (1956–1980): IA Simbólica / Baseada em Regras:</strong> Lógica proposicional e sistemas especialistas (*SE... ENTÃO*). Falhava pela incapacidade de lidar com incerteza.<br>• <strong>2ª Onda (1980–2010): Aprendizado Estatístico & Redes Neurais (ML):</strong> Backpropagation e algoritmos estatísticos alimentados por dados.<br>• <strong>3ª Onda (2012–Presente): Deep Learning & Transformers:</strong> Redes profundas aceleradas por GPUs (AlexNet 2012) e arquiteturas de auto-atenção (Transformer 2017) que viabilizaram os LLMs modernos."
+        }
+      ],
+      fontesCientificas: [
+        {
+          autor: "Alan M. Turing (1950)",
+          titulo: "Computing Machinery and Intelligence",
+          publicacao: "Mind, 59(236), 433-460",
+          relevancia: "Artigo fundador da filosofia da computação e do Teste de Turing.",
+          link: "https://doi.org/10.1093/mind/LIX.236.433"
+        },
+        {
+          autor: "McCarthy, Minsky, Rochester & Shannon (1955/1956)",
+          titulo: "A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence",
+          publicacao: "Dartmouth College Technical Report / AI Magazine",
+          relevancia: "Documento histórico onde o termo 'Inteligência Artificial' foi formalmente cunhado.",
+          link: "http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html"
+        },
+        {
+          autor: "Russell, S. & Norvig, P. (2020)",
+          titulo: "Artificial Intelligence: A Modern Approach (4th Edition)",
+          publicacao: "Pearson Education",
+          relevancia: "O livro-texto universitário padrão mundial de IA em Ciência da Computação.",
+          link: "http://aima.cs.berkeley.edu/"
+        }
+      ]
+    },
+    teslerAiEffect: {
+      titulo: "O Teorema de Larry Tesler e a Epistemologia do 'AI Effect'",
+      resumo: "Como o efeito de fronteira móvel (moving baseline) na ciência da computação faz com que problemas resolvidos deixem de ser considerados inteligentes pelo público.",
+      topicos: [
+        {
+          titulo: "1. A Formulação Original do Teorema de Tesler",
+          conteudo: "Larry Tesler (pioneiro de interfaces e ex-vice-presidente da Apple) formulou o axioma citado por Douglas Hofstadter em <em>Gödel, Escher, Bach</em> (1979): <em>'AI is whatever hasn't been done yet'</em> (IA é tudo aquilo que ainda não foi feito)."
+        },
+        {
+          titulo: "2. O Fenômeno Sociotécnico do 'Efeito IA'",
+          conteudo: "Pamela McCorduck documentou em <em>Machines Who Think</em> que o sucesso da IA acarreta sua própria descaracterização: o reconhecimento óptico de caracteres (OCR), o xadrez computacional (Deep Blue 1997) e a transcrição de voz deixaram de ser vistos como 'IA' assim que se tornaram comoditizados."
+        }
+      ],
+      fontesCientificas: [
+        {
+          autor: "Hofstadter, Douglas R. (1979)",
+          titulo: "Gödel, Escher, Bach: An Eternal Golden Braid",
+          publicacao: "Basic Books (Prêmio Pulitzer)",
+          relevancia: "Registro seminal do Teorema de Larry Tesler sobre a fronteira móvel da IA.",
+          link: "https://www.pulitzer.org/winners/douglas-r-hofstadter"
+        },
+        {
+          autor: "McCorduck, Pamela (2004)",
+          titulo: "Machines Who Think: A Personal Inquiry into the History and Prospects of Artificial Intelligence",
+          publicacao: "A K Peters/CRC Press",
+          relevancia: "Análise histórica e sociológica detalhada do Efeito IA.",
+          link: "https://www.crcpress.com/Machines-Who-Think/McCorduck/p/book/9781568812113"
+        }
+      ]
+    },
+    pbiaBrasil: {
+      titulo: "Dossiê Oficial: Plano Brasileiro de Inteligência Artificial (PBIA 2024–2028)",
+      resumo: "Estrutura programática, investimentos de R$ 23 bilhões, infraestrutura computacional soberana e eixos estratégicos do CNDI e MCTI.",
+      topicos: [
+        {
+          titulo: "1. O Lançamento do PBIA 'IA para o Bem de Todos' (MCTI / CNDI)",
+          conteudo: "Apresentado oficialmente na 5ª Conferência Nacional de Ciência, Tecnologia e Inovação (julho de 2024), o <strong>PBIA 2024–2028</strong> prevê R$ 23,03 bilhões distribuídos em 5 eixos estruturantes: (1) Infraestrutura e Supercomputação; (2) Difusão, Formação e Capacitação; (3) Melhoria dos Serviços Públicos; (4) Inovação Empresarial; (5) Apoio ao Processo Regulatório e Governança."
+        },
+        {
+          titulo: "2. Soberania de Dados e Expansão do Supercomputador Santos Dumont",
+          conteudo: "O plano destina mais de R$ 1,8 bilhão para a aquisição de um novo supercomputador de alta performance no <strong>LNCC (Laboratório Nacional de Computação Científica)</strong> em Petrópolis-RJ, posicionando o Brasil entre os 5 maiores centros públicos de supercomputação do mundo para treinamento de LLMs soberanos em português e dados biomédicos tropicais."
+        },
+        {
+          titulo: "3. Aplicações Prioritárias no Setor Público (Saúde, Meio Ambiente e Gestão)",
+          conteudo: "Projetos de impacto imediato:<br>• <strong>Saúde Digital (SUS):</strong> Triagem inteligente de exames de imagem e otimização do complexo econômico-industrial da saúde.<br>• <strong>Transição Ecológica e Clima:</strong> Modelagem preditiva de desmatamento e queimadas no INPE/Cemaden.<br>• <strong>Educação e Inclusão:</strong> Financiamento de programas de extensão universitária e bolsas de letramento em IA para a população geral."
+        }
+      ],
+      fontesCientificas: [
+        {
+          autor: "Governo Federal do Brasil / MCTI / CNDI (2024)",
+          titulo: "Plano Brasileiro de Inteligência Artificial 2024-2028: IA para o Bem de Todos",
+          publicacao: "Ministério da Ciência, Tecnologia e Inovação (MCTI)",
+          relevancia: "Documento oficial da estratégia nacional de IA do Brasil.",
+          link: "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2024/07/conheca-o-plano-brasileiro-de-inteligencia-artificial"
+        },
+        {
+          autor: "Conselho Nacional de Desenvolvimento Industrial - CNDI (2024)",
+          titulo: "Nova Indústria Brasil (NIB) - Missão 4: Transformação Digital da Indústria",
+          publicacao: "MDIC / Governo Federal",
+          relevancia: "Diretrizes industriais de digitalização e inteligência de dados.",
+          link: "https://www.gov.br/mdic/pt-br/assuntos/noticias/2024/janeiro/conheca-as-metas-da-nova-industria-brasil"
+        }
+      ]
+    },
+    marcoLegal: {
+      titulo: "Dossiê Jurídico: Marco Legal da IA (PL 2338/2023) e Normas Globais",
+      resumo: "Análise técnica do Projeto de Lei nº 2338/2023 no Senado Federal, matriz de riscos (Risk-Based Approach), direitos dos afetados e conformidade com a LGPD.",
+      topicos: [
+        {
+          titulo: "1. Estrutura do PL 2338/2023 no Senado Federal",
+          conteudo: "Elaborado a partir da Comissão de Juristas (CJIAEX), o <strong>PL 2338/2023</strong> adota a abordagem baseada em risco (inspirada no <em>EU AI Act</em> da União Europeia). Divide os sistemas em:<br>• <strong>Risco Excessivo / Inaceitável (Proibidos):</strong> Técnicas subliminares, pontuação social governamental (social scoring) e identificação biométrica remota contínua em massa.<br>• <strong>Alto Risco (Regulamentados):</strong> Sistemas em veículos autônomos, diagnósticos de saúde, triagem de empregos e concessão de crédito, exigindo Avaliação de Impacto Algorítmico (AIA).<br>• <strong>Baixo Risco:</strong> Livres de obrigações pesadas, com incentivo a boas práticas e transparência."
+        },
+        {
+          titulo: "2. Direitos Fundamentais dos Titulares (Cidadãos)",
+          conteudo: "O Marco Legal estabelece garantias essenciais:<br>• <strong>Direito à Informação Prévia:</strong> O usuário deve saber se está interagindo com IA.<br>• <strong>Direito à Explicação:</strong> Obter explicação inteligível sobre a lógica de uma decisão automatizada.<br>• <strong>Direito à Revisão Humana:</strong> Exigir que uma decisão tomada por IA que gere prejuízo seja revisada por um profissional humano.<br>• <strong>Não Discriminação Algorítmica:</strong> Obrigação de mitigar vieses sobre raça, etnia, gênero, orientação sexual e idade."
+        },
+        {
+          titulo: "3. Intersecção com a LGPD (Lei 13.709/2018) e Direitos Autorais",
+          conteudo: "O treinamento de IA deve respeitar as bases legais da LGPD. Além disso, o texto do marco legal inclui mecanismos de compensação e transparência para o uso de obras intelectuais protegidas por direitos autorais no treinamento de modelos generativos (*Text and Data Mining - TDM* com cláusula de *opt-out*)."
+        }
+      ],
+      fontesCientificas: [
+        {
+          autor: "Senado Federal do Brasil (2023/2024)",
+          titulo: "Projeto de Lei nº 2338, de 2023 (Marco Legal da Inteligência Artificial)",
+          publicacao: "Comissão Temporária sobre Inteligência Artificial no Brasil (CTIA)",
+          relevancia: "Texto legislativo principal em tramitação no Congresso Nacional.",
+          link: "https://www25.senado.leg.br/web/atividade/materias/-/materia/157233"
+        },
+        {
+          autor: "União Europeia (2024)",
+          titulo: "Artificial Intelligence Act (Regulation EU 2024/1689)",
+          publicacao: "Official Journal of the European Union",
+          relevancia: "Primeira legislação abrangente do mundo sobre IA baseada em riscos.",
+          link: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        },
+        {
+          autor: "Presidência da República do Brasil (2018)",
+          titulo: "Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018)",
+          publicacao: "Diário Oficial da União",
+          relevancia: "Norma brasileira de proteção de dados pessoais e privacidade.",
+          link: "http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+        }
+      ]
+    }
+  };
+
+  // 2. Objeto Principal do Encontro 1
+  const ENCONTRO_1_DATA = {
+    moduloInfo: {
+      numero: 1,
+      total: 7,
+      titulo: "Desmistificando a IA: Da Ficção Científica à Realidade",
+      subtitulo: "Gênese histórica, definição descomplicada, a IA invisível do dia a dia, mitos, visão do Brasil, regulação e fundamentos de aprendizado",
+      cargaHoraria: "Encontro 1 • 3 horas presenciais (180 min)",
+      modalidade: "Presencial em Laboratório de Informática",
+      publico: "Iniciantes e público geral (sem pré-requisitos técnicos ou matemáticos)",
+      ferramentaPrincipal: "Navegador Web + Template do Portfólio Digital individual",
+      avaliacao: "Atividade 1 no Portfólio Digital Contínuo (0,5 ponto)"
+    },
+
+    fioDaMeada: {
+      objetivoCentral: "Qual é a grande mensagem que os alunos precisam levar hoje?",
+      mensagemChave: "A Inteligência Artificial é uma ciência de mais de 70 anos que já opera silenciosamente em nosso cotidiano; ela não tem consciência nem sentimentos: é matemática, probabilidade e reconhecimento de padrões em dados para nos potencializar como cidadãos conscientes e autônomos.",
+      explicacaoObjetivo: "Nosso objetivo hoje não é ensinar código ou fórmulas, mas dar à turma o discernimento para entender a origem da tecnologia (1950–1956), separar os mitos do cinema da tecnologia real, reconhecer a estratégia e as leis do Brasil (PBIA e Marco Legal) e dominar o laboratório prático com segurança.",
+      atos: [
+        {
+          ato: 1,
+          tempo: "00h00 às 00h40 (40 min)",
+          titulo: "Acolhimento, Gênese Histórica & Definição Real da IA",
+          desc: "Acolhemos a turma, aliviamos a ansiedade (sem matemática ou programação), revelamos os 70 anos de história (Alan Turing 1950 e John McCarthy em Dartmouth 1956) e construímos a definição intuitiva: a virada de regras cegas manuais para o aprendizado por padrões em dados.",
+          gatilho: "Vocês achavam que a IA nasceu ontem com o ChatGPT? Cientistas pesquisam isso há quase 70 anos e ela não é mágica: é aprendizado por padrões!"
+        },
+        {
+          ato: 2,
+          tempo: "00h40 às 01h15 (35 min)",
+          titulo: "A IA Invisível, Desmistificando os 5 Mitos, O Brasil e as Leis",
+          desc: "Mapeamos a IA que já opera no bolso e nos bancos (câmeras, antifraude <300ms, GPS), desmontamos os 5 grandes mitos (consciência, alucinações, matemática, trapaça e trabalho) e apresentamos o Plano Brasileiro de IA (PBIA) e o Marco Legal (PL 2338/2023).",
+          gatilho: "A IA não veio para substituir você: ela veio para tirar o trabalho mecânico e devolver tempo para o que só você sabe fazer, com regras claras que protegem nossos direitos!"
+        },
+        {
+          ato: 3,
+          tempo: "01h30 às 03h00 (90 min)",
+          titulo: "Como a IA Aprende, Laboratório Prático & Fechamento",
+          desc: "Explicamos a lógica do Super Autocompletar, testamos o login de e-mail de todos os alunos no computador, conduzimos a oficina do Raio-X da IA no Portfólio Digital (0,5 pt) e fazemos a ponte para a IA Generativa (ChatGPT) do Encontro 2.",
+          gatilho: "Hoje dominamos a IA invisível que classifica e prevê. No Encontro 2, abriremos o ChatGPT para dominar a IA que CRIA!"
+        }
+      ],
+      glossario: [
+        {
+          termo: "IA Estreita (ANI / Narrow AI)",
+          def: "É 100% da IA existente no planeta hoje. Hiperespecialista em apenas UMA tarefa específica (ex: detectar fraude bancária, transcrever voz, sugerir rotas). Não possui consciência nem sentimentos."
+        },
+        {
+          termo: "IA Geral (AGI / General AI)",
+          def: "Conceito puramente teórico de ficção científica. Máquina com flexibilidade intelectual humana universal e autoconsciência. NÃO existe no mundo real."
+        },
+        {
+          termo: "PBIA (Plano Brasileiro de IA 2024–2028)",
+          def: "Política pública nacional lançada pelo Governo Federal que destina R$ 23 bilhões para soberania digital, IA na saúde pública (SUS), infraestrutura de supercomputadores e capacitação da população."
+        },
+        {
+          termo: "Marco Legal da IA (PL 2338/2023)",
+          def: "Projeto de lei em tramitação no Congresso Nacional que estabelece regras éticas, direitos dos cidadãos, proteção de dados (LGPD) e classificação de risco para sistemas de IA no Brasil."
+        },
+        {
+          termo: "Efeito IA (Invisibilidade / Teorema de Tesler)",
+          def: "Fenômeno sociotécnico: quando uma tecnologia de IA funciona com estabilidade e perfeição no cotidiano, as pessoas deixam de chamá-la de 'IA' e passam a chamá-la apenas de 'recurso comum'."
+        },
+        {
+          termo: "Alucinação de Modelo",
+          def: "Quando a IA gera respostas gramaticalmente perfeitas e convincentes, mas com fatos, datas, leis ou autores completamente inventados por pura combinação probabilística."
+        },
+        {
+          termo: "Super Autocompletar (Previsão de Tokens)",
+          def: "Princípio fundamental dos Grandes Modelos de Linguagem (LLMs): prever estatisticamente qual é a próxima palavra mais provável com base no contexto do diálogo e em bilhões de textos lidos."
+        }
+      ]
+    },
+
+    blocosTematicos: [
       {
-        ato: 1,
-        tempo: "00h00 às 00h45",
-        titulo: "Acolhimento & Onde a IA Já Está",
-        desc: "Acolhemos a turma, aliviamos o medo técnico e revelamos o choque da invisibilidade: a IA já opera nos smartphones (câmeras, biometria), bancos (antifraude em <300ms), rotas e e-mails (99,9% spam barrado).",
-        gatilho: "Vocês achavam que precisavam abrir o ChatGPT para usar IA? Pois saibam que vocês já usam IA dezenas de vezes por dia sem perceber!"
+        id: 1,
+        icone: "🤝",
+        titulo: "Bloco 1: Acolhimento, Contrato Pedagógico & Estrutura",
+        subtitulo: "Apresentação da co-docência, cronograma dos 7 encontros, alívio de ansiedade e requisito de e-mail",
+        slidesRange: [1, 6],
+        tempoEstimado: "30 min"
       },
       {
-        ato: 2,
-        tempo: "00h45 às 01h25",
-        titulo: "Desmistificando a IA & Como ela Aprende",
-        desc: "Com base na IA especializada que acabamos de ver, desmontamos os 5 grandes mitos do cinema (consciência, infalibilidade, medo da substituição) e explicamos como as máquinas aprendem por repetição e autocompletar de linguagem.",
-        gatilho: "Se o algoritmo que detecta fraude bancária não sabe escrever um poema, ele não tem consciência: é cálculo estatístico focado em uma única tarefa!"
+        id: 2,
+        icone: "🕰️",
+        titulo: "Bloco 2: Gênese Histórica, Definição & Os 3 Ingredientes",
+        subtitulo: "Origem (Turing 1950, Dartmouth 1956), programação vs padrões e os 3 ingredientes da IA moderna",
+        slidesRange: [7, 10],
+        tempoEstimado: "25 min"
       },
       {
-        ato: 3,
-        tempo: "01h25 às 03h00",
-        titulo: "Mão na Massa no Laboratório & Fechamento",
-        desc: "Oficina prática: Garantir o acesso ao e-mail no computador do laboratório, realizar o Raio-X da IA no Portfólio Digital (0,5 pt) e fechar com a ponte para a IA Generativa do Encontro 2.",
-        gatilho: "Hoje entendemos a IA que prevê e classifica. No Encontro 2, abriremos o ChatGPT para dominar a IA que CRIA!"
+        id: 3,
+        icone: "📱",
+        titulo: "Bloco 3: A IA Invisível do Dia a Dia & Teorema de Tesler",
+        subtitulo: "A IA da ficção (Rosie) vs IA estreita real, Teorema de Larry Tesler e os 4 exemplos cotidianos",
+        slidesRange: [11, 15],
+        tempoEstimado: "30 min"
+      },
+      {
+        id: 4,
+        icone: "🎭",
+        titulo: "Bloco 4: Desmistificando a IA – Os 5 Grandes Mitos",
+        subtitulo: "Desconstrução de mitos: consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
+        slidesRange: [16, 21],
+        tempoEstimado: "30 min"
+      },
+      {
+        id: 5,
+        icone: "🇧🇷",
+        titulo: "Bloco 5: Brasil, Cidadania & Legislação",
+        subtitulo: "Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
+        slidesRange: [22, 24],
+        tempoEstimado: "20 min"
+      },
+      {
+        id: 6,
+        icone: "💻",
+        titulo: "Bloco 6: Laboratório Prático & Fechamento",
+        subtitulo: "Missão login de e-mail, oficina prática Raio-X da IA no Portfólio Digital (0,5 pt) e síntese do Encontro 1",
+        slidesRange: [25, 27],
+        tempoEstimado: "45 min"
       }
     ],
-    glossario: [
-      {
-        termo: "IA Estreita (ANI / Narrow AI)",
-        def: "É 100% da IA existente no planeta hoje. Hiperespecialista em apenas UMA tarefa específica (ex: detectar fraude bancária, transcrever voz, sugerir rotas). Não possui consciência nem sentimentos."
-      },
-      {
-        termo: "IA Geral (AGI)",
-        def: "Conceito puramente teórico de ficção científica. Máquina com flexibilidade intelectual humana completa. NÃO existe no mundo real."
-      },
-      {
-        termo: "Fotografia Computacional",
-        def: "Uso de redes neurais e processadores de IA (NPU) em smartphones para capturar múltiplos quadros, separar planos e gerar fotos nítidas instantaneamente."
-      },
-      {
-        termo: "Machine Learning (ML)",
-        def: "Subcampo da IA onde o computador encontra padrões e ajusta equações matemáticas sozinho com base em milhões de dados históricos."
-      },
-      {
-        termo: "Efeito IA (Invisibilidade)",
-        def: "Fenômeno sociotécnico: quando uma tecnologia de IA funciona com estabilidade e perfeição no cotidiano, as pessoas deixam de chamá-la de 'IA' e passam a chamá-la apenas de 'software' ou 'recurso'."
-      },
-      {
-        termo: "Alucinação de Modelo",
-        def: "Quando a IA gera respostas gramaticalmente perfeitas e convincentes, mas com fatos, datas ou leis completamente inventados por pura combinação probabilística."
-      }
-    ]
-  },
 
-  // =========================================================================
-  // ABA 2: SLIDES & ROTEIRO VISUAL (21 SLIDES)
-  // =========================================================================
-  slidesComNotas: [
-    // -----------------------------------------------------------------------
-    // BLOCO 1: ACOLHIMENTO, CONTRATO PEDAGÓGICO & ESTRUTURA (SLIDES 1 A 6)
-    // -----------------------------------------------------------------------
-    {
-      numero: 1,
-      id: 1,
-      tipo: "capa",
-      categoria: "Abertura",
-      titulo: "Inteligência Artificial: Fundamentos e Boas Práticas",
-      subtitulo: "Encontro 1: Desmistificando a IA – Da Ficção Científica à Realidade",
-      detalhes: ["32 Horas Certificadas • 7 Encontros", "Docência: Laura & Maria", "Coordenação: Lúcio Rodrigo"],
-      notasProfessora: {
-        objetivoSlide: "Acolher a turma, quebrar a barreira de ansiedade tecnológica e criar um clima de segurança psicológica.",
-        oQueFalar: "Diga com serenidade e simpatia: 'Sejam muito bem-vindos! Este minicurso foi desenhado para qualquer pessoa adulta que queira entender e usar IA, independentemente da idade ou de nunca ter mexido com tecnologia. Ninguém aqui precisa saber matemática ou informática avançada.'",
-        tempoSugerido: "5 minutos"
-      }
-    },
-    {
-      numero: 2,
-      id: 2,
-      tipo: "apresentacao",
-      categoria: "Acolhimento",
-      titulo: "Quem Somos & Nosso Compromisso Pedagógico",
-      subtitulo: "Um ambiente colaborativo onde ninguém fica para trás",
-      itensDestaque: [
-        { icone: "👥", titulo: "Co-Docência Compartilhada", desc: "Laura & Maria estarão juntas na sala conduzindo as dinâmicas e auxiliando você na sua mesa." },
-        { icone: "🤝", titulo: "Ritmo Respeitoso e Paciente", desc: "Toda dúvida é legítima. Explicaremos quantas vezes forem necessárias com exemplos do dia a dia." },
-        { icone: "🎓", titulo: "Coordenação Pedagógica", desc: "Sob coordenação do Prof. Lúcio Rodrigo de Carvalho, garantindo rigor acadêmico com linguagem humana." }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Apresentar a dinâmica da dupla docente e garantir que alunos mais velhos ou tímidos sintam que terão suporte individual nas máquinas.",
-        oQueFalar: "Explique como funciona a co-docência: 'Enquanto uma de nós estiver falando no projetor, a outra estará circulando para ajudar quem tiver dúvida no computador ou precisar de um apoio. Vocês nunca estarão sozinhos.'",
-        tempoSugerido: "5 minutos"
-      }
-    },
-    {
-      numero: 3,
-      id: 3,
-      tipo: "cronograma",
-      categoria: "Estrutura do Curso",
-      titulo: "Cronograma Completo: Onde Estamos e Até Onde Vamos",
-      subtitulo: "7 Encontros Presenciais de 3h (21h) + 11h de Prática Autônoma = 32 Horas",
-      encontros: [
-        { data: "09/Out", num: "1", tema: "Gênese da IA & Ética", status: "Hoje (Aula 1)" },
-        { data: "23/Out", num: "2", tema: "Acesso & Prompts Básicos", status: "Próxima" },
-        { data: "30/Out", num: "3", tema: "Engenharia de Instruções", status: "Planejado" },
-        { data: "06/Nov", num: "4", tema: "Refinamento & Formatos", status: "Planejado" },
-        { data: "13/Nov", num: "5", tema: "IA nos Estudos & Trabalho", status: "Planejado" },
-        { data: "27/Nov", num: "6", tema: "Comparação de Modelos", status: "Planejado" },
-        { data: "04/Dez", num: "7", tema: "Avaliação & Certificação", status: "Encerramento" }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Dar previsibilidade temporal à turma e reforçar o compromisso de presença até 04 de dezembro para a certificação de 32h.",
-        oQueFalar: "Aponte as datas no telão: 'Hoje é nosso ponto de partida. Vamos nos encontrar a cada duas semanas até 04 de dezembro. Marquem essas datas na agenda. A certificação de 32 horas depende da presença nos encontros presenciais e das entregas no Portfólio.'",
-        tempoSugerido: "7 minutos"
-      }
-    },
-    {
-      numero: 4,
-      id: 4,
-      tipo: "pilares",
-      categoria: "Objetivos de Aprendizagem",
-      titulo: "O Que Você Vai Aprender Conosco?",
-      subtitulo: "Os 3 grandes pilares que transformarão sua relação com a tecnologia",
-      pilares: [
-        {
-          num: "1",
-          icone: "💡",
-          titulo: "Compreender sem Mitos",
-          desc: "Entender de verdade como a IA funciona por dentro, separando os filmes de ficção científica da tecnologia real que já usamos."
-        },
-        {
-          num: "2",
-          icone: "✍️",
-          titulo: "Dominar a Escrita de Prompts",
-          desc: "Aprender a conversar e dar comandos claros para o ChatGPT e outras IAs para resolver problemas, estudar, escrever e resumir."
-        },
-        {
-          num: "3",
-          icone: "🛡️",
-          titulo: "Uso Consciente, Ético e Seguro",
-          desc: "Saber identificar quando a IA erra (alucinações), proteger seus dados pessoais e usar a ferramenta com responsabilidade."
+    slidesComNotas: [
+      // BLOCO 1
+      {
+        numero: 1,
+        id: 1,
+        tipo: "capa",
+        categoria: "Abertura",
+        titulo: "Inteligência Artificial: Fundamentos e Boas Práticas",
+        subtitulo: "Encontro 1: Desmistificando a IA – Da Ficção Científica à Realidade",
+        detalhes: ["32 Horas Certificadas • 7 Encontros", "Docência: Laura & Maria", "Coordenação: Prof. Lúcio Rodrigo"],
+        notasProfessora: {
+          objetivoSlide: "Acolher a turma, quebrar a barreira de ansiedade tecnológica e criar um clima de segurança psicológica.",
+          oQueFalar: "Diga com serenidade e simpatia: 'Sejam muito bem-vindos! Este minicurso foi desenhado para qualquer pessoa adulta que queira entender e usar IA, independentemente da idade ou de nunca ter mexido com tecnologia. Ninguém aqui precisa saber matemática ou informática avançada.'",
+          tempoSugerido: "5 minutos"
         }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Apresentar a proposta de valor do curso: não formar técnicos, mas cidadãos e profissionais autônomos.",
-        oQueFalar: "Destaque: 'Nosso objetivo não é fazer vocês decorarem termos em inglês, mas sim aprender a usar a IA como uma calculadora moderna para acelerar suas ideias com senso crítico e segurança.'",
-        tempoSugerido: "6 minutos"
-      }
-    },
-    {
-      numero: 5,
-      id: 5,
-      tipo: "fora-escopo",
-      categoria: "Contrato Pedagógico",
-      titulo: "O Que NÃO É Este Minicurso? (Alívio de Ansiedade)",
-      subtitulo: "Deixando claro o que está fora do escopo para ninguém se preocupar",
-      comparacao: {
-        nao: [
-          "NÃO ensinaremos programação nem código (sem Python, C++ ou Java)",
-          "NÃO cobraremos fórmulas matemáticas nem cálculos estatísticos",
-          "NÃO construiremos peças físicas, robôs ou circuitos eletrônicos",
-          "NÃO usaremos ferramentas pagas (tudo será em versões 100% gratuitas)"
+      },
+      {
+        numero: 2,
+        id: 2,
+        tipo: "apresentacao",
+        categoria: "Acolhimento",
+        titulo: "Quem Somos & Nosso Compromisso Pedagógico",
+        subtitulo: "Um ambiente colaborativo onde ninguém fica para trás",
+        itensDestaque: [
+          { icone: "👥", titulo: "Co-Docência Compartilhada", desc: "Laura & Maria estarão juntas na sala conduzindo as dinâmicas e auxiliando você na sua mesa." },
+          { icone: "🤝", titulo: "Ritmo Respeitoso e Paciente", desc: "Toda dúvida é legítima. Explicaremos quantas vezes forem necessárias com exemplos do dia a dia." },
+          { icone: "🎓", titulo: "Coordenação Pedagógica", desc: "Sob coordenação do Prof. Lúcio Rodrigo de Carvalho, garantindo rigor acadêmico com linguagem humana." }
         ],
-        sim: [
-          "SIM! Ensinaremos a usar a IA através de linguagem comum (Português)",
-          "SIM! Ensinaremos como aplicar no seu trabalho, estudo e tarefas da vida real",
-          "SIM! Ensinaremos como fazer perguntas que geram respostas excelentes",
-          "SIM! Criaremos um Portfólio Digital que comprova seu aprendizado prático"
-        ]
-      },
-      notasProfessora: {
-        objetivoSlide: "Desarmar completamente o medo de quem acha que computação exige ser gênio da matemática.",
-        oQueFalar: "Faça uma pausa e leia o lado esquerdo com um sorriso: 'Respirem fundo: ninguém aqui vai ter que digitar códigos estranhos nem resolver equações. Usar IA hoje é como dirigir um carro moderno: você só precisa saber onde quer ir e guiar o volante, sem precisar ser mecânico nem desmontar o motor!'",
-        tempoSugerido: "7 minutos"
-      }
-    },
-    {
-      numero: 6,
-      id: 6,
-      tipo: "requisito-email",
-      categoria: "Requisito Prático",
-      titulo: "O Nosso Único Requisito: Ter um E-mail Válido",
-      subtitulo: "A chave de acesso para as ferramentas de IA a partir do Encontro 2",
-      pontosChave: [
-        { icone: "📧", titulo: "E-mail Ativo e Senha Lembrada", desc: "Para acessar o ChatGPT (OpenAI) e outras ferramentas a partir da próxima aula, cada aluno precisará fazer login com um e-mail pessoal (Gmail, Outlook, Yahoo, etc.)." },
-        { icone: "🔐", titulo: "Caderninho da Senha", desc: "Se você tem dificuldade para lembrar a senha do seu e-mail, anote-a hoje no seu celular ou traga anotada em um papel para a sala de aula." },
-        { icone: "🛠️", titulo: "Missão no Laboratório de Hoje", desc: "No final da aula de hoje, vamos aos computadores testar se todos conseguem abrir o seu e-mail." }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Evitar o gargalo comum do Encontro 2 (metade da sala perder tempo tentando recuperar senha de e-mail).",
-        oQueFalar: "Seja muito empática: 'Todo mundo aqui tem um e-mail cadastrado no celular, mas muitos não lembram a senha de cabeça. Hoje, na nossa parte prática no laboratório, vamos garantir que cada um de vocês consiga abrir o seu e-mail com calma. Se precisar criar um novo, nós fazemos juntos!'",
-        tempoSugerido: "8 minutos"
-      }
-    },
-
-    // -----------------------------------------------------------------------
-    // BLOCO 2: A IA INVISÍVEL DO DIA A DIA / ONDE A IA JÁ ESTÁ (SLIDES 7 A 10)
-    // -----------------------------------------------------------------------
-    {
-      numero: 7,
-      id: 7,
-      tipo: "apresentacao",
-      categoria: "A IA Invisível",
-      titulo: "O Paradoxo da Invisibilidade: A IA que Opera no seu Bolso",
-      subtitulo: "Você não precisa abrir um chatbot para usar IA: ela já processa sua realidade em milissegundos",
-      itensDestaque: [
-        {
-          icone: "📸",
-          titulo: "Fotografia Computacional nos Celulares",
-          desc: "Em qualquer iPhone (Deep Fusion), Samsung Galaxy (ProVisual) ou Google Pixel (Night Sight), não é apenas a lente que tira a foto. Uma rede neural (NPU) combina dezenas de imagens em 100ms para ajustar luz, nitidez e cores."
-        },
-        {
-          icone: "👤",
-          titulo: "Biometria e Reconhecimento Facial",
-          desc: "Sensores leem milhares de pontos invisíveis de infravermelho. A IA reconhece seu rosto no escuro, com óculos ou com novo corte de cabelo por padrão geométrico contínuo."
-        },
-        {
-          icone: "⚡",
-          titulo: "O 'Efeito IA' (Invisibilidade)",
-          desc: "Fenômeno real: quando uma Inteligência Artificial se torna 100% eficiente e estável no dia a dia, nós paramos de chamá-la de 'IA' e passamos a chamá-la apenas de 'recurso'."
+        notasProfessora: {
+          objetivoSlide: "Apresentar a dinâmica da dupla docente e garantir que alunos mais velhos ou tímidos sintam que terão suporte individual nas máquinas.",
+          oQueFalar: "Explique como funciona a co-docência: 'Enquanto uma de nós estiver falando no projetor, a outra estará circulando para ajudar quem tiver dúvida no computador ou precisar de um apoio. Vocês nunca estarão sozinhos.'",
+          tempoSugerido: "5 minutos"
         }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Provocar o primeiro choque de realidade: provar com exemplos de hardware que todos na sala já são usuários ativos de IA.",
-        oQueFalar: "Peçam para a turma olhar para o próprio celular: 'Muitos pensam que a IA começou agora com o ChatGPT. Mas vocês sabiam que toda vez que tiram uma foto com um iPhone, Samsung ou Pixel, uma rede neural dedicada roda em milissegundos para montar a imagem? A IA real não tem pernas nem fala com você: ela é a engenharia invisível que faz seu aparelho funcionar!'",
-        tempoSugerido: "7 minutos"
       },
-      embasamentoCientifico: {
-        titulo: "Fotografia Computacional, NPUs e Biometria (Para Docentes de T.I)",
-        resumo: "Como redes neurais convolucionais (CNNs), processadores neurais de borda (NPUs) e fusão multi-frame substituíram a ótica analógica e tornaram a IA a espinha dorsal dos smartphones.",
-        topicos: [
+      {
+        numero: 3,
+        id: 3,
+        tipo: "cronograma",
+        categoria: "Estrutura do Curso",
+        titulo: "Cronograma Completo: Onde Estamos e Até Onde Vamos",
+        subtitulo: "7 Encontros Presenciais de 3h (21h) + 11h de Prática Autônoma = 32 Horas",
+        encontros: [
+          { data: "09/Out", num: "1", tema: "Gênese da IA & Ética", status: "Hoje (Aula 1)" },
+          { data: "23/Out", num: "2", tema: "Acesso & Prompts Básicos", status: "Próxima" },
+          { data: "30/Out", num: "3", tema: "Engenharia de Instruções", status: "Planejado" },
+          { data: "06/Nov", num: "4", tema: "Refinamento & Formatos", status: "Planejado" },
+          { data: "13/Nov", num: "5", tema: "IA nos Estudos & Trabalho", status: "Planejado" },
+          { data: "27/Nov", num: "6", tema: "Comparação de Modelos", status: "Planejado" },
+          { data: "04/Dez", num: "7", tema: "Avaliação & Certificação", status: "Encerramento" }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Dar previsibilidade temporal à turma e reforçar o compromisso de presença até 04 de dezembro para a certificação de 32h.",
+          oQueFalar: "Aponte as datas no telão: 'Hoje é nosso ponto de partida. Vamos nos encontrar a cada duas semanas até 04 de dezembro. Marquem essas datas na agenda. A certificação de 32 horas depende da presença nos encontros presenciais e das entregas no Portfólio.'",
+          tempoSugerido: "5 minutos"
+        }
+      },
+      {
+        numero: 4,
+        id: 4,
+        tipo: "pilares",
+        categoria: "Objetivos de Aprendizagem",
+        titulo: "O Que Você Vai Aprender Conosco?",
+        subtitulo: "Os 3 grandes pilares que transformarão sua relação com a tecnologia",
+        pilares: [
           {
-            titulo: "1. Fotografia Computacional Multi-Frame & Alinhamento Sub-pixel",
-            conteudo: "Ao pressionar o obturador, o smartphone não tira uma foto: ele recupera um buffer circular contínuo de até 15 frames RAW subexpostos. Modelos profundos estimam o <em>Optical Flow</em> em grade densa, alinham os quadros compensando o tremor da mão (<em>Homography Alignment</em>) e fundem os sinais através de redes de desruído e super-resolução, superando as limitações físicas de difração de sensores de 1/1.5\":<br><br><div class='tech-formula-box'>I_{final}(x,y) = \\sum_{k=1}^N w_k(x,y) \\cdot \\mathcal{W}(I_k, \\mathbf{u}_k)(x,y)</div>"
+            num: "1",
+            icone: "💡",
+            titulo: "Compreender sem Mitos",
+            desc: "Entender de verdade como a IA funciona por dentro, separando os filmes de ficção científica da tecnologia real que já usamos."
           },
           {
-            titulo: "2. Arquitetura de Hardware Dedicado: NPUs e Aceleração de Tensores",
-            conteudo: "Processar redes neurais convolucionais e transformadores visuais em tempo real (60 fps) esgotaria a bateria em CPUs tradicionais. Os smartphones utilizam <strong>NPUs (Neural Processing Units / Apple Neural Engine / Tensor TPU)</strong>: matrizes de multiplicação e acumulação sistólica (MAC) otimizadas para operações tensoriais em baixa precisão quantizada (INT8 e FP16), atingindo de 15 a 45 TOPS (Trilhões de Operações por Segundo) com consumo inferior a 2 Watts."
+            num: "2",
+            icone: "✍️",
+            titulo: "Dominar a Escrita de Prompts",
+            desc: "Aprender a conversar e dar comandos claros para o ChatGPT e outras IAs para resolver problemas, estudar, escrever e resumir."
           },
           {
-            titulo: "3. Reconhecimento Facial 3D: Embeddings Profundos & Triplet Loss",
-            conteudo: "A biometria facial de ponta (ex: Apple FaceID, Android Biometric) emite mais de 30.000 pontos infravermelhos estruturados (VCSEL) gerando uma malha de profundidade 3D. Uma rede neural profunda projeta esses dados em um espaço latente contínuo de 128 a 512 dimensões (<em>FaceNet / Schroff et al.</em>). A autenticação não compara pixels, mas calcula a distância Euclidiana <em>L2</em> entre o vetor atual e o vetor de referência:<br><br><div class='tech-formula-box'>\\| f(x_i^a) - f(x_i^p) \\|_2^2 + \\alpha &lt; \\| f(x_i^a) - f(x_i^n) \\|_2^2</div>"
-          },
-          {
-            titulo: "4. O Teorema do 'Efeito IA' (Larry Tesler & John McCarthy)",
-            conteudo: "Epistemologicamente, o 'Efeito IA' (formalizado como o <em>Teorema de Tesler</em>) estabelece que: <em>'Inteligência Artificial é tudo aquilo que ainda não foi totalmente resolvido na computação'</em>. Assim que um problema clássico de visão computacional, reconhecimento de voz ou roteamento de tráfego é resolvido de forma estável e massiva por redes neurais, o público e a indústria deixam de rotulá-lo como IA e o reclassificam como algoritmo determinístico de sistema operacional."
+            num: "3",
+            icone: "🛡️",
+            titulo: "Uso Consciente, Ético e Seguro",
+            desc: "Saber identificar quando a IA erra (alucinações), proteger seus dados pessoais e usar a ferramenta com responsabilidade cidadã."
           }
         ],
-        fontesCientificas: [
-          {
-            autor: "Hasinoff et al. (Google Research / SIGGRAPH Asia 2016)",
-            titulo: "Burst photography for high dynamic range and low-light imaging on mobile cameras",
-            publicacao: "ACM Transactions on Graphics (TOG)",
-            relevancia: "Artigo seminal que definiu a base do HDR+ no Google Pixel e a fotografia computacional multi-frame moderna.",
-            link: "https://graphics.stanford.edu/papers/bursthdr/hasinoff-bursthdr-sigasia16.pdf"
-          },
-          {
-            autor: "Schroff, Kalenichenko & Philbin (Google, CVPR 2015)",
-            titulo: "FaceNet: A Unified Embedding for Face Recognition and Clustering",
-            publicacao: "IEEE Conference on Computer Vision and Pattern Recognition",
-            relevancia: "Criação do método de embeddings faciais via Triplet Loss que fundamenta a biometria neural em smartphones.",
-            link: "https://arxiv.org/abs/1503.03832"
-          },
-          {
-            autor: "Levoy, M. (Stanford University & Google, CACM 2020)",
-            titulo: "Synthetic Depth-of-Field and Computational Photography in Mobile Devices",
-            publicacao: "Communications of the ACM",
-            relevancia: "Fundamentação do modo retrato, mapas de profundidade via IA e superação das restrições ópticas em lentes móveis.",
-            link: "https://cacm.acm.org/magazines/2020/12/248795-synthetic-depth-of-field/fulltext"
-          },
-          {
-            autor: "Jouppi et al. (Google / ISCA 2017 & 2021)",
-            titulo: "In-Datacenter and Edge Performance Analysis of a Tensor Processing Unit",
-            publicacao: "ACM/IEEE International Symposium on Computer Architecture",
-            relevancia: "Arquitetura formal de aceleradores neurais (TPUs/NPUs) para execução de tensores com alta eficiência energética.",
-            link: "https://arxiv.org/abs/1704.04760"
-          },
-          {
-            autor: "Pamela McCorduck (2004)",
-            titulo: "Machines Who Think: A Personal Inquiry into the History and Prospects of AI",
-            publicacao: "A K Peters/CRC Press (2nd Edition)",
-            relevancia: "Documentação histórica e formalização do Efeito IA e do Teorema de Larry Tesler na Ciência da Computação.",
-            link: "https://www.routledge.com/Machines-Who-Think-A-Personal-Inquiry-into-the-History-and-Prospects-of/McCorduck/p/book/9781568812052"
-          }
-        ]
-      }
-    },
-    {
-      numero: 8,
-      id: 8,
-      tipo: "grid-exemplos",
-      categoria: "Fatos & Provas Reais",
-      titulo: "A IA Silenciosa Aplicada",
-      subtitulo: "Números auditáveis que comprovam como a IA já sustenta a rotina do planeta todos os dias",
-      exemplos: [
-        {
-          icone: "🛡️",
-          nome: "Filtros de E-mail e Phishing",
-          app: "Gmail / Outlook",
-          papel: "<strong style='color: var(--text-amber);'>+99,9% dos spams e golpes</strong> são barrados antes da sua caixa de entrada por modelos de classificação neural em tempo real."
-        },
-        {
-          icone: "💳",
-          nome: "Prevenção a Fraudes Bancárias",
-          app: "Cartões / Pix / Bancos",
-          papel: "Em <strong style='color: var(--text-amber);'>menos de 300 milissegundos</strong>, a IA cruza mais de 500 variáveis (horário, localização, valor, comportamento) para aprovar ou barrar transações suspeitas."
-        },
-        {
-          icone: "🗺️",
-          nome: "Roteamento Dinâmico de Trânsito",
-          app: "Google Maps / Waze",
-          papel: "Telemetria de milhões de celulares em movimento permite <strong style='color: var(--text-amber);'>prever o tráfego dos próximos 20 minutos</strong> e recalcular rotas ativamente."
-        },
-        {
-          icone: "🎯",
-          nome: "Buscas e Recomendações",
-          app: "Google / Streaming / Mídia",
-          papel: "<strong style='color: var(--text-amber);'>Mais de 75% do conteúdo consumido</strong> em streaming e buscas vem de curadoria estatística e modelos de intenção (RankBrain)."
+        notasProfessora: {
+          objetivoSlide: "Apresentar a proposta de valor do curso: não formar técnicos, mas cidadãos e profissionais autônomos.",
+          oQueFalar: "Destaque: 'Nosso objetivo não é fazer vocês decorarem termos em inglês, mas sim aprender a usar a IA como uma calculadora moderna para acelerar suas ideias com senso crítico e segurança.'",
+          tempoSugerido: "5 minutos"
         }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Apresentar dados concretos e inquestionáveis da indústria que provam a escala monumental da IA no cotidiano.",
-        oQueFalar: "Apresentem os quatro quadrantes com ênfase nos números: 'Vejam que fascinante: 99,9% dos vírus no e-mail são parados por IA. Quando você passa o cartão, a IA decide em 300 milissegundos se a compra é legítima. E o mapa prevê o engarrafamento antes de você chegar lá. Isso não é mágica, é cálculo de probabilidade em larga escala!'",
-        tempoSugerido: "8 minutos"
       },
-      embasamentoCientifico: {
-        titulo: "Sistemas Preditivos de Alta Escala, GNNs e Filtragem Neural (Para Docentes de T.I)",
-        resumo: "Arquitetura técnica, grafos dinâmicos e modelos de aprendizado de máquina que sustentam segurança bancária, filtragem de spam e tráfego em tempo real.",
-        topicos: [
+      {
+        numero: 5,
+        id: 5,
+        tipo: "fora-escopo",
+        categoria: "Contrato Pedagógico",
+        titulo: "O Que NÃO É Este Minicurso? (Alívio de Ansiedade)",
+        subtitulo: "Deixando claro o que está fora do escopo para ninguém se preocupar",
+        comparacao: {
+          nao: [
+            "NÃO ensinaremos programação nem código (sem Python, C++ ou Java)",
+            "NÃO cobraremos fórmulas matemáticas nem cálculos estatísticos",
+            "NÃO construiremos peças físicas, robôs ou circuitos eletrônicos",
+            "NÃO usaremos ferramentas pagas (tudo será em versões 100% gratuitas)"
+          ],
+          sim: [
+            "SIM! Ensinaremos a usar a IA através de linguagem comum (Português)",
+            "SIM! Ensinaremos como aplicar no seu trabalho, estudo e tarefas da vida real",
+            "SIM! Ensinaremos como fazer perguntas que geram respostas excelentes",
+            "SIM! Criaremos um Portfólio Digital que comprova seu aprendizado prático"
+          ]
+        },
+        notasProfessora: {
+          objetivoSlide: "Desarmar completamente o medo de quem acha que computação exige ser gênio da matemática.",
+          oQueFalar: "Faça uma pausa e leia o lado esquerdo com um sorriso: 'Respirem fundo: ninguém aqui vai ter que digitar códigos estranhos nem resolver equações. Usar IA hoje é como dirigir um carro moderno: você só precisa saber onde quer ir e guiar o volante, sem precisar ser mecânico nem desmontar o motor!'",
+          tempoSugerido: "5 minutos"
+        }
+      },
+      {
+        numero: 6,
+        id: 6,
+        tipo: "requisito-email",
+        categoria: "Requisito Prático",
+        titulo: "O Nosso Único Requisito: Ter um E-mail Válido",
+        subtitulo: "A chave de acesso para as ferramentas de IA a partir do Encontro 2",
+        pontosChave: [
+          { icone: "📧", titulo: "E-mail Ativo e Senha Lembrada", desc: "Para acessar o ChatGPT (OpenAI) e outras ferramentas a partir da próxima aula, cada aluno precisará fazer login com um e-mail pessoal (Gmail, Outlook, Yahoo, etc.)." },
+          { icone: "🔐", titulo: "Caderninho da Senha", desc: "Se você tem dificuldade para lembrar a senha do seu e-mail, anote-a hoje no seu celular ou traga anotada em um papel para a sala de aula." },
+          { icone: "🛠️", titulo: "Missão no Laboratório de Hoje", desc: "No final da aula de hoje, vamos aos computadores testar se todos conseguem abrir o seu e-mail com apoio da Laura e da Maria." }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Evitar o gargalo comum do Encontro 2 (metade da sala perder tempo tentando recuperar senha de e-mail).",
+          oQueFalar: "Seja muito empática: 'Todo mundo aqui tem um e-mail cadastrado no celular, mas muitos não lembram a senha de cabeça. Hoje, na nossa parte prática no laboratório, vamos garantir que cada um de vocês consiga abrir o seu e-mail com calma. Se precisar criar um novo, nós fazemos juntos!'",
+          tempoSugerido: "5 minutos"
+        }
+      },
+
+      // BLOCO 2
+      {
+        numero: 7,
+        id: 7,
+        tipo: "apresentacao",
+        categoria: "Gênese Histórica",
+        titulo: "A IA Não Nasceu em 2022 com o ChatGPT!",
+        subtitulo: "Uma história de quase 70 anos de ciência que agora chegou ao nosso bolso",
+        itensDestaque: [
           {
-            titulo: "1. Filtragem de E-mails com Vetorização Resiliente (Google RETVec)",
-            conteudo: "Modelos de segurança modernos no Gmail e Outlook utilizam arquiteturas como o <strong>RETVec (Resilient & Efficient Text Vectorizer / Google Research)</strong>. Em vez de listas de palavras proibidas, o modelo converte caracteres em representações visuais compactas (UTF-8 bytes to visual embeddings), neutralizando ataques adversariais como homóglifos ('P@ypal', 'B4nco') com inferência ultrarrápida de menos de 1 milissegundo por mensagem."
+            icone: "🕰️",
+            titulo: "1950 – Alan Turing & O Teste de Turing",
+            desc: "O britânico Alan Turing, pai da computação, publicou o artigo clássico 'Computing Machinery and Intelligence', perguntando: 'As máquinas podem pensar?' e criando o famoso teste de diálogo humano."
           },
           {
-            titulo: "2. Detecção de Anomalias Financeiras via Redes Neurais em Grafos (GNNs)",
-            conteudo: "Redes de pagamento (Visa, Mastercard, Nubank) modelam transações financeiras como grafos heterogêneos dinâmicos (nós = usuários/lojas, arestas = transferências). Modelos como <strong>Temporal Graph Networks (TGNs)</strong> e árvores de decisão aumentadas por gradiente (LightGBM) calculam a probabilidade de fraude em inferência sub-300ms:<br><br><div class='tech-formula-box'>P(Fraude = 1 \\mid x, \\mathcal{G}_{t}) = \\sigma\\left( \\mathbf{W} \\cdot \\text{Aggregate}(\\{h_v^{(t)} : v \\in \\mathcal{N}(u)\\} ) \\right)</div>"
+            icone: "🏛️",
+            titulo: "1956 – O Nascimento do Termo (Dartmouth)",
+            desc: "O cientista John McCarthy reuniu os maiores pesquisadores dos EUA na Conferência de Dartmouth e cunhou oficialmente a expressão 'Inteligência Artificial'."
           },
           {
-            titulo: "3. Previsão de Tráfego Spatio-Temporal no Google Maps (DeepMind ST-GNN)",
-            conteudo: "A previsão de rotas do Google Maps e Waze foi revolucionada pela colaboração com a <strong>DeepMind</strong> usando Redes Neurais Grafos Espaço-Temporais (Spatial-Temporal Graph Neural Networks). A malha viária é dividida em 'Supersegments' que agregam telemetria anônima instantânea e séries temporais históricas, prevendo o fluxo dinâmico até 60 minutos no futuro com redução de até 50% de erros em cidades congestionadas."
-          },
-          {
-            titulo: "4. Sistemas de Recomendação 'Two-Tower' e Aprendizado por Reforço",
-            conteudo: "Plataformas como YouTube, Spotify e Netflix utilizam a arquitetura neural de <strong>Duas Torres (Two-Tower Architecture)</strong>: uma rede neural codifica o vetor de contexto do usuário e outra codifica os milhões de itens do catálogo. A busca pelo conteúdo ideal é resolvida em milissegundos via busca de vizinhos mais próximos no espaço vetorial (<em>Approximate Nearest Neighbors - ANN</em>)."
+            icone: "🚀",
+            titulo: "Por Que Explodiu Agora?",
+            desc: "A teoria tem 70 anos, mas a IA precisou de 3 fatores modernos para explodir: bilhões de dados na internet (Big Data), chips gráficos velozes (GPUs/NPUs) e celulares em nossas mãos."
           }
         ],
-        fontesCientificas: [
-          {
-            autor: "Google Research & Security (2023)",
-            titulo: "RETVec: The next-generation text vectorizer for efficient and resilient multilingual NLP & Email Security",
-            publicacao: "Google Open Source & arXiv Security",
-            relevancia: "Modelo de IA de código aberto do Google que protege mais de 1 bilhão de usuários do Gmail contra phishing e spam.",
-            link: "https://arxiv.org/abs/2302.09207"
-          },
-          {
-            autor: "DeepMind & Google Maps Team (2020 / 2021)",
-            titulo: "Traffic prediction with Spatial-Temporal Graph Neural Networks in Google Maps",
-            publicacao: "DeepMind Research & JMLR",
-            relevancia: "Pesquisa que implementou modelos de grafos no Google Maps para prever tempos de viagem e engarrafamentos.",
-            link: "https://deepmind.google/discover/blog/traffic-prediction-with-advanced-graph-neural-networks/"
-          },
-          {
-            autor: "Wang et al. (ACM SIGKDD / IEEE TKDE, 2021)",
-            titulo: "A Comprehensive Survey on Graph Neural Networks for Anti-Money Laundering and Fraud Detection",
-            publicacao: "IEEE Transactions on Knowledge and Data Engineering",
-            relevancia: "Revisão formal sobre como GNNs detectam anomalias e fraudes bancárias em milissegundos em dados relacionais.",
-            link: "https://arxiv.org/abs/2106.15780"
-          },
-          {
-            autor: "Covington, Adams & Sargin (Google / ACM RecSys)",
-            titulo: "Deep Neural Networks for YouTube Recommendations",
-            publicacao: "Proceedings of the 10th ACM Conference on Recommender Systems",
-            relevancia: "Artigo fundamental sobre sistemas de recomendação em escala planetária baseado em Deep Learning e Embeddings.",
-            link: "https://static.googleusercontent.com/media/research.google.com/pt-BR//pubs/archive/45530.pdf"
-          }
-        ]
-      }
-    },
-    {
-      numero: 9,
-      id: 9,
-      tipo: "apresentacao",
-      categoria: "Consciência Crítica",
-      titulo: "O Ponto Cego: Quem Toma as Microdecisões por Você?",
-      subtitulo: "A importância de compreender que a tecnologia que usamos não é neutra",
-      itensDestaque: [
-        {
-          icone: "🔍",
-          titulo: "A Ilusão da 'Internet Igual para Todos'",
-          desc: "Se duas pessoas pesquisarem exatamente a mesma palavra no mesmo minuto, os resultados não serão iguais. A IA personaliza a vitrine de acordo com seu perfil e histórico."
+        notasProfessora: {
+          objetivoSlide: "Desfazer a falsa impressão de que IA é modismo recente de 2022 e valorizar a profundidade histórica da ciência da computação.",
+          oQueFalar: "Diga com entusiasmo: 'Muita gente acha que IA é uma invenção novinha de 2022 porque o ChatGPT ficou famoso. Mas a verdade é fascinante: cientistas pesquisam IA há mais de 70 anos! O que mudou é que antes as máquinas eram lentas e caras; hoje, temos supercomputadores na nuvem e celulares potentes em nossos bolsos.'",
+          tempoSugerido: "6 minutos"
         },
-        {
-          icone: "📦",
-          titulo: "A Logística que Abastece o Mundo",
-          desc: "Grandes centros de distribuição, portos e frotas aéreas dependem de IA preditiva para prever demandas, otimizar estoques e evitar quebras de suprimentos."
-        },
-        {
-          icone: "👁️",
-          titulo: "Do Usuário Passivo ao Cidadão Crítico",
-          desc: "Entender como a IA invisível funciona liberta você da ingenuidade: você passa a reconhecer os filtros e intenções por trás de cada serviço digital."
-        }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Despertar a postura de cidadão e profissional consciente, mostrando que todo serviço digital possui intenção de design e otimização.",
-        oQueFalar: "Provoquem com gentileza: 'Se a IA já escolhe o que você lê, as músicas que ouve e as rotas por onde dirige, quem está tomando as microdecisões do seu dia? O objetivo do nosso curso é tirar você da posição de consumidor passivo e transformá-lo em alguém que entende e pilota a tecnologia com autonomia!'",
-        tempoSugerido: "7 minutos"
-      }
-    },
-    {
-      numero: 10,
-      id: 10,
-      tipo: "quebra-gelo",
-      categoria: "Ponte para os Mitos",
-      titulo: "A Grande Provocação: Por que Temos Medo da IA?",
-      subtitulo: "Se já convivemos com IA há anos no bolso e no banco, de onde vêm as ideias de robôs rebeldes?",
-      colunas: [
-        {
-          tag: "A Ficção & Os Mitos do Cinema",
-          icone: "🎬",
-          itens: [
-            "Robôs humanoides com sentimentos, revolta e sede de poder.",
-            "Uma inteligência suprema e onisciente que sabe tudo sobre tudo.",
-            "Medo paralisante de que as máquinas tomem o controle do planeta amanhã."
-          ]
-        },
-        {
-          tag: "A Realidade: IA Estreita (Narrow AI)",
-          icone: "⚙️",
-          itens: [
-            "100% da IA do mundo hoje é 'Estreita': hiperespecializada em UMA só tarefa.",
-            "A IA que bloqueia fraude bancária não sabe sugerir uma música nem escrever um poema.",
-            "Não há consciência, dor, sentimentos ou vontades: é matemática pura sobre dados."
-          ]
-        }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Criar o gancho perfeito para a sequência de 5 mitos, desmistificando o conceito de IA Estreita versus ficção científica.",
-        oQueFalar: "Façam a grande ponte reflexiva: 'Se a gente já confia na IA para cuidar do nosso dinheiro e guiar nosso carro, por que quando ouvimos falar em IA pensamos em robôs dominando o mundo? Porque confundimos a tecnologia real (que é hiperespecializada e sem consciência) com os filmes de ficção! A partir de agora, vamos desmontar os 5 maiores mitos que impedem as pessoas de usarem IA!'",
-        tempoSugerido: "7 minutos"
-      }
-    },
-
-    // -----------------------------------------------------------------------
-    // BLOCO 3: DESMISTIFICANDO A IA – OS 5 GRANDES MITOS (SLIDES 11 A 15)
-    // -----------------------------------------------------------------------
-    {
-      numero: 11,
-      id: 11,
-      tipo: "quebra-gelo",
-      categoria: "Desmistificando a IA",
-      titulo: "Mito 1: 'A IA pensa, sente e tem consciência própria'",
-      subtitulo: "A diferença fundamental entre imitar a linguagem humana e ter compreensão real",
-      colunas: [
-        {
-          tag: "O Mito da Consciência",
-          icone: "🤖",
-          itens: [
-            "Achar que a IA tem vontades, sentimentos, desejos ou consciência.",
-            "Acreditar que o sistema 'sabe' o que está dizendo como uma pessoa humana.",
-            "Medo de que o computador ganhe 'vida própria' ou intenções ocultas."
-          ]
-        },
-        {
-          tag: "A Realidade Estatística",
-          icone: "📊",
-          itens: [
-            "É um modelo matemático de previsão probabilística de palavras e dados.",
-            "Não possui sentimentos, consciência, dor ou empatia: é pura computação.",
-            "Funciona como um autocompletar avançadíssimo treinado em bilhões de textos."
-          ]
-        }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Desarmar o medo existencial de que a IA 'tem mente própria' e fixar a ideia de cálculo estatístico.",
-        oQueFalar: "Explique com clareza: 'Quando o ChatGPT responde com simpatia e diz \"entendi sua dúvida\", ele não está sentindo nada nem entendendo no sentido humano. Ele apenas calculou quais palavras têm maior probabilidade estatística de vir em seguida em um diálogo amigável.'",
-        tempoSugerido: "6 minutos"
-      }
-    },
-    {
-      numero: 12,
-      id: 12,
-      tipo: "quebra-gelo",
-      categoria: "Postura Crítica",
-      titulo: "Mito 2: 'Se a IA respondeu com certeza, está 100% correto'",
-      subtitulo: "O fenômeno das 'alucinações' e por que você nunca deve aceitar respostas cegamente",
-      colunas: [
-        {
-          tag: "O Mito do Oráculo Infalível",
-          icone: "🔮",
-          itens: [
-            "Tratar a IA como uma enciclopédia sagrada que nunca comete erros.",
-            "Copiar e colar respostas sem conferir as fontes ou os dados.",
-            "Achar que precisão factual vem garantida de fábrica pelo computador."
-          ]
-        },
-        {
-          tag: "A Realidade: Alucinações",
-          icone: "🧭",
-          itens: [
-            "A IA pode inventar leis, autores, remédios e datas com total convicção.",
-            "O fenômeno chama-se tecnicamente 'Alucinação' do modelo.",
-            "A IA é uma excelente bússola de ideias, mas o piloto e verificador é SEMPRE você."
-          ]
-        }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Vacinar os alunos contra a confiança cega e introduzir o conceito de alucinação de forma simples.",
-        oQueFalar: "Destaque com firmeza: 'A IA é uma geradora de textos fluentes, não uma fiscal da verdade. Ela pode inventar um livro que nunca existiu com uma elegância impressionante. Por isso, a regra de ouro do nosso curso é: IA ajuda no rascunho, mas o olho humano sempre confere!'",
-        tempoSugerido: "7 minutos"
-      }
-    },
-    {
-      numero: 13,
-      id: 13,
-      tipo: "apresentacao",
-      categoria: "Acessibilidade & Inclusão",
-      titulo: "Mito 3: 'Preciso ser um gênio da matemática ou programador'",
-      subtitulo: "A maior revolução da IAGen: a linguagem natural em português é o novo código",
-      itensDestaque: [
-        {
-          icone: "🗣️",
-          titulo: "Português Claro e Direto",
-          desc: "Você não digita linhas de código. Você conversa em português natural do mesmo jeito que fala com um colega de trabalho."
-        },
-        {
-          icone: "🎯",
-          titulo: "Contexto e Clareza > Informática",
-          desc: "Quem se comunica bem e sabe explicar o que precisa tira muito mais proveito da IA do que quem apenas domina informática."
-        },
-        {
-          icone: "👵🏽",
-          titulo: "Para Todas as Idades",
-          desc: "Professores, aposentados, comerciantes, estudantes: qualquer pessoa que saiba ler e escrever pode usar plenamente."
-        }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Elevar a autoestima técnica dos alunos que não têm formação em exatas ou TI.",
-        oQueFalar: "Olhe para a sala e tranquilize: 'Antigamente, para mandar no computador precisamos aprender programação avançada. Hoje, a linguagem de instrução da IA Generativa é o bom português. Se você sabe pedir uma informação com clareza, você já sabe a base de um bom prompt.'",
-        tempoSugerido: "5 minutos"
-      }
-    },
-    {
-      numero: 14,
-      id: 14,
-      tipo: "quebra-gelo",
-      categoria: "O Futuro do Trabalho e Estudos",
-      titulo: "Mito 4: 'A IA vai substituir os seres humanos em tudo'",
-      subtitulo: "Automação de tarefas mecânicas vs. O valor insubstituível do julgamento humano",
-      colunas: [
-        {
-          tag: "O Medo da Substituição",
-          icone: "⚠️",
-          itens: [
-            "Achar que professores, redatores ou profissionais deixarão de existir.",
-            "Imaginar que criatividade, empatia e contexto ético serão automatizados.",
-            "Sensação de obsolescência e ansiedade frente ao desconhecido."
-          ]
-        },
-        {
-          tag: "A Potencialização Humana",
-          icone: "💡",
-          itens: [
-            "A IA não substitui você; quem aprende a usar IA com senso crítico se destaca.",
-            "Ela assume o trabalho repetitivo (resumos, formatação, primeiros rascunhos).",
-            "Você ganha tempo para o que é humano: empatia, decisão e criatividade."
-          ]
-        }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Substituir o medo de substituição por uma perspectiva de autonomia e empoderamento profissional e pessoal.",
-        oQueFalar: "Conclua a sequência de mitos: 'A IA é como uma calculadora ou um processador de texto muito poderoso. A calculadora não acabou com os matemáticos nem o Word com os escritores. A IA tira o trabalho mecânico da frente para sobrar tempo para o que só você sabe fazer.'",
-        tempoSugerido: "6 minutos"
-      }
-    },
-    {
-      numero: 15,
-      id: 15,
-      tipo: "quebra-gelo",
-      categoria: "Ética & Autoria",
-      titulo: "Mito 5: 'Usar IA significa necessariamente trapacear'",
-      subtitulo: "A fronteira entre atalho desonesto (terceirização) e uso formativo e potencializador",
-      colunas: [
-        {
-          tag: "O Estigma da 'Trapaça'",
-          icone: "🚫",
-          itens: [
-            "Achar que qualquer consulta à IA é plágio ou preguiça mental.",
-            "Copiar e colar 100% da resposta e entregar sem ler, sem pensar e sem aprender.",
-            "Sentir culpa ou medo de usar ferramentas modernas de produtividade e estudo."
-          ]
-        },
-        {
-          tag: "Uso Ético, Crítico & Potencializador",
-          icone: "🎓",
-          itens: [
-            "Usar a IA como tutor particular: tirar dúvidas, pedir exemplos e debater ideias.",
-            "Transparência e responsabilidade: o autor e tomador de decisão final é você.",
-            "A verdadeira inteligência está em formular boas perguntas e validar as respostas."
-          ]
-        }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Eliminar a culpa ou o tabu ético do uso da IA, ensinando a postura do estudante ativo e responsável.",
-        oQueFalar: "Aborde o tema com tranquilidade e rigor: 'Muitos sentem culpa ao usar IA, achando que estão trapaceando. Trapaça é mandar a IA fazer seu trabalho e você fingir que fez, sem entender nada. Mas usar a IA para te explicar uma matéria difícil de três jeitos diferentes ou revisar seu rascunho é estudar com inteligência! Aqui aprenderemos o uso ético e transparente.'",
-        tempoSugerido: "7 minutos"
-      }
-    },
-
-    // -----------------------------------------------------------------------
-    // BLOCO 4: COMO A IA APRENDE (SLIDES 16 A 18)
-    // -----------------------------------------------------------------------
-    {
-      numero: 16,
-      id: 16,
-      tipo: "apresentacao",
-      categoria: "Como a IA Funciona",
-      titulo: "A Grande Ideia: Como uma IA Realmente Aprende?",
-      subtitulo: "A mudança de regras manuais para o aprendizado por exemplos do dia a dia",
-      itensDestaque: [
-        {
-          icone: "📋",
-          titulo: "Antigamente: Regras Rígidas",
-          desc: "O computador funcionava como uma calculadora comum: só executava o que tinha um manual escrito passo a passo. Se faltasse uma vírgula, ele travava."
-        },
-        {
-          icone: "👶🏽",
-          titulo: "Hoje: Aprendendo com Exemplos",
-          desc: "A IA aprende como uma criança reconhecendo animais: não ensinamos biologia, mostramos milhares de fotos de gatos até ela reconhecer qualquer gato sozinha."
-        },
-        {
-          icone: "💡",
-          titulo: "O Segredo da Aprendizagem",
-          desc: "A IA não tem consciência; ela apenas descobriu os padrões em milhões de livros, textos e conversas humanas arquivadas na internet."
-        }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Construir a intuição de que a IA aprende por repetição de exemplos, sem recorrer a jargões matemáticos.",
-        oQueFalar: "Explique com calma e acolhimento: 'Pensem na IA como alguém que leu uma biblioteca inteira e aprendeu a identificar como as pessoas escrevem e pensam. Ela não memorizou regras chatas; ela aprendeu a reconhecer os padrões de tanto ver exemplos.'",
-        tempoSugerido: "8 minutos"
-      }
-    },
-    {
-      numero: 17,
-      id: 17,
-      tipo: "apresentacao",
-      categoria: "Como a IA Funciona",
-      titulo: "O Segredo da Linguagem: O 'Super Autocompletar'",
-      subtitulo: "Como o ChatGPT e outras IAs conseguem conversar com você em bom português",
-      itensDestaque: [
-        {
-          icone: "📱",
-          titulo: "Igual ao Teclado do WhatsApp",
-          desc: "Quando você digita 'Bom...', o seu celular já sugere 'dia'. A IA faz exatamente isso, calculando a palavra mais provável que deve vir a seguir."
-        },
-        {
-          icone: "🧠",
-          titulo: "Em Escala Gigantesca",
-          desc: "A diferença é que a IA consegue ler a sua pergunta inteira, entender o contexto e gerar frases e parágrafos completos que fazem sentido."
-        },
-        {
-          icone: "⚠️",
-          titulo: "Por que Ela às Vezes Erra?",
-          desc: "Como ela busca o que 'soa bem' e não o que é 'verdade', às vezes ela inventa dados com muita certeza. Por isso o olho humano é insubstituível!"
-        }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Desmistificar o funcionamento dos Modelos de Linguagem usando a analogia universal do corretor de celular.",
-        oQueFalar: "Peça para os alunos olharem para seus celulares: 'Quem aqui já viu o teclado do celular sugerir a próxima palavra? O ChatGPT é esse mesmo motorzinho de autocompletar, só que com a capacidade de ler um livro inteiro e responder qualquer pergunta em segundos.'",
-        tempoSugerido: "8 minutos"
+        embasamentoCientifico: dossies.turingDartmouth
       },
-      embasamentoCientifico: {
-        titulo: "Fundamentação Matemática & Arquitetura LLM (Para Docentes de T.I)",
-        resumo: "Por que a afirmação de que 'o ChatGPT é um super autocompletar' é rigorosamente exata do ponto de vista da Ciência da Computação e Processamento de Linguagem Natural (NLP).",
-        topicos: [
+      {
+        numero: 8,
+        id: 8,
+        tipo: "secao",
+        categoria: "Definição Fundamental",
+        badge: "Conceito Central",
+        titulo: "Mas Afinal... O Que É Inteligência Artificial de Verdade?",
+        subtitulo: "A virada de chave: da programação com regras cegas para o aprendizado por padrões em dados",
+        notasProfessora: {
+          objetivoSlide: "Criar uma pausa dramática e focar 100% da atenção da turma para a grande pergunta conceitual do curso.",
+          oQueFalar: "Faça uma pausa no projetor, olhe nos olhos da turma e pergunte com entusiasmo: 'Até agora vimos que a IA não nasceu ontem e tem 70 anos de história. Mas afinal... o que é Inteligência Artificial de verdade? Vamos ver agora a diferença fundamental entre como um computador tradicional funciona e como a IA aprende!'",
+          tempoSugerido: "3 minutos"
+        }
+      },
+      {
+        numero: 9,
+        id: 9,
+        tipo: "comparativo",
+        categoria: "Definição Descomplicada",
+        titulo: "Programação Tradicional vs. Aprendizado por Padrões",
+        subtitulo: "A grande virada: do código com regras fixas manuais para o reconhecimento de padrões em dados",
+        caixa1: {
+          titulo: "Programação Tradicional (Regras Rígidas)",
+          formula: "Dados + Regras Manuais ➔ Resposta Fixa",
+          analogia: "Receita de Bolo Rígida: Segue estritamente o manual. Se faltar um ovo ou o forno mudar, o programa trava.",
+          exemplo: "Calculadora comum, planilhas simples, semáforos de tempo fixo."
+        },
+        caixa2: {
+          titulo: "Inteligência Artificial (Aprendizado por Padrões)",
+          formula: "Dados de Entrada + Exemplos ➔ A Máquina Descobre o Padrão",
+          analogia: "Aprender Observando: Analisa milhares de bolos prontos até entender sozinha o padrão do bolo perfeito.",
+          exemplo: "Filtro anti-spam do Gmail, câmeras inteligentes, ChatGPT, Waze."
+        },
+        notasProfessora: {
+          objetivoSlide: "Construir a intuição de que a IA moderna não é uma lista manual de IF/ELSE, mas sim ajuste estatístico baseado em dados.",
+          oQueFalar: "Use a metáfora do bolo com muita calma: 'Antigamente, para o computador fazer algo, um humano precisava escrever um manual gigantesco de regras. Se acontecesse algo fora do manual, o computador falhava. A IA moderna é diferente: nós mostramos milhares de exemplos reais do passado e ela aprende sozinha a reconhecer padrões!'",
+          tempoSugerido: "7 minutos"
+        }
+      },
+      {
+        numero: 10,
+        id: 10,
+        tipo: "apresentacao",
+        categoria: "Definição Fundamental",
+        titulo: "Os 3 Ingredientes que Fazem a Mágica Acontecer",
+        subtitulo: "O tripé essencial por trás de qualquer ferramenta moderna de Inteligência Artificial",
+        itensDestaque: [
           {
-            titulo: "1. Modelagem Autorregressiva (Next-Token Prediction)",
-            conteudo: "Matematicamente, Grandes Modelos de Linguagem (LLMs) modelam a probabilidade conjunta de uma sequência de texto como o produto de probabilidades condicionais direcionadas passo a passo:<br><br><div class='tech-formula-box'>P(w₁, w₂, ..., w_T) = ∏_{t=1}^T P(w_t | w₁, w₂, ..., w_{t-1})</div><br>A cada passo <em>t</em>, o modelo não gera a frase inteira; ele calcula um vetor de logits <em>z</em> sobre o vocabulário <em>V</em> (~50.000 a 100.000 tokens) e aplica a função Softmax com temperatura <em>T</em>:<br><br><div class='tech-formula-box'>P(w_t = v_i | w_{&lt;t}) = exp(z_i / T) / ∑_j exp(z_j / T)</div>"
+            icone: "📖",
+            titulo: "1. A Biblioteca de Exemplos (Dados)",
+            desc: "Milhões de páginas de livros, artigos, notícias e receitas públicas que servem de material de leitura e aprendizado estatístico para a máquina."
           },
           {
-            titulo: "2. Transformers & Mecanismo de Auto-Atenção (Self-Attention)",
-            conteudo: "O autocompletar do celular usa N-Grams ou Cadeias de Markov rasas que olham apenas 1 ou 2 palavras atrás (P(w_t | w_{t-1})). O Transformer (Vaswani et al., 2017) substitui isso por matrizes de Projeção Linear (Query, Key, Value) calculando pesos de atenção cruzada entre todos os tokens da janela de contexto:<br><br><div class='tech-formula-box'>Attention(Q, K, V) = softmax( (Q Kᵀ) / √d_k ) V</div><br>Isso permite que o modelo autocomplete mantendo coerência semântica com uma instrução dada 8.000 tokens atrás."
+            icone: "⚡",
+            titulo: "2. Computadores Potentes (Chips)",
+            desc: "Máquinas velozes em nuvem que conseguem processar essa biblioteca inteira para calcular e encontrar todos os padrões de linguagem."
           },
           {
-            titulo: "3. Por que a IA 'Varia' e 'Alucina'? (Amostragem Estocástica)",
-            conteudo: "Se a IA escolhesse sempre a palavra de probabilidade máxima (<em>Greedy Search / Argmax</em>), ela entraria em loops repetitivos. Modelos modernos usam amostragem probabilística:<br>• <strong>Top-p / Nucleus Sampling (Holtzman et al., 2020):</strong> Amostra apenas no menor subconjunto de tokens cuja probabilidade acumulada atinge <em>p</em> (ex: 90%).<br>• <strong>Temperatura (T):</strong> Controla o grau de aleatoriedade do sorteio.<br><br><strong>Origem da Alucinação:</strong> O modelo não consulta uma tabela verdade nem possui ontologia formal; ele simplesmente segue o caminho estatístico mais fluente para a distribuição aprendida no pré-treinamento."
-          },
-          {
-            titulo: "4. RLHF: A Camada que Transforma Autocompletar em Assistente",
-            conteudo: "O modelo base bruto (GPT-3 Base) apenas completa sequências (ex: se receber uma pergunta, pode autocompletar com outra pergunta). A OpenAI introduziu o <strong>InstructGPT (Ouyang et al., 2022)</strong> aplicando <em>Supervised Fine-Tuning (SFT)</em> e <em>Reinforcement Learning from Human Feedback (RLHF / PPO)</em> para treinar o motor de autocompletar a prever a resposta que um humano classificaria como prestativa, honesta e inofensiva."
+            icone: "🧑‍🏫",
+            titulo: "3. Orientação e Supervisão Humana",
+            desc: "Pessoas reais que testam e ensinam a IA a ser educada, prestativa, evitar ofensas e responder com clareza em bom português."
           }
         ],
-        fontesCientificas: [
-          {
-            autor: "Vaswani et al. (NeurIPS 2017)",
-            titulo: "Attention Is All You Need",
-            publicacao: "Advances in Neural Information Processing Systems",
-            relevancia: "Introdução formal da arquitetura Transformer e do mecanismo de Auto-Atenção que substituiu RNNs.",
-            link: "https://arxiv.org/abs/1706.03762"
-          },
-          {
-            autor: "Radford et al. (OpenAI, 2019)",
-            titulo: "Language Models are Unsupervised Multitask Learners (GPT-2)",
-            publicacao: "OpenAI Technical Report",
-            relevancia: "Prova empírica de que prever o próximo token em grande escala gera capacidade de tradução, síntese e raciocínio.",
-            link: "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf"
-          },
-          {
-            autor: "Brown et al. (NeurIPS 2020)",
-            titulo: "Language Models are Few-Shot Learners (GPT-3)",
-            publicacao: "Advances in Neural Information Processing Systems",
-            relevancia: "Demonstração das Leis de Escala (Scaling Laws) em modelos autorregressivos de 175 bilhões de parâmetros.",
-            link: "https://arxiv.org/abs/2005.14165"
-          },
-          {
-            autor: "Ouyang et al. (NeurIPS 2022)",
-            titulo: "Training language models to follow instructions with human feedback (InstructGPT)",
-            publicacao: "Advances in Neural Information Processing Systems",
-            relevancia: "Base do ChatGPT: alinhamento do motor de autocompletar via RLHF e recompensas humanas.",
-            link: "https://arxiv.org/abs/2203.02155"
-          },
-          {
-            autor: "Holtzman et al. (ICLR 2020)",
-            titulo: "The Curious Case of Neural Text Degeneration",
-            publicacao: "International Conference on Learning Representations",
-            relevancia: "Criação do Nucleus Sampling (Top-p) e formalização da amostragem estatística em redes neurais de linguagem.",
-            link: "https://arxiv.org/abs/1904.09751"
-          },
-          {
-            autor: "Claude E. Shannon (1948)",
-            titulo: "A Mathematical Theory of Communication",
-            publicacao: "Bell System Technical Journal",
-            relevancia: "Fundação matemática clássica da teoria da informação, entropia e modelagem probabilística de sequências.",
-            link: "https://archive.org/details/bstj27-3-379"
-          }
-        ]
-      }
-    },
-    {
-      numero: 18,
-      id: 18,
-      tipo: "apresentacao",
-      categoria: "Como a IA Funciona",
-      titulo: "Os 3 Ingredientes que Fazem a Mágica Acontecer",
-      subtitulo: "O que existe por trás de qualquer ferramenta moderna de Inteligência Artificial",
-      itensDestaque: [
-        {
-          icone: "📖",
-          titulo: "1. A Biblioteca de Exemplos",
-          desc: "Milhões de páginas de livros, artigos, notícias e receitas que servem de material de leitura e aprendizado para a máquina."
-        },
-        {
-          icone: "⚡",
-          titulo: "2. Computadores Potentes",
-          desc: "Máquinas velozes que conseguem processar essa biblioteca inteira em poucas semanas para encontrar todos os padrões."
-        },
-        {
-          icone: "🧑‍🏫",
-          titulo: "3. Orientação Humana",
-          desc: "Pessoas reais que testam e ensinam a IA a ser educada, prestativa, evitar ofensas e responder com clareza em português."
+        notasProfessora: {
+          objetivoSlide: "Mostrar que a tecnologia é fruto do trabalho e da curadoria humana, reforçando o papel das pessoas no processo.",
+          oQueFalar: "Destaque o terceiro ponto com entusiasmo: 'A IA não nasceu pronta no computador. Ela precisa de dados, processamento e, acima de tudo, de seres humanos ensinando e calibrando o sistema para que hoje ela consiga nos responder com simpatia e utilidade.'",
+          tempoSugerido: "5 minutos"
         }
-      ],
-      notasProfessora: {
-        objetivoSlide: "Mostrar que a tecnologia é fruto do trabalho e da curadoria humana, reforçando o papel das pessoas no processo.",
-        oQueFalar: "Destaque o terceiro ponto: 'A IA não nasceu pronta no computador. Milhares de pessoas reais trabalharam conversando com ela e corrigindo os erros para que hoje ela consiga nos responder com simpatia e utilidade.'",
-        tempoSugerido: "7 minutos"
-      }
-    },
+      },
 
-    // -----------------------------------------------------------------------
-    // BLOCO 5: LABORATÓRIO PRÁTICO & FECHAMENTO (SLIDES 19 A 21)
-    // -----------------------------------------------------------------------
-    {
-      numero: 19,
-      id: 19,
-      tipo: "missao-email",
-      categoria: "Laboratório Prático 1",
-      titulo: "Missão 1 no Computador: Garantir o Acesso ao seu E-mail",
-      subtitulo: "Preparando o terreno para ninguém travar no login do ChatGPT no Encontro 2",
-      passos: [
-        "1. Ligue o monitor e abra o navegador de internet (Google Chrome ou Edge).",
-        "2. Acesse a página do seu provedor de e-mail (gmail.com, outlook.com ou outro).",
-        "3. Faça login com seu endereço de e-mail e sua senha habitual.",
-        "4. Verifique se você consegue ver sua caixa de entrada aberta na tela.",
-        "5. Caso não lembre a senha ou não tenha e-mail, chame a Laura ou a Maria agora para criarmos juntos!"
-      ],
-      notasProfessora: {
-        objetivoSlide: "Resolver presencialmente todo e qualquer problema de senha de e-mail antes do Encontro 2.",
-        oQueFalar: "Oriente com clareza: 'Nossa primeira missão prática de hoje é simples, mas fundamental: abrir seu e-mail no computador do laboratório. Se esquecer a senha, não se preocupe: levantem a mão que nós ajudamos a redefinir ou criar uma conta nova.'",
-        tempoSugerido: "25 minutos de tutoria individual"
-      }
-    },
-    {
-      numero: 20,
-      id: 20,
-      tipo: "missao-portfolio",
-      categoria: "Laboratório Prático 2",
-      titulo: "Missão 2 no Computador: Atividade 1 no Portfólio Digital",
-      subtitulo: "Oficina do Raio-X da IA no Cotidiano (Vale 0,5 ponto no Portfólio)",
-      passos: [
-        "1. Abra o arquivo modelo do seu Portfólio Digital que a professora indicar.",
-        "2. Escolha 2 aplicativos do seu smartphone (ex: Waze, Spotify, Nubank, Netflix).",
-        "3. Preencha o Raio-X: Quais dados o app coleta? O que a IA calcula? Qual benefício entrega?",
-        "4. Responda com suas palavras: 'Como seria a sua vida se esse aplicativo parasse de usar IA?'.",
-        "5. Salve o arquivo no computador. Laura & Maria estarão passando nas mesas para validar!"
-      ],
-      notasProfessora: {
-        objetivoSlide: "Acompanhar a realização da primeira entrega formativa dos alunos, garantindo que compreendam a relação dados ➔ IA ➔ benefício.",
-        oQueFalar: "Circulem entre as mesas. Elogiem os exemplos trazidos pelos alunos e ajudem aqueles que tiverem dificuldade de digitação ou formatação de texto.",
-        tempoSugerido: "45 minutos de oficina ativa"
-      }
-    },
-    {
-      numero: 21,
-      id: 21,
-      tipo: "fechamento",
-      categoria: "Síntese & Próximos Passos",
-      titulo: "Síntese do Encontro 1 & O Salto para a Próxima Aula",
-      subtitulo: "A base está construída. No próximo encontro, entraremos no mundo da criação!",
-      conclusao: "A Inteligência Artificial não é mágica, nem pensa como um cérebro biológico: é matemática, probabilidade e reconhecimento de padrões em dados.",
-      proximoEncontro: "Encontro 2 (23 de Outubro): O Salto da IA Generativa – Como Acessar o ChatGPT e Criar seus Primeiros Prompts!",
-      lembretesFinais: [
-        "Guarde bem seu e-mail e senha para a próxima aula",
-        "Parabéns pelo primeiro passo dado na sua jornada com Inteligência Artificial!"
-      ],
-      notasProfessora: {
-        objetivoSlide: "Fechar o encontro com celebração, sensação de vitória e expectativa positiva para a aula do ChatGPT.",
-        oQueFalar: "Finalize parabenizando a turma: 'Parabéns a todos! Vocês deram hoje um passo enorme. Desmistificamos a IA, garantimos o e-mail de todo mundo e analisamos serviços reais. No dia 23 de outubro, traremos a IA que CRIA: vamos abrir o ChatGPT e colocar a IA para trabalhar para vocês. Até lá!'",
-        tempoSugerido: "5 minutos"
-      }
-    }
-  ],
-
-  // =========================================================================
-  // ABA 3: ATIVIDADES & GABARITO COMENTADO
-  // =========================================================================
-  oficinaPratica: {
-    titulo: "Atividade 1: Raio-X da Inteligência Artificial no Cotidiano",
-    duracao: "Bloco 3 • 75 min",
-    peso: "0,5 ponto no Portfólio Digital",
-    ferramenta: "Navegador Web + Portfólio Digital (Google Docs ou Word)",
-    descricao: "Os alunos escolhem 3 aplicativos ou serviços que usam com frequência (de categorias distintas) e preenchem uma análise em 4 quadrantes: (1) Dados de Entrada, (2) O que a IA faz, (3) Saída para o Usuário e (4) Contraprova: Por que programação com regras tradicionais falharia aqui?",
-    casosGabarito: [
+      // BLOCO 3
       {
-        caso: "Caso 1: Spotify / YouTube (Recomendação Musical e Vídeos)",
-        categoria: "Streaming & Mídia",
-        entradas: "Músicas tocadas até o fim, músicas puladas antes de 30s, horário do dia, playlists curtidas, volume de busca.",
-        oQueIaFaz: "Algoritmos de Filtragem Colaborativa cruzam o comportamento do usuário com o de milhões de outras pessoas com perfis acústicos parecidos.",
-        saida: "Playlist semanal personalizada ('Descobertas da Semana') e sequência da fila de reprodução automática.",
-        contraprova: "Seria inviável contratar curadores humanos para escrever regras 'SE usuário tem 20 anos E gosta de rock ENTÃO recomende música X' para 500 milhões de usuários com gostos únicos."
+        numero: 11,
+        id: 11,
+        tipo: "secao",
+        categoria: "Classificação Tecnológica",
+        badge: "Classificação Tecnológica",
+        titulo: "Os 2 Tipos de IA: O Que É Real vs. O Que É Ficção",
+        subtitulo: "A grande bifurcação: a tecnologia prática de hoje versus a imaginação do cinema",
+        pills: [
+          { tipo: "ficcao", texto: "🎬 1. IA da Ficção (AGI)" },
+          { tipo: "real", texto: "⚙️ 2. IA Estreita Real (ANI)" }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Apresentar a grande bifurcação temática antes de mergulhar nos detalhes da Rosie e da IA no bolso.",
+          oQueFalar: "Diga com entusiasmo e clareza: 'Agora vamos entrar em um momento chave da nossa aula. Quando ouvimos falar de IA, há dois mundos: o que o cinema inventou e o que a ciência realmente construiu. Vamos conhecer primeiro o mito da ficção e, logo em seguida, a IA real do nosso dia a dia!'",
+          tempoSugerido: "3 minutos"
+        }
       },
       {
-        caso: "Caso 2: Waze / Google Maps (Roteamento Dinâmico de Trânsito)",
-        categoria: "Mobilidade & Mapas",
-        entradas: "Coordenadas GPS e velocidade instantânea de milhares de celulares conectados na via naquele exato minuto.",
-        oQueIaFaz: "Calcula algoritmos de caminho ótimo em grafos dinâmicos e prevê probabilidade de congestionamento futuro antes de você chegar ao cruzamento.",
-        saida: "Estimativa exata de tempo de chegada (ETA) e rotas alternativas para fugir do tráfego.",
-        contraprova: "Um mapa fixo mede apenas distância em quilômetros. Não tem capacidade de reagir a acidentes repentinos ou semáforos quebrados sem dados em tempo real."
+        numero: 12,
+        id: 12,
+        tipo: "ia-ficcao",
+        categoria: "Ficção Científica",
+        titulo: "1. A IA da Ficção: Robôs, Cinema & Imaginação",
+        subtitulo: "Como os filmes e desenhos animados criaram robôs humanoides com sentimentos e consciência",
+        imagem: "/static/img/ia_ficcao_rosie.jpg",
+        badge: "IA Geral (AGI / Cinema) — 0% REAL HOJE",
+        personagens: [
+          { nome: "Robô Rosie (Os Jetsons)", desc: "Androide doméstica com avental, humor, afeto e broncas na família." },
+          { nome: "C-3PO & R2-D2 (Star Wars)", desc: "Robôs com lealdade, medo e personalidades humanas expressivas." },
+          { nome: "Exterminador do Futuro (Skynet)", desc: "Máquinas conscientes que ganham vida própria e se voltam contra a humanidade." }
+        ],
+        conclusaoFiccao: "Na ficção, máquinas têm consciência, desejos e sentimentos. No mundo real, isso é 0% real hoje.",
+        notasProfessora: {
+          objetivoSlide: "Acolher o imaginário popular dos alunos e desmistificar de forma leve a ideia de robôs com sentimentos.",
+          oQueFalar: "Aponte para o telão com simpatia: 'Quem aqui lembra da robô Rosie dos Jetsons? No cinema, os robôs cozinham, sentem raiva, amam e têm consciência. Isso rende ótimas histórias, mas não existe na ciência real. A IA de verdade não tem corpo metálico nem sentimentos!'",
+          tempoSugerido: "5 minutos"
+        }
       },
       {
-        caso: "Caso 3: Nubank / Bancos (Detecção de Fraudes em Pix / Cartão)",
-        categoria: "Finanças & Segurança",
-        entradas: "Valor da transação, horário da madrugada, geolocalização do aparelho, velocidade de digitação da senha e histórico habitual de gastos.",
-        oQueIaFaz: "Modelos de detecção de anomalias calculam a probabilidade estatística de que aquela transação seja ilegítima em milissegundos.",
-        saida: "Aprovação imediata ou bloqueio preventivo exigindo reconhecimento facial.",
-        contraprova: "Criminosos descobrem regras fixas rapidamente (ex: 'comprar R$ 999 se o limite de bloqueio for R$ 1.000'). A IA detecta padrões sutis de comportamento fora da curva."
+        numero: 13,
+        id: 13,
+        tipo: "ia-estreita",
+        categoria: "A IA Real",
+        titulo: "2. A IA Estreita: A Tecnologia que Move o Planeta Real",
+        subtitulo: "Hiperespecialista, focada em uma única tarefa e presente em 100% dos serviços modernos",
+        badge: "IA Estreita (Narrow AI / ANI) — 100% DA IA EXISTENTE",
+        recursos: [
+          { icone: "👤", titulo: "Biometria Facial", desc: "Cálculo de distâncias geométricas para desbloqueio seguro do celular e acesso a bancos." },
+          { icone: "🗺️", titulo: "Rotas e Trânsito", desc: "Previsão de congestionamentos e caminhos mais rápidos no Google Maps e Waze." },
+          { icone: "🛡️", titulo: "Filtros Anti-Spam", desc: "Classificação em tempo real de mensagens suspeitas e golpes no Gmail e Outlook." },
+          { icone: "💳", titulo: "Segurança Bancária", desc: "Detecção instantânea de compras fraudulentas no cartão de crédito e no Pix." },
+          { icone: "🎬", titulo: "Recomendações", desc: "Sugestão de músicas, vídeos e compras personalizadas no Spotify, YouTube e Netflix." },
+          { icone: "📱", titulo: "Teclado Inteligente", desc: "Previsão da próxima palavra e correção ortográfica enquanto você digita no WhatsApp." }
+        ],
+        destaque: "A IA que bloqueia fraude no seu cartão não sabe sugerir uma rota. E a que sugere rota não sabe escrever poema: cada uma é hiperespecialista!",
+        notasProfessora: {
+          objetivoSlide: "Provar que a IA real é uma coleção de especialistas matemáticos que os alunos já utilizam diariamente.",
+          oQueFalar: "Destaque a lista: 'Vejam que fascinante: a IA de verdade é essa lista inteira de recursos que já estão no seu bolso. Ela não é um robô faz-tudo: cada programa é hiperespecialista em fazer uma única tarefa matemática com perfeição!'",
+          tempoSugerido: "6 minutos"
+        }
+      },
+      {
+        numero: 14,
+        id: 14,
+        tipo: "secao",
+        categoria: "O Efeito IA",
+        badge: "O Efeito IA (The AI Effect)",
+        titulo: "O Teorema de Larry Tesler: Por Que a IA Parece Desaparecer?",
+        citacao: "A Inteligência Artificial é tudo aquilo que o computador ainda não sabe fazer. Assim que funciona com perfeição, passa a ser chamada apenas de software comum.",
+        autor: "Larry Tesler (1945–2020)",
+        autorDesc: "Pioneiro da computação (Xerox PARC, Apple, Amazon e Yahoo) e criador do Copiar/Colar (Ctrl+C / Ctrl+V)",
+        notasProfessora: {
+          objetivoSlide: "Apresentar a grande lei sociotécnica que explica por que a sociedade normaliza a tecnologia e esquece que biometria e câmeras são IA.",
+          oQueFalar: "Leiam a frase no telão com calma e ênfase: 'Larry Tesler, um dos maiores cientistas da história da computação e criador do nosso amado Copiar e Colar (Ctrl+C / Ctrl+V), criou esta frase genial: toda vez que a IA resolve um problema difícil, as pessoas se acostumam e dizem: \"ah, isso é só um recurso normal do celular\". A IA parece invisível porque ela venceu e virou rotina!'",
+          tempoSugerido: "5 minutos"
+        },
+        embasamentoCientifico: dossies.teslerAiEffect
+      },
+      {
+        numero: 15,
+        id: 15,
+        tipo: "grid-exemplos",
+        categoria: "O Teorema de Tesler na Prática",
+        titulo: "O Efeito IA no Cotidiano: Quando a Tecnologia Vira Rotina",
+        subtitulo: "Quatro tecnologias que já foram o auge da Inteligência Artificial e hoje chamamos de 'recursos comuns':",
+        exemplos: [
+          {
+            icone: "🔤",
+            nome: "Leitura de Texto em Fotos (OCR)",
+            app: "Antes: 'Super IA' • Hoje: 'Normal'",
+            papel: "Nas décadas de 70 e 80, ensinar uma máquina a <strong style='color: var(--text-amber);'>ler caracteres impressos</strong> era o ápice da IA. Hoje, você apenas aponta a câmera do celular para copiar um texto."
+          },
+          {
+            icone: "📱",
+            nome: "Corretor & Autocompletar",
+            app: "Antes: 'Ficção Científica' • Hoje: 'Normal'",
+            papel: "Nos anos 90, <strong style='color: var(--text-amber);'>prever a próxima palavra</strong> parecia telepatia computacional. Hoje, é apenas o teclado do WhatsApp sugerindo termos no dia a dia."
+          },
+          {
+            icone: "🎙️",
+            nome: "Reconhecimento de Voz",
+            app: "Antes: 'Milagre da IA' • Hoje: 'Normal'",
+            papel: "Converter a fala humana em <strong style='color: var(--text-amber);'>texto legível em tempo real</strong> exigiu décadas de redes neurais. Hoje, você apenas dita uma mensagem no WhatsApp ou fala com a assistente do celular."
+          },
+          {
+            icone: "🖼️",
+            nome: "Reconhecimento de Imagem",
+            app: "Antes: 'Visão Computacional' • Hoje: 'Normal'",
+            papel: "Identificar rostos, animais ou objetos em <strong style='color: var(--text-amber);'>fotos e vídeos automaticamente</strong> já foi um grande desafio da ciência. Hoje, o celular separa sozinho fotos de pessoas e pets na galeria."
+          }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Demonstrar na prática a tese de Larry Tesler com 4 recursos cotidianos que os alunos usam todo dia sem perceber que são IA.",
+          oQueFalar: "Apresentem os quatro quadrantes ligando-os ao Teorema de Tesler: 'Vejam que fascinante: ler texto em foto (OCR), corretor ortográfico, transcrever nossa voz em áudios e reconhecer rostos em fotos já foram considerados o topo da Inteligência Artificial. Hoje, ninguém chama de IA, chama apenas de recurso comum do celular. A IA venceu porque virou rotina!'",
+          tempoSugerido: "6 minutos"
+        }
+      },
+
+      // BLOCO 4
+      {
+        numero: 16,
+        id: 16,
+        tipo: "quebra-gelo",
+        categoria: "Transição para os Mitos",
+        titulo: "De Onde Vem o Nosso Medo? Do Cinema às Falácias da Internet",
+        subtitulo: "Se a IA real é tão útil no banco e no bolso, por que as manchetes geram tanto pânico?",
+        colunas: [
+          {
+            tag: "O Sensacionalismo & A Ficção",
+            icone: "📰",
+            itens: [
+              "<strong style='color: var(--text-red);'>Manchetes Caça-Cliques:</strong> Notícias alarmistas prometendo que a IA 'vai criar consciência e dominar o mundo amanhã'.",
+              "<strong style='color: var(--text-red);'>Vilões do Cinema:</strong> Skynet e robôs assassinos confundidos propositalmente com ferramentas de dados reais.",
+              "<strong style='color: var(--text-red);'>Misticismo Digital:</strong> Boatos virais que tratam cálculos estatísticos de computador como se fossem mentes sobrenaturais."
+            ]
+          },
+          {
+            tag: "A Realidade dos Fatos & Nosso Olhar Crítico",
+            icone: "💡",
+            itens: [
+              "<strong style='color: var(--text-green);'>Matemática, Não Mente:</strong> A IA não tem desejos, rancor ou consciência: é processamento estatístico de dados.",
+              "<strong style='color: var(--text-green);'>Pânico do Desconhecido:</strong> O medo nasce da falta de explicação clara sobre como o software realmente funciona.",
+              "<strong style='color: var(--text-green);'>Postura Cidadã e Crítica:</strong> Para usar a tecnologia com segurança e autonomia, vamos desmontar os 5 Grandes Mitos!"
+            ]
+          }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Criar o gancho perfeito de transição para a sequência de mitos, desarmando o pânico de notícias sensacionalistas.",
+          oQueFalar: "Façam a grande provocação: 'Se a gente já confia na IA para cuidar do nosso dinheiro e guiar nosso carro, por que quando vemos notícias na internet temos a impressão de que o mundo vai acabar amanhã? Porque manchetes sensacionalistas vendem mais do que explicar matemática! A partir de agora, vamos desmontar os 5 maiores mitos!'",
+          tempoSugerido: "5 minutos"
+        }
+      },
+      {
+        numero: 17,
+        id: 17,
+        tipo: "quebra-gelo",
+        categoria: "Desmistificando a IA",
+        titulo: "Mito 1: 'A IA pensa, sente e tem consciência própria'",
+        subtitulo: "A diferença fundamental entre imitar a linguagem humana e ter compreensão real",
+        colunas: [
+          {
+            tag: "O Mito da Consciência",
+            icone: "🤖",
+            itens: [
+              "Achar que a IA tem vontades, sentimentos, desejos ou consciência biológica.",
+              "Acreditar que o sistema 'sabe' o que está dizendo como uma pessoa humana.",
+              "Medo de que o computador ganhe 'vida própria' ou intenções ocultas."
+            ]
+          },
+          {
+            tag: "A Realidade Estatística",
+            icone: "📊",
+            itens: [
+              "É um modelo matemático de previsão probabilística de palavras e dados.",
+              "Não possui sentimentos, consciência, dor ou empatia: é pura computação.",
+              "Funciona como um autocompletar avançadíssimo treinado em bilhões de textos."
+            ]
+          }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Desarmar o medo existencial de que a IA 'tem mente própria' e fixar a ideia de cálculo estatístico.",
+          oQueFalar: "Explique com clareza: 'Quando o ChatGPT responde com simpatia e diz \"entendi sua dúvida\", ele não está sentindo nada nem entendendo no sentido humano. Ele apenas calculou quais palavras têm maior probabilidade estatística de vir em seguida em um diálogo amigável.'",
+          tempoSugerido: "5 minutos"
+        }
+      },
+      {
+        numero: 18,
+        id: 18,
+        tipo: "quebra-gelo",
+        categoria: "Postura Crítica",
+        titulo: "Mito 2: 'Se a IA respondeu com certeza, está 100% correto'",
+        subtitulo: "O fenômeno das 'alucinações' e por que você nunca deve aceitar respostas cegamente",
+        colunas: [
+          {
+            tag: "O Mito do Oráculo Infalível",
+            icone: "🔮",
+            itens: [
+              "Tratar a IA como uma enciclopédia sagrada que nunca comete erros.",
+              "Copiar e colar respostas sem conferir as fontes ou os dados.",
+              "Achar que precisão factual vem garantida de fábrica pelo computador."
+            ]
+          },
+          {
+            tag: "A Realidade: Alucinações",
+            icone: "🧭",
+            itens: [
+              "A IA pode inventar leis, autores, remédios e datas com total convicção.",
+              "O fenômeno chama-se tecnicamente 'Alucinação' do modelo.",
+              "A IA é uma excelente bússola de ideias, mas o piloto e verificador é SEMPRE você."
+            ]
+          }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Vacinar os alunos contra a confiança cega e introduzir o conceito de alucinação de forma simples.",
+          oQueFalar: "Destaque com firmeza: 'A IA é uma geradora de textos fluentes, não uma fiscal da verdade. Ela pode inventar um livro que nunca existiu com uma elegância impressionante. Por isso, a regra de ouro do nosso curso é: IA ajuda no rascunho, mas o olho humano sempre confere!'",
+          tempoSugerido: "6 minutos"
+        }
+      },
+      {
+        numero: 19,
+        id: 19,
+        tipo: "apresentacao",
+        categoria: "Acessibilidade & Inclusão",
+        titulo: "Mito 3: 'Preciso ser um gênio da matemática ou programador'",
+        subtitulo: "A maior revolução da IAGen: a linguagem natural em português é o novo código",
+        itensDestaque: [
+          {
+            icone: "🗣️",
+            titulo: "Português Claro e Direto",
+            desc: "Você não digita linhas de código. Você conversa em português natural do mesmo jeito que fala com um colega de trabalho."
+          },
+          {
+            icone: "🎯",
+            titulo: "Contexto e Clareza > Informática",
+            desc: "Quem se comunica bem e sabe explicar o que precisa tira muito mais proveito da IA do que quem apenas domina informática."
+          },
+          {
+            icone: "🧒🏻👨🏽🧓",
+            titulo: "Para Todas as Idades",
+            desc: "Professores, aposentados, comerciantes, estudantes: qualquer pessoa que saiba ler e escrever pode usar plenamente."
+          }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Elevar a autoestima técnica dos alunos que não têm formação em exatas ou TI.",
+          oQueFalar: "Olhe para a sala e tranquilize: 'Antigamente, para mandar no computador precisávamos aprender programação avançada. Hoje, a linguagem de instrução da IA Generativa é o bom português. Se você sabe pedir uma informação com clareza, você já sabe a base de um bom prompt.'",
+          tempoSugerido: "5 minutos"
+        }
+      },
+      {
+        numero: 20,
+        id: 20,
+        tipo: "quebra-gelo",
+        categoria: "Ética & Autoria",
+        titulo: "Mito 4: 'Usar IA significa necessariamente trapacear'",
+        subtitulo: "A fronteira entre atalho desonesto (terceirização) e uso formativo e potencializador",
+        colunas: [
+          {
+            tag: "O Estigma da 'Trapaça'",
+            icone: "🚫",
+            itens: [
+              "Achar que qualquer consulta à IA é plágio ou preguiça mental.",
+              "Copiar e colar 100% da resposta e entregar sem ler, sem pensar e sem aprender.",
+              "Sentir culpa ou medo de usar ferramentas modernas de produtividade e estudo."
+            ]
+          },
+          {
+            tag: "Uso Ético, Crítico & Potencializador",
+            icone: "🎓",
+            itens: [
+              "Usar a IA como tutor particular: tirar dúvidas, pedir exemplos e debater ideias.",
+              "Transparência e responsabilidade: o autor e tomador de decisão final é você.",
+              "A verdadeira inteligência está em formular boas perguntas e validar as respostas."
+            ]
+          }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Eliminar a culpa ou o tabu ético do uso da IA, ensinando a postura do estudante ativo e responsável.",
+          oQueFalar: "Aborde o tema com tranquilidade e rigor: 'Muitos sentem culpa ao usar IA, achando que estão trapaceando. Trapaça é mandar a IA fazer seu trabalho e você fingir que fez, sem entender nada. Mas usar a IA para te explicar uma matéria difícil de três jeitos diferentes ou revisar seu rascunho é estudar com inteligência! Aqui aprenderemos o uso ético e transparente.'",
+          tempoSugerido: "6 minutos"
+        }
+      },
+      {
+        numero: 21,
+        id: 21,
+        tipo: "quebra-gelo",
+        categoria: "O Futuro do Trabalho e Estudos",
+        titulo: "Mito 5: 'A IA vai substituir os seres humanos em tudo'",
+        subtitulo: "Automação de tarefas mecânicas vs. O valor insubstituível do julgamento humano",
+        colunas: [
+          {
+            tag: "O Medo da Substituição",
+            icone: "⚠️",
+            itens: [
+              "Achar que professores, redatores ou profissionais deixarão de existir.",
+              "Imaginar que criatividade, empatia e contexto ético serão automatizados.",
+              "Sensação de obsolescência e ansiedade frente ao desconhecido."
+            ]
+          },
+          {
+            tag: "A Potencialização Humana",
+            icone: "💡",
+            itens: [
+              "A IA não substitui você; quem aprende a usar IA com senso crítico se destaca.",
+              "Ela assume o trabalho repetitivo (resumos, formatação, primeiros rascunhos).",
+              "Você ganha tempo para o que é humano: empatia, decisão e criatividade."
+            ]
+          }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Substituir o medo de substituição por uma perspectiva de autonomia e empoderamento profissional e pessoal.",
+          oQueFalar: "Conclua a sequência de mitos: 'A IA é como uma calculadora ou um processador de texto muito poderoso. A calculadora não acabou com os matemáticos nem o Word com os escritores. A IA tira o trabalho mecânico da frente para sobrar tempo para o que só você sabe fazer.'",
+          tempoSugerido: "6 minutos"
+        }
+      },
+
+      // BLOCO 5
+      {
+        numero: 22,
+        id: 22,
+        tipo: "secao",
+        categoria: "Brasil, Cidadania & Legislação",
+        badge: "Estratégia Nacional & Cidadania",
+        titulo: "E o Brasil? Cidadania, Soberania & As Leis de IA",
+        subtitulo: "Como o nosso país se posiciona no cenário mundial: do Plano Brasileiro de IA (PBIA) aos direitos e proteção do cidadão",
+        pills: [
+          { tipo: "real", texto: "🇧🇷 1. Plano Brasileiro de IA (PBIA 2024–2028)" },
+          { tipo: "real", texto: "⚖️ 2. Marco Legal & LGPD (PL 2338/2023)" }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Fazer a transição para o bloco de cidadania e soberania, valorizando o protagonismo do Brasil e conectando o curso à política pública nacional.",
+          oQueFalar: "Faça uma pausa e provoque a turma com entusiasmo: 'Desmistificamos o que é IA e como ela funciona. Mas e o Brasil nessa história? O nosso país tem um plano oficial de R$ 23 bilhões e leis pioneiras para garantir nossos direitos e soberania. Vamos conhecer o Plano Brasileiro de IA e o Marco Legal dos nossos direitos!'",
+          tempoSugerido: "3 minutos"
+        }
+      },
+      {
+        numero: 23,
+        id: 23,
+        tipo: "apresentacao",
+        categoria: "Plano Brasileiro de IA",
+        titulo: "O Plano Brasileiro de IA (PBIA): 'IA para o Bem de Todos'",
+        subtitulo: "Os 3 eixos estratégicos do investimento público nacional: supercomputadores, SUS e inclusão digital",
+        itensDestaque: [
+          {
+            icone: "🇧🇷",
+            titulo: "1. Soberania e Dados Nacionais",
+            desc: "Investimento de R$ 23 bilhões no Plano 'IA para o Bem de Todos' (2024–2028), expandindo supercomputadores nacionais (Santos Dumont/LNCC) e modelos treinados na nossa língua e cultura."
+          },
+          {
+            icone: "🏥",
+            titulo: "2. IA para Serviços Públicos & SUS",
+            desc: "Foco prioritário na redução de filas e diagnósticos no Sistema Único de Saúde (SUS), monitoramento da Amazônia e agricultura familiar."
+          },
+          {
+            icone: "🎓",
+            titulo: "3. Capacitação Popular em Massa",
+            desc: "O objetivo é formar e letrar digitalmente milhões de cidadãos para gerar empregos qualificados — exatamente a missão deste nosso minicurso de extensão!"
+          }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Mostrar a política pública oficial do Brasil e valorizar a presença dos alunos como agentes de transformação e soberania digital.",
+          oQueFalar: "Apresente com orgulho e cidadania: 'O Brasil não quer ser apenas um comprador de tecnologia de outros países. O Governo Federal lançou o Plano Brasileiro de IA com foco em usar a inteligência artificial para melhorar o SUS, proteger o meio ambiente e, principalmente, capacitar as pessoas. Vocês estarem aqui hoje faz parte dessa missão nacional de inclusão digital!'",
+          tempoSugerido: "7 minutos"
+        },
+        embasamentoCientifico: dossies.pbiaBrasil
+      },
+      {
+        numero: 24,
+        id: 24,
+        tipo: "apresentacao",
+        categoria: "Legislação & Direitos",
+        titulo: "Regulamentação da IA: Leis, Direitos e Proteção ao Cidadão",
+        subtitulo: "Como o Marco Legal da IA (PL 2338/2023) e a LGPD protegem você de abusos",
+        itensDestaque: [
+          {
+            icone: "🚦",
+            titulo: "1. Classificação por Níveis de Risco",
+            desc: "Sistemas simples (filtros de spam) são livres. Sistemas de alto risco (decisões sobre crédito, contratação de emprego e saúde) exigem auditoria, teste de preconceito e supervisão humana."
+          },
+          {
+            icone: "🔒",
+            titulo: "2. Privacidade e Proteção de Dados (LGPD)",
+            desc: "Suas fotos, voz e dados pessoais não podem ser usados por empresas para alimentar robôs comerciais sem consentimento prévio e seguro."
+          },
+          {
+            icone: "⚖️",
+            titulo: "3. Direito à Explicação & Direitos Autorais",
+            desc: "Se uma IA tomar uma decisão que afete você, você tem o direito legal de saber o porquê. Além disso, criadores de conteúdo e artistas têm seus trabalhos protegidos contra cópia desautorizada."
+          }
+        ],
+        notasProfessora: {
+          objetivoSlide: "Transmitir segurança jurídica e cidadã, mostrando que regular não é proibir, mas garantir que a tecnologia sirva à dignidade humana.",
+          oQueFalar: "Explique com clareza: 'Regulamentar a IA não é proibir a tecnologia, mas colocar regras claras e cinto de segurança no carro! O Congresso Nacional está votando o Marco Legal da IA para garantir que nenhum algoritmo possa discriminar pessoas por idade, gênero ou cor, e que nossa privacidade seja respeitada.'",
+          tempoSugerido: "7 minutos"
+        },
+        embasamentoCientifico: dossies.marcoLegal
+      },
+
+      // BLOCO 6
+      {
+        numero: 25,
+        id: 25,
+        tipo: "missao-email",
+        categoria: "Laboratório Prático 1",
+        titulo: "Missão 1 no Computador: Garantir o Acesso ao seu E-mail",
+        subtitulo: "Preparando o terreno para ninguém travar no login do ChatGPT no Encontro 2",
+        passos: [
+          "1. Ligue o monitor e abra o navegador de internet (Google Chrome ou Edge).",
+          "2. Acesse a página do seu provedor de e-mail (gmail.com, outlook.com ou outro).",
+          "3. Faça login com seu endereço de e-mail e sua senha habitual.",
+          "4. Verifique se você consegue ver sua caixa de entrada aberta na tela.",
+          "5. Caso não lembre a senha ou não tenha e-mail, chame a Laura ou a Maria agora para criarmos juntos!"
+        ],
+        notasProfessora: {
+          objetivoSlide: "Resolver presencialmente todo e qualquer problema de senha de e-mail antes do Encontro 2.",
+          oQueFalar: "Oriente com clareza: 'Nossa primeira missão prática de hoje é simples, mas fundamental: abrir seu e-mail no computador do laboratório. Se esquecer a senha, não se preocupe: levantem a mão que nós ajudamos a redefinir ou criar uma conta nova.'",
+          tempoSugerido: "20 minutos de tutoria individual"
+        }
+      },
+      {
+        numero: 26,
+        id: 26,
+        tipo: "missao-portfolio",
+        categoria: "Laboratório Prático 2",
+        titulo: "Missão 2 no Computador: Atividade 1 no Portfólio Digital",
+        subtitulo: "Oficina do Raio-X da IA no Cotidiano (Vale 0,5 ponto no Portfólio)",
+        passos: [
+          "1. Abra o arquivo modelo do seu Portfólio Digital que a professora indicar.",
+          "2. Escolha 2 aplicativos do seu smartphone (ex: Waze, Spotify, Nubank, Netflix).",
+          "3. Preencha o Raio-X: Quais dados o app coleta? O que a IA calcula? Qual benefício entrega?",
+          "4. Responda com suas palavras: 'Como seria a sua vida se esse aplicativo parasse de usar IA?'.",
+          "5. Salve o arquivo no computador. Laura & Maria estarão passando nas mesas para validar!"
+        ],
+        notasProfessora: {
+          objetivoSlide: "Acompanhar a realização da primeira entrega formativa dos alunos, garantindo que compreendam a relação dados ➔ IA ➔ benefício.",
+          oQueFalar: "Circulem entre as mesas. Elogiem os exemplos trazidos pelos alunos e ajudem aqueles que tiverem dificuldade de digitação ou formatação de texto.",
+          tempoSugerido: "40 minutos de oficina ativa"
+        }
+      },
+      {
+        numero: 27,
+        id: 27,
+        tipo: "fechamento",
+        categoria: "Síntese & Próximos Passos",
+        titulo: "Síntese do Encontro 1 & O Salto para a Próxima Aula",
+        subtitulo: "A base está construída. No próximo encontro, entraremos no mundo da criação!",
+        conclusao: "A Inteligência Artificial não é mágica, nem pensa como um cérebro biológico: é matemática, probabilidade e reconhecimento de padrões em dados para nos potencializar como cidadãos conscientes.",
+        proximoEncontro: "Encontro 2 (23 de Outubro): O Salto da IA Generativa – Como Acessar o ChatGPT e Criar seus Primeiros Prompts!",
+        lembretesFinais: [
+          "Guarde bem seu e-mail e senha para a próxima aula",
+          "Parabéns pelo primeiro passo dado na sua jornada com Inteligência Artificial!"
+        ],
+        notasProfessora: {
+          objetivoSlide: "Fechar o encontro com celebração, sensação de vitória e expectativa positiva para a aula do ChatGPT.",
+          oQueFalar: "Finalize parabenizando a turma: 'Parabéns a todos! Vocês deram hoje um passo enorme. Desmistificamos a IA, entendemos as leis do Brasil, garantimos o e-mail de todo mundo e analisamos serviços reais. No dia 23 de outubro, traremos a IA que CRIA: vamos abrir o ChatGPT e colocar a IA para trabalhar para vocês. Até lá!'",
+          tempoSugerido: "5 minutos"
+        }
       }
     ],
-    planoB: "Caso a internet do laboratório caia ou fique lenta: (1) Peça que os alunos façam a análise dos aplicativos diretamente pelos seus smartphones (redes móveis 4G/5G). (2) Caso algum aluno esteja sem celular, organize em duplas no computador com editor de texto offline."
-  },
 
-  // =========================================================================
-  // ABA 4: PERGUNTAS DOS ALUNOS & ARMADILHAS
-  // =========================================================================
-  perguntasAlunos: [
-    {
-      numero: 1,
-      duvida: "A IA vai criar consciência própria e se rebelar?",
-      resposta: "Cientificamente não há base para isso. A IA não possui biologia, desejos, instinto de sobrevivência ou sentimentos. Ela é código calculando probabilidades estatísticas com base em dados do passado. O risco real da IA não é um robô malvado, mas sim humanos usando algoritmos com preconceitos (vieses) ou dados errados para tomar decisões injustas.",
-      pontoDidatico: "Redirecione o medo fictício para a responsabilidade ética humana real."
+    oficinaPratica: {
+      titulo: "Atividade 1: Raio-X da IA no Cotidiano & Mapeamento de Dados",
+      duracao: "40 minutos em Laboratório",
+      peso: "0,5 ponto no Portfólio Digital",
+      ferramenta: "Portfólio Digital Individual + Navegador Web",
+      descricao: "Oficina prática em computadores onde cada estudante escolhe dois aplicativos do seu cotidiano (ex: Waze, Spotify, Nubank, Netflix, Câmera/Google Fotos) e disseca a cadeia: Dados Coletados ➔ Padrão que a IA Calcula ➔ Benefício Entregue ao Usuário, finalizando com reflexão crítica sobre a vida sem essa automação.",
+      casosGabarito: [
+        {
+          caso: "Exemplo 1: Waze / Google Maps (Navegação & Trânsito)",
+          categoria: "Geolocalização & Previsão",
+          entradas: "Localização GPS em tempo real de milhares de motoristas, velocidade de deslocamento e alertas de acidentes enviados pela comunidade.",
+          oQueIaFaz: "Calcula a velocidade média dos trechos a cada segundo, identifica padrões de lentidão/gargalos e simula milhares de rotas alternativas em milissegundos.",
+          saida: "Tempo estimado de chegada (ETA) hiperpreciso e desvio de rota sugerido antes do motorista travar no engarrafamento.",
+          contraprova: "Programação fixa manual exigiria que um humano ligasse para cada rua para saber a situação. A IA aprende o trânsito a partir dos dados contínuos de milhares de celulares."
+        },
+        {
+          caso: "Exemplo 2: Spotify / Netflix / YouTube (Sistemas de Recomendação)",
+          categoria: "Filtragem Colaborativa & Mídia",
+          entradas: "Histórico de reprodução, músicas puladas nos primeiros 30s, horário em que ouve e playlists salvas.",
+          oQueIaFaz: "Compara o perfil de escuta do usuário com milhões de outros ouvintes com gostos semelhantes (filtragem colaborativa) e calcula a probabilidade estatística de afinidade com faixas inéditas.",
+          saida: "Playlist 'Descobertas da Semana' ou fila de reprodução contínua que mantém o ouvinte engajado.",
+          contraprova: "Um funcionário humano jamais conseguiria fazer a curadoria musical manual diária para 500 milhões de usuários."
+        },
+        {
+          caso: "Exemplo 3: Antifraude Bancária (Pix / Cartão de Crédito Nubank, BB, Itaú)",
+          categoria: "Classificação Anômala & Segurança",
+          entradas: "Valor da transação, horário, localização habitual do usuário, tipo de estabelecimento e dispositivo usado.",
+          oQueIaFaz: "Calcula em menos de 300 milissegundos o score de risco: quão distante essa compra está do padrão de comportamento histórico daquela pessoa.",
+          saida: "Aprovação instantânea ou bloqueio preventivo com aviso no app.",
+          contraprova: "Regras manuais rígidas (ex: 'bloquear compras acima de R$ 500') bloqueariam compras legítimas de quem viaja e deixariam passar fraudes pequenas de R$ 50."
+        }
+      ],
+      planoB: "Caso a conexão de internet do laboratório oscile, Laura & Maria conduzirão a oficina em formato impresso/caderno físico, preenchendo a tabela do Raio-X em duplas e transferindo para o arquivo digital na aula seguinte."
     },
-    {
-      numero: 2,
-      duvida: "Isso não é só um monte de IF/ELSE gigante no código?",
-      resposta: "Excelente pergunta! Na programação tradicional, sim, é puro IF/ELSE manual escrito linha por linha por um programador. Mas em Machine Learning e Redes Neurais não: nenhum humano escreveu as regras. O algoritmo ajustou milhões de pesos matemáticos sozinho ao ver milhões de fotos ou textos. Ele não checa uma regra fixa; ele calcula uma probabilidade contínua.",
-      pontoDidatico: "Mostre que a escala matemática de milhões de parâmetros torna o IF/ELSE humano inviável."
-    },
-    {
-      numero: 3,
-      duvida: "A IA vai roubar todos os empregos?",
-      resposta: "A IA transforma tarefas repetitivas e rotineiras, e não profissões inteiras da noite para o dia. Quem entende e usa IA como copiloto para pensar melhor e produzir com mais qualidade terá vantagem sobre quem a ignora. É exatamente por isso que estamos aqui neste curso: para sermos profissionais e cidadãos conscientes, e não meros espectadores.",
-      pontoDidatico: "Empodere os alunos e valorize a presença deles no minicurso."
-    }
-  ],
 
-  // =========================================================================
-  // ABA 5: ANOTAÇÕES & COMBINADOS DA DUPLA
-  // =========================================================================
-  divisaoPapeis: [
-    { bloco: "Bloco 1 (00h-45m)", tema: "Acolhimento & IA Invisível (Slides 1 a 10)", papel: "radio" },
-    { bloco: "Bloco 2 (45m-85m)", tema: "Mitos & Como a IA Aprende (Slides 11 a 18)", papel: "radio" },
-    { bloco: "Bloco 3 (85m-160m)", tema: "Oficina no Laboratório (Slides 19 e 20)", papel: "ambas" },
-    { bloco: "Bloco 4 (160m-180m)", tema: "Síntese & Fechamento (Slide 21)", papel: "radio" }
-  ]
-};
+    perguntasAlunos: [
+      {
+        numero: 1,
+        duvida: "Se a Inteligência Artificial já existe desde os anos 1950 (Turing e Dartmouth), por que ela 'explodiu' e virou febre só agora?",
+        resposta: "A teoria matemática e os algoritmos fundamentais já existiam há quase 70 anos, mas faltavam dois ingredientes físicos indispensáveis: um volume astronômico de dados digitalizados pela internet (Big Data) e chips de processamento gráfico hiperpotentes (GPUs). Quando a tríade Dados + Chips + Algoritmos se encontrou na última década, a IA deu o salto gigantesco que hoje vemos no bolso e nos serviços.",
+        pontoDidatico: "Conecte a linha do tempo (Slide 7) diretamente aos 3 Ingredientes (Slide 10), demonstrando que a ciência depende de infraestrutura tecnológica para florescer."
+      },
+      {
+        numero: 2,
+        duvida: "Isso tudo não é só um monte de comandos IF/ELSE (Se/Então) gigante programado por alguém?",
+        resposta: "Na programação tradicional, sim: cada regra e exceção precisa ser escrita manualmente por um ser humano (como uma receita de bolo estrita). No aprendizado de máquina (Machine Learning), nenhum programador escreveu regras para cada situação: o computador analisou milhões de exemplos e ajustou pesos matemáticos sozinho para reconhecer padrões. Se fosse IF/ELSE humano, seria humanamente impossível programar todas as variações de um rosto ou da fala humana!",
+        pontoDidatico: "Fixe a metáfora do Slide 9: regra estrita prescrita versus observação estatística de padrões em escala."
+      },
+      {
+        numero: 3,
+        duvida: "Se o corretor do celular, o filtro antispam e o reconhecimento de voz são IA, por que a gente nunca chamou isso de Inteligência Artificial?",
+        resposta: "Isso é exatamente o que chamamos de 'Teorema de Larry Tesler' ou 'Efeito IA': quando uma tecnologia de inteligência artificial funciona com extrema estabilidade e vira rotina no nosso dia a dia, ela perde o mistério de 'mágica' e passa a ser chamada apenas de 'recurso comum de informática'. A IA costuma parecer IA apenas enquanto ainda é novidade ou está no cinema.",
+        pontoDidatico: "Reforce o conceito de invisibilidade da IA cotidiana trabalhado nos Slides 14 e 15."
+      },
+      {
+        numero: 4,
+        duvida: "A IA pode desenvolver sentimentos, ter consciência própria e se rebelar contra a humanidade?",
+        resposta: "Cientificamente não há base real para isso. A IA que existe no mundo é 100% IA Estreita (ANI): não possui biologia, desejos, instinto de sobrevivência, sentimentos ou consciência. Ela é código calculando probabilidades estatísticas a partir de dados do passado. O risco real da IA não são robôs rebeldes da ficção científica, mas o uso humano irresponsável com dados tendenciosos (vieses) ou decisões automatizadas sem supervisão ética.",
+        pontoDidatico: "Redirecione o pânico da ficção científica (Slides 12, 16 e 17) para a responsabilidade ética e governança humana no mundo real."
+      },
+      {
+        numero: 5,
+        duvida: "Se a IA responde com tanta certeza, fluência e vocabulário formal, como descubro se ela está inventando (alucinando)?",
+        resposta: "A IA não tem compromisso ético com a verdade nem 'compreende' o sentido real das palavras: ela prevê a combinação estatística mais provável e gramaticalmente convincente de termos. Por isso, fatos históricos, leis, autores, referências e cálculos nunca devem ser aceitos cegamente. A IA é uma excelente copiloto para sugerir caminhos, mas a validação factual e o senso crítico final são sempre 100% responsabilidade do usuário (Human-in-the-loop).",
+        pontoDidatico: "Ensine a postura de verificação ativa contra a alucinação (Slide 18), antecipando a postura crítica necessária para o ChatGPT no Encontro 2."
+      },
+      {
+        numero: 6,
+        duvida: "Usar IA no trabalho, nos estudos ou para escrever e-mails não é uma forma de trapaça ou plágio?",
+        resposta: "Usar IA para copiar e colar respostas cegas sem ler, sem pensar e sem declarar autoria é plágio e desonestidade. Por outro lado, usar a IA como copiloto — para destravar a folha em branco, pedir analogias, organizar tópicos de uma aula ou revisar clareza — é potencialização do intelecto humano. A calculadora não acabou com a matemática; ela tirou o esforço mecânico da conta para permitir que o humano resolva problemas mais complexos.",
+        pontoDidatico: "Estabeleça a linha clara entre trapaça passiva e coprodução crítica / copilotagem ética (Slide 20)."
+      },
+      {
+        numero: 7,
+        duvida: "A IA vai roubar todos os empregos e substituir os profissionais?",
+        resposta: "A IA automatiza tarefas repetitivas, mecânicas e burocráticas, mas não substitui competências humanas fundamentais: empatia, discernimento ético, criatividade contextual, afeto e negociação. A IA não vai substituir o professor ou o profissional consciente, mas o profissional que aprende a usar IA como copiloto terá enorme vantagem sobre quem a ignora. Este curso existe para nos colocar no controle dessa transformação!",
+        pontoDidatico: "Acolha a ansiedade profissional (Slide 21) e empodere os alunos a assumirem o papel de autores e gestores de tecnologia."
+      },
+      {
+        numero: 8,
+        duvida: "A IA pode ler minhas mensagens, fotos e dados pessoais sem permissão? O Brasil tem leis para nos proteger?",
+        resposta: "Sim, no Brasil temos a LGPD (Lei Geral de Proteção de Dados) e o novo Marco Legal da IA (PL 2338/2023), que exigem consentimento, finalidade legítima e respeito à privacidade para o uso de dados de cidadãos. Além disso, o Plano Brasileiro de IA (PBIA) investe R$ 23 bilhões para garantir que o país desenvolva tecnologia própria e soberana, aplicando IA em benefício público (como no SUS) e capacitando a população.",
+        pontoDidatico: "Valorize a dimensão cidadã, jurídica e soberana da tecnologia (Slides 22 a 24), desmistificando a ideia de que a internet é uma 'terra sem leis'."
+      },
+      {
+        numero: 9,
+        duvida: "Eu não sei nada de matemática, não sou da área de exatas e tenho receio de computador. Eu vou conseguir acompanhar as aulas práticas?",
+        resposta: "Com certeza absoluta! O minicurso foi construído com linguagem 100% acessível, sem exigir qualquer fórmula matemática ou conhecimento de programação. A única habilidade necessária é a nossa capacidade humana de nos comunicar em português e ter curiosidade. Ter um e-mail válido (Slide 6) é o nosso único ponto de partida e estaremos juntas ao lado de vocês em todas as etapas no laboratório.",
+        pontoDidatico: "Garanta o acolhimento afetivo e a redução de ansiedade técnica (Slides 5 e 6), fortalecendo o vínculo de confiança entre a dupla docente e a turma."
+      }
+    ],
 
-// Compatibilidade Global
-window.ENCONTRO_1_DATA = ENCONTRO_1_DATA;
-window.CURSO_IA_CURRENT_DATA = ENCONTRO_1_DATA;
+    divisaoPapeis: [
+      { bloco: "Bloco 1 (00h-30m)", tema: "Acolhimento, Contrato Pedagógico & Estrutura (Slides 1 a 6)", papel: "radio" },
+      { bloco: "Bloco 2 (30m-55m)", tema: "Gênese Histórica, Definição & Os 3 Ingredientes (Slides 7 a 10)", papel: "radio" },
+      { bloco: "Bloco 3 (55m-85m)", tema: "A IA Invisível do Dia a Dia & Teorema de Tesler (Slides 11 a 15)", papel: "radio" },
+      { bloco: "Intervalo (15m)", tema: "Intervalo Pedagógico / Café com Prosa (Atalho Tecla I)", papel: "ambas" },
+      { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 16 a 21)", papel: "radio" },
+      { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 22 a 24)", papel: "radio" },
+      { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório Prático de E-mail, Portfólio Digital & Fechamento (Slides 25 a 27)", papel: "ambas" }
+    ],
+
+    dossies: dossies
+  };
+
+  // Exposição Global no Navegador (Window) e Node.js
+  if (typeof window !== 'undefined') {
+    window.ENCONTRO_1_DATA = ENCONTRO_1_DATA;
+    window.CURSO_IA_CURRENT_DATA = ENCONTRO_1_DATA;
+  }
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = ENCONTRO_1_DATA;
+  }
+
+  global.ENCONTRO_1_DATA = ENCONTRO_1_DATA;
+  global.CURSO_IA_CURRENT_DATA = ENCONTRO_1_DATA;
+
+})(typeof window !== 'undefined' ? window : globalThis);

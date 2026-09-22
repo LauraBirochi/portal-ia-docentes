@@ -46,3 +46,8 @@ cp .env.example .env
 python app.py
 ```
 Acesse no navegador: `http://localhost:5000`
+
+### 5. Executar os Testes Automatizados
+```bash
+python -m unittest discover -s tests -p "test_*.py"
+```

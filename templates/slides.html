@@ -444,6 +444,147 @@
       border-radius: var(--radius-pill);
     }
 
+    /* --- TIPO: SEÇÃO / TÍTULO DE IMPACTO --- */
+    .layout-secao {
+      text-align: center;
+      width: 100%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .secao-badge-wrap {
+      margin-bottom: 2rem;
+    }
+
+    .secao-chip {
+      background: rgba(212, 163, 115, 0.15);
+      border: 2px solid var(--border-amber);
+      color: var(--text-amber);
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 0.75rem 2.25rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 0 30px rgba(212, 163, 115, 0.2);
+    }
+
+    .secao-title {
+      font-family: var(--font-display);
+      font-size: 4.8rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.15;
+      margin-bottom: 1.75rem;
+      max-width: 22ch;
+      text-shadow: 0 4px 25px rgba(0,0,0,0.6);
+    }
+
+    .layout-secao.has-quote .secao-title {
+      font-size: 3.2rem;
+      max-width: 28ch;
+      margin-bottom: 1.25rem;
+    }
+
+    .secao-sub {
+      font-size: 2.2rem;
+      color: var(--text-secondary);
+      max-width: 34ch;
+      line-height: 1.4;
+      margin-bottom: 3rem;
+    }
+
+    .secao-pills {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .secao-pill {
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 0.9rem 2.25rem;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    .secao-pill.ficcao {
+      background: rgba(220, 53, 69, 0.15);
+      border: 2px solid rgba(220, 53, 69, 0.45);
+      color: #ff8787;
+    }
+
+    .secao-pill.real {
+      background: rgba(40, 167, 69, 0.15);
+      border: 2px solid rgba(40, 167, 69, 0.45);
+      color: #69db7c;
+    }
+
+    .secao-pill-divider {
+      font-size: 2rem;
+      color: var(--text-muted);
+      font-weight: bold;
+    }
+
+    .secao-quote-container {
+      max-width: 1100px;
+      margin: 1.25rem auto 1.5rem auto;
+      background: linear-gradient(145deg, rgba(212, 163, 115, 0.1) 0%, rgba(37, 30, 24, 0.85) 100%);
+      border: 2px solid var(--border-amber);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 3.5rem;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-glow);
+      text-align: center;
+      position: relative;
+    }
+
+    .secao-quote-container::before {
+      content: '“';
+      position: absolute;
+      top: -15px;
+      left: 35px;
+      font-size: 5.5rem;
+      font-family: serif;
+      color: var(--accent-warm);
+      opacity: 0.35;
+      line-height: 1;
+    }
+
+    .secao-quote {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-style: italic;
+      color: var(--text-amber);
+      line-height: 1.45;
+      margin: 0 0 1.5rem 0;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+    }
+
+    .secao-author {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 1.4rem;
+      color: var(--text-secondary);
+      border-top: 1px dashed rgba(212, 163, 115, 0.3);
+      padding-top: 1.25rem;
+    }
+
+    .secao-author strong {
+      color: var(--text-main);
+      font-size: 1.6rem;
+    }
+
     /* --- TIPO 2: APRESENTAÇÃO / CARDS DE DESTAQUE --- */
     .grid-3cards {
       display: grid;
@@ -934,6 +1075,225 @@
       line-height: 1;
     }
 
+    /* Variações Semânticas para Quebra-Gelo e Mitos */
+    .card-coluna.col-alerta {
+      background: linear-gradient(145deg, rgba(139, 58, 58, 0.12) 0%, rgba(36, 25, 25, 0.9) 100%);
+      border: 2px solid rgba(220, 53, 69, 0.45);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(220, 53, 69, 0.08);
+    }
+
+    .card-coluna.col-alerta .card-col-header {
+      color: var(--text-red);
+      border-bottom: 2px solid rgba(220, 53, 69, 0.35);
+    }
+
+    .card-coluna.col-alerta .bullet {
+      color: var(--text-red) !important;
+      font-weight: 800;
+    }
+
+    .card-coluna.col-positivo {
+      background: linear-gradient(145deg, rgba(61, 122, 74, 0.12) 0%, rgba(25, 36, 25, 0.9) 100%);
+      border: 2px solid rgba(40, 167, 69, 0.45);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(40, 167, 69, 0.08);
+    }
+
+    .card-coluna.col-positivo .card-col-header {
+      color: var(--text-green);
+      border-bottom: 2px solid rgba(40, 167, 69, 0.35);
+    }
+
+    .card-coluna.col-positivo .bullet {
+      color: var(--text-green) !important;
+      font-weight: 800;
+    }
+
+    /* --- TIPO: IA DA FICÇÃO (SLIDE 10) --- */
+    .layout-ia-ficcao-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 3.5rem;
+      width: 100%;
+      align-items: center;
+    }
+
+    .ia-ficcao-media-card {
+      background: linear-gradient(145deg, #241919 0%, #171212 100%);
+      border: 2px solid rgba(220, 53, 69, 0.45);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .ia-ficcao-img-box {
+      width: 100%;
+      height: 400px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #000;
+      border: 1.5px solid rgba(220, 53, 69, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ia-ficcao-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.3s ease;
+    }
+
+    .ia-ficcao-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .ia-ficcao-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(220, 53, 69, 0.2);
+      color: #ff8787;
+      border: 1px solid rgba(220, 53, 69, 0.45);
+      padding: 0.45rem 1.25rem;
+      border-radius: var(--radius-pill);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      align-self: flex-start;
+    }
+
+    .ia-ficcao-characters-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .ia-ficcao-char-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-subtle);
+      border-left: 4px solid #ff6b6b;
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.4rem;
+    }
+
+    .ia-ficcao-char-card h4 {
+      font-size: 1.5rem;
+      color: var(--text-main);
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .ia-ficcao-char-card p {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .ia-ficcao-conclusion {
+      background: rgba(220, 53, 69, 0.12);
+      border: 1px dashed rgba(220, 53, 69, 0.5);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem 1.5rem;
+      font-size: 1.35rem;
+      color: #ff8787;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    /* --- TIPO: IA ESTREITA (SLIDE 11) --- */
+    .layout-ia-estreita-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      width: 100%;
+    }
+
+    .ia-estreita-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(40, 167, 69, 0.12);
+      border: 1.5px solid rgba(40, 167, 69, 0.35);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.75rem;
+    }
+
+    .ia-estreita-badge {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #69db7c;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .ia-estreita-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .ia-estreita-item-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .ia-estreita-item-card:hover {
+      border-color: var(--border-green);
+      transform: translateY(-2px);
+    }
+
+    .ia-estreita-item-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .ia-estreita-item-icon {
+      font-size: 2rem;
+    }
+
+    .ia-estreita-item-title {
+      font-size: 1.45rem;
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .ia-estreita-item-desc {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .ia-estreita-footer-banner {
+      background: linear-gradient(135deg, #222c21 0%, #151d14 100%);
+      border: 1.5px dashed var(--border-green);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.75rem;
+      font-size: 1.35rem;
+      color: var(--text-amber);
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.4;
+    }
+
     /* --- TIPO 11: FECHAMENTO --- */
     .layout-fechamento-wrap {
       display: flex;
@@ -1337,7 +1697,7 @@
         <button class="btn-slide-nav" id="btn-prev" title="Slide anterior (Atalho: ← ou PageUp)">
           <span>←</span> <span class="btn-text-full">Anterior</span> <kbd class="kbd-chip">←</kbd>
         </button>
-        <span id="slide-counter" class="slide-counter-badge">Slide 1 de 21</span>
+        <span id="slide-counter" class="slide-counter-badge">Slide 1 de 26</span>
         <button class="btn-slide-nav" id="btn-next" title="Próximo slide (Atalho: → ou Espaço)">
           <span class="btn-text-full">Próximo</span> <span>→</span> <kbd class="kbd-chip">→</kbd>
         </button>
@@ -1588,22 +1948,27 @@
         else if (s.tipo === 'quebra-gelo' && s.colunas) {
           bodyHTML = `
             <div class="grid-colunas">
-              ${s.colunas.map(col => `
-                <div class="card-coluna">
+              ${s.colunas.map((col, idx) => {
+                const isAlert = idx === 0;
+                const colClass = isAlert ? 'col-alerta' : 'col-positivo';
+                const bulletChar = isAlert ? '✕' : '✓';
+                return `
+                <div class="card-coluna ${colClass}">
                   <div class="card-col-header">
-                    <span>${col.icone || '📌'}</span>
+                    <span>${col.icone || (isAlert ? '⚠️' : '💡')}</span>
                     <span>${col.tag}</span>
                   </div>
                   <ul class="card-col-list">
                     ${col.itens.map(item => `
                       <li>
-                        <span class="bullet">•</span>
+                        <span class="bullet">${bulletChar}</span>
                         <span>${item}</span>
                       </li>
                     `).join('')}
                   </ul>
                 </div>
-              `).join('')}
+                `;
+              }).join('')}
             </div>
           `;
         }
@@ -1641,7 +2006,40 @@
             </div>
           `;
         }
-        // TIPO 9: Tipos de IA (ANI vs AGI)
+        // TIPO 9: Seção / Título de Impacto / Teorema & Citação
+        else if (s.tipo === 'secao' || s.tipo === 'titulo-secao' || s.tipo === 'citacao' || (s.tipo === 'tipos-ia' && !s.colunas)) {
+          bodyHTML = `
+            <div class="layout-secao ${s.citacao ? 'has-quote' : ''}">
+              <div class="secao-badge-wrap">
+                <span class="secao-chip">${s.badge || s.categoria || 'Classificação Tecnológica'}</span>
+              </div>
+              <h1 class="secao-title">${s.titulo}</h1>
+              ${s.citacao ? `
+                <div class="secao-quote-container">
+                  <blockquote class="secao-quote">
+                    "${s.citacao}"
+                  </blockquote>
+                  ${s.autor ? `
+                    <div class="secao-author">
+                      <strong>${s.autor}</strong>
+                      ${s.autorDesc ? `<span>${s.autorDesc}</span>` : ''}
+                    </div>
+                  ` : ''}
+                </div>
+              ` : ''}
+              ${s.subtitulo ? `<p class="secao-sub">${s.subtitulo}</p>` : ''}
+              ${(s.pills && s.pills.length) ? `
+                <div class="secao-pills">
+                  ${s.pills.map((p, idx) => `
+                    <span class="secao-pill ${p.tipo || 'real'}">${p.texto}</span>
+                    ${idx < s.pills.length - 1 ? `<span class="secao-pill-divider">➔</span>` : ''}
+                  `).join('')}
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }
+        // TIPO 9 (Legado): Tipos de IA com Colunas
         else if (s.tipo === 'tipos-ia' && s.colunas) {
           bodyHTML = `
             <div class="grid-colunas">
@@ -1802,6 +2200,77 @@
             </div>
           `;
         }
+        // TIPO: IA DA FICÇÃO (SLIDE 10)
+        else if (s.tipo === 'ia-ficcao') {
+          bodyHTML = `
+            <div class="layout-ia-ficcao-wrap">
+              <div class="ia-ficcao-media-card">
+                <div class="ia-ficcao-img-box">
+                  <img src="${s.imagem || '/static/img/ia_ficcao_rosie.jpg'}" alt="${s.titulo}" />
+                </div>
+                <div style="text-align: center; color: var(--text-muted); font-size: 1.15rem; font-style: italic;">
+                  A robô Rosie (Os Jetsons) — Ilustração conceitual da ficção
+                </div>
+              </div>
+
+              <div class="ia-ficcao-content">
+                <div class="ia-ficcao-badge">
+                  <span>🎬</span>
+                  <span>${s.badge || 'IA Geral (AGI / Cinema) — 0% REAL HOJE'}</span>
+                </div>
+
+                <div class="ia-ficcao-characters-list">
+                  ${(s.personagens || []).map(p => `
+                    <div class="ia-ficcao-char-card">
+                      <h4><span>🤖</span> ${p.nome}</h4>
+                      <p>${p.desc}</p>
+                    </div>
+                  `).join('')}
+                </div>
+
+                ${s.conclusaoFiccao ? `
+                  <div class="ia-ficcao-conclusion">
+                    💡 <strong>Conclusão:</strong> ${s.conclusaoFiccao}
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          `;
+        }
+        // TIPO: IA ESTREITA (SLIDE 11)
+        else if (s.tipo === 'ia-estreita') {
+          bodyHTML = `
+            <div class="layout-ia-estreita-wrap">
+              <div class="ia-estreita-topbar">
+                <div class="ia-estreita-badge">
+                  <span>⚙️</span>
+                  <span>${s.badge || 'IA Estreita (Narrow AI / ANI) — 100% DA IA DO PLANETA'}</span>
+                </div>
+                <span style="font-size: 1.25rem; color: var(--text-amber); font-weight: 700;">
+                  Hiperespecialista em UMA tarefa • Zero sentimentos
+                </span>
+              </div>
+
+              <div class="ia-estreita-grid">
+                ${(s.recursos || []).map(rec => `
+                  <div class="ia-estreita-item-card">
+                    <div class="ia-estreita-item-header">
+                      <span class="ia-estreita-item-icon">${rec.icone || '📱'}</span>
+                      <span class="ia-estreita-item-title">${rec.titulo}</span>
+                    </div>
+                    <p class="ia-estreita-item-desc">${rec.desc}</p>
+                  </div>
+                `).join('')}
+              </div>
+
+              ${s.destaque ? `
+                <div class="ia-estreita-footer-banner">
+                  💡 <strong>Regra de Ouro:</strong> ${s.destaque}
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }
         // Fallback para colunas genéricas
         else if (s.colunas) {
           bodyHTML = `
@@ -1835,13 +2304,16 @@
         }
 
         // Montagem do Slide no Card
+        const isFullscreenCover = (s.tipo === 'capa' || s.tipo === 'secao' || s.tipo === 'titulo-secao');
         container.innerHTML = `
           <div>
-            <div class="slide-header">
-              <span class="slide-tag">${s.categoria || 'Módulo 1'} • Slide ${s.numero} de ${slides.length}</span>
-              <h2 class="slide-title">${s.titulo}</h2>
-              ${s.subtitulo && s.tipo !== 'capa' ? `<p class="slide-subtitle">${s.subtitulo}</p>` : ''}
-            </div>
+            ${!isFullscreenCover ? `
+              <div class="slide-header">
+                <span class="slide-tag">${s.categoria || 'Módulo 1'} • Slide ${s.numero} de ${slides.length}</span>
+                <h2 class="slide-title">${s.titulo}</h2>
+                ${s.subtitulo ? `<p class="slide-subtitle">${s.subtitulo}</p>` : ''}
+              </div>
+            ` : ''}
           </div>
 
           <div class="slide-body">
