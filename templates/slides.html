@@ -71,18 +71,18 @@
        2. TOPBAR DE CONTROLES DO PROJETOR (LAYOUT PREMIUM)
        ========================================================================== */
     .projector-topbar {
-      height: 60px;
-      min-height: 60px;
+      height: 62px;
+      min-height: 62px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 1.5rem;
-      background: rgba(18, 14, 11, 0.97);
-      border-bottom: 1px solid rgba(212, 163, 115, 0.2);
+      background: rgba(16, 13, 10, 0.96);
+      border-bottom: 1px solid rgba(212, 163, 115, 0.22);
       font-size: 0.88rem;
       z-index: 50;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
     }
 
     .projector-brand {
@@ -92,16 +92,22 @@
     }
 
     .brand-icon-box {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: var(--radius-sm);
-      background: var(--bg-card-highlight);
-      border: 1px solid var(--border-highlight);
+      background: linear-gradient(135deg, #342920 0%, #201913 100%);
+      border: 1px solid var(--border-amber);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.15rem;
-      box-shadow: 0 0 12px var(--accent-glow);
+      box-shadow: 0 0 14px var(--accent-glow);
+    }
+
+    .brand-text-col {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
     }
 
     .brand-title {
@@ -110,6 +116,13 @@
       font-size: 1.05rem;
       color: var(--text-main);
       letter-spacing: -0.01em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      letter-spacing: 0.02em;
     }
 
     .projector-brand span.tag {
@@ -124,22 +137,9 @@
       border: 1px solid rgba(212, 163, 115, 0.3);
     }
 
-    .topbar-meta-team {
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .topbar-meta-team strong {
-      color: var(--text-secondary);
-      font-weight: 600;
-    }
-
     .topbar-v-divider {
       width: 1px;
-      height: 22px;
+      height: 24px;
       background: var(--border-subtle);
       margin: 0 0.35rem;
     }
@@ -154,7 +154,7 @@
       display: flex;
       align-items: center;
       gap: 0.35rem;
-      background: rgba(30, 24, 19, 0.6);
+      background: rgba(30, 24, 19, 0.65);
       padding: 0.25rem 0.35rem;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-subtle);
@@ -207,7 +207,8 @@
       border-color: var(--border-subtle);
     }
 
-    .btn-notes-toggle.active {
+    .btn-notes-toggle.active,
+    .btn-questions-toggle.active {
       background: var(--text-amber);
       color: #1a140e;
       border-color: var(--text-amber);
@@ -281,7 +282,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 50px 80px;
+      padding: 40px 60px;
     }
 
     .slide-card {
@@ -290,10 +291,11 @@
       background: var(--bg-stage);
       border: 2px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 60px 80px;
+      padding: 55px 75px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 20px;
       position: relative;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 100px var(--accent-glow);
       animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -315,7 +317,7 @@
        4. CABEÇALHOS & ETIQUETAS DO SLIDE
        ========================================================================== */
     .slide-header {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .slide-tag {
@@ -341,7 +343,7 @@
       color: var(--text-main);
       line-height: 1.15;
       letter-spacing: -0.02em;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .slide-subtitle {
@@ -355,38 +357,8 @@
       flex: 1;
       display: flex;
       align-items: center;
-      margin: 15px 0;
+      margin: 10px 0;
       width: 100%;
-    }
-
-    /* ==========================================================================
-       5. RODAPÉ DO SLIDE
-       ========================================================================== */
-    .slide-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 2px solid var(--border-subtle);
-      padding-top: 20px;
-      font-size: 1.2rem;
-      color: var(--text-muted);
-    }
-
-    .slide-footer-keys {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.1rem;
-    }
-
-    .key-badge {
-      background: var(--bg-card-highlight);
-      color: var(--text-main);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 1rem;
-      border: 1px solid var(--border-subtle);
     }
 
     /* ==========================================================================
@@ -1294,11 +1266,164 @@
       line-height: 1.4;
     }
 
-    /* --- TIPO 11: FECHAMENTO --- */
+    /* --- TIPO: MISSÃO 2 - PROVA DIAGNÓSTICA (SLIDE 26) --- */
+    .layout-diagnostica-wrap {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 3rem;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .diagnostica-passos-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .diagnostica-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid rgba(212, 163, 115, 0.2);
+      padding-bottom: 1rem;
+    }
+
+    .diagnostica-card-header .header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .diagnostica-card-header .tempo-chip {
+      background: rgba(212, 163, 115, 0.15);
+      color: var(--text-amber);
+      border: 1px solid rgba(212, 163, 115, 0.35);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+
+    .diagnostica-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .diag-step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 0.95rem 1.25rem;
+      border-radius: var(--radius-md);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .diag-step-item:hover {
+      border-color: var(--border-amber);
+      transform: translateX(4px);
+    }
+
+    .diag-step-item .step-num {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      background: var(--accent-warm);
+      color: #1a140e;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .diag-step-item .step-text {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .diagnostica-info-card {
+      background: linear-gradient(145deg, #2b231a 0%, #1a1510 100%);
+      border: 2px solid var(--border-amber);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      gap: 1.25rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow);
+    }
+
+    .diag-icon-halo {
+      font-size: 4.5rem;
+      filter: drop-shadow(0 0 20px rgba(212, 163, 115, 0.5));
+      margin-bottom: -0.25rem;
+    }
+
+    .diag-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .diag-desc {
+      font-size: 1.35rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      max-width: 30ch;
+    }
+
+    .diag-badge-pill {
+      background: rgba(105, 219, 124, 0.15);
+      border: 1.5px solid rgba(105, 219, 124, 0.45);
+      color: #69db7c;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-pill);
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .diag-support-banner {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px dashed var(--border-amber);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.25rem;
+      font-size: 1.2rem;
+      color: var(--text-amber);
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-align: left;
+    }
+
+    /* --- TIPO: FECHAMENTO REFINADO (SLIDE 27) --- */
     .layout-fechamento-wrap {
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 1.75rem;
       width: 100%;
     }
 
@@ -1306,45 +1431,93 @@
       background: linear-gradient(135deg, #2b2219 0%, #1e1711 100%);
       border: 2px solid var(--border-amber);
       border-radius: var(--radius-lg);
-      padding: 3rem 3.5rem;
+      padding: 2.5rem 3.5rem;
       text-align: center;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 35px var(--accent-glow);
+    }
+
+    .fechamento-celebrate-badge {
+      display: inline-block;
+      background: rgba(212, 163, 115, 0.2);
+      border: 1px solid var(--border-amber);
+      color: var(--text-amber);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 0.35rem 1.25rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
     }
 
     .fechamento-banner-card h3 {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       color: var(--text-main);
       line-height: 1.35;
       font-family: var(--font-display);
-      margin-bottom: 0.5rem;
+      margin: 0;
     }
 
     .fechamento-next-card {
       background: var(--bg-card);
       border: 2px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 2.25rem 3rem;
+      padding: 1.75rem 2.5rem;
       display: flex;
       align-items: center;
       gap: 2rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
     .fechamento-next-icon {
-      font-size: 4rem;
+      font-size: 3.5rem;
       color: var(--text-amber);
     }
 
-    .fechamento-next-info h4 {
-      font-size: 1.4rem;
+    .fechamento-next-info .next-label {
+      font-size: 1.25rem;
       color: var(--text-amber);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      font-weight: 700;
       margin-bottom: 0.35rem;
     }
 
-    .fechamento-next-info p {
-      font-size: 1.85rem;
+    .fechamento-next-info .next-title {
+      font-size: 1.75rem;
+      color: var(--text-main);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .fechamento-lembretes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .fechamento-lembrete-pill {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-subtle);
+      padding: 1.1rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-size: 1.25rem;
       color: var(--text-secondary);
       font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .fechamento-lembrete-pill:hover {
+      border-color: var(--border-amber);
+      transform: translateY(-2px);
+    }
+
+    .fechamento-lembrete-pill .pill-icon {
+      font-size: 1.6rem;
     }
 
     /* ==========================================================================
@@ -1400,7 +1573,7 @@
     }
 
     /* ==========================================================================
-       8. MODAL / OVERLAY DE INTERVALO PEDAGÓGICO (ATALHO: TECLA I)
+       8A. MODAL / OVERLAY DE INTERVALO PEDAGÓGICO (ATALHO: TECLA I)
        ========================================================================== */
     .interval-overlay-stage {
       position: fixed;
@@ -1448,12 +1621,9 @@
     }
 
     @keyframes bouncePulse {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translateY(0) scale(1);
       }
-
       50% {
         transform: translateY(-6px) scale(1.04);
       }
@@ -1515,6 +1685,13 @@
     }
 
     /* ==========================================================================
+       8B. MODAL / OVERLAY DE PERGUNTAS DA TURMA (ATALHO: TECLA P)
+       ========================================================================== */
+    /* Reutiliza .interval-overlay-stage e .interval-content-card para consistência visual */
+
+
+
+    /* ==========================================================================
        9. REGRAS DE RESPONSIVIDADE (NOTEBOOKS, TABLETS E MOBILE)
        ========================================================================== */
     @media (max-width: 1400px) {
@@ -1542,8 +1719,9 @@
         padding: 0.38rem 0.65rem;
         font-size: 0.82rem;
       }
-      .interval-content-card {
-        padding: 3rem 2.5rem;
+      .interval-content-card,
+      .questions-content-card {
+        padding: 2.5rem 2rem;
       }
     }
 
@@ -1583,19 +1761,23 @@
       .notes-drawer-content {
         font-size: 1.05rem;
       }
-      .interval-content-card {
+      .interval-content-card,
+      .questions-content-card {
         padding: 2.25rem 1.75rem;
         max-height: 88vh;
         overflow-y: auto;
       }
-      .interval-title {
+      .interval-title,
+      .questions-header-text h2 {
         font-size: 2.2rem;
       }
       .interval-badge {
         font-size: 1rem;
         padding: 0.35rem 1rem;
       }
-      .interval-tips-grid {
+      .interval-tips-grid,
+      .questions-grid,
+      .layout-diagnostica-wrap {
         grid-template-columns: 1fr;
         gap: 0.85rem;
       }
@@ -1607,10 +1789,9 @@
         min-height: 48px;
         padding: 0 0.5rem;
       }
-      .projector-brand span.tag {
-        display: none;
-      }
-      .brand-title {
+      .projector-brand span.tag,
+      .brand-title,
+      .brand-subtitle {
         display: none;
       }
       .brand-icon-box {
@@ -1645,14 +1826,17 @@
         font-size: 0.95rem;
         line-height: 1.5;
       }
-      .interval-content-card {
+      .interval-content-card,
+      .questions-content-card {
         padding: 1.75rem 1.25rem;
         gap: 1rem;
       }
-      .interval-icon {
-        font-size: 3.5rem;
+      .interval-icon,
+      .questions-header-icon {
+        font-size: 3rem;
       }
-      .interval-title {
+      .interval-title,
+      .questions-header-text h2 {
         font-size: 1.8rem;
       }
       .interval-badge {
@@ -1683,11 +1867,14 @@
 
 <body>
 
-  <!-- Topbar de Controles do Apresentador (Layout Refinado & Responsivo) -->
+  <!-- Topbar de Controles do Apresentador (Layout Refinado com Frontend Design) -->
   <header class="projector-topbar">
     <div class="projector-brand">
-      <div class="brand-icon-box">🖥️</div>
-      <span class="brand-title">Projetor de Aula</span>
+      <div class="brand-icon-box">✨</div>
+      <div class="brand-text-col">
+        <span class="brand-title">Projetor Docente</span>
+        <span class="brand-subtitle">Minicurso IA • 32h</span>
+      </div>
       <span class="tag">Módulo {{ meeting_id or 1 }}</span>
     </div>
 
@@ -1697,7 +1884,7 @@
         <button class="btn-slide-nav" id="btn-prev" title="Slide anterior (Atalho: ← ou PageUp)">
           <span>←</span> <span class="btn-text-full">Anterior</span> <kbd class="kbd-chip">←</kbd>
         </button>
-        <span id="slide-counter" class="slide-counter-badge">Slide 1 de 26</span>
+        <span id="slide-counter" class="slide-counter-badge">Slide 1 de 27</span>
         <button class="btn-slide-nav" id="btn-next" title="Próximo slide (Atalho: → ou Espaço)">
           <span class="btn-text-full">Próximo</span> <span>→</span> <kbd class="kbd-chip">→</kbd>
         </button>
@@ -1705,11 +1892,15 @@
 
       <div class="topbar-v-divider"></div>
 
-      <!-- Cluster 2: Ferramentas Docentes -->
+      <!-- Cluster 2: Ferramentas Docentes (Notas [N], Perguntas [P], Intervalo [I]) -->
       <div class="control-cluster">
         <button class="btn-slide-nav btn-notes-toggle" id="btn-notes"
-          title="Abrir/Fechar notas pedagógicas da fala (Atalho: P ou N)">
-          <span>🎙️</span> <span class="btn-text-full">Notas</span> <kbd class="kbd-chip">P</kbd>
+          title="Abrir/Fechar notas pedagógicas da fala docente (Atalho: N)">
+          <span>🎙️</span> <span class="btn-text-full">Notas</span> <kbd class="kbd-chip">N</kbd>
+        </button>
+        <button class="btn-slide-nav btn-questions-toggle" id="btn-questions"
+          title="Abrir/Fechar tela de perguntas e dúvidas da turma (Atalho: P)">
+          <span>💬</span> <span class="btn-text-full">Perguntas</span> <kbd class="kbd-chip">P</kbd>
         </button>
         <button class="btn-slide-nav btn-interval-nav" id="btn-interval"
           title="Abrir/Fechar tela de intervalo e café (Atalho: I)">
@@ -1733,25 +1924,45 @@
   <main class="deck-viewport" id="deck-viewport">
     <div class="deck-stage" id="deck-stage">
       <div id="slide-container" class="slide-card">
-        <!-- Renderizado dinamicamente pelo JavaScript -->
+        <!-- Renderizado dinamicamente pelo JavaScript sem rodapés poluídos -->
       </div>
     </div>
   </main>
 
-  <!-- Gaveta de Notas da Professora (Ativada com P / N) -->
+  <!-- Gaveta de Notas da Professora (Ativada com a Tecla N) -->
   <div id="notes-drawer" class="presenter-notes-drawer">
     <div class="notes-drawer-header">
       <div class="notes-drawer-title">
         <span>🎙️</span>
         <span id="notes-title">Notas Pedagógicas do Slide</span>
       </div>
-      <button id="btn-close-notes" class="btn-slide-nav" style="padding: 0.2rem 0.6rem; font-size: 0.75rem;">✕ Fechar
-        Notas</button>
+      <button id="btn-close-notes" class="btn-slide-nav" style="padding: 0.25rem 0.75rem; font-size: 0.82rem;" title="Fechar notas (Atalho: Esc ou N)">✕ Fechar (N)</button>
     </div>
     <div id="notes-body" class="notes-drawer-content">
       <!-- Conteúdo da fala sugerida e tempo -->
     </div>
   </div>
+
+  <!-- Overlay de Perguntas (Atalho: Tecla P) -->
+  <div id="questions-overlay" class="interval-overlay-stage" style="display: none;">
+    <div class="interval-content-card">
+      <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: -0.5rem;">
+        <button id="btn-close-questions" class="btn-slide-nav" style="padding: 0.35rem 0.8rem; font-size: 0.85rem;" title="Fechar perguntas (Atalho: Esc ou P)">✕ Fechar (P)</button>
+      </div>
+      <div class="interval-icon">❓</div>
+      <h2 class="interval-title">Perguntas??</h2>
+      <div class="interval-badge">Momento de Diálogo • Dúvidas & Reflexões da Turma</div>
+
+      <div style="display: flex; justify-content: center; width: 100%; margin: 1rem 0;">
+        <div class="interval-tip-card" style="max-width: 580px; width: 100%; text-align: center; align-items: center; padding: 1.75rem 2.25rem;">
+          <span class="icon" style="font-size: 2.5rem;">🙋</span>
+          <h4 style="font-size: 1.35rem;">Espaço Aberto</h4>
+          <p style="font-size: 1.15rem; line-height: 1.5; margin: 0;">Sinta-se à vontade para levantar a mão, tirar qualquer dúvida e compartilhar suas ideias.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Overlay de Intervalo Pedagógico (Atalho: Tecla I) -->
   <div id="interval-overlay" class="interval-overlay-stage" style="display: none;">
@@ -1780,7 +1991,6 @@
           <p>Cada um sentará em uma máquina para iniciar a nossa primeira oficina prática!</p>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -1798,14 +2008,21 @@
       const btnNext = document.getElementById('btn-next');
       const btnFullscreen = document.getElementById('btn-fullscreen');
       const btnNotes = document.getElementById('btn-notes');
+      const btnQuestions = document.getElementById('btn-questions');
       const btnInterval = document.getElementById('btn-interval');
+      
       const intervalOverlay = document.getElementById('interval-overlay');
       const btnCloseInterval = document.getElementById('btn-close-interval');
+      
+      const questionsOverlay = document.getElementById('questions-overlay');
+      const btnCloseQuestions = document.getElementById('btn-close-questions');
+      
       const notesDrawer = document.getElementById('notes-drawer');
       const notesTitle = document.getElementById('notes-title');
       const notesBody = document.getElementById('notes-body');
       const btnCloseNotes = document.getElementById('btn-close-notes');
       const deckStage = document.getElementById('deck-stage');
+
 
       // =======================================================================
       // 1. ESCALONAMENTO RESPONSIVO DO PALCO 16:9 (1920x1080)
@@ -1813,7 +2030,7 @@
       function fitStageToViewport() {
         if (!deckStage) return;
         const topbar = document.querySelector('.projector-topbar');
-        const topbarHeight = topbar ? topbar.offsetHeight : 60;
+        const topbarHeight = topbar ? topbar.offsetHeight : 62;
         const availWidth = window.innerWidth;
         const availHeight = window.innerHeight - topbarHeight;
         const marginX = window.innerWidth <= 640 ? 8 : (window.innerWidth <= 1200 ? 16 : 24);
@@ -1828,7 +2045,7 @@
       fitStageToViewport();
 
       // =======================================================================
-      // 2. MOTOR DE RENDERIZAÇÃO COMPLETO DOS 16 SLIDES
+      // 2. MOTOR DE RENDERIZAÇÃO COMPLETO DOS SLIDES (SEM RODAPÉS REPETITIVOS)
       // =======================================================================
       function renderSlide(index) {
         if (!slides.length) return;
@@ -2141,59 +2358,72 @@
             </div>
           `;
         }
-        // TIPO 15: Missão 2 - Portfólio Digital
-        else if (s.tipo === 'missao-portfolio' && s.passos) {
+        // TIPO 15: Missão 2 - Prova Diagnóstica (Slide 26)
+        else if ((s.tipo === 'missao-diagnostica' || s.tipo === 'missao-portfolio') && s.passos) {
+          const diag = s.destaqueDiagnostica || {
+            icone: "📋",
+            titulo: "Avaliação Diagnóstica Sem Medo",
+            desc: "Um raio-x formativo para descobrirmos o que você já conhece sobre tecnologia e ajustarmos o ritmo das próximas oficinas práticas.",
+            tagAviso: "Zero Pressão • Instrumento Pedagógico de Nivelamento"
+          };
           bodyHTML = `
-            <div class="grid-colunas" style="align-items: center;">
-              <div class="card-coluna">
-                <div class="card-col-header" style="color: var(--text-green);">
-                  <span>📝</span>
-                  <span>Roteiro da Atividade 1 (0,5 pt)</span>
+            <div class="layout-diagnostica-wrap">
+              <div class="diagnostica-passos-card">
+                <div class="diagnostica-card-header">
+                  <div class="header-left">
+                    <span>🚀</span>
+                    <span>Roteiro Prático no Computador</span>
+                  </div>
+                  <span class="tempo-chip">⏱️ ${s.tempoEstimado || '25 min'}</span>
                 </div>
-                <ul class="card-col-list">
-                  ${s.passos.map(p => `
-                    <li>
-                      <span class="bullet" style="color: var(--text-green);">•</span>
-                      <span>${p}</span>
-                    </li>
+                <div class="diagnostica-steps-list">
+                  ${s.passos.map((p, idx) => `
+                    <div class="diag-step-item">
+                      <div class="step-num">${idx + 1}</div>
+                      <div class="step-text">${p.replace(/^[0-9]+\.\s*/, '')}</div>
+                    </div>
                   `).join('')}
-                </ul>
+                </div>
               </div>
 
-              <div class="card-coluna" style="background: linear-gradient(135deg, #1f281e 0%, #171d16 100%); border-color: var(--border-green); padding: 3rem; text-align: center;">
-                <div style="font-size: 4.5rem; margin-bottom: 1rem;">🩺</div>
-                <h3 style="font-size: 2.2rem; color: var(--text-green); margin-bottom: 1rem;">O Raio-X da IA</h3>
-                <p style="font-size: 1.4rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.5rem;">
-                  Escolha 2 aplicativos que você usa (Waze, Spotify, Nubank, Netflix) e descreva os dados coletados e o benefício que a IA entrega.
-                </p>
-                <div style="background: rgba(0,0,0,0.3); border: 1px dashed var(--border-green); padding: 1rem; border-radius: var(--radius-md); font-size: 1.25rem; color: var(--text-secondary);">
-                  💡 Vale 0,5 ponto para compor sua Certificação de 32 Horas!
+              <div class="diagnostica-info-card">
+                <div class="diag-icon-halo">${diag.icone}</div>
+                <h3 class="diag-title">${diag.titulo}</h3>
+                <p class="diag-desc">${diag.desc}</p>
+                <div class="diag-badge-pill">
+                  <span>✨</span>
+                  <span>${diag.tagAviso}</span>
+                </div>
+                <div class="diag-support-banner">
+                  <span>🙋</span>
+                  <span><strong>Laura & Maria</strong> estão circulando nas mesas para ajudar com qualquer dúvida!</span>
                 </div>
               </div>
             </div>
           `;
         }
-        // TIPO 16: Síntese e Fechamento
+        // TIPO 16: Síntese e Fechamento (Slide 27)
         else if (s.tipo === 'fechamento') {
           bodyHTML = `
             <div class="layout-fechamento-wrap">
               <div class="fechamento-banner-card">
-                <span style="font-size: 3.5rem; display: block; margin-bottom: 0.75rem;">🎓</span>
+                <div class="fechamento-celebrate-badge">🎉 MISSÃO DO ENCONTRO 1 CUMPRIDA COM SUCESSO!</div>
                 <h3>"${s.conclusao}"</h3>
               </div>
 
               <div class="fechamento-next-card">
-                <div class="fechamento-next-icon">📅</div>
+                <div class="fechamento-next-icon">🚀</div>
                 <div class="fechamento-next-info">
-                  <h4>Próximo Encontro Presencial</h4>
-                  <p>${s.proximoEncontro}</p>
+                  <div class="next-label">Próximo Encontro Presencial</div>
+                  <div class="next-title">${s.proximoEncontro}</div>
                 </div>
               </div>
 
-              <div style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 0.5rem;">
-                ${(s.lembretesFinais || []).map(lembrete => `
-                  <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 1.25rem 2rem; border-radius: var(--radius-pill); font-size: 1.35rem; color: var(--text-amber); font-weight: 600;">
-                    ⭐ ${lembrete}
+              <div class="fechamento-lembretes-grid">
+                ${(s.lembretesFinais || []).map((lembrete, idx) => `
+                  <div class="fechamento-lembrete-pill">
+                    <span class="pill-icon">${idx === 0 ? '🔐' : (idx === 1 ? '📋' : '⭐')}</span>
+                    <span>${lembrete}</span>
                   </div>
                 `).join('')}
               </div>
@@ -2303,7 +2533,7 @@
           `;
         }
 
-        // Montagem do Slide no Card
+        // Montagem do Slide no Card (Sem rodapé poluído!)
         const isFullscreenCover = (s.tipo === 'capa' || s.tipo === 'secao' || s.tipo === 'titulo-secao');
         container.innerHTML = `
           <div>
@@ -2318,13 +2548,6 @@
 
           <div class="slide-body">
             ${bodyHTML}
-          </div>
-
-          <div class="slide-footer">
-            <span>Minicurso de Extensão: Inteligência Artificial • Encontro 1 Presencial (32h)</span>
-            <div class="slide-footer-keys">
-              Navegar: <span class="key-badge">←</span> <span class="key-badge">→</span> | Tela cheia: <span class="key-badge">F</span> | Notas: <span class="key-badge">P</span> | Intervalo: <span class="key-badge">I</span>
-            </div>
           </div>
         `;
 
@@ -2376,6 +2599,13 @@
         btnNotes.classList.toggle('active');
       }
 
+      function toggleQuestions() {
+        if (!questionsOverlay) return;
+        const isHidden = (questionsOverlay.style.display === 'none' || !questionsOverlay.style.display);
+        questionsOverlay.style.display = isHidden ? 'flex' : 'none';
+        if (btnQuestions) btnQuestions.classList.toggle('active', isHidden);
+      }
+
       function toggleInterval() {
         if (!intervalOverlay) return;
         const isHidden = (intervalOverlay.style.display === 'none' || !intervalOverlay.style.display);
@@ -2386,8 +2616,18 @@
       btnNext.addEventListener('click', nextSlide);
       btnPrev.addEventListener('click', prevSlide);
       btnFullscreen.addEventListener('click', toggleFullscreen);
+      
       btnNotes.addEventListener('click', toggleNotes);
       btnCloseNotes.addEventListener('click', toggleNotes);
+      
+      if (btnQuestions) btnQuestions.addEventListener('click', toggleQuestions);
+      if (btnCloseQuestions) btnCloseQuestions.addEventListener('click', toggleQuestions);
+      if (questionsOverlay) {
+        questionsOverlay.addEventListener('click', (e) => {
+          if (e.target === questionsOverlay) toggleQuestions();
+        });
+      }
+
       if (btnInterval) btnInterval.addEventListener('click', toggleInterval);
       if (btnCloseInterval) btnCloseInterval.addEventListener('click', toggleInterval);
       if (intervalOverlay) {
@@ -2397,7 +2637,7 @@
       }
 
       // =======================================================================
-      // 4. ATALHOS DE TECLADO COMPLETOS
+      // 4. ATALHOS DE TECLADO COMPLETOS (N=Notas, P=Perguntas, I=Intervalo)
       // =======================================================================
       document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
@@ -2409,9 +2649,12 @@
         } else if (e.key === 'f' || e.key === 'F') {
           e.preventDefault();
           toggleFullscreen();
-        } else if (e.key === 'p' || e.key === 'P' || e.key === 'n' || e.key === 'N') {
+        } else if (e.key === 'n' || e.key === 'N') {
           e.preventDefault();
           toggleNotes();
+        } else if (e.key === 'p' || e.key === 'P') {
+          e.preventDefault();
+          toggleQuestions();
         } else if (e.key === 'i' || e.key === 'I') {
           e.preventDefault();
           toggleInterval();
@@ -2424,7 +2667,9 @@
           currentIndex = slides.length - 1;
           renderSlide(currentIndex);
         } else if (e.key === 'Escape') {
-          if (intervalOverlay && intervalOverlay.style.display === 'flex') {
+          if (questionsOverlay && questionsOverlay.style.display === 'flex') {
+            toggleQuestions();
+          } else if (intervalOverlay && intervalOverlay.style.display === 'flex') {
             toggleInterval();
           } else if (notesDrawer.classList.contains('open')) {
             toggleNotes();

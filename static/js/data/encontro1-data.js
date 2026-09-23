@@ -950,21 +950,28 @@
       {
         numero: 26,
         id: 26,
-        tipo: "missao-portfolio",
+        tipo: "missao-diagnostica",
         categoria: "Laboratório Prático 2",
-        titulo: "Missão 2 no Computador: Atividade 1 no Portfólio Digital",
-        subtitulo: "Oficina do Raio-X da IA no Cotidiano (Vale 0,5 ponto no Portfólio)",
+        titulo: "Missão 2 no Computador: Prova Diagnóstica",
+        subtitulo: "Mapeamento inicial de conhecimentos e expectativas para calibrar os próximos encontros",
+        tempoEstimado: "25 minutos",
         passos: [
-          "1. Abra o arquivo modelo do seu Portfólio Digital que a professora indicar.",
-          "2. Escolha 2 aplicativos do seu smartphone (ex: Waze, Spotify, Nubank, Netflix).",
-          "3. Preencha o Raio-X: Quais dados o app coleta? O que a IA calcula? Qual benefício entrega?",
-          "4. Responda com suas palavras: 'Como seria a sua vida se esse aplicativo parasse de usar IA?'.",
-          "5. Salve o arquivo no computador. Laura & Maria estarão passando nas mesas para validar!"
+          "1. Abra a nova aba do navegador no link da Prova Diagnóstica indicado na lousa.",
+          "2. Preencha seu nome e responda cada questão com tranquilidade e sinceridade.",
+          "3. Lembre-se: não há pegadinhas nem nota punitiva — o objetivo é conhecermos a turma!",
+          "4. Se tiver qualquer dúvida de leitura ou no computador, chame a Laura ou a Maria na sua mesa.",
+          "5. Ao finalizar todas as questões, clique no botão 'Enviar Respostas'."
         ],
+        destaqueDiagnostica: {
+          icone: "📋",
+          titulo: "Avaliação Diagnóstica Sem Medo",
+          desc: "Um raio-x formativo para descobrirmos o que você já conhece sobre tecnologia e ajustarmos o ritmo das próximas oficinas práticas.",
+          tagAviso: "Zero Pressão • Instrumento Pedagógico de Nivelamento"
+        },
         notasProfessora: {
-          objetivoSlide: "Acompanhar a realização da primeira entrega formativa dos alunos, garantindo que compreendam a relação dados ➔ IA ➔ benefício.",
-          oQueFalar: "Circulem entre as mesas. Elogiem os exemplos trazidos pelos alunos e ajudem aqueles que tiverem dificuldade de digitação ou formatação de texto.",
-          tempoSugerido: "40 minutos de oficina ativa"
+          objetivoSlide: "Conduzir a Prova Diagnóstica acolhendo os alunos, desmistificando o medo de testes e garantindo que todos enviem suas respostas no tempo disponível.",
+          oQueFalar: "Tranquilizem a turma: 'Nossa segunda missão de hoje é a Prova Diagnóstica. Quero que todos façam com muita calma e tranquilidade: ninguém aqui vai ser reprovado ou julgado pelas respostas. Essa sondagem serve exclusivamente para nós, professoras, sabermos exatamente onde podemos aprofundar e onde devemos ir mais devagar nos próximos 6 encontros. Estamos passando nas mesas para ajudar com qualquer dúvida!'",
+          tempoSugerido: "25 a 30 minutos de aplicação presencial"
         }
       },
       {
@@ -973,17 +980,18 @@
         tipo: "fechamento",
         categoria: "Síntese & Próximos Passos",
         titulo: "Síntese do Encontro 1 & O Salto para a Próxima Aula",
-        subtitulo: "A base está construída. No próximo encontro, entraremos no mundo da criação!",
-        conclusao: "A Inteligência Artificial não é mágica, nem pensa como um cérebro biológico: é matemática, probabilidade e reconhecimento de padrões em dados para nos potencializar como cidadãos conscientes.",
+        subtitulo: "A base está construída com sucesso! No próximo encontro, entraremos no universo da criação.",
+        conclusao: "A Inteligência Artificial não é mágica, nem pensa como um cérebro biológico: é matemática, probabilidade e reconhecimento de padrões em dados para potencializar a inteligência humana.",
         proximoEncontro: "Encontro 2 (23 de Outubro): O Salto da IA Generativa – Como Acessar o ChatGPT e Criar seus Primeiros Prompts!",
         lembretesFinais: [
-          "Guarde bem seu e-mail e senha para a próxima aula",
+          "Guarde com segurança seu e-mail e senha testados hoje",
+          "Prova diagnóstica concluída: turma 100% mapeada para a prática!",
           "Parabéns pelo primeiro passo dado na sua jornada com Inteligência Artificial!"
         ],
         notasProfessora: {
-          objetivoSlide: "Fechar o encontro com celebração, sensação de vitória e expectativa positiva para a aula do ChatGPT.",
-          oQueFalar: "Finalize parabenizando a turma: 'Parabéns a todos! Vocês deram hoje um passo enorme. Desmistificamos a IA, entendemos as leis do Brasil, garantimos o e-mail de todo mundo e analisamos serviços reais. No dia 23 de outubro, traremos a IA que CRIA: vamos abrir o ChatGPT e colocar a IA para trabalhar para vocês. Até lá!'",
-          tempoSugerido: "5 minutos"
+          objetivoSlide: "Fechar o Encontro 1 com celebração, sensação de vitória pedagógica e grande expectativa para a oficina do ChatGPT.",
+          oQueFalar: "Finalizem calorosamente: 'Parabéns a todos! Vocês deram hoje um passo fundamental. Desmistificamos a ficção, entendemos como a IA invisível funciona no nosso cotidiano, testamos o e-mail de todos e concluímos nossa avaliação diagnóstica. No dia 23 de outubro, traremos a IA que CRIA: abriremos o ChatGPT para criar prompts reais no laboratório. Excelente semana a todos e até o Encontro 2!'",
+          tempoSugerido: "5 minutos de encerramento"
         }
       }
     ],
