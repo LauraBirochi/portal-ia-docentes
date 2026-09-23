@@ -683,11 +683,9 @@ export const slidesComNotas = [
     subtitulo: "Mapeamento inicial de conhecimentos e expectativas para calibrar os próximos encontros",
     tempoEstimado: "25 minutos",
     passos: [
-      "1. Abra a nova aba do navegador no link da Prova Diagnóstica indicado na lousa.",
-      "2. Preencha seu nome e responda cada questão com tranquilidade e sinceridade.",
-      "3. Lembre-se: não há pegadinhas nem nota punitiva — o objetivo é conhecermos a turma!",
-      "4. Se tiver qualquer dúvida de leitura ou no computador, chame a Laura ou a Maria na sua mesa.",
-      "5. Ao finalizar todas as questões, clique no botão 'Enviar Respostas'."
+      "Preencha seu nome e responda cada questão com tranquilidade e sinceridade.",
+      "Lembre-se: não há pegadinhas nem nota punitiva — o objetivo é conhecermos a turma!",
+      "Se tiver qualquer dúvida de leitura ou no computador, chame a Laura ou a Maria na sua mesa."
     ],
     destaqueDiagnostica: {
       icone: "📋",

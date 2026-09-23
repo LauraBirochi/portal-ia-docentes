@@ -177,7 +177,7 @@
       modalidade: "Presencial em Laboratório de Informática",
       publico: "Iniciantes e público geral (sem pré-requisitos técnicos ou matemáticos)",
       ferramentaPrincipal: "Navegador Web + Template do Portfólio Digital individual",
-      avaliacao: "Atividade 1 no Portfólio Digital Contínuo (0,5 ponto)"
+      avaliacao: "Prova Diagnóstica de Nivelamento (Instrumento Formativo / Sem Nota Punitiva)"
     },
 
     fioDaMeada: {
@@ -187,24 +187,24 @@
       atos: [
         {
           ato: 1,
-          tempo: "00h00 às 00h40 (40 min)",
+          tempo: "00h00 às 00h55 (55 min)",
           titulo: "Acolhimento, Gênese Histórica & Definição Real da IA",
-          desc: "Acolhemos a turma, aliviamos a ansiedade (sem matemática ou programação), revelamos os 70 anos de história (Alan Turing 1950 e John McCarthy em Dartmouth 1956) e construímos a definição intuitiva: a virada de regras cegas manuais para o aprendizado por padrões em dados.",
-          gatilho: "Vocês achavam que a IA nasceu ontem com o ChatGPT? Cientistas pesquisam isso há quase 70 anos e ela não é mágica: é aprendizado por padrões!"
+          desc: "Acolhimento afetivo da turma, alívio de ansiedades (sem fórmulas ou programação), revelação dos 70 anos de história (Alan Turing 1950 e John McCarthy em Dartmouth 1956), virada paradigmática (regras manuais vs aprendizado por padrões) e os 3 ingredientes da IA moderna (Dados, Algoritmos e Poder Computacional).",
+          gatilho: "Vocês achavam que a IA nasceu ontem com o ChatGPT? Cientistas pesquisam isso há quase 70 anos e ela não é mágica: é pura matemática e aprendizado por padrões em dados!"
         },
         {
           ato: 2,
-          tempo: "00h40 às 01h15 (35 min)",
-          titulo: "A IA Invisível, Desmistificando os 5 Mitos, O Brasil e as Leis",
-          desc: "Mapeamos a IA que já opera no bolso e nos bancos (câmeras, antifraude <300ms, GPS), desmontamos os 5 grandes mitos (consciência, alucinações, matemática, trapaça e trabalho) e apresentamos o Plano Brasileiro de IA (PBIA) e o Marco Legal (PL 2338/2023).",
-          gatilho: "A IA não veio para substituir você: ela veio para tirar o trabalho mecânico e devolver tempo para o que só você sabe fazer, com regras claras que protegem nossos direitos!"
+          tempo: "00h55 às 02h25 (90 min c/ Intervalo)",
+          titulo: "A IA Invisível do Cotidiano, Mitos Desmontados & Soberania Brasileira",
+          desc: "Mapeamento da IA invisível que já opera no bolso e nos serviços (antifraude <300ms, Teorema de Tesler), desconstrução rigorosa dos 5 grandes mitos (consciência, alucinações, matemática, trapaça e futuro do trabalho) e apresentação da soberania nacional com o Plano Brasileiro de IA (PBIA 2024–2028: SUS, inclusão) e o Marco Legal (PL 2338/2023).",
+          gatilho: "A IA não veio para substituir você: ela veio para assumir o trabalho mecânico e devolver tempo para o que só o ser humano sabe fazer, com regras claras que protegem nossos direitos!"
         },
         {
           ato: 3,
-          tempo: "01h30 às 03h00 (90 min)",
-          titulo: "Como a IA Aprende, Laboratório Prático & Fechamento",
-          desc: "Explicamos a lógica do Super Autocompletar, testamos o login de e-mail de todos os alunos no computador, conduzimos a oficina do Raio-X da IA no Portfólio Digital (0,5 pt) e fazemos a ponte para a IA Generativa (ChatGPT) do Encontro 2.",
-          gatilho: "Hoje dominamos a IA invisível que classifica e prevê. No Encontro 2, abriremos o ChatGPT para dominar a IA que CRIA!"
+          tempo: "02h25 às 03h00 (35 min)",
+          titulo: "Laboratório Prático, Prova Diagnóstica de Nivelamento & Fechamento",
+          desc: "Verificação de acesso e login com e-mail nos computadores (Missão 1), condução acolhedora da Missão 2: Prova Diagnóstica de Nivelamento (instrumento formativo sem nota punitiva com auxílio individual nas mesas) e gancho inspirador para a IA Generativa (ChatGPT) do Encontro 2.",
+          gatilho: "Hoje dominamos a IA invisível que classifica e prevê. No Encontro 2, abriremos as ferramentas práticas para dominar a IA que CRIA!"
         }
       ],
       glossario: [
@@ -217,6 +217,22 @@
           def: "Conceito puramente teórico de ficção científica. Máquina com flexibilidade intelectual humana universal e autoconsciência. NÃO existe no mundo real."
         },
         {
+          termo: "Os 3 Ingredientes da IA Moderna",
+          def: "A tríade essencial que impulsionou a IA na última década: Dados Massivos (Big Data gerado pela internet), Algoritmos Inteligentes (redes neurais profundas) e Poder Computacional (GPUs aceleradas em nuvem)."
+        },
+        {
+          termo: "Efeito IA (Invisibilidade / Teorema de Tesler)",
+          def: "Fenômeno sociotécnico formulado por Larry Tesler: quando uma tecnologia de IA funciona com estabilidade e perfeição no cotidiano, as pessoas deixam de chamá-la de 'IA' e passam a tratá-la como mero 'recurso de software comum'."
+        },
+        {
+          termo: "Alucinação de Modelo",
+          def: "Quando a IA gera respostas sintaticamente perfeitas e convincentes, mas com fatos, datas, leis ou autores completamente inventados por pura combinação probabilística."
+        },
+        {
+          termo: "Super Autocompletar (Previsão de Tokens)",
+          def: "Princípio fundamental dos Grandes Modelos de Linguagem (LLMs): prever estatisticamente qual é a próxima palavra mais provável com base no contexto da conversa e em bilhões de textos processados."
+        },
+        {
           termo: "PBIA (Plano Brasileiro de IA 2024–2028)",
           def: "Política pública nacional lançada pelo Governo Federal que destina R$ 23 bilhões para soberania digital, IA na saúde pública (SUS), infraestrutura de supercomputadores e capacitação da população."
         },
@@ -225,16 +241,8 @@
           def: "Projeto de lei em tramitação no Congresso Nacional que estabelece regras éticas, direitos dos cidadãos, proteção de dados (LGPD) e classificação de risco para sistemas de IA no Brasil."
         },
         {
-          termo: "Efeito IA (Invisibilidade / Teorema de Tesler)",
-          def: "Fenômeno sociotécnico: quando uma tecnologia de IA funciona com estabilidade e perfeição no cotidiano, as pessoas deixam de chamá-la de 'IA' e passam a chamá-la apenas de 'recurso comum'."
-        },
-        {
-          termo: "Alucinação de Modelo",
-          def: "Quando a IA gera respostas gramaticalmente perfeitas e convincentes, mas com fatos, datas, leis ou autores completamente inventados por pura combinação probabilística."
-        },
-        {
-          termo: "Super Autocompletar (Previsão de Tokens)",
-          def: "Princípio fundamental dos Grandes Modelos de Linguagem (LLMs): prever estatisticamente qual é a próxima palavra mais provável com base no contexto do diálogo e em bilhões de textos lidos."
+          termo: "Supervisão Humana (Human-in-the-Loop)",
+          def: "Princípio pedagógico e ético inegociável: a IA atua como copiloto e assistente cognitivo, mas a autoria, validação crítica, discernimento moral e responsabilidade final são sempre 100% humanas."
         }
       ]
     },
@@ -284,9 +292,9 @@
         id: 6,
         icone: "💻",
         titulo: "Bloco 6: Laboratório Prático & Fechamento",
-        subtitulo: "Missão login de e-mail, oficina prática Raio-X da IA no Portfólio Digital (0,5 pt) e síntese do Encontro 1",
+        subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
         slidesRange: [25, 27],
-        tempoEstimado: "45 min"
+        tempoEstimado: "35 min"
       }
     ],
 
@@ -956,11 +964,9 @@
         subtitulo: "Mapeamento inicial de conhecimentos e expectativas para calibrar os próximos encontros",
         tempoEstimado: "25 minutos",
         passos: [
-          "1. Abra a nova aba do navegador no link da Prova Diagnóstica indicado na lousa.",
-          "2. Preencha seu nome e responda cada questão com tranquilidade e sinceridade.",
-          "3. Lembre-se: não há pegadinhas nem nota punitiva — o objetivo é conhecermos a turma!",
-          "4. Se tiver qualquer dúvida de leitura ou no computador, chame a Laura ou a Maria na sua mesa.",
-          "5. Ao finalizar todas as questões, clique no botão 'Enviar Respostas'."
+          "Preencha seu nome e responda cada questão com tranquilidade e sinceridade.",
+          "Lembre-se: não há pegadinhas nem nota punitiva — o objetivo é conhecermos a turma!",
+          "Se tiver qualquer dúvida de leitura ou no computador, chame a Laura ou a Maria na sua mesa."
         ],
         destaqueDiagnostica: {
           icone: "📋",
@@ -997,38 +1003,19 @@
     ],
 
     oficinaPratica: {
-      titulo: "Atividade 1: Raio-X da IA no Cotidiano & Mapeamento de Dados",
-      duracao: "40 minutos em Laboratório",
-      peso: "0,5 ponto no Portfólio Digital",
-      ferramenta: "Portfólio Digital Individual + Navegador Web",
-      descricao: "Oficina prática em computadores onde cada estudante escolhe dois aplicativos do seu cotidiano (ex: Waze, Spotify, Nubank, Netflix, Câmera/Google Fotos) e disseca a cadeia: Dados Coletados ➔ Padrão que a IA Calcula ➔ Benefício Entregue ao Usuário, finalizando com reflexão crítica sobre a vida sem essa automação.",
-      casosGabarito: [
-        {
-          caso: "Exemplo 1: Waze / Google Maps (Navegação & Trânsito)",
-          categoria: "Geolocalização & Previsão",
-          entradas: "Localização GPS em tempo real de milhares de motoristas, velocidade de deslocamento e alertas de acidentes enviados pela comunidade.",
-          oQueIaFaz: "Calcula a velocidade média dos trechos a cada segundo, identifica padrões de lentidão/gargalos e simula milhares de rotas alternativas em milissegundos.",
-          saida: "Tempo estimado de chegada (ETA) hiperpreciso e desvio de rota sugerido antes do motorista travar no engarrafamento.",
-          contraprova: "Programação fixa manual exigiria que um humano ligasse para cada rua para saber a situação. A IA aprende o trânsito a partir dos dados contínuos de milhares de celulares."
-        },
-        {
-          caso: "Exemplo 2: Spotify / Netflix / YouTube (Sistemas de Recomendação)",
-          categoria: "Filtragem Colaborativa & Mídia",
-          entradas: "Histórico de reprodução, músicas puladas nos primeiros 30s, horário em que ouve e playlists salvas.",
-          oQueIaFaz: "Compara o perfil de escuta do usuário com milhões de outros ouvintes com gostos semelhantes (filtragem colaborativa) e calcula a probabilidade estatística de afinidade com faixas inéditas.",
-          saida: "Playlist 'Descobertas da Semana' ou fila de reprodução contínua que mantém o ouvinte engajado.",
-          contraprova: "Um funcionário humano jamais conseguiria fazer a curadoria musical manual diária para 500 milhões de usuários."
-        },
-        {
-          caso: "Exemplo 3: Antifraude Bancária (Pix / Cartão de Crédito Nubank, BB, Itaú)",
-          categoria: "Classificação Anômala & Segurança",
-          entradas: "Valor da transação, horário, localização habitual do usuário, tipo de estabelecimento e dispositivo usado.",
-          oQueIaFaz: "Calcula em menos de 300 milissegundos o score de risco: quão distante essa compra está do padrão de comportamento histórico daquela pessoa.",
-          saida: "Aprovação instantânea ou bloqueio preventivo com aviso no app.",
-          contraprova: "Regras manuais rígidas (ex: 'bloquear compras acima de R$ 500') bloqueariam compras legítimas de quem viaja e deixariam passar fraudes pequenas de R$ 50."
-        }
+      isDiagnostica: true,
+      titulo: "Missão 2 no Computador: Prova Diagnóstica",
+      duracao: "25 a 30 minutos em Laboratório",
+      peso: "Instrumento Formativo de Nivelamento (Zero Pressão / Sem Nota Punitiva)",
+      ferramenta: "Formulário Online / Navegador Web",
+      descricao: "Aplicação individual da Prova Diagnóstica nos computadores do laboratório. O objetivo é realizar um mapeamento formativo dos conhecimentos prévios e expectativas da turma sobre tecnologia e IA, orientando a calibração pedagógica das próximas oficinas práticas.",
+      diretrizesDocentes: [
+        "Acolhimento da turma: tranquilizar os alunos de que não há nota punitiva nem reprovação.",
+        "Orientar o preenchimento com sinceridade e foco no que já conhecem.",
+        "Laura & Maria circulam ativamente entre as mesas para tirar dúvidas de acesso ou uso do computador.",
+        "Verificar se todos os alunos clicaram no botão de envio ao final."
       ],
-      planoB: "Caso a conexão de internet do laboratório oscile, Laura & Maria conduzirão a oficina em formato impresso/caderno físico, preenchendo a tabela do Raio-X em duplas e transferindo para o arquivo digital na aula seguinte."
+      planoB: "Caso a conexão de internet do laboratório oscile, a Prova Diagnóstica poderá ser aplicada via questionário impresso ou respondida em formato assíncrono antes do Encontro 2."
     },
 
     perguntasAlunos: [
@@ -1095,7 +1082,7 @@
       { bloco: "Intervalo (15m)", tema: "Intervalo Pedagógico / Café com Prosa (Atalho Tecla I)", papel: "ambas" },
       { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 16 a 21)", papel: "radio" },
       { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 22 a 24)", papel: "radio" },
-      { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório Prático de E-mail, Portfólio Digital & Fechamento (Slides 25 a 27)", papel: "ambas" }
+      { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 25 a 27)", papel: "ambas" }
     ],
 
     dossies: dossies

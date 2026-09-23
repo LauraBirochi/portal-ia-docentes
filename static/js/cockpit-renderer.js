@@ -46,58 +46,81 @@ const CockpitRenderer = {
     const glossario = fio.glossario || [];
 
     container.innerHTML = `
-      <div class="pedagogical-highlight-card">
-        <div class="module-meta-tags">
-          <span class="chip chip-warm">Objetivo Central do Encontro ${info.numero || 1}</span>
-          <span class="chip">Domínio Mútuo Laura & Maria</span>
+      <!-- Hero Card: Bússola Pedagógica & Mensagem Central -->
+      <div class="fio-hero-card">
+        <div class="fio-hero-header">
+          <span class="chip chip-warm">🎯 Bússola Pedagógica • Encontro ${info.numero || 1}</span>
+          <span class="chip">🤝 Alinhamento Estratégico Laura & Maria</span>
         </div>
-        <h2 style="font-size: 1.35rem; color: var(--text-main); margin-bottom: 0.75rem;">
+        
+        <h2 class="fio-hero-title">
           ${fio.objetivoCentral || 'Qual é a grande mensagem deste encontro?'}
         </h2>
-        <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6;">
-          <strong>"${fio.mensagemChave || ''}"</strong><br>
-          ${fio.explicacaoObjetivo || ''}
-        </p>
+
+        <div class="fio-hero-quote">
+          <div class="fio-quote-icon">“</div>
+          <blockquote class="fio-quote-text">
+            ${fio.mensagemChave || ''}
+          </blockquote>
+        </div>
+
+        ${fio.explicacaoObjetivo ? `
+          <div class="fio-hero-explanation">
+            <span class="fio-explanation-icon">🧭</span>
+            <div class="fio-explanation-body">
+              <strong>Diretriz de Condução Docente:</strong>
+              <p>${fio.explicacaoObjetivo}</p>
+            </div>
+          </div>
+        ` : ''}
       </div>
 
       <!-- A Narrativa em 3 Atos -->
-      <div class="section-title-wrap" style="margin-top: 2rem;">
-        <span style="font-size: 1.3rem;">🎭</span>
-        <h3>A Linha Narrativa da Aula (Os 3 Atos do Encontro)</h3>
-      </div>
+      <div class="fio-acts-section">
+        <div class="section-title-wrap">
+          <span style="font-size: 1.3rem;">🎭</span>
+          <h3>A Linha Narrativa da Aula (Os 3 Atos do Encontro)</h3>
+        </div>
 
-      <div class="three-acts-grid">
-        ${atos.map(a => `
-          <div class="act-card" ${a.ato === 2 ? 'style="border-top: 3px solid var(--accent);"' : ''}>
-            <span class="act-badge" ${a.ato === 2 ? 'style="background: var(--accent); color: var(--accent-text);"' : ''}>
-              Ato ${a.ato} • ${a.tempo}
-            </span>
-            <h4 style="color: var(--text-main); margin-bottom: 0.5rem;">${a.titulo}</h4>
-            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
-              ${a.desc}
-            </p>
-            ${a.gatilho ? `
-              <div style="font-size: 0.8rem; color: var(--accent); background: var(--bg-surface); padding: 0.5rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
-                💡 <strong>Gatilho de fala:</strong> "${a.gatilho}"
+        <div class="fio-acts-timeline">
+          ${atos.map(a => `
+            <div class="fio-act-card act-${a.ato}">
+              <div class="fio-act-topbar">
+                <span class="fio-act-badge">Ato ${a.ato}</span>
+                <span class="fio-act-time">⏱️ ${a.tempo}</span>
               </div>
-            ` : ''}
-          </div>
-        `).join('')}
+              <h4 class="fio-act-title">${a.titulo}</h4>
+              <p class="fio-act-desc">${a.desc}</p>
+              ${a.gatilho ? `
+                <div class="fio-speech-trigger">
+                  <div class="fio-trigger-header">
+                    <span class="fio-trigger-icon">💡</span>
+                    <strong>Gatilho de fala em sala:</strong>
+                  </div>
+                  <p class="fio-trigger-text">"${a.gatilho}"</p>
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
       </div>
 
       <!-- Glossário Rápido Alinhado -->
       ${glossario.length ? `
-        <div class="pedagogical-highlight-card" style="margin-top: 2rem;">
-          <h3 style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 1rem;">
-            📖 Glossário Rápido Alinhado (Para Laura & Maria usarem o mesmo vocabulário)
-          </h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+        <div class="fio-glossary-section">
+          <div class="fio-glossary-header">
+            <h3><span>📖</span> Glossário Rápido Alinhado</h3>
+            <p>Terminologia e conceitos padronizados para que Laura e Maria utilizem exatamente o mesmo vocabulário em sala.</p>
+          </div>
+          
+          <div class="fio-glossary-grid">
             ${glossario.map(g => `
-              <div style="background: var(--bg-subtle-warm); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
-                <strong style="color: var(--text-main);">${g.termo}:</strong>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">
-                  ${g.def}
-                </p>
+              <div class="fio-glossary-card">
+                <div class="fio-glossary-term-wrap">
+                  <span class="fio-glossary-bullet">✦</span>
+                  <h5 class="fio-glossary-term">${g.termo}</h5>
+                </div>
+                <p class="fio-glossary-def">${g.def}</p>
               </div>
             `).join('')}
           </div>
@@ -528,7 +551,7 @@ const CockpitRenderer = {
   },
 
   /**
-   * ABA 3: Atividades & Gabarito Comentado
+   * ABA 3: Prova Diagnóstica & Atividades de Laboratório
    */
   renderAtividadesGabarito(data) {
     const container = document.getElementById('cockpit-gabarito-container');
@@ -536,19 +559,54 @@ const CockpitRenderer = {
 
     const oficina = data.oficinaPratica || {};
     const casos = oficina.casosGabarito || [];
-    const hasContent = Boolean(oficina.titulo || casos.length > 0);
+    const isDiagnostica = oficina.isDiagnostica || casos.length === 0;
 
-    if (!hasContent) {
+    if (isDiagnostica) {
       container.innerHTML = `
-        <div class="pedagogical-highlight-card" style="text-align: center; padding: 3rem 2rem;">
-          <div style="font-size: 2.8rem; margin-bottom: 0.75rem;">🧪</div>
-          <h3 style="font-size: 1.25rem; color: var(--text-main); margin-bottom: 0.5rem;">
-            Aba de Atividades & Gabaritos
+        <div class="pedagogical-highlight-card">
+          <div class="module-meta-tags">
+            <span class="chip chip-warm">⏱️ ${oficina.duracao || '25 a 30 min em Laboratório'}</span>
+            <span class="chip">📋 ${oficina.peso || 'Instrumento Formativo de Nivelamento'}</span>
+            <span class="chip chip-warm">Zero Pressão • Sem Nota Punitiva</span>
+          </div>
+          <h3 style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 0.5rem;">
+            ${oficina.titulo || 'Missão 2 no Computador: Prova Diagnóstica'}
           </h3>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 55ch; margin: 0 auto 1.5rem auto; line-height: 1.6;">
-            Nenhuma atividade ou gabarito cadastrado no momento para este encontro. O espaço está preservado e pronto para novas diretrizes pedagógicas.
+          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+            ${oficina.descricao || 'Aplicação individual da Prova Diagnóstica nos computadores do laboratório.'}
           </p>
-          <span class="chip chip-warm">Módulo Preservado • Pronto para Uso</span>
+        </div>
+
+        <div style="margin-top: 1.75rem;">
+          <div class="section-title-wrap" style="border-color: var(--accent);">
+            <span style="font-size: 1.3rem;">📋</span>
+            <h3 style="color: var(--accent);">Diretrizes Pedagógicas para a Condução da Dupla</h3>
+          </div>
+
+          <div class="pedagogical-highlight-card" style="border-left: 4px solid var(--accent); margin-top: 1rem;">
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem;">
+              ${(oficina.diretrizesDocentes || [
+                "Acolhimento da turma: tranquilizar os alunos de que não há nota punitiva nem reprovação.",
+                "Orientar o preenchimento com sinceridade e foco no que já conhecem.",
+                "Laura & Maria circulam ativamente entre as mesas para tirar dúvidas de acesso ou uso do computador.",
+                "Verificar se todos os alunos clicaram no botão de envio ao final."
+              ]).map(d => `
+                <li style="display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5;">
+                  <span style="color: var(--accent); font-weight: bold; font-size: 1.1rem;">•</span>
+                  <span>${d}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          ${oficina.planoB ? `
+            <div class="pedagogical-highlight-card" style="background: var(--bg-subtle-warm); margin-top: 1.5rem;">
+              <h4 style="color: var(--accent); margin-bottom: 0.5rem;">🚨 Plano B de Contingência Técnica (Se o laboratório oscilar)</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
+                ${oficina.planoB}
+              </p>
+            </div>
+          ` : ''}
         </div>
       `;
       return;
@@ -558,7 +616,7 @@ const CockpitRenderer = {
       <div class="pedagogical-highlight-card">
         <div class="module-meta-tags">
           <span class="chip chip-warm">${oficina.duracao || 'Oficina de Laboratório'}</span>
-          <span class="chip">Avaliação: ${oficina.peso || '0,5 ponto no Portfólio Digital'}</span>
+          <span class="chip">Avaliação: ${oficina.peso || 'Atividade Prática'}</span>
         </div>
         <h3 style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 0.5rem;">
           ${oficina.titulo || 'Atividade Prática'}
@@ -600,15 +658,6 @@ const CockpitRenderer = {
             </p>
           </div>
         ` : ''}
-      </div>
-
-      <!-- Mensagem para o Modo Aluno -->
-      <div class="aluno-only" style="display: none; padding: 2rem; text-align: center; background: var(--bg-surface); border: 1px dashed var(--border); border-radius: var(--radius-md); margin-top: 1.5rem;">
-        <span style="font-size: 2rem;">📝</span>
-        <h4 style="margin: 0.5rem 0; color: var(--text-main);">Instruções para Realização em Laboratório</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 60ch; margin: 0 auto;">
-          Abra o seu <strong>Portfólio Digital</strong> no computador e preencha a atividade com atenção. Tire suas dúvidas diretamente com as professoras na sala!
-        </p>
       </div>
     `;
   },
@@ -654,7 +703,7 @@ const CockpitRenderer = {
   },
 
   /**
-   * ABA 5: Anotações & Combinados da Dupla
+   * ABA 1 (Rodapé): Anotações & Combinados da Dupla Docente
    */
   renderAnotacoesPapeis(data) {
     const container = document.getElementById('cockpit-papeis-container');
@@ -664,41 +713,61 @@ const CockpitRenderer = {
     const meetingNum = data.moduloInfo?.numero || 1;
 
     container.innerHTML = `
-      <div style="background: var(--bg-subtle-warm); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
-        <h4 style="font-size: 1rem; color: var(--text-main); margin-bottom: 0.75rem;">
-          📋 Divisão dos Momentos da Aula (Combinados Rápidos da Dupla)
-        </h4>
+      <div class="fio-papeis-card">
+        <div class="fio-papeis-header">
+          <h4><span>📋</span> Divisão de Condução & Momentos da Co-Docência</h4>
+          <p>Combinados rápidos de quem assume a voz principal em cada bloco da aula (Encontro ${meetingNum}). As marcações são salvas automaticamente no seu navegador.</p>
+        </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; font-size: 0.88rem;">
-          ${papeis.map((p, idx) => `
-            <div style="background: var(--bg-surface); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
-              <strong>${p.bloco}:</strong> ${p.tema}<br>
-              ${p.papel === 'radio' ? `
-                <label style="margin-top: 0.35rem; display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; color: var(--text-secondary);">
-                  <input type="radio" name="role_m${meetingNum}_b${idx+1}" value="laura" class="role-check"> Laura conduz
-                </label>
-                <label style="margin-left: 0.75rem; display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; color: var(--text-secondary);">
-                  <input type="radio" name="role_m${meetingNum}_b${idx+1}" value="maria" class="role-check"> Maria conduz
-                </label>
-              ` : `
-                <span style="color: var(--accent); font-weight: 600; font-size: 0.8rem;">🤝 Ambas circulam tirando dúvidas</span>
-              `}
-            </div>
-          `).join('')}
+        <div class="fio-papeis-grid">
+          ${papeis.map((p, idx) => {
+            const inputName = `role_m${meetingNum}_b${idx + 1}`;
+            const savedRole = localStorage.getItem(`role_${inputName}`);
+
+            return `
+              <div class="fio-papel-item">
+                <div class="fio-papel-top">
+                  <span class="fio-papel-block-badge">${p.bloco}</span>
+                </div>
+                <div class="fio-papel-theme">${p.tema}</div>
+
+                ${p.papel === 'radio' ? `
+                  <div class="role-selector-pills" role="radiogroup" aria-label="Condutor do ${p.bloco}">
+                    <label class="role-pill ${savedRole === 'laura' ? 'active' : ''}">
+                      <input type="radio" name="${inputName}" value="laura" class="role-check" style="position: absolute; opacity: 0; width: 0; height: 0;" ${savedRole === 'laura' ? 'checked' : ''}>
+                      <span>👩‍🏫 Laura conduz</span>
+                    </label>
+                    <label class="role-pill ${savedRole === 'maria' ? 'active' : ''}">
+                      <input type="radio" name="${inputName}" value="maria" class="role-check" style="position: absolute; opacity: 0; width: 0; height: 0;" ${savedRole === 'maria' ? 'checked' : ''}>
+                      <span>👩‍💻 Maria conduz</span>
+                    </label>
+                  </div>
+                ` : `
+                  <div class="role-shared-badge">
+                    <span>🤝 Atuação conjunta / Ambas apoiam a turma</span>
+                  </div>
+                `}
+              </div>
+            `;
+          }).join('')}
         </div>
       </div>
     `;
 
-    // Re-vincular eventos de LocalStorage para papéis
-    const roleCheckboxes = container.querySelectorAll('.role-check');
-    roleCheckboxes.forEach(cb => {
-      const savedRole = localStorage.getItem(`role_${cb.name}`);
-      if (savedRole && cb.value === savedRole) {
-        cb.checked = true;
-      }
-      cb.addEventListener('change', () => {
-        if (cb.checked) {
-          localStorage.setItem(`role_${cb.name}`, cb.value);
+    // Vincular interações das pílulas e persistência no localStorage
+    const roleRadios = container.querySelectorAll('.role-check');
+    roleRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (radio.checked) {
+          localStorage.setItem(`role_${radio.name}`, radio.value);
+
+          // Atualiza classes active nas pílulas do grupo
+          const parentGroup = radio.closest('.role-selector-pills');
+          if (parentGroup) {
+            parentGroup.querySelectorAll('.role-pill').forEach(pill => pill.classList.remove('active'));
+            const parentLabel = radio.closest('.role-pill');
+            if (parentLabel) parentLabel.classList.add('active');
+          }
         }
       });
     });

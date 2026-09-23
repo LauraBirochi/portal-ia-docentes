@@ -12,7 +12,7 @@ export const moduloInfo = {
   modalidade: "Presencial em Laboratório de Informática",
   publico: "Iniciantes e público geral (sem pré-requisitos técnicos ou matemáticos)",
   ferramentaPrincipal: "Navegador Web + Template do Portfólio Digital individual",
-  avaliacao: "Atividade 1 no Portfólio Digital Contínuo (0,5 ponto)"
+  avaliacao: "Prova Diagnóstica de Nivelamento (Instrumento Formativo / Sem Nota Punitiva)"
 };
 
 export const blocosTematicos = [
@@ -60,8 +60,8 @@ export const blocosTematicos = [
     id: 6,
     icone: "💻",
     titulo: "Bloco 6: Laboratório Prático & Fechamento",
-    subtitulo: "Missão login de e-mail, oficina prática Raio-X da IA no Portfólio Digital (0,5 pt) e síntese do Encontro 1",
+    subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
     slidesRange: [25, 27],
-    tempoEstimado: "45 min"
+    tempoEstimado: "35 min"
   }
 ];

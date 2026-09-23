@@ -1201,6 +1201,448 @@ body.mode-aula .timer-container {
   box-shadow: var(--shadow-sm);
 }
 
+/* ==========================================================================
+   FIO DA MEADA – IDENTIDADE EDITORIAL WARM PAPER & WALNUT
+   ========================================================================== */
+
+.fio-hero-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.fio-hero-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.fio-hero-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+  margin-bottom: 1.25rem;
+}
+
+.fio-hero-quote {
+  position: relative;
+  background-color: var(--bg-subtle-warm);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1.25rem 1.5rem 1.25rem 3rem;
+  margin-bottom: 1.25rem;
+}
+
+.fio-quote-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 2.75rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.45;
+  user-select: none;
+}
+
+.fio-quote-text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.fio-hero-explanation {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: var(--bg-surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.fio-explanation-icon {
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.fio-explanation-body strong {
+  color: var(--text-main);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Os 3 Atos do Encontro */
+.fio-acts-section {
+  margin-bottom: 2.5rem;
+}
+
+.fio-acts-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  position: relative;
+}
+
+@media (max-width: 992px) {
+  .fio-acts-timeline {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fio-act-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+}
+
+.fio-act-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.fio-act-card.act-1 {
+  border-top: 4px solid var(--info);
+}
+
+.fio-act-card.act-2 {
+  border-top: 4px solid var(--accent);
+}
+
+.fio-act-card.act-3 {
+  border-top: 4px solid var(--success);
+}
+
+.fio-act-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.fio-act-badge {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+.fio-act-card.act-1 .fio-act-badge {
+  background-color: var(--info-subtle);
+  color: var(--info);
+}
+
+.fio-act-card.act-2 .fio-act-badge {
+  background-color: var(--accent-subtle-light);
+  color: var(--accent);
+}
+
+.fio-act-card.act-3 .fio-act-badge {
+  background-color: var(--success-subtle);
+  color: var(--success);
+}
+
+[data-theme="dark"] .fio-act-card.act-1 .fio-act-badge {
+  background-color: var(--info-subtle);
+  color: #a8c4de;
+}
+
+[data-theme="dark"] .fio-act-card.act-2 .fio-act-badge {
+  background-color: var(--accent-subtle-light);
+  color: #f7f3ea;
+}
+
+[data-theme="dark"] .fio-act-card.act-3 .fio-act-badge {
+  background-color: var(--success-subtle);
+  color: #a8d89e;
+}
+
+.fio-act-time {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.fio-act-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+}
+
+.fio-act-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.fio-speech-trigger {
+  background-color: var(--bg-subtle-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  margin-top: auto;
+}
+
+.fio-trigger-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.fio-trigger-icon {
+  font-size: 0.95rem;
+}
+
+.fio-trigger-text {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Glossário Alinhado */
+.fio-glossary-section {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.fio-glossary-header {
+  margin-bottom: 1.25rem;
+}
+
+.fio-glossary-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.fio-glossary-header p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.fio-glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.fio-glossary-card {
+  background-color: var(--bg-subtle-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  transition: border-color var(--transition);
+}
+
+.fio-glossary-card:hover {
+  border-color: var(--border-focus);
+}
+
+.fio-glossary-term-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.fio-glossary-bullet {
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+.fio-glossary-term {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.fio-glossary-def {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Divisão de Papéis e Co-Docência */
+.fio-papeis-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.fio-papeis-header {
+  margin-bottom: 1.25rem;
+}
+
+.fio-papeis-header h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.fio-papeis-header p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.fio-papeis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.fio-papel-item {
+  background-color: var(--bg-subtle-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.fio-papel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fio-papel-block-badge {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  background-color: var(--accent-subtle-light);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+[data-theme="dark"] .fio-papel-block-badge {
+  background-color: var(--accent-subtle);
+  color: #f7f3ea;
+}
+
+.fio-papel-theme {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.role-selector-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.role-pill {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.6rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+  user-select: none;
+}
+
+.role-pill:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--border-focus);
+  color: var(--text-main);
+}
+
+.role-pill.active {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+  box-shadow: 0 2px 6px rgba(128, 106, 78, 0.25);
+}
+
+.role-shared-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.75rem;
+  background-color: var(--success-subtle);
+  border: 1px solid rgba(90, 122, 82, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--success);
+  margin-top: auto;
+}
+
+[data-theme="dark"] .role-shared-badge {
+  color: #a8d89e;
+}
+
+/* Backward compatibility for generic grid */
 .three-acts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

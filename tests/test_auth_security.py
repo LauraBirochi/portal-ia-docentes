@@ -107,10 +107,10 @@ class TestAuthAndSecurity(unittest.TestCase):
         self.assertIn('Lúcio Rodrigo'.encode('utf-8'), res.data)
 
     # ==========================================================================
-    # 3. RBAC: VISÕES DIFERENCIADAS & EXPORTAÇÃO DE PARECER STATELESS
+    # 3. RBAC: VISÕES DIFERENCIADAS (COORDENADOR 2 ABAS vs DOCENTE 4 ABAS)
     # ==========================================================================
     def test_coordinator_view_cockpit_tabs(self):
-        """Coordenador vê Fio da Meada, Slides e Parecer, mas não vê Atividades/Perguntas exclusivas de aula."""
+        """Coordenador vê Fio da Meada e Slides, mas não vê Atividades/Perguntas exclusivas de aula nem Parecer."""
         # Login como Lúcio (Coordenador)
         self.client.post('/login', data={
             'username': 'lucio',
@@ -118,18 +118,16 @@ class TestAuthAndSecurity(unittest.TestCase):
         })
         res = self.client.get('/encontro/1')
         self.assertEqual(res.status_code, 200)
-        # Deve ter Parecer do Professor em modo stateless com botão de exportação TXT
-        self.assertIn('Parecer do Professor'.encode('utf-8'), res.data)
-        self.assertIn('btn-export-notes'.encode('utf-8'), res.data)
-        self.assertIn('Exportar Parecer (.txt)'.encode('utf-8'), res.data)
-        # Não deve ter botões de salvar/excluir no servidor
-        self.assertNotIn('btn-save-parecer'.encode('utf-8'), res.data)
-        self.assertNotIn('btn-delete-parecer'.encode('utf-8'), res.data)
-        # Não deve renderizar o painel exclusivo de gabarito para coordenação
+        # Deve ter Fio da Meada e Slides
+        self.assertIn('Fio da Meada'.encode('utf-8'), res.data)
+        self.assertIn('Slides & Roteiro'.encode('utf-8'), res.data)
+        # Não deve ter Parecer do Professor nem painéis exclusivos de sala de aula
+        self.assertNotIn('Parecer do Professor'.encode('utf-8'), res.data)
+        self.assertNotIn('btn-export-notes'.encode('utf-8'), res.data)
         self.assertNotIn('PAINEL 3: 🧪 ATIVIDADES & GABARITO COMENTADO (DOCENTES ONLY)'.encode('utf-8'), res.data)
 
     def test_docente_view_cockpit_tabs(self):
-        """Docente (Laura) vê todas as abas, divisão docente e exportação TXT."""
+        """Docente (Laura) vê as 4 abas pedagógicas e a divisão de papéis da dupla docente."""
         # Login como Laura (Docente)
         self.client.post('/login', data={
             'username': 'laura',
@@ -137,12 +135,14 @@ class TestAuthAndSecurity(unittest.TestCase):
         })
         res = self.client.get('/encontro/1')
         self.assertEqual(res.status_code, 200)
-        # Deve ter todas as abas
-        self.assertIn('Atividades & Gabarito'.encode('utf-8'), res.data)
+        # Deve ter todas as 4 abas e a divisão de papéis
+        self.assertIn('Fio da Meada'.encode('utf-8'), res.data)
+        self.assertIn('Slides & Roteiro'.encode('utf-8'), res.data)
+        self.assertIn('Prova Diagnóstica'.encode('utf-8'), res.data)
         self.assertIn('Perguntas dos Alunos'.encode('utf-8'), res.data)
-        self.assertIn('Parecer do Professor'.encode('utf-8'), res.data)
-        self.assertIn('btn-export-notes'.encode('utf-8'), res.data)
         self.assertIn('cockpit-papeis-container'.encode('utf-8'), res.data)
+        # Parecer do Professor foi removido da arquitetura
+        self.assertNotIn('Parecer do Professor'.encode('utf-8'), res.data)
 
     def test_parecer_api_routes_are_removed(self):
         """Rotas de persistência de parecer /api/parecer/1 foram removidas (arquitetura 100% stateless)."""

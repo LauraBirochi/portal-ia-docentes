@@ -10,5 +10,5 @@ export const divisaoPapeis = [
   { bloco: "Intervalo (15m)", tema: "Intervalo Pedagógico / Café com Prosa (Atalho Tecla I)", papel: "ambas" },
   { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 16 a 21)", papel: "radio" },
   { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 22 a 24)", papel: "radio" },
-  { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório Prático de E-mail, Portfólio Digital & Fechamento (Slides 25 a 27)", papel: "ambas" }
+  { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 25 a 27)", papel: "ambas" }
 ];

@@ -39,17 +39,12 @@
     {% if not is_coordinator %}
     <!-- Abas exclusivas da Dupla Docente (Laura & Maria) -->
     <button class="cockpit-tab-btn docente-tab" data-tab="atividades">
-      <span>🧪</span> 3. Atividades & Gabarito
+      <span>📋</span> 3. Prova Diagnóstica
     </button>
     <button class="cockpit-tab-btn docente-tab" data-tab="perguntas">
       <span>⚠️</span> 4. Perguntas dos Alunos
     </button>
     {% endif %}
-
-    <!-- Aba Parecer do Professor (Visão Adaptada para ambos) -->
-    <button class="cockpit-tab-btn" data-tab="anotacoes">
-      <span>📝</span> {% if is_coordinator %}3.{% else %}5.{% endif %} Parecer do Professor
-    </button>
   </div>
 </nav>
 
@@ -60,6 +55,13 @@
   <div id="cockpit-fio-meada-container">
     <!-- Renderizado dinamicamente por cockpit-renderer.js -->
   </div>
+
+  {% if not is_coordinator %}
+  <!-- Container dos Papéis por Bloco (Divisão Docente Laura & Maria) -->
+  <div id="cockpit-papeis-container" style="margin-top: 1.5rem;">
+    <!-- Renderizado dinamicamente por cockpit-renderer.js -->
+  </div>
+  {% endif %}
 </div>
 
 <!-- ==============================================================
@@ -86,7 +88,7 @@
 
 {% if not is_coordinator %}
 <!-- ==============================================================
-     PAINEL 3: 🧪 ATIVIDADES & GABARITO COMENTADO (DOCENTES ONLY)
+     PAINEL 3: 📋 PROVA DIAGNÓSTICA (DOCENTES ONLY)
      ============================================================== -->
 <div id="tab-atividades" class="tab-content-panel">
   <div id="cockpit-gabarito-container">
@@ -104,69 +106,3 @@
 </div>
 {% endif %}
 
-<!-- ==============================================================
-     PAINEL 5: 📝 PARECER DO PROFESSOR (COORDENADOR ESCRITA / DOCENTES LEITURA)
-     ============================================================== -->
-<!-- ==============================================================
-     PAINEL 5: 📝 PARECER DO PROFESSOR & ANOTAÇÕES (EXPORTAÇÃO TXT STATELESS)
-     ============================================================== -->
-<div id="tab-anotacoes" class="tab-content-panel">
-  <div class="notes-workspace-card">
-
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
-      <div>
-        <div style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.25rem 0.65rem; background: var(--accent-subtle-light); border: 1px solid var(--accent-subtle); border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 600; color: var(--badge-text); margin-bottom: 0.5rem;">
-          {% if is_coordinator %}✍️ Parecer & Avaliação Pedagógica da Coordenação{% else %}📝 Anotações & Parecer Docente{% endif %}
-        </div>
-        <h3 id="cockpit-notes-title" style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 0.3rem;">
-          {% if is_coordinator %}Parecer do Professor (Coordenação){% else %}Parecer & Anotações de Co-Docência{% endif %} – Encontro {{ active_meeting_id or 1 }}
-        </h3>
-        <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 650px;">
-          {% if is_coordinator %}
-            Redija suas considerações pedagógicas, pontos fortes observados e recomendações para a dupla docente. Ao concluir, exporte o arquivo <strong>.txt</strong> para registro e envio.
-          {% else %}
-            Espaço para anotações pedagógicas, pontos de atenção na condução e parecer do encontro. Exporte o documento <strong>.txt</strong> ao final da aula para seu controle.
-          {% endif %}
-        </p>
-      </div>
-
-      <div>
-        <button id="btn-export-notes" class="btn btn-primary" title="Exportar parecer em arquivo .txt para o seu computador" style="display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 600; padding: 0.65rem 1.2rem;">
-          <span>📄</span> <strong>Exportar Parecer (.txt)</strong>
-        </button>
-      </div>
-    </div>
-
-    <!-- Área de Redação do Parecer / Anotações -->
-    <div style="margin-bottom: 1.25rem;">
-      <label for="shared-notes-textarea" style="display: block; font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem;">
-        {% if is_coordinator %}Texto do Parecer Pedagógico:{% else %}Suas Anotações e Parecer do Encontro:{% endif %}
-      </label>
-      <textarea 
-        id="shared-notes-textarea" 
-        class="notes-textarea" 
-        placeholder="{% if is_coordinator %}Escreva aqui seu parecer: pontos fortes do material, sugestões de condução dos slides, dinâmica de laboratório e direcionamentos pedagógicos...{% else %}Digite aqui suas observações sobre a dinâmica com os alunos, ritmo da aula, adaptações realizadas ou pontos para o próximo encontro...{% endif %}"
-        rows="8"
-      ></textarea>
-    </div>
-
-    <!-- Barra de Rodapé Informativa -->
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding: 0.75rem 1rem; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 0.82rem; color: var(--text-muted);">
-      <div style="display: flex; align-items: center; gap: 0.4rem;">
-        <span>💡</span>
-        <span>As anotações ficam ativas na sua sessão do navegador. Clique em <strong>Exportar Parecer (.txt)</strong> para salvar o arquivo em seu dispositivo.</span>
-      </div>
-      <div id="notes-char-count" style="font-weight: 500;">
-        0 caracteres digitados
-      </div>
-    </div>
-
-    {% if not is_coordinator %}
-    <!-- Container dos Papéis por Bloco (Divisão Docente Laura & Maria) -->
-    <div id="cockpit-papeis-container" style="margin-top: 1.5rem;">
-      <!-- Renderizado dinamicamente por cockpit-renderer.js -->
-    </div>
-    {% endif %}
-
-  </div>
-</div>

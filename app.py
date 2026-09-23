@@ -174,7 +174,7 @@ MEETINGS_DATA = {
         "desc": "Desmistificação dos mitos do cinema vs. IA real, introdução à história e evolução dos modelos, aplicações cotidianas invisíveis e debate crítico sobre ética, oportunidades e desafios no uso de IA Generativa.",
         "statusBadge": "🟢 Cockpit Liberado",
         "isReady": True,
-        "actionTip": "Módulo 1 totalmente formatado com Fio da Meada, Slides, Gabarito e Parecer do Professor."
+        "actionTip": "Módulo 1 totalmente formatado com Fio da Meada, Slides, Gabarito e Perguntas dos Alunos."
     },
     2: {
         "num": 2,
