@@ -51,10 +51,11 @@ export const blocosTematicos = [
   {
     id: 5,
     icone: "🇧🇷",
-    titulo: "Bloco 5: Brasil, Cidadania & Legislação",
-    subtitulo: "Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
+    titulo: "Bloco 5: Brasil, Cidadania & Legislação (Condução: Maria)",
+    subtitulo: "Conduzido por Maria: Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
     slidesRange: [22, 24],
-    tempoEstimado: "20 min"
+    tempoEstimado: "20 min",
+    conducao: "Maria"
   },
   {
     id: 6,

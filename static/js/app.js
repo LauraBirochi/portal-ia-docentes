@@ -313,6 +313,77 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3200);
   }
 
-  window.showToast = showToast;
+  // =========================================================================
+  // 7. GERENCIADOR DA JANELA DE SLIDES & SINCRONIZAÇÃO DE LOGOUT (AUTO-CLOSE)
+  // =========================================================================
+  let slidesWindowRef = null;
+  const AUTH_CHANNEL_NAME = 'portal_ia_auth_channel';
+  let authChannel = null;
+
+  try {
+    if ('BroadcastChannel' in window) {
+      authChannel = new BroadcastChannel(AUTH_CHANNEL_NAME);
+    }
+  } catch (e) {
+    console.warn('BroadcastChannel não disponível:', e);
+  }
+
+  function openSlidesWindow(url) {
+    if (slidesWindowRef && !slidesWindowRef.closed) {
+      slidesWindowRef.location.href = url;
+      slidesWindowRef.focus();
+    } else {
+      slidesWindowRef = window.open(url, 'portal_ia_slides_window');
+    }
+    localStorage.setItem('portal_ia_slides_active', 'true');
+  }
+
+  window.openSlidesWindow = openSlidesWindow;
+
+  // Interceptar cliques de abertura de slides e de logout
+  document.addEventListener('click', (e) => {
+    // 1. Abertura de Slides
+    const slidesLink = e.target.closest('a[href*="/slides"], .btn-open-slides');
+    if (slidesLink) {
+      e.preventDefault();
+      const url = slidesLink.getAttribute('href');
+      if (url) {
+        openSlidesWindow(url);
+      }
+      return;
+    }
+
+    // 2. Ação de Logout (Sair)
+    const logoutLink = e.target.closest('a[href*="/logout"], .btn-logout');
+    if (logoutLink) {
+      e.preventDefault();
+      const logoutUrl = logoutLink.getAttribute('href') || '/logout';
+
+      // Fecha a janela de slides diretamente se acessível
+      if (slidesWindowRef && !slidesWindowRef.closed) {
+        try {
+          slidesWindowRef.close();
+        } catch (err) {
+          console.warn('Erro ao fechar slides diretamente:', err);
+        }
+      }
+
+      // Transmite sinal de logout para todas as abas (BroadcastChannel)
+      if (authChannel) {
+        try {
+          authChannel.postMessage({ action: 'logout', timestamp: Date.now() });
+        } catch (err) {}
+      }
+
+      // Dispara sinal persistente via storage
+      localStorage.setItem('portal_ia_logout_signal', Date.now().toString());
+      localStorage.removeItem('portal_ia_slides_active');
+
+      // Redireciona para o logout do servidor após envio dos sinais
+      setTimeout(() => {
+        window.location.href = logoutUrl;
+      }, 50);
+    }
+  });
 });
 

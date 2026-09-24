@@ -283,6 +283,11 @@ const CockpitRenderer = {
                 <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
                   <span class="chip chip-warm" style="font-weight: 700;">Slide ${slideNum} de ${slides.length}</span>
                   <span class="chip" style="font-size: 0.75rem;">${slide.categoria || 'Pedagógico'}</span>
+                  ${(slide.conducao || slide.docente) ? `
+                    <span class="chip" style="font-size: 0.75rem; font-weight: 700; background: rgba(212, 163, 115, 0.15); border: 1px solid var(--border-amber); color: var(--text-amber);">
+                      👩‍🏫 Condução: ${slide.conducao || slide.docente}
+                    </span>
+                  ` : ''}
                   <span style="font-size: 0.8rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.25rem;">
                     ⏱️ ${notas.tempoSugerido || '5 min'}
                   </span>
@@ -302,7 +307,7 @@ const CockpitRenderer = {
             <div style="background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-sm); border: 1px dashed var(--border);">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
                 <strong style="color: var(--text-main); font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem;">
-                  <span>🎙️</span> Roteiro Sugerido de Fala para a Dupla (Laura & Maria):
+                  <span>🎙️</span> ${(slide.conducao || slide.docente) ? `Roteiro Sugerido de Fala (${slide.conducao || slide.docente}):` : `Roteiro Sugerido de Fala para a Dupla (Laura & Maria):`}
                 </strong>
                 <button type="button" class="btn btn-sm" onclick="window.CockpitRenderer.copySpeech('${slideNum}')" id="copy-btn-${slideNum}" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-radius: var(--radius-pill);" title="Copiar roteiro de fala">
                   📋 Copiar Fala
@@ -723,22 +728,24 @@ const CockpitRenderer = {
           ${papeis.map((p, idx) => {
             const inputName = `role_m${meetingNum}_b${idx + 1}`;
             const savedRole = localStorage.getItem(`role_${inputName}`);
+            const currentRole = savedRole || p.padrao || '';
 
             return `
               <div class="fio-papel-item">
                 <div class="fio-papel-top">
                   <span class="fio-papel-block-badge">${p.bloco}</span>
+                  ${p.conducao ? `<span class="chip chip-warm" style="font-size: 0.72rem; padding: 0.15rem 0.5rem;">${p.conducao}</span>` : ''}
                 </div>
                 <div class="fio-papel-theme">${p.tema}</div>
 
                 ${p.papel === 'radio' ? `
                   <div class="role-selector-pills" role="radiogroup" aria-label="Condutor do ${p.bloco}">
-                    <label class="role-pill ${savedRole === 'laura' ? 'active' : ''}">
-                      <input type="radio" name="${inputName}" value="laura" class="role-check" style="position: absolute; opacity: 0; width: 0; height: 0;" ${savedRole === 'laura' ? 'checked' : ''}>
+                    <label class="role-pill ${currentRole === 'laura' ? 'active' : ''}">
+                      <input type="radio" name="${inputName}" value="laura" class="role-check" style="position: absolute; opacity: 0; width: 0; height: 0;" ${currentRole === 'laura' ? 'checked' : ''}>
                       <span>👩‍🏫 Laura conduz</span>
                     </label>
-                    <label class="role-pill ${savedRole === 'maria' ? 'active' : ''}">
-                      <input type="radio" name="${inputName}" value="maria" class="role-check" style="position: absolute; opacity: 0; width: 0; height: 0;" ${savedRole === 'maria' ? 'checked' : ''}>
+                    <label class="role-pill ${currentRole === 'maria' ? 'active' : ''}">
+                      <input type="radio" name="${inputName}" value="maria" class="role-check" style="position: absolute; opacity: 0; width: 0; height: 0;" ${currentRole === 'maria' ? 'checked' : ''}>
                       <span>👩‍💻 Maria conduz</span>
                     </label>
                   </div>

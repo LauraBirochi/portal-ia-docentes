@@ -568,7 +568,7 @@ export const slidesComNotas = [
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 5: BRASIL, CIDADANIA & REGULAÇÕES (SLIDES 22 A 24)
+  // BLOCO 5: BRASIL, CIDADANIA & REGULAÇÕES (SLIDES 22 A 24) • CONDUÇÃO: MARIA
   // -----------------------------------------------------------------------
   {
     numero: 22,
@@ -576,6 +576,8 @@ export const slidesComNotas = [
     tipo: "secao",
     categoria: "Brasil, Cidadania & Legislação",
     badge: "Estratégia Nacional & Cidadania",
+    conducao: "Maria",
+    docente: "Maria",
     titulo: "E o Brasil? Cidadania, Soberania & As Leis de IA",
     subtitulo: "Como o nosso país se posiciona no cenário mundial: do Plano Brasileiro de IA (PBIA) aos direitos e proteção do cidadão",
     pills: [
@@ -583,8 +585,8 @@ export const slidesComNotas = [
       { tipo: "real", texto: "⚖️ 2. Marco Legal & LGPD (PL 2338/2023)" }
     ],
     notasProfessora: {
-      objetivoSlide: "Fazer a transição para o bloco de cidadania e soberania, valorizando o protagonismo do Brasil e conectando o curso à política pública nacional.",
-      oQueFalar: "Faça uma pausa e provoque a turma com entusiasmo: 'Desmistificamos o que é IA e como ela funciona. Mas e o Brasil nessa história? O nosso país tem um plano oficial de R$ 23 bilhões e leis pioneiras para garantir nossos direitos e soberania. Vamos conhecer o Plano Brasileiro de IA e o Marco Legal dos nossos direitos!'",
+      objetivoSlide: "Conduzido por Maria: Fazer a transição para o bloco de cidadania e soberania, valorizando o protagonismo do Brasil e conectando o curso à política pública nacional.",
+      oQueFalar: "Maria assume a condução da fala: 'Desmistificamos o que é IA e como ela funciona. Mas e o Brasil nessa história? O nosso país tem um plano oficial de R$ 23 bilhões e leis pioneiras para garantir nossos direitos e soberania. Vamos conhecer o Plano Brasileiro de IA e o Marco Legal dos nossos direitos!'",
       tempoSugerido: "3 minutos"
     }
   },
@@ -593,6 +595,9 @@ export const slidesComNotas = [
     id: 23,
     tipo: "apresentacao",
     categoria: "Plano Brasileiro de IA",
+    badge: "Plano Brasileiro de IA",
+    conducao: "Maria",
+    docente: "Maria",
     titulo: "O Plano Brasileiro de IA (PBIA): 'IA para o Bem de Todos'",
     subtitulo: "Os 3 eixos estratégicos do investimento público nacional: supercomputadores, SUS e inclusão digital",
     itensDestaque: [
@@ -613,8 +618,8 @@ export const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      objetivoSlide: "Mostrar a política pública oficial do Brasil e valorizar a presença dos alunos como agentes de transformação e soberania digital.",
-      oQueFalar: "Apresente com orgulho e cidadania: 'O Brasil não quer ser apenas um comprador de tecnologia de outros países. O Governo Federal lançou o Plano Brasileiro de IA com foco em usar a inteligência artificial para melhorar o SUS, proteger o meio ambiente e, principalmente, capacitar as pessoas. Vocês estarem aqui hoje faz parte dessa missão nacional de inclusão digital!'",
+      objetivoSlide: "Conduzido por Maria: Mostrar a política pública oficial do Brasil e valorizar a presença dos alunos como agentes de transformação e soberania digital.",
+      oQueFalar: "Maria apresenta com orgulho e cidadania: 'O Brasil não quer ser apenas um comprador de tecnologia de outros países. O Governo Federal lançou o Plano Brasileiro de IA com foco em usar a inteligência artificial para melhorar o SUS, proteger o meio ambiente e, principalmente, capacitar as pessoas. Vocês estarem aqui hoje faz parte dessa missão nacional de inclusão digital!'",
       tempoSugerido: "7 minutos"
     },
     embasamentoCientifico: dossies.pbiaBrasil
@@ -624,6 +629,9 @@ export const slidesComNotas = [
     id: 24,
     tipo: "apresentacao",
     categoria: "Legislação & Direitos",
+    badge: "Marco Legal da IA",
+    conducao: "Maria",
+    docente: "Maria",
     titulo: "Regulamentação da IA: Leis, Direitos e Proteção ao Cidadão",
     subtitulo: "Como o Marco Legal da IA (PL 2338/2023) e a LGPD protegem você de abusos",
     itensDestaque: [
@@ -644,8 +652,8 @@ export const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      objetivoSlide: "Transmitir segurança jurídica e cidadã, mostrando que regular não é proibir, mas garantir que a tecnologia sirva à dignidade humana.",
-      oQueFalar: "Explique com clareza: 'Regulamentar a IA não é proibir a tecnologia, mas colocar regras claras e cinto de segurança no carro! O Congresso Nacional está votando o Marco Legal da IA para garantir que nenhum algoritmo possa discriminar pessoas por idade, gênero ou cor, e que nossa privacidade seja respeitada.'",
+      objetivoSlide: "Conduzido por Maria: Transmitir segurança jurídica e cidadã, mostrando que regular não é proibir, mas garantir que a tecnologia sirva à dignidade humana.",
+      oQueFalar: "Maria explica com clareza: 'Regulamentar a IA não é proibir a tecnologia, mas colocar regras claras e cinto de segurança no carro! O Congresso Nacional está votando o Marco Legal da IA para garantir que nenhum algoritmo possa discriminar pessoas por idade, gênero ou cor, e que nossa privacidade seja respeitada.'",
       tempoSugerido: "7 minutos"
     },
     embasamentoCientifico: dossies.marcoLegal

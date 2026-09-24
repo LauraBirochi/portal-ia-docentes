@@ -6,7 +6,7 @@
 export const fioDaMeada = {
   objetivoCentral: "Qual é a grande mensagem que os alunos precisam levar hoje?",
   mensagemChave: "A Inteligência Artificial é uma ciência de mais de 70 anos que já opera silenciosamente em nosso cotidiano; ela não tem consciência nem sentimentos: é matemática, probabilidade e reconhecimento de padrões em dados para nos potencializar como cidadãos conscientes e autônomos.",
-  explicacaoObjetivo: "Nosso objetivo hoje não é ensinar código ou fórmulas, mas dar à turma o discernimento para entender a origem da tecnologia (1950–1956), separar os mitos do cinema da tecnologia real, reconhecer a estratégia e as leis do Brasil (PBIA e Marco Legal) e dominar o laboratório prático com segurança.",
+  explicacaoObjetivo: "Nosso objetivo hoje não é ensinar código ou fórmulas, mas dar à turma o discernimento para entender a origem da tecnologia (1950–1956), separar os mitos do cinema da tecnologia real, reconhecer a estratégia e as leis do Brasil (PBIA e Marco Legal — Bloco de Leis conduzido por Maria) e dominar o laboratório prático com segurança.",
   atos: [
     {
       ato: 1,
@@ -18,8 +18,8 @@ export const fioDaMeada = {
     {
       ato: 2,
       tempo: "00h55 às 02h25 (90 min c/ Intervalo)",
-      titulo: "A IA Invisível do Cotidiano, Mitos Desmontados & Soberania Brasileira",
-      desc: "Mapeamento da IA invisível que já opera no bolso e nos serviços (antifraude <300ms, Teorema de Tesler), desconstrução rigorosa dos 5 grandes mitos (consciência, alucinações, matemática, trapaça e futuro do trabalho) e apresentação da soberania nacional com o Plano Brasileiro de IA (PBIA 2024–2028: SUS, inclusão) e o Marco Legal (PL 2338/2023).",
+      titulo: "A IA Invisível do Cotidiano, Mitos Desmontados & Soberania Brasileira (Bloco de Leis por Maria)",
+      desc: "Mapeamento da IA invisível que já opera no bolso e nos serviços (antifraude <300ms, Teorema de Tesler), desconstrução rigorosa dos 5 grandes mitos (consciência, alucinações, matemática, trapaça e futuro do trabalho) e apresentação da soberania nacional no Bloco de Leis conduzido por Maria com o Plano Brasileiro de IA (PBIA 2024–2028: SUS, inclusão) e o Marco Legal (PL 2338/2023).",
       gatilho: "A IA não veio para substituir você: ela veio para assumir o trabalho mecânico e devolver tempo para o que só o ser humano sabe fazer, com regras claras que protegem nossos direitos!"
     },
     {

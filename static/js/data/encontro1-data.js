@@ -183,7 +183,7 @@
     fioDaMeada: {
       objetivoCentral: "Qual é a grande mensagem que os alunos precisam levar hoje?",
       mensagemChave: "A Inteligência Artificial é uma ciência de mais de 70 anos que já opera silenciosamente em nosso cotidiano; ela não tem consciência nem sentimentos: é matemática, probabilidade e reconhecimento de padrões em dados para nos potencializar como cidadãos conscientes e autônomos.",
-      explicacaoObjetivo: "Nosso objetivo hoje não é ensinar código ou fórmulas, mas dar à turma o discernimento para entender a origem da tecnologia (1950–1956), separar os mitos do cinema da tecnologia real, reconhecer a estratégia e as leis do Brasil (PBIA e Marco Legal) e dominar o laboratório prático com segurança.",
+      explicacaoObjetivo: "Nosso objetivo hoje não é ensinar código ou fórmulas, mas dar à turma o discernimento para entender a origem da tecnologia (1950–1956), separar os mitos do cinema da tecnologia real, reconhecer a estratégia e as leis do Brasil (PBIA e Marco Legal — Bloco de Leis conduzido por Maria) e dominar o laboratório prático com segurança.",
       atos: [
         {
           ato: 1,
@@ -195,8 +195,8 @@
         {
           ato: 2,
           tempo: "00h55 às 02h25 (90 min c/ Intervalo)",
-          titulo: "A IA Invisível do Cotidiano, Mitos Desmontados & Soberania Brasileira",
-          desc: "Mapeamento da IA invisível que já opera no bolso e nos serviços (antifraude <300ms, Teorema de Tesler), desconstrução rigorosa dos 5 grandes mitos (consciência, alucinações, matemática, trapaça e futuro do trabalho) e apresentação da soberania nacional com o Plano Brasileiro de IA (PBIA 2024–2028: SUS, inclusão) e o Marco Legal (PL 2338/2023).",
+          titulo: "A IA Invisível do Cotidiano, Mitos Desmontados & Soberania Brasileira (Bloco de Leis por Maria)",
+          desc: "Mapeamento da IA invisível que já opera no bolso e nos serviços (antifraude <300ms, Teorema de Tesler), desconstrução rigorosa dos 5 grandes mitos (consciência, alucinações, matemática, trapaça e futuro do trabalho) e apresentação da soberania nacional no Bloco de Leis conduzido por Maria com o Plano Brasileiro de IA (PBIA 2024–2028: SUS, inclusão) e o Marco Legal (PL 2338/2023).",
           gatilho: "A IA não veio para substituir você: ela veio para assumir o trabalho mecânico e devolver tempo para o que só o ser humano sabe fazer, com regras claras que protegem nossos direitos!"
         },
         {
@@ -283,10 +283,11 @@
       {
         id: 5,
         icone: "🇧🇷",
-        titulo: "Bloco 5: Brasil, Cidadania & Legislação",
-        subtitulo: "Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
+        titulo: "Bloco 5: Brasil, Cidadania & Legislação (Condução: Maria)",
+        subtitulo: "Conduzido por Maria: Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
         slidesRange: [22, 24],
-        tempoEstimado: "20 min"
+        tempoEstimado: "20 min",
+        conducao: "Maria"
       },
       {
         id: 6,
@@ -852,13 +853,15 @@
         }
       },
 
-      // BLOCO 5
+      // BLOCO 5: BRASIL, CIDADANIA & REGULAÇÕES (SLIDES 22 A 24) • CONDUÇÃO: MARIA
       {
         numero: 22,
         id: 22,
         tipo: "secao",
         categoria: "Brasil, Cidadania & Legislação",
         badge: "Estratégia Nacional & Cidadania",
+        conducao: "Maria",
+        docente: "Maria",
         titulo: "E o Brasil? Cidadania, Soberania & As Leis de IA",
         subtitulo: "Como o nosso país se posiciona no cenário mundial: do Plano Brasileiro de IA (PBIA) aos direitos e proteção do cidadão",
         pills: [
@@ -866,8 +869,8 @@
           { tipo: "real", texto: "⚖️ 2. Marco Legal & LGPD (PL 2338/2023)" }
         ],
         notasProfessora: {
-          objetivoSlide: "Fazer a transição para o bloco de cidadania e soberania, valorizando o protagonismo do Brasil e conectando o curso à política pública nacional.",
-          oQueFalar: "Faça uma pausa e provoque a turma com entusiasmo: 'Desmistificamos o que é IA e como ela funciona. Mas e o Brasil nessa história? O nosso país tem um plano oficial de R$ 23 bilhões e leis pioneiras para garantir nossos direitos e soberania. Vamos conhecer o Plano Brasileiro de IA e o Marco Legal dos nossos direitos!'",
+          objetivoSlide: "Conduzido por Maria: Fazer a transição para o bloco de cidadania e soberania, valorizando o protagonismo do Brasil e conectando o curso à política pública nacional.",
+          oQueFalar: "Maria assume a condução da fala: 'Desmistificamos o que é IA e como ela funciona. Mas e o Brasil nessa história? O nosso país tem um plano oficial de R$ 23 bilhões e leis pioneiras para garantir nossos direitos e soberania. Vamos conhecer o Plano Brasileiro de IA e o Marco Legal dos nossos direitos!'",
           tempoSugerido: "3 minutos"
         }
       },
@@ -876,6 +879,9 @@
         id: 23,
         tipo: "apresentacao",
         categoria: "Plano Brasileiro de IA",
+        badge: "Plano Brasileiro de IA",
+        conducao: "Maria",
+        docente: "Maria",
         titulo: "O Plano Brasileiro de IA (PBIA): 'IA para o Bem de Todos'",
         subtitulo: "Os 3 eixos estratégicos do investimento público nacional: supercomputadores, SUS e inclusão digital",
         itensDestaque: [
@@ -896,8 +902,8 @@
           }
         ],
         notasProfessora: {
-          objetivoSlide: "Mostrar a política pública oficial do Brasil e valorizar a presença dos alunos como agentes de transformação e soberania digital.",
-          oQueFalar: "Apresente com orgulho e cidadania: 'O Brasil não quer ser apenas um comprador de tecnologia de outros países. O Governo Federal lançou o Plano Brasileiro de IA com foco em usar a inteligência artificial para melhorar o SUS, proteger o meio ambiente e, principalmente, capacitar as pessoas. Vocês estarem aqui hoje faz parte dessa missão nacional de inclusão digital!'",
+          objetivoSlide: "Conduzido por Maria: Mostrar a política pública oficial do Brasil e valorizar a presença dos alunos como agentes de transformação e soberania digital.",
+          oQueFalar: "Maria apresenta com orgulho e cidadania: 'O Brasil não quer ser apenas um comprador de tecnologia de outros países. O Governo Federal lançou o Plano Brasileiro de IA com foco em usar a inteligência artificial para melhorar o SUS, proteger o meio ambiente e, principalmente, capacitar as pessoas. Vocês estarem aqui hoje faz parte dessa missão nacional de inclusão digital!'",
           tempoSugerido: "7 minutos"
         },
         embasamentoCientifico: dossies.pbiaBrasil
@@ -907,6 +913,9 @@
         id: 24,
         tipo: "apresentacao",
         categoria: "Legislação & Direitos",
+        badge: "Marco Legal da IA",
+        conducao: "Maria",
+        docente: "Maria",
         titulo: "Regulamentação da IA: Leis, Direitos e Proteção ao Cidadão",
         subtitulo: "Como o Marco Legal da IA (PL 2338/2023) e a LGPD protegem você de abusos",
         itensDestaque: [
@@ -927,8 +936,8 @@
           }
         ],
         notasProfessora: {
-          objetivoSlide: "Transmitir segurança jurídica e cidadã, mostrando que regular não é proibir, mas garantir que a tecnologia sirva à dignidade humana.",
-          oQueFalar: "Explique com clareza: 'Regulamentar a IA não é proibir a tecnologia, mas colocar regras claras e cinto de segurança no carro! O Congresso Nacional está votando o Marco Legal da IA para garantir que nenhum algoritmo possa discriminar pessoas por idade, gênero ou cor, e que nossa privacidade seja respeitada.'",
+          objetivoSlide: "Conduzido por Maria: Transmitir segurança jurídica e cidadã, mostrando que regular não é proibir, mas garantir que a tecnologia sirva à dignidade humana.",
+          oQueFalar: "Maria explica com clareza: 'Regulamentar a IA não é proibir a tecnologia, mas colocar regras claras e cinto de segurança no carro! O Congresso Nacional está votando o Marco Legal da IA para garantir que nenhum algoritmo possa discriminar pessoas por idade, gênero ou cor, e que nossa privacidade seja respeitada.'",
           tempoSugerido: "7 minutos"
         },
         embasamentoCientifico: dossies.marcoLegal
@@ -1081,7 +1090,7 @@
       { bloco: "Bloco 3 (55m-85m)", tema: "A IA Invisível do Dia a Dia & Teorema de Tesler (Slides 11 a 15)", papel: "radio" },
       { bloco: "Intervalo (15m)", tema: "Intervalo Pedagógico / Café com Prosa (Atalho Tecla I)", papel: "ambas" },
       { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 16 a 21)", papel: "radio" },
-      { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 22 a 24)", papel: "radio" },
+      { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 22 a 24) • Condução: Maria", papel: "radio", padrao: "maria" },
       { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 25 a 27)", papel: "ambas" }
     ],
 

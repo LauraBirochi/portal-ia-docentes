@@ -18,7 +18,7 @@
 
   <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
     <!-- Botão de Abertura dos Slides para o Computador 1 (Projetor) -->
-    <a href="{{ url_for('slides', meeting_id=active_meeting_id or 1) }}" target="_blank" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+    <a href="{{ url_for('slides', meeting_id=active_meeting_id or 1) }}" target="_blank" class="btn btn-primary btn-open-slides" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
       <span>🖥️</span> <strong>Abrir Slides no Projetor</strong>
     </a>
   </div>
@@ -75,7 +75,7 @@
         Projetados para o <strong>Computador 1 (Projetor)</strong>. Cada ficha abaixo contém o roteiro sugerido da fala para a condução da aula.
       </p>
     </div>
-    <a href="{{ url_for('slides', meeting_id=active_meeting_id or 1) }}" target="_blank" class="btn btn-primary" style="text-decoration: none;">
+    <a href="{{ url_for('slides', meeting_id=active_meeting_id or 1) }}" target="_blank" class="btn btn-primary btn-open-slides" style="text-decoration: none;">
       🖥️ Abrir Slides em Tela Cheia (16:9)
     </a>
   </div>
