@@ -308,6 +308,69 @@ export const slidesComNotas = [
     }
   },
   {
+    tipo: "apresentacao",
+    categoria: "Ficção vs. Realidade",
+    conducao: "Laura",
+    docente: "Laura",
+    titulo: "Por Que Não Teremos Robôs Conscientes nos Próximos 10 Anos?",
+    subtitulo: "Os 3 grandes desafios científicos que separam Rosie, Skynet e C-3PO da tecnologia real",
+    itensDestaque: [
+      {
+        icone: "🧠",
+        titulo: "1. Consciência ≠ Inteligência",
+        desc: "A ciência ainda não sabe como o cérebro biológico gera experiências subjetivas (dor, medo ou afeto). A IA simula respostas inteligentes, mas não sente absolutamente nada."
+      },
+      {
+        icone: "🦾",
+        titulo: "2. O Desafio do Mundo Físico",
+        desc: "Fazer um robô manipular objetos variados, equilibrar-se e navegar em ambientes domésticos imprevisíveis é infinitamente mais complexo do que gerar texto na tela."
+      },
+      {
+        icone: "⚙️",
+        titulo: "3. Autonomia ≠ Vontade Própria",
+        desc: "Um sistema pode executar sequências de tarefas automáticas sem precisar de consciência. A IA não tem desejos, ambição, raiva ou instinto de sobrevivência."
+      }
+    ],
+    notasProfessora: {
+      objetivoSlide: "Conduzido por Laura: Explicar os 3 obstáculos científicos fundamentais que impedem robôs com consciência nos próximos 10 anos.",
+      oQueFalar: "Laura explica com clareza: 'Muitos perguntam: se o ChatGPT já conversa tão bem, quando teremos a Rosie ou o C-3PO andando pela casa? A ciência tem 3 grandes barreiras: primeiro, não sabemos como criar consciência porque a própria ciência ainda estuda como o cérebro produz sentimentos. Segundo, agir no mundo físico é muito difícil. E terceiro: IA autônoma não tem desejos nem vontade própria!'",
+      tempoSugerido: "5 minutos"
+    }
+  },
+  {
+    tipo: "quebra-gelo",
+    categoria: "Perspectiva 2026–2036",
+    conducao: "Laura",
+    docente: "Laura",
+    titulo: "Ficção vs. Realidade: O Que Esperar nos Próximos 10 Anos?",
+    subtitulo: "Diferenciando avanços tecnológicos plausíveis de cenários que continuam sem base científica",
+    colunas: [
+      {
+        tag: "Avanços Plausíveis (Tecnologia Real)",
+        icone: "🚀",
+        itens: [
+          "Robôs com conversação em linguagem natural cada vez mais fluente e integrada.",
+          "Automação de procedimentos técnicos e tarefas industriais especializadas.",
+          "Assistentes digitais mais eficientes no planejamento de rotinas no computador."
+        ]
+      },
+      {
+        tag: "Permanece Ficção Científica",
+        icone: "🚫",
+        itens: [
+          "Robôs com sentimentos reais, dor ou autoconsciência comprovada.",
+          "Superinteligência militar com vontade própria ou hostilidade humana (Skynet).",
+          "Testes científicos definitivos capazes de provar se uma máquina sente emoções."
+        ]
+      }
+    ],
+    notasProfessora: {
+      objetivoSlide: "Conduzido por Laura: Estabelecer uma régua temporal realista para os próximos 10 anos, tranquilizando a turma com base em relatórios internacionais de segurança da IA.",
+      oQueFalar: "Laura tranquiliza a turma: 'Até 2036, veremos robôs conversando melhor e executando tarefas específicas com mais precisão. Mas máquinas que sentem medo de serem desligadas ou com consciência comprovada continuam no terreno da ficção científica. Podemos aprender e usar a IA sem o pânico do cinema!'",
+      tempoSugerido: "5 minutos"
+    }
+  },
+  {
     numero: 14,
     id: 14,
     tipo: "ia-estreita",

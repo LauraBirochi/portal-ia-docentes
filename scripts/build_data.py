@@ -59,12 +59,12 @@ def build_meeting_bundle(meeting_num: int = 1, base_dir: str = None) -> str:
         cleaned = clean_module_code(raw_content)
         parts.append(f"  // {idx}. {description}\n  {cleaned}\n")
 
-    # Contagem dinâmica de slides se possível
+    # Contagem dinâmica de slides baseada nos objetos de nível superior em slidesComNotas
     deck_path = os.path.join(submodules_dir, 'deck-slides.js')
     with open(deck_path, 'r', encoding='utf-8') as f:
         deck_content = f.read()
     
-    slide_matches = re.findall(r'numero:\s*(\d+)', deck_content)
+    slide_matches = re.findall(r'^  \{', deck_content, re.MULTILINE)
     num_slides = len(slide_matches) if slide_matches else "N"
 
     bundle_template = f"""/**

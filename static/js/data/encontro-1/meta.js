@@ -37,17 +37,17 @@ export const blocosTematicos = [
     id: 3,
     icone: "📱",
     titulo: "Bloco 3: A IA Invisível do Dia a Dia & Teorema de Tesler (Condução: Laura)",
-    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie) vs IA estreita real, Teorema de Larry Tesler e os 4 exemplos cotidianos",
-    slidesRange: [12, 16],
-    tempoEstimado: "30 min",
+    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie/Skynet) vs robótica real, por que robôs conscientes não virão em 10 anos, Teorema de Larry Tesler e os 4 exemplos cotidianos",
+    slidesRange: [12, 18],
+    tempoEstimado: "35 min",
     conducao: "Laura"
   },
   {
     id: 4,
     icone: "🎭",
     titulo: "Bloco 4: Desmistificando a IA – Os 5 Grandes Mitos",
-    subtitulo: "Desconstrução de mitos: consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
-    slidesRange: [17, 23],
+    subtitulo: "Conduzido por Maria (Mitos 1-2) e Laura (Mitos 3-5): Desconstrução de mitos sobre consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
+    slidesRange: [19, 25],
     tempoEstimado: "30 min"
   },
   {
@@ -55,7 +55,7 @@ export const blocosTematicos = [
     icone: "🇧🇷",
     titulo: "Bloco 5: Brasil, Cidadania & Legislação (Condução: Maria)",
     subtitulo: "Conduzido por Maria: Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
-    slidesRange: [24, 26],
+    slidesRange: [26, 28],
     tempoEstimado: "20 min",
     conducao: "Maria"
   },
@@ -64,7 +64,7 @@ export const blocosTematicos = [
     icone: "💻",
     titulo: "Bloco 6: Laboratório Prático & Fechamento",
     subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
-    slidesRange: [27, 29],
+    slidesRange: [29, 31],
     tempoEstimado: "35 min"
   }
 ];

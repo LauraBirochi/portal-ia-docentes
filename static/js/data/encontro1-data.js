@@ -1,5 +1,5 @@
 /**
- * Base de Dados Unificada – Módulo do Encontro 1 (29 Slides)
+ * Base de Dados Unificada – Módulo do Encontro 1 (31 Slides)
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  * 
  * ARQUIVO GERADO AUTOMATICAMENTE POR: scripts/build_data.py
@@ -212,17 +212,17 @@ const blocosTematicos = [
     id: 3,
     icone: "📱",
     titulo: "Bloco 3: A IA Invisível do Dia a Dia & Teorema de Tesler (Condução: Laura)",
-    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie) vs IA estreita real, Teorema de Larry Tesler e os 4 exemplos cotidianos",
-    slidesRange: [12, 16],
-    tempoEstimado: "30 min",
+    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie/Skynet) vs robótica real, por que robôs conscientes não virão em 10 anos, Teorema de Larry Tesler e os 4 exemplos cotidianos",
+    slidesRange: [12, 18],
+    tempoEstimado: "35 min",
     conducao: "Laura"
   },
   {
     id: 4,
     icone: "🎭",
     titulo: "Bloco 4: Desmistificando a IA – Os 5 Grandes Mitos",
-    subtitulo: "Desconstrução de mitos: consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
-    slidesRange: [17, 23],
+    subtitulo: "Conduzido por Maria (Mitos 1-2) e Laura (Mitos 3-5): Desconstrução de mitos sobre consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
+    slidesRange: [19, 25],
     tempoEstimado: "30 min"
   },
   {
@@ -230,7 +230,7 @@ const blocosTematicos = [
     icone: "🇧🇷",
     titulo: "Bloco 5: Brasil, Cidadania & Legislação (Condução: Maria)",
     subtitulo: "Conduzido por Maria: Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
-    slidesRange: [24, 26],
+    slidesRange: [26, 28],
     tempoEstimado: "20 min",
     conducao: "Maria"
   },
@@ -239,7 +239,7 @@ const blocosTematicos = [
     icone: "💻",
     titulo: "Bloco 6: Laboratório Prático & Fechamento",
     subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
-    slidesRange: [27, 29],
+    slidesRange: [29, 31],
     tempoEstimado: "35 min"
   }
 ];
@@ -623,6 +623,69 @@ const slidesComNotas = [
     notasProfessora: {
       objetivoSlide: "Acolher o imaginário popular dos alunos e desmistificar de forma leve a ideia de robôs com sentimentos.",
       oQueFalar: "Aponte para o telão com simpatia: 'Quem aqui lembra da robô Rosie dos Jetsons? No cinema, os robôs cozinham, sentem raiva, amam e têm consciência. Isso rende ótimas histórias, mas não existe na ciência real. A IA de verdade não tem corpo metálico nem sentimentos!'",
+      tempoSugerido: "5 minutos"
+    }
+  },
+  {
+    tipo: "apresentacao",
+    categoria: "Ficção vs. Realidade",
+    conducao: "Laura",
+    docente: "Laura",
+    titulo: "Por Que Não Teremos Robôs Conscientes nos Próximos 10 Anos?",
+    subtitulo: "Os 3 grandes desafios científicos que separam Rosie, Skynet e C-3PO da tecnologia real",
+    itensDestaque: [
+      {
+        icone: "🧠",
+        titulo: "1. Consciência ≠ Inteligência",
+        desc: "A ciência ainda não sabe como o cérebro biológico gera experiências subjetivas (dor, medo ou afeto). A IA simula respostas inteligentes, mas não sente absolutamente nada."
+      },
+      {
+        icone: "🦾",
+        titulo: "2. O Desafio do Mundo Físico",
+        desc: "Fazer um robô manipular objetos variados, equilibrar-se e navegar em ambientes domésticos imprevisíveis é infinitamente mais complexo do que gerar texto na tela."
+      },
+      {
+        icone: "⚙️",
+        titulo: "3. Autonomia ≠ Vontade Própria",
+        desc: "Um sistema pode executar sequências de tarefas automáticas sem precisar de consciência. A IA não tem desejos, ambição, raiva ou instinto de sobrevivência."
+      }
+    ],
+    notasProfessora: {
+      objetivoSlide: "Conduzido por Laura: Explicar os 3 obstáculos científicos fundamentais que impedem robôs com consciência nos próximos 10 anos.",
+      oQueFalar: "Laura explica com clareza: 'Muitos perguntam: se o ChatGPT já conversa tão bem, quando teremos a Rosie ou o C-3PO andando pela casa? A ciência tem 3 grandes barreiras: primeiro, não sabemos como criar consciência porque a própria ciência ainda estuda como o cérebro produz sentimentos. Segundo, agir no mundo físico é muito difícil. E terceiro: IA autônoma não tem desejos nem vontade própria!'",
+      tempoSugerido: "5 minutos"
+    }
+  },
+  {
+    tipo: "quebra-gelo",
+    categoria: "Perspectiva 2026–2036",
+    conducao: "Laura",
+    docente: "Laura",
+    titulo: "Ficção vs. Realidade: O Que Esperar nos Próximos 10 Anos?",
+    subtitulo: "Diferenciando avanços tecnológicos plausíveis de cenários que continuam sem base científica",
+    colunas: [
+      {
+        tag: "Avanços Plausíveis (Tecnologia Real)",
+        icone: "🚀",
+        itens: [
+          "Robôs com conversação em linguagem natural cada vez mais fluente e integrada.",
+          "Automação de procedimentos técnicos e tarefas industriais especializadas.",
+          "Assistentes digitais mais eficientes no planejamento de rotinas no computador."
+        ]
+      },
+      {
+        tag: "Permanece Ficção Científica",
+        icone: "🚫",
+        itens: [
+          "Robôs com sentimentos reais, dor ou autoconsciência comprovada.",
+          "Superinteligência militar com vontade própria ou hostilidade humana (Skynet).",
+          "Testes científicos definitivos capazes de provar se uma máquina sente emoções."
+        ]
+      }
+    ],
+    notasProfessora: {
+      objetivoSlide: "Conduzido por Laura: Estabelecer uma régua temporal realista para os próximos 10 anos, tranquilizando a turma com base em relatórios internacionais de segurança da IA.",
+      oQueFalar: "Laura tranquiliza a turma: 'Até 2036, veremos robôs conversando melhor e executando tarefas específicas com mais precisão. Mas máquinas que sentem medo de serem desligadas ou com consciência comprovada continuam no terreno da ficção científica. Podemos aprender e usar a IA sem o pânico do cinema!'",
       tempoSugerido: "5 minutos"
     }
   },
@@ -1187,11 +1250,11 @@ const perguntasAlunos = [
 const divisaoPapeis = [
   { bloco: "Bloco 1 (00h-30m)", tema: "Acolhimento, Contrato Pedagógico & Estrutura (Slides 1 a 6)", papel: "radio" },
   { bloco: "Bloco 2 (30m-55m)", tema: "Gênese Histórica, Definição & Os 3 Ingredientes (Slides 7 a 11) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 3 (55m-85m)", tema: "A IA Invisível do Dia a Dia & Teorema de Tesler (Slides 12 a 16) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 3 (55m-85m)", tema: "A IA Invisível do Dia a Dia & Teorema de Tesler (Slides 12 a 18) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Intervalo (15m)", tema: "Intervalo Pedagógico / Café com Prosa (Atalho Tecla I)", papel: "ambas" },
-  { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 17 a 23)", papel: "radio" },
-  { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 24 a 26) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 27 a 29)", papel: "ambas" }
+  { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 19 a 25) • Mitos 1-2: Maria | Mitos 3-5: Laura", papel: "radio" },
+  { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 26 a 28) • Condução: Maria", papel: "radio", padrao: "maria" },
+  { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 29 a 31)", papel: "ambas" }
 ];
 
   const ENCONTRO_1_DATA = {
