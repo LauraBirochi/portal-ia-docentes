@@ -142,7 +142,7 @@ export const slidesComNotas = [
     }
   },
 
-// -----------------------------------------------------------------------
+  // -----------------------------------------------------------------------
   // BLOCO 2: GÊNESE HISTÓRICA, DEFINIÇÃO & OS 3 INGREDIENTES (SLIDES 7 A 11)
   // -----------------------------------------------------------------------
   {
@@ -310,6 +310,28 @@ export const slidesComNotas = [
     }
   },
   {
+    tipo: "ia-ficcao",
+    categoria: "Ficção Moderna",
+    conducao: "Laura",
+    docente: "Laura",
+    titulo: "A Nova Era da Ficção: Robôs Acompanhantes & Afeto",
+    subtitulo: "Do cuidado médico de Baymax ao romance de WALL-E e androides de companhia",
+    imagem: "/static/img/ia_ficcao_moderna.jpg",
+    legendaImagem: "Ícones Modernos: Baymax, WALL-E, Eva e Acompanhante Perfeita (Companion)",
+    badge: "IA Emocional & Afeto — 0% REAL HOJE",
+    personagens: [
+      { nome: "Baymax (Operação Big Hero)", desc: "Robô enfermeiro inflável programado para cuidar, acalmar e demonstrar compaixão." },
+      { nome: "WALL-E & Eva (Disney/Pixar)", desc: "Robôs com curiosidade, apego emocional, amor e capacidade de sonhar." },
+      { nome: "A Acompanhante Perfeita (Companion)", desc: "Androide sintética que simula relacionamentos, lealdade e afeto humano." }
+    ],
+    conclusaoFiccao: "Na ficção moderna, robôs criam laços afetivos. Na ciência real, são algoritmos que calculam dados sem sentir carinho ou apego.",
+    notasProfessora: {
+      objetivoSlide: "Conduzido por Laura: Analisar os ícones modernos do cinema (Baymax, WALL-E, Eva e Companion), mostrando que a simulação de carinho não significa sentimentos reais.",
+      oQueFalar: "Laura comenta com entusiasmo: 'Vejam como a ficção moderna evoluiu: em vez de robôs destruidores, agora amamos o Baymax, o WALL-E, a Eva e as androides de companhia! Eles parecem ter coração e afeto de verdade. Mas na ciência atual, mesmo a IA mais gentil está apenas calculando probabilidades. Ela não sente carinho nem saudade de nós!'",
+      tempoSugerido: "4 minutos"
+    }
+  },
+  {
     tipo: "apresentacao",
     categoria: "Ficção vs. Realidade",
     conducao: "Laura",
@@ -337,28 +359,6 @@ export const slidesComNotas = [
       objetivoSlide: "Conduzido por Laura: Explicar os 3 obstáculos científicos fundamentais que impedem robôs com consciência nos próximos 10 anos.",
       oQueFalar: "Laura explica com clareza: 'Muitos perguntam: se o ChatGPT já conversa tão bem, quando teremos a Rosie ou o C-3PO andando pela casa? A ciência tem 3 grandes barreiras: primeiro, não sabemos como criar consciência porque a própria ciência ainda estuda como o cérebro produz sentimentos. Segundo, agir no mundo físico é muito difícil. E terceiro: IA autônoma não tem desejos nem vontade própria!'",
       tempoSugerido: "5 minutos"
-    }
-  },
-  {
-    tipo: "ia-ficcao",
-    categoria: "Ficção Moderna",
-    conducao: "Laura",
-    docente: "Laura",
-    titulo: "A Nova Era da Ficção: Robôs Acompanhantes & Afeto",
-    subtitulo: "Do cuidado médico de Baymax ao romance de WALL-E e androides de companhia",
-    imagem: "/static/img/ia_ficcao_moderna.jpg",
-    legendaImagem: "Ícones Modernos: Baymax, WALL-E, Eva e Acompanhante Perfeita (Companion)",
-    badge: "IA Emocional & Afeto — 0% REAL HOJE",
-    personagens: [
-      { nome: "Baymax (Operação Big Hero)", desc: "Robô enfermeiro inflável programado para cuidar, acalmar e demonstrar compaixão." },
-      { nome: "WALL-E & Eva (Disney/Pixar)", desc: "Robôs com curiosidade, apego emocional, amor e capacidade de sonhar." },
-      { nome: "A Acompanhante Perfeita (Companion)", desc: "Androide sintética que simula relacionamentos, lealdade e afeto humano." }
-    ],
-    conclusaoFiccao: "Na ficção moderna, robôs criam laços afetivos. Na ciência real, são algoritmos que calculam dados sem sentir carinho ou apego.",
-    notasProfessora: {
-      objetivoSlide: "Conduzido por Laura: Analisar os ícones modernos do cinema (Baymax, WALL-E, Eva e Companion), mostrando que a simulação de carinho não significa sentimentos reais.",
-      oQueFalar: "Laura comenta com entusiasmo: 'Vejam como a ficção moderna evoluiu: em vez de robôs destruidores, agora amamos o Baymax, o WALL-E, a Eva e as androides de companhia! Eles parecem ter coração e afeto de verdade. Mas na ciência atual, mesmo a IA mais gentil está apenas calculando probabilidades. Ela não sente carinho nem saudade de nós!'",
-      tempoSugerido: "4 minutos"
     }
   },
   {
