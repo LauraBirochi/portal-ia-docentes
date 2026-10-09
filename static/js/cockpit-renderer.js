@@ -326,13 +326,16 @@ const CockpitRenderer = {
                     "${slide.citacao}"
                     ${slide.autor ? `<div style="font-style: normal; font-weight: 700; font-size: 0.78rem; color: #d97706; margin-top: 0.35rem; text-align: right;">— ${slide.autor}</div>` : ''}
                   </div>
-                ` : `
+                ` : (slide.pills && slide.pills.length) ? `
                   <div style="display: flex; gap: 0.6rem; justify-content: center; margin-top: 0.5rem; flex-wrap: wrap;">
-                    <span style="font-size: 0.78rem; background: rgba(220,53,69,0.15); color: #e03131; padding: 0.25rem 0.65rem; border-radius: 4px; font-weight: 600;">🎬 1. IA da Ficção (AGI)</span>
-                    <span style="font-size: 0.78rem; color: var(--text-muted); font-weight: bold;">➔</span>
-                    <span style="font-size: 0.78rem; background: rgba(40,167,69,0.15); color: #2f9e44; padding: 0.25rem 0.65rem; border-radius: 4px; font-weight: 600;">⚙️ 2. IA Estreita Real (ANI)</span>
+                    ${slide.pills.map((p, idx) => `
+                      <span style="font-size: 0.78rem; background: ${p.tipo === 'ficcao' ? 'rgba(220,53,69,0.15)' : 'rgba(40,167,69,0.15)'}; color: ${p.tipo === 'ficcao' ? '#e03131' : '#2f9e44'}; padding: 0.25rem 0.65rem; border-radius: 4px; font-weight: 600;">${p.texto}</span>
+                      ${idx < slide.pills.length - 1 ? '<span style="font-size: 0.78rem; color: var(--text-muted); font-weight: bold;">➔</span>' : ''}
+                    `).join('')}
                   </div>
-                `}
+                ` : slide.subtitulo ? `
+                  <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.4;">${slide.subtitulo}</div>
+                ` : ''}
               </div>
             ` : (slide.tipo === 'ia-ficcao') ? `
               <div style="background: var(--bg-surface); border: 1px solid rgba(220,53,69,0.35); border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">

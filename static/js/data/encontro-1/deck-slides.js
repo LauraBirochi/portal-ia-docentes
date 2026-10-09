@@ -1,5 +1,5 @@
 /**
- * Módulo 1 – Deck Completo de Slides (27 Slides) & Notas da Professora
+ * Módulo 1 – Deck Completo de Slides (28 Slides) & Notas da Professora
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
@@ -142,16 +142,30 @@ export const slidesComNotas = [
     }
   },
 
-  // -----------------------------------------------------------------------
-  // BLOCO 2: GÊNESE HISTÓRICA, DEFINIÇÃO & OS 3 INGREDIENTES (SLIDES 7 A 10)
+// -----------------------------------------------------------------------
+  // BLOCO 2: GÊNESE HISTÓRICA, DEFINIÇÃO & OS 3 INGREDIENTES (SLIDES 7 A 11)
   // -----------------------------------------------------------------------
   {
     numero: 7,
     id: 7,
-    tipo: "apresentacao",
+    tipo: "secao",
     categoria: "Gênese Histórica",
+    badge: "Ponto de Partida",
     titulo: "A IA Não Nasceu em 2022 com o ChatGPT!",
     subtitulo: "Uma história de quase 70 anos de ciência que agora chegou ao nosso bolso",
+    notasProfessora: {
+      objetivoSlide: "Criar uma pausa reflexiva e quebrar o mito de que a IA é um modismo recente de 2022 antes de abrir a história.",
+      oQueFalar: "Diga com entusiasmo: 'Até agora alinhamos nossa rotina e garantimos o acesso ao e-mail. Agora uma pergunta: Quem aqui achava que a IA nasceu em 2022 com o ChatGPT? Quase todo mundo! Mas a verdade é fascinante: cientistas pesquisam isso há quase 70 anos. O que aconteceu em 2022 foi que essa ciência finalmente coube no nosso bolso!'",
+      tempoSugerido: "3 minutos"
+    }
+  },
+  {
+    numero: 8,
+    id: 8,
+    tipo: "apresentacao",
+    categoria: "Gênese Histórica",
+    titulo: "Os 3 Grandes Marcos da História da IA",
+    subtitulo: "De Alan Turing e a Conferência de Dartmouth até a explosão dos supercomputadores",
     itensDestaque: [
       {
         icone: "🕰️",
@@ -177,8 +191,8 @@ export const slidesComNotas = [
     embasamentoCientifico: dossies.turingDartmouth
   },
   {
-    numero: 8,
-    id: 8,
+    numero: 9,
+    id: 9,
     tipo: "secao",
     categoria: "Definição Fundamental",
     badge: "Conceito Central",
@@ -191,8 +205,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 9,
-    id: 9,
+    numero: 10,
+    id: 10,
     tipo: "comparativo",
     categoria: "Definição Descomplicada",
     titulo: "Programação Tradicional vs. Aprendizado por Padrões",
@@ -216,8 +230,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 10,
-    id: 10,
+    numero: 11,
+    id: 11,
     tipo: "apresentacao",
     categoria: "Definição Fundamental",
     titulo: "Os 3 Ingredientes que Fazem a Mágica Acontecer",
@@ -247,11 +261,11 @@ export const slidesComNotas = [
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 3: A IA INVISÍVEL DO DIA A DIA (SLIDES 11 A 15)
+  // BLOCO 3: A IA INVISÍVEL DO DIA A DIA (SLIDES 12 A 16)
   // -----------------------------------------------------------------------
   {
-    numero: 11,
-    id: 11,
+    numero: 12,
+    id: 12,
     tipo: "secao",
     categoria: "Classificação Tecnológica",
     badge: "Classificação Tecnológica",
@@ -268,8 +282,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 12,
-    id: 12,
+    numero: 13,
+    id: 13,
     tipo: "ia-ficcao",
     categoria: "Ficção Científica",
     titulo: "1. A IA da Ficção: Robôs, Cinema & Imaginação",
@@ -289,8 +303,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 13,
-    id: 13,
+    numero: 14,
+    id: 14,
     tipo: "ia-estreita",
     categoria: "A IA Real",
     titulo: "2. A IA Estreita: A Tecnologia que Move o Planeta Real",
@@ -312,8 +326,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 14,
-    id: 14,
+    numero: 15,
+    id: 15,
     tipo: "secao",
     categoria: "O Efeito IA",
     badge: "O Efeito IA (The AI Effect)",
@@ -329,8 +343,8 @@ export const slidesComNotas = [
     embasamentoCientifico: dossies.teslerAiEffect
   },
   {
-    numero: 15,
-    id: 15,
+    numero: 16,
+    id: 16,
     tipo: "grid-exemplos",
     categoria: "O Teorema de Tesler na Prática",
     titulo: "O Efeito IA no Cotidiano: Quando a Tecnologia Vira Rotina",
@@ -369,11 +383,11 @@ export const slidesComNotas = [
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 4: DESMISTIFICANDO A IA – OS 5 GRANDES MITOS (SLIDES 16 A 21)
+  // BLOCO 4: DESMISTIFICANDO A IA – OS 5 GRANDES MITOS (SLIDES 17 A 22)
   // -----------------------------------------------------------------------
   {
-    numero: 16,
-    id: 16,
+    numero: 17,
+    id: 17,
     tipo: "quebra-gelo",
     categoria: "Transição para os Mitos",
     titulo: "De Onde Vem o Nosso Medo? Do Cinema às Falácias da Internet",
@@ -405,8 +419,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 17,
-    id: 17,
+    numero: 18,
+    id: 18,
     tipo: "quebra-gelo",
     categoria: "Desmistificando a IA",
     titulo: "Mito 1: 'A IA pensa, sente e tem consciência própria'",
@@ -438,8 +452,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 18,
-    id: 18,
+    numero: 19,
+    id: 19,
     tipo: "quebra-gelo",
     categoria: "Postura Crítica",
     titulo: "Mito 2: 'Se a IA respondeu com certeza, está 100% correto'",
@@ -471,8 +485,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 19,
-    id: 19,
+    numero: 20,
+    id: 20,
     tipo: "apresentacao",
     categoria: "Acessibilidade & Inclusão",
     titulo: "Mito 3: 'Preciso ser um gênio da matemática ou programador'",
@@ -501,8 +515,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 20,
-    id: 20,
+    numero: 21,
+    id: 21,
     tipo: "quebra-gelo",
     categoria: "Ética & Autoria",
     titulo: "Mito 4: 'Usar IA significa necessariamente trapacear'",
@@ -534,8 +548,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 21,
-    id: 21,
+    numero: 22,
+    id: 22,
     tipo: "quebra-gelo",
     categoria: "O Futuro do Trabalho e Estudos",
     titulo: "Mito 5: 'A IA vai substituir os seres humanos em tudo'",
@@ -568,11 +582,11 @@ export const slidesComNotas = [
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 5: BRASIL, CIDADANIA & REGULAÇÕES (SLIDES 22 A 24) • CONDUÇÃO: MARIA
+  // BLOCO 5: BRASIL, CIDADANIA & REGULAÇÕES (SLIDES 23 A 25) • CONDUÇÃO: MARIA
   // -----------------------------------------------------------------------
   {
-    numero: 22,
-    id: 22,
+    numero: 23,
+    id: 23,
     tipo: "secao",
     categoria: "Brasil, Cidadania & Legislação",
     badge: "Estratégia Nacional & Cidadania",
@@ -591,8 +605,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 23,
-    id: 23,
+    numero: 24,
+    id: 24,
     tipo: "apresentacao",
     categoria: "Plano Brasileiro de IA",
     badge: "Plano Brasileiro de IA",
@@ -625,8 +639,8 @@ export const slidesComNotas = [
     embasamentoCientifico: dossies.pbiaBrasil
   },
   {
-    numero: 24,
-    id: 24,
+    numero: 25,
+    id: 25,
     tipo: "apresentacao",
     categoria: "Legislação & Direitos",
     badge: "Marco Legal da IA",
@@ -660,11 +674,11 @@ export const slidesComNotas = [
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 6: LABORATÓRIO PRÁTICO & FECHAMENTO (SLIDES 25 A 27)
+  // BLOCO 6: LABORATÓRIO PRÁTICO & FECHAMENTO (SLIDES 26 A 28)
   // -----------------------------------------------------------------------
   {
-    numero: 25,
-    id: 25,
+    numero: 26,
+    id: 26,
     tipo: "missao-email",
     categoria: "Laboratório Prático 1",
     titulo: "Missão 1 no Computador: Garantir o Acesso ao seu E-mail",
@@ -683,8 +697,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 26,
-    id: 26,
+    numero: 27,
+    id: 27,
     tipo: "missao-diagnostica",
     categoria: "Laboratório Prático 2",
     titulo: "Missão 2 no Computador: Prova Diagnóstica",
@@ -708,8 +722,8 @@ export const slidesComNotas = [
     }
   },
   {
-    numero: 27,
-    id: 27,
+    numero: 28,
+    id: 28,
     tipo: "fechamento",
     categoria: "Síntese & Próximos Passos",
     titulo: "Síntese do Encontro 1 & O Salto para a Próxima Aula",

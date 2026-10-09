@@ -1,5 +1,5 @@
 /**
- * Base de Dados Unificada – Módulo do Encontro 1 (27 Slides Atualizados)
+ * Base de Dados Unificada – Módulo do Encontro 1 (28 Slides Atualizados)
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  * 
  * ARQUITETURA MODULAR:
@@ -7,7 +7,7 @@
  * - meta.js: Metadados curriculares e blocos temáticos
  * - narrativa.js: Fio da meada, 3 atos e glossário alinhado
  * - dossies.js: Dossiês científicos e normativos (Turing, Tesler, PBIA, PL 2338)
- * - deck-slides.js: 27 slides com notas pedagógicas da professora
+ * - deck-slides.js: 28 slides com notas pedagógicas da professora
  * - atividades.js: Atividade 1 no Portfólio Digital e gabaritos
  * - faq-duvidas.js: 9 perguntas dos alunos e armadilhas conceituais
  * - papeis.js: Divisão de momentos da co-docência (Laura & Maria)
@@ -261,7 +261,7 @@
         icone: "🕰️",
         titulo: "Bloco 2: Gênese Histórica, Definição & Os 3 Ingredientes",
         subtitulo: "Origem (Turing 1950, Dartmouth 1956), programação vs padrões e os 3 ingredientes da IA moderna",
-        slidesRange: [7, 10],
+        slidesRange: [7, 11],
         tempoEstimado: "25 min"
       },
       {
@@ -269,7 +269,7 @@
         icone: "📱",
         titulo: "Bloco 3: A IA Invisível do Dia a Dia & Teorema de Tesler",
         subtitulo: "A IA da ficção (Rosie) vs IA estreita real, Teorema de Larry Tesler e os 4 exemplos cotidianos",
-        slidesRange: [11, 15],
+        slidesRange: [12, 16],
         tempoEstimado: "30 min"
       },
       {
@@ -277,7 +277,7 @@
         icone: "🎭",
         titulo: "Bloco 4: Desmistificando a IA – Os 5 Grandes Mitos",
         subtitulo: "Desconstrução de mitos: consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
-        slidesRange: [16, 21],
+        slidesRange: [17, 22],
         tempoEstimado: "30 min"
       },
       {
@@ -285,7 +285,7 @@
         icone: "🇧🇷",
         titulo: "Bloco 5: Brasil, Cidadania & Legislação (Condução: Maria)",
         subtitulo: "Conduzido por Maria: Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
-        slidesRange: [22, 24],
+        slidesRange: [23, 25],
         tempoEstimado: "20 min",
         conducao: "Maria"
       },
@@ -294,7 +294,7 @@
         icone: "💻",
         titulo: "Bloco 6: Laboratório Prático & Fechamento",
         subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
-        slidesRange: [25, 27],
+        slidesRange: [26, 28],
         tempoEstimado: "35 min"
       }
     ],
@@ -438,10 +438,24 @@
       {
         numero: 7,
         id: 7,
-        tipo: "apresentacao",
+        tipo: "secao",
         categoria: "Gênese Histórica",
+        badge: "Ponto de Partida",
         titulo: "A IA Não Nasceu em 2022 com o ChatGPT!",
         subtitulo: "Uma história de quase 70 anos de ciência que agora chegou ao nosso bolso",
+        notasProfessora: {
+          objetivoSlide: "Criar uma pausa reflexiva e quebrar o mito de que a IA é um modismo recente de 2022 antes de abrir a história.",
+          oQueFalar: "Diga com entusiasmo: 'Até agora alinhamos nossa rotina e garantimos o acesso ao e-mail. Agora uma pergunta: Quem aqui achava que a IA nasceu em 2022 com o ChatGPT? Quase todo mundo! Mas a verdade é fascinante: cientistas pesquisam isso há quase 70 anos. O que aconteceu em 2022 foi que essa ciência finalmente coube no nosso bolso!'",
+          tempoSugerido: "3 minutos"
+        }
+      },
+      {
+        numero: 8,
+        id: 8,
+        tipo: "apresentacao",
+        categoria: "Gênese Histórica",
+        titulo: "Os 3 Grandes Marcos da História da IA",
+        subtitulo: "De Alan Turing e a Conferência de Dartmouth até a explosão dos supercomputadores",
         itensDestaque: [
           {
             icone: "🕰️",
@@ -467,8 +481,8 @@
         embasamentoCientifico: dossies.turingDartmouth
       },
       {
-        numero: 8,
-        id: 8,
+        numero: 9,
+        id: 9,
         tipo: "secao",
         categoria: "Definição Fundamental",
         badge: "Conceito Central",
@@ -481,8 +495,8 @@
         }
       },
       {
-        numero: 9,
-        id: 9,
+        numero: 10,
+        id: 10,
         tipo: "comparativo",
         categoria: "Definição Descomplicada",
         titulo: "Programação Tradicional vs. Aprendizado por Padrões",
@@ -506,8 +520,8 @@
         }
       },
       {
-        numero: 10,
-        id: 10,
+        numero: 11,
+        id: 11,
         tipo: "apresentacao",
         categoria: "Definição Fundamental",
         titulo: "Os 3 Ingredientes que Fazem a Mágica Acontecer",
@@ -538,8 +552,8 @@
 
       // BLOCO 3
       {
-        numero: 11,
-        id: 11,
+        numero: 12,
+        id: 12,
         tipo: "secao",
         categoria: "Classificação Tecnológica",
         badge: "Classificação Tecnológica",
@@ -556,8 +570,8 @@
         }
       },
       {
-        numero: 12,
-        id: 12,
+        numero: 13,
+        id: 13,
         tipo: "ia-ficcao",
         categoria: "Ficção Científica",
         titulo: "1. A IA da Ficção: Robôs, Cinema & Imaginação",
@@ -577,8 +591,8 @@
         }
       },
       {
-        numero: 13,
-        id: 13,
+        numero: 14,
+        id: 14,
         tipo: "ia-estreita",
         categoria: "A IA Real",
         titulo: "2. A IA Estreita: A Tecnologia que Move o Planeta Real",
@@ -600,8 +614,8 @@
         }
       },
       {
-        numero: 14,
-        id: 14,
+        numero: 15,
+        id: 15,
         tipo: "secao",
         categoria: "O Efeito IA",
         badge: "O Efeito IA (The AI Effect)",
@@ -617,8 +631,8 @@
         embasamentoCientifico: dossies.teslerAiEffect
       },
       {
-        numero: 15,
-        id: 15,
+        numero: 16,
+        id: 16,
         tipo: "grid-exemplos",
         categoria: "O Teorema de Tesler na Prática",
         titulo: "O Efeito IA no Cotidiano: Quando a Tecnologia Vira Rotina",
@@ -658,8 +672,8 @@
 
       // BLOCO 4
       {
-        numero: 16,
-        id: 16,
+        numero: 17,
+        id: 17,
         tipo: "quebra-gelo",
         categoria: "Transição para os Mitos",
         titulo: "De Onde Vem o Nosso Medo? Do Cinema às Falácias da Internet",
@@ -691,8 +705,8 @@
         }
       },
       {
-        numero: 17,
-        id: 17,
+        numero: 18,
+        id: 18,
         tipo: "quebra-gelo",
         categoria: "Desmistificando a IA",
         titulo: "Mito 1: 'A IA pensa, sente e tem consciência própria'",
@@ -724,8 +738,8 @@
         }
       },
       {
-        numero: 18,
-        id: 18,
+        numero: 19,
+        id: 19,
         tipo: "quebra-gelo",
         categoria: "Postura Crítica",
         titulo: "Mito 2: 'Se a IA respondeu com certeza, está 100% correto'",
@@ -757,8 +771,8 @@
         }
       },
       {
-        numero: 19,
-        id: 19,
+        numero: 20,
+        id: 20,
         tipo: "apresentacao",
         categoria: "Acessibilidade & Inclusão",
         titulo: "Mito 3: 'Preciso ser um gênio da matemática ou programador'",
@@ -787,8 +801,8 @@
         }
       },
       {
-        numero: 20,
-        id: 20,
+        numero: 21,
+        id: 21,
         tipo: "quebra-gelo",
         categoria: "Ética & Autoria",
         titulo: "Mito 4: 'Usar IA significa necessariamente trapacear'",
@@ -820,8 +834,8 @@
         }
       },
       {
-        numero: 21,
-        id: 21,
+        numero: 22,
+        id: 22,
         tipo: "quebra-gelo",
         categoria: "O Futuro do Trabalho e Estudos",
         titulo: "Mito 5: 'A IA vai substituir os seres humanos em tudo'",
@@ -855,8 +869,8 @@
 
       // BLOCO 5: BRASIL, CIDADANIA & REGULAÇÕES (SLIDES 22 A 24) • CONDUÇÃO: MARIA
       {
-        numero: 22,
-        id: 22,
+        numero: 23,
+        id: 23,
         tipo: "secao",
         categoria: "Brasil, Cidadania & Legislação",
         badge: "Estratégia Nacional & Cidadania",
@@ -875,8 +889,8 @@
         }
       },
       {
-        numero: 23,
-        id: 23,
+        numero: 24,
+        id: 24,
         tipo: "apresentacao",
         categoria: "Plano Brasileiro de IA",
         badge: "Plano Brasileiro de IA",
@@ -909,8 +923,8 @@
         embasamentoCientifico: dossies.pbiaBrasil
       },
       {
-        numero: 24,
-        id: 24,
+        numero: 25,
+        id: 25,
         tipo: "apresentacao",
         categoria: "Legislação & Direitos",
         badge: "Marco Legal da IA",
@@ -945,8 +959,8 @@
 
       // BLOCO 6
       {
-        numero: 25,
-        id: 25,
+        numero: 26,
+        id: 26,
         tipo: "missao-email",
         categoria: "Laboratório Prático 1",
         titulo: "Missão 1 no Computador: Garantir o Acesso ao seu E-mail",
@@ -965,8 +979,8 @@
         }
       },
       {
-        numero: 26,
-        id: 26,
+        numero: 27,
+        id: 27,
         tipo: "missao-diagnostica",
         categoria: "Laboratório Prático 2",
         titulo: "Missão 2 no Computador: Prova Diagnóstica",
@@ -990,8 +1004,8 @@
         }
       },
       {
-        numero: 27,
-        id: 27,
+        numero: 28,
+        id: 28,
         tipo: "fechamento",
         categoria: "Síntese & Próximos Passos",
         titulo: "Síntese do Encontro 1 & O Salto para a Próxima Aula",
@@ -1086,12 +1100,12 @@
 
     divisaoPapeis: [
       { bloco: "Bloco 1 (00h-30m)", tema: "Acolhimento, Contrato Pedagógico & Estrutura (Slides 1 a 6)", papel: "radio" },
-      { bloco: "Bloco 2 (30m-55m)", tema: "Gênese Histórica, Definição & Os 3 Ingredientes (Slides 7 a 10)", papel: "radio" },
-      { bloco: "Bloco 3 (55m-85m)", tema: "A IA Invisível do Dia a Dia & Teorema de Tesler (Slides 11 a 15)", papel: "radio" },
+      { bloco: "Bloco 2 (30m-55m)", tema: "Gênese Histórica, Definição & Os 3 Ingredientes (Slides 7 a 11)", papel: "radio" },
+      { bloco: "Bloco 3 (55m-85m)", tema: "A IA Invisível do Dia a Dia & Teorema de Tesler (Slides 12 a 16)", papel: "radio" },
       { bloco: "Intervalo (15m)", tema: "Intervalo Pedagógico / Café com Prosa (Atalho Tecla I)", papel: "ambas" },
-      { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 16 a 21)", papel: "radio" },
-      { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 22 a 24) • Condução: Maria", papel: "radio", padrao: "maria" },
-      { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 25 a 27)", papel: "ambas" }
+      { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 17 a 22)", papel: "radio" },
+      { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 23 a 25) • Condução: Maria", papel: "radio", padrao: "maria" },
+      { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 26 a 28)", papel: "ambas" }
     ],
 
     dossies: dossies

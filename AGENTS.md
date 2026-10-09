@@ -9,6 +9,7 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
 ### 🎯 Encontro 1
 - **Foco Principal:** Implementar as **ideias e orientações do coordenador**.
 - **Objetivo:** Garantir que as demandas e a visão pedagógica/técnica estabelecidas pelo coordenador na primeira reunião/contato sejam priorizadas e integradas no início do desenvolvimento.
+- **Transição Histórica (Slide 7):** Inclusão de slide de transição de impacto (tipo `secao`) entre o Slide 6 (Requisito de E-mail) e o Slide 8 (Os 3 Grandes Marcos da História da IA), com a provocação *"A IA Não Nasceu em 2022 com o ChatGPT!"*, subtítulo reflexivo e fala da professora, expandindo o deck para 28 slides.
 
 ---
 
