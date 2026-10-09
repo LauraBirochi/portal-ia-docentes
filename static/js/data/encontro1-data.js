@@ -1,5 +1,5 @@
 /**
- * Base de Dados Unificada – Módulo do Encontro 1 (31 Slides)
+ * Base de Dados Unificada – Módulo do Encontro 1 (32 Slides)
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  * 
  * ARQUIVO GERADO AUTOMATICAMENTE POR: scripts/build_data.py
@@ -212,8 +212,8 @@ const blocosTematicos = [
     id: 3,
     icone: "📱",
     titulo: "Bloco 3: A IA Invisível do Dia a Dia & Teorema de Tesler (Condução: Laura)",
-    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie/Skynet) vs robótica real, por que robôs conscientes não virão em 10 anos, Teorema de Larry Tesler e os 4 exemplos cotidianos",
-    slidesRange: [12, 18],
+    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie/Skynet) vs robótica real, ícones modernos (Baymax/WALL-E), por que robôs conscientes não virão em 10 anos, Teorema de Larry Tesler e exemplos cotidianos",
+    slidesRange: [12, 19],
     tempoEstimado: "35 min",
     conducao: "Laura"
   },
@@ -222,7 +222,7 @@ const blocosTematicos = [
     icone: "🎭",
     titulo: "Bloco 4: Desmistificando a IA – Os 5 Grandes Mitos",
     subtitulo: "Conduzido por Maria (Mitos 1-2) e Laura (Mitos 3-5): Desconstrução de mitos sobre consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
-    slidesRange: [19, 25],
+    slidesRange: [20, 26],
     tempoEstimado: "30 min"
   },
   {
@@ -230,7 +230,7 @@ const blocosTematicos = [
     icone: "🇧🇷",
     titulo: "Bloco 5: Brasil, Cidadania & Legislação (Condução: Maria)",
     subtitulo: "Conduzido por Maria: Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
-    slidesRange: [26, 28],
+    slidesRange: [27, 29],
     tempoEstimado: "20 min",
     conducao: "Maria"
   },
@@ -239,7 +239,7 @@ const blocosTematicos = [
     icone: "💻",
     titulo: "Bloco 6: Laboratório Prático & Fechamento",
     subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
-    slidesRange: [29, 31],
+    slidesRange: [30, 32],
     tempoEstimado: "35 min"
   }
 ];
@@ -656,6 +656,28 @@ const slidesComNotas = [
       objetivoSlide: "Conduzido por Laura: Explicar os 3 obstáculos científicos fundamentais que impedem robôs com consciência nos próximos 10 anos.",
       oQueFalar: "Laura explica com clareza: 'Muitos perguntam: se o ChatGPT já conversa tão bem, quando teremos a Rosie ou o C-3PO andando pela casa? A ciência tem 3 grandes barreiras: primeiro, não sabemos como criar consciência porque a própria ciência ainda estuda como o cérebro produz sentimentos. Segundo, agir no mundo físico é muito difícil. E terceiro: IA autônoma não tem desejos nem vontade própria!'",
       tempoSugerido: "5 minutos"
+    }
+  },
+  {
+    tipo: "ia-ficcao",
+    categoria: "Ficção Moderna",
+    conducao: "Laura",
+    docente: "Laura",
+    titulo: "A Nova Era da Ficção: Robôs Acompanhantes & Afeto",
+    subtitulo: "Do cuidado médico de Baymax ao romance de WALL-E e androides de companhia",
+    imagem: "/static/img/ia_ficcao_moderna.jpg",
+    legendaImagem: "Ícones Modernos: Baymax, WALL-E, Eva e Acompanhante Perfeita (Companion)",
+    badge: "IA Emocional & Afeto — 0% REAL HOJE",
+    personagens: [
+      { nome: "Baymax (Operação Big Hero)", desc: "Robô enfermeiro inflável programado para cuidar, acalmar e demonstrar compaixão." },
+      { nome: "WALL-E & Eva (Disney/Pixar)", desc: "Robôs com curiosidade, apego emocional, amor e capacidade de sonhar." },
+      { nome: "A Acompanhante Perfeita (Companion)", desc: "Androide sintética que simula relacionamentos, lealdade e afeto humano." }
+    ],
+    conclusaoFiccao: "Na ficção moderna, robôs criam laços afetivos. Na ciência real, são algoritmos que calculam dados sem sentir carinho ou apego.",
+    notasProfessora: {
+      objetivoSlide: "Conduzido por Laura: Analisar os ícones modernos do cinema (Baymax, WALL-E, Eva e Companion), mostrando que a simulação de carinho não significa sentimentos reais.",
+      oQueFalar: "Laura comenta com entusiasmo: 'Vejam como a ficção moderna evoluiu: em vez de robôs destruidores, agora amamos o Baymax, o WALL-E, a Eva e as androides de companhia! Eles parecem ter coração e afeto de verdade. Mas na ciência atual, mesmo a IA mais gentil está apenas calculando probabilidades. Ela não sente carinho nem saudade de nós!'",
+      tempoSugerido: "4 minutos"
     }
   },
   {
@@ -1255,11 +1277,11 @@ const perguntasAlunos = [
 const divisaoPapeis = [
   { bloco: "Bloco 1 (00h-30m)", tema: "Acolhimento, Contrato Pedagógico & Estrutura (Slides 1 a 6)", papel: "radio" },
   { bloco: "Bloco 2 (30m-55m)", tema: "Gênese Histórica, Definição & Os 3 Ingredientes (Slides 7 a 11) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 3 (55m-85m)", tema: "A IA Invisível do Dia a Dia & Teorema de Tesler (Slides 12 a 18) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 3 (55m-85m)", tema: "A IA Invisível do Dia a Dia & Teorema de Tesler (Slides 12 a 19) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Intervalo (15m)", tema: "Intervalo Pedagógico / Café com Prosa (Atalho Tecla I)", papel: "ambas" },
-  { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 19 a 25) • Mitos 1-2: Maria | Mitos 3-5: Laura", papel: "radio" },
-  { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 26 a 28) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 29 a 31)", papel: "ambas" }
+  { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 20 a 26) • Mitos 1-2: Maria | Mitos 3-5: Laura", papel: "radio" },
+  { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 27 a 29) • Condução: Maria", papel: "radio", padrao: "maria" },
+  { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 30 a 32)", papel: "ambas" }
 ];
 
   const ENCONTRO_1_DATA = {
