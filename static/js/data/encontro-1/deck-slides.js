@@ -165,6 +165,7 @@ export const slidesComNotas = [
     tipo: "apresentacao",
     categoria: "Gênese Histórica",
     conducao: "Maria",
+    docente: "Maria",
     titulo: "Os 3 Grandes Marcos da História da IA",
     subtitulo: "De Alan Turing e a Conferência de Dartmouth até a explosão dos supercomputadores",
     itensDestaque: [
