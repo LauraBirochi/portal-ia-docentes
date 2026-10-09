@@ -2035,6 +2035,10 @@
     document.addEventListener('DOMContentLoaded', () => {
       const data = window.CURSO_IA_CURRENT_DATA || window.ENCONTRO_1_DATA || {};
       const slides = (data && data.slidesComNotas) ? data.slidesComNotas : [];
+      slides.forEach((s, idx) => {
+        s.numero = idx + 1;
+        if (!s.id) s.id = idx + 1;
+      });
       let currentIndex = 0;
 
       const container = document.getElementById('slide-container');

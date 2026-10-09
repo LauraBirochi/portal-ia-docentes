@@ -133,5 +133,19 @@ class TestDataIntegrity(unittest.TestCase):
         self.assertIn("window.CURSO_IA_CURRENT_DATA = ENCONTRO_1_DATA", content)
         self.assertIn("module.exports = ENCONTRO_1_DATA", content)
 
+    def test_build_data_script_execution(self):
+        """Valida se o compilador de dados scripts/build_data.py executa e compila com sucesso."""
+        scripts_dir = os.path.join(self.base_dir, 'scripts')
+        build_script = os.path.join(scripts_dir, 'build_data.py')
+        self.assertTrue(os.path.exists(build_script), "Script build_data.py ausente em scripts/")
+
+        import sys
+        if scripts_dir not in sys.path:
+            sys.path.insert(0, scripts_dir)
+        import build_data
+        result_path = build_data.build_meeting_bundle(1, self.base_dir)
+        self.assertTrue(os.path.exists(result_path))
+        self.assertGreater(os.path.getsize(result_path), 5000)
+
 if __name__ == '__main__':
     unittest.main()
