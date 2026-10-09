@@ -37,25 +37,25 @@ class TestDataIntegrity(unittest.TestCase):
             self.assertTrue(os.path.exists(fpath), f"Arquivo ausente: {fname}")
             self.assertGreater(os.path.getsize(fpath), 100, f"Arquivo vazio ou corrompido: {fname}")
 
-    def test_bundle_contains_all_28_slides(self):
-        """Garante que o bundle principal contenha exatamente os 28 slides numerados de 1 a 28."""
+    def test_bundle_contains_all_29_slides(self):
+        """Garante que o bundle principal contenha exatamente os 29 slides numerados de 1 a 29."""
         with open(self.encontro1_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
-        for slide_num in range(1, 29):
+        for slide_num in range(1, 30):
             pattern = rf'numero:\s*{slide_num}\b'
             self.assertTrue(
                 bool(re.search(pattern, content)),
                 f"Slide {slide_num} ausente em encontro1-data.js"
             )
 
-    def test_submodule_deck_contains_all_28_slides(self):
-        """Garante que o submódulo deck-slides.js contenha todos os 28 slides."""
+    def test_submodule_deck_contains_all_29_slides(self):
+        """Garante que o submódulo deck-slides.js contenha todos os 29 slides."""
         deck_path = os.path.join(self.submodules_dir, 'deck-slides.js')
         with open(deck_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
-        for slide_num in range(1, 29):
+        for slide_num in range(1, 30):
             pattern = rf'numero:\s*{slide_num}\b'
             self.assertTrue(
                 bool(re.search(pattern, content)),

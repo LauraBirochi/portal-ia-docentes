@@ -323,32 +323,32 @@
        ========================================================================== */
     .slide-presenter-pill {
       position: absolute;
-      top: 36px;
+      bottom: 28px;
       right: 48px;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: rgba(212, 163, 115, 0.15);
-      border: 1.5px solid rgba(212, 163, 115, 0.45);
+      gap: 0.45rem;
+      background: rgba(26, 21, 17, 0.88);
+      border: 1px solid rgba(212, 163, 115, 0.4);
       color: var(--text-amber);
-      padding: 0.35rem 0.95rem;
+      padding: 0.3rem 0.85rem;
       border-radius: var(--radius-pill);
       font-family: var(--font-body);
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
       backdrop-filter: blur(8px);
-      z-index: 15;
+      z-index: 20;
     }
 
     .slide-presenter-pill .presenter-dot {
-      width: 9px;
-      height: 9px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--text-amber);
-      box-shadow: 0 0 8px var(--text-amber);
+      box-shadow: 0 0 6px var(--text-amber);
     }
 
     .slide-header {
@@ -2568,17 +2568,18 @@
           `;
         }
 
-        // Pílula de Condução (ex: Maria) no canto do slide
-        const condutor = s.conducao || s.docente;
+        // Pílula de Condução (ex: Maria / Laura) no canto inferior direito (exceto em slides de transição)
+        const isFullscreenCover = (s.tipo === 'capa' || s.tipo === 'secao' || s.tipo === 'titulo-secao');
+        const isTransition = isFullscreenCover || s.tipo === 'intervalo';
+        const condutor = (!isTransition && (s.conducao || s.docente)) ? (s.conducao || s.docente) : null;
         const presenterHTML = condutor ? `
-          <div class="slide-presenter-pill" title="Condução deste momento: ${condutor}">
+          <div class="slide-presenter-pill" title="Apresentação: ${condutor}">
             <span class="presenter-dot"></span>
             <span>👩‍🏫 ${condutor}</span>
           </div>
         ` : '';
 
         // Montagem do Slide no Card (Sem rodapé poluído!)
-        const isFullscreenCover = (s.tipo === 'capa' || s.tipo === 'secao' || s.tipo === 'titulo-secao');
         container.innerHTML = `
           ${presenterHTML}
           <div>

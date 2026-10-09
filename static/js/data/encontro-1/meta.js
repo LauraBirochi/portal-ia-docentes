@@ -27,25 +27,27 @@ export const blocosTematicos = [
   {
     id: 2,
     icone: "🕰️",
-    titulo: "Bloco 2: Gênese Histórica, Definição & Os 3 Ingredientes",
-    subtitulo: "Origem (Turing 1950, Dartmouth 1956), programação vs padrões e os 3 ingredientes da IA moderna",
+    titulo: "Bloco 2: Gênese Histórica, Definição & Os 3 Ingredientes (Condução: Maria)",
+    subtitulo: "Conduzido por Maria: Origem (Turing 1950, Dartmouth 1956), programação vs padrões e os 3 ingredientes da IA moderna",
     slidesRange: [7, 11],
-    tempoEstimado: "25 min"
+    tempoEstimado: "25 min",
+    conducao: "Maria"
   },
   {
     id: 3,
     icone: "📱",
-    titulo: "Bloco 3: A IA Invisível do Dia a Dia & Teorema de Tesler",
-    subtitulo: "A IA da ficção (Rosie) vs IA estreita real, Teorema de Larry Tesler e os 4 exemplos cotidianos",
+    titulo: "Bloco 3: A IA Invisível do Dia a Dia & Teorema de Tesler (Condução: Laura)",
+    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie) vs IA estreita real, Teorema de Larry Tesler e os 4 exemplos cotidianos",
     slidesRange: [12, 16],
-    tempoEstimado: "30 min"
+    tempoEstimado: "30 min",
+    conducao: "Laura"
   },
   {
     id: 4,
     icone: "🎭",
     titulo: "Bloco 4: Desmistificando a IA – Os 5 Grandes Mitos",
     subtitulo: "Desconstrução de mitos: consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
-    slidesRange: [17, 22],
+    slidesRange: [17, 23],
     tempoEstimado: "30 min"
   },
   {
@@ -53,7 +55,7 @@ export const blocosTematicos = [
     icone: "🇧🇷",
     titulo: "Bloco 5: Brasil, Cidadania & Legislação (Condução: Maria)",
     subtitulo: "Conduzido por Maria: Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
-    slidesRange: [23, 25],
+    slidesRange: [24, 26],
     tempoEstimado: "20 min",
     conducao: "Maria"
   },
@@ -62,7 +64,7 @@ export const blocosTematicos = [
     icone: "💻",
     titulo: "Bloco 6: Laboratório Prático & Fechamento",
     subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
-    slidesRange: [26, 28],
+    slidesRange: [27, 29],
     tempoEstimado: "35 min"
   }
 ];

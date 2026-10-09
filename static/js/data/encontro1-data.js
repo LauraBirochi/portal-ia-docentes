@@ -704,11 +704,28 @@
           tempoSugerido: "5 minutos"
         }
       },
+      // BLOCO 4: DESMISTIFICANDO A IA – OS 5 GRANDES MITOS (SLIDES 17 A 23)
       {
         numero: 18,
         id: 18,
+        tipo: "secao",
+        categoria: "Desmistificando a IA",
+        badge: "Os 5 Grandes Mitos",
+        titulo: "Os 5 Grandes Mitos da Inteligência Artificial",
+        subtitulo: "Separando as falácias da internet da realidade científica para usar a tecnologia com senso crítico e autonomia",
+        notasProfessora: {
+          objetivoSlide: "Criar uma pausa reflexiva de impacto e focar a atenção da turma para a desconstrução dos 5 mitos mais comuns.",
+          oQueFalar: "Diga com entusiasmo: 'Agora que entendemos de onde vem o medo e o sensacionalismo das notícias, vamos abrir os 5 Grandes Mitos da IA. Vamos desarmar um por um para que vocês dominem a tecnologia com segurança e postura crítica!'",
+          tempoSugerido: "3 minutos"
+        }
+      },
+      {
+        numero: 19,
+        id: 19,
         tipo: "quebra-gelo",
         categoria: "Desmistificando a IA",
+        conducao: "Maria",
+        docente: "Maria",
         titulo: "Mito 1: 'A IA pensa, sente e tem consciência própria'",
         subtitulo: "A diferença fundamental entre imitar a linguagem humana e ter compreensão real",
         colunas: [
@@ -732,16 +749,18 @@
           }
         ],
         notasProfessora: {
-          objetivoSlide: "Desarmar o medo existencial de que a IA 'tem mente própria' e fixar a ideia de cálculo estatístico.",
-          oQueFalar: "Explique com clareza: 'Quando o ChatGPT responde com simpatia e diz \"entendi sua dúvida\", ele não está sentindo nada nem entendendo no sentido humano. Ele apenas calculou quais palavras têm maior probabilidade estatística de vir em seguida em um diálogo amigável.'",
+          objetivoSlide: "Conduzido por Maria: Desarmar o medo existencial de que a IA 'tem mente própria' e fixar a ideia de cálculo estatístico.",
+          oQueFalar: "Maria explica com clareza: 'Quando o ChatGPT responde com simpatia e diz \"entendi sua dúvida\", ele não está sentindo nada nem entendendo no sentido humano. Ele apenas calculou quais palavras têm maior probabilidade estatística de vir em seguida em um diálogo amigável.'",
           tempoSugerido: "5 minutos"
         }
       },
       {
-        numero: 19,
-        id: 19,
+        numero: 20,
+        id: 20,
         tipo: "quebra-gelo",
         categoria: "Postura Crítica",
+        conducao: "Maria",
+        docente: "Maria",
         titulo: "Mito 2: 'Se a IA respondeu com certeza, está 100% correto'",
         subtitulo: "O fenômeno das 'alucinações' e por que você nunca deve aceitar respostas cegamente",
         colunas: [
@@ -765,16 +784,18 @@
           }
         ],
         notasProfessora: {
-          objetivoSlide: "Vacinar os alunos contra a confiança cega e introduzir o conceito de alucinação de forma simples.",
-          oQueFalar: "Destaque com firmeza: 'A IA é uma geradora de textos fluentes, não uma fiscal da verdade. Ela pode inventar um livro que nunca existiu com uma elegância impressionante. Por isso, a regra de ouro do nosso curso é: IA ajuda no rascunho, mas o olho humano sempre confere!'",
+          objetivoSlide: "Conduzido por Maria: Vacinar os alunos contra a confiança cega e introduzir o conceito de alucinação de forma simples.",
+          oQueFalar: "Maria destaca com firmeza: 'A IA é uma geradora de textos fluentes, não uma fiscal da verdade. Ela pode inventar um livro que nunca existiu com uma elegância impressionante. Por isso, a regra de ouro do nosso curso é: IA ajuda no rascunho, mas o olho humano sempre confere!'",
           tempoSugerido: "6 minutos"
         }
       },
       {
-        numero: 20,
-        id: 20,
+        numero: 21,
+        id: 21,
         tipo: "apresentacao",
         categoria: "Acessibilidade & Inclusão",
+        conducao: "Laura",
+        docente: "Laura",
         titulo: "Mito 3: 'Preciso ser um gênio da matemática ou programador'",
         subtitulo: "A maior revolução da IAGen: a linguagem natural em português é o novo código",
         itensDestaque: [
@@ -795,16 +816,18 @@
           }
         ],
         notasProfessora: {
-          objetivoSlide: "Elevar a autoestima técnica dos alunos que não têm formação em exatas ou TI.",
-          oQueFalar: "Olhe para a sala e tranquilize: 'Antigamente, para mandar no computador precisávamos aprender programação avançada. Hoje, a linguagem de instrução da IA Generativa é o bom português. Se você sabe pedir uma informação com clareza, você já sabe a base de um bom prompt.'",
+          objetivoSlide: "Conduzido por Laura: Elevar a autoestima técnica dos alunos que não têm formação em exatas ou TI.",
+          oQueFalar: "Laura assume a condução, olha para a sala e tranquiliza: 'Antigamente, para mandar no computador precisávamos aprender programação avançada. Hoje, a linguagem de instrução da IA Generativa é o bom português. Se você sabe pedir uma informação com clareza, você já sabe a base de um bom prompt.'",
           tempoSugerido: "5 minutos"
         }
       },
       {
-        numero: 21,
-        id: 21,
+        numero: 22,
+        id: 22,
         tipo: "quebra-gelo",
         categoria: "Ética & Autoria",
+        conducao: "Laura",
+        docente: "Laura",
         titulo: "Mito 4: 'Usar IA significa necessariamente trapacear'",
         subtitulo: "A fronteira entre atalho desonesto (terceirização) e uso formativo e potencializador",
         colunas: [
@@ -828,16 +851,18 @@
           }
         ],
         notasProfessora: {
-          objetivoSlide: "Eliminar a culpa ou o tabu ético do uso da IA, ensinando a postura do estudante ativo e responsável.",
-          oQueFalar: "Aborde o tema com tranquilidade e rigor: 'Muitos sentem culpa ao usar IA, achando que estão trapaceando. Trapaça é mandar a IA fazer seu trabalho e você fingir que fez, sem entender nada. Mas usar a IA para te explicar uma matéria difícil de três jeitos diferentes ou revisar seu rascunho é estudar com inteligência! Aqui aprenderemos o uso ético e transparente.'",
+          objetivoSlide: "Conduzido por Laura: Eliminar a culpa ou o tabu ético do uso da IA, ensinando a postura do estudante ativo e responsável.",
+          oQueFalar: "Laura aborda o tema com tranquilidade e rigor: 'Muitos sentem culpa ao usar IA, achando que estão trapaceando. Trapaça é mandar a IA fazer seu trabalho e você fingir que fez, sem entender nada. Mas usar a IA para te explicar uma matéria difícil de três jeitos diferentes ou revisar seu rascunho é estudar com inteligência! Aqui aprenderemos o uso ético e transparente.'",
           tempoSugerido: "6 minutos"
         }
       },
       {
-        numero: 22,
-        id: 22,
+        numero: 23,
+        id: 23,
         tipo: "quebra-gelo",
         categoria: "O Futuro do Trabalho e Estudos",
+        conducao: "Laura",
+        docente: "Laura",
         titulo: "Mito 5: 'A IA vai substituir os seres humanos em tudo'",
         subtitulo: "Automação de tarefas mecânicas vs. O valor insubstituível do julgamento humano",
         colunas: [
@@ -861,16 +886,16 @@
           }
         ],
         notasProfessora: {
-          objetivoSlide: "Substituir o medo de substituição por uma perspectiva de autonomia e empoderamento profissional e pessoal.",
-          oQueFalar: "Conclua a sequência de mitos: 'A IA é como uma calculadora ou um processador de texto muito poderoso. A calculadora não acabou com os matemáticos nem o Word com os escritores. A IA tira o trabalho mecânico da frente para sobrar tempo para o que só você sabe fazer.'",
+          objetivoSlide: "Conduzido por Laura: Substituir o medo de substituição por uma perspectiva de autonomia e empoderamento profissional e pessoal.",
+          oQueFalar: "Laura conclui a sequência de mitos: 'A IA é como uma calculadora ou um processador de texto muito poderoso. A calculadora não acabou com os matemáticos nem o Word com os escritores. A IA tira o trabalho mecânico da frente para sobrar tempo para o que só você sabe fazer.'",
           tempoSugerido: "6 minutos"
         }
       },
 
-      // BLOCO 5: BRASIL, CIDADANIA & REGULAÇÕES (SLIDES 22 A 24) • CONDUÇÃO: MARIA
+      // BLOCO 5: BRASIL, CIDADANIA & REGULAÇÕES (SLIDES 24 A 26) • CONDUÇÃO: MARIA
       {
-        numero: 23,
-        id: 23,
+        numero: 24,
+        id: 24,
         tipo: "secao",
         categoria: "Brasil, Cidadania & Legislação",
         badge: "Estratégia Nacional & Cidadania",
@@ -889,8 +914,8 @@
         }
       },
       {
-        numero: 24,
-        id: 24,
+        numero: 25,
+        id: 25,
         tipo: "apresentacao",
         categoria: "Plano Brasileiro de IA",
         badge: "Plano Brasileiro de IA",
@@ -923,8 +948,8 @@
         embasamentoCientifico: dossies.pbiaBrasil
       },
       {
-        numero: 25,
-        id: 25,
+        numero: 26,
+        id: 26,
         tipo: "apresentacao",
         categoria: "Legislação & Direitos",
         badge: "Marco Legal da IA",
@@ -957,10 +982,10 @@
         embasamentoCientifico: dossies.marcoLegal
       },
 
-      // BLOCO 6
+      // BLOCO 6: LABORATÓRIO PRÁTICO & FECHAMENTO (SLIDES 27 A 29)
       {
-        numero: 26,
-        id: 26,
+        numero: 27,
+        id: 27,
         tipo: "missao-email",
         categoria: "Laboratório Prático 1",
         titulo: "Missão 1 no Computador: Garantir o Acesso ao seu E-mail",
@@ -979,8 +1004,8 @@
         }
       },
       {
-        numero: 27,
-        id: 27,
+        numero: 28,
+        id: 28,
         tipo: "missao-diagnostica",
         categoria: "Laboratório Prático 2",
         titulo: "Missão 2 no Computador: Prova Diagnóstica",
@@ -1004,8 +1029,8 @@
         }
       },
       {
-        numero: 28,
-        id: 28,
+        numero: 29,
+        id: 29,
         tipo: "fechamento",
         categoria: "Síntese & Próximos Passos",
         titulo: "Síntese do Encontro 1 & O Salto para a Próxima Aula",
