@@ -428,12 +428,12 @@ export const slidesComNotas = [
     categoria: "O Efeito IA",
     badge: "O Efeito IA (The AI Effect)",
     titulo: "O Teorema de Larry Tesler: Por Que a IA Parece Desaparecer?",
-    citacao: "A Inteligência Artificial é tudo aquilo que o computador ainda não sabe fazer. Assim que funciona com perfeição, passa a ser chamada apenas de software comum.",
-    autor: "Larry Tesler (1945–2020)",
-    autorDesc: "Pioneiro da computação (Xerox PARC, Apple, Amazon e Yahoo) e criador do Copiar/Colar (Ctrl+C / Ctrl+V)",
+    citacao: "A inteligência artificial é tudo aquilo que ainda não foi feito.",
+    autor: "Atribuída a Larry Tesler",
+    autorDesc: "Formulação popularizada por Douglas Hofstadter",
     notasProfessora: {
       objetivoSlide: "Apresentar a grande lei sociotécnica que explica por que a sociedade normaliza a tecnologia e esquece que biometria e câmeras são IA.",
-      oQueFalar: "Leiam a frase no telão com calma e ênfase: 'Larry Tesler, um dos maiores cientistas da história da computação e criador do nosso amado Copiar e Colar (Ctrl+C / Ctrl+V), criou esta frase genial: toda vez que a IA resolve um problema difícil, as pessoas se acostumam e dizem: \"ah, isso é só um recurso normal do celular\". A IA parece invisível porque ela venceu e virou rotina!'",
+      oQueFalar: "Leiam a frase no telão com calma e ênfase: 'Esta frase clássica, atribuída ao pioneiro da computação Larry Tesler e popularizada pelo cientista cognitivo Douglas Hofstadter, resume o chamado Teorema de Tesler: toda vez que a IA resolve um problema difícil, as pessoas se acostumam e dizem: \"ah, isso é só um recurso normal do computador\". A IA parece invisível porque ela venceu e virou rotina!'",
       tempoSugerido: "5 minutos"
     },
     embasamentoCientifico: dossies.teslerAiEffect
