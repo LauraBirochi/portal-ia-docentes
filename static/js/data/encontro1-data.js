@@ -613,16 +613,18 @@ const slidesComNotas = [
     titulo: "1. A IA da Ficção: Robôs, Cinema & Imaginação",
     subtitulo: "Como os filmes e desenhos animados criaram robôs humanoides com sentimentos e consciência",
     imagem: "/static/img/ia_ficcao_rosie.jpg",
+    legendaImagem: "Ícones da Ficção: Rosie, Robby the Robot, Gort, C-3PO, R2-D2 e Exterminador",
     badge: "IA Geral (AGI / Cinema) — 0% REAL HOJE",
     personagens: [
       { nome: "Robô Rosie (Os Jetsons)", desc: "Androide doméstica com avental, humor, afeto e broncas na família." },
+      { nome: "Gort & Robby the Robot (Ficção Clássica)", desc: "O guardião espacial implacável (Gort) e o robô assistente com lealdade (Robby)." },
       { nome: "C-3PO & R2-D2 (Star Wars)", desc: "Robôs com lealdade, medo e personalidades humanas expressivas." },
       { nome: "Exterminador do Futuro (Skynet)", desc: "Máquinas conscientes que ganham vida própria e se voltam contra a humanidade." }
     ],
     conclusaoFiccao: "Na ficção, máquinas têm consciência, desejos e sentimentos. No mundo real, isso é 0% real hoje.",
     notasProfessora: {
       objetivoSlide: "Acolher o imaginário popular dos alunos e desmistificar de forma leve a ideia de robôs com sentimentos.",
-      oQueFalar: "Aponte para o telão com simpatia: 'Quem aqui lembra da robô Rosie dos Jetsons? No cinema, os robôs cozinham, sentem raiva, amam e têm consciência. Isso rende ótimas histórias, mas não existe na ciência real. A IA de verdade não tem corpo metálico nem sentimentos!'",
+      oQueFalar: "Aponte para o telão com simpatia: 'Vejam os grandes ícones da ficção: da querida robô Rosie dos Jetsons ao imponente guardião Gort, Robby, C-3PO e o Exterminador. No cinema, os robôs sentem raiva, amam, protegem planetas e têm consciência. Isso rende ótimas histórias, mas não existe na ciência real. A IA de verdade não tem corpo metálico nem sentimentos!'",
       tempoSugerido: "5 minutos"
     }
   },
