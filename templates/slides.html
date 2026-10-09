@@ -1115,6 +1115,25 @@
       font-weight: 800;
     }
 
+    .card-coluna.col-marrom,
+    .card-coluna.col-amber {
+      background: linear-gradient(145deg, rgba(212, 163, 115, 0.12) 0%, rgba(37, 30, 24, 0.95) 100%);
+      border: 2px solid rgba(212, 163, 115, 0.45);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 163, 115, 0.08);
+    }
+
+    .card-coluna.col-marrom .card-col-header,
+    .card-coluna.col-amber .card-col-header {
+      color: var(--text-amber);
+      border-bottom: 2px solid rgba(212, 163, 115, 0.35);
+    }
+
+    .card-coluna.col-marrom .bullet,
+    .card-coluna.col-amber .bullet {
+      color: var(--text-amber) !important;
+      font-weight: 800;
+    }
+
     /* --- TIPO: IA DA FICÇÃO (SLIDE 10) --- */
     .layout-ia-ficcao-wrap {
       display: grid;
@@ -2200,24 +2219,42 @@
             </div>
           `;
         }
-        // TIPO 7: Quebra-Gelo (Mitos vs Realidade)
+        // TIPO 7: Quebra-Gelo (Mitos vs Realidade / Comparativos de Coluna)
         else if (s.tipo === 'quebra-gelo' && s.colunas) {
           bodyHTML = `
             <div class="grid-colunas">
               ${s.colunas.map((col, idx) => {
-                const isAlert = idx === 0;
-                const colClass = isAlert ? 'col-alerta' : 'col-positivo';
-                const bulletChar = isAlert ? '✕' : '✓';
+                let colClass = 'col-alerta';
+                let bulletChar = '✕';
+
+                if (col.tipo === 'positivo' || col.tipo === 'verde') {
+                  colClass = 'col-positivo';
+                  bulletChar = col.bullet || '✓';
+                } else if (col.tipo === 'marrom' || col.tipo === 'amber' || col.tipo === 'neutro') {
+                  colClass = 'col-marrom';
+                  bulletChar = col.bullet || '•';
+                } else if (col.tipo === 'alerta' || col.tipo === 'vermelho') {
+                  colClass = 'col-alerta';
+                  bulletChar = col.bullet || '✕';
+                } else if (col.classe) {
+                  colClass = col.classe;
+                  bulletChar = col.bullet || (col.classe.includes('positivo') ? '✓' : (col.classe.includes('marrom') || col.classe.includes('amber') ? '•' : '✕'));
+                } else {
+                  const isAlert = idx === 0;
+                  colClass = isAlert ? 'col-alerta' : 'col-positivo';
+                  bulletChar = isAlert ? '✕' : '✓';
+                }
+
                 return `
                 <div class="card-coluna ${colClass}">
                   <div class="card-col-header">
-                    <span>${col.icone || (isAlert ? '⚠️' : '💡')}</span>
+                    <span>${col.icone || (colClass === 'col-positivo' ? '✓' : (colClass === 'col-marrom' ? '💡' : '⚠️'))}</span>
                     <span>${col.tag}</span>
                   </div>
                   <ul class="card-col-list">
                     ${col.itens.map(item => `
                       <li>
-                        <span class="bullet">${bulletChar}</span>
+                        <span class="bullet">${col.bullet || bulletChar}</span>
                         <span>${item}</span>
                       </li>
                     `).join('')}

@@ -347,6 +347,7 @@ export const slidesComNotas = [
     colunas: [
       {
         tag: "Avanços Plausíveis (Tecnologia Real)",
+        tipo: "positivo",
         icone: "🚀",
         itens: [
           "Robôs com conversação em linguagem natural cada vez mais fluente e integrada.",
@@ -356,7 +357,9 @@ export const slidesComNotas = [
       },
       {
         tag: "Permanece Ficção Científica",
-        icone: "🚫",
+        tipo: "marrom",
+        icone: "🎬",
+        bullet: "•",
         itens: [
           "Robôs com sentimentos reais, dor ou autoconsciência comprovada.",
           "Superinteligência militar com vontade própria ou hostilidade humana (Skynet).",
