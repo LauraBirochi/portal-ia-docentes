@@ -11,12 +11,17 @@
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/icon-192.png') }}">
 
+  <!-- Fontes (Non-blocking preconnect) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap">
+
   <!-- Estilos Acolhedores (Warm Paper & Walnut) -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
   {% block extra_head %}{% endblock %}
 
-  <!-- Contexto do Usuário Autenticado (RBAC) -->
+  <!-- Contexto do Usuário Autenticado (RBAC) & Fonte Única de Encontros -->
   <script>
     window.CURRENT_USER = {{ {
       'username': current_username,
@@ -24,6 +29,7 @@
       'role': current_user.role if current_user else '',
       'is_coordinator': is_coordinator
     } | tojson }};
+    window.MEETINGS_DATA = {{ (meetings or {}) | tojson }};
   </script>
 </head>
 
@@ -42,7 +48,8 @@
   </div>
 
   <!-- Scripts da Aplicação (Dados por Encontro & Renderizador Modular) -->
-  <script src="{{ url_for('static', filename='js/data/encontro' ~ (active_meeting_id or 1) ~ '-data.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/data/encontro1-data.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/data/encontro2-data.js') }}"></script>
   <script src="{{ url_for('static', filename='js/cockpit-renderer.js') }}"></script>
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
   {% block scripts %}{% endblock %}

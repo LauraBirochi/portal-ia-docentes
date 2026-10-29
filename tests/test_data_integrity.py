@@ -1,6 +1,6 @@
 """
-Suíte de Testes Automatizados de Integridade da Camada de Dados (Encontro 1)
-Valida se a estrutura modular e o bundle unificado contêm todos os dados pedagógicos.
+Suíte de Testes Automatizados de Integridade da Camada de Dados (Encontros 1 e 2)
+Valida se a estrutura modular e os bundles unificados contêm todos os dados pedagógicos e contratos arquiteturais.
 """
 
 import os
@@ -135,9 +135,69 @@ class TestDataIntegrity(unittest.TestCase):
         if scripts_dir not in sys.path:
             sys.path.insert(0, scripts_dir)
         import build_data
-        result_path = build_data.build_meeting_bundle(1, self.base_dir)
-        self.assertTrue(os.path.exists(result_path))
-        self.assertGreater(os.path.getsize(result_path), 5000)
+        result_path1 = build_data.build_meeting_bundle(1, self.base_dir)
+        self.assertTrue(os.path.exists(result_path1))
+        self.assertGreater(os.path.getsize(result_path1), 5000)
+
+        result_path2 = build_data.build_meeting_bundle(2, self.base_dir)
+        self.assertTrue(os.path.exists(result_path2))
+        self.assertGreater(os.path.getsize(result_path2), 5000)
+
+    def test_encontro2_submodules_and_bundle(self):
+        """Valida a integridade arquitetural dos submódulos e bundle do Encontro 2."""
+        submodules_dir2 = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro-2')
+        encontro2_path = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro2-data.js')
+
+        expected_files = [
+            'meta.js', 'narrativa.js', 'dossies.js', 'deck-slides.js',
+            'atividades.js', 'faq-duvidas.js', 'papeis.js', 'index.js'
+        ]
+        for fname in expected_files:
+            fpath = os.path.join(submodules_dir2, fname)
+            self.assertTrue(os.path.exists(fpath), f"Arquivo do Encontro 2 ausente: {fname}")
+
+        self.assertTrue(os.path.exists(encontro2_path))
+        with open(encontro2_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        self.assertIn("window.ENCONTRO_2_DATA = ENCONTRO_2_DATA", content)
+        self.assertIn("moduloInfo:", content)
+        self.assertIn("slidesComNotas:", content)
+
+    def test_pdf_export_and_print_styles_integrity(self):
+        """Valida se o projector.css e projector-engine.js contêm contratos de exportação e impressão limpa."""
+        projector_css = os.path.join(self.base_dir, 'static', 'css', 'projector.css')
+        self.assertTrue(os.path.exists(projector_css), "Arquivo projector.css ausente")
+        with open(projector_css, 'r', encoding='utf-8') as f:
+            css = f.read()
+
+        self.assertIn("@media print", css, "projector.css deve conter bloco @media print")
+        self.assertIn("size: A4 landscape", css, "projector.css deve configurar A4 landscape para exportação")
+        self.assertIn("print-color-adjust: exact", css, "projector.css deve preservar cores de impressão")
+        self.assertIn("export-mode", css, "projector.css deve conter suporte a .export-mode")
+        self.assertIn("break-after: page", css, "projector.css deve conter quebra de página por slide")
+
+        projector_js = os.path.join(self.base_dir, 'static', 'js', 'projector-engine.js')
+        self.assertTrue(os.path.exists(projector_js), "Arquivo projector-engine.js ausente")
+        with open(projector_js, 'r', encoding='utf-8') as f:
+            js = f.read()
+
+        self.assertIn("buildSlideHTML", js, "projector-engine.js deve conter a função modular buildSlideHTML")
+        self.assertIn("mode", js)
+        self.assertIn("export", js)
+
+        slides_html = os.path.join(self.base_dir, 'templates', 'slides.html')
+        self.assertTrue(os.path.exists(slides_html), "templates/slides.html ausente")
+        with open(slides_html, 'r', encoding='utf-8') as f:
+            html = f.read()
+        self.assertIn("btn-prev", html)
+        self.assertIn("btn-next", html)
+        self.assertIn("btn-close-projector", html)
+
+        export_script = os.path.join(self.base_dir, 'scripts', 'export_pdf.py')
+        self.assertTrue(os.path.exists(export_script), "scripts/export_pdf.py deve existir")
+        with open(export_script, 'r', encoding='utf-8') as f:
+            script_code = f.read()
+        self.assertIn("generate_slides_pdf", script_code)
 
 if __name__ == '__main__':
     unittest.main()

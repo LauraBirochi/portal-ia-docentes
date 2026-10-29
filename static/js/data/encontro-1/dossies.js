@@ -4,8 +4,9 @@
  */
 
 export const dossies = {
-  // Dossiê 1: Slide 7 (Alan Turing e Conferência de Dartmouth)
+  // Dossiê 1: Slide 8 (Alan Turing e Conferência de Dartmouth)
   turingDartmouth: {
+    tipoDossie: "cientifico",
     titulo: "Gênese Histórica e Epistemológica da Inteligência Artificial (1950–1956)",
     resumo: "Como os trabalhos seminais de Alan Turing, John McCarthy, Marvin Minsky e Claude Shannon estabeleceram as bases da computação neural e simbólica.",
     topicos: [
@@ -47,8 +48,9 @@ export const dossies = {
     ]
   },
 
-  // Dossiê 2: Slide 14 (Teorema de Larry Tesler e o Efeito IA)
+  // Dossiê 2: Slide 18 (Teorema de Larry Tesler e o Efeito IA)
   teslerAiEffect: {
+    tipoDossie: "cientifico",
     titulo: "O Teorema de Larry Tesler e a Epistemologia do 'AI Effect'",
     resumo: "Como o efeito de fronteira móvel (moving baseline) na ciência da computação faz com que problemas resolvidos deixem de ser considerados inteligentes pelo público.",
     topicos: [
@@ -79,8 +81,9 @@ export const dossies = {
     ]
   },
 
-  // Dossiê 3: Slide 23 (Plano Brasileiro de IA - PBIA 2024-2028)
+  // Dossiê 3: Slide 28 (Plano Brasileiro de IA - PBIA 2024-2028)
   pbiaBrasil: {
+    tipoDossie: "juridico",
     titulo: "Dossiê Oficial: Plano Brasileiro de Inteligência Artificial (PBIA 2024–2028)",
     resumo: "Estrutura programática, investimentos de R$ 23 bilhões, infraestrutura computacional soberana e eixos estratégicos do CNDI e MCTI.",
     topicos: [
@@ -115,8 +118,9 @@ export const dossies = {
     ]
   },
 
-  // Dossiê 4: Slide 24 (Marco Legal da IA - PL 2338/2023 e LGPD)
+  // Dossiê 4: Slide 29 (Marco Legal da IA - PL 2338/2023 e LGPD)
   marcoLegal: {
+    tipoDossie: "juridico",
     titulo: "Dossiê Jurídico: Marco Legal da IA (PL 2338/2023) e Normas Globais",
     resumo: "Análise técnica do Projeto de Lei nº 2338/2023 no Senado Federal, matriz de riscos (Risk-Based Approach), direitos dos afetados e conformidade com a LGPD.",
     topicos: [

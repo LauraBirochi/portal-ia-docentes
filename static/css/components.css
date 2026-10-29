@@ -497,7 +497,7 @@
   gap: 0.65rem;
 }
 
-.timeline-step {
+.slide-timeline .timeline-step {
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
@@ -874,8 +874,8 @@ body.mode-aula .timer-container {
 .timeline-track {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 0.6rem;
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  margin-bottom: 1.15rem;
   overflow: visible;
 }
 
@@ -894,8 +894,8 @@ body.mode-aula .timer-container {
 .timeline-step {
   background-color: var(--bg-subtle-warm);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 0.75rem 0.5rem;
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.35rem;
   text-align: center;
   position: relative;
   transition: all var(--transition);
@@ -904,32 +904,36 @@ body.mode-aula .timer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
+  justify-content: center;
+  gap: 0.15rem;
   min-width: 0;
+  min-height: 56px;
+  max-height: 68px;
   overflow: hidden;
 }
 
 .timeline-step:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   border-color: var(--accent);
   background-color: var(--bg-surface);
-  box-shadow: 0 3px 10px rgba(128, 106, 78, 0.12);
+  box-shadow: 0 2px 8px rgba(128, 106, 78, 0.14);
 }
 
 .timeline-step.active {
-  border: 2px solid var(--accent);
+  border: 1.5px solid var(--accent);
   background-color: var(--bg-surface);
-  box-shadow: 0 4px 14px rgba(128, 106, 78, 0.2);
+  box-shadow: 0 2px 10px rgba(128, 106, 78, 0.22);
 }
 
 .timeline-step-badge {
   display: inline-block;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  padding: 0.18rem 0.45rem;
+  padding: 0.12rem 0.42rem;
   border-radius: var(--radius-pill);
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  line-height: 1.1;
   white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
@@ -949,20 +953,20 @@ body.mode-aula .timer-container {
 
 .timeline-step-num {
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   color: var(--text-main);
+  line-height: 1.15;
   white-space: nowrap;
 }
 
 .timeline-step-date {
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   color: var(--text-muted);
-  line-height: 1.3;
+  line-height: 1.15;
   max-width: 100%;
+  white-space: nowrap;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }
 
 /* Inspetor Detalhado do Encontro Selecionado */
@@ -1089,32 +1093,85 @@ body.mode-aula .timer-container {
   align-items: center;
   background-color: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 1.6rem;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-sm);
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.25rem;
+}
+
+.cockpit-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: flex-start;
+}
+
+.cockpit-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition);
+}
+
+.cockpit-back-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.cockpit-header-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cockpit-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cockpit-module-heading {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.cockpit-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .btn-back-dashboard {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--bg-subtle);
-  border: 1px solid var(--border);
-  color: var(--text-main);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
+  background-color: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 0;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   cursor: pointer;
   transition: all var(--transition);
 }
 
 .btn-back-dashboard:hover {
-  background-color: var(--bg-surface-hover);
-  border-color: var(--border-focus);
+  color: var(--accent);
 }
 
 /* Barra Sticky das 5 Abas */
@@ -1437,7 +1494,79 @@ body.mode-aula .timer-container {
   margin: 0;
 }
 
-/* Glossário Alinhado */
+/* Glossário Alinhado (Colapsável / Accordion de Apoio) */
+.fio-glossary-details {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.fio-glossary-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.15rem 1.6rem;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  color: var(--text-main);
+  background-color: var(--bg-subtle-warm);
+  transition: background-color var(--transition);
+  list-style: none;
+}
+
+.fio-glossary-summary::-webkit-details-marker {
+  display: none;
+}
+
+.fio-glossary-summary:hover {
+  background-color: var(--bg-surface-hover);
+}
+
+.fio-glossary-summary-content {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.fio-glossary-summary-icon {
+  font-size: 1.35rem;
+}
+
+.fio-glossary-hint {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-top: 0.15rem;
+}
+
+.fio-glossary-toggle-pill {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+
+.fio-glossary-details[open] .fio-glossary-toggle-pill {
+  background: var(--accent-subtle-light);
+  color: var(--accent);
+  border-color: var(--accent-subtle);
+}
+
+.fio-glossary-details[open] .fio-glossary-grid {
+  padding: 1.5rem 1.6rem;
+  border-top: 1px solid var(--border);
+}
+
 .fio-glossary-section {
   background-color: var(--bg-surface);
   border: 1px solid var(--border);

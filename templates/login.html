@@ -410,8 +410,9 @@
   <script>
     // Gerenciador Simples de Tema Claro/Escuro para a Tela de Login
     (function () {
+      const THEME_KEY = 'curso_ia_theme';
       const themeBtn = document.getElementById('btn-theme-toggle');
-      const savedTheme = localStorage.getItem('theme') || 'light';
+      const savedTheme = localStorage.getItem(THEME_KEY) || localStorage.getItem('theme') || 'light';
       document.documentElement.setAttribute('data-theme', savedTheme);
 
       function updateThemeBtnIcon(theme) {
@@ -426,7 +427,7 @@
           const current = document.documentElement.getAttribute('data-theme') || 'light';
           const nextTheme = current === 'light' ? 'dark' : 'light';
           document.documentElement.setAttribute('data-theme', nextTheme);
-          localStorage.setItem('theme', nextTheme);
+          localStorage.setItem(THEME_KEY, nextTheme);
           updateThemeBtnIcon(nextTheme);
         });
       }

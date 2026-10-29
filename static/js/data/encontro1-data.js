@@ -17,8 +17,9 @@
  */
 
 const dossies = {
-  // Dossiê 1: Slide 7 (Alan Turing e Conferência de Dartmouth)
+  // Dossiê 1: Slide 8 (Alan Turing e Conferência de Dartmouth)
   turingDartmouth: {
+    tipoDossie: "cientifico",
     titulo: "Gênese Histórica e Epistemológica da Inteligência Artificial (1950–1956)",
     resumo: "Como os trabalhos seminais de Alan Turing, John McCarthy, Marvin Minsky e Claude Shannon estabeleceram as bases da computação neural e simbólica.",
     topicos: [
@@ -60,8 +61,9 @@ const dossies = {
     ]
   },
 
-  // Dossiê 2: Slide 14 (Teorema de Larry Tesler e o Efeito IA)
+  // Dossiê 2: Slide 18 (Teorema de Larry Tesler e o Efeito IA)
   teslerAiEffect: {
+    tipoDossie: "cientifico",
     titulo: "O Teorema de Larry Tesler e a Epistemologia do 'AI Effect'",
     resumo: "Como o efeito de fronteira móvel (moving baseline) na ciência da computação faz com que problemas resolvidos deixem de ser considerados inteligentes pelo público.",
     topicos: [
@@ -92,8 +94,9 @@ const dossies = {
     ]
   },
 
-  // Dossiê 3: Slide 23 (Plano Brasileiro de IA - PBIA 2024-2028)
+  // Dossiê 3: Slide 28 (Plano Brasileiro de IA - PBIA 2024-2028)
   pbiaBrasil: {
+    tipoDossie: "juridico",
     titulo: "Dossiê Oficial: Plano Brasileiro de Inteligência Artificial (PBIA 2024–2028)",
     resumo: "Estrutura programática, investimentos de R$ 23 bilhões, infraestrutura computacional soberana e eixos estratégicos do CNDI e MCTI.",
     topicos: [
@@ -128,8 +131,9 @@ const dossies = {
     ]
   },
 
-  // Dossiê 4: Slide 24 (Marco Legal da IA - PL 2338/2023 e LGPD)
+  // Dossiê 4: Slide 29 (Marco Legal da IA - PL 2338/2023 e LGPD)
   marcoLegal: {
+    tipoDossie: "juridico",
     titulo: "Dossiê Jurídico: Marco Legal da IA (PL 2338/2023) e Normas Globais",
     resumo: "Análise técnica do Projeto de Lei nº 2338/2023 no Senado Federal, matriz de riscos (Risk-Based Approach), direitos dos afetados e conformidade com a LGPD.",
     topicos: [
@@ -212,8 +216,8 @@ const blocosTematicos = [
     id: 3,
     icone: "📱",
     titulo: "Bloco 3: A IA Invisível do Dia a Dia & Teorema de Tesler (Condução: Laura)",
-    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie/Skynet) vs robótica real, por que robôs conscientes não virão em 10 anos, Teorema de Larry Tesler e os 4 exemplos cotidianos",
-    slidesRange: [12, 18],
+    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie/Skynet/Baymax) vs robótica real, por que robôs conscientes não virão em 10 anos, Teorema de Larry Tesler e os 4 exemplos cotidianos",
+    slidesRange: [12, 19],
     tempoEstimado: "35 min",
     conducao: "Laura"
   },
@@ -222,7 +226,7 @@ const blocosTematicos = [
     icone: "🎭",
     titulo: "Bloco 4: Desmistificando a IA – Os 5 Grandes Mitos",
     subtitulo: "Conduzido por Maria (Mitos 1-2) e Laura (Mitos 3-5): Desconstrução de mitos sobre consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
-    slidesRange: [19, 25],
+    slidesRange: [20, 26],
     tempoEstimado: "30 min"
   },
   {
@@ -230,7 +234,7 @@ const blocosTematicos = [
     icone: "🇧🇷",
     titulo: "Bloco 5: Brasil, Cidadania & Legislação (Condução: Maria)",
     subtitulo: "Conduzido por Maria: Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
-    slidesRange: [26, 28],
+    slidesRange: [27, 29],
     tempoEstimado: "20 min",
     conducao: "Maria"
   },
@@ -239,7 +243,7 @@ const blocosTematicos = [
     icone: "💻",
     titulo: "Bloco 6: Laboratório Prático & Fechamento",
     subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
-    slidesRange: [29, 31],
+    slidesRange: [30, 32],
     tempoEstimado: "35 min"
   }
 ];
@@ -319,7 +323,7 @@ const fioDaMeada = {
 
   // 4. Slides com Notas da Professora
   /**
- * Módulo 1 – Deck Completo de Slides (28 Slides) & Notas da Professora
+ * Módulo 1 – Deck Completo de Slides (32 Slides) & Notas da Professora
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
@@ -331,6 +335,7 @@ const slidesComNotas = [
   {
     numero: 1,
     id: 1,
+    bloco: 1,
     tipo: "capa",
     categoria: "Abertura",
     titulo: "Inteligência Artificial: Fundamentos e Boas Práticas",
@@ -345,6 +350,7 @@ const slidesComNotas = [
   {
     numero: 2,
     id: 2,
+    bloco: 1,
     tipo: "apresentacao",
     categoria: "Acolhimento",
     titulo: "Quem Somos & Nosso Compromisso Pedagógico",
@@ -363,28 +369,30 @@ const slidesComNotas = [
   {
     numero: 3,
     id: 3,
+    bloco: 1,
     tipo: "cronograma",
     categoria: "Estrutura do Curso",
     titulo: "Cronograma Completo: Onde Estamos e Até Onde Vamos",
     subtitulo: "7 Encontros Presenciais de 3h (21h) + 11h de Prática Autônoma = 32 Horas",
     encontros: [
-      { data: "09/Out", num: "1", tema: "Gênese da IA & Ética", status: "Hoje (Aula 1)" },
-      { data: "23/Out", num: "2", tema: "Acesso & Prompts Básicos", status: "Próxima" },
-      { data: "30/Out", num: "3", tema: "Engenharia de Instruções", status: "Planejado" },
-      { data: "06/Nov", num: "4", tema: "Refinamento & Formatos", status: "Planejado" },
-      { data: "13/Nov", num: "5", tema: "IA nos Estudos & Trabalho", status: "Planejado" },
-      { data: "27/Nov", num: "6", tema: "Comparação de Modelos", status: "Planejado" },
-      { data: "04/Dez", num: "7", tema: "Avaliação & Certificação", status: "Encerramento" }
+      { data: "09/10", num: "1", tema: "Gênese da IA & Ética", status: "Hoje (Módulo 1)" },
+      { data: "30/10", num: "2", tema: "O Salto da IA Generativa", status: "Próxima" },
+      { data: "06/11", num: "3", tema: "A Arte do Prompt (PCTFR)", status: "Planejado" },
+      { data: "13/11", num: "4", tema: "IA na Prática", status: "Planejado" },
+      { data: "20/11", num: "5", tema: "Olhar Crítico & Auditoria", status: "Planejado" },
+      { data: "27/11", num: "6", tema: "Refinamento & Uso Responsável", status: "Planejado" },
+      { data: "04/12", num: "7", tema: "Fechamento & Avaliação Final", status: "Encerramento" }
     ],
     notasProfessora: {
       objetivoSlide: "Dar previsibilidade temporal à turma e reforçar o compromisso de presença até 04 de dezembro para a certificação de 32h.",
-      oQueFalar: "Aponte as datas no telão: 'Hoje é nosso ponto de partida. Vamos nos encontrar a cada duas semanas até 04 de dezembro. Marquem essas datas na agenda. A certificação de 32 horas depende da presença nos encontros presenciais e das entregas no Portfólio.'",
+      oQueFalar: "Aponte as datas no telão: 'Hoje é nosso ponto de partida (09/10). Nosso próximo encontro será em 30/10 e seguiremos semanalmente em novembro até o fechamento em 04 de dezembro. Marquem essas datas na agenda: a certificação de 32 horas depende da presença nos encontros presenciais e das práticas.'",
       tempoSugerido: "5 minutos"
     }
   },
   {
     numero: 4,
     id: 4,
+    bloco: 1,
     tipo: "pilares",
     categoria: "Objetivos de Aprendizagem",
     titulo: "O Que Você Vai Aprender Conosco?",
@@ -418,6 +426,7 @@ const slidesComNotas = [
   {
     numero: 5,
     id: 5,
+    bloco: 1,
     tipo: "fora-escopo",
     categoria: "Contrato Pedagógico",
     titulo: "O Que NÃO É Este Minicurso? (Alívio de Ansiedade)",
@@ -445,6 +454,7 @@ const slidesComNotas = [
   {
     numero: 6,
     id: 6,
+    bloco: 1,
     tipo: "requisito-email",
     categoria: "Requisito Prático",
     titulo: "O Nosso Único Requisito: Ter um E-mail Válido",
@@ -467,6 +477,7 @@ const slidesComNotas = [
   {
     numero: 7,
     id: 7,
+    bloco: 2,
     tipo: "secao",
     categoria: "Gênese Histórica",
     badge: "Ponto de Partida",
@@ -481,10 +492,10 @@ const slidesComNotas = [
   {
     numero: 8,
     id: 8,
+    bloco: 2,
     tipo: "apresentacao",
     categoria: "Gênese Histórica",
     conducao: "Maria",
-    docente: "Maria",
     titulo: "Os 3 Grandes Marcos da História da IA",
     subtitulo: "De Alan Turing e a Conferência de Dartmouth até a explosão dos supercomputadores",
     itensDestaque: [
@@ -514,6 +525,7 @@ const slidesComNotas = [
   {
     numero: 9,
     id: 9,
+    bloco: 2,
     tipo: "secao",
     categoria: "Definição Fundamental",
     badge: "Conceito Central",
@@ -528,6 +540,7 @@ const slidesComNotas = [
   {
     numero: 10,
     id: 10,
+    bloco: 2,
     tipo: "comparativo",
     categoria: "Definição Descomplicada",
     conducao: "Maria",
@@ -554,6 +567,7 @@ const slidesComNotas = [
   {
     numero: 11,
     id: 11,
+    bloco: 2,
     tipo: "apresentacao",
     categoria: "Definição Fundamental",
     conducao: "Maria",
@@ -584,11 +598,12 @@ const slidesComNotas = [
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 3: A IA INVISÍVEL DO DIA A DIA (SLIDES 12 A 16)
+  // BLOCO 3: A IA INVISÍVEL DO DIA A DIA (SLIDES 12 A 19)
   // -----------------------------------------------------------------------
   {
     numero: 12,
     id: 12,
+    bloco: 3,
     tipo: "secao",
     categoria: "Classificação Tecnológica",
     badge: "Classificação Tecnológica",
@@ -607,6 +622,7 @@ const slidesComNotas = [
   {
     numero: 13,
     id: 13,
+    bloco: 3,
     tipo: "ia-ficcao",
     categoria: "Ficção Científica",
     conducao: "Laura",
@@ -629,10 +645,12 @@ const slidesComNotas = [
     }
   },
   {
+    numero: 14,
+    id: 14,
+    bloco: 3,
     tipo: "ia-ficcao",
     categoria: "Ficção Moderna",
     conducao: "Laura",
-    docente: "Laura",
     titulo: "A Nova Era da Ficção: Robôs Acompanhantes & Afeto",
     subtitulo: "Do cuidado médico de Baymax ao romance de WALL-E e androides de companhia",
     imagem: "/static/img/ia_ficcao_moderna.jpg",
@@ -651,10 +669,12 @@ const slidesComNotas = [
     }
   },
   {
+    numero: 15,
+    id: 15,
+    bloco: 3,
     tipo: "apresentacao",
     categoria: "Ficção vs. Realidade",
     conducao: "Laura",
-    docente: "Laura",
     titulo: "Por Que Não Teremos Robôs Conscientes nos Próximos 10 Anos?",
     subtitulo: "Os 3 grandes desafios científicos que separam Rosie, Skynet e C-3PO da tecnologia real",
     itensDestaque: [
@@ -681,10 +701,12 @@ const slidesComNotas = [
     }
   },
   {
+    numero: 16,
+    id: 16,
+    bloco: 3,
     tipo: "quebra-gelo",
     categoria: "Perspectiva 2026–2036",
     conducao: "Laura",
-    docente: "Laura",
     titulo: "Ficção vs. Realidade: O Que Esperar nos Próximos 10 Anos?",
     subtitulo: "Diferenciando avanços tecnológicos plausíveis de cenários que continuam sem base científica",
     colunas: [
@@ -717,8 +739,9 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 14,
-    id: 14,
+    numero: 17,
+    id: 17,
+    bloco: 3,
     tipo: "ia-estreita",
     categoria: "A IA Real",
     conducao: "Laura",
@@ -741,8 +764,9 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 15,
-    id: 15,
+    numero: 18,
+    id: 18,
+    bloco: 3,
     tipo: "secao",
     categoria: "O Efeito IA",
     badge: "O Efeito IA (The AI Effect)",
@@ -758,8 +782,9 @@ const slidesComNotas = [
     embasamentoCientifico: dossies.teslerAiEffect
   },
   {
-    numero: 16,
-    id: 16,
+    numero: 19,
+    id: 19,
+    bloco: 3,
     tipo: "grid-exemplos",
     categoria: "O Teorema de Tesler na Prática",
     conducao: "Laura",
@@ -799,11 +824,12 @@ const slidesComNotas = [
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 4: DESMISTIFICANDO A IA – OS 5 GRANDES MITOS (SLIDES 17 A 22)
+  // BLOCO 4: DESMISTIFICANDO A IA – OS 5 GRANDES MITOS (SLIDES 20 A 26)
   // -----------------------------------------------------------------------
   {
-    numero: 17,
-    id: 17,
+    numero: 20,
+    id: 20,
+    bloco: 4,
     tipo: "quebra-gelo",
     categoria: "Transição para os Mitos",
     titulo: "De Onde Vem o Nosso Medo? Do Cinema às Falácias da Internet",
@@ -835,8 +861,9 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 18,
-    id: 18,
+    numero: 21,
+    id: 21,
+    bloco: 4,
     tipo: "secao",
     categoria: "Desmistificando a IA",
     badge: "Os 5 Grandes Mitos",
@@ -849,12 +876,12 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 19,
-    id: 19,
+    numero: 22,
+    id: 22,
+    bloco: 4,
     tipo: "quebra-gelo",
     categoria: "Desmistificando a IA",
     conducao: "Maria",
-    docente: "Maria",
     titulo: "Mito 1: 'A IA pensa, sente e tem consciência própria'",
     subtitulo: "A diferença fundamental entre imitar a linguagem humana e ter compreensão real",
     colunas: [
@@ -884,12 +911,12 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 20,
-    id: 20,
+    numero: 23,
+    id: 23,
+    bloco: 4,
     tipo: "quebra-gelo",
     categoria: "Postura Crítica",
     conducao: "Maria",
-    docente: "Maria",
     titulo: "Mito 2: 'Se a IA respondeu com certeza, está 100% correto'",
     subtitulo: "O fenômeno das 'alucinações' e por que você nunca deve aceitar respostas cegamente",
     colunas: [
@@ -919,12 +946,12 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 21,
-    id: 21,
+    numero: 24,
+    id: 24,
+    bloco: 4,
     tipo: "apresentacao",
     categoria: "Acessibilidade & Inclusão",
     conducao: "Laura",
-    docente: "Laura",
     titulo: "Mito 3: 'Preciso ser um gênio da matemática ou programador'",
     subtitulo: "A maior revolução da IAGen: a linguagem natural em português é o novo código",
     itensDestaque: [
@@ -951,12 +978,12 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 22,
-    id: 22,
+    numero: 25,
+    id: 25,
+    bloco: 4,
     tipo: "quebra-gelo",
     categoria: "Ética & Autoria",
     conducao: "Laura",
-    docente: "Laura",
     titulo: "Mito 4: 'Usar IA significa necessariamente trapacear'",
     subtitulo: "A fronteira entre atalho desonesto (terceirização) e uso formativo e potencializador",
     colunas: [
@@ -986,12 +1013,12 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 23,
-    id: 23,
+    numero: 26,
+    id: 26,
+    bloco: 4,
     tipo: "quebra-gelo",
     categoria: "O Futuro do Trabalho e Estudos",
     conducao: "Laura",
-    docente: "Laura",
     titulo: "Mito 5: 'A IA vai substituir os seres humanos em tudo'",
     subtitulo: "Automação de tarefas mecânicas vs. O valor insubstituível do julgamento humano",
     colunas: [
@@ -1022,16 +1049,16 @@ const slidesComNotas = [
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 5: BRASIL, CIDADANIA & REGULAÇÕES (SLIDES 24 A 26) • CONDUÇÃO: MARIA
+  // BLOCO 5: BRASIL, CIDADANIA & REGULAÇÕES (SLIDES 27 A 29) • CONDUÇÃO: MARIA
   // -----------------------------------------------------------------------
   {
-    numero: 24,
-    id: 24,
+    numero: 27,
+    id: 27,
+    bloco: 5,
     tipo: "secao",
     categoria: "Brasil, Cidadania & Legislação",
     badge: "Estratégia Nacional & Cidadania",
     conducao: "Maria",
-    docente: "Maria",
     titulo: "E o Brasil? Cidadania, Soberania & As Leis de IA",
     subtitulo: "Como o nosso país se posiciona no cenário mundial: do Plano Brasileiro de IA (PBIA) aos direitos e proteção do cidadão",
     pills: [
@@ -1045,13 +1072,13 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 25,
-    id: 25,
+    numero: 28,
+    id: 28,
+    bloco: 5,
     tipo: "apresentacao",
     categoria: "Plano Brasileiro de IA",
     badge: "Plano Brasileiro de IA",
     conducao: "Maria",
-    docente: "Maria",
     titulo: "O Plano Brasileiro de IA (PBIA): 'IA para o Bem de Todos'",
     subtitulo: "Os 3 eixos estratégicos do investimento público nacional: supercomputadores, SUS e inclusão digital",
     itensDestaque: [
@@ -1079,13 +1106,13 @@ const slidesComNotas = [
     embasamentoCientifico: dossies.pbiaBrasil
   },
   {
-    numero: 26,
-    id: 26,
+    numero: 29,
+    id: 29,
+    bloco: 5,
     tipo: "apresentacao",
     categoria: "Legislação & Direitos",
     badge: "Marco Legal da IA",
     conducao: "Maria",
-    docente: "Maria",
     titulo: "Regulamentação da IA: Leis, Direitos e Proteção ao Cidadão",
     subtitulo: "Como o Marco Legal da IA (PL 2338/2023) e a LGPD protegem você de abusos",
     itensDestaque: [
@@ -1114,11 +1141,12 @@ const slidesComNotas = [
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 6: LABORATÓRIO PRÁTICO & FECHAMENTO (SLIDES 27 A 29)
+  // BLOCO 6: LABORATÓRIO PRÁTICO & FECHAMENTO (SLIDES 30 A 32)
   // -----------------------------------------------------------------------
   {
-    numero: 27,
-    id: 27,
+    numero: 30,
+    id: 30,
+    bloco: 6,
     tipo: "missao-email",
     categoria: "Laboratório Prático 1",
     titulo: "Missão 1 no Computador: Garantir o Acesso ao seu E-mail",
@@ -1137,8 +1165,9 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 28,
-    id: 28,
+    numero: 31,
+    id: 31,
+    bloco: 6,
     tipo: "missao-diagnostica",
     categoria: "Laboratório Prático 2",
     titulo: "Missão 2 no Computador: Prova Diagnóstica",
@@ -1162,14 +1191,15 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 29,
-    id: 29,
+    numero: 32,
+    id: 32,
+    bloco: 6,
     tipo: "fechamento",
     categoria: "Síntese & Próximos Passos",
     titulo: "Síntese do Encontro 1 & O Salto para a Próxima Aula",
     subtitulo: "A base está construída com sucesso! No próximo encontro, entraremos no universo da criação.",
     conclusao: "A Inteligência Artificial não é mágica, nem pensa como um cérebro biológico: é matemática, probabilidade e reconhecimento de padrões em dados para potencializar a inteligência humana.",
-    proximoEncontro: "Encontro 2 (23 de Outubro): O Salto da IA Generativa – Como Acessar o ChatGPT e Criar seus Primeiros Prompts!",
+    proximoEncontro: "Módulo 2 (30/10): O Salto da IA Generativa – Como acessar os modelos de IAGen, funcionamento das LLMs e criação de prompts básicos!",
     lembretesFinais: [
       "Guarde com segurança seu e-mail e senha testados hoje",
       "Prova diagnóstica concluída: turma 100% mapeada para a prática!",
@@ -1177,7 +1207,7 @@ const slidesComNotas = [
     ],
     notasProfessora: {
       objetivoSlide: "Fechar o Encontro 1 com celebração, sensação de vitória pedagógica e grande expectativa para a oficina do ChatGPT.",
-      oQueFalar: "Finalizem calorosamente: 'Parabéns a todos! Vocês deram hoje um passo fundamental. Desmistificamos a ficção, entendemos como a IA invisível funciona no nosso cotidiano, testamos o e-mail de todos e concluímos nossa avaliação diagnóstica. No dia 23 de outubro, traremos a IA que CRIA: abriremos o ChatGPT para criar prompts reais no laboratório. Excelente semana a todos e até o Encontro 2!'",
+      oQueFalar: "Finalizem calorosamente: 'Parabéns a todos! Vocês deram hoje um passo fundamental. Desmistificamos a ficção, entendemos como a IA invisível funciona no nosso cotidiano, testamos o e-mail de todos e concluímos nossa avaliação diagnóstica. No dia 30 de outubro, traremos O Salto da IA Generativa: entenderemos o funcionamento das LLMs e abriremos os modelos na prática para criar nossos primeiros prompts no laboratório. Excelente semana a todos e até o Módulo 2!'",
       tempoSugerido: "5 minutos de encerramento"
     }
   }
@@ -1283,6 +1313,14 @@ const divisaoPapeis = [
   { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 26 a 28) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 29 a 31)", papel: "ambas" }
 ];
+
+  // Normalização determinística de numeração e IDs dos slides no bundle
+  if (Array.isArray(slidesComNotas)) {
+    slidesComNotas.forEach(function (slide, idx) {
+      slide.numero = idx + 1;
+      slide.id = idx + 1;
+    });
+  }
 
   const ENCONTRO_1_DATA = {
     moduloInfo: moduloInfo,

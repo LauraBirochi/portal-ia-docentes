@@ -138,7 +138,7 @@ class TestAuthAndSecurity(unittest.TestCase):
         # Deve ter todas as 4 abas e a divisão de papéis
         self.assertIn('Fio da Meada'.encode('utf-8'), res.data)
         self.assertIn('Slides & Roteiro'.encode('utf-8'), res.data)
-        self.assertIn('Prova Diagnóstica'.encode('utf-8'), res.data)
+        self.assertIn('Atividade em Aula'.encode('utf-8'), res.data)
         self.assertIn('Perguntas dos Alunos'.encode('utf-8'), res.data)
         self.assertIn('cockpit-papeis-container'.encode('utf-8'), res.data)
         # Parecer do Professor foi removido da arquitetura
@@ -223,6 +223,27 @@ class TestAuthAndSecurity(unittest.TestCase):
         self.assertEqual(res.headers.get('X-Frame-Options'), 'SAMEORIGIN')
         self.assertEqual(res.headers.get('X-Content-Type-Options'), 'nosniff')
         self.assertEqual(res.headers.get('Referrer-Policy'), 'strict-origin-when-cross-origin')
+
+    # ==========================================================================
+    # 7. DOWNLOAD OFICIAL DE SLIDES EM PDF (RBAC & INTEGRIDADE DE ARQUIVO)
+    # ==========================================================================
+    def test_unauthenticated_download_slides_redirects_to_login(self):
+        """Download de PDF sem autenticação deve redirecionar para o login."""
+        res = self.client.get('/download/slides/1.pdf')
+        self.assertEqual(res.status_code, 302)
+        self.assertIn('/login', res.headers['Location'])
+
+    def test_authenticated_download_slides_returns_pdf(self):
+        """Download de PDF autenticado entrega o arquivo PDF válido com headers corretos."""
+        self.client.post('/login', data={
+            'username': 'lucio',
+            'password': os.getenv('USER3_PASSWORD', 'coord@lucio2026')
+        })
+        res = self.client.get('/download/slides/1.pdf')
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.content_type, 'application/pdf')
+        self.assertIn('slides-encontro-1.pdf', res.headers.get('Content-Disposition', ''))
+        self.assertGreater(len(res.data), 1000)
 
 
 if __name__ == '__main__':

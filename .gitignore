@@ -11,6 +11,7 @@
 
 # Configurações internas do Antigravity / IA
 .agents/
+.review/
 
 # Arquivos de processo / deploy específicos
 Procfile

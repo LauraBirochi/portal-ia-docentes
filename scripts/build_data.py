@@ -10,23 +10,28 @@ Uso:
 import os
 import re
 import sys
+from typing import Optional
+
+IMPORT_RE = re.compile(r'^\s*import\s+')
+EXPORT_DECL_RE = re.compile(r'^\s*export\s+(const|let|var|function|class)\s+')
+EXPORT_DEFAULT_RE = re.compile(r'^\s*export\s*(\{[^}]*\}|default\s+[^;]+);?')
+SLIDE_OBJECT_RE = re.compile(r'^  \{\s*\n\s*(?:numero|id|bloco|tipo):', re.MULTILINE)
+
 
 def clean_module_code(content: str) -> str:
     """Remove declarações de import e export do código do submódulo ES6."""
     lines = []
     for line in content.splitlines():
-        # Ignora imports
-        if re.match(r'^\s*import\s+', line):
+        if IMPORT_RE.match(line):
             continue
-        # Converte 'export const/let/var x =' para 'const/let/var x ='
-        line = re.sub(r'^\s*export\s+(const|let|var|function|class)\s+', r'\1 ', line)
-        # Ignora export { ... } ou export default ...
-        if re.match(r'^\s*export\s*(\{[^}]*\}|default\s+[^;]+);?', line):
+        line = EXPORT_DECL_RE.sub(r'\1 ', line)
+        if EXPORT_DEFAULT_RE.match(line):
             continue
         lines.append(line)
     return '\n'.join(lines).strip()
 
-def build_meeting_bundle(meeting_num: int = 1, base_dir: str = None) -> str:
+
+def build_meeting_bundle(meeting_num: int = 1, base_dir: Optional[str] = None) -> str:
     if base_dir is None:
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -48,23 +53,23 @@ def build_meeting_bundle(meeting_num: int = 1, base_dir: str = None) -> str:
     ]
 
     parts = []
+    deck_content = ''
     for idx, (filename, description) in enumerate(files_order, start=1):
         filepath = os.path.join(submodules_dir, filename)
         if not os.path.exists(filepath):
             raise FileNotFoundError(f"Submódulo obrigatório ausente: {filepath}")
-        
+
         with open(filepath, 'r', encoding='utf-8') as f:
             raw_content = f.read()
+
+        if filename == 'deck-slides.js':
+            deck_content = raw_content
 
         cleaned = clean_module_code(raw_content)
         parts.append(f"  // {idx}. {description}\n  {cleaned}\n")
 
-    # Contagem dinâmica de slides baseada nos objetos de nível superior em slidesComNotas
-    deck_path = os.path.join(submodules_dir, 'deck-slides.js')
-    with open(deck_path, 'r', encoding='utf-8') as f:
-        deck_content = f.read()
-    
-    slide_matches = re.findall(r'^  \{', deck_content, re.MULTILINE)
+    # Contagem exata de objetos de slide de nível superior em slidesComNotas
+    slide_matches = SLIDE_OBJECT_RE.findall(deck_content)
     num_slides = len(slide_matches) if slide_matches else "N"
 
     bundle_template = f"""/**
@@ -80,6 +85,14 @@ def build_meeting_bundle(meeting_num: int = 1, base_dir: str = None) -> str:
   'use strict';
 
 {chr(10).join(parts)}
+  // Normalização determinística de numeração e IDs dos slides no bundle
+  if (Array.isArray(slidesComNotas)) {{
+    slidesComNotas.forEach(function (slide, idx) {{
+      slide.numero = idx + 1;
+      slide.id = idx + 1;
+    }});
+  }}
+
   const ENCONTRO_{meeting_num}_DATA = {{
     moduloInfo: moduloInfo,
     fioDaMeada: fioDaMeada,
@@ -114,11 +127,15 @@ def build_meeting_bundle(meeting_num: int = 1, base_dir: str = None) -> str:
     print(f"   - Slides detectados: {num_slides}")
     return bundle_path
 
+
 if __name__ == '__main__':
     meeting = 1
     if len(sys.argv) > 1:
         try:
             meeting = int(sys.argv[1])
-        except ValueError:
-            print("Número de encontro inválido. Usando 1.")
+            if meeting < 1:
+                raise ValueError("Número do encontro deve ser positivo.")
+        except ValueError as err:
+            print(f"[ERRO] Número de encontro inválido: {err}", file=sys.stderr)
+            sys.exit(1)
     build_meeting_bundle(meeting)

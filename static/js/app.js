@@ -2,17 +2,38 @@
  * Aplicação Principal – Portal & Cockpit de Co-Docência (Minicurso de IA)
  * Arquitetura SPA em 2 Níveis:
  * - Nível 1: Dashboard Geral do Minicurso
- * - Nível 2: Cockpit da Aula (Módulo 1 Âncora com 5 Abas de Foco)
+ * - Nível 2: Cockpit da Aula (Módulo Âncora com 4 Abas Pedagógicas)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  'use strict';
+
   // =========================================================================
-  // 1. GERENCIADOR DE VISUALIZAÇÕES (SPA: DASHBOARD vs COCKPIT)
+  // 1. FONTE ÚNICA DE DADOS DOS ENCONTROS (INJETADA PELO BACKEND)
+  // =========================================================================
+  const MEETINGS_DATA = window.MEETINGS_DATA || {};
+
+  // =========================================================================
+  // 2. GERENCIADOR DE VISUALIZAÇÕES (SPA: DASHBOARD vs COCKPIT)
   // =========================================================================
   const viewDashboard = document.getElementById('view-dashboard');
   const viewCockpit = document.getElementById('view-cockpit');
   const btnBackDashboard = document.getElementById('btn-back-dashboard');
   const breadcrumbModule = document.getElementById('breadcrumb-current-view');
+  let renderedCockpitModuleId = null;
+
+  function getMeetingRecord(moduleId) {
+    return MEETINGS_DATA[moduleId] || MEETINGS_DATA[String(moduleId)] || MEETINGS_DATA[1] || null;
+  }
+
+  function initCockpitData(moduleId = 1) {
+    if (renderedCockpitModuleId === moduleId) return;
+    const currentData = window[`ENCONTRO_${moduleId}_DATA`] || window.CURSO_IA_CURRENT_DATA || window.ENCONTRO_1_DATA;
+    if (window.CockpitRenderer && currentData) {
+      window.CockpitRenderer.renderAll(currentData);
+      renderedCockpitModuleId = moduleId;
+    }
+  }
 
   function showDashboard() {
     if (viewCockpit) viewCockpit.classList.add('view-hidden');
@@ -29,17 +50,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showCockpit(moduleId = 1) {
+    const meeting = getMeetingRecord(moduleId);
+    const targetId = (meeting && meeting.isReady) ? Number(meeting.num) : 1;
+    const shortTitle = (meeting && meeting.shortTitle) ? meeting.shortTitle : 'Desmistificando a IA';
+
     if (viewDashboard) viewDashboard.classList.add('view-hidden');
     if (viewCockpit) {
       viewCockpit.classList.remove('view-hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     if (breadcrumbModule) {
-      breadcrumbModule.textContent = `Módulo ${moduleId}: Desmistificando a IA`;
+      breadcrumbModule.textContent = `Módulo ${targetId}: ${shortTitle}`;
     }
-    initCockpitData();
-    if (window.history && window.history.pushState && window.location.pathname !== `/encontro/${moduleId}`) {
-      window.history.pushState({ view: 'cockpit', moduleId }, '', `/encontro/${moduleId}`);
+    initCockpitData(targetId);
+    if (window.history && window.history.pushState && window.location.pathname !== `/encontro/${targetId}`) {
+      window.history.pushState({ view: 'cockpit', moduleId: targetId }, '', `/encontro/${targetId}`);
     }
   }
 
@@ -48,97 +73,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Suporte a voltar/avançar no navegador
-  window.addEventListener('popstate', (e) => {
-    if (window.location.pathname.startsWith('/encontro/')) {
-      showCockpit(1);
+  window.addEventListener('popstate', () => {
+    const match = window.location.pathname.match(/^\/encontro\/(\d+)/);
+    if (match) {
+      showCockpit(Number(match[1]));
     } else {
       showDashboard();
     }
   });
 
-  // =========================================================================
-  // 2. DADOS E INSPETOR DINÂMICO DOS 7 ENCONTROS
-  // =========================================================================
-  const MEETINGS_DATA = {
-    1: {
-      num: 1,
-      date: '09 de Outubro',
-      duration: '3 Horas Presenciais',
-      location: 'Laboratório X',
-      title: 'Encontro 1: A gênese da Inteligência Artificial, tipos, modelos e exemplos de uso. Ética na utilização da IAGen. Oportunidades e desafios.',
-      desc: 'Desmistificação dos mitos do cinema vs. IA real, introdução à história e evolução dos modelos, aplicações cotidianas invisíveis e debate crítico sobre ética, oportunidades e desafios no uso de IA Generativa.',
-      statusBadge: '🟢 Cockpit Liberado',
-      isReady: true,
-      actionTip: 'Módulo 1 totalmente formatado com Fio da Meada, Slides, Gabarito e Caderno da Dupla.'
-    },
-    2: {
-      num: 2,
-      date: '23 de Outubro',
-      duration: '3 Horas Presenciais',
-      location: 'Laboratório X',
-      title: 'Encontro 2: Como acessar os modelos de IAGen. Criação de prompts básicos.',
-      desc: 'Visão prática das principais plataformas e modelos de IA Generativa. Primeiros passos na formulação de instruções claras, contextualização e construção de prompts iniciais.',
-      statusBadge: '🟡 Em Planejamento',
-      isReady: false,
-      actionTip: 'Roteiro e dinâmicas de laboratório em fase de alinhamento com a Coordenação.'
-    },
-    3: {
-      num: 3,
-      date: '30 de Outubro',
-      duration: '3 Horas Presenciais',
-      location: 'Laboratório X',
-      title: 'Encontro 3: Criação de prompts.',
-      desc: 'Aprofundamento na engenharia de instrução: papéis, contexto, restrições, personas docentes e técnicas de refinamento iterativo para respostas de alta qualidade.',
-      statusBadge: '🟡 Em Planejamento',
-      isReady: false,
-      actionTip: 'Material pedagógico e exercícios em elaboração pela dupla docente.'
-    },
-    4: {
-      num: 4,
-      date: '06 de Novembro',
-      duration: '3 Horas Presenciais',
-      location: 'Laboratório X',
-      title: 'Encontro 4: Criação de prompts.',
-      desc: 'Técnicas intermediárias e avançadas de prompt: estruturação de saídas em tabelas e markdown, raciocínio passo a passo e resolução orientada de problemas.',
-      statusBadge: '⚪ Sequência',
-      isReady: false,
-      actionTip: 'Encontro programado na sequência da grade curricular (32h).'
-    },
-    5: {
-      num: 5,
-      date: '13 de Novembro',
-      duration: '3 Horas Presenciais',
-      location: 'Laboratório X',
-      title: 'Encontro 5: Criação de prompts.',
-      desc: 'Oficina prática de prompts para apoio a estudos, redação, sínteses e rotinas de produtividade com foco no olhar crítico e prevenção de alucinações.',
-      statusBadge: '⚪ Sequência',
-      isReady: false,
-      actionTip: 'Encontro programado na sequência da grade curricular (32h).'
-    },
-    6: {
-      num: 6,
-      date: '27 de Novembro',
-      duration: '3 Horas Presenciais',
-      location: 'Laboratório X',
-      title: 'Encontro 6: Criação de prompts.',
-      desc: 'Refinamento prático, comparação de comportamento entre diferentes modelos e estratégias para criar fluxos contínuos e consistentes com IAGen.',
-      statusBadge: '⚪ Sequência',
-      isReady: false,
-      actionTip: 'Encontro programado na sequência da grade curricular (32h).'
-    },
-    7: {
-      num: 7,
-      date: '04 de Dezembro',
-      duration: '3 Horas Presenciais',
-      location: 'Laboratório X',
-      title: 'Encontro 7: Fechamento do curso e avaliação.',
-      desc: 'Consolidação das aprendizagens, apresentação das produções dos estudantes, avaliação reflexiva e encerramento oficial com certificação de 32 horas.',
-      statusBadge: '⚪ Encerramento',
-      isReady: false,
-      actionTip: 'Encontro final de fechamento, síntese e avaliação formativa.'
-    }
-  };
+  // Se a página já abriu diretamente na visão do Cockpit (ex: /encontro/1), inicializa os dados imediatamente
+  if (viewCockpit && !viewCockpit.classList.contains('view-hidden')) {
+    const match = window.location.pathname.match(/^\/encontro\/(\d+)/);
+    initCockpitData(match ? Number(match[1]) : 1);
+  }
 
+  // =========================================================================
+  // 3. INSPETOR DINÂMICO DOS 7 ENCONTROS
+  // =========================================================================
   const timelineSteps = document.querySelectorAll('.timeline-step[data-meeting]');
   const inspectorBadgeStatus = document.getElementById('inspector-badge-status');
   const inspectorDate = document.getElementById('inspector-date');
@@ -146,11 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const inspectorLocation = document.getElementById('inspector-location');
   const inspectorTitle = document.getElementById('inspector-title');
   const inspectorDesc = document.getElementById('inspector-desc');
-  const inspectorActionTip = document.getElementById('inspector-action-tip');
   const inspectorActions = document.getElementById('inspector-actions');
 
   function renderMeetingInspector(meetingNum) {
-    const data = MEETINGS_DATA[meetingNum];
+    const data = getMeetingRecord(meetingNum);
     if (!data) return;
 
     if (inspectorBadgeStatus) inspectorBadgeStatus.textContent = data.statusBadge;
@@ -159,29 +110,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (inspectorLocation) inspectorLocation.textContent = `📍 ${data.location}`;
     if (inspectorTitle) inspectorTitle.textContent = data.title;
     if (inspectorDesc) inspectorDesc.textContent = data.desc;
-    if (inspectorActionTip) inspectorActionTip.textContent = data.actionTip;
 
     if (inspectorActions) {
       if (data.isReady) {
         inspectorActions.innerHTML = `
-          <span style="font-size: 0.88rem; color: var(--text-muted);">${data.actionTip}</span>
+          <span id="inspector-action-tip" style="font-size: 0.88rem; color: var(--text-muted);">${data.actionTip}</span>
           <button class="btn btn-primary" style="font-size: 0.95rem; padding: 0.65rem 1.35rem;" id="btn-enter-cockpit">
             Entrar no Cockpit da Aula ➔
           </button>
         `;
         const btnEnter = document.getElementById('btn-enter-cockpit');
         if (btnEnter) {
-          btnEnter.addEventListener('click', () => showCockpit(1));
+          btnEnter.addEventListener('click', () => showCockpit(Number(data.num)));
         }
       } else {
         inspectorActions.innerHTML = `
-          <span style="font-size: 0.88rem; color: var(--text-muted);">${data.actionTip}</span>
-          <button class="btn" style="font-size: 0.9rem; padding: 0.65rem 1.2rem;"
-            onclick="window.showToast('📚 Encontro ${data.num} programado para ${data.date}. Planejamento em andamento!')"
-          >
+          <span id="inspector-action-tip" style="font-size: 0.88rem; color: var(--text-muted);">${data.actionTip}</span>
+          <button class="btn" style="font-size: 0.9rem; padding: 0.65rem 1.2rem;" id="btn-planned-meeting">
             📋 Ementa Prevista (${data.date})
           </button>
         `;
+        const btnPlanned = document.getElementById('btn-planned-meeting');
+        if (btnPlanned) {
+          btnPlanned.addEventListener('click', () => {
+            showToast(`📚 Módulo ${data.num} programado para ${data.date}. Planejamento em andamento!`);
+          });
+        }
       }
     }
   }
@@ -193,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
       step.classList.add('active');
       renderMeetingInspector(meetingNum);
 
-      // Scroll suave até o inspetor
       const inspector = document.getElementById('meeting-inspector-container');
       if (inspector) {
         inspector.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -201,40 +154,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Inicializar inspetor com o Encontro 1
-  renderMeetingInspector(1);
+  // Vincula o botão inicial do Inspetor renderizado via SSR
+  const initialBtnEnter = document.getElementById('btn-enter-cockpit');
+  if (initialBtnEnter) {
+    initialBtnEnter.addEventListener('click', () => showCockpit(1));
+  }
 
   // =========================================================================
-  // 4. COCKPIT: NAVEGADOR DAS 5 ABAS DE FOCO & RENDERIZAÇÃO MODULAR
+  // 4. COCKPIT: NAVEGADOR DAS 4 ABAS DE FOCO
   // =========================================================================
   const cockpitTabBtns = document.querySelectorAll('.cockpit-tab-btn');
   const tabPanels = document.querySelectorAll('.tab-content-panel');
 
-  // Inicializa o motor de renderização pedagógica das 5 abas
-  function initCockpitData() {
-    const currentData = window.CURSO_IA_CURRENT_DATA || window.ENCONTRO_1_DATA;
-    if (window.CockpitRenderer && currentData) {
-      window.CockpitRenderer.renderAll(currentData);
-    }
-  }
-
-  initCockpitData();
-
   function switchTab(tabId) {
     cockpitTabBtns.forEach(btn => {
-      if (btn.getAttribute('data-tab') === tabId) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
+      btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
     });
 
     tabPanels.forEach(panel => {
-      if (panel.id === `tab-${tabId}`) {
-        panel.classList.add('active');
-      } else {
-        panel.classList.remove('active');
-      }
+      panel.classList.toggle('active', panel.id === `tab-${tabId}`);
     });
   }
 
@@ -246,26 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // 5. ATRIBUIÇÃO DE PAPÉIS DA DUPLA DOCENTE (LOCALSTORAGE)
+  // 5. CONTROLES GERAIS: TEMA ESCURO & TOASTS
   // =========================================================================
-  const roleCheckboxes = document.querySelectorAll('.role-check');
-  roleCheckboxes.forEach(cb => {
-    const savedRole = localStorage.getItem(`role_${cb.name}`);
-    if (savedRole && cb.value === savedRole) {
-      cb.checked = true;
-    }
-    cb.addEventListener('change', () => {
-      if (cb.checked) {
-        localStorage.setItem(`role_${cb.name}`, cb.value);
-      }
-    });
-  });
-
-  // =========================================================================
-  // 6. CONTROLES GERAIS: TEMA ESCURO & TOASTS
-  // =========================================================================
+  const THEME_KEY = 'curso_ia_theme';
   const btnThemeToggle = document.getElementById('btn-theme-toggle');
-  const currentTheme = localStorage.getItem('curso_ia_theme') || 'light';
+  const currentTheme = localStorage.getItem(THEME_KEY) || localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', currentTheme);
 
   if (btnThemeToggle) {
@@ -274,12 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const active = document.documentElement.getAttribute('data-theme');
       const next = active === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('curso_ia_theme', next);
+      localStorage.setItem(THEME_KEY, next);
       btnThemeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
     });
   }
 
-  // Toast Notifier
+  let toastTimer = null;
   function showToast(msg) {
     let toast = document.getElementById('app-toast');
     if (!toast) {
@@ -307,14 +230,19 @@ document.addEventListener('DOMContentLoaded', () => {
     toast.style.opacity = '1';
     toast.style.transform = 'translateY(0)';
 
-    setTimeout(() => {
+    if (toastTimer) {
+      clearTimeout(toastTimer);
+    }
+    toastTimer = setTimeout(() => {
       toast.style.opacity = '0';
       toast.style.transform = 'translateY(10px)';
     }, 3200);
   }
 
+  window.showToast = showToast;
+
   // =========================================================================
-  // 7. GERENCIADOR DA JANELA DE SLIDES & SINCRONIZAÇÃO DE LOGOUT (AUTO-CLOSE)
+  // 6. GERENCIADOR DA JANELA DE SLIDES & SINCRONIZAÇÃO DE LOGOUT (AUTO-CLOSE)
   // =========================================================================
   let slidesWindowRef = null;
   const AUTH_CHANNEL_NAME = 'portal_ia_auth_channel';
@@ -340,9 +268,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.openSlidesWindow = openSlidesWindow;
 
-  // Interceptar cliques de abertura de slides e de logout
   document.addEventListener('click', (e) => {
-    // 1. Abertura de Slides
+    const exportBtn = e.target.closest('#btn-export-slides, .btn-export-slides');
+    if (exportBtn) {
+      e.preventDefault();
+      const match = window.location.pathname.match(/^\/encontro\/(\d+)/);
+      const meetingId = match ? match[1] : 1;
+      showToast('Iniciando download do PDF oficial 16:9 widescreen...');
+      window.location.href = `/download/slides/${meetingId}.pdf`;
+      return;
+    }
+
     const slidesLink = e.target.closest('a[href*="/slides"], .btn-open-slides');
     if (slidesLink) {
       e.preventDefault();
@@ -353,13 +289,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // 2. Ação de Logout (Sair)
     const logoutLink = e.target.closest('a[href*="/logout"], .btn-logout');
     if (logoutLink) {
       e.preventDefault();
       const logoutUrl = logoutLink.getAttribute('href') || '/logout';
 
-      // Fecha a janela de slides diretamente se acessível
       if (slidesWindowRef && !slidesWindowRef.closed) {
         try {
           slidesWindowRef.close();
@@ -368,22 +302,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Transmite sinal de logout para todas as abas (BroadcastChannel)
       if (authChannel) {
         try {
           authChannel.postMessage({ action: 'logout', timestamp: Date.now() });
-        } catch (err) {}
+        } catch (err) {
+          console.warn('Falha ao enviar sinal de logout via BroadcastChannel:', err);
+        }
       }
 
-      // Dispara sinal persistente via storage
       localStorage.setItem('portal_ia_logout_signal', Date.now().toString());
       localStorage.removeItem('portal_ia_slides_active');
 
-      // Redireciona para o logout do servidor após envio dos sinais
       setTimeout(() => {
         window.location.href = logoutUrl;
       }, 50);
     }
   });
 });
-
