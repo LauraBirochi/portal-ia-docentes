@@ -1060,7 +1060,7 @@ const slidesComNotas = [
   },
 
   // =========================================================================
-  // BLOCO 4: MÓDULO 3 — GOVERNANÇA, PRIVACIDADE E VALIDAÇÃO CRÍTICA (Slides 23 a 27)
+  // BLOCO 4: MÓDULO 3 — GOVERNANÇA, PROTEÇÃO DE DADOS E AUTONOMIA DOCENTE (Slides 23 a 27)
   // =========================================================================
   {
     numero: 23,
@@ -1069,14 +1069,14 @@ const slidesComNotas = [
     tipo: "secao",
     categoria: "Entrada de Módulo",
     badge: "Módulo 3",
-    titulo: "Módulo 3: Governança, Privacidade e Validação Crítica",
-    subtitulo: "Protegendo dados institucionais, higienizando entradas e exercendo a auditoria humana obrigatória",
-    citacao: "A IA é uma assistente probabilística de alta potência, jamais um juiz infalível da verdade.",
-    conducao: "Laura (com apoio de Maria)",
+    titulo: "Módulo 3: Governança, Proteção de Dados e Autonomia Docente",
+    subtitulo: "Da influência dos algoritmos no indivíduo à responsabilidade ética e pedagógica do professor na Sociedade de Dados",
+    citacao: "A inteligência artificial não apenas facilita tarefas: ela molda escolhas, afeta a autonomia e reproduz estruturas sociais.",
+    conducao: "Co-docência (Laura & Maria)",
     notasProfessora: {
       tempoSugerido: "3 min",
-      objetivoSlide: "Abrir o Módulo 3 destacando a postura ética, a conformidade legal (LGPD) e o papel insubstituível do professor.",
-      oQueFalar: "Laura retoma a condução no Módulo 3: 'Entramos no nosso terceiro módulo do dia: Governança, Privacidade e Validação Crítica. Saber formular prompts avançados é apenas metade da jornada; a outra metade é saber o que NUNCA colocar na máquina e como auditar com rigor factual tudo o que ela produz.'"
+      objetivoSlide: "Abrir o Módulo 3 conectando a tecnologia à cidadania digital, dividindo o bloco em duas frentes complementares: Laura aborda os dados e a privacidade; Maria aprofunda a autonomia e os vieses com Dora Kaufman.",
+      oQueFalar: "Laura e Maria abrem o Módulo 3 juntas: 'Entramos no nosso terceiro módulo do dia: Governança, Proteção de Dados e Autonomia Docente. Saber formular prompts avançados é apenas metade da jornada; a outra metade é compreender como a IA afeta o indivíduo e como preservar nossa soberania ética e pedagógica na Sociedade de Dados. Dividiremos este momento em duas partes complementares: Laura apresentará o cerco algorítmico, bolhas e a blindagem de dados; em seguida, Maria trará as implicações éticas sobre autonomia e vieses com base nas pesquisas de Dora Kaufman na PUC-SP.'"
     }
   },
   {
@@ -1084,46 +1084,46 @@ const slidesComNotas = [
     id: 24,
     bloco: 4,
     tipo: "comparativo",
-    categoria: "Governança e LGPD",
-    titulo: "3.1 Privacidade e Proteção de Dados (LGPD)",
-    subtitulo: "O que NUNCA deve ser inserido em ferramentas públicas e gratuitas de IA",
+    categoria: "Riscos ao Indivíduo & LGPD",
+    titulo: "3.1 Os Riscos ao Indivíduo (I): Dados, Escolhas e Bolhas de Filtro",
+    subtitulo: "Como o rastreamento invisível e a personalização extrema direcionam decisões e afetam a privacidade",
     conducao: "Laura (com apoio de Maria)",
     caixa1: {
-      titulo: "Zona de Alto Risco (NUNCA Inserir)",
-      formula: "Dados Pessoais Sensíveis e Sigilosos",
-      analogia: "Publicar uma ata confidencial em um mural aberto na rua.",
-      exemplo: "Nomes de alunos vinculados a notas, laudos médicos/psicológicos, CPFs, senhas de sistemas escolares e documentos confidenciais de reuniões."
+      titulo: "Influência nas Escolhas & Limitação da Individualidade",
+      formula: "Recomendações Algorítmicas e Bolhas de Eco",
+      analogia: "Um espelho mágico que só reflete o que você já gosta, estreitando seu mundo.",
+      exemplo: "A personalização excessiva nos expõe repetidamente a conteúdos semelhantes, reduzindo o contato com diferentes perspectivas e direcionando o que consumimos e compramos."
     },
     caixa2: {
-      titulo: "Zona Segura e Permitida (Boas Práticas)",
-      formula: "Anonimização e Dados Didáticos Genéricos",
-      analogia: "Trabalhar com estudos de caso com nomes fictícios.",
-      exemplo: "Trocar: 'O aluno Pedro Santos do 8º B com laudo de TDAH' por 'Um estudante de 13 anos com necessidades de adaptação no tempo de leitura'."
+      titulo: "Perda de Privacidade & A Fronteira da LGPD",
+      formula: "Coleta Opaca de Hábitos e Dados Pessoais",
+      analogia: "Escrever informações confidenciais de alunos em um cartão-postal público.",
+      exemplo: "Nossos dados e hábitos são coletados sem plena consciência. Na escola, a LGPD proíbe inserir nomes reais, laudos, CPFs e notas de alunos em ferramentas públicas de IA."
     },
     colunas: [
       {
-        tag: "Por Que o Cuidado é Crítico?",
-        icone: "⚖️",
+        tag: "O Que a IA Faz com Seus Hábitos?",
+        icone: "👁️",
         itens: [
-          "Nas contas gratuitas padrão, seus prompts podem ser usados para re-treinar o modelo da empresa",
-          "Violação grave da LGPD (Lei Geral de Proteção de Dados - Lei 13.709/2018)",
-          "Responsabilidade ética e jurídica inegociável do professor sobre a privacidade de menores"
+          "Recomendações algorítmicas direcionam silenciosamente o que consumimos, assistimos e pesquisamos",
+          "A hiperpersonalização cria bolhas de filtro que reduzem o contato com visões plurais de mundo",
+          "Nas contas gratuitas padrão, seus prompts e hábitos podem ser usados para re-treinar modelos corporativos"
         ]
       },
       {
-        tag: "Configurações de Proteção Imediata",
+        tag: "Blindagem e Boas Práticas Imediatas",
         icone: "🔒",
         itens: [
-          "Nas opções de conta (ChatGPT/Gemini/Claude), desative o salvamento de dados para treino",
-          "Limpe o histórico de conversas ao concluir tarefas com materiais de alunos",
-          "Utilize contas institucionais homologadas pela sua secretaria ou escola sempre que disponíveis"
+          "Nas opções de conta (ChatGPT/Gemini/Claude), desative o salvamento de dados para treinamento",
+          "Violação grave da LGPD (Lei 13.709/2018): jamais insira nomes de alunos, laudos médicos ou notas",
+          "Substitua qualquer caso escolar por dados fictícios ou arquétipos didáticos 100% anonimizados"
         ]
       }
     ],
     notasProfessora: {
       tempoSugerido: "6 min",
-      objetivoSlide: "Alertar sobre os riscos de vazamento de dados em ferramentas de IA e orientar sobre a anonimização prévia de qualquer caso real.",
-      oQueFalar: "Laura alerta sobre privacidade e LGPD: 'Atenção máxima neste slide: quando usamos ferramentas públicas e gratuitas na internet, a regra de ouro é: NUNCA coloquem dados pessoais de alunos! Nada de nomes completos, CPFs, laudos ou notas. Se você quer ajuda para criar uma atividade adaptada, você anonimiza completamente o caso!'"
+      objetivoSlide: "Sensibilizar sobre a influência dos algoritmos nas escolhas e bolhas de filtro, estabelecendo o protocolo prático de privacidade e proteção de dados (LGPD).",
+      oQueFalar: "Laura conduz a reflexão com firmeza: 'A IA não apenas responde ao que pedimos; suas recomendações algorítmicas direcionam nossas escolhas, o que consumimos, assistimos e compramos. Além disso, a personalização excessiva limita nossa individualidade, nos expondo repetidamente a conteúdos semelhantes e nos fechando em bolhas. E no centro disso está a perda de privacidade: nossos dados e hábitos são coletados sem que tenhamos plena consciência. Por isso, na escola, a regra de ouro da LGPD é absoluta: NUNCA coloquem dados pessoais de alunos, notas ou laudos! Desativem o treino nas configurações e anonimizem tudo antes de perguntar à IA!'"
     }
   },
   {
@@ -1132,30 +1132,30 @@ const slidesComNotas = [
     bloco: 4,
     tipo: "apresentacao",
     categoria: "Higiene de Prompt",
-    titulo: "3.1 Sanitização da Entrada (Input Preprocessing)",
-    subtitulo: "Como a limpeza prévia do texto pelo usuário evita desvios e economiza a atenção da IA",
+    titulo: "3.2 Sanitização da Entrada (Input Preprocessing)",
+    subtitulo: "Como a limpeza e anonimização prévia do texto blindam a privacidade e evitam desvios da IA",
     conducao: "Laura (com apoio de Maria)",
     itensDestaque: [
       {
-        icone: "🧹",
-        titulo: "Correção de Digitação Crítica",
-        desc: "Revise códigos de componentes, artigos de leis, datas e nomes antes de apertar 'Enviar'. Erros de digitação sequestram a atenção da IA para termos inexistentes."
+        icone: "🛡️",
+        titulo: "Anonimização Ativa de Pessoas",
+        desc: "Troque nomes reais, turmas e diagnósticos por arquétipos didáticos neutros ('Estudante de 12 anos com facilidade visual'). Protege a privacidade e atende plenamente à LGPD."
       },
       {
         icone: "✂️",
-        titulo: "Corte de Gordura e Redundâncias",
-        desc: "Elimine desabafos longos ou repetições. Textos enxutos e diretos preservam a cota de atenção do modelo focada no objetivo essencial."
+        titulo: "Corte de Ruído e Exposição",
+        desc: "Elimine desabafos, dados de rotina pessoal ou detalhes confidenciais da instituição. Menos exposição preserva a atenção da IA concentrada na tarefa pedagógica."
       },
       {
         icone: "🧱",
         titulo: "Uso de Delimitadores Visuais",
-        desc: "Isole dados de apoio usando aspas triplas (\"\"\") ou tags como [TEXTO_BASE] e [TAREFA]. Isso impede que a IA confunda o material de leitura com a instrução."
+        desc: 'Isole textos de apoio com aspas triplas (\'\'\') ou tags como [TEXTO_BASE] e [TAREFA]. Impede que a IA confunda dados de análise com regras de execução.'
       }
     ],
     notasProfessora: {
-      tempoSugerido: "5 min",
-      objetivoSlide: "Ensinar a prática de higienização do prompt (Input Preprocessing) como estratégia para evitar ruídos e desvios de rota da atenção.",
-      oQueFalar: "Laura explica a higienização de entrada: 'Antes de clicar no botão de enviar seu comando, faça uma rápida higienização: confira se não há erros de digitação em códigos ou termos técnicos, remova redundâncias e corte informações confidenciais. Uma entrada limpa gera uma saída blindada!'"
+      tempoSugerido: "4 min",
+      objetivoSlide: "Ensinar a prática de higienização do prompt (Input Preprocessing) como protocolo preventivo de segurança, privacidade e foco atencional da máquina.",
+      oQueFalar: "Laura ensina a higienização: 'Antes de clicar no botão de enviar seu comando, façam a sanitização da entrada em 3 passos: anonimizem qualquer menção a pessoas reais, cortem dados institucionais confidenciais e usem delimitadores visuais para organizar o texto. Uma entrada limpa protege sua privacidade e economiza a atenção da IA!'"
     }
   },
   {
@@ -1163,46 +1163,46 @@ const slidesComNotas = [
     id: 26,
     bloco: 4,
     tipo: "comparativo",
-    categoria: "Validação Crítica",
-    titulo: "3.2 Validação Humana: Assistente, Não Juiz",
-    subtitulo: "A natureza estocástica da geração exige que o professor seja sempre a última instância de decisão",
-    conducao: "Laura (com apoio de Maria)",
+    categoria: "Autonomia & Sociedade de Dados",
+    titulo: "3.3 Os Riscos ao Indivíduo (II): Autonomia, Vieses e a Sociedade de Dados",
+    subtitulo: "Com base nos estudos de Dora Kaufman (PUC-SP): desmistificando a neutralidade e assumindo o papel de auditor",
+    conducao: "Maria (com apoio de Laura)",
     caixa1: {
-      titulo: "A Postura Passiva (Ingênua)",
-      formula: "Confundir Fluência com Verdade",
-      analogia: "Assinar um contrato sem ler só porque quem redigiu falou com firmeza.",
-      exemplo: "Copiar e colar referências bibliográficas ou dados históricos da IA diretamente na prova sem checar se existem no mundo real."
+      titulo: "O Protagonismo dos Algoritmos (Dora Kaufman)",
+      formula: "Vieses, Discriminação e Falsa Neutralidade",
+      analogia: "Achar que um modelo matemático é neutro e decide com justiça social.",
+      exemplo: "Decisões automatizadas reproduzem preconceitos presentes nos dados. Como analisa Dora Kaufman (TECCOGS/PUC-SP), os algoritmos não são neutros: eles refletem as assimetrias históricas da sociedade de dados."
     },
     caixa2: {
-      titulo: "A Postura Ativa (Auditor Docente)",
-      formula: "Confiar Desconfiando (Human-in-the-Loop)",
-      analogia: "O professor revisando o rascunho de um estagiário muito talentoso mas inexperiente.",
-      exemplo: "Aproveitar a estrutura e as ideias geradas, mas checar fórmulas, datas e citações em fontes primárias antes de imprimir ou aplicar."
+      titulo: "A Soberania Docente (Human-in-the-Loop)",
+      formula: "Combater a Redução da Autonomia Cognitiva",
+      analogia: "O professor como maestro rigoroso, não como mero espectador da orquestra.",
+      exemplo: "A dependência cega enfraquece nossa iniciativa e nossa capacidade de tomar decisões. O professor atua como Auditor Docente: a IA rascunha opções, mas o discernimento pedagógico é 100% humano."
     },
     colunas: [
       {
-        tag: "A Realidade Inegociável",
-        icone: "⚠️",
+        tag: "As Lições de Dora Kaufman (TECCOGS/PUC-SP)",
+        icone: "📚",
         itens: [
-          "Toda LLM é estocástica (calcula probabilidades de texto, não fatos conscientes)",
-          "Nenhuma empresa de tecnologia assume responsabilidade jurídica pelo que a IA escreve",
-          "A responsabilidade pedagógica perante a turma e a escola é 100% sua"
+          "O protagonismo algorítmico: os modelos matemáticos deixaram de ser ferramentas passivas e medeiam decisões humanas",
+          "Opacidade da 'Caixa-Preta': confiar cegamente em decisões que não compreendemos aliena o usuário e o docente",
+          "Vieses estruturais: a IA reproduz desigualdades históricas de gênero, raça e território sob roupagem de precisão matemática"
         ]
       },
       {
-        tag: "O Princípio Human-in-the-Loop",
+        tag: "A Postura Ativa do Auditor Docente",
         icone: "👨‍🏫",
         itens: [
-          "A IA produz o primeiro rascunho em segundos (ganho de produtividade)",
-          "O professor aplica o julgamento ético, o bom senso e a checagem de fatos",
-          "A IA amplia a potência do educador; jamais substitui a docência"
+          "Redução da autonomia: a dependência de sistemas inteligentes pode enfraquecer nossa iniciativa e raciocínio crítico",
+          "O princípio Human-in-the-Loop: a inteligência humana deve ser sempre a guardiã do julgamento ético e factual",
+          "A IA é uma assistente probabilística rápida; jamais um juiz infalível ou substituto da sensibilidade pedagógica"
         ]
       }
     ],
     notasProfessora: {
       tempoSugerido: "6 min",
-      objetivoSlide: "Fixar a premissa central de que a IA é apenas copiloto (Human-in-the-Loop), garantindo a responsabilidade autoral do professor.",
-      oQueFalar: "Laura enfatiza o Human-in-the-Loop: 'Guardem esta frase para a vida: a IA é uma estagiária brilhante, super rápida, mas que não tem vergonha de mentir quando não sabe! Portanto, a postura de vocês deve ser sempre de auditores. A máquina sugere e rascunha; mas quem valida, assina e responde perante a turma é você, professor. A IA é assistente; o juiz é você!'"
+      objetivoSlide: "Fundamentar a reflexão ética sobre a sociedade de dados e vieses algorítmicos com Dora Kaufman, consolidando a postura ativa do professor contra a terceirização cognitiva.",
+      oQueFalar: "Maria assume a condução com entusiasmo reflexivo: 'Professores, a pesquisadora Dora Kaufman, da PUC-SP, nos traz um alerta fundamental em seu artigo na revista TECCOGS: vivemos a era do protagonismo dos algoritmos na Sociedade de Dados. E há dois riscos imensos ao indivíduo: primeiro, a redução da nossa autonomia — quando começamos a depender de sistemas inteligentes a ponto de enfraquecer nossa iniciativa e nossa capacidade de tomar decisões próprias. Segundo, os vieses e a discriminação: decisões automatizadas reproduzem preconceitos presentes nos dados históricos de treinamento. A IA não tem consciência nem neutralidade; ela reflete os dados da sociedade. Por isso, vocês são os auditores docentes: a máquina sugere e rascunha, mas quem valida, assina e responde perante a turma é você, professor!'"
     }
   },
   {
@@ -1211,34 +1211,33 @@ const slidesComNotas = [
     bloco: 4,
     tipo: "apresentacao",
     categoria: "Validação Crítica",
-    titulo: "O Checklist de Validação Factual em 3 Passos",
-    subtitulo: "Como auditar qualquer material gerado por IA em menos de 2 minutos antes de usar",
-    conducao: "Laura (com apoio de Maria)",
+    titulo: "3.4 O Checklist do Auditor Docente em 3 Passos",
+    subtitulo: "O protocolo de 2 minutos para checar fatos, adequação curricular e viés ético antes de levar à turma",
+    conducao: "Maria (com apoio de Laura)",
     itensDestaque: [
       {
         icone: "🔍",
         titulo: "1. O Teste da Fonte Primária",
-        desc: "Nomes de autores, números de leis, fórmulas e datas históricas foram conferidos no Google Acadêmico ou em um livro de confiança?"
+        desc: "Fure a 'caixa-preta' da IA: confira nomes de autores, fórmulas, datas e artigos de lei em fontes oficiais e confiáveis (Google Acadêmico, livros ou datasheets)."
       },
       {
         icone: "🎯",
         titulo: "2. O Teste da Adequação Real",
-        desc: "O vocabulário e a complexidade do texto realmente cabem na realidade da minha turma ou a IA exagerou no tom formal?"
+        desc: "O vocabulário e a complexidade do texto realmente cabem na realidade sociocultural da sua turma ou a IA gerou uma resposta artificial, fria e distante dos alunos?"
       },
       {
         icone: "🛡️",
-        titulo: "3. O Teste Ético e de Viés",
-        desc: "O conteúdo traz algum estereótipo, desinformação ou perspectiva preconceituosa que precisa ser limpa antes de ir para a sala?"
+        titulo: "3. O Teste Ético e de Viés (Herança Kaufman)",
+        desc: "Examine se o conteúdo traz estereótipos de gênero, raça ou profissão, apagamento de perspectivas plurais ou desinformação camuflada de neutralidade técnica."
       }
     ],
     notasProfessora: {
       tempoSugerido: "5 min",
-      objetivoSlide: "Entregar um roteiro prático e rápido de auditoria de respostas da IA para o dia a dia escolar.",
-      oQueFalar: "Laura entrega o checklist de validação factual: 'Para facilitar o dia a dia na escola, guardem este checklist de 3 passos rápidos: o teste da fonte primária, o teste de adequação à turma e o teste ético. Com isso, Maria vai apresentar agora a nossa missão prática de bancada nos computadores!'"
+      objetivoSlide: "Entregar o roteiro prático e rápido de auditoria docente com ênfase no teste ético e de viés inspirado na literatura de governança de IA.",
+      oQueFalar: "Maria entrega o checklist de validação factual: 'Para facilitar a vida na escola, guardem este checklist de 3 passos rápidos: o teste da fonte primária para furar a caixa-preta, o teste de adequação pedagógica e o teste ético de viés que Dora Kaufman nos ensina. Com a entrada sanitizada pela Laura e a saída auditada por vocês, estamos 100% prontos para o nosso laboratório prático de bancada!'"
     }
   },
-
-  // =========================================================================
+  
   // BLOCO 5: LABORATÓRIO PRÁTICO — ENGENHARIA DE PROMPTS (Slides 28 e 29)
   // =========================================================================
   {
@@ -1642,7 +1641,7 @@ const divisaoPapeis = [
   { bloco: "Bloco 2 (15m-60m)", tema: "Módulo 1: O Funcionamento Interno — Tokens, Concatenação e Atenção (Slides 5 a 14) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Bloco 3 (60m-100m)", tema: "Módulo 2: Engenharia de Prompts na Prática (Slides 15 a 22) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Intervalo (15m)", tema: "Intervalo Pedagógico / Café com Prosa (Atalho Tecla I)", papel: "ambas" },
-  { bloco: "Bloco 4 (115m-140m)", tema: "Módulo 3: Governança, Privacidade e Validação Crítica (Slides 23 a 27) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 4 (115m-140m)", tema: "Módulo 3: Governança, Proteção de Dados e Autonomia Docente (Slides 23 a 27) • Laura (Dados & LGPD) & Maria (Dora Kaufman & Ética)", papel: "ambas" },
   { bloco: "Bloco 5 (140m-170m)", tema: "Laboratório Prático: Desafio da Rotina de Estudos (Slides 28 a 29) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Bloco 6 (170m-180m)", tema: "Síntese Formativa, Referências & Fechamento (Slides 30 a 32)", papel: "ambas" }
 ];
