@@ -129,13 +129,21 @@ def build_meeting_bundle(meeting_num: int = 1, base_dir: Optional[str] = None) -
 
 
 if __name__ == '__main__':
-    meeting = 1
     if len(sys.argv) > 1:
-        try:
-            meeting = int(sys.argv[1])
-            if meeting < 1:
-                raise ValueError("Número do encontro deve ser positivo.")
-        except ValueError as err:
-            print(f"[ERRO] Número de encontro inválido: {err}", file=sys.stderr)
-            sys.exit(1)
-    build_meeting_bundle(meeting)
+        arg = sys.argv[1].strip().lower()
+        if arg == 'all':
+            build_meeting_bundle(1)
+            build_meeting_bundle(2)
+        else:
+            try:
+                meeting = int(arg)
+                if meeting < 1:
+                    raise ValueError("Número do encontro deve ser positivo.")
+                build_meeting_bundle(meeting)
+            except ValueError as err:
+                print(f"[ERRO] Número de encontro inválido: {err}", file=sys.stderr)
+                sys.exit(1)
+    else:
+        # Padrão: compila todos os encontros disponíveis (1 e 2)
+        build_meeting_bundle(1)
+        build_meeting_bundle(2)

@@ -162,6 +162,8 @@ class TestDataIntegrity(unittest.TestCase):
         self.assertIn("window.ENCONTRO_2_DATA = ENCONTRO_2_DATA", content)
         self.assertIn("moduloInfo:", content)
         self.assertIn("slidesComNotas:", content)
+        self.assertIn("https://arxiv.org/html/2306.04528", content)
+        self.assertIn("https://pmc.ncbi.nlm.nih.gov/articles/PMC12396994/", content)
 
     def test_pdf_export_and_print_styles_integrity(self):
         """Valida se o projector.css e projector-engine.js contêm contratos de exportação e impressão limpa."""
