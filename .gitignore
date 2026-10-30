@@ -22,6 +22,7 @@ arquitetura_pedagogica_curso_ia.md
 
 
 # Cache Python e compilação
+scratch/
 __pycache__/
 *.py[cod]
 *$py.class

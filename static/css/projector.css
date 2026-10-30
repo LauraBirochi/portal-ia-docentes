@@ -707,11 +707,83 @@
     }
 
     /* --- TIPO 2: APRESENTAÇÃO / CARDS DE DESTAQUE --- */
+    .grid-2cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      width: 100%;
+    }
+
     .grid-3cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2.5rem;
       width: 100%;
+    }
+
+    .grid-4cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .grid-4cards .card-item-destaque {
+      padding: 2rem 1.4rem;
+      gap: 1rem;
+    }
+
+    .grid-4cards .card-item-destaque .icon {
+      font-size: 2.75rem;
+      padding: 0.6rem;
+    }
+
+    .grid-4cards .card-item-destaque h4 {
+      font-size: 1.55rem;
+      line-height: 1.25;
+    }
+
+    .grid-4cards .card-item-destaque p {
+      font-size: 1.15rem;
+      line-height: 1.45;
+    }
+
+    .grid-2x2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.6rem 2.2rem;
+      width: 100%;
+    }
+
+    .grid-2x2 .card-item-destaque {
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .grid-2x2 .card-item-destaque .icon {
+      font-size: 2.8rem;
+      padding: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    .grid-2x2 .card-item-destaque .card-item-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .grid-2x2 .card-item-destaque h4 {
+      font-size: 1.65rem;
+      line-height: 1.25;
+    }
+
+    .grid-2x2 .card-item-destaque p {
+      font-size: 1.22rem;
+      line-height: 1.45;
     }
 
     .card-item-destaque {
@@ -2118,6 +2190,25 @@ body[data-meeting="2"] .slide-presenter-pill .presenter-dot,
 .meeting-2 .slide-presenter-pill .presenter-dot {
   background: #38bdf8 !important;
   box-shadow: 0 0 6px #38bdf8 !important;
+}
+
+body[data-meeting="2"] .diagnostica-info-card,
+.meeting-2 .diagnostica-info-card {
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6) !important;
+}
+
+body[data-meeting="2"] .diag-icon-halo,
+.meeting-2 .diag-icon-halo {
+  filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.5)) !important;
+}
+
+body[data-meeting="2"] .diag-support-banner,
+.meeting-2 .diag-support-banner {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 1px dashed rgba(56, 189, 248, 0.5) !important;
+  color: #93c5fd !important;
 }
 
 body[data-meeting="2"] .slide-tag,

@@ -319,6 +319,24 @@ const CockpitRenderer = {
       `;
     }
 
+    if (slide.tipo === 'fechamento') {
+      return `
+        <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--accent); margin-bottom: 0.35rem;">🚀 Próximo Encontro: ${slide.proximoEncontro || slide.titulo || ''}</div>
+          ${(slide.referencias && slide.referencias.length) ? `
+            <div style="margin-top: 0.5rem; border-top: 1px solid var(--border); padding-top: 0.5rem;">
+              <strong style="color: var(--text-main); font-size: 0.8rem;">📚 Referências da Aula de Hoje:</strong>
+              <div style="display: flex; flex-direction: column; gap: 0.25rem; margin-top: 0.35rem;">
+                ${slide.referencias.map(r => `
+                  <a href="${r}" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-family: var(--font-mono); font-size: 0.82rem; text-decoration: underline; word-break: break-all;">${r}</a>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
     return '';
   },
 
@@ -580,20 +598,163 @@ const CockpitRenderer = {
       "Verificar se todos os alunos clicaram no botão de envio ao final."
     ];
 
+    let extraSectionsHTML = '';
+
+    if (oficina.situacaoProblema) {
+      extraSectionsHTML = `
+        <!-- Situação Problema -->
+        <div class="pedagogical-highlight-card" style="margin-top: 1.5rem; border-left: 4px solid var(--accent);">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
+            <span style="font-size: 1.25rem;">🎯</span>
+            <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">1. Situação-Problema do Aluno</h4>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+            <em>"${oficina.situacaoProblema.contexto}"</em>
+          </p>
+          <div style="background: var(--bg-surface); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <strong style="color: var(--accent);">Missão:</strong> <span style="color: var(--text-main);">${oficina.situacaoProblema.missao}</span>
+          </div>
+        </div>
+
+        <!-- Roteiro de Execução em 5 Passos -->
+        ${oficina.comoExecutar ? `
+          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
+              <span style="font-size: 1.25rem;">🚀</span>
+              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">2. Roteiro de Execução em 5 Passos no Computador</h4>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+              ${oficina.comoExecutar.map(e => `
+                <div style="display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.6rem 0.8rem; background: var(--bg-surface); border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
+                  <span style="font-family: var(--font-mono); font-weight: bold; color: var(--accent);">${e.etapa}º</span>
+                  <div>
+                    <strong style="color: var(--text-main); font-size: 0.92rem;">${e.titulo}:</strong>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;"> ${e.desc}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Duelo dos Prompts: Livre vs. Estruturado -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem;">
+          <div class="pedagogical-highlight-card" style="border-top: 4px solid #ef4444;">
+            <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
+              <span>❌</span>
+              <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">1ª Tentativa: Prompt Livre (Vago)</h4>
+            </div>
+            <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; margin-bottom: 0.75rem; border: 1px solid var(--border);">${oficina.primeiraTentativa?.prompt || ''}</pre>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">
+              <strong style="color: #ef4444;">Falhas prováveis:</strong>
+              <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0;">
+                ${(oficina.primeiraTentativa?.problemasProvaveis || []).map(p => `<li>${p}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <div class="pedagogical-highlight-card" style="border-top: 4px solid #22c55e;">
+            <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
+              <span>✅</span>
+              <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">2ª Tentativa: Prompt Aprimorado (5 Elementos)</h4>
+            </div>
+            <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; border: 1px solid var(--border); line-height: 1.45;">${oficina.segundaTentativa?.prompt || ''}</pre>
+          </div>
+        </div>
+
+        <!-- Tabela dos 5 Elementos -->
+        ${oficina.cincoElementos ? `
+          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
+              <span style="font-size: 1.25rem;">🧩</span>
+              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Anatomia dos 5 Elementos Essenciais do Prompt</h4>
+            </div>
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--border); background: var(--bg-surface);">
+                    <th style="padding: 0.6rem 0.8rem; color: var(--accent);">Elemento</th>
+                    <th style="padding: 0.6rem 0.8rem; color: var(--text-main);">Como Aparece no Prompt</th>
+                    <th style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">Função Pedagógica</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${oficina.cincoElementos.map(el => `
+                    <tr style="border-bottom: 1px solid var(--border);">
+                      <td style="padding: 0.6rem 0.8rem; font-weight: bold; color: var(--accent);">${el.elemento}</td>
+                      <td style="padding: 0.6rem 0.8rem; color: var(--text-main); font-family: var(--font-mono); font-size: 0.82rem;">${el.comoAparece}</td>
+                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${el.funcao}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Checklist de Configuração ChatGPT -->
+        ${oficina.configuracaoChatGPT ? `
+          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.3);">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
+              <span>🛡️</span>
+              <h4 style="color: #38bdf8; font-size: 1.05rem; margin: 0;">Configuração Obrigatória do ChatGPT (Segurança & LGPD)</h4>
+            </div>
+            <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.88rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.4rem;">
+              ${oficina.configuracaoChatGPT.map(c => `<li>${c}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        <!-- Rubrica de Avaliação Formativa -->
+        ${oficina.criteriosAvaliacao ? `
+          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
+              <span style="font-size: 1.25rem;">📊</span>
+              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Critérios de Avaliação Formativa (Rubrica)</h4>
+            </div>
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--border); background: var(--bg-surface);">
+                    <th style="padding: 0.6rem 0.8rem; color: var(--accent);">Critério</th>
+                    <th style="padding: 0.6rem 0.8rem; color: #ef4444;">1 Ponto (Iniciante)</th>
+                    <th style="padding: 0.6rem 0.8rem; color: #f59e0b;">2 Pontos (Intermediário)</th>
+                    <th style="padding: 0.6rem 0.8rem; color: #22c55e;">3 Pontos (Avançado)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${oficina.criteriosAvaliacao.map(cr => `
+                    <tr style="border-bottom: 1px solid var(--border);">
+                      <td style="padding: 0.6rem 0.8rem; font-weight: bold; color: var(--text-main);">${cr.criterio}</td>
+                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${cr.ponto1}</td>
+                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${cr.ponto2}</td>
+                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary); font-weight: 500;">${cr.ponto3}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ` : ''}
+      `;
+    }
+
     container.innerHTML = `
       <div class="pedagogical-highlight-card">
         <div class="module-meta-tags">
           <span class="chip chip-warm">⏱️ ${oficina.duracao || '25 a 30 min em Laboratório'}</span>
-          <span class="chip">📋 ${oficina.peso || 'Instrumento Formativo de Nivelamento'}</span>
-          <span class="chip chip-warm">Zero Pressão • Sem Nota Punitiva</span>
+          <span class="chip">📋 ${oficina.peso || 'Instrumento Formativo'}</span>
+          <span class="chip chip-warm">Zero Pressão • Aprendizado Prático</span>
         </div>
         <h3 style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 0.5rem;">
-          ${oficina.titulo || 'Missão 2 no Computador: Prova Diagnóstica'}
+          ${oficina.titulo || 'Atividade Prática de Laboratório'}
         </h3>
         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
-          ${oficina.descricao || 'Aplicação individual da Prova Diagnóstica nos computadores do laboratório.'}
+          ${oficina.objetivo || oficina.descricao || 'Aplicação prática no computador do laboratório.'}
         </p>
       </div>
+
+      ${extraSectionsHTML}
 
       <div style="margin-top: 1.75rem;">
         <div class="section-title-wrap" style="border-color: var(--accent);">

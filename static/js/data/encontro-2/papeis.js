@@ -4,12 +4,11 @@
  */
 
 export const divisaoPapeis = [
-  { bloco: "Bloco 1 (00h-25m)", tema: "Acolhimento, Retomada do Encontro 1 & Objetivos (Slides 1 a 5)", papel: "radio" },
-  { bloco: "Bloco 2 (25m-55m)", tema: "O Salto dos Transformers & Funcionamento das LLMs (Slides 6 a 11) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 3 (55m-85m)", tema: "O Ecossistema de Modelos de IAGen (Slides 12 a 17) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 1 (00h-15m)", tema: "Acolhimento, Enquete Diagnóstica & Pauta (Slides 1 a 4)", papel: "ambas" },
+  { bloco: "Bloco 2 (15m-60m)", tema: "Módulo 1: O Funcionamento Interno — Tokens, Concatenação e Atenção (Slides 5 a 14) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 3 (60m-100m)", tema: "Módulo 2: Engenharia de Prompts na Prática (Slides 15 a 22) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Intervalo (15m)", tema: "Intervalo Pedagógico / Café com Prosa (Atalho Tecla I)", papel: "ambas" },
-  { bloco: "Bloco 4 (100m-125m)", tema: "Anatomia de um Prompt Básico (Slides 18 a 23) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 5 (125m-170m)", tema: "Oficina Prática no Laboratório (Slides 24 a 28) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 6 (170m-180m)", tema: "Síntese Formativa & Fechamento (Slides 29 a 30)", papel: "ambas" }
+  { bloco: "Bloco 4 (115m-140m)", tema: "Módulo 3: Governança, Privacidade e Validação Crítica (Slides 23 a 27) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 5 (140m-170m)", tema: "Laboratório Prático: Desafio da Rotina de Estudos (Slides 28 a 29) • Condução: Maria", papel: "radio", padrao: "maria" },
+  { bloco: "Bloco 6 (170m-180m)", tema: "Síntese Formativa, Referências & Fechamento (Slides 30 a 32)", papel: "ambas" }
 ];
-

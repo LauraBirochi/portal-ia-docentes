@@ -340,9 +340,16 @@ def download_slides_pdf(meeting_id: int = 1) -> Any:
     effective_id = meeting['num'] if meeting.get('isReady') else 1
     pdf_filename = f"slides-encontro-{effective_id}.pdf"
     pdf_path = os.path.join(app.root_path, 'static', 'pdf', pdf_filename)
+    # Se o PDF ainda não foi compilado no disco, compila sob demanda usando a URL do host da requisição
     if not os.path.exists(pdf_path):
-        from scripts.export_pdf import generate_slides_pdf
-        generate_slides_pdf(effective_id, pdf_path)
+        try:
+            from scripts.export_pdf import generate_slides_pdf
+            current_host_url = request.host_url.rstrip('/')
+            generate_slides_pdf(effective_id, pdf_path, base_url=current_host_url)
+        except Exception as e:
+            app.logger.error(f"Erro ao gerar PDF sob demanda para o encontro {effective_id}: {e}")
+            abort(404, description=f"Arquivo PDF dos slides do Encontro {effective_id} não encontrado. Execute 'python scripts/export_pdf.py {effective_id}' no terminal para gerá-lo.")
+
     return send_file(pdf_path, as_attachment=True, download_name=pdf_filename, mimetype='application/pdf')
 
 

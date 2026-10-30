@@ -245,6 +245,18 @@ class TestAuthAndSecurity(unittest.TestCase):
         self.assertIn('slides-encontro-1.pdf', res.headers.get('Content-Disposition', ''))
         self.assertGreater(len(res.data), 1000)
 
+    def test_authenticated_download_slides_meeting_2_returns_pdf(self):
+        """Download de PDF do Encontro 2 autenticado entrega os 32 slides em PDF válido."""
+        self.client.post('/login', data={
+            'username': 'lucio',
+            'password': os.getenv('USER3_PASSWORD', 'coord@lucio2026')
+        })
+        res = self.client.get('/download/slides/2.pdf')
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.content_type, 'application/pdf')
+        self.assertIn('slides-encontro-2.pdf', res.headers.get('Content-Disposition', ''))
+        self.assertGreater(len(res.data), 100000)
+
 
 if __name__ == '__main__':
     unittest.main()

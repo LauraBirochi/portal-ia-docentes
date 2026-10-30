@@ -220,17 +220,31 @@ function initProjectorEngine() {
       </div>
     `,
 
-    'apresentacao': (s) => `
-      <div class="grid-3cards">
-        ${(s.itensDestaque || []).map(item => `
-          <div class="card-item-destaque">
-            <div class="icon">${item.icone}</div>
-            <h4>${item.titulo}</h4>
-            <p>${item.desc}</p>
-          </div>
-        `).join('')}
-      </div>
-    `,
+    'apresentacao': (s) => {
+      const items = s.itensDestaque || [];
+      const count = items.length;
+      let gridClass = 'grid-3cards';
+      if (s.layout === '2x2' || s.layout === 'grid-2x2') {
+        gridClass = 'grid-2x2';
+      } else if (count === 4) {
+        gridClass = 'grid-4cards';
+      } else if (count === 2) {
+        gridClass = 'grid-2cards';
+      }
+      return `
+        <div class="${gridClass}">
+          ${items.map(item => `
+            <div class="card-item-destaque">
+              <div class="icon">${item.icone}</div>
+              <div class="card-item-content">
+                <h4>${item.titulo}</h4>
+                <p>${item.desc}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    },
 
     'cronograma': (s) => `
       <div class="cronograma-full-track">
@@ -449,26 +463,43 @@ function initProjectorEngine() {
     'fechamento': (s) => `
       <div class="layout-fechamento-wrap">
         <div class="fechamento-banner-card">
-          <div class="fechamento-celebrate-badge">🎉 MISSÃO DO ENCONTRO 1 CUMPRIDA COM SUCESSO!</div>
-          <h3>"${s.conclusao}"</h3>
+          <div class="fechamento-celebrate-badge">🎉 ${s.badge || 'MISSÃO CUMPRIDA COM SUCESSO!'}</div>
+          <h3>"${s.conclusao || s.subtitulo || ''}"</h3>
         </div>
 
         <div class="fechamento-next-card">
           <div class="fechamento-next-icon">🚀</div>
           <div class="fechamento-next-info">
             <div class="next-label">Próximo Encontro Presencial</div>
-            <div class="next-title">${s.proximoEncontro}</div>
+            <div class="next-title">${s.proximoEncontro || s.titulo || ''}</div>
           </div>
         </div>
 
-        <div class="fechamento-lembretes-grid">
-          ${(s.lembretesFinais || []).map((lembrete, idx) => `
-            <div class="fechamento-lembrete-pill">
-              <span class="pill-icon">${idx === 0 ? '🔐' : (idx === 1 ? '📋' : '⭐')}</span>
-              <span>${lembrete}</span>
+        ${s.lembretesFinais && s.lembretesFinais.length ? `
+          <div class="fechamento-lembretes-grid">
+            ${s.lembretesFinais.map((lembrete, idx) => `
+              <div class="fechamento-lembrete-pill">
+                <span class="pill-icon">${idx === 0 ? '🔐' : (idx === 1 ? '📋' : '⭐')}</span>
+                <span>${lembrete}</span>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        ${s.referencias && s.referencias.length ? `
+          <div class="fechamento-referencias-card" style="background: var(--bg-card); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem 1.75rem; width: 100%; box-sizing: border-box;">
+            <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-amber); margin-bottom: 0.65rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>📚</span> <span>Referências da Aula de Hoje:</span>
             </div>
-          `).join('')}
-        </div>
+            <div style="display: flex; flex-direction: column; gap: 0.55rem;">
+              ${s.referencias.map(ref => `
+                <a href="${ref}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-warm); font-family: var(--font-mono); font-size: 1.15rem; text-decoration: underline; word-break: break-all;">
+                  ${ref}
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
       </div>
     `,
 

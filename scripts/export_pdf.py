@@ -31,8 +31,20 @@ def find_free_port() -> int:
         s.bind(('127.0.0.1', 0))
         return s.getsockname()[1]
 
+def is_port_listening(host: str, port: int) -> bool:
+    """Verifica se uma porta TCP está ativa e respondendo conexões."""
+    try:
+        with socket.create_connection((host, port), timeout=0.2):
+            return True
+    except OSError:
+        return False
+
 def ensure_server_running(port: int = None) -> int:
-    """Inicia o servidor Flask em background caso não exista um ativo."""
+    """Inicia o servidor Flask em background caso não exista um ativo, aguardando confirmação de socket."""
+    # Se nenhuma porta foi especificada, verifica se o servidor principal (porta 5000) já está ativo
+    if port is None and is_port_listening('127.0.0.1', 5000):
+        return 5000
+
     from app import app
 
     server_port = port or find_free_port()
@@ -41,10 +53,17 @@ def ensure_server_running(port: int = None) -> int:
         daemon=True
     )
     server_thread.start()
-    time.sleep(1.2)
+
+    # Polling ativo até que a porta passe a aceitar conexões (até 6 segundos)
+    start_time = time.time()
+    while time.time() - start_time < 6.0:
+        if is_port_listening('127.0.0.1', server_port):
+            return server_port
+        time.sleep(0.15)
+
     return server_port
 
-def generate_slides_pdf(meeting_id: int = 1, output_path: str = None) -> str:
+def generate_slides_pdf(meeting_id: int = 1, output_path: str = None, base_url: str = None) -> str:
     """
     Gera o PDF consolidado de alta fidelidade para o encontro informado.
     Retorna o caminho absoluto do arquivo PDF gerado.
@@ -58,8 +77,9 @@ def generate_slides_pdf(meeting_id: int = 1, output_path: str = None) -> str:
     print(f"[EXPORTACAO] INICIANDO EXPORTACAO HEADLESS - ENCONTRO {meeting_id}")
     print(f"=======================================================")
 
-    port = ensure_server_running()
-    base_url = f"http://127.0.0.1:{port}"
+    if not base_url:
+        port = ensure_server_running()
+        base_url = f"http://127.0.0.1:{port}"
 
     with sync_playwright() as p:
         print("[1/4] Inicializando navegador Chromium headless (1920x1080)...")
