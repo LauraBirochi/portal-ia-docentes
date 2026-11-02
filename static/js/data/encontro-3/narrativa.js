@@ -1,59 +1,63 @@
 /**
- * Módulo 3 – Fio da Meada, Narrativa Pedagógica e Glossário
+ * Módulo 3 – Fio da Meada, Narrativa Pedagógica e Glossário de Engenharia de Prompt
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
 export const fioDaMeada = {
   objetivoCentral: "Qual é a grande mensagem que os alunos precisam levar hoje?",
-  mensagemChave: "Trate o ChatGPT como um estagiário inteligente de alta capacidade que tem contexto zero: a qualidade da entrega depende da clareza dos 4 blocos (Contexto, Tarefa, Formato e Restrições) e do diálogo investigativo (Meta-Prompting), com validação crítica 100% humana.",
-  explicacaoObjetivo: "Superar pedidos genéricos através do modelo mental do estagiário, dominar a formulação dos 4 blocos em camadas práticas (organização, redação e simplificação), experimentar a entrevista ativa de meta-prompting e consolidar a blindagem de privacidade e ética (UNESCO).",
+  mensagemChave: "Trate o ChatGPT como um estagiário brilhante de alta capacidade que possui contexto zero: a utilidade e precisão da resposta dependem da aplicação dos 4 Blocos Estruturais (Contexto, Tarefa, Formato e Restrições) e do domínio do Diálogo Iterativo (Meta-Prompting), com supervisão e validação crítica 100% humana.",
+  explicacaoObjetivo: "Superar de forma definitiva o 'pedido vago' (que desperdiça tempo e gera clichês), compreendendo como orientar a atenção da rede neural no ChatGPT através do modelo mental do estagiário, dominando a arquitetura dos 4 blocos (C-T-F-R) em tarefas reais do cotidiano e do trabalho, utilizando o Meta-Prompting para interrogar o usuário e aplicando travas anti-alucinação e protocolos de privacidade (LGPD).",
   atos: [
     {
       ato: 1,
       tempo: "00:00 às 00:45 (45 min)",
-      titulo: "Ato 1: O Handoff do Estagiário e os 4 Blocos da Estrutura Perfeita (Co-docência Laura & Maria)",
-      desc: "Acolhimento da turma, conexão com os encontros anteriores, apresentação do modelo mental do estagiário inteligente (alta capacidade, contexto zero) e confronto 'Prompt or Flop' para apresentar os 4 blocos: Contexto, Tarefa, Formato e Restrições.",
-      gatilho: "Quem pede pouco recebe clichê; quem instrui o estagiário com contexto e limites recebe trabalho pronto!"
+      titulo: "Ato 1: O Handoff do Estagiário Inteligente & os 4 Blocos da Estrutura Perfeita (Co-docência Laura & Maria)",
+      desc: "Acolhimento da turma e conexão com as descobertas dos Encontros 1 e 2. Introdução do modelo mental do estagiário de alta capacidade com contexto zero. Apresentação do confronto de bancada 'Prompt or Flop' para demonstrar empiricamente por que comandos livres ativam a média estatística rasa e como os 4 Blocos (Contexto, Tarefa, Formato e Restrições) destravam o potencial sob medida da ferramenta.",
+      gatilho: "Quem digita um pedido genérico recebe um clichê motivacional; quem faz o handoff estruturado com contexto e limites recebe trabalho pronto!"
     },
     {
       ato: 2,
       tempo: "00:45 às 01:30 (45 min c/ Intervalo)",
-      titulo: "Ato 2: Práticas no Mundo Real, Regra do Cartão-Postal & Café com Prosa (Maria & Laura)",
-      desc: "Demonstração das Camadas 1 (organização pessoal/estudos) e 2 (redação executiva de e-mails/simplificação). Reforço da blindagem de privacidade com a Regra do Cartão-Postal e técnica de anonimização antes da pausa de 15 min do café.",
-      gatilho: "Nunca envie ao ChatGPT o que você não escreveria em um cartão-postal público: anonimize identidades e proteja seus dados!"
+      titulo: "Ato 2: Práticas no Mundo Real, Regra do Cartão-Postal & Intervalo Pedagógico (Maria & Laura)",
+      desc: "Demonstração de casos práticos em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas) e Camada 2 (redação executiva, síntese de rascunhos e simplificação de comunicados). Blindagem de segurança de dados através da 'Regra do Cartão-Postal' e da técnica de anonimização (placeholders), preparando a turma para a pausa de 15 minutos do café.",
+      gatilho: "Nunca envie à IA o que você não escreveria em um cartão-postal aberto: anonimize identidades, use [CLIENTE X] e proteja seus dados profissionais!"
     },
     {
       ato: 3,
       tempo: "01:30 às 03:00 (90 min)",
-      titulo: "Ato 3: Meta-Prompting, Bancada do Portfólio Digital & Show and Tell (Laura & Maria)",
-      desc: "Apresentação da Camada 3: diálogo iterativo e meta-prompting (a IA entrevistando o usuário). Princípio ético da UNESCO sobre responsabilidade e travas anti-alucinação. Oficina prática nos computadores (Missões 1 e 2 no Portfólio Digital) seguida de roda de socialização e checklist de bolso.",
-      gatilho: "Quando você não souber exatamente como estruturar o pedido, faça a IA perguntar: o meta-prompting inverte o jogo a seu favor!"
+      titulo: "Ato 3: Meta-Prompting, Oficina Prática no Portfólio Digital & Show and Tell (Laura & Maria)",
+      desc: "Retorno do intervalo com a Camada 3: diálogo iterativo e Meta-Prompting (como colocar a IA na posição de entrevistadora investigativa para desenhar o prompt ideal). Alinhamento ético com as diretrizes da UNESCO sobre Agência Humana e aplicação de travas anti-alucinação. Condução da Oficina de Bancada nos computadores (Missões 1 e 2 no Portfólio Digital), seguida de Roda de Socialização (Show & Tell) e consolidação do Checklist de Bolso.",
+      gatilho: "Quando você não souber exatamente como estruturar o comando, faça a IA perguntar: o Meta-Prompting transfere o esforço da pergunta para a máquina!"
     }
   ],
   glossario: [
     {
-      termo: "Metáfora do Estagiário",
-      def: "Modelo mental que encara a IA como um profissional brilhante que leu tudo, mas precisa receber contexto explícito, objetivos claros e critérios de qualidade para não produzir respostas genéricas."
+      termo: "Modelo Mental do Estagiário Inteligente",
+      def: "Abordagem cognitiva que enxerga o ChatGPT como um assistente que leu bilhões de textos e domina regras formais, mas não tem intuição sobre seus objetivos, empresa ou preferências se você não fornecer o briefing completo."
     },
     {
-      termo: "Os 4 Blocos do Prompt",
-      def: "Estrutura essencial sintetizada das melhores práticas (OpenAI/TRACI/RACE): Contexto (papel/cenário), Tarefa (verbo direto), Formato (tabela/tópicos) e Restrições (regras negativas e travas)."
+      termo: "Framework C-T-F-R (Os 4 Blocos)",
+      def: "Arquitetura mestre de engenharia de instruções composta por: Contexto (papel/persona e cenário real), Tarefa (verbo direto e ação clara), Formato (tabela, tópicos, tom e extensão) e Restrições (regras negativas e travas de não-invenção)."
     },
     {
-      termo: "Diálogo Iterativo",
-      def: "Técnica de refinamento contínuo em múltiplos turnos de conversa na mesma sessão, ajustando tom, extensão e estrutura sem precisar reiniciar do zero."
+      termo: "Multi-turn Prompting (Diálogo Iterativo)",
+      def: "Técnica de lapidação conversacional contínua na mesma sessão, onde o usuário solicita ajustes específicos (tom, tamanho, inclusão de colunas) sem descartar a resposta anterior ou recomeçar o chat do zero."
     },
     {
-      termo: "Meta-Prompting",
-      def: "Instrução que solicita ao modelo que assuma o papel de engenheiro de prompt e faça perguntas investigativas ao usuário para esclarecer dúvidas antes de gerar a resposta final."
+      termo: "Meta-Prompting (Prompt Reverso)",
+      def: "Estratégia avançada onde se instrui o modelo a atuar como engenheiro de requisitos e fazer perguntas de sondagem ao usuário para esclarecer dúvidas e lacunas de contexto antes de gerar a entrega final."
     },
     {
-      termo: "Regra do Cartão-Postal",
-      def: "Protocolo de segurança e privacidade segundo o qual nunca se deve inserir em ferramentas públicas de IA dados pessoais, senhas ou segredos que você não deixaria expostos num cartão-postal aberto."
+      termo: "Trava Anti-Alucinação (Grounding Constraint)",
+      def: "Restrição negativa explícita adicionada ao prompt (ex: 'Se não houver dados comprovados no texto fornecido, responda apenas não especificado') que impede o modelo de 'chutar' fatos ou datas com tom de certeza."
     },
     {
-      termo: "Agência Humana (UNESCO)",
-      def: "Princípio ético fundamental que determina que a IA é apenas um instrumento de apoio: a responsabilidade legal, moral e pedagógica final sobre qualquer entrega pertence integralmente ao ser humano."
+      termo: "Regra do Cartão-Postal & Anonimização",
+      def: "Protocolo de higiene e privacidade (LGPD) que consiste em substituir dados sensíveis reais (nomes, CPFs, empresas e valores sigilosos) por identificadores neutros como [PROFESSOR A] ou [ESCOLA Y] antes de submeter o prompt à IA."
+    },
+    {
+      termo: "Agência Humana (Diretriz UNESCO)",
+      def: "Princípio ético inegociável segundo o qual a inteligência artificial é exclusivamente um instrumento de apoio cognitivo: a responsabilidade, o julgamento final e a curadoria sobre a veracidade do conteúdo são sempre 100% humanos."
     }
   ]
 };
