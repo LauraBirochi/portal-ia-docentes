@@ -1,56 +1,58 @@
 /**
- * Módulo 3 – Perguntas Capciosas e Dúvidas Clássicas de Engenharia de Prompt
+ * Módulo 3 – Perguntas dos Alunos, Dúvidas Clássicas e Armadilhas de Engenharia de Prompt
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
 export const perguntasAlunos = [
   {
-    id: 1,
-    pergunta: "Por que duas pessoas no laboratório digitam exatamente o mesmo prompt no ChatGPT e recebem respostas diferentes?",
-    respostaCurta: "Por causa da natureza probabilística dos modelos (amostragem por temperatura) e de pequenas diferenças invisíveis de contexto.",
-    explicacaoDetalhada: "O ChatGPT não possui uma tabela fixa de respostas prontas. A cada novo token (fragmento de palavra), a rede neural calcula probabilidades e realiza um sorteio ponderado (guiado pelo parâmetro de temperatura do sistema). Além disso, o histórico anterior da conversa e as configurações de conta influenciam os pesos de autoatenção do modelo.",
-    dicaPratica: "Para obter respostas mais previsíveis e consistentes, adicione restrições de formato rígidas (ex: 'responda estritamente em uma tabela com 3 colunas') e utilize chats temporários ou conversas recém-abertas."
+    numero: 1,
+    duvida: "Por que duas pessoas no laboratório digitam exatamente o mesmo prompt no ChatGPT e recebem respostas diferentes?",
+    resposta: "O ChatGPT não possui uma tabela fixa de respostas prontas. A cada novo token (fragmento de palavra), a rede neural calcula probabilidades e realiza um sorteio ponderado (guiado pelo parâmetro de temperatura do sistema). Além disso, o histórico anterior da conversa e as configurações de conta influenciam os pesos de autoatenção do modelo.",
+    pontoDidatico: "Explique a natureza probabilística da IA vs. a certeza determinística de uma calculadora: a máquina calcula a continuação mais provável, não busca em uma gaveta.",
+    dicaPratica: "Para respostas mais consistentes, adicione restrições rígidas de formato (ex: 'tabela com 3 colunas') e utilize sempre chats novos ou temporários."
   },
   {
-    id: 2,
-    pergunta: "Como fazer o ChatGPT parar de 'enrolar' com introduções corteses e respostas gigantescas cheias de clichês?",
-    respostaCurta: "Utilize restrições negativas de formato e proibições explícitas de preâmbulos e conclusões no final do prompt.",
-    explicacaoDetalhada: "Os modelos da OpenAI foram treinados por Reforço com Feedback Humano (RLHF) para soarem extremamente prestativos, corteses e completos. Se você não limitar a saída, ele naturalmente adicionará frases de boas-vindas ('Com certeza! Aqui está...'), explicações redundantes e mensagens motivacionais de encerramento.",
+    numero: 2,
+    duvida: "Como fazer o ChatGPT parar de 'enrolar' com introduções corteses e respostas gigantescas cheias de clichês?",
+    resposta: "Os modelos da OpenAI foram alinhados por Reforço com Feedback Humano (RLHF) para soarem extremamente prestativos, corteses e completos. Se você não limitar a saída, ele naturalmente adicionará frases de boas-vindas ('Com certeza! Aqui está...'), explicações redundantes e mensagens motivacionais de encerramento.",
+    pontoDidatico: "Demonstre a força das 'Restrições Negativas': proibir preâmbulos e delimitar tamanho em linhas é a ferramenta mais rápida de ganho de produtividade.",
     dicaPratica: "Acrescente no bloco de restrições: 'Inicie a resposta diretamente no primeiro item, sem introduções de cortesia, sem saudações e sem conclusão. Limite cada ponto a no máximo 2 linhas.'"
   },
   {
-    id: 3,
-    pergunta: "Dizer 'Atue como um especialista em X' realmente melhora a qualidade da resposta ou é apenas um mito da internet?",
-    respostaCurta: "Funciona de verdade: na engenharia de prompt, isso se chama 'Persona Prompting' e direciona a atenção da rede neural para subespaços semânticos específicos.",
-    explicacaoDetalhada: "Quando você define um papel ('Atue como um auditor pedagógico experiente' ou 'Atue como um engenheiro eletricista'), você 'acende' clusters de conceitos e vocabulário técnico aprendidos durante o treinamento do modelo. Isso eleva o rigor dos critérios, melhora o vocabulário e reduz drasticamente respostas superficiais de senso comum.",
-    dicaPratica: "Combine o papel com o público-alvo: 'Atue como um professor de física experiente explicando o conceito de autoatenção para estudantes do ensino médio sem conhecimento de cálculo.'"
+    numero: 3,
+    duvida: "Dizer 'Atue como um especialista em X' realmente melhora a qualidade da resposta ou é apenas um mito da internet?",
+    resposta: "Funciona de verdade! Na engenharia de prompt, isso se chama 'Persona Prompting'. Quando você define um papel ('Atue como um auditor pedagógico experiente' ou 'Atue como um engenheiro eletricista'), você 'acende' clusters de conceitos e vocabulário técnico aprendidos durante o treinamento, elevando o rigor analítico e podando termos vagos de senso comum.",
+    pontoDidatico: "Diferencie a persona 'cosmética' (dizer apenas 'seja inteligente') da persona contextualizada ('atue como orientador de estudos focado em estudantes trabalhadores').",
+    dicaPratica: "Combine o papel com o público-alvo: 'Atue como um professor experiente explicando o conceito de autoatenção para alunos iniciantes sem conhecimento técnico prévio.'"
   },
   {
-    id: 4,
-    pergunta: "O que fazer quando o ChatGPT inventa com convicção absoluta dados, artigos de lei ou referências que não existem?",
-    respostaCurta: "Aplique técnicas de ancoragem (Grounding): forneça o texto de base e use travas negativas rígidas contra adivinhação.",
-    explicacaoDetalhada: "A IA é um gerador de verossimilhança estatística, não um banco de dados de validação de verdade. Quando o modelo não encontra a informação com alta certeza, ele alucina um dado que soa perfeitamente plausível e convincente para manter o fluxo do texto.",
-    dicaPratica: "Cole o texto oficial dentro do prompt entre delimitadores (ex: `\"\"\"texto\"\"\"`) e adicione a trava mestre: 'Baseie-se estritamente nas informações acima. Se um dado ou data não estiver presente no texto fornecido, responda apenas: Dado não especificado. Não tente adivinhar.'"
+    numero: 4,
+    duvida: "O que fazer quando o ChatGPT inventa com convicção absoluta dados, artigos de lei ou referências que não existem?",
+    resposta: "A IA é um gerador de verossimilhança estatística, não um banco de dados de validação de verdade. Quando o modelo não encontra a informação com alta certeza, ele alucina um dado que soa perfeitamente plausível e convincente para manter o fluxo do texto. Para neutralizar isso, aplicamos a ancoragem (Grounding) fornecendo o texto de referência e usando travas explícitas de incerteza.",
+    pontoDidatico: "Reafirme o princípio da Agência Humana (UNESCO): fluência gramatical impecável não é sinônimo de veracidade; o crivo e a checagem externa são sempre humanos.",
+    dicaPratica: "Cole o texto oficial entre aspas e adicione: 'Baseie-se estritamente nas informações fornecidas. Se um dado não estiver explícito no texto, responda apenas: Dado não especificado. Não tente adivinhar.'"
   },
   {
-    id: 5,
-    pergunta: "É melhor continuar conversando na mesma janela de chat ou abrir um chat novo a cada comando?",
-    respostaCurta: "Abra um chat novo para tarefas diferentes; permaneça no mesmo chat apenas para refinar a mesma entrega (Multi-turn Prompting).",
-    explicacaoDetalhada: "Toda vez que você envia uma nova mensagem, o ChatGPT reenvia todo o histórico anterior daquela conversa para o modelo. Se a conversa ficar longa demais ou misturar assuntos diferentes, ocorre a chamada 'contaminação de contexto': o modelo perde o foco, mistura regras antigas com as novas e pode degradar a qualidade da resposta.",
-    dicaPratica: "Adote a regra do consultor: use 3 a 5 turnos no mesmo chat para lapidar um texto até a versão final. Concluído o trabalho, abra uma conversa nova para o próximo desafio."
+    numero: 5,
+    duvida: "É melhor continuar conversando na mesma janela de chat ou abrir um chat novo a cada comando?",
+    resposta: "Abra um chat novo para tarefas diferentes; permaneça no mesmo chat apenas para refinar a mesma entrega (Multi-turn Prompting). Toda vez que você envia uma mensagem, o ChatGPT reenvia o histórico anterior da conversa. Se a conversa ficar longa demais ou misturar temas distintos, ocorre a 'contaminação de contexto': o modelo perde o foco e degrada a qualidade da resposta.",
+    pontoDidatico: "Ensine a regra dos 3 a 5 turnos: use poucos comandos para lapidar uma entrega até a versão final; ao iniciar um novo desafio, abra um chat limpo.",
+    dicaPratica: "Para mudar de assunto com segurança: abra uma nova conversa ('Novo chat') ou ative o 'Chat Temporário' para não registrar histórico."
   },
   {
-    id: 6,
-    pergunta: "Vale mais a pena escrever prompts em inglês para obter respostas melhores do que em português?",
-    respostaCurta: "Para conceitos gerais, redação e realidade brasileira, o português é excelente e preserva o contexto cultural; o inglês só é vantajoso em código de programação ou pesquisas ultra-especializadas.",
-    explicacaoDetalhada: "Embora o volume de dados em inglês durante o pré-treinamento seja maior, os modelos modernos (como GPT-4o e similares) possuem alinhamento multilíngue avançado. Escrever em português garante que nuances da legislação brasileira, expressões de trabalho e normas pedagógicas locais sejam respeitadas com fidelidade.",
-    dicaPratica: "Escreva no seu idioma nativo com máxima clareza e estrutura. A qualidade da sua especificação (C-T-F-R) é dez vezes mais importante do que traduzir o prompt para o inglês."
+    numero: 6,
+    duvida: "Vale mais a pena escrever prompts em inglês para obter respostas melhores do que em português?",
+    resposta: "Para conceitos gerais, redação e realidade profissional brasileira, o português é excelente e preserva o contexto cultural e normativo. O inglês só traz vantagem técnica em programação ou pesquisas científicas ultra-específicas. A qualidade da resposta depende 90% da clareza dos seus 4 blocos (C-T-F-R) e não da tradução do idioma.",
+    pontoDidatico: "Desmistifique o preconceito de que 'a IA só entende bem inglês': modelos atuais têm treinamento multilíngue denso e compreendem nuances do português com perfeição.",
+    dicaPratica: "Priorize escrever no seu idioma com clareza cristalina, contexto e restrições bem definidas."
   },
   {
-    id: 7,
-    pergunta: "Como pedir para a IA simplificar um texto técnico ou edital sem perder prazos, deveres e informações cruciais?",
-    respostaCurta: "Use a técnica em duas etapas: primeiro peça a extração analítica dos fatos; depois peça a reescrita em linguagem simples.",
-    explicacaoDetalhada: "Se você pedir apenas 'simplifique este edital', a IA pode resumir demais e cortar cláusulas essenciais. Dividir em duas etapas garante que o modelo primeiro processe e garanta os fatos antes de aplicar o estilo de linguagem acessível.",
-    dicaPratica: "Prompt em duas partes: 'Passo 1: Extraia em tópicos apenas os prazos, valores e obrigações do texto abaixo. Passo 2: Reescreva esses tópicos em linguagem simples e cidadã, como se estivesse explicando para alguém que nunca leu um edital.'"
+    numero: 7,
+    duvida: "Como pedir para a IA simplificar um texto denso ou burocrático sem perder prazos, deveres e informações cruciais?",
+    resposta: "A melhor estratégia é a técnica em dois estágios: primeiro force a IA a extrair analiticamente os dados fatuais e as obrigações em tópicos; depois peça a reescrita desses tópicos em linguagem simples e acessível. Pedir simplificação direta de uma só vez aumenta o risco de a IA resumir demais e cortar cláusulas essenciais.",
+    pontoDidatico: "A técnica de decomposição de tarefas complexas em etapas sucessivas é uma das ferramentas mais sofisticadas da engenharia de prompt.",
+    dicaPratica: "Use a instrução encadeada: 'Passo 1: Extraia em tópicos apenas os prazos e obrigações do texto abaixo. Passo 2: Reescreva esses tópicos em linguagem simples para que qualquer pessoa compreenda sem jargões.'"
   }
 ];
+
+export default perguntasAlunos;

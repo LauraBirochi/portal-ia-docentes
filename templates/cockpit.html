@@ -39,15 +39,13 @@
       <span>🖥️</span> 2. Slides & Roteiro
     </button>
     
-    {% if not is_coordinator %}
-    <!-- Abas exclusivas da Dupla Docente (Laura & Maria) -->
+    <!-- Abas Pedagógicas e de Apoio Docente -->
     <button class="cockpit-tab-btn docente-tab" data-tab="atividades">
       <span>📋</span> 3. Atividade em Aula
     </button>
     <button class="cockpit-tab-btn docente-tab" data-tab="perguntas">
       <span>⚠️</span> 4. Perguntas dos Alunos
     </button>
-    {% endif %}
   </div>
 </nav>
 
@@ -94,9 +92,8 @@
   </div>
 </div>
 
-{% if not is_coordinator %}
 <!-- ==============================================================
-     PAINEL 3: 📋 PROVA DIAGNÓSTICA (DOCENTES ONLY)
+     PAINEL 3: 📋 ATIVIDADE EM AULA / LABORATÓRIO
      ============================================================== -->
 <div id="tab-atividades" class="tab-content-panel">
   <div id="cockpit-gabarito-container">
@@ -105,12 +102,11 @@
 </div>
 
 <!-- ==============================================================
-     PAINEL 4: ⚠️ PERGUNTAS DOS ALUNOS & ARMADILHAS (DOCENTES ONLY)
+     PAINEL 4: ⚠️ PERGUNTAS DOS ALUNOS & ARMADILHAS
      ============================================================== -->
 <div id="tab-perguntas" class="tab-content-panel">
   <div id="cockpit-perguntas-container">
     <!-- Renderizado dinamicamente por cockpit-renderer.js -->
   </div>
 </div>
-{% endif %}
 

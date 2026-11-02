@@ -805,22 +805,35 @@ const CockpitRenderer = {
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem;">
-        ${perguntas.map(p => `
+        ${perguntas.map((p, idx) => {
+          const num = p.numero || p.id || (idx + 1);
+          const duvida = p.duvida || p.pergunta || '';
+          const resposta = p.resposta || p.explicacaoDetalhada || p.respostaCurta || '';
+          const ponto = p.pontoDidatico || '';
+          const dica = p.dicaPratica || '';
+
+          return `
           <div class="pedagogical-highlight-card">
             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-              <span class="chip chip-warm">Dúvida ${p.numero}</span>
-              <strong style="color: var(--text-main); font-size: 1.05rem;">"${p.duvida}"</strong>
+              <span class="chip chip-warm">Dúvida ${num}</span>
+              <strong style="color: var(--text-main); font-size: 1.05rem;">"${duvida}"</strong>
             </div>
             <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
-              <strong>Como responder:</strong> "${p.resposta}"
+              <strong>Como responder:</strong> "${resposta}"
             </p>
-            ${p.pontoDidatico ? `
-              <div style="font-size: 0.8rem; color: var(--accent); background: var(--bg-subtle-warm); padding: 0.5rem; border-radius: var(--radius-sm);">
-                🎯 <strong>Ponto Didático:</strong> ${p.pontoDidatico}
+            ${ponto ? `
+              <div style="font-size: 0.85rem; color: var(--accent); background: var(--bg-subtle-warm); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                🎯 <strong>Ponto Didático:</strong> ${ponto}
+              </div>
+            ` : ''}
+            ${dica ? `
+              <div style="font-size: 0.84rem; color: var(--text-secondary); background: var(--bg-surface); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); border-left: 3px solid #38bdf8;">
+                💡 <strong>Dica Prática de Prompt:</strong> ${dica}
               </div>
             ` : ''}
           </div>
-        `).join('')}
+        `;
+        }).join('')}
       </div>
     `;
   },
