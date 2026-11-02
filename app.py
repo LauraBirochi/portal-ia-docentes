@@ -180,12 +180,12 @@ MEETINGS_DATA: Dict[int, Dict[str, Any]] = {
         "date": "06/11",
         "duration": "3 Horas Presenciais",
         "location": "Laboratório X",
-        "shortTitle": "A Arte do Prompt (PCTFR)",
-        "title": "Módulo 3 (06/11): A Arte do Prompt – Engenharia de instruções, estrutura PCTFR (Papel, Contexto, Tarefa, Formato e Restrições) e refinamento iterativo.",
-        "desc": "Aprofundamento na engenharia de instruções com aplicação prática do método PCTFR (Papel, Contexto, Tarefa, Formato e Restrições) e técnicas de refinamento iterativo para respostas de alta precisão.",
-        "statusBadge": "🟡 Em Planejamento",
-        "isReady": False,
-        "actionTip": "Material pedagógico e exercícios em elaboração pela dupla docente."
+        "shortTitle": "ChatGPT na Prática",
+        "title": "Módulo 3 (06/11): ChatGPT na Prática – Aplicações do mundo real, técnicas de diálogo iterativo e resolução de problemas em bancada.",
+        "desc": "Laboratório prático focado exclusivamente no ChatGPT: formulação de instruções com contexto e restrições, técnicas de diálogo iterativo e prompt reverso aplicados a tarefas do cotidiano e trabalho.",
+        "statusBadge": "🟢 Cockpit Liberado",
+        "isReady": True,
+        "actionTip": "Módulo 3 estruturado com Fio da Meada, Projetor de Slides, Laboratório do Mundo Real e FAQ."
     },
     4: {
         "num": 4,

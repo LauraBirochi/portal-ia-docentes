@@ -134,6 +134,7 @@ if __name__ == '__main__':
         if arg == 'all':
             build_meeting_bundle(1)
             build_meeting_bundle(2)
+            build_meeting_bundle(3)
         else:
             try:
                 meeting = int(arg)
@@ -144,6 +145,7 @@ if __name__ == '__main__':
                 print(f"[ERRO] Número de encontro inválido: {err}", file=sys.stderr)
                 sys.exit(1)
     else:
-        # Padrão: compila todos os encontros disponíveis (1 e 2)
+        # Padrão: compila todos os encontros disponíveis (1, 2 e 3)
         build_meeting_bundle(1)
         build_meeting_bundle(2)
+        build_meeting_bundle(3)

@@ -33,6 +33,13 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
 - **Paleta Óptica dos Slides (Deep Navy):** Aplicada **exclusivamente no Encontro 2** (`body[data-meeting="2"]` em `static/css/projector.css`) a paleta **Azul Marinho Profundo / Deep Navy (`#0f172a` e `#1e293b`)** com tipografia branca pura (`#ffffff`) para garantir alto contraste (14:1+) e nitidez sob luz ambiente no telão do laboratório, corrigindo o problema de lavagem de contraste ocorrido com o marrom no Encontro 1.
 - **Base Documental Pedagógica:** Síntese diagnóstica dos formulários dos alunos arquivada em `docs/encontro-2-assuntos/00_sintese_diagnostico_forms_alunos.md`.
 
+### 🎯 Encontro 3 (06/11)
+- **Tema:** *ChatGPT na Prática: Do Comando Simples ao Trabalho Real – Como instruir, refinar e colaborar com a IA de forma produtiva, ética e segura.*
+- **Diretriz de Ferramentas:** Foco exclusivo no ChatGPT durante o encontro para evitar sobrecarga cognitiva nos alunos e acolher o aluno iniciante.
+- **Deck Consolidado (15 Slides):** 15 slides distribuídos em 4 blocos temáticos (Fundamentos & Estrutura dos 4 Blocos, Práticas no Mundo Real & Blindagem de Privacidade com Cartão-Postal, Diálogo Iterativo & Oficina nos Computadores com Missões 1 e 2 no Portfólio Digital, e Socialização & Fechamento com Checklist de Bolso).
+- **Roteiro de Palco Completo:** Co-docência equilibrada entre Laura e Maria com tempos sugeridos (minuto a minuto), objetivos pedagógicos e falas em primeira pessoa.
+- **Infraestrutura Modular & PDF 16:9:** Compilado em `static/js/data/encontro3-data.js` via `python scripts/build_data.py 3` e exportado como PDF vetorial nativo em `static/pdf/slides-encontro-3.pdf`. Rota `/slides/3` e Cockpit `/encontro/3` ativos e 100% integrados.
+
 ---
 
 ## 🤖 Instruções para Agentes de IA
