@@ -93,7 +93,8 @@
       box-shadow: 0 0 8px rgba(212, 163, 115, 0.5);
     }
 
-    body[data-meeting="2"] .projector-progress-bar {
+    body[data-meeting="2"] .projector-progress-bar,
+    body[data-meeting="3"] .projector-progress-bar {
       background: linear-gradient(90deg, #0284c7 0%, #38bdf8 100%);
       box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
     }
@@ -164,12 +165,14 @@
       text-overflow: ellipsis;
     }
 
-    body[data-meeting="2"] .brand-pill-module {
+    body[data-meeting="2"] .brand-pill-module,
+    body[data-meeting="3"] .brand-pill-module {
       background: rgba(30, 41, 59, 0.75);
       border-color: rgba(56, 189, 248, 0.3);
     }
 
-    body[data-meeting="2"] .brand-pill-module .brand-module-label {
+    body[data-meeting="2"] .brand-pill-module .brand-module-label,
+    body[data-meeting="3"] .brand-pill-module .brand-module-label {
       color: #38bdf8;
     }
 
@@ -191,7 +194,8 @@
       backdrop-filter: blur(8px);
     }
 
-    body[data-meeting="2"] .control-cluster {
+    body[data-meeting="2"] .control-cluster,
+    body[data-meeting="3"] .control-cluster {
       background: rgba(15, 23, 42, 0.7);
       border-color: rgba(56, 189, 248, 0.2);
     }
@@ -225,7 +229,8 @@
       background: #e2b385 !important;
     }
 
-    body[data-meeting="2"] .btn-next-primary {
+    body[data-meeting="2"] .btn-next-primary,
+    body[data-meeting="3"] .btn-next-primary {
       background: #38bdf8 !important;
       color: #0f172a !important;
       border-color: #38bdf8 !important;
@@ -247,7 +252,8 @@
       text-align: center;
     }
 
-    body[data-meeting="2"] .slide-counter-badge {
+    body[data-meeting="2"] .slide-counter-badge,
+    body[data-meeting="3"] .slide-counter-badge {
       background: #090d16;
       color: #38bdf8;
       border-color: rgba(56, 189, 248, 0.25);
@@ -321,8 +327,11 @@
     }
 
     body[data-meeting="2"] .btn-notes-toggle.active,
+    body[data-meeting="3"] .btn-notes-toggle.active,
     body[data-meeting="2"] .btn-questions-toggle.active,
-    body[data-meeting="2"] .btn-interval-nav.active {
+    body[data-meeting="3"] .btn-questions-toggle.active,
+    body[data-meeting="2"] .btn-interval-nav.active,
+    body[data-meeting="3"] .btn-interval-nav.active {
       background: #38bdf8;
       color: #0f172a;
       border-color: #38bdf8;
@@ -2126,12 +2135,14 @@
 
 
 /* ==========================================================================
-   TEMA ESPECÍFICO DO ENCONTRO 2: AZUL MARINHO PROFUNDO (DEEP NAVY)
+   TEMA DOS ENCONTROS 2 E 3: AZUL MARINHO PROFUNDO (DEEP NAVY)
    Paleta de alto contraste para projeção (#0f172a e #1e293b)
-   Aplicada EXCLUSIVAMENTE ao Encontro 2 (Módulo 2: 30/10)
+   Aplicada aos Encontros 2 (30/10) e 3 (06/11)
    ========================================================================== */
 body[data-meeting="2"],
-.meeting-2 {
+body[data-meeting="3"],
+.meeting-2 ,
+.meeting-3  {
   --bg-canvas: #090d16;
   --bg-stage: #0f172a;          /* Fundo do Palco: Deep Navy #0f172a */
   --bg-card: #1e293b;           /* Cartões & Superfícies: Slate Navy #1e293b */
@@ -2155,83 +2166,109 @@ body[data-meeting="2"],
 }
 
 body[data-meeting="2"] .projector-topbar,
-.meeting-2 .projector-topbar {
+body[data-meeting="3"] .projector-topbar,
+.meeting-2 .projector-topbar ,
+.meeting-3 .projector-topbar  {
   background: rgba(9, 13, 22, 0.96) !important;
   border-bottom: 1px solid rgba(96, 165, 250, 0.35) !important;
 }
 
 body[data-meeting="2"] .brand-icon-box,
-.meeting-2 .brand-icon-box {
+body[data-meeting="3"] .brand-icon-box,
+.meeting-2 .brand-icon-box ,
+.meeting-3 .brand-icon-box  {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
   border: 1px solid #60a5fa !important;
   box-shadow: 0 0 14px rgba(56, 189, 248, 0.3) !important;
 }
 
 body[data-meeting="2"] .deck-viewport,
-.meeting-2 .deck-viewport {
+body[data-meeting="3"] .deck-viewport,
+.meeting-2 .deck-viewport ,
+.meeting-3 .deck-viewport  {
   background: radial-gradient(circle at center, #1e293b 0%, #090d16 100%) !important;
 }
 
 body[data-meeting="2"] .slide-card,
-.meeting-2 .slide-card {
+body[data-meeting="3"] .slide-card,
+.meeting-2 .slide-card ,
+.meeting-3 .slide-card  {
   background: var(--bg-stage) !important;
   border: 2px solid var(--border-subtle) !important;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 80px rgba(56, 189, 248, 0.15) !important;
 }
 
 body[data-meeting="2"] .slide-presenter-pill,
-.meeting-2 .slide-presenter-pill {
+body[data-meeting="3"] .slide-presenter-pill,
+.meeting-2 .slide-presenter-pill ,
+.meeting-3 .slide-presenter-pill  {
   background: rgba(15, 23, 42, 0.94) !important;
   border: 1px solid rgba(96, 165, 250, 0.5) !important;
   color: #93c5fd !important;
 }
 
 body[data-meeting="2"] .slide-presenter-pill .presenter-dot,
-.meeting-2 .slide-presenter-pill .presenter-dot {
+body[data-meeting="3"] .slide-presenter-pill .presenter-dot,
+.meeting-2 .slide-presenter-pill .presenter-dot ,
+.meeting-3 .slide-presenter-pill .presenter-dot  {
   background: #38bdf8 !important;
   box-shadow: 0 0 6px #38bdf8 !important;
 }
 
 body[data-meeting="2"] .diagnostica-info-card,
-.meeting-2 .diagnostica-info-card {
+body[data-meeting="3"] .diagnostica-info-card,
+.meeting-2 .diagnostica-info-card ,
+.meeting-3 .diagnostica-info-card  {
   background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%) !important;
   border-color: #38bdf8 !important;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6) !important;
 }
 
 body[data-meeting="2"] .diag-icon-halo,
-.meeting-2 .diag-icon-halo {
+body[data-meeting="3"] .diag-icon-halo,
+.meeting-2 .diag-icon-halo ,
+.meeting-3 .diag-icon-halo  {
   filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.5)) !important;
 }
 
 body[data-meeting="2"] .diag-support-banner,
-.meeting-2 .diag-support-banner {
+body[data-meeting="3"] .diag-support-banner,
+.meeting-2 .diag-support-banner ,
+.meeting-3 .diag-support-banner  {
   background: rgba(15, 23, 42, 0.6) !important;
   border: 1px dashed rgba(56, 189, 248, 0.5) !important;
   color: #93c5fd !important;
 }
 
 body[data-meeting="2"] .slide-tag,
-.meeting-2 .slide-tag {
+body[data-meeting="3"] .slide-tag,
+.meeting-2 .slide-tag ,
+.meeting-3 .slide-tag  {
   background: #1e293b !important;
   border-color: #3b82f6 !important;
   color: #93c5fd !important;
 }
 
 body[data-meeting="2"] .secao-quote-container,
-.meeting-2 .secao-quote-container {
+body[data-meeting="3"] .secao-quote-container,
+.meeting-2 .secao-quote-container ,
+.meeting-3 .secao-quote-container  {
   background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.98) 100%) !important;
   border: 2px solid #3b82f6 !important;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(56, 189, 248, 0.2) !important;
 }
 
 body[data-meeting="2"] .secao-quote-container::before,
-.meeting-2 .secao-quote-container::before {
+body[data-meeting="3"] .secao-quote-container::before,
+.meeting-2 .secao-quote-container::before ,
+.meeting-3 .secao-quote-container::before  {
   color: #38bdf8 !important;
 }
 
 body[data-meeting="2"] .capa-icon,
-.meeting-2 .capa-icon {
+body[data-meeting="3"] .capa-icon,
+.meeting-2 .capa-icon ,
+.meeting-3 .capa-icon  {
   filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.55)) !important;
 }
 
@@ -2272,7 +2309,9 @@ body.export-mode .projector-topbar {
 }
 
 body[data-meeting="2"] .export-banner,
-.meeting-2 .export-banner {
+body[data-meeting="3"] .export-banner,
+.meeting-2 .export-banner ,
+.meeting-3 .export-banner  {
   background: rgba(15, 23, 42, 0.95);
   border-bottom: 1px solid rgba(96, 165, 250, 0.4);
 }
@@ -2297,7 +2336,9 @@ body[data-meeting="2"] .export-banner,
 }
 
 body[data-meeting="2"] .export-banner-info .badge-pill,
-.meeting-2 .export-banner-info .badge-pill {
+body[data-meeting="3"] .export-banner-info .badge-pill,
+.meeting-2 .export-banner-info .badge-pill ,
+.meeting-3 .export-banner-info .badge-pill  {
   background: rgba(56, 189, 248, 0.15);
   color: #93c5fd;
   border-color: #38bdf8;
@@ -2319,7 +2360,9 @@ body[data-meeting="2"] .export-banner-info .badge-pill,
 }
 
 body[data-meeting="2"] .btn-print-trigger,
-.meeting-2 .btn-print-trigger {
+body[data-meeting="3"] .btn-print-trigger,
+.meeting-2 .btn-print-trigger ,
+.meeting-3 .btn-print-trigger  {
   background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%) !important;
   color: #ffffff !important;
   box-shadow: 0 0 16px rgba(56, 189, 248, 0.35) !important;
