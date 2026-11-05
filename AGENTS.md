@@ -37,14 +37,19 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
 - **Tema:** *ChatGPT na Prática: Do Comando Simples ao Trabalho Real – Como instruir, refinar e colaborar com a IA de forma produtiva, ética e segura.*
 - **Diretriz de Ferramentas:** Foco exclusivo no ChatGPT durante o encontro para evitar sobrecarga cognitiva nos alunos e acolher o aluno iniciante.
 - **Paleta Óptica dos Slides (Deep Navy):** Aplicada também no Encontro 3 (`body[data-meeting="3"]` em `static/css/projector.css`), mantendo a identidade visual de alto contraste e legibilidade com fundo Deep Navy `#0f172a` e cartões Slate Navy `#1e293b`.
-- **Deck Consolidado (16 Slides):** 16 slides distribuídos em 4 blocos temáticos, incluindo referências bibliográficas da OpenAI e UNESCO/OSSE (Slide 16).
-- **Divisão de Palco Atualizada:** Laura assume os Slides 2 a 4 (Revisão, Estagiário e Duelo de 3 Vias) e Slides 10 e 11 (Diálogo Iterativo e Agência Humana UNESCO); Maria assume os Slides 5 a 8 (Framework C-T-F-R, Aplicações no Mundo Real e Cartão-Postal/Anonimização); co-docência integrada na Abertura (Slide 1), Intervalo (Slide 9), Oficina nos Computadores (Slides 12-13), Fechamento (Slide 15) e Referências (Slide 16).
+- **Deck Consolidado (20 Slides):** 20 slides distribuídos em 4 blocos temáticos, incluindo bancada de testes reais de prompts (Slides 14 a 17) e referências bibliográficas da OpenAI e UNESCO/OSSE (Slide 20).
+- **Divisão de Palco Atualizada:** Laura assume os Slides 2 a 4 (Revisão, Estagiário e Duelo de 3 Vias) e Slides 10 e 11 (Diálogo Iterativo e Agência Humana UNESCO); Maria assume os Slides 5 a 8 (Framework C-T-F-R, Aplicações no Mundo Real e Cartão-Postal/Anonimização); co-docência integrada na Abertura (Slide 1), Intervalo (Slide 9), Oficina nos Computadores (Slides 12-13), Bancada de Testes Empíricos e Quadro Comparativo (Slides 14 a 17), Roda Show & Tell (Slide 18), Fechamento (Slide 19) e Referências (Slide 20).
 - **Refinamento Pedagógico (NotebookLM):**
   - *Duelo de 3 Vias (Slide 4):* Desconstrução da Ilusão da Persona (`❌ Vago` vs `⚠️ Falso Bom Prompt` vs `✅ Mestre C-T-F-R`), comprovando que adjetivos vazios geram verborragia sem ganho factual.
   - *Framework C-T-F-R com Markdown (Slide 5):* Persona integrada a Contexto e padronização com cabeçalhos `#`.
   - *Meta-Prompting Ancorado (Slide 10):* Inversão de papel com escopo prévio delimitado para evitar travamento da IA.
   - *Agência Humana UNESCO (Slide 11):* Diferenciação entre *Revisão Textual* e *Checagem Factual* com trava operacional `[necessita verificação]`.
   - *Scaffolding em 3 Níveis & Dontpad (Slides 12-13 e Cockpit):* Oficina de bancada com andaime gradual (Vago ➔ Limpar Ruído ➔ Auto-Entrevista) e suporte a clipboard ágil via Dontpad (`dontpad.com/CURSO-IA-2026-IFSP`).
+  - *Bancada de Testes Empíricos (Slides 14 a 16):* Demonstração real com receita de Macarrão Parisiense nos 3 níveis:
+    - *Teste 1 (Vago):* 1 linha simples gerou receita convencional, mas arbitrou 2-3 pessoas, tempo de 30 min e terminou com pergunta sobre estilo.
+    - *Teste 2 (Falso Bom):* Persona de chef francês gerou tom teatral, incluiu vinho branco, aumentou tempo para 40 min, 5 segredos de chef e 3 perguntas complexas ao final.
+    - *Teste 3 (Estruturado C-T-F-R):* Cálculo automático de 1 kg de massa para 5 pessoas, preparo paralelo para economizar tempo, restrição de comer à vontade atendida e ZERO perguntas residuais.
+  - *Quadro Comparativo das Diferenças (Slide 17):* Tabela consolidada em slide único analisando 9 critérios lado a lado (Contexto, Tom, Rendimento, Gestão do Tempo, Dicas, Ingredientes, Detalhamento, Perguntas Adicionais e Aderência às Restrições).
 - **Roteiro de Palco Completo:** Co-docência equilibrada entre Laura e Maria com tempos sugeridos (minuto a minuto), objetivos pedagógicos e falas em primeira pessoa.
 - **Infraestrutura Modular & PDF 16:9:** Compilado em `static/js/data/encontro3-data.js` via `python scripts/build_data.py 3` e exportado como PDF vetorial nativo em `static/pdf/slides-encontro-3.pdf`. Rota `/slides/3` e Cockpit `/encontro/3` ativos e 100% integrados.
 

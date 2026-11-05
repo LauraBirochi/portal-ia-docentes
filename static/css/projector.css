@@ -1697,6 +1697,322 @@
       text-align: left;
     }
 
+    /* --- TIPO: TESTES DE PROMPT REAIS (SLIDES 14 A 16) --- */
+    .layout-teste-prompt-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 2.5rem;
+      width: 100%;
+      height: 100%;
+      align-items: stretch;
+      box-sizing: border-box;
+    }
+
+    .teste-prompt-col-left,
+    .teste-prompt-col-right {
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.85rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .teste-col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid var(--border-subtle);
+      padding-bottom: 0.85rem;
+    }
+
+    .teste-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .teste-badge-ai {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .teste-origem-label {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .prompt-box-terminal {
+      background: #090d16;
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .terminal-dots {
+      background: #131b2e;
+      padding: 0.45rem 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .terminal-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .terminal-dots .dot.red { background: #ef4444; }
+    .terminal-dots .dot.yellow { background: #f59e0b; }
+    .terminal-dots .dot.green { background: #10b981; }
+
+    .terminal-title {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-left: 0.4rem;
+    }
+
+    .prompt-terminal-text {
+      padding: 1.1rem 1.25rem;
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: var(--text-main);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .diagnostico-prompt-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1.15rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .diagnostico-prompt-card .diag-header {
+      font-size: 1.05rem;
+      color: var(--text-amber);
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .diagnostico-prompt-card p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .teste-metricas-chips {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .metrica-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 0.35rem 0.85rem;
+      font-size: 0.98rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .ai-response-summary-card {
+      background: rgba(56, 189, 248, 0.05);
+      border-left: 3px solid #38bdf8;
+      padding: 0.75rem 1.15rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .ai-summary-text {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    .ai-details-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+    }
+
+    .ai-detail-block {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+    }
+
+    .detail-label {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-amber);
+      margin-bottom: 0.35rem;
+    }
+
+    .detail-content {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .detail-list {
+      margin: 0;
+      padding-left: 1.25rem;
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .detail-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .ai-pergunta-destaque-card {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1.5px solid rgba(245, 158, 11, 0.35);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1.15rem;
+      margin-top: auto;
+    }
+
+    .ai-pergunta-destaque-card.sem-pergunta {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+
+    .pergunta-header {
+      font-size: 1.05rem;
+      color: var(--text-amber);
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .ai-pergunta-destaque-card.sem-pergunta .pergunta-header {
+      color: var(--text-green);
+    }
+
+    .pergunta-content {
+      margin: 0;
+      font-size: 1.08rem;
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+
+    /* --- TIPO: QUADRO COMPARATIVO DAS DIFERENÇAS (SLIDE 17) --- */
+    .layout-quadro-comparativo-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .quadro-table-container {
+      width: 100%;
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .quadro-comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .quadro-comp-table thead tr th {
+      padding: 0.65rem 0.9rem;
+      font-size: 1.12rem;
+      font-weight: 700;
+      border-bottom: 2px solid var(--border-subtle);
+      letter-spacing: 0.02em;
+    }
+
+    .quadro-comp-table tbody tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .quadro-comp-table tbody tr.row-even {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .quadro-comp-table tbody tr.row-odd {
+      background: transparent;
+    }
+
+    .quadro-comp-table td {
+      padding: 0.45rem 0.85rem;
+      vertical-align: middle;
+    }
+
+    .col-criterio {
+      font-weight: 700;
+      color: var(--text-amber);
+      border-right: 1.5px solid var(--border-subtle);
+      width: 18%;
+    }
+
+    .col-vago {
+      color: var(--text-secondary);
+      width: 26%;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(239, 68, 68, 0.02);
+    }
+
+    .col-falso {
+      color: var(--text-secondary);
+      width: 28%;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(245, 158, 11, 0.02);
+    }
+
+    .col-estruturado {
+      color: var(--text-main);
+      width: 28%;
+      background: rgba(16, 185, 129, 0.04);
+      font-weight: 500;
+    }
+
     /* --- TIPO: FECHAMENTO REFINADO (SLIDE 27) --- */
     .layout-fechamento-wrap {
       display: flex;
@@ -2617,6 +2933,51 @@ body.export-mode .slide-card.export-slide-page {
     font-size: 0.78rem !important;
     line-height: 1.35 !important;
     margin-bottom: 5px !important;
+  }
+
+  /* Otimizações de impressão para os novos slides de testes e quadro */
+  .export-slide-page .layout-teste-prompt-wrap {
+    gap: 1.25rem !important;
+  }
+
+  .export-slide-page .teste-prompt-col-left,
+  .export-slide-page .teste-prompt-col-right {
+    padding: 0.9rem 1.1rem !important;
+    gap: 0.6rem !important;
+  }
+
+  .export-slide-page .prompt-terminal-text {
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .export-slide-page .diagnostico-prompt-card p,
+  .export-slide-page .ai-summary-text,
+  .export-slide-page .detail-content,
+  .export-slide-page .detail-list,
+  .export-slide-page .pergunta-content {
+    font-size: 0.76rem !important;
+    line-height: 1.28 !important;
+  }
+
+  .export-slide-page .metrica-chip {
+    font-size: 0.7rem !important;
+    padding: 0.18rem 0.45rem !important;
+  }
+
+  .export-slide-page .quadro-comp-table {
+    font-size: 0.74rem !important;
+    line-height: 1.22 !important;
+  }
+
+  .export-slide-page .quadro-comp-table thead tr th {
+    padding: 0.35rem 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .export-slide-page .quadro-comp-table td {
+    padding: 0.28rem 0.5rem !important;
   }
 
   .export-slide-page .slide-presenter-pill {

@@ -570,7 +570,150 @@ function initProjectorEngine() {
           </div>
         ` : ''}
       </div>
-    `
+    `,
+
+    'teste-prompt': (s) => {
+      const resp = s.respostaObtida || {};
+      const promptBorderColor = s.tipoPrompt === 'positivo' ? '#10b981' : (s.tipoPrompt === 'marrom' ? '#f59e0b' : '#ef4444');
+      const promptBadgeBg = s.tipoPrompt === 'positivo' ? 'rgba(16, 185, 129, 0.15)' : (s.tipoPrompt === 'marrom' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(239, 68, 68, 0.15)');
+      const promptBadgeColor = s.tipoPrompt === 'positivo' ? 'var(--text-green)' : (s.tipoPrompt === 'marrom' ? 'var(--text-amber)' : 'var(--text-red)');
+
+      return `
+        <div class="layout-teste-prompt-wrap">
+          <!-- Coluna 1: O Prompt Enviado -->
+          <div class="teste-prompt-col-left" style="border-top: 4px solid ${promptBorderColor};">
+            <div class="teste-col-header">
+              <span class="teste-badge" style="background: ${promptBadgeBg}; color: ${promptBadgeColor};">
+                ${s.tipoPrompt === 'positivo' ? '✅ PROMPT ESTRUTURADO (C-T-F-R)' : (s.tipoPrompt === 'marrom' ? '⚠️ FALSO BOM PROMPT' : '❌ PROMPT VAGO')}
+              </span>
+              <span class="teste-origem-label">Comando do Usuário</span>
+            </div>
+            
+            <div class="prompt-box-terminal">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">chatgpt-prompt.txt</span>
+              </div>
+              <pre class="prompt-terminal-text">${s.promptUtilizado || ''}</pre>
+            </div>
+
+            <div class="diagnostico-prompt-card">
+              <div class="diag-header">
+                <span>🔍</span> <strong>Diagnóstico da Instrução:</strong>
+              </div>
+              <p>${s.diagnosticoPrompt || ''}</p>
+            </div>
+
+            ${resp.metricas ? `
+              <div class="teste-metricas-chips">
+                ${resp.metricas.map(m => `<span class="metrica-chip">⏱️ ${m}</span>`).join('')}
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- Coluna 2: A Resposta Entregue pelo ChatGPT -->
+          <div class="teste-prompt-col-right">
+            <div class="teste-col-header">
+              <span class="teste-badge-ai">🤖 Resposta Entregue pelo ChatGPT</span>
+              <span class="teste-origem-label">Saída do Modelo</span>
+            </div>
+
+            <div class="ai-response-summary-card">
+              <p class="ai-summary-text"><em>"${resp.resumo || ''}"</em></p>
+            </div>
+
+            <div class="ai-details-grid">
+              ${resp.ingredientes ? `
+                <div class="ai-detail-block">
+                  <div class="detail-label">🛒 Ingredientes Apresentados:</div>
+                  <p class="detail-content">${resp.ingredientes}</p>
+                </div>
+              ` : ''}
+
+              ${resp.modoPreparo && resp.modoPreparo.length ? `
+                <div class="ai-detail-block">
+                  <div class="detail-label">🍳 Modo de Preparo / Etapas:</div>
+                  <ul class="detail-list">
+                    ${resp.modoPreparo.map(et => `<li>${et}</li>`).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+
+              ${resp.orientacoesAdicionais && resp.orientacoesAdicionais.length ? `
+                <div class="ai-detail-block">
+                  <div class="detail-label">💡 Orientações / Segredos Adicionais:</div>
+                  <ul class="detail-list">
+                    ${resp.orientacoesAdicionais.map(or => `<li>${or}</li>`).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+            </div>
+
+            ${resp.perguntaAssistente ? `
+              <div class="ai-pergunta-destaque-card">
+                <div class="pergunta-header">
+                  <span>❓</span> <strong>Pergunta Adicional do Assistente:</strong>
+                </div>
+                <p class="pergunta-content">${resp.perguntaAssistente}</p>
+              </div>
+            ` : `
+              <div class="ai-pergunta-destaque-card sem-pergunta">
+                <div class="pergunta-header">
+                  <span>🎯</span> <strong>Perguntas Adicionais do Assistente:</strong>
+                </div>
+                <p class="pergunta-content" style="color: var(--text-green);">Nenhuma pergunta necessária: briefing completo, entrega 100% autônoma e pronta para uso.</p>
+              </div>
+            `}
+          </div>
+        </div>
+      `;
+    },
+
+    'quadro-comparativo': (s) => {
+      const cols = s.colunasTabela || ["Critério", "1. Prompt Vago", "2. Falso Bom Prompt", "3. Prompt Estruturado (C-T-F-R)"];
+      const rows = s.linhasTabela || [];
+
+      return `
+        <div class="layout-quadro-comparativo-wrap">
+          <div class="quadro-table-container">
+            <table class="quadro-comp-table">
+              <thead>
+                <tr>
+                  <th style="width: 17%; text-align: left;">${cols[0]}</th>
+                  <th style="width: 27%; border-top: 3px solid #ef4444; background: rgba(239, 68, 68, 0.08); color: var(--text-red);">
+                    <div style="display: flex; align-items: center; gap: 0.4rem; justify-content: center;">
+                      <span>❌</span> <span>${cols[1]}</span>
+                    </div>
+                  </th>
+                  <th style="width: 28%; border-top: 3px solid #f59e0b; background: rgba(245, 158, 11, 0.08); color: var(--text-amber);">
+                    <div style="display: flex; align-items: center; gap: 0.4rem; justify-content: center;">
+                      <span>⚠️</span> <span>${cols[2]}</span>
+                    </div>
+                  </th>
+                  <th style="width: 28%; border-top: 3px solid #10b981; background: rgba(16, 185, 129, 0.12); color: var(--text-green);">
+                    <div style="display: flex; align-items: center; gap: 0.4rem; justify-content: center;">
+                      <span>✅</span> <span>${cols[3]}</span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rows.map((r, idx) => `
+                  <tr class="${idx % 2 === 0 ? 'row-even' : 'row-odd'}">
+                    <td class="col-criterio"><strong>${r.criterio}</strong></td>
+                    <td class="col-vago">${r.vago}</td>
+                    <td class="col-falso">${r.falsoBom}</td>
+                    <td class="col-estruturado">${r.estruturado}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
   };
 
   const meetingId = document.body.getAttribute('data-meeting') || '1';

@@ -429,7 +429,7 @@ export const slidesComNotas = [
     tipo: "missao-diagnostica",
     categoria: "Prática Guiada no Laboratório (Etapa 1)",
     titulo: "Oficina de Bancada: Missão 1 (Etapa 1: 20 min)",
-    subtitulo: "Transformando o Vago e Limpando o Falso Bom Prompt (Scaffolding Níveis 1 e 2)",
+    subtitulo: "Scaffolding: do vago ao estruturado, desmontando a ilusão da persona e aplicando restrições negativas que eliminam retrabalho.",
     tempoEstimado: "20 min",
     passos: [
       "1. Abra o Portfólio Digital - Encontro 3 e escolha 1 tarefa real da sua rotina de estudos ou trabalho.",
@@ -441,7 +441,7 @@ export const slidesComNotas = [
     destaqueDiagnostica: {
       icone: "💻",
       titulo: "Etapa 1: O Duelo de Prompts",
-      desc: "Scaffolding gradual para adultos iniciantes: do vago ao estruturado, desmontando a ilusão da persona e aplicando restrições negativas que eliminam retrabalho.",
+      desc: "Scaffolding: do vago ao estruturado, desmontando a ilusão da persona e aplicando restrições negativas que eliminam retrabalho.",
       tagAviso: "Portfólio Digital • 20 Minutos Focados"
     },
     conducao: "Co-docência (Laura e Maria circulando pela turma)",
@@ -482,11 +482,219 @@ export const slidesComNotas = [
   },
 
   // =========================================================================
-  // BLOCO 4: SOCIALIZAÇÃO & FECHAMENTO (Slides 14 e 15)
+  // BANCADA DE TESTES: RESULTADOS REAIS DOS PROMPTS (Slides 14 a 17)
   // =========================================================================
   {
     numero: 14,
     id: 14,
+    bloco: 3,
+    tipo: "teste-prompt",
+    tipoPrompt: "negativo",
+    categoria: "Bancada de Testes Empíricos (Teste 1)",
+    titulo: "Teste 1: Prompt Vago (1 Linha Sem Parâmetros)",
+    subtitulo: "Resultado obtido com pedido genérico: ausência de contexto e decisões arbitrárias do modelo",
+    promptUtilizado: "Quero aprender a fazer macarrão parisiense.",
+    diagnosticoPrompt: "Pedido de uma única linha. O modelo não tem nenhuma pista sobre para quem é a refeição, quanto tempo há disponível ou restrições de porções. Por padrão, ele assume um cenário médio arbitrário.",
+    respostaObtida: {
+      resumo: "Receita descrita como cremosa, deliciosa e fácil de fazer.",
+      metricas: [
+        "Tempo de preparo: 30 minutos",
+        "Rendimento arbitrado: 2 a 3 pessoas",
+        "Nível: fácil",
+        "5 etapas convencionais"
+      ],
+      ingredientes: "Macarrão, presunto, ervilha, cebola, manteiga, creme de leite, leite, farinha de trigo, parmesão e temperos.",
+      modoPreparo: [
+        "1. Cozinhar o macarrão.",
+        "2. Refogar a cebola.",
+        "3. Preparar o molho branco.",
+        "4. Acrescentar os ingredientes.",
+        "5. Finalizar misturando o macarrão ao molho."
+      ],
+      orientacoesAdicionais: [
+        "Não deixar o molho muito grosso.",
+        "Utilizar parmesão ralado na hora.",
+        "Acrescentar leite caso o molho fique muito consistente.",
+        "Evitar ferver demais o creme de leite."
+      ],
+      perguntaAssistente: "Ao final, o assistente perguntou se o usuário preferia aprender a fazer o macarrão à parisiense com molho bem branquinho e cremoso, no estilo de restaurante, ou uma versão mais simples e econômica para fazer em casa."
+    },
+    conducao: "Co-docência (Laura e Maria)",
+    notasProfessora: {
+      tempoSugerido: "4 min (02:35 - 02:39)",
+      objetivoSlide: "Demonstrar o comportamento padrão da IA diante de prompts de 1 linha: ela assume decisões arbitrárias (2-3 pessoas, 30 min) e tenta adivinhar a intenção ao final.",
+      oQueFalar: "(Laura) \"Vejam o resultado real na tela: mandamos apenas 'Quero aprender a fazer macarrão parisiense'. A IA respondeu uma receita bonita e correta, mas vejam o que ela fez por conta própria: definiu que a refeição é para 2 a 3 pessoas e que demora 30 minutos! E no final, ela mesma percebeu a falta de contexto e perguntou se queríamos estilo restaurante ou econômico. Isso gera retrabalho e não resolve a demanda real da sua rotina!\""
+    }
+  },
+  {
+    numero: 15,
+    id: 15,
+    bloco: 3,
+    tipo: "teste-prompt",
+    tipoPrompt: "marrom",
+    categoria: "Bancada de Testes Empíricos (Teste 2)",
+    titulo: "Teste 2: Falso Bom Prompt (A Ilusão da Persona)",
+    subtitulo: "Papel de 'melhor chef da França' gera tom teatral, aumenta tempo e adiciona itens sem resolver restrições",
+    promptUtilizado: "Atua como o melhor cozinheiro chef da França para me ensinar a fazer um verdadeiro macarrão parisiense.",
+    diagnosticoPrompt: "Uso de adjetivos superlativos e persona exagerada sem parâmetros técnicos. O modelo adota uma postura teatral, introduz ingredientes não solicitados (vinho branco) e expande o tempo de preparo.",
+    respostaObtida: {
+      resumo: "O assistente assumiu o papel de um chef francês e apresentou uma receita descrita como cremosa, elegante e com toque de bistrô francês.",
+      metricas: [
+        "Tempo de preparo: 30 a 40 minutos",
+        "Rendimento arbitrado: 2 a 3 pessoas",
+        "Nível: fácil a intermediário",
+        "5 segredos de chef incluídos"
+      ],
+      ingredientes: "Massa (fettuccine, tagliatelle ou penne, água e sal), molho parisiense (presunto cozido, ervilhas, creme de leite fresco, cebola, manteiga, azeite, parmesão, noz-moscada, pimenta e sal). Opcionais: vinho branco seco e salsinha fresca.",
+      modoPreparo: [
+        "1. Começar pelo refogado de cebola, manteiga e azeite.",
+        "2. Acrescentar presunto, vinho branco (opcional), ervilhas e creme de leite.",
+        "3. Cozinhar a massa até ficar al dente e reservar a água do cozimento.",
+        "4. Finalizar a massa diretamente na frigideira com o molho, parmesão e água do cozimento.",
+        "Montagem do prato: disposição no prato com finalização de parmesão, pimenta e salsinha."
+      ],
+      orientacoesAdicionais: [
+        "1. Utilizar creme de leite fresco.",
+        "2. Não exagerar na quantidade de presunto.",
+        "3. Utilizar noz-moscada com moderação.",
+        "4. Utilizar parmesão de verdade.",
+        "5. Finalizar a massa na frigideira."
+      ],
+      perguntaAssistente: "Ao final, solicitou mais informações sobre três aspectos: estilo de preparo (bistrô francês, luxo ou tradicional brasileiro); proteína (presunto, frango ou ambos); e tipo de molho (branco/delicado, béchamel francês ou alta gastronomia). Ofereceu também preparar a receita de chef."
+    },
+    conducao: "Co-docência (Laura e Maria)",
+    notasProfessora: {
+      tempoSugerido: "4 min (02:39 - 02:43)",
+      objetivoSlide: "Evidenciar que personas sem restrições geram verborragia, teatro e complexidade desnecessária (vinho branco, 3 perguntas adicionais) sem saber quem vai comer.",
+      oQueFalar: "(Maria) \"Olhem o que aconteceu quando pedimos para 'atuar como o melhor chef da França': a receita ficou elegante, com toque de bistrô, sugeriu vinho branco e acrescentou cinco 'segredos de chef'. Mas resolveu a nossa vida? Não! O tempo subiu para 40 minutos, o rendimento continuou genérico em 2 a 3 pessoas e a IA fez 3 perguntas complexas ao final. Persona vazia só produz maquiagem no texto, não inteligência operacional!\""
+    }
+  },
+  {
+    numero: 16,
+    id: 16,
+    bloco: 3,
+    tipo: "teste-prompt",
+    tipoPrompt: "positivo",
+    categoria: "Bancada de Testes Empíricos (Teste 3)",
+    titulo: "Teste 3: Prompt Estruturado (Framework C-T-F-R)",
+    subtitulo: "Contexto, Tarefa, Formato e Restrições Negativas: resposta exata na primeira tentativa, sem perguntas residuais",
+    promptUtilizado: "Contexto:\nQuero fazer um macarrão parisiense para a minha família, somos em 5 pessoas, tenho pouco tempo para fazer.\n\nTarefa:\nMe ensine como fazer o macarrão parisiense.\n\nFormato:\nListe todos os ingredientes primeiro, depois a ordem de execução com esses ingredientes. Não deixe instruções essenciais ao final da receita e sim no momento de sua execução.\n\nRestrição:\nNão invente dados, não dê porções limitadas a cada pessoa da minha família, quero que eles possam comer à vontade.",
+    diagnosticoPrompt: "Prompt com 4 blocos explícitos: público definido (família, 5 pessoas), restrição de tempo (pouco tempo), formato funcional (ingredientes primeiro + ordem sem pontas soltas) e restrição negativa de abundância (comer à vontade, sem limites artificiais).",
+    respostaObtida: {
+      resumo: "Receita para cinco pessoas, descrita como prática e cremosa, com possibilidade de repetição à vontade e estruturação rigorosa.",
+      metricas: [
+        "Rendimento: 5 pessoas com fartura",
+        "Preparo paralelo (ganho de tempo)",
+        "1 kg de macarrão (porção calculada)",
+        "Zero perguntas adicionais"
+      ],
+      ingredientes: "1 kg de macarrão (penne, parafuso ou espaguete), 400g a 500g de presunto picado, 2 latas ou 300g de ervilha (preferência congelada), 2 caixinhas de creme de leite (400g), 1 copo de requeijão ou 200g de queijo cremoso, 1 cebola média picada, 2 dentes de alho picados, 2 colheres de sopa de manteiga ou azeite, 1 xícara de leite (se necessário), 100g de queijo parmesão ralado e temperos (sal, noz-moscada, pimenta-do-reino).",
+      modoPreparo: [
+        "1. Colocar água para ferver com sal em panela grande.",
+        "2. Em fogo médio, refogar cebola e alho na manteiga até dourar levemente.",
+        "3. Adicionar presunto picado e refogar por 2 a 3 minutos.",
+        "4. Acrescentar ervilha e misturar delicadamente.",
+        "5. Abaixar o fogo, colocar creme de leite e requeijão; mexer até formar creme homogêneo. Adicionar leite caso fique muito espesso. Ajustar sal, noz-moscada e pimenta.",
+        "6. Cozinhar macarrão até al dente; retirar direto da água e juntar à panela do molho.",
+        "7. Misturar em fogo baixo por 1 a 2 minutos para absorção do sabor. Adicionar parmesão ralado e servir imediatamente."
+      ],
+      orientacoesAdicionais: [
+        "Dica de tempo: enquanto a água esquenta e o macarrão cozinha, faça o molho em fogo médio.",
+        "Dica de fartura: a combinação de presunto em cubos com requeijão garante volume e cremosidade para 5 pessoas comerem à vontade."
+      ],
+      perguntaAssistente: ""
+    },
+    conducao: "Co-docência (Laura e Maria)",
+    notasProfessora: {
+      tempoSugerido: "4 min (02:43 - 02:47)",
+      objetivoSlide: "Demonstrar a eficácia do C-T-F-R: cálculo correto de ingredientes (1 kg), preparo em paralelo para economizar tempo e ausência de perguntas residuais.",
+      oQueFalar: "(Laura) \"E agora olhem a mágica da estrutura C-T-F-R: quando você define que são 5 pessoas e que quer fartura, a IA calcula automaticamente 1 kg de macarrão e 500g de presunto! Quando você avisa que tem pouco tempo, ela organiza o modo de preparo em paralelo: fazer o molho enquanto a água ferve. E o mais impressionante: quantas perguntas ela fez ao final? NENHUMA! Porque o contexto e os limites humanos já estavam todos definidos no prompt!\""
+    }
+  },
+  {
+    numero: 17,
+    id: 17,
+    bloco: 3,
+    tipo: "quadro-comparativo",
+    categoria: "Síntese dos Testes Empíricos",
+    titulo: "Quadro Comparativo: As Diferenças Reais nos Três Prompts",
+    subtitulo: "Análise lado a lado dos 9 critérios comprovando o impacto direto da estrutura na resposta da IA",
+    colunasTabela: [
+      "Critério de Análise",
+      "1. Prompt Vago",
+      "2. Falso Bom Prompt",
+      "3. Prompt Estruturado (C-T-F-R)"
+    ],
+    linhasTabela: [
+      {
+        criterio: "Contexto inicial",
+        vago: "Nenhum contexto fornecido",
+        falsoBom: "Foco na persona de chef",
+        estruturado: "Contexto familiar, 5 pessoas, pouco tempo"
+      },
+      {
+        criterio: "Tom da resposta",
+        vago: "Direto e simples",
+        falsoBom: "Elegante e descritivo",
+        estruturado: "Prático e explicativo"
+      },
+      {
+        criterio: "Rendimento",
+        vago: "2 a 3 pessoas (não solicitado)",
+        falsoBom: "2 a 3 pessoas (não solicitado)",
+        estruturado: "5 pessoas com repetição (1 kg de massa)"
+      },
+      {
+        criterio: "Gestão do tempo",
+        vago: "Tempo estimado em 30 min",
+        falsoBom: "Tempo estimado em 30 a 40 min",
+        estruturado: "Preparo paralelo durante fervura da água"
+      },
+      {
+        criterio: "Dicas e segredos",
+        vago: "Dicas ao final da receita",
+        falsoBom: "Cinco segredos e montagem de prato",
+        estruturado: "Dicas integradas durante o modo de preparo"
+      },
+      {
+        criterio: "Ingredientes adicionais",
+        vago: "Nenhum ingrediente especial",
+        falsoBom: "Vinho branco e salsinha",
+        estruturado: "Requeijão ou queijo cremoso"
+      },
+      {
+        criterio: "Detalhamento das etapas",
+        vago: "Cinco etapas resumidas",
+        falsoBom: "Quatro etapas com foco técnico",
+        estruturado: "Sete etapas sequenciais sem pontas soltas"
+      },
+      {
+        criterio: "Perguntas adicionais",
+        vago: "Uma pergunta sobre estilo de preparo",
+        falsoBom: "Três perguntas para detalhar receita",
+        estruturado: "Nenhuma pergunta adicional (entrega pronta)"
+      },
+      {
+        criterio: "Aderência às restrições",
+        vago: "Não aplicável",
+        falsoBom: "Não aplicável",
+        estruturado: "Atendeu a todas as restrições solicitadas"
+      }
+    ],
+    conducao: "Co-docência (Laura e Maria)",
+    notasProfessora: {
+      tempoSugerido: "4 min (02:47 - 02:51)",
+      objetivoSlide: "Consolidar os aprendizados práticos da bancada antes da socialização através da tabela comparativa dos 9 critérios.",
+      oQueFalar: "(Maria) \"Este quadro resume com precisão cirúrgica a grande lição do nosso Encontro 3. Vejam a linha de 'Perguntas adicionais': o prompt vago exigiu mais conversa; o falso bom prompt exigiu três decisões complexas; o estruturado entregou o trabalho pronto. E vejam o 'Rendimento': só o estruturado garantiu comida para as 5 pessoas com fartura! É isso que transforma a IA em uma ferramenta de produtividade real no trabalho e nos estudos.\""
+    }
+  },
+
+  // =========================================================================
+  // BLOCO 4: SOCIALIZAÇÃO & FECHAMENTO (Slides 18 a 20)
+  // =========================================================================
+  {
+    numero: 18,
+    id: 18,
     bloco: 4,
     tipo: "apresentacao",
     categoria: "Avaliação & Socialização",
@@ -516,14 +724,14 @@ export const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "15 min (02:35 - 02:50)",
+      tempoSugerido: "10 min (02:51 - 03:01)",
       objetivoSlide: "Consolidar o aprendizado por meio da aprendizagem entre pares e realizar a avaliação formativa contínua.",
       oQueFalar: "(Laura) \"Que oficina produtiva! Vamos abrir a nossa roda de socialização. Quem gostaria de projetar o seu exercício e mostrar como o prompt evoluiu do vago para o estruturado?\" (Maria) \"Vejam que fascinante o relato do colega: a IA só entregou um resultado de alto nível porque ele assumiu o comando do contexto e das restrições. A inteligência da entrega continua sendo 100% de vocês!\""
     }
   },
   {
-    numero: 15,
-    id: 15,
+    numero: 19,
+    id: 19,
     bloco: 4,
     tipo: "fechamento",
     categoria: "Fechamento & Ponte",
@@ -541,14 +749,14 @@ export const slidesComNotas = [
     ],
     conducao: "Co-docência (Laura e Maria)",
     notasProfessora: {
-      tempoSugerido: "10 min (02:50 - 03:00)",
+      tempoSugerido: "6 min (03:01 - 03:07)",
       objetivoSlide: "Síntese final dos pilares da aula, reforço da reflexão ética e motivação para o próximo encontro.",
       oQueFalar: "(Maria) \"Para encerrar o nosso Encontro 3, levem este checklist de bolso para a vida de vocês! Sempre que abrirem o ChatGPT, lembrem-se: nada de pedidos genéricos e nada de personas mágicas. O que funciona é Contexto, Tarefa, Formato e Restrições!\" (Laura) \"E lembrem-se da nossa mensagem central: a agência e a validação crítica continuam com vocês. No Encontro 4, daremos um salto fascinante: sairemos do texto puro e entraremos na IA Multimodal, analisando imagens, documentos em PDF e áudios! Um grande abraço a todos e até a próxima semana!\""
     }
   },
   {
-    numero: 16,
-    id: 16,
+    numero: 20,
+    id: 20,
     bloco: 4,
     tipo: "comparativo",
     categoria: "Referências Bibliográficas",
@@ -583,7 +791,7 @@ export const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "5 min (ou consulta assíncrona)",
+      tempoSugerido: "3 min (ou consulta assíncrona)",
       objetivoSlide: "Apresentar as fontes primárias internacionais que embasam o conteúdo e as diretrizes pedagógicas do Encontro 3.",
       oQueFalar: "(Laura) \"Para quem quiser aprofundar os estudos, reunimos aqui as referências primárias que embasam a nossa aula. De um lado, os guias oficiais da OpenAI sobre as melhores práticas de engenharia de prompt.\" (Maria) \"E do outro lado, os marcos da UNESCO sobre competências docentes em IA e o guia da OSSE, que garantem a nossa visão de que a agência crítica e a curadoria humana são o coração da educação! Todos esses materiais estão disponíveis para consulta no portal!\""
     }

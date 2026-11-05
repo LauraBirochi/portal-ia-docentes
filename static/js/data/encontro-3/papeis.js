@@ -15,6 +15,7 @@ export const divisaoPapeis = [
   { bloco: "Intervalo (01:15 - 01:30)", tema: "Intervalo Pedagógico / Café com Prosa (Slide 9)", papel: "ambas" },
   { bloco: "Bloco 3 (01:30 - 01:45)", tema: "Camada 3: Diálogo Iterativo e Meta-Prompting (Slide 10) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Bloco 3 (01:45 - 02:00)", tema: "Agência Humana e Validação Crítica (UNESCO) (Slide 11) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 3 (02:00 - 02:40)", tema: "Oficina Prática de Bancada: Missão 1 e Missão 2 (Slides 12 e 13)", papel: "ambas" },
-  { bloco: "Bloco 4 (02:40 - 03:00)", tema: "Show & Tell, Checklist de Bolso & Referências (Slides 14 a 16)", papel: "ambas" }
+  { bloco: "Bloco 3 (02:00 - 02:35)", tema: "Oficina Prática de Bancada: Missão 1 e Missão 2 (Slides 12 e 13)", papel: "ambas" },
+  { bloco: "Bloco 3 (02:35 - 02:51)", tema: "Bancada de Testes Empíricos & Quadro Comparativo (Slides 14 a 17)", papel: "ambas" },
+  { bloco: "Bloco 4 (02:51 - 03:00)", tema: "Show & Tell, Checklist de Bolso & Referências (Slides 18 a 20)", papel: "ambas" }
 ];

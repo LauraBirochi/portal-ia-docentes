@@ -39,8 +39,8 @@ export const blocosTematicos = [
     id: 3,
     icone: "🤖",
     titulo: "Bloco 3: Diálogo Iterativo, Ética & Oficina de Bancada",
-    subtitulo: "Meta-Prompting com Demonstração no Telão, Travas [necessita verificação] e Oficina nos Computadores",
-    slidesRange: [10, 13],
+    subtitulo: "Meta-Prompting, Travas [necessita verificação], Oficina nos Computadores e Bancada de Testes Empíricos",
+    slidesRange: [10, 17],
     tempoEstimado: "70 min",
     conducao: "Co-docência (Laura & Maria)"
   },
@@ -49,7 +49,7 @@ export const blocosTematicos = [
     icone: "🎉",
     titulo: "Bloco 4: Socialização & Fechamento",
     subtitulo: "Roda de Conversa (Show & Tell), Checklist de Bolso, Próximos Passos e Referências Bibliográficas",
-    slidesRange: [14, 16],
+    slidesRange: [18, 20],
     tempoEstimado: "20 min",
     conducao: "Co-docência (Laura & Maria)"
   }
