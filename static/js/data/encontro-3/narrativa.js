@@ -11,8 +11,8 @@ export const fioDaMeada = {
     {
       ato: 1,
       tempo: "00:00 às 00:45 (45 min)",
-      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura (Slides 2-4) & Maria (Slide 5)",
-      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Laura conduz o modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25] e o Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Maria assume para apresentar os 4 Blocos C-T-F-R (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
+      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura (Slides 2-5)",
+      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Laura conduz o modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25], o Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35] e a apresentação dos 4 Blocos C-T-F-R (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
       gatilho: "Quem digita um pedido vago recebe um clichê; quem usa adjetivos vazios recebe verborragia; quem faz o handoff estruturado com contexto e restrições recebe trabalho pronto!"
     },
     {

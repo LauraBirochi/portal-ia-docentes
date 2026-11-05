@@ -166,7 +166,8 @@ export const slidesComNotas = [
     categoria: "Framework de Prompting",
     titulo: "Os 4 Blocos da Estrutura Perfeita (Evolução do PCTFR)",
     subtitulo: "Do método do Encontro 2 à organização modular definitiva com Marcadores Markdown (#)",
-    conducao: "Condução: Maria",
+    docente: "Laura",
+    conducao: "Condução: Laura",
     itensDestaque: [
       {
         icone: "🧩",
@@ -192,7 +193,7 @@ export const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "10 min (00:35 - 00:45)",
       objetivoSlide: "Demonstrar que o bloco de Contexto engloba a Persona do Encontro 2 e introduzir marcadores visuais (Markdown) para organizar a atenção do modelo.",
-      oQueFalar: "(Maria) \"Pessoal, quando organizamos nosso pedido usando cabeçalhos claros como # Contexto, # Tarefa e # Restrições, estamos literalmente organizando o mapa de atenção da rede neural. A IA não acerta mais porque dissemos que ela é uma 'especialista sênior premiada', mas porque reduzimos a ambiguidade do espaço de busca das palavras! As restrições negativas são a nossa trava de segurança para impedir que ela invente dados onde não deve!\""
+      oQueFalar: "(Laura) \"Pessoal, quando organizamos nosso pedido usando cabeçalhos claros como # Contexto, # Tarefa e # Restrições, estamos literalmente organizando o mapa de atenção da rede neural. A IA não acerta mais porque dissemos que ela é uma 'especialista sênior premiada', mas porque reduzimos a ambiguidade do espaço de busca das palavras! As restrições negativas são a nossa trava de segurança para impedir que ela invente dados onde não deve!\""
     }
   },
 

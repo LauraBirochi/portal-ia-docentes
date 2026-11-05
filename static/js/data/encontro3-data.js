@@ -115,8 +115,8 @@ const fioDaMeada = {
     {
       ato: 1,
       tempo: "00:00 às 00:45 (45 min)",
-      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura (Slides 2-4) & Maria (Slide 5)",
-      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Laura conduz o modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25] e o Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Maria assume para apresentar os 4 Blocos C-T-F-R (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
+      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura (Slides 2-5)",
+      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Laura conduz o modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25], o Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35] e a apresentação dos 4 Blocos C-T-F-R (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
       gatilho: "Quem digita um pedido vago recebe um clichê; quem usa adjetivos vazios recebe verborragia; quem faz o handoff estruturado com contexto e restrições recebe trabalho pronto!"
     },
     {
@@ -351,7 +351,8 @@ const slidesComNotas = [
     categoria: "Framework de Prompting",
     titulo: "Os 4 Blocos da Estrutura Perfeita (Evolução do PCTFR)",
     subtitulo: "Do método do Encontro 2 à organização modular definitiva com Marcadores Markdown (#)",
-    conducao: "Condução: Maria",
+    docente: "Laura",
+    conducao: "Condução: Laura",
     itensDestaque: [
       {
         icone: "🧩",
@@ -377,7 +378,7 @@ const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "10 min (00:35 - 00:45)",
       objetivoSlide: "Demonstrar que o bloco de Contexto engloba a Persona do Encontro 2 e introduzir marcadores visuais (Markdown) para organizar a atenção do modelo.",
-      oQueFalar: "(Maria) \"Pessoal, quando organizamos nosso pedido usando cabeçalhos claros como # Contexto, # Tarefa e # Restrições, estamos literalmente organizando o mapa de atenção da rede neural. A IA não acerta mais porque dissemos que ela é uma 'especialista sênior premiada', mas porque reduzimos a ambiguidade do espaço de busca das palavras! As restrições negativas são a nossa trava de segurança para impedir que ela invente dados onde não deve!\""
+      oQueFalar: "(Laura) \"Pessoal, quando organizamos nosso pedido usando cabeçalhos claros como # Contexto, # Tarefa e # Restrições, estamos literalmente organizando o mapa de atenção da rede neural. A IA não acerta mais porque dissemos que ela é uma 'especialista sênior premiada', mas porque reduzimos a ambiguidade do espaço de busca das palavras! As restrições negativas são a nossa trava de segurança para impedir que ela invente dados onde não deve!\""
     }
   },
 
@@ -1260,7 +1261,7 @@ const divisaoPapeis = [
   { bloco: "Bloco 1 (00:05 - 00:15)", tema: "Onde Estamos e Aonde Vamos Hoje (Slide 2) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Bloco 1 (00:15 - 00:25)", tema: "A Metáfora do Estagiário Inteligente (Slide 3) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Bloco 1 (00:25 - 00:35)", tema: "Prompt or Flop? O Duelo de 3 Vias (Slide 4) • Condução: Laura", papel: "radio", padrao: "laura", condutor: "Laura", conducao: "Laura" },
-  { bloco: "Bloco 1 (00:35 - 00:45)", tema: "Os 4 Blocos da Estrutura Perfeita C-T-F-R (Slide 5) • Condução: Maria", papel: "radio", padrao: "maria" },
+  { bloco: "Bloco 1 (00:35 - 00:45)", tema: "Os 4 Blocos da Estrutura Perfeita C-T-F-R (Slide 5) • Condução: Laura", papel: "radio", padrao: "laura", condutor: "Laura", conducao: "Laura" },
   { bloco: "Bloco 2 (00:45 - 00:50)", tema: "Exemplos Práticos: Onde Usar um Prompt Estruturado? (Slide 6) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Bloco 2 (00:50 - 01:00)", tema: "Camada 1: Organização Pessoal e Rotina (Slide 7) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Bloco 2 (01:00 - 01:10)", tema: "Camada 2: Redação e Simplificação Profissional (Slide 8) • Condução: Maria", papel: "radio", padrao: "maria" },
