@@ -451,42 +451,13 @@ export const slidesComNotas = [
       oQueFalar: "(Laura) \"Chegou a hora da prática nas bancadas! Vamos com calma, passo a passo: teremos 20 minutos focados na Missão 1. Abram o Portfólio Digital, peguem uma tarefa real da rotina de vocês e façam os 3 níveis: primeiro o pedido simples, depois o teste com adjetivos vazios para sentir o ruído, e por fim o prompt mestre com os 4 blocos! (Maria) Eu e a Laura estamos passando nas mesas para orientar o contexto e as restrições. Vamos lá!\""
     }
   },
+
+  // =========================================================================
+  // BANCADA DE TESTES: RESULTADOS REAIS DOS PROMPTS (Slides 13 a 16)
+  // =========================================================================
   {
     numero: 13,
     id: 13,
-    bloco: 3,
-    tipo: "missao-diagnostica",
-    categoria: "Prática Guiada no Laboratório (Etapa 2)",
-    titulo: "Oficina de Bancada: Missão 2 (Etapa 2: 15 min)",
-    subtitulo: "Auto-Entrevista com Escopo & Trava [necessita verificação]",
-    tempoEstimado: "15 min",
-    passos: [
-      "1. Delimite o Escopo: Escolha 1 entrega concreta da sua rotina (e-mail formal, roteiro de aula ou cronograma).",
-      "2. Auto-Entrevista Guiada: Envie o modelo de Meta-Prompting solicitando que o ChatGPT faça 4 perguntas antes de responder.",
-      "3. Diálogo e Refinamento: Responda às perguntas da IA no chat e observe como a resposta nasce personalizada.",
-      "4. Trava de Segurança UNESCO: Adicione a trava anti-alucinação: 'Marque qualquer dado incerto com [necessita verificação]'.",
-      "5. Registre o prompt final e sua reflexão crítica no Portfólio Digital."
-    ],
-    destaqueDiagnostica: {
-      icone: "🤖",
-      titulo: "Etapa 2: Auto-Entrevista Ativa",
-      desc: "Transfira o esforço da pergunta para a IA, mantendo o escopo delimitado e blindando a resposta com rótulo de incerteza.",
-      tagAviso: "Meta-Prompting & Rótulo de Incerteza"
-    },
-    conducao: "Co-docência (Laura e Maria circulando pela turma)",
-    notasProfessora: {
-      tempoSugerido: "15 min (02:20 - 02:35)",
-      objetivoSlide: "Conduzir a Etapa 2 da oficina com auto-entrevista ancorada em escopo prévio e trava de grounding.",
-      oQueFalar: "(Maria) \"Parabéns pelo trabalho na Missão 1! Pausa rápida de 2 minutos para alinharmos a Etapa 2: agora vocês vão inverter o papel do ChatGPT, exatamente como a Laura demonstrou no telão. Mas lembrem-se: definam o escopo primeiro! Digam o que querem e peçam 4 perguntas essenciais. E não se esqueçam da trava de segurança: mandem a IA marcar incertezas com '[necessita verificação]'. Vocês têm 15 minutos de bancada!\""
-    }
-  },
-
-  // =========================================================================
-  // BANCADA DE TESTES: RESULTADOS REAIS DOS PROMPTS (Slides 14 a 17)
-  // =========================================================================
-  {
-    numero: 14,
-    id: 14,
     bloco: 3,
     tipo: "teste-prompt",
     tipoPrompt: "negativo",
@@ -498,8 +469,8 @@ export const slidesComNotas = [
     respostaObtida: {
       resumo: "Receita descrita como cremosa, deliciosa e fácil de fazer.",
       metricas: [
-        "Tempo de preparo: 30 minutos",
-        "Rendimento arbitrado: 2 a 3 pessoas",
+        "Tempo: 30 minutos",
+        "Rendimento: 2 a 3 pessoas (arbitrado)",
         "Nível: fácil",
         "5 etapas convencionais"
       ],
@@ -521,14 +492,14 @@ export const slidesComNotas = [
     },
     conducao: "Co-docência (Laura e Maria)",
     notasProfessora: {
-      tempoSugerido: "4 min (02:35 - 02:39)",
+      tempoSugerido: "3 min (02:20 - 02:23)",
       objetivoSlide: "Demonstrar o comportamento padrão da IA diante de prompts de 1 linha: ela assume decisões arbitrárias (2-3 pessoas, 30 min) e tenta adivinhar a intenção ao final.",
       oQueFalar: "(Laura) \"Vejam o resultado real na tela: mandamos apenas 'Quero aprender a fazer macarrão parisiense'. A IA respondeu uma receita bonita e correta, mas vejam o que ela fez por conta própria: definiu que a refeição é para 2 a 3 pessoas e que demora 30 minutos! E no final, ela mesma percebeu a falta de contexto e perguntou se queríamos estilo restaurante ou econômico. Isso gera retrabalho e não resolve a demanda real da sua rotina!\""
     }
   },
   {
-    numero: 15,
-    id: 15,
+    numero: 14,
+    id: 14,
     bloco: 3,
     tipo: "teste-prompt",
     tipoPrompt: "marrom",
@@ -540,8 +511,8 @@ export const slidesComNotas = [
     respostaObtida: {
       resumo: "O assistente assumiu o papel de um chef francês e apresentou uma receita descrita como cremosa, elegante e com toque de bistrô francês.",
       metricas: [
-        "Tempo de preparo: 30 a 40 minutos",
-        "Rendimento arbitrado: 2 a 3 pessoas",
+        "Tempo: 30 a 40 minutos",
+        "Rendimento: 2 a 3 pessoas (arbitrado)",
         "Nível: fácil a intermediário",
         "5 segredos de chef incluídos"
       ],
@@ -564,14 +535,14 @@ export const slidesComNotas = [
     },
     conducao: "Co-docência (Laura e Maria)",
     notasProfessora: {
-      tempoSugerido: "4 min (02:39 - 02:43)",
+      tempoSugerido: "3 min (02:23 - 02:26)",
       objetivoSlide: "Evidenciar que personas sem restrições geram verborragia, teatro e complexidade desnecessária (vinho branco, 3 perguntas adicionais) sem saber quem vai comer.",
       oQueFalar: "(Maria) \"Olhem o que aconteceu quando pedimos para 'atuar como o melhor chef da França': a receita ficou elegante, com toque de bistrô, sugeriu vinho branco e acrescentou cinco 'segredos de chef'. Mas resolveu a nossa vida? Não! O tempo subiu para 40 minutos, o rendimento continuou genérico em 2 a 3 pessoas e a IA fez 3 perguntas complexas ao final. Persona vazia só produz maquiagem no texto, não inteligência operacional!\""
     }
   },
   {
-    numero: 16,
-    id: 16,
+    numero: 15,
+    id: 15,
     bloco: 3,
     tipo: "teste-prompt",
     tipoPrompt: "positivo",
@@ -585,7 +556,7 @@ export const slidesComNotas = [
       metricas: [
         "Rendimento: 5 pessoas com fartura",
         "Preparo paralelo (ganho de tempo)",
-        "1 kg de macarrão (porção calculada)",
+        "1 kg de macarrão (calculado)",
         "Zero perguntas adicionais"
       ],
       ingredientes: "1 kg de macarrão (penne, parafuso ou espaguete), 400g a 500g de presunto picado, 2 latas ou 300g de ervilha (preferência congelada), 2 caixinhas de creme de leite (400g), 1 copo de requeijão ou 200g de queijo cremoso, 1 cebola média picada, 2 dentes de alho picados, 2 colheres de sopa de manteiga ou azeite, 1 xícara de leite (se necessário), 100g de queijo parmesão ralado e temperos (sal, noz-moscada, pimenta-do-reino).",
@@ -606,14 +577,14 @@ export const slidesComNotas = [
     },
     conducao: "Co-docência (Laura e Maria)",
     notasProfessora: {
-      tempoSugerido: "4 min (02:43 - 02:47)",
+      tempoSugerido: "3 min (02:26 - 02:29)",
       objetivoSlide: "Demonstrar a eficácia do C-T-F-R: cálculo correto de ingredientes (1 kg), preparo em paralelo para economizar tempo e ausência de perguntas residuais.",
       oQueFalar: "(Laura) \"E agora olhem a mágica da estrutura C-T-F-R: quando você define que são 5 pessoas e que quer fartura, a IA calcula automaticamente 1 kg de macarrão e 500g de presunto! Quando você avisa que tem pouco tempo, ela organiza o modo de preparo em paralelo: fazer o molho enquanto a água ferve. E o mais impressionante: quantas perguntas ela fez ao final? NENHUMA! Porque o contexto e os limites humanos já estavam todos definidos no prompt!\""
     }
   },
   {
-    numero: 17,
-    id: 17,
+    numero: 16,
+    id: 16,
     bloco: 3,
     tipo: "quadro-comparativo",
     categoria: "Síntese dos Testes Empíricos",
@@ -683,9 +654,38 @@ export const slidesComNotas = [
     ],
     conducao: "Co-docência (Laura e Maria)",
     notasProfessora: {
-      tempoSugerido: "4 min (02:47 - 02:51)",
-      objetivoSlide: "Consolidar os aprendizados práticos da bancada antes da socialização através da tabela comparativa dos 9 critérios.",
+      tempoSugerido: "4 min (02:29 - 02:33)",
+      objetivoSlide: "Consolidar os aprendizados práticos da bancada antes do Exercício 2 através da tabela comparativa dos 9 critérios.",
       oQueFalar: "(Maria) \"Este quadro resume com precisão cirúrgica a grande lição do nosso Encontro 3. Vejam a linha de 'Perguntas adicionais': o prompt vago exigiu mais conversa; o falso bom prompt exigiu três decisões complexas; o estruturado entregou o trabalho pronto. E vejam o 'Rendimento': só o estruturado garantiu comida para as 5 pessoas com fartura! É isso que transforma a IA em uma ferramenta de produtividade real no trabalho e nos estudos.\""
+    }
+  },
+  {
+    numero: 17,
+    id: 17,
+    bloco: 3,
+    tipo: "missao-diagnostica",
+    categoria: "Prática Guiada no Laboratório (Etapa 2)",
+    titulo: "Oficina de Bancada: Missão 2 (Etapa 2: 15 min)",
+    subtitulo: "Auto-Entrevista com Escopo & Trava [necessita verificação]",
+    tempoEstimado: "15 min",
+    passos: [
+      "1. Delimite o Escopo: Escolha 1 entrega concreta da sua rotina (e-mail formal, roteiro de aula ou cronograma).",
+      "2. Auto-Entrevista Guiada: Envie o modelo de Meta-Prompting solicitando que o ChatGPT faça 4 perguntas antes de responder.",
+      "3. Diálogo e Refinamento: Responda às perguntas da IA no chat e observe como a resposta nasce personalizada.",
+      "4. Trava de Segurança UNESCO: Adicione a trava anti-alucinação: 'Marque qualquer dado incerto com [necessita verificação]'.",
+      "5. Registre o prompt final e sua reflexão crítica no Portfólio Digital."
+    ],
+    destaqueDiagnostica: {
+      icone: "🤖",
+      titulo: "Etapa 2: Auto-Entrevista Ativa",
+      desc: "Transfira o esforço da pergunta para a IA, mantendo o escopo delimitado e blindando a resposta com rótulo de incerteza.",
+      tagAviso: "Meta-Prompting & Rótulo de Incerteza"
+    },
+    conducao: "Co-docência (Laura e Maria circulando pela turma)",
+    notasProfessora: {
+      tempoSugerido: "15 min (02:33 - 02:48)",
+      objetivoSlide: "Conduzir a Etapa 2 da oficina com auto-entrevista ancorada em escopo prévio e trava de grounding.",
+      oQueFalar: "(Maria) \"Viram no comparativo como o prompt estruturado eliminou o retrabalho e zerou as perguntas desnecessárias? Agora é a vez de vocês dominarem a Etapa 2: vamos praticar a Auto-Entrevista guiada (Meta-Prompting) e aplicar a Trava de Segurança [necessita verificação]! Definam o escopo da tarefa de vocês e deixem a IA formular 4 perguntas essenciais. 15 minutos focados na bancada!\""
     }
   },
 

@@ -25,8 +25,8 @@ export const fioDaMeada = {
     {
       ato: 3,
       tempo: "01:30 às 03:00 (90 min)",
-      titulo: "Ato 3: Meta-Prompting Guiado, Bancada em 3 Níveis, Testes Empíricos & Referências — Laura & Maria",
-      desc: "Retorno do intervalo com Laura conduzindo a Camada 3: diálogo iterativo e Meta-Prompting com escopo prévio delimitado [01:30 - 01:45], seguido dos princípios éticos da UNESCO (Agência Humana, Revisão Textual ≠ Checagem Factual e Trava [necessita verificação]) [01:45 - 02:00]. Condução conjunta da Oficina de Bancada nos computadores com scaffolding em 3 níveis (Transformar o Vago, Limpar o Ruído e Auto-Entrevista) [02:00 - 02:35]. Apresentação da Bancada de Testes Empíricos (Macarrão Parisiense: Vago, Falso Bom, Estruturado) e do Quadro Comparativo das Diferenças (Slides 14 a 17) [02:35 - 02:51]. Roda de socialização (Show & Tell - Slide 18) [02:51 - 03:01] e consolidação do Checklist de Bolso, referências bibliográficas da OpenAI/UNESCO/OSSE e spoiler do Encontro 4 (Slides 19 e 20) [03:01 - 03:07].",
+      titulo: "Ato 3: Meta-Prompting, Bancada, Testes Reais, Comparativo & Missão 2 — Laura & Maria",
+      desc: "Retorno do intervalo com Laura conduzindo a Camada 3: diálogo iterativo e Meta-Prompting com escopo prévio delimitado [01:30 - 01:45], seguido dos princípios éticos da UNESCO (Agência Humana, Revisão Textual ≠ Checagem Factual e Trava [necessita verificação]) [01:45 - 02:00]. Oficina de Bancada: Missão 1 nos computadores (Slide 12) [02:00 - 02:20]. Apresentação da Bancada de Testes Empíricos (Macarrão Parisiense: Vago, Falso Bom, Estruturado) e do Quadro Comparativo das Diferenças no telão (Slides 13 a 16) [02:20 - 02:33]. Oficina de Bancada: Missão 2 com Auto-Entrevista ancorada e trava de incerteza (Slide 17) [02:33 - 02:48]. Roda de socialização (Show & Tell - Slide 18) [02:48 - 02:56] e consolidação do Checklist de Bolso, referências bibliográficas da OpenAI/UNESCO/OSSE e encerramento (Slides 19 e 20) [02:56 - 03:00].",
       gatilho: "Quando você não souber como estruturar todos os detalhes, delimite o escopo e faça a IA perguntar: o Meta-Prompting transfere o esforço da pergunta para a máquina!"
     }
   ],
