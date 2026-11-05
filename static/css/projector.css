@@ -1235,7 +1235,7 @@
       gap: 1rem;
     }
 
-    /* --- TIPO 10: DUAS COLUNAS GERAIS --- */
+    /* --- TIPO 10: DUAS OU TRÊS COLUNAS GERAIS --- */
     .grid-colunas {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1243,11 +1243,20 @@
       width: 100%;
     }
 
+    .grid-colunas.grid-3colunas {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
+
     .card-coluna {
       background: var(--bg-card);
       border: 2px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 2.75rem;
+    }
+
+    .grid-colunas.grid-3colunas .card-coluna {
+      padding: 1.6rem 1.35rem;
     }
 
     .card-col-header {
@@ -1260,6 +1269,19 @@
       border-bottom: 2px solid var(--border-subtle);
       padding-bottom: 1.25rem;
       margin-bottom: 1.75rem;
+    }
+
+    .grid-colunas.grid-3colunas .card-col-header {
+      font-size: 1.35rem;
+      padding-bottom: 0.85rem;
+      margin-bottom: 1.15rem;
+      gap: 0.6rem;
+    }
+
+    .grid-colunas.grid-3colunas .card-col-list li {
+      font-size: 1.12rem;
+      line-height: 1.45;
+      margin-bottom: 0.75rem;
     }
 
     .card-col-list {
@@ -2574,6 +2596,27 @@ body.export-mode .slide-card.export-slide-page {
   .export-slide-page .grid-colunas,
   .export-slide-page .grid-comparativo-duplo {
     gap: 16px !important;
+  }
+
+  .export-slide-page .grid-colunas.grid-3colunas {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .export-slide-page .grid-colunas.grid-3colunas .card-coluna {
+    padding: 12px 10px !important;
+  }
+
+  .export-slide-page .grid-colunas.grid-3colunas .card-col-header {
+    font-size: 0.95rem !important;
+    margin-bottom: 8px !important;
+    padding-bottom: 5px !important;
+  }
+
+  .export-slide-page .grid-colunas.grid-3colunas .card-col-list li {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 5px !important;
   }
 
   .export-slide-page .slide-presenter-pill {

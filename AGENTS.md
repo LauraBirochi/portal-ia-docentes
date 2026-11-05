@@ -38,6 +38,12 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
 - **Diretriz de Ferramentas:** Foco exclusivo no ChatGPT durante o encontro para evitar sobrecarga cognitiva nos alunos e acolher o aluno iniciante.
 - **Paleta Óptica dos Slides (Deep Navy):** Aplicada também no Encontro 3 (`body[data-meeting="3"]` em `static/css/projector.css`), mantendo a identidade visual de alto contraste e legibilidade com fundo Deep Navy `#0f172a` e cartões Slate Navy `#1e293b`.
 - **Deck Consolidado (15 Slides):** 15 slides distribuídos em 4 blocos temáticos (Fundamentos & Estrutura dos 4 Blocos, Práticas no Mundo Real & Blindagem de Privacidade com Cartão-Postal, Diálogo Iterativo & Oficina nos Computadores com Missões 1 e 2 no Portfólio Digital, e Socialização & Fechamento com Checklist de Bolso).
+- **Refinamento Pedagógico (NotebookLM):**
+  - *Duelo de 3 Vias (Slide 4):* Desconstrução da Ilusão da Persona (`❌ Vago` vs `⚠️ Falso Bom Prompt` vs `✅ Mestre C-T-F-R`), comprovando que adjetivos vazios geram verborragia sem ganho factual.
+  - *Framework C-T-F-R com Markdown (Slide 5):* Persona integrada a Contexto e padronização com cabeçalhos `#`.
+  - *Meta-Prompting Ancorado (Slide 10):* Inversão de papel com escopo prévio delimitado para evitar travamento da IA.
+  - *Agência Humana UNESCO (Slide 11):* Diferenciação entre *Revisão Textual* e *Checagem Factual* com trava operacional `[necessita verificação]`.
+  - *Scaffolding em 3 Níveis & Dontpad (Slides 12-13 e Cockpit):* Oficina de bancada com andaime gradual (Vago ➔ Limpar Ruído ➔ Auto-Entrevista) e suporte a clipboard ágil via Dontpad (`dontpad.com/CURSO-IA-2026-IFSP`).
 - **Roteiro de Palco Completo:** Co-docência equilibrada entre Laura e Maria com tempos sugeridos (minuto a minuto), objetivos pedagógicos e falas em primeira pessoa.
 - **Infraestrutura Modular & PDF 16:9:** Compilado em `static/js/data/encontro3-data.js` via `python scripts/build_data.py 3` e exportado como PDF vetorial nativo em `static/pdf/slides-encontro-3.pdf`. Rota `/slides/3` e Cockpit `/encontro/3` ativos e 100% integrados.
 

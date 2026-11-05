@@ -150,8 +150,10 @@ function initProjectorEngine() {
   }
 
   function renderColumnsGeneric(colunas) {
+    const colCount = (colunas || []).length;
+    const gridClass = colCount === 3 ? 'grid-colunas grid-3colunas' : 'grid-colunas';
     return `
-      <div class="grid-colunas">
+      <div class="${gridClass}">
         ${(colunas || []).map((col, idx) => {
       const { colClass, bulletChar, defaultIcon } = resolveColumnStyle(col, idx);
       return `

@@ -20,10 +20,10 @@ export const perguntasAlunos = [
   },
   {
     numero: 3,
-    duvida: "Dizer 'Atue como um especialista em X' realmente melhora a qualidade da resposta ou é apenas um mito da internet?",
-    resposta: "Funciona de verdade! Na engenharia de prompt, isso se chama 'Persona Prompting'. Quando você define um papel ('Atue como um auditor pedagógico experiente' ou 'Atue como um engenheiro eletricista'), você 'acende' clusters de conceitos e vocabulário técnico aprendidos durante o treinamento, elevando o rigor analítico e podando termos vagos de senso comum.",
-    pontoDidatico: "Diferencie a persona 'cosmética' (dizer apenas 'seja inteligente') da persona contextualizada ('atue como orientador de estudos focado em estudantes trabalhadores').",
-    dicaPratica: "Combine o papel com o público-alvo: 'Atue como um professor experiente explicando o conceito de autoatenção para alunos iniciantes sem conhecimento técnico prévio.'"
+    duvida: "Dizer 'Atue como o maior especialista do mundo incrível e perfeito' realmente melhora a precisão factual?",
+    resposta: "Não! Pesquisas científicas recentes comprovam que personas superlativas ('o maior especialista do mundo', 'plano perfeito e incrível') têm efeito nulo ou até negativo na exatidão factual de tarefas objetivas. Elas geram verborragia, jargões desnecessários e textos mais longos sem nenhum ganho real de substância. A persona serve exclusivamente para regular o tom de voz, público-alvo e estilo de comunicação (Diferenciação Funcional da Persona), mas deve ser omitida ou minimizada em cálculos, tabelas de rotina e análises diretas.",
+    pontoDidatico: "Desmistifique o 'Falso Bom Prompt': ensine que a precisão vem de contexto com dados reais, verbos de tarefa diretos e restrições negativas, e não de elogios mágicos à IA.",
+    dicaPratica: "Em vez de adjetivos vazios, use o papel apenas para o tom e foque nas restrições: 'Atue como comunicador público. Explique este edital para alunos iniciantes em uma tabela com 3 colunas, sem usar juridiquês.'"
   },
   {
     numero: 4,
@@ -52,6 +52,13 @@ export const perguntasAlunos = [
     resposta: "A melhor estratégia é a técnica em dois estágios: primeiro force a IA a extrair analiticamente os dados fatuais e as obrigações em tópicos; depois peça a reescrita desses tópicos em linguagem simples e acessível. Pedir simplificação direta de uma só vez aumenta o risco de a IA resumir demais e cortar cláusulas essenciais.",
     pontoDidatico: "A técnica de decomposição de tarefas complexas em etapas sucessivas é uma das ferramentas mais sofisticadas da engenharia de prompt.",
     dicaPratica: "Use a instrução encadeada: 'Passo 1: Extraia em tópicos apenas os prazos e obrigações do texto abaixo. Passo 2: Reescreva esses tópicos em linguagem simples para que qualquer pessoa compreenda sem jargões.'"
+  },
+  {
+    numero: 8,
+    duvida: "Se o texto gerado pelo ChatGPT está fluente, elegante e sem erros de português, posso confiar que as informações são verdadeiras?",
+    resposta: "Nunca! Esse é o maior ponto cego dos usuários iniciantes: confundir revisão textual com checagem factual. O ChatGPT é um escritor improvisador que prevê palavras com base em probabilidade; ele não possui consciência nem verifica prateleiras como um bibliotecário. Um texto pode ser gramaticalmente perfeito e, ao mesmo tempo, conter leis inexistentes, citações inventadas e números distorcidos. A curadoria factual externa é responsabilidade 100% humana (UNESCO).",
+    pontoDidatico: "Reforce a distinção essencial: coesão textual é papel da máquina; verdade e responsabilidade ética e jurídica são prerrogativas humanas inegociáveis.",
+    dicaPratica: "Inclua sempre no prompt a Trava de Segurança da UNESCO: 'Se você não tiver certeza de algum dado, responda não especificado ou marque o trecho com [necessita verificação]. Não tente adivinhar.'"
   }
 ];
 

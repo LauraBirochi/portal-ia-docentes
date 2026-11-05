@@ -637,8 +637,8 @@ const CockpitRenderer = {
           </div>
         ` : ''}
 
-        <!-- Duelo dos Prompts: Livre vs. Estruturado -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem;">
+        <!-- Duelo dos Prompts: Livre vs. Falso Bom vs. Estruturado -->
+        <div style="display: grid; grid-template-columns: ${oficina.falsoBomPrompt ? 'repeat(auto-fit, minmax(280px, 1fr))' : '1fr 1fr'}; gap: 1.25rem; margin-top: 1.5rem;">
           <div class="pedagogical-highlight-card" style="border-top: 4px solid #ef4444;">
             <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
               <span>❌</span>
@@ -653,14 +653,52 @@ const CockpitRenderer = {
             </div>
           </div>
 
+          ${oficina.falsoBomPrompt ? `
+            <div class="pedagogical-highlight-card" style="border-top: 4px solid #f59e0b;">
+              <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
+                <span>⚠️</span>
+                <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">2ª Tentativa: Falso Bom Prompt (Ilusão da Persona)</h4>
+              </div>
+              <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; margin-bottom: 0.75rem; border: 1px solid var(--border); line-height: 1.45;">${oficina.falsoBomPrompt?.prompt || ''}</pre>
+              <div style="font-size: 0.85rem; color: var(--text-secondary);">
+                <strong style="color: #f59e0b;">Falhas prováveis:</strong>
+                <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0;">
+                  ${(oficina.falsoBomPrompt?.problemasProvaveis || []).map(p => `<li>${p}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+          ` : ''}
+
           <div class="pedagogical-highlight-card" style="border-top: 4px solid #22c55e;">
             <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
               <span>✅</span>
-              <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">2ª Tentativa: Prompt Aprimorado (5 Elementos)</h4>
+              <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">${oficina.falsoBomPrompt ? '3ª Tentativa: Prompt Mestre (C-T-F-R)' : '2ª Tentativa: Prompt Aprimorado (5 Elementos)'}</h4>
             </div>
             <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; border: 1px solid var(--border); line-height: 1.45;">${oficina.segundaTentativa?.prompt || ''}</pre>
           </div>
         </div>
+
+        <!-- Cards de Modelos de Prompts (Portfólio Digital) -->
+        ${oficina.promptsModelo ? `
+          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
+              <span style="font-size: 1.25rem;">📌</span>
+              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Cards de Prompts-Modelo para Bancada (Portfólio Digital do Aluno)</h4>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+              ${oficina.promptsModelo.map(pm => `
+                <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem; border-top: 3px solid ${pm.cor || 'var(--accent)'}; display: flex; flex-direction: column;">
+                  <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
+                    <span>${pm.icone || '📝'}</span>
+                    <strong style="color: var(--text-main); font-size: 0.95rem;">${pm.titulo}</strong>
+                  </div>
+                  <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.6rem; line-height: 1.4;">${pm.descricao}</p>
+                  <pre style="background: var(--bg-body); color: var(--text-main); padding: 0.6rem; border-radius: 4px; font-size: 0.8rem; font-family: var(--font-mono); white-space: pre-wrap; margin-top: auto; border: 1px solid var(--border);">${pm.codigo}</pre>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
 
         <!-- Tabela dos 5 Elementos -->
         ${oficina.cincoElementos ? `

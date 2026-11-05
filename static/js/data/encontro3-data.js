@@ -109,59 +109,71 @@ const blocosTematicos = [
 
 const fioDaMeada = {
   objetivoCentral: "Qual é a grande mensagem que os alunos precisam levar hoje?",
-  mensagemChave: "Trate o ChatGPT como um estagiário brilhante de alta capacidade que possui contexto zero: a utilidade e precisão da resposta dependem da aplicação dos 4 Blocos Estruturais (Contexto & Papel, Tarefa, Formato e Restrições) e do domínio do Diálogo Iterativo (Meta-Prompting), com supervisão e validação crítica 100% humana.",
-  explicacaoObjetivo: "Superar de forma definitiva o 'pedido vago' (que desperdiça tempo e gera clichês), compreendendo como orientar a atenção da rede neural no ChatGPT através do modelo mental do estagiário, evoluindo a sigla PCTFR do Encontro 2 para a arquitetura C-T-F-R (com Papel incorporado em Contexto), dominando a redação e a simplificação de jargões complexos, experimentando o Meta-Prompting com modelagem visual guiada e aplicando travas de incerteza [necessita verificação] e protocolos de privacidade (LGPD).",
+  mensagemChave: "A qualidade e a utilidade da resposta da IA não dependem de tentar fazê-la parecer esperta com adjetivos vazios, mas sim da clareza, especificidade e limitação do contexto humano que a orienta.",
+  explicacaoObjetivo: "Superar de forma definitiva o 'pedido vago' e desmistificar a 'Ilusão da Persona' (demonstrando que adjetivos vazios como 'incrível' e 'especialista premiado' geram verborragia sem ganho factual). Ensinar a orientar a atenção da rede neural no ChatGPT através do modelo mental do estagiário no 1º dia, evoluindo a sigla PCTFR para a arquitetura C-T-F-R estruturada com marcadores Markdown (#), dominando a redação e a simplificação de jargões complexos, experimentando o Meta-Prompting com escopo prévio e aplicando travas de incerteza [necessita verificação], a distinção entre revisão textual e checagem factual, e a Regra do Cartão-Postal (LGPD).",
   atos: [
     {
       ato: 1,
       tempo: "00:00 às 00:45 (45 min)",
-      titulo: "Ato 1: O Handoff do Estagiário & os 4 Blocos C-T-F-R (Evolução do PCTFR) — Laura & Maria",
-      desc: "Acolhimento da turma e conexão com as descobertas dos Encontros 1 e 2. Introdução do modelo mental do estagiário de alta capacidade com contexto zero. Apresentação do confronto de bancada 'Prompt or Flop' para demonstrar empiricamente por que comandos livres ativam a média estatística rasa e como os 4 Blocos (Contexto & Papel, Tarefa, Formato e Restrições) destravam o potencial sob medida da ferramenta.",
-      gatilho: "Quem digita um pedido genérico recebe um clichê motivacional; quem faz o handoff estruturado com contexto, papel e limites recebe trabalho pronto!"
+      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura & Maria",
+      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Introdução do modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25]. Apresentação do Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Apresentação dos 4 Blocos (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
+      gatilho: "Quem digita um pedido vago recebe um clichê; quem usa adjetivos vazios recebe verborragia; quem faz o handoff estruturado com contexto e restrições recebe trabalho pronto!"
     },
     {
       ato: 2,
       tempo: "00:45 às 01:30 (45 min c/ Intervalo)",
-      titulo: "Ato 2: Práticas no Mundo Real, Regra do Cartão-Postal & Intervalo Pedagógico (Maria & Laura)",
-      desc: "Demonstração de casos práticos em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas) e Camada 2 (redação executiva e simplificação de jargões/editais burocráticos em linguagem clara). Blindagem de segurança de dados através da 'Regra do Cartão-Postal' e da técnica de anonimização (placeholders), preparando a turma para a pausa de 15 minutos do café.",
-      gatilho: "Nunca envie à IA o que você não escreveria em um cartão-postal aberto: anonimize identidades, use [CLIENTE X] e proteja seus dados profissionais!"
+      titulo: "Ato 2: Aplicações Realmente Úteis, Regra do Cartão-Postal & Intervalo — Maria & Laura",
+      desc: "Demonstração de casos práticos em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas) [00:45 - 00:55] e Camada 2 (redação profissional e simplificação de jargões/editais burocráticos em linguagem clara) [00:55 - 01:05]. Blindagem de privacidade através da 'Regra do Cartão-Postal' e da técnica de anonimização com placeholders ([CLIENTE A], [VALOR Y]) [01:05 - 01:15]. Pausa para café e descanso cognitivo de 15 minutos [01:15 - 01:30].",
+      gatilho: "Nunca envie à IA o que você não escreveria em um cartão-postal aberto: anonimize identidades, use [CLIENTE A] e proteja seus dados profissionais!"
     },
     {
       ato: 3,
       tempo: "01:30 às 03:00 (90 min)",
-      titulo: "Ato 3: Meta-Prompting Guiado, Bancada Fragmentada & Show and Tell (Laura & Maria)",
-      desc: "Retorno do intervalo com a Camada 3: diálogo iterativo e Meta-Prompting (com demonstração guiada de 3 minutos no projetor antes da prática). Alinhamento ético com as diretrizes da UNESCO sobre Agência Humana e aplicação de travas com rótulo [necessita verificação]. Condução da Oficina de Bancada nos computadores em duas etapas fragmentadas (Etapa 1: Duelo de Prompts por 20 min; Etapa 2: Meta-Prompting por 15 min), seguida de Roda de Socialização (Show & Tell) e consolidação do Checklist de Bolso.",
-      gatilho: "Quando você não souber exatamente como estruturar o comando, faça a IA perguntar: o Meta-Prompting transfere o esforço da pergunta para a máquina!"
+      titulo: "Ato 3: Meta-Prompting Guiado, Bancada em 3 Níveis & Show and Tell — Laura & Maria",
+      desc: "Retorno do intervalo com a Camada 3: diálogo iterativo e Meta-Prompting com escopo prévio delimitado, incluindo modelagem visual guiada de 3 minutos no projetor [01:30 - 01:45]. Alinhamento ético com as diretrizes da UNESCO (Agência Humana, Revisão Textual ≠ Checagem Factual e Trava [necessita verificação]) [01:45 - 02:00]. Condução da Oficina de Bancada nos computadores com scaffolding em 3 níveis (Transformar o Vago, Limpar o Ruído e Auto-Entrevista) [02:00 - 02:40]. Roda de socialização (Show & Tell) [02:40 - 02:52] e consolidação do Checklist de Bolso com spoiler da multimodalidade do Encontro 4 [02:52 - 03:00].",
+      gatilho: "Quando você não souber como estruturar todos os detalhes, delimite o escopo e faça a IA perguntar: o Meta-Prompting transfere o esforço da pergunta para a máquina!"
     }
   ],
   glossario: [
     {
       termo: "Modelo Mental do Estagiário Inteligente",
-      def: "Abordagem cognitiva que enxerga o ChatGPT como um assistente que leu bilhões de textos e domina regras formais, mas não tem intuição sobre seus objetivos, empresa ou preferências se você não fornecer o briefing completo."
+      def: "Abordagem cognitiva que enxerga o ChatGPT como um estagiário de alta capacidade de processamento que leu bilhões de textos, mas possui contexto zero sobre a sua rotina, critérios de qualidade ou preferências se você não fornecer o briefing completo (handoff)."
+    },
+    {
+      termo: "A Ilusão da Persona ('Falso Bom Prompt')",
+      def: "Crença equivocada de que adicionar instruções superlativas ('atue como o melhor especialista do mundo', 'faça um plano incrível e perfeito') torna a IA mais precisa. Pesquisas científicas comprovam efeito nulo ou negativo na exatidão factual em tarefas objetivas, gerando verborragia e jargão sem substância."
+    },
+    {
+      termo: "Diferenciação Funcional da Persona",
+      def: "Diretriz pedagógica segundo a qual personas servem exclusivamente para regular tom de voz, público-alvo, perspectiva ou estilo de comunicação, devendo ser omitidas em cálculos, tabelas organizacionais e análises de dados diretas."
     },
     {
       termo: "Framework C-T-F-R (Evolução do PCTFR)",
-      def: "Arquitetura mestre de engenharia de instruções composta por: Contexto & Papel (Persona incorporada e cenário real), Tarefa (verbo direto e ação clara), Formato (tabela, tópicos, tom e extensão) e Restrições (regras negativas e travas de não-invenção)."
+      def: "Arquitetura mestre de engenharia de instruções composta por: Contexto & Papel (Persona incorporada e cenário real), Tarefa (verbo direto e ação clara), Formato (tabela, tópicos, tom e extensão com marcadores Markdown #) e Restrições (regras negativas e travas de não-invenção)."
     },
     {
-      termo: "Multi-turn Prompting (Diálogo Iterativo)",
-      def: "Técnica de lapidação conversacional contínua na mesma sessão, onde o usuário solicita ajustes específicos (tom, tamanho, inclusão de colunas) sem descartar a resposta anterior ou recomeçar o chat do zero."
+      termo: "Scaffolding Pedagógico em 3 Níveis (Andaime)",
+      def: "Estratégia gradual de aprendizagem para adultos iniciantes: Nível 1 (transformar o pedido vago de 1 linha), Nível 2 (limpar adjetivos vazios e focar em funções) e Nível 3 (auto-entrevista com meta-prompting e travas de incerteza), prevenindo ansiedade e gerando autonomia."
     },
     {
-      termo: "Meta-Prompting (Prompt Reverso)",
-      def: "Estratégia avançada onde se instrui o modelo a atuar como engenheiro de requisitos e fazer perguntas de sondagem ao usuário para esclarecer dúvidas e lacunas de contexto antes de gerar a entrega final."
+      termo: "O Escritor Improvisador vs. O Bibliotecário",
+      def: "Metáfora cognitiva: o Google funciona como um bibliotecário que busca livros prontos na prateleira; o ChatGPT é um escritor improvisador probabilístico que monta o texto palavra por palavra por predição estatística (super autocompletar), podendo soar fluente mesmo ao alucinar."
     },
     {
-      termo: "Modelagem Visual Guiada (Andaimes / Scaffolding)",
-      def: "Prática pedagógica em que a dupla docente demonstra a dinâmica de meta-prompting ao vivo no telão por 3 minutos antes de liberar os estudantes para a prática individual nos computadores, prevenindo a paralisia do iniciante."
+      termo: "Revisão Textual vs. Checagem Factual",
+      def: "Distinção crítica de agência humana: revisar a fluência, ortografia e coesão de um texto não garante sua verdade. Um texto gramaticalmente perfeito gerado por IA pode conter citações, leis e dados totalmente inventados, exigindo auditoria fora do modelo."
+    },
+    {
+      termo: "Meta-Prompting com Escopo Prévio",
+      def: "Estratégia avançada onde se instrui o modelo a atuar como entrevistador para fazer 4 perguntas essenciais antes de gerar a resposta. Exige delimitação prévia de escopo para evitar travamento da IA e perguntas genéricas."
     },
     {
       termo: "Trava com Rótulo de Incerteza ([necessita verificação])",
-      def: "Restrição negativa explícita recomendada pela OpenAI (ex: 'Se não constar no material ou faltarem dados, responda não especificado ou marque com [necessita verificação]') que impede a IA de preencher lacunas factuais com dados inventados."
+      def: "Restrição negativa explícita recomendada pela UNESCO e OpenAI ('Se não tiver certeza ou faltarem dados, responda não especificado ou marque com [necessita verificação]') que impede a IA de preencher lacunas com dados inventados."
     },
     {
-      termo: "Regra do Cartão-Postal & Anonimização",
-      def: "Protocolo de higiene e privacidade (LGPD) que consiste em substituir dados sensíveis reais (nomes, CPFs, empresas e valores sigilosos) por identificadores neutros como [PROFESSOR A] ou [ESCOLA Y] antes de submeter o prompt à IA."
+      termo: "Regra do Cartão-Postal & Anonimização (LGPD)",
+      def: "Protocolo de higiene e privacidade que trata a caixa de texto da IA como um cartão-postal aberto, substituindo nomes, empresas e valores sigilosos por identificadores neutros ([CLIENTE A], [EMPRESA X], [VALOR Y]) antes do envio."
     },
     {
       termo: "Agência Humana (Diretriz UNESCO)",
@@ -284,38 +296,49 @@ const slidesComNotas = [
     id: 4,
     bloco: 1,
     tipo: "comparativo",
-    categoria: "Demonstração \"Prompt or Flop\"",
-    titulo: "Prompt or Flop? O Impacto da Clareza",
-    subtitulo: "Por que pedidos livres geram respostas vagas e como a estrutura altera o resultado",
+    categoria: "Duelo de 3 Vias (Prompt or Flop)",
+    titulo: "Prompt or Flop? O Duelo de 3 Vias",
+    subtitulo: "Do pedido vago à ilusão da persona: por que adjetivos vazios não orientam a IA",
     conducao: "Condução: Maria",
     colunas: [
       {
-        tag: "❌ Prompt Livre / Vago (FLOP)",
+        tag: "❌ Prompt Vago (FLOP)",
         icone: "⚠️",
         tipo: "alerta",
         bullet: "✕",
         itens: [
           "Comando: \"Me ajude a organizar minha semana.\"",
-          "Diagnóstico: A rede neural ativa o caminho médio mais genérico possível sem restrições.",
-          "Resultado da IA: Dicas genéricas de produtividade e frases motivacionais padrão ('beba água', 'durma bem')."
+          "Diagnóstico: Ativa o caminho médio estatístico mais genérico da rede neural.",
+          "Resultado da IA: Dicas vazias de autoajuda e frases motivacionais ('beba água', 'durma bem')."
         ]
       },
       {
-        tag: "✅ Prompt Estruturado (PROMPT)",
+        tag: "⚠️ Falso Bom Prompt (A Ilusão da Persona)",
+        icone: "🎭",
+        tipo: "marrom",
+        bullet: "•",
+        itens: [
+          "Comando: \"Atue como o melhor especialista em produtividade do mundo e faça um plano incrível e super detalhado.\"",
+          "Diagnóstico: Adjetivos vazios têm efeito nulo/negativo em precisão factual; geram verborragia e jargão.",
+          "Resultado da IA: Texto longo, prolixo e cansativo, sem horários reais, formato ou limites executáveis."
+        ]
+      },
+      {
+        tag: "✅ Prompt Estruturado (PROMPT C-T-F-R)",
         icone: "✓",
         tipo: "positivo",
         bullet: "✓",
         itens: [
-          "Comando: \"Atue como mentor de organização pessoal. Tenho 4 blocos de estudo de 2h e 3 metas de trabalho nesta semana. Monte uma agenda em tabela de segunda a sexta, priorizando as tarefas mais difíceis no período da manhã.\"",
-          "Diagnóstico: Papel definido, disponibilidade real, formato delimitado e critério explícito.",
-          "Resultado da IA: Um plano semanal pronto, personalizado, sem clichês e executável."
+          "Comando: \"# Contexto: Trabalho 8h, livre 20h às 21h30. # Tarefa: Rotina de estudos para 5 dias. # Formato: Tabela com Dia/Meta/Tempo. # Restrições: Sem tarefas no domingo.\"",
+          "Diagnóstico: Papel funcional, disponibilidade real, formato delimitado e critérios de poda negativos.",
+          "Resultado da IA: Plano semanal sob medida pronto para execução imediata, sem clichês."
         ]
       }
     ],
     notasProfessora: {
       tempoSugerido: "10 min (00:25 - 00:35)",
-      objetivoSlide: "Evidenciar visualmente a diferença entre prompts abertos/incompletos e comandos estruturados.",
-      oQueFalar: "(Maria) \"Olhem para o telão. Quando digitamos apenas 'Me ajude a organizar minha semana', a rede neural ativa o caminho médio mais genérico possível. Ela não sabe quantas horas você tem, se estuda ou trabalha. Já no segundo exemplo, fornecemos papel, contexto, tarefa e formato. Reparem na mudança drástica de qualidade! A estrutura não limita a IA; ela libera o potencial de resposta sob medida.\""
+      objetivoSlide: "Desmontar o 'Falso Bom Prompt' e a ilusão da persona, comprovando que adjetivos vazios não orientam o modelo.",
+      oQueFalar: "(Maria) \"Olhem com muita atenção para o telão! Durante muito tempo, ensinaram na internet que para a IA funcionar bem bastava dizer: 'Atue como o maior especialista do mundo e faça algo incrível e perfeito'. Pesquisas científicas recentes comprovaram que essas personas superlativas têm efeito nulo ou até negativo na precisão factual! Elas só geram verborragia e respostas longas sem substância. O que realmente muda o jogo é a terceira coluna: dar contexto real, verbos diretos, formato em tabela e restrições negativas!\""
     }
   },
   {
@@ -326,34 +349,34 @@ const slidesComNotas = [
     layout: "grid-4cards",
     categoria: "Framework de Prompting",
     titulo: "Os 4 Blocos da Estrutura Perfeita (Evolução do PCTFR)",
-    subtitulo: "Do método do Encontro 2 à organização modular definitiva no ChatGPT",
+    subtitulo: "Do método do Encontro 2 à organização modular definitiva com Marcadores Markdown (#)",
     conducao: "Condução: Laura",
     itensDestaque: [
       {
         icone: "🧩",
         titulo: "1. CONTEXTO & PAPEL",
-        desc: "Quem a IA deve ser (Persona do PCTFR) e qual é o cenário real da situação (onde estamos)."
+        desc: "Engloba a Persona do PCTFR: o papel define tom e postura (use com parcimônia), mas o cenário e os dados definem a precisão."
       },
       {
         icone: "⚙️",
         titulo: "2. TAREFA CLARA",
-        desc: "A ação principal descrita com clareza cristalina e verbos de ação diretos (o que fazer)."
+        desc: "Ação principal descrita com verbos diretos. Evite sobrecarregar o modelo com 10 tarefas misturadas no mesmo comando."
       },
       {
         icone: "📐",
         titulo: "3. FORMATO ESPECÍFICO",
-        desc: "Tabela, lista de tópicos, e-mail executivo, extensão máxima e tom de voz (como entregar)."
+        desc: "Tabela, tópicos, e-mail executivo e extensão máxima. Use cabeçalhos Markdown (# Contexto, # Tarefa) para hierarquia visual."
       },
       {
         icone: "🛑",
         titulo: "4. RESTRIÇÕES NEGATIVAS",
-        desc: "Regras invioláveis, limites, critérios de poda e trava explícita de 'não inventar dados'."
+        desc: "Regras invioláveis, limites de tempo, critérios de poda de clichês e a trava inegociável de 'não inventar dados'."
       }
     ],
     notasProfessora: {
       tempoSugerido: "10 min (00:35 - 00:45)",
-      objetivoSlide: "Conectar explicitamente o método PCTFR do Encontro 2 à arquitetura dos 4 Blocos C-T-F-R (mostrando que o Papel está acolhido dentro de Contexto).",
-      oQueFalar: "(Laura) \"Lembram do método PCTFR que vimos no Encontro 2: Papel, Contexto, Tarefa, Formato e Restrições? Hoje damos um passo além na maturidade do comando: unificamos o Papel (Persona) dentro do grande bloco de CONTEXTO! Assim, trabalhamos com 4 blocos robustos: 1. Contexto & Papel; 2. Tarefa; 3. Formato; e 4. Restrições. Quando você organiza o seu texto usando marcadores entre colchetes como [Contexto] e [Tarefa], o ChatGPT entende a hierarquia com precisão cirúrgica!\""
+      objetivoSlide: "Demonstrar que o bloco de Contexto engloba a Persona do Encontro 2 e introduzir marcadores visuais (Markdown) para organizar a atenção do modelo.",
+      oQueFalar: "(Laura) \"Pessoal, quando organizamos nosso pedido usando cabeçalhos claros como # Contexto, # Tarefa e # Restrições, estamos literalmente organizando o mapa de atenção da rede neural. A IA não acerta mais porque dissemos que ela é uma 'especialista sênior premiada', mas porque reduzimos a ambiguidade do espaço de busca das palavras! As restrições negativas são a nossa trava de segurança para impedir que ela invente dados onde não deve!\""
     }
   },
 
@@ -512,18 +535,19 @@ const slidesComNotas = [
     tipo: "comparativo",
     categoria: "Técnica de Diálogo (Camada 3)",
     titulo: "Camada 3: Diálogo Iterativo & Meta-Prompting",
-    subtitulo: "Como fazer o ChatGPT entrevistar você para criar o prompt perfeito",
+    subtitulo: "Como fazer o ChatGPT entrevistar você para criar o prompt perfeito (com escopo delimitado)",
     conducao: "Condução: Laura (com Demonstração de 3 min ao vivo no telão)",
     colunas: [
       {
-        tag: "🔄 Diálogo Iterativo & Meta-Prompting",
+        tag: "🔄 Diálogo Iterativo & Escopo Prévio",
         icone: "🤖",
         tipo: "marrom",
         bullet: "•",
         itens: [
-          "Diálogo Iterativo: A IA não é disparo único; ajuste e refine a resposta em múltiplos turnos",
-          "O que é Meta-Prompting? Pedir à própria IA que atue como engenheira de prompt especializada",
-          "Inversão de Papel: Quando não souber todo o contexto, faça a IA perguntar primeiro!"
+          "Diálogo Iterativo: A IA não é disparo único; refine a resposta em múltiplos turnos na mesma conversa",
+          "Alerta de Escopo: O Meta-Prompting funciona melhor quando você já sabe qual problema quer resolver",
+          "Evite a Paralisia: Sem intenção delimitada, a IA não sabe quais perguntas fazer; defina o escopo antes",
+          "Inversão de Papel: Quando não souber todo o detalhe, faça a máquina atuar como entrevistadora!"
         ]
       },
       {
@@ -532,16 +556,16 @@ const slidesComNotas = [
         tipo: "positivo",
         bullet: "➔",
         itens: [
-          "\"Quero criar um modelo de e-mail para cobrança amigável de fornecedores.\"",
-          "\"Antes de escrever, me faça 4 a 5 perguntas essenciais para entender meu cenário, tom e restrições.\"",
-          "A IA assume papel investigativo e ajuda você a clarear seu próprio pensamento"
+          "\"Quero criar um modelo de [e-mail / relatório / cronograma] para a minha rotina.\"",
+          "\"Antes de escrever a resposta final, atue como um especialista em comunicação e me faça 4 perguntas essenciais para entender meu contexto, tom de voz, formato e restrições.\"",
+          "A IA assume papel investigativo, ajuda a clarear seu pensamento e gera uma solução sob medida"
         ]
       }
     ],
     notasProfessora: {
       tempoSugerido: "15 min (01:30 - 01:45)",
-      objetivoSlide: "Apresentar o Meta-Prompting e realizar uma MODELAGEM VISUAL GUIADA DE 3 MINUTOS no projetor antes de os alunos irem para as bancadas.",
-      oQueFalar: "(Laura) \"Bem-vindos de volta! Agora entraremos na Camada 3: o Diálogo Iterativo e o Meta-Prompting! Se você não souber exatamente como preencher os 4 blocos de um prompt, você não precisa sofrer sozinho: peça para o ChatGPT fazer as perguntas para você! Atenção aqui no telão: vou rodar um exemplo ao vivo de 3 minutos. Vou colar este comando no ChatGPT... olhem só: ele não gerou o e-mail ainda; ele acabou de me fazer 4 perguntas sobre os fornecedores e o tom! Agora a Maria vai responder a pergunta 1 no chat... viram como a IA respondeu com precisão cirúrgica? É essa mesma dinâmica que vocês vão testar daqui a pouco!\""
+      objetivoSlide: "Apresentar o Meta-Prompting com escopo prévio e realizar uma MODELAGEM VISUAL GUIADA DE 3 MINUTOS no projetor antes da prática dos alunos.",
+      oQueFalar: "(Laura) \"Bem-vindos de volta do café! Agora entramos na Camada 3: o Diálogo Iterativo e o Meta-Prompting! Mas atenção a uma regra de ouro dos nossos diagnósticos: o Meta-Prompting só funciona bem se você já tiver um escopo mínimo na cabeça. Se você disser apenas 'me faça perguntas sobre qualquer coisa', a IA vai travar ou fazer perguntas genéricas. Vejam o telão: delimitamos o escopo — 'Quero criar um modelo de e-mail de cobrança para minha rotina'. E pedimos 4 perguntas. Olhem aqui ao vivo: ela fez 4 perguntas cirúrgicas sobre tom, prazo e valores! Agora a Maria responde a primeira pergunta... viram como o rascunho nasce perfeito? É essa dinâmica que faremos no laboratório!\""
     }
   },
   {
@@ -551,36 +575,36 @@ const slidesComNotas = [
     tipo: "comparativo",
     categoria: "Responsabilidade Humana",
     titulo: "Agência Humana & Travas de Incerteza (UNESCO)",
-    subtitulo: "A IA gera rascunhos; a decisão e a responsabilidade final são sempre do usuário",
+    subtitulo: "A IA gera rascunhos; a decisão, a curadoria e a responsabilidade final são sempre humanas",
     conducao: "Condução: Maria",
     colunas: [
       {
-        tag: "⚖️ Princípio da UNESCO & Alucinações",
+        tag: "⚖️ Princípio da UNESCO & Revisão Crítica",
         icone: "⚠️",
         tipo: "alerta",
         bullet: "•",
         itens: [
-          "A IA é instrumento de apoio; nunca substitui o julgamento profissional humano",
-          "Revisão Textual ≠ Checagem de Fatos: um texto fluente pode conter dados totalmente inventados",
-          "A responsabilidade profissional e legal sobre qualquer conteúdo gerado é 100% de quem o assina"
+          "Revisão Textual ≠ Checagem Factual: um texto fluente, coeso e sem erros pode conter dados 100% inventados",
+          "O ChatGPT é um escritor improvisador probabilístico (predição de tokens), não um bibliotecário que busca livros",
+          "A responsabilidade profissional, pedagógica e legal sobre o conteúdo gerado é 100% de quem o assina"
         ]
       },
       {
-        tag: "🛡️ TRAVA COM RÓTULO DE INCERTEZA",
+        tag: "🛡️ TRAVA EXPLÍCITA: [necessita verificação]",
         icone: "✓",
         tipo: "positivo",
         bullet: "✓",
         itens: [
-          "Adicione ao comando: \"Se você não tiver certeza de algum dado, responda 'Não consta no material' ou marque com [necessita verificação]\"",
-          "Instrução explícita: \"Baseie-se estritamente nas informações fornecidas. Não tente adivinhar\"",
-          "Auditoria ativa: Fatos, números e legislações devem ser validados fora da IA antes do uso"
+          "Trava de Segurança: \"Se não tiver certeza absoluta de alguma informação ou faltarem dados, responda 'não especificado' ou marque com [necessita verificação]\"",
+          "Instrução de Grounding: \"Baseie-se estritamente nas informações fornecidas. Não tente adivinhar ou inventar fatos\"",
+          "Auditoria Ativa: Datas, referências bibliográficas, valores e artigos de lei devem ser conferidos fora da IA"
         ]
       }
     ],
     notasProfessora: {
       tempoSugerido: "15 min (01:45 - 02:00)",
-      objetivoSlide: "Conscientizar sobre os limites da IA e ensinar a técnica operacional de ancoragem com o rótulo '[necessita verificação]'.",
-      oQueFalar: "(Maria) \"Atenção total para este pilar ético: a UNESCO estabelece que a responsabilidade final sobre qualquer conteúdo gerado por IA é sempre humana. Nunca aceitem uma resposta sem ler criticamente. Lembrem-se da nossa regra de ouro do Encontro 2: arrumar a gramática deixa o texto bonito, mas não garante que o dado seja verdadeiro. Usem a trava operacional da OpenAI: peçam para a IA marcar com '[necessita verificação]' sempre que ela não tiver certeza factual de um dado!\""
+      objetivoSlide: "Conscientizar sobre os limites factuais da IA, desmistificar a falsa segurança de textos bem escritos e ensinar a trava '[necessita verificação]'.",
+      oQueFalar: "(Maria) \"Atenção máxima para este ponto ético da UNESCO: 100% das pessoas revisam se o texto está bonito e bem escrito. Mas coerência gramatical NÃO significa verdade! O ChatGPT é um escritor improvisador que prevê a próxima palavra; ele não confere se a lei existe ou se a data é real. Por isso, nunca assinem nada sem checar. Usem sempre a nossa Trava Anti-Alucinação no prompt: exijam que a IA marque dados duvidosos com o rótulo '[necessita verificação]'!\""
     }
   },
   {
@@ -589,27 +613,27 @@ const slidesComNotas = [
     bloco: 3,
     tipo: "missao-diagnostica",
     categoria: "Prática Guiada no Laboratório (Etapa 1)",
-    titulo: "Oficina Mão na Massa: Missão 1 (Etapa 1: 20 min)",
-    subtitulo: "Transformando um pedido simples da sua rotina em um Prompt Mestre",
+    titulo: "Oficina de Bancada: Missão 1 (Etapa 1: 20 min)",
+    subtitulo: "Transformando o Vago e Limpando o Falso Bom Prompt (Scaffolding Níveis 1 e 2)",
     tempoEstimado: "20 min",
     passos: [
-      "1. Abra seu arquivo do Portfólio Digital - Encontro 3.",
-      "2. Escolha 1 tarefa real da sua rotina (estudos, trabalho ou organização pessoal).",
-      "3. Passo A (Prompt Simples): Digite o pedido curto de 1 linha no ChatGPT e cole a resposta obtida.",
-      "4. Passo B (Prompt Mestre): Escreva o prompt completo aplicando os 4 blocos (Contexto & Papel, Tarefa, Formato e Restrições) e envie em novo chat.",
-      "5. Passo C (Análise): Compare os dois resultados e anote o que mudou na utilidade prática."
+      "1. Abra o Portfólio Digital - Encontro 3 e escolha 1 tarefa real da sua rotina de estudos ou trabalho.",
+      "2. Nível 1 (Prompt Vago): Digite o pedido simples de 1 linha no ChatGPT e cole a resposta obtida (observe os clichês genéricos).",
+      "3. Nível 2 (Falso Bom Prompt): Adicione adjetivos vazios ('atue como o melhor especialista incrível') e comprove a verborragia sem formato.",
+      "4. Nível 3 (Prompt Mestre): Reescreva aplicando os 4 blocos C-T-F-R (# Contexto, # Tarefa, # Formato, # Restrições).",
+      "5. Compare as saídas lado a lado no Portfólio e registre a evolução prática."
     ],
     destaqueDiagnostica: {
       icone: "💻",
       titulo: "Etapa 1: O Duelo de Prompts",
-      desc: "Transformação prática de um comando do seu cotidiano aplicando a tabela dos 4 blocos essenciais. Foco total em comparar a saída vaga vs. a saída estruturada.",
+      desc: "Scaffolding gradual para adultos iniciantes: do vago ao estruturado, desmontando a ilusão da persona e aplicando restrições negativas que eliminam retrabalho.",
       tagAviso: "Portfólio Digital • 20 Minutos Focados"
     },
     conducao: "Co-docência (Laura e Maria circulando pela turma)",
     notasProfessora: {
       tempoSugerido: "20 min (02:00 - 02:20)",
-      objetivoSlide: "Conduzir a Etapa 1 da oficina no computador com foco exclusivo no Duelo de Prompts antes de passar para o Meta-Prompting.",
-      oQueFalar: "(Laura) \"Agora é a vez de vocês nos computadores! Vamos trabalhar de forma fragmentada para ninguém se afobar: teremos 20 minutos focados exclusivamente na Missão 1! Acessem o Portfólio Digital, peguem um pedido simples da vida de vocês e façam a transformação usando os 4 blocos. (Maria) Eu e a Laura estaremos passando nas mesas para ajudar com as restrições e o contexto. Ao final dos 20 minutos, faremos uma pausa verbal de 2 minutos antes da Missão 2!\""
+      objetivoSlide: "Conduzir a Etapa 1 da oficina com scaffolding em 3 níveis (vago -> ruído -> mestre) antes de passar para o Meta-Prompting.",
+      oQueFalar: "(Laura) \"Chegou a hora da prática nas bancadas! Vamos com calma, passo a passo: teremos 20 minutos focados na Missão 1. Abram o Portfólio Digital, peguem uma tarefa real da rotina de vocês e façam os 3 níveis: primeiro o pedido simples, depois o teste com adjetivos vazios para sentir o ruído, e por fim o prompt mestre com os 4 blocos! (Maria) Eu e a Laura estamos passando nas mesas para orientar o contexto e as restrições. Vamos lá!\""
     }
   },
   {
@@ -618,26 +642,27 @@ const slidesComNotas = [
     bloco: 3,
     tipo: "missao-diagnostica",
     categoria: "Prática Guiada no Laboratório (Etapa 2)",
-    titulo: "Oficina Mão na Massa: Missão 2 (Etapa 2: 15 min)",
-    subtitulo: "Experimentando o Meta-Prompting e o Rótulo [necessita verificação]",
+    titulo: "Oficina de Bancada: Missão 2 (Etapa 2: 15 min)",
+    subtitulo: "Auto-Entrevista com Escopo & Trava [necessita verificação]",
     tempoEstimado: "15 min",
     passos: [
-      "1. Entrevista de Meta-Prompting: Peça ao ChatGPT para fazer 3 a 5 perguntas sobre um problema complexo que você deseja resolver.",
-      "2. Refinamento Iterativo: Responda às perguntas da IA no chat e avalie o prompt estruturado gerado por ela.",
-      "3. Checagem de Segurança: Aplique a trava com o rótulo '[necessita verificação]' para identificar dados que exigem auditoria fora da IA.",
-      "4. Registre o prompt final e sua reflexão crítica no Portfólio Digital."
+      "1. Delimite o Escopo: Escolha 1 entrega concreta da sua rotina (e-mail formal, roteiro de aula ou cronograma).",
+      "2. Auto-Entrevista Guiada: Envie o modelo de Meta-Prompting solicitando que o ChatGPT faça 4 perguntas antes de responder.",
+      "3. Diálogo e Refinamento: Responda às perguntas da IA no chat e observe como a resposta nasce personalizada.",
+      "4. Trava de Segurança UNESCO: Adicione a trava anti-alucinação: 'Marque qualquer dado incerto com [necessita verificação]'.",
+      "5. Registre o prompt final e sua reflexão crítica no Portfólio Digital."
     ],
     destaqueDiagnostica: {
       icone: "🤖",
       titulo: "Etapa 2: Auto-Entrevista Ativa",
-      desc: "Coloque a IA para trabalhar como sua entrevistadora investigativa e refine soluções complexas sem sobrecarga.",
+      desc: "Transfira o esforço da pergunta para a IA, mantendo o escopo delimitado e blindando a resposta com rótulo de incerteza.",
       tagAviso: "Meta-Prompting & Rótulo de Incerteza"
     },
     conducao: "Co-docência (Laura e Maria circulando pela turma)",
     notasProfessora: {
       tempoSugerido: "15 min (02:20 - 02:35)",
-      objetivoSlide: "Conduzir a Etapa 2 da oficina após a pausa verbal de alinhamento, estimulando a autonomia no meta-prompting.",
-      oQueFalar: "(Maria) \"Excelente trabalho na Missão 1! Pausa rápida de 2 minutos para alinharmos a Etapa 2: agora vocês vão colocar o ChatGPT para trabalhar como entrevistador de vocês, exatamente como mostramos no telão há pouco! Peçam a ele: 'Faça 5 perguntas antes de me dar a resposta'. E adicionem a trava: marque qualquer incerteza com '[necessita verificação]'. Vocês têm 15 minutos de bancada para experimentar essa técnica fantástica!\""
+      objetivoSlide: "Conduzir a Etapa 2 da oficina com auto-entrevista ancorada em escopo prévio e trava de grounding.",
+      oQueFalar: "(Maria) \"Parabéns pelo trabalho na Missão 1! Pausa rápida de 2 minutos para alinharmos a Etapa 2: agora vocês vão inverter o papel do ChatGPT, exatamente como a Laura demonstrou no telão. Mas lembrem-se: definam o escopo primeiro! Digam o que querem e peçam 4 perguntas essenciais. E não se esqueçam da trava de segurança: mandem a IA marcar incertezas com '[necessita verificação]'. Vocês têm 15 minutos de bancada!\""
     }
   },
 
@@ -651,7 +676,7 @@ const slidesComNotas = [
     tipo: "apresentacao",
     categoria: "Avaliação & Socialização",
     titulo: "Roda de Socialização (Show & Tell)",
-    subtitulo: "Compartilhando evoluções, prompts transformados e lições aprendidas",
+    subtitulo: "Compartilhando evoluções, quebras de mitos e lições aprendidas na bancada",
     conducao: "Co-docência (Laura e Maria)",
     itensDestaque: [
       {
@@ -661,13 +686,13 @@ const slidesComNotas = [
       },
       {
         icone: "⚡",
-        titulo: "Diferença Gritante",
-        desc: "Qual foi a diferença mais marcante entre o prompt simples e o prompt estruturado?"
+        titulo: "O Efeito do Ruído",
+        desc: "O que aconteceu quando você usou adjetivos vazios vs. quando usou os 4 blocos estruturados?"
       },
       {
         icone: "🛡️",
-        titulo: "Restrição de Ouro",
-        desc: "Qual detalhe de contexto ou restrição negativa fez toda a diferença no resultado final?"
+        titulo: "Trava de Incerteza",
+        desc: "Como a trava [necessita verificação] ou a anonimização ajudaram a dar segurança ao resultado?"
       },
       {
         icone: "📝",
@@ -678,7 +703,7 @@ const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "15 min (02:35 - 02:50)",
       objetivoSlide: "Consolidar o aprendizado por meio da aprendizagem entre pares e realizar a avaliação formativa contínua.",
-      oQueFalar: "(Laura) \"Que momento rico! Vamos abrir nossa roda de socialização. Quem gostaria de compartilhar no projetor o seu prompt simples e como ele se transformou após adicionar contexto e restrições?\" (Maria) \"Reparem como o exemplo do colega mostra exatamente o que a UNESCO defende: a inteligência da solução veio do contexto humano que ele forneceu, não apenas da máquina. Parabéns a todos pelo empenho nos exercícios!\""
+      oQueFalar: "(Laura) \"Que oficina produtiva! Vamos abrir a nossa roda de socialização. Quem gostaria de projetar o seu exercício e mostrar como o prompt evoluiu do vago para o estruturado?\" (Maria) \"Vejam que fascinante o relato do colega: a IA só entregou um resultado de alto nível porque ele assumiu o comando do contexto e das restrições. A inteligência da entrega continua sendo 100% de vocês!\""
     }
   },
   {
@@ -689,20 +714,21 @@ const slidesComNotas = [
     categoria: "Fechamento & Ponte",
     titulo: "Checklist de Bolso & Próximos Passos",
     subtitulo: "Leve estas regras para a sua rotina e prepare-se para o Encontro 4",
-    conclusao: "A qualidade do resultado da IA reflete a clareza do contexto humano que a orienta.",
+    conclusao: "A qualidade e a utilidade da resposta da IA não dependem de tentar fazê-la parecer esperta, mas sim da clareza, especificidade e limitação do contexto humano que a orienta.",
     badge: "ENCONTRO 3 CONCLUÍDO COM SUCESSO!",
-    proximoEncontro: "Encontro 4 (13/11): Criação de Imagens e Multimodalidade (Áudio, Documentos e Análises Visuais)",
+    proximoEncontro: "Encontro 4 (13/11): Criação de Imagens e Multimodalidade (Áudio, Documentos em PDF e Análises Visuais)",
     lembretesFinais: [
-      "Tratei a IA como um estagiário de alta capacidade que precisa de contexto e critérios?",
-      "Incluí os 4 blocos: Contexto & Papel, Tarefa, Formato e Restrições Negativas?",
-      "Anonimizei dados pessoais e informações sensíveis (Regra do Cartão-Postal)?",
-      "Validei os fatos criticamente e usei a trava [necessita verificação]?"
+      "Tratei a IA como um estagiário inteligente no 1º dia (capacidade alta, contexto zero)?",
+      "Estruturei meu pedido nos 4 blocos: Contexto, Tarefa, Formato e Restrições Negativas?",
+      "Desmontei adjetivos vazios e utilizei marcadores visuais claros (# Contexto, # Tarefa)?",
+      "Anonimizei dados sensíveis (Regra do Cartão-Postal com [CLIENTE A])?",
+      "Diferenciei revisão textual de checagem factual e acionei a trava [necessita verificação]?"
     ],
     conducao: "Co-docência (Laura e Maria)",
     notasProfessora: {
       tempoSugerido: "10 min (02:50 - 03:00)",
       objetivoSlide: "Síntese final dos pilares da aula, reforço da reflexão ética e motivação para o próximo encontro.",
-      oQueFalar: "(Maria) \"Para encerrar o nosso Encontro 3, levem este checklist de bolso para a vida de vocês! Sempre que forem usar o ChatGPT no trabalho ou nos estudos, lembrem-se: Contexto, Tarefa, Formato e Restrições!\" (Laura) \"E nunca se esqueçam de que a inteligência crítica e a decisão final continuam sendo de vocês. Na próxima aula (Encontro 4), daremos um salto incrível: vamos aprender sobre IA multimodal, trabalhando com imagens, documentos em PDF e áudio! Um grande abraço e até lá!\""
+      oQueFalar: "(Maria) \"Para encerrar o nosso Encontro 3, levem este checklist de bolso para a vida de vocês! Sempre que abrirem o ChatGPT, lembrem-se: nada de pedidos genéricos e nada de personas mágicas. O que funciona é Contexto, Tarefa, Formato e Restrições!\" (Laura) \"E lembrem-se da nossa mensagem central: a agência e a validação crítica continuam com vocês. No Encontro 4, daremos um salto fascinante: sairemos do texto puro e entraremos na IA Multimodal, analisando imagens, documentos em PDF e áudios! Um grande abraço a todos e até a próxima semana!\""
     }
   }
 ];
@@ -713,49 +739,49 @@ const slidesComNotas = [
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  * 
  * Especialidade: Engenharia de Prompt e Aplicações Práticas (Framework C-T-F-R & Meta-Prompting)
- * Ajustes Pedagógicos: Fragmentação em 2 etapas de bancada e trava [necessita verificação]
+ * Scaffolding Pedagógico: Andaime gradual em 3 níveis (Vago ➔ Limpar Ruído ➔ Auto-Entrevista com Trava UNESCO)
  */
 
 const oficinaPratica = {
   isDiagnostica: false,
   titulo: "Oficina de Bancada: Do Pedido Simples ao Prompt Mestre (C-T-F-R)",
   tema: "Aplicações Reais no ChatGPT: Organização, Redação/Simplificação e Meta-Prompting",
-  duracao: "40 a 45 minutos de Bancada nos Computadores (2 Etapas Fragmentadas)",
+  duracao: "40 a 45 minutos de Bancada nos Computadores (Scaffolding em 3 Níveis)",
   peso: "Instrumento Formativo no Portfólio Digital • Encontro 3 (0,5 ponto)",
-  conducao: "Co-docência (Profª Laura & Profª Maria com suporte individual nas mesas)",
+  conducao: "Co-docência (Profª Laura & Profª Maria com suporte individual nas bancadas)",
   ferramenta: "Navegador Web + ChatGPT (Modo Chat Temporário / Convencional sem memórias)",
-  objetivo: "Capacitar os participantes a construir instruções profissionais sob medida no ChatGPT aplicando os 4 Blocos da Estrutura Perfeita (Contexto & Papel, Tarefa, Formato e Restrições), dominar o diálogo iterativo através do Meta-Prompting e implementar travas de blindagem contra alucinações e riscos de privacidade.",
+  objetivo: "Capacitar os participantes a construir instruções profissionais sob medida no ChatGPT aplicando os 4 Blocos da Estrutura Perfeita (Contexto & Papel, Tarefa, Formato e Restrições), desmontar a ilusão da persona, dominar a auto-entrevista (Meta-Prompting) e implementar travas contra alucinações e riscos de privacidade.",
 
   situacaoProblema: {
-    contexto: "No cotidiano de estudos e trabalho, a maioria dos usuários comete o erro do 'pedido de uma linha só' (ex: 'me ajude a planejar minha rotina' ou 'faça um e-mail sobre o projeto'). O resultado costuma ser vago, prolixo, recheado de clichês motivacionais ou dados imprecisos que exigem retrabalho e geram frustração.",
-    missao: "Assumir o papel de gestor de um estagiário inteligente de alta capacidade: selecionar 1 tarefa real da sua rotina e executar a Etapa 1 (Duelo de Prompts: Simples vs. Mestre C-T-F-R por 20 min) e a Etapa 2 (Auto-Entrevista com Meta-Prompting e Trava [necessita verificação] por 15 min), registrando a evolução empírica no Portfólio Digital."
+    contexto: "No cotidiano de estudos e trabalho, a maioria dos usuários comete o erro do 'pedido de uma linha só' (ex: 'me ajude a planejar minha rotina') ou cai na armadilha do 'Falso Bom Prompt' usando adjetivos vazios ('atue como o melhor do mundo e faça algo incrível'). O resultado costuma ser vago, verborrágico e sem utilidade prática real.",
+    missao: "Assumir o papel de gestor de um estagiário inteligente de alta capacidade com contexto zero: selecionar 1 tarefa real da sua rotina e executar o roteiro em 3 Níveis de Scaffolding (Nível 1: Transformar o Vago; Nível 2: Limpar o Ruído da Persona; Nível 3: Auto-Entrevista com Meta-Prompting e Trava [necessita verificação]), registrando a evolução empírica no Portfólio Digital."
   },
 
   comoExecutar: [
     {
       etapa: 1,
-      titulo: "Etapa 1 (20 min) — Passo A: O Disparo Ingênuo (Prompt Livre)",
-      desc: "Abra um novo chat no ChatGPT e envie uma solicitação curta de 1 linha sobre uma tarefa real sua (ex: rotina, síntese ou resposta a um e-mail). Copie a resposta gerada e observe suas generalidades."
+      titulo: "Nível 1 (Iniciante | 10 min) — Transformar o Vago (Prompt Livre)",
+      desc: "Abra um novo chat no ChatGPT e envie um pedido simples de 1 linha sobre uma tarefa real sua (ex: rotina, síntese ou resposta a um e-mail). Copie a resposta e observe como o modelo ativa a média estatística rasa."
     },
     {
       etapa: 2,
-      titulo: "Etapa 1 (20 min) — Passo B: A Engenharia dos 4 Blocos (Prompt Mestre)",
-      desc: "Abra outro chat novo e reformule a solicitação aplicando os 4 blocos explícitos: [Contexto & Papel] seu papel e cenário; [Tarefa] ação com verbos diretos; [Formato] visual da saída (tabela ou tópicos); e [Restrições] travas de tempo e de não-invenção."
+      titulo: "Nível 2 (Intermediário | 10 min) — Limpar o Ruído (O Falso Bom Prompt)",
+      desc: "Em novo chat, teste o prompt com adjetivos vazios ('atue como o maior especialista incrível e faça um plano perfeito'). Comprove a verborragia e a ausência de limites práticos."
     },
     {
       etapa: 3,
-      titulo: "Etapa 1 (20 min) — Passo C: Análise Crítica Comparativa",
-      desc: "Coloque as duas respostas lado a lado. Identifique o ganho imediato de aplicabilidade, a eliminação de clichês e o impacto das restrições negativas."
+      titulo: "Nível 3 (Avançado | 10 min) — O Prompt Mestre C-T-F-R com Markdown",
+      desc: "Reformule a solicitação usando marcadores claros: # Contexto & Papel (cenário real); # Tarefa (verbos diretos); # Formato (tabela ou tópicos); e # Restrições (limites de tempo e de não-invenção)."
     },
     {
       etapa: 4,
       titulo: "Intervenção Guiada (3 min) — Demonstração no Telão",
-      desc: "Pausa verbal rápida com a turma para assistir à demonstração ao vivo de Meta-Prompting conduzida por Laura e Maria no projetor."
+      desc: "Pausa rápida com a turma para assistir à demonstração ao vivo de Meta-Prompting com escopo prévio conduzida por Laura e Maria no projetor."
     },
     {
       etapa: 5,
-      titulo: "Etapa 2 (15 min) — Meta-Prompting & Trava [necessita verificação]",
-      desc: "Em um chat novo, use o prompt reverso: 'Antes de escrever, me faça 4 perguntas sobre meu cenário'. Responda à IA e inclua a trava: 'Marque qualquer dado não comprovado com [necessita verificação]'."
+      titulo: "Etapa 2 (15 min) — Auto-Entrevista & Trava [necessita verificação]",
+      desc: "Delimite o escopo e envie o modelo de Meta-Prompting pedindo 4 perguntas essenciais. Responda à IA no chat e acione a trava de segurança UNESCO contra alucinações."
     }
   ],
 
@@ -770,59 +796,100 @@ const oficinaPratica = {
     ]
   },
 
+  falsoBomPrompt: {
+    prompt: "Atue como o melhor especialista em produtividade do mundo, um mentor premiado e super renomado. Faça um plano semanal incrível, perfeito e super detalhado para a minha rotina.",
+    problemasProvaveis: [
+      "Adjetivos superlativos ('incrível', 'perfeito', 'o melhor do mundo') geram verborragia e jargão, sem definir formato ou disponibilidade real.",
+      "Pesquisas científicas comprovam que personas superlativas têm efeito nulo ou negativo na precisão factual em tarefas objetivas.",
+      "Gera um texto longo e cansativo que exige retrabalho manual para extrair o que realmente importa.",
+      "Não estabelece horários, limites diários ou critérios de descanso."
+    ]
+  },
+
   segundaTentativa: {
-    prompt: `[Contexto & Papel] Atue como um mentor executivo de produtividade e organização pessoal. Trabalho 8 horas por dia em regime presencial (das 8h às 17h) e tenho exatamente 1h30 líquida livre no período noturno (das 20h às 21h30) de segunda a quinta-feira.
+    prompt: `# Contexto & Papel
+Sou estudante e trabalho 8 horas por dia em regime presencial (das 8h às 17h). Tenho exatamente 1h30 líquida livre no período noturno (das 20h às 21h30) de segunda a quinta-feira.
 
-[Tarefa Principal] Monte um plano semanal de estudos focado na revisão de 2 disciplinas (Tecnologia Aplicada e Gestão de Projetos), equilibrando leitura teórica com resolução de exercícios práticos.
+# Tarefa Principal
+Monte um plano semanal de estudos focado na revisão de 2 disciplinas (Tecnologia Aplicada e Gestão de Projetos), equilibrando leitura teórica com resolução de exercícios práticos.
 
-[Formato de Saída] Apresente a resposta estritamente em uma tabela com as seguintes colunas:
-1. Dia da Semana | 2. Horário Exato | 3. Disciplina | 4. Atividade Específica | 5. Técnica Recomendada (ex: Pomodoro, Leitura Ativa) | 6. Meta do Dia.
+# Formato de Saída
+Apresente a resposta estritamente em uma tabela com as colunas:
+1. Dia da Semana | 2. Horário Exato | 3. Disciplina | 4. Atividade Específica | 5. Técnica (Pomodoro/Leitura Ativa) | 6. Meta do Dia.
 
-[Restrições & Limites Invioláveis]
+# Restrições Negativas & Travas
 - Não ultrapasse o limite rígido de 90 minutos diários.
 - Reserve os últimos 15 minutos de cada dia para anotação de dúvidas.
-- Não inclua nenhuma tarefa de estudo na sexta-feira à noite nem no domingo (dias de descanso sagrado).
-- Não faça introduções prolixas nem conclusões com frases motivacionais: inicie a resposta diretamente na tabela.`
+- Não inclua nenhuma tarefa na sexta-feira à noite nem no domingo (dias de descanso sagrado).
+- Não faça introduções prolixas nem conclusões motivacionais: inicie a resposta diretamente na tabela.`
   },
+
+  promptsModelo: [
+    {
+      titulo: "1. Trava de Segurança / UNESCO (Anti-Alucinação)",
+      icone: "🛡️",
+      cor: "#ef4444",
+      descricao: "Obriga a IA a sinalizar lacunas factuais em vez de inventar dados ou leis.",
+      codigo: `[Trava de Segurança / UNESCO]
+Se você não tiver certeza absoluta de alguma informação ou se faltarem dados no contexto fornecido, responda "Informação não especificada no material" ou marque o trecho com o rótulo [necessita verificação]. Não tente adivinhar ou inventar fatos.`
+    },
+    {
+      titulo: "2. Meta-Prompting / Handoff com Escopo",
+      icone: "🤖",
+      cor: "#3b82f6",
+      descricao: "Inverte o papel e faz a IA entrevistar você com foco em uma entrega delimitada.",
+      codigo: `[Meta-Prompting / Handoff com Escopo]
+Quero criar um modelo de [e-mail / relatório / cronograma de estudos] para a minha rotina. Antes de escrever a resposta final, atue como um especialista em comunicação e me faça 4 perguntas essenciais para entender meu contexto, tom de voz, formato desejado e restrições.`
+    },
+    {
+      titulo: "3. Anonimização de Dados (LGPD / Privacidade)",
+      icone: "🔒",
+      cor: "#22c55e",
+      descricao: "Aplica a Regra do Cartão-Postal substituindo identidades reais por placeholders.",
+      codigo: `[Anonimização de Dados / LGPD]
+Reescreva a mensagem abaixo mantendo a estrutura profissional. Substitua nomes reais de pessoas por [NOME A], empresas por [EMPRESA X] e valores por [VALOR Y].
+Texto base: [cole o texto com dados mascarados aqui]`
+    }
+  ],
 
   cincoElementos: [
     {
       elemento: "1. Contexto & Papel (Quem & Onde)",
-      comoAparece: "[Contexto & Papel] 'Atue como mentor executivo... trabalho das 8h às 17h e tenho 1h30 livre à noite...'",
-      funcao: "Ancora o espaço semântico da rede neural, integrando o Papel (Persona do PCTFR) com o cenário de restrições reais."
+      comoAparece: "# Contexto & Papel: 'Sou estudante e trabalho 8h... tenho 1h30 livre à noite...'",
+      funcao: "Ancora a atenção da rede neural, integrando o Papel (Persona) com o cenário de restrições reais. Personas devem regular tom e perspectiva, nunca substituir dados factuais."
     },
     {
       elemento: "2. Tarefa Clara (O que fazer)",
-      comoAparece: "[Tarefa] 'Monte um plano semanal de estudos focado na revisão de 2 disciplinas...'",
-      funcao: "Define a meta direta com verbos de ação específicos, eliminando ambiguidade sobre qual entrega concreta é esperada."
+      comoAparece: "# Tarefa Principal: 'Monte um plano semanal focado na revisão de 2 disciplinas...'",
+      funcao: "Define a meta direta com verbos de ação específicos, eliminando ambiguidade e evitando dispersão em múltiplos pedidos concorrentes."
     },
     {
       elemento: "3. Formato Específico (Como entregar)",
-      comoAparece: "[Formato] 'Apresente estritamente em uma tabela com 6 colunas específicas...'",
-      funcao: "Padroniza a estrutura visual da resposta para leitura imediata, evitando blocos prolixos de texto corrido."
+      comoAparece: "# Formato de Saída: 'Apresente estritamente em uma tabela com 6 colunas específicas...'",
+      funcao: "Padroniza a estrutura visual da resposta para leitura imediata, com uso de Markdown (#) para facilitar a hierarquia semântica do modelo."
     },
     {
       elemento: "4. Restrições Negativas (O que evitar)",
-      comoAparece: "[Restrições] 'Não ultrapasse 90 min; sem estudos no domingo; sem introdução ou conclusões prolixas...'",
-      funcao: "Fecha brechas probabilísticas, podando respostas genéricas, desvios de rota e alucinações de formato."
+      comoAparece: "# Restrições: 'Não ultrapasse 90 min; sem estudos no domingo; sem introdução ou conclusões prolixas...'",
+      funcao: "Fecha brechas probabilísticas, podando respostas genéricas, clichês e desvios de rota."
     },
     {
       elemento: "5. Trava Anti-Alucinação (Grounding)",
-      comoAparece: "[Trava] 'Se não constar no material ou faltarem dados, responda não especificado ou marque com [necessita verificação]'",
-      funcao: "Impede o modelo de inventar referências, datas, artigos de lei ou dados factuais quando houver incerteza."
+      comoAparece: "[Trava UNESCO]: 'Se não constar no material ou faltarem dados, marque com [necessita verificação]'",
+      funcao: "Impede o modelo de preencher lacunas probabilísticas com dados ou referências bibliográficas inventadas."
     }
   ],
 
   comparacaoRespostas: [
-    { pergunta: "A resposta do Prompt Livre serviria para você aplicar imediatamente amanhã de manhã?" },
-    { pergunta: "Qual foi o impacto visual de exigir a resposta em formato de tabela em vez de texto corrido?" },
+    { pergunta: "Qual foi a diferença entre o Prompt Vago (Nível 1) e o Falso Bom Prompt com adjetivos vazios (Nível 2)?" },
+    { pergunta: "Qual foi o impacto visual de exigir a resposta em formato de tabela em vez de texto corrido no Nível 3?" },
     { pergunta: "A restrição negativa ('não inclua tarefas no domingo') foi respeitada com exatidão pela IA?" },
-    { pergunta: "Ao usar o Meta-Prompting na Etapa 2, as perguntas da IA ajudaram a lembrar detalhes que você tinha esquecido?" },
-    { pergunta: "Onde você percebe que a revisão humana e o rótulo [necessita verificação] foram indispensáveis?" }
+    { pergunta: "Ao usar o Meta-Prompting com escopo prévio, as perguntas da IA ajudaram a lembrar detalhes esquecidos?" },
+    { pergunta: "Por que a distinção entre Revisão Textual e Checagem Factual com [necessita verificação] é indispensável?" }
   ],
 
   reflexaoFinal: {
-    perguntaGuia: "Qual elemento do framework C-T-F-R provocou a mudança mais radical na resposta do ChatGPT? Por que fazer a IA entrevistar você (Meta-Prompting) após ver a demonstração no telão tornou o processo mais seguro e produtivo?"
+    perguntaGuia: "Qual elemento do framework C-T-F-R provocou a mudança mais radical na resposta do ChatGPT? Por que fazer a IA entrevistar você (Meta-Prompting) a partir de um escopo delimitado tornou o processo mais seguro e produtivo?"
   },
 
   configuracaoChatGPT: [
@@ -836,28 +903,29 @@ const oficinaPratica = {
   criteriosAvaliacao: [
     {
       criterio: "Estrutura do Prompt (C-T-F-R)",
-      ponto1: "Prompt vago de 1 linha sem especificação de formato ou contexto.",
-      ponto2: "Apresenta tarefa e contexto, mas não delimita formato ou restrições negativas.",
-      ponto3: "Domínio pleno dos 4 blocos (Contexto & Papel, Tarefa, Formato e Restrições explícitas)."
+      ponto1: "Prompt vago de 1 linha ou poluído com adjetivos vazios sem restrições.",
+      ponto2: "Apresenta tarefa e contexto, mas não delimita formato em tabela ou restrições negativas.",
+      ponto3: "Domínio pleno dos 4 blocos C-T-F-R com Markdown (#), contexto real e restrições negativas explícitas."
     },
     {
       criterio: "Diálogo & Meta-Prompting",
-      ponto1: "Aceita a primeira resposta sem refinamento ou iteração.",
-      ponto2: "Solicita ajustes genéricos ('melhore o texto', 'ficou ruim').",
-      ponto3: "Usa meta-prompting ('me faça perguntas'), ajusta turnos e refina com comandos cirúrgicos."
+      ponto1: "Aceita a primeira resposta sem refinamento ou tenta meta-prompting sem definir escopo.",
+      ponto2: "Solicita ajustes genéricos ('melhore o texto') ou responde poucas perguntas da IA.",
+      ponto3: "Usa meta-prompting com escopo prévio delimitado, responde às perguntas e lapida iterativamente."
     },
     {
       criterio: "Validação Crítica & Segurança",
-      ponto1: "Copia a resposta sem ler ou valida sem checar fatos.",
-      ponto2: "Revisa apenas a gramática superficial, sem atentar para dados inventados.",
-      ponto3: "Aplica travas anti-alucinação com rótulo [necessita verificação], anonimiza dados sensíveis e audita a veracidade."
+      ponto1: "Copia a resposta sem ler ou confunde texto fluente com dado verdadeiro.",
+      ponto2: "Revisa apenas a gramática superficial, sem checar referências bibliográficas ou fatos.",
+      ponto3: "Aplica travas anti-alucinação com rótulo [necessita verificação], anonimiza dados (LGPD) e audita a veracidade."
     }
   ],
 
   diretrizesDocentes: [
-    "Acolhimento Total ao Iniciante: reforçar que o Papel (Persona) do Encontro 2 continua vivo dentro do bloco de Contexto.",
-    "Modelagem Visual Prévia: rodar rigorosamente a demonstração ao vivo de 3 minutos no projetor antes de soltar a turma para a Etapa 2 de Meta-Prompting.",
-    "Fragmentação da Bancada: monitorar o tempo de 20 minutos para a Etapa 1 e fazer a pausa verbal de alinhamento antes da Etapa 2.",
+    "Acolhimento Total ao Iniciante: tranquilizar a turma de que o objetivo é sentir a diferença prática entre pedir no impulso e instruir com método.",
+    "Desmistificar a Persona: alertar enfaticamente que adjetivos como 'o melhor do mundo' geram apenas verborragia sem formato.",
+    "Modelagem Visual Prévia: rodar rigorosamente a demonstração de 3 minutos no projetor antes de soltar a turma para o Meta-Prompting.",
+    "Fragmentação da Bancada: monitorar os tempos dos 3 níveis de complexidade (10 min + 10 min + 15 min) com pausas de alinhamento.",
     "Intervenção Cirúrgica: ao ver um aluno com resposta prolixa, ensine na hora o comando de poda: 'Reescreva a resposta anterior apenas nos tópicos 2 e 3 em 4 linhas'.",
     "Roda de Conversa: reservar os 15 minutos finais para valorizar a evolução de quem começou inseguro e conseguiu criar um prompt mestre."
   ],
@@ -888,10 +956,10 @@ const perguntasAlunos = [
   },
   {
     numero: 3,
-    duvida: "Dizer 'Atue como um especialista em X' realmente melhora a qualidade da resposta ou é apenas um mito da internet?",
-    resposta: "Funciona de verdade! Na engenharia de prompt, isso se chama 'Persona Prompting'. Quando você define um papel ('Atue como um auditor pedagógico experiente' ou 'Atue como um engenheiro eletricista'), você 'acende' clusters de conceitos e vocabulário técnico aprendidos durante o treinamento, elevando o rigor analítico e podando termos vagos de senso comum.",
-    pontoDidatico: "Diferencie a persona 'cosmética' (dizer apenas 'seja inteligente') da persona contextualizada ('atue como orientador de estudos focado em estudantes trabalhadores').",
-    dicaPratica: "Combine o papel com o público-alvo: 'Atue como um professor experiente explicando o conceito de autoatenção para alunos iniciantes sem conhecimento técnico prévio.'"
+    duvida: "Dizer 'Atue como o maior especialista do mundo incrível e perfeito' realmente melhora a precisão factual?",
+    resposta: "Não! Pesquisas científicas recentes comprovam que personas superlativas ('o maior especialista do mundo', 'plano perfeito e incrível') têm efeito nulo ou até negativo na exatidão factual de tarefas objetivas. Elas geram verborragia, jargões desnecessários e textos mais longos sem nenhum ganho real de substância. A persona serve exclusivamente para regular o tom de voz, público-alvo e estilo de comunicação (Diferenciação Funcional da Persona), mas deve ser omitida ou minimizada em cálculos, tabelas de rotina e análises diretas.",
+    pontoDidatico: "Desmistifique o 'Falso Bom Prompt': ensine que a precisão vem de contexto com dados reais, verbos de tarefa diretos e restrições negativas, e não de elogios mágicos à IA.",
+    dicaPratica: "Em vez de adjetivos vazios, use o papel apenas para o tom e foque nas restrições: 'Atue como comunicador público. Explique este edital para alunos iniciantes em uma tabela com 3 colunas, sem usar juridiquês.'"
   },
   {
     numero: 4,
@@ -920,6 +988,13 @@ const perguntasAlunos = [
     resposta: "A melhor estratégia é a técnica em dois estágios: primeiro force a IA a extrair analiticamente os dados fatuais e as obrigações em tópicos; depois peça a reescrita desses tópicos em linguagem simples e acessível. Pedir simplificação direta de uma só vez aumenta o risco de a IA resumir demais e cortar cláusulas essenciais.",
     pontoDidatico: "A técnica de decomposição de tarefas complexas em etapas sucessivas é uma das ferramentas mais sofisticadas da engenharia de prompt.",
     dicaPratica: "Use a instrução encadeada: 'Passo 1: Extraia em tópicos apenas os prazos e obrigações do texto abaixo. Passo 2: Reescreva esses tópicos em linguagem simples para que qualquer pessoa compreenda sem jargões.'"
+  },
+  {
+    numero: 8,
+    duvida: "Se o texto gerado pelo ChatGPT está fluente, elegante e sem erros de português, posso confiar que as informações são verdadeiras?",
+    resposta: "Nunca! Esse é o maior ponto cego dos usuários iniciantes: confundir revisão textual com checagem factual. O ChatGPT é um escritor improvisador que prevê palavras com base em probabilidade; ele não possui consciência nem verifica prateleiras como um bibliotecário. Um texto pode ser gramaticalmente perfeito e, ao mesmo tempo, conter leis inexistentes, citações inventadas e números distorcidos. A curadoria factual externa é responsabilidade 100% humana (UNESCO).",
+    pontoDidatico: "Reforce a distinção essencial: coesão textual é papel da máquina; verdade e responsabilidade ética e jurídica são prerrogativas humanas inegociáveis.",
+    dicaPratica: "Inclua sempre no prompt a Trava de Segurança da UNESCO: 'Se você não tiver certeza de algum dado, responda não especificado ou marque o trecho com [necessita verificação]. Não tente adivinhar.'"
   }
 ];
 
