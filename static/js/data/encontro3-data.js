@@ -299,6 +299,7 @@ const slidesComNotas = [
     categoria: "Duelo de 3 Vias (Prompt or Flop)",
     titulo: "Prompt or Flop? O Duelo de 3 Vias",
     subtitulo: "Do pedido vago à ilusão da persona: por que adjetivos vazios não orientam a IA",
+    docente: "Laura",
     conducao: "Condução: Laura",
     colunas: [
       {
@@ -1258,7 +1259,7 @@ const divisaoPapeis = [
   { bloco: "Bloco 1 (00:00 - 00:05)", tema: "Abertura & Conexão Inicial (Slide 1)", papel: "ambas" },
   { bloco: "Bloco 1 (00:05 - 00:15)", tema: "Onde Estamos e Aonde Vamos Hoje (Slide 2) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Bloco 1 (00:15 - 00:25)", tema: "A Metáfora do Estagiário Inteligente (Slide 3) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 1 (00:25 - 00:35)", tema: "Prompt or Flop? O Duelo de 3 Vias (Slide 4) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 1 (00:25 - 00:35)", tema: "Prompt or Flop? O Duelo de 3 Vias (Slide 4) • Condução: Laura", papel: "radio", padrao: "laura", condutor: "Laura", conducao: "Laura" },
   { bloco: "Bloco 1 (00:35 - 00:45)", tema: "Os 4 Blocos da Estrutura Perfeita C-T-F-R (Slide 5) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Bloco 2 (00:45 - 00:50)", tema: "Exemplos Práticos: Onde Usar um Prompt Estruturado? (Slide 6) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Bloco 2 (00:50 - 01:00)", tema: "Camada 1: Organização Pessoal e Rotina (Slide 7) • Condução: Maria", papel: "radio", padrao: "maria" },

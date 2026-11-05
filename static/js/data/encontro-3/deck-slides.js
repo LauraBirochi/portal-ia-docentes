@@ -114,6 +114,7 @@ export const slidesComNotas = [
     categoria: "Duelo de 3 Vias (Prompt or Flop)",
     titulo: "Prompt or Flop? O Duelo de 3 Vias",
     subtitulo: "Do pedido vago à ilusão da persona: por que adjetivos vazios não orientam a IA",
+    docente: "Laura",
     conducao: "Condução: Laura",
     colunas: [
       {
