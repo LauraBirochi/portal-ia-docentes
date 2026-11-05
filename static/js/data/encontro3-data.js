@@ -129,8 +129,8 @@ const fioDaMeada = {
     {
       ato: 3,
       tempo: "01:30 às 03:00 (90 min)",
-      titulo: "Ato 3: Meta-Prompting, Bancada, Testes Reais, Comparativo & Missão 2 — Laura & Maria",
-      desc: "Retorno do intervalo com Laura conduzindo a Camada 3: diálogo iterativo e Meta-Prompting com escopo prévio delimitado [01:30 - 01:45], seguido dos princípios éticos da UNESCO (Agência Humana, Revisão Textual ≠ Checagem Factual e Trava [necessita verificação]) [01:45 - 02:00]. Oficina de Bancada: Missão 1 nos computadores (Slide 12) [02:00 - 02:20]. Apresentação da Bancada de Testes Empíricos (Macarrão Parisiense: Vago, Falso Bom, Estruturado) e do Quadro Comparativo das Diferenças no telão (Slides 13 a 16) [02:20 - 02:33]. Oficina de Bancada: Missão 2 com Auto-Entrevista ancorada e trava de incerteza (Slide 17) [02:33 - 02:48]. Roda de socialização (Show & Tell - Slide 18) [02:48 - 02:56] e consolidação do Checklist de Bolso, referências bibliográficas da OpenAI/UNESCO/OSSE e encerramento (Slides 19 e 20) [02:56 - 03:00].",
+      titulo: "Ato 3: Meta-Prompting, Bancada, Testes Reais, Comparativo & Missão 2 — Maria & Laura",
+      desc: "Retorno do intervalo com Maria conduzindo a Camada 3: diálogo iterativo e Meta-Prompting com escopo prévio delimitado [01:30 - 01:45], seguido dos princípios éticos da UNESCO (Agência Humana, Revisão Textual ≠ Checagem Factual e Trava [necessita verificação]) [01:45 - 02:00]. Oficina de Bancada: Missão 1 nos computadores (Slide 12) com apoio de ambas [02:00 - 02:20]. Apresentação da Bancada de Testes Empíricos (Macarrão Parisiense: Vago, Falso Bom, Estruturado) e do Quadro Comparativo das Diferenças no telão (Slides 13 a 16) [02:20 - 02:33]. Oficina de Bancada: Missão 2 com Auto-Entrevista ancorada e trava de incerteza (Slide 17) [02:33 - 02:48]. Roda de socialização (Show & Tell - Slide 18) [02:48 - 02:56] e consolidação do Checklist de Bolso, referências bibliográficas da OpenAI/UNESCO/OSSE e encerramento (Slides 19 e 20) [02:56 - 03:00].",
       gatilho: "Quando você não souber como estruturar todos os detalhes, delimite o escopo e faça a IA perguntar: o Meta-Prompting transfere o esforço da pergunta para a máquina!"
     }
   ],
@@ -538,7 +538,8 @@ const slidesComNotas = [
     categoria: "Técnica de Diálogo (Camada 3)",
     titulo: "Camada 3: Diálogo Iterativo & Meta-Prompting",
     subtitulo: "Como fazer o ChatGPT entrevistar você para criar o prompt perfeito (com escopo delimitado)",
-    conducao: "Condução: Laura",
+    docente: "Maria",
+    conducao: "Condução: Maria",
     colunas: [
       {
         tag: "🔄 Diálogo Iterativo & Escopo Prévio",
@@ -567,7 +568,7 @@ const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "15 min (01:30 - 01:45)",
       objetivoSlide: "Apresentar o Meta-Prompting com escopo prévio delimitado para a prática dos alunos.",
-      oQueFalar: "(Laura) \"Bem-vindos de volta do café! Agora entramos na Camada 3: o Diálogo Iterativo e o Meta-Prompting! Mas atenção a uma regra de ouro dos nossos diagnósticos: o Meta-Prompting só funciona bem se você já tiver um escopo mínimo na cabeça. Se você disser apenas 'me faça perguntas sobre qualquer coisa', a IA vai travar ou fazer perguntas genéricas. Vejam o telão: delimitamos o escopo — 'Quero criar um modelo de e-mail de cobrança para minha rotina'. E pedimos 4 perguntas. Ela fará perguntas cirúrgicas sobre tom, prazo e valores, ajudando você a clarear o seu pensamento antes de gerar o rascunho final! É essa dinâmica que faremos no laboratório!\""
+      oQueFalar: "(Maria) \"Bem-vindos de volta do café! Agora entramos na Camada 3: o Diálogo Iterativo e o Meta-Prompting! Mas atenção a uma regra de ouro dos nossos diagnósticos: o Meta-Prompting só funciona bem se você já tiver um escopo mínimo na cabeça. Se você disser apenas 'me faça perguntas sobre qualquer coisa', a IA vai travar ou fazer perguntas genéricas. Vejam o telão: delimitamos o escopo — 'Quero criar um modelo de e-mail de cobrança para minha rotina'. E pedimos 4 perguntas. Ela fará perguntas cirúrgicas sobre tom, prazo e valores, ajudando você a clarear o seu pensamento antes de gerar o rascunho final! É essa dinâmica que faremos no laboratório!\""
     }
   },
   {
@@ -578,7 +579,8 @@ const slidesComNotas = [
     categoria: "Responsabilidade Humana",
     titulo: "Agência Humana & Travas de Incerteza (UNESCO)",
     subtitulo: "A IA gera rascunhos; a decisão, a curadoria e a responsabilidade final são sempre humanas",
-    conducao: "Condução: Laura",
+    docente: "Maria",
+    conducao: "Condução: Maria",
     colunas: [
       {
         tag: "⚖️ Princípio da UNESCO & Revisão Crítica",
@@ -606,7 +608,7 @@ const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "15 min (01:45 - 02:00)",
       objetivoSlide: "Conscientizar sobre os limites factuais da IA, desmistificar a falsa segurança de textos bem escritos e ensinar a trava '[necessita verificação]'.",
-      oQueFalar: "(Laura) \"Atenção máxima para este ponto ético da UNESCO: 100% das pessoas revisam se o texto está bonito e bem escrito. Mas coerência gramatical NÃO significa verdade! O ChatGPT é um escritor improvisador que prevê a próxima palavra; ele não confere se a lei existe ou se a data é real. Por isso, nunca assinem nada sem checar. Usem sempre a nossa Trava Anti-Alucinação no prompt: exijam que a IA marque dados duvidosos com o rótulo '[necessita verificação]'!\""
+      oQueFalar: "(Maria) \"Atenção máxima para este ponto ético da UNESCO: 100% das pessoas revisam se o texto está bonito e bem escrito. Mas coerência gramatical NÃO significa verdade! O ChatGPT é um escritor improvisador que prevê a próxima palavra; ele não confere se a lei existe ou se a data é real. Por isso, nunca assinem nada sem checar. Usem sempre a nossa Trava Anti-Alucinação no prompt: exijam que a IA marque dados duvidosos com o rótulo '[necessita verificação]'!\""
     }
   },
   {
@@ -1267,8 +1269,8 @@ const divisaoPapeis = [
   { bloco: "Bloco 2 (01:00 - 01:10)", tema: "Camada 2: Redação e Simplificação Profissional (Slide 8) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Bloco 2 (01:10 - 01:20)", tema: "Regra do Cartão-Postal e Anonimização (Slide 9) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Intervalo (01:20 - 01:35)", tema: "Intervalo Pedagógico / Café com Prosa (Momento de Pausa)", papel: "ambas" },
-  { bloco: "Bloco 3 (01:30 - 01:45)", tema: "Camada 3: Diálogo Iterativo e Meta-Prompting (Slide 10) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 3 (01:45 - 02:00)", tema: "Agência Humana e Validação Crítica (UNESCO) (Slide 11) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 3 (01:30 - 01:45)", tema: "Camada 3: Diálogo Iterativo e Meta-Prompting (Slide 10) • Condução: Maria", papel: "radio", padrao: "maria", condutor: "Maria", conducao: "Maria" },
+  { bloco: "Bloco 3 (01:45 - 02:00)", tema: "Agência Humana e Validação Crítica (UNESCO) (Slide 11) • Condução: Maria", papel: "radio", padrao: "maria", condutor: "Maria", conducao: "Maria" },
   { bloco: "Bloco 3 (02:00 - 02:20)", tema: "Oficina Prática de Bancada: Missão 1 (Slide 12)", papel: "ambas" },
   { bloco: "Bloco 3 (02:20 - 02:33)", tema: "Bancada de Testes Empíricos & Quadro Comparativo (Slides 13 a 16)", papel: "ambas" },
   { bloco: "Bloco 3 (02:33 - 02:48)", tema: "Oficina Prática de Bancada: Missão 2 (Slide 17)", papel: "ambas" },

@@ -353,7 +353,8 @@ export const slidesComNotas = [
     categoria: "Técnica de Diálogo (Camada 3)",
     titulo: "Camada 3: Diálogo Iterativo & Meta-Prompting",
     subtitulo: "Como fazer o ChatGPT entrevistar você para criar o prompt perfeito (com escopo delimitado)",
-    conducao: "Condução: Laura",
+    docente: "Maria",
+    conducao: "Condução: Maria",
     colunas: [
       {
         tag: "🔄 Diálogo Iterativo & Escopo Prévio",
@@ -382,7 +383,7 @@ export const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "15 min (01:30 - 01:45)",
       objetivoSlide: "Apresentar o Meta-Prompting com escopo prévio delimitado para a prática dos alunos.",
-      oQueFalar: "(Laura) \"Bem-vindos de volta do café! Agora entramos na Camada 3: o Diálogo Iterativo e o Meta-Prompting! Mas atenção a uma regra de ouro dos nossos diagnósticos: o Meta-Prompting só funciona bem se você já tiver um escopo mínimo na cabeça. Se você disser apenas 'me faça perguntas sobre qualquer coisa', a IA vai travar ou fazer perguntas genéricas. Vejam o telão: delimitamos o escopo — 'Quero criar um modelo de e-mail de cobrança para minha rotina'. E pedimos 4 perguntas. Ela fará perguntas cirúrgicas sobre tom, prazo e valores, ajudando você a clarear o seu pensamento antes de gerar o rascunho final! É essa dinâmica que faremos no laboratório!\""
+      oQueFalar: "(Maria) \"Bem-vindos de volta do café! Agora entramos na Camada 3: o Diálogo Iterativo e o Meta-Prompting! Mas atenção a uma regra de ouro dos nossos diagnósticos: o Meta-Prompting só funciona bem se você já tiver um escopo mínimo na cabeça. Se você disser apenas 'me faça perguntas sobre qualquer coisa', a IA vai travar ou fazer perguntas genéricas. Vejam o telão: delimitamos o escopo — 'Quero criar um modelo de e-mail de cobrança para minha rotina'. E pedimos 4 perguntas. Ela fará perguntas cirúrgicas sobre tom, prazo e valores, ajudando você a clarear o seu pensamento antes de gerar o rascunho final! É essa dinâmica que faremos no laboratório!\""
     }
   },
   {
@@ -393,7 +394,8 @@ export const slidesComNotas = [
     categoria: "Responsabilidade Humana",
     titulo: "Agência Humana & Travas de Incerteza (UNESCO)",
     subtitulo: "A IA gera rascunhos; a decisão, a curadoria e a responsabilidade final são sempre humanas",
-    conducao: "Condução: Laura",
+    docente: "Maria",
+    conducao: "Condução: Maria",
     colunas: [
       {
         tag: "⚖️ Princípio da UNESCO & Revisão Crítica",
@@ -421,7 +423,7 @@ export const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "15 min (01:45 - 02:00)",
       objetivoSlide: "Conscientizar sobre os limites factuais da IA, desmistificar a falsa segurança de textos bem escritos e ensinar a trava '[necessita verificação]'.",
-      oQueFalar: "(Laura) \"Atenção máxima para este ponto ético da UNESCO: 100% das pessoas revisam se o texto está bonito e bem escrito. Mas coerência gramatical NÃO significa verdade! O ChatGPT é um escritor improvisador que prevê a próxima palavra; ele não confere se a lei existe ou se a data é real. Por isso, nunca assinem nada sem checar. Usem sempre a nossa Trava Anti-Alucinação no prompt: exijam que a IA marque dados duvidosos com o rótulo '[necessita verificação]'!\""
+      oQueFalar: "(Maria) \"Atenção máxima para este ponto ético da UNESCO: 100% das pessoas revisam se o texto está bonito e bem escrito. Mas coerência gramatical NÃO significa verdade! O ChatGPT é um escritor improvisador que prevê a próxima palavra; ele não confere se a lei existe ou se a data é real. Por isso, nunca assinem nada sem checar. Usem sempre a nossa Trava Anti-Alucinação no prompt: exijam que a IA marque dados duvidosos com o rótulo '[necessita verificação]'!\""
     }
   },
   {
