@@ -66,19 +66,19 @@ const blocosTematicos = [
   {
     id: 1,
     icone: "🧩",
-    titulo: "Bloco 1: Fundamentos & Estrutura C-T-F-R",
-    subtitulo: "Acolhimento, Handoff do Estagiário Inteligente e a Evolução do PCTFR para os 4 Blocos",
-    slidesRange: [1, 5],
-    tempoEstimado: "45 min",
+    titulo: "Bloco 1: Fundamentos, As 3 Camadas & Estrutura C-T-F-R",
+    subtitulo: "Acolhimento, Handoff do Estagiário Inteligente, Visão Geral das 3 Camadas e Framework C-T-F-R",
+    slidesRange: [1, 6],
+    tempoEstimado: "50 min",
     conducao: "Co-docência (Laura & Maria)"
   },
   {
     id: 2,
     icone: "⚡",
     titulo: "Bloco 2: Práticas no Mundo Real & Blindagem de Privacidade",
-    subtitulo: "Organização Pessoal e Redação/Simplificação de Jargões + Regra do Cartão-Postal e Café com Prosa",
-    slidesRange: [6, 9],
-    tempoEstimado: "45 min (c/ intervalo)",
+    subtitulo: "Camadas 1 e 2 na Prática (Rotina e Redação Executiva) + Regra do Cartão-Postal e Anonimização",
+    slidesRange: [7, 9],
+    tempoEstimado: "30 min",
     conducao: "Co-docência (Laura & Maria)"
   },
   {
@@ -114,16 +114,16 @@ const fioDaMeada = {
   atos: [
     {
       ato: 1,
-      tempo: "00:00 às 00:45 (45 min)",
-      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura (Slides 2-4) & Maria (Slide 5)",
-      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Laura conduz o modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25] e o Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Maria assume para apresentar os 4 Blocos C-T-F-R (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
+      tempo: "00:00 às 00:50 (50 min)",
+      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias, As 3 Camadas & Estrutura C-T-F-R — Laura (Slides 2-4), Co-docência (Slide 5) & Maria (Slide 6)",
+      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Laura conduz o modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25] e o Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Em co-docência, Laura e Maria apresentam o mapa dos Exemplos no Mundo Real com as 3 Camadas da IA (Slide 5) [00:35 - 00:42]. Maria assume para apresentar os 4 Blocos C-T-F-R (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) no Slide 6 [00:42 - 00:50].",
       gatilho: "Quem digita um pedido vago recebe um clichê; quem usa adjetivos vazios recebe verborragia; quem faz o handoff estruturado com contexto e restrições recebe trabalho pronto!"
     },
     {
       ato: 2,
-      tempo: "00:45 às 01:30 (45 min c/ Intervalo)",
-      titulo: "Ato 2: Aplicações Realmente Úteis, Regra do Cartão-Postal & Intervalo — Maria (Slides 6 a 8)",
-      desc: "Maria conduz as demonstrações práticas em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas) [00:45 - 00:55] e Camada 2 (redação profissional e simplificação de jargões/editais burocráticos em linguagem clara) [00:55 - 01:05]. Em seguida, Maria aprofunda a blindagem de privacidade através da 'Regra do Cartão-Postal' e da técnica de anonimização com placeholders ([CLIENTE A], [VALOR Y]) [01:05 - 01:15]. Pausa para café e descanso cognitivo de 15 minutos [01:15 - 01:30].",
+      tempo: "00:50 às 01:30 (40 min)",
+      titulo: "Ato 2: Aplicações Práticas nas Camadas 1 e 2 & Regra do Cartão-Postal — Maria (Slides 7 a 9)",
+      desc: "Maria conduz as demonstrações práticas em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas - Slide 7) [00:50 - 01:02] e Camada 2 (redação profissional e simplificação de jargões/editais burocráticos em linguagem clara - Slide 8) [01:02 - 01:16]. Em seguida, Maria aprofunda a blindagem de privacidade através da 'Regra do Cartão-Postal' e da técnica de anonimização com placeholders ([CLIENTE A], [VALOR Y]) no Slide 9 [01:16 - 01:30].",
       gatilho: "Nunca envie à IA o que você não escreveria em um cartão-postal aberto: anonimize identidades, use [CLIENTE A] e proteja seus dados profissionais!"
     },
     {
@@ -345,6 +345,41 @@ const slidesComNotas = [
     numero: 5,
     id: 5,
     bloco: 1,
+    tipo: "pilares",
+    categoria: "Mapa de Aplicação Prática",
+    titulo: "Exemplos no Mundo Real: As 3 Camadas da IA",
+    subtitulo: "Do básico ao avançado: como aplicar comandos estruturados na sua rotina pessoal, acadêmica e profissional",
+    pilares: [
+      {
+        num: "1",
+        icone: "⏱️",
+        titulo: "Camada 1: Organização & Rotina",
+        desc: "Planejamento pessoal, cronogramas de estudo realistas e estruturação de rotinas diárias com restrições claras de tempo."
+      },
+      {
+        num: "2",
+        icone: "💼",
+        titulo: "Camada 2: Redação & Simplificação",
+        desc: "Transformação de rascunhos em e-mails executivos objetivos e tradução de editais ou documentos complexos em linguagem clara."
+      },
+      {
+        num: "3",
+        icone: "🤖",
+        titulo: "Camada 3: Diálogo & Meta-Prompting",
+        desc: "Refinamento iterativo de respostas, auto-entrevista onde a IA formula as perguntas e blindagem com travas anti-alucinação."
+      }
+    ],
+    conducao: "Co-docência (Laura e Maria)",
+    notasProfessora: {
+      tempoSugerido: "5 min (00:35 - 00:40)",
+      objetivoSlide: "Apresentar a arquitetura pedagógica dos exemplos em 3 camadas progressivas antes do detalhamento de cada uma.",
+      oQueFalar: "(Laura) \"Agora que vimos a diferença gritante entre o pedido vago e o comando estruturado, como aplicamos isso na vida real? Organizamos nossos exemplos em 3 camadas de maturidade: primeiro, organizar nossa rotina pessoal; segundo, redação profissional e tradução de burocratês; e terceiro, o diálogo iterativo avançado com a IA.\" (Maria) \"Isso mesmo! E para dominar cada uma dessas 3 camadas com facilidade, vamos conhecer no próximo slide os 4 blocos fundamentais que usamos para construir qualquer prompt de sucesso!\""
+    }
+  },
+  {
+    numero: 6,
+    id: 6,
+    bloco: 1,
     tipo: "apresentacao",
     layout: "grid-4cards",
     categoria: "Framework de Prompting",
@@ -374,18 +409,18 @@ const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (00:35 - 00:45)",
+      tempoSugerido: "10 min (00:40 - 00:50)",
       objetivoSlide: "Demonstrar que o bloco de Contexto engloba a Persona do Encontro 2 e introduzir marcadores visuais (Markdown) para organizar a atenção do modelo.",
       oQueFalar: "(Maria) \"Pessoal, quando organizamos nosso pedido usando cabeçalhos claros como # Contexto, # Tarefa e # Restrições, estamos literalmente organizando o mapa de atenção da rede neural. A IA não acerta mais porque dissemos que ela é uma 'especialista sênior premiada', mas porque reduzimos a ambiguidade do espaço de busca das palavras! As restrições negativas são a nossa trava de segurança para impedir que ela invente dados onde não deve!\""
     }
   },
 
   // =========================================================================
-  // BLOCO 2: PRÁTICAS NO MUNDO REAL & PRIVACIDADE (Slides 6 a 9)
+  // BLOCO 2: PRÁTICAS NO MUNDO REAL & PRIVACIDADE (Slides 7 a 9)
   // =========================================================================
   {
-    numero: 6,
-    id: 6,
+    numero: 7,
+    id: 7,
     bloco: 2,
     tipo: "comparativo",
     categoria: "Prática no Mundo Real (Camada 1)",
@@ -418,14 +453,14 @@ const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (00:45 - 00:55)",
+      tempoSugerido: "10 min (00:50 - 01:00)",
       objetivoSlide: "Demonstrar a aplicação da primeira camada de tarefas (organização pessoal e cronogramas de estudo com marcadores visuais).",
       oQueFalar: "(Maria) \"Vamos para a nossa primeira camada prática: organização pessoal! Vejam como o prompt do telão especifica exatamente a disponibilidade de tempo do aluno usando as etiquetas entre colchetes. Em vez de receber conselhos genéricos, o ChatGPT gera uma rotina real cabível na semana. Repararam na restrição final 'não inclua tarefas no domingo'? É esse tipo de trava que garante que o resultado respeite a sua vida real!\""
     }
   },
   {
-    numero: 7,
-    id: 7,
+    numero: 8,
+    id: 8,
     bloco: 2,
     tipo: "comparativo",
     categoria: "Prática no Mundo Real (Camada 2)",
@@ -459,14 +494,14 @@ const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (00:55 - 01:05)",
+      tempoSugerido: "10 min (01:00 - 01:10)",
       objetivoSlide: "Apresentar a redação executiva e a simplificação de textos complexos (linguagem clara) com preservação de fatos.",
       oQueFalar: "(Maria) \"Na segunda camada, abordamos duas grandes dores do trabalho adulto: transformar anotações soltas de reunião em um e-mail formal e traduzir documentos difíceis — como editais, termos de contrato e regulamentos — em linguagem simples e cidadã! Vejam o Caso B: ao pedir que a IA extraia quem tem direito, prazos e obrigações, eliminamos horas de sofrimento com burocratês, sem perder nenhum dado importante!\""
     }
   },
   {
-    numero: 8,
-    id: 8,
+    numero: 9,
+    id: 9,
     bloco: 2,
     tipo: "comparativo",
     categoria: "Blindagem de Privacidade",
@@ -498,30 +533,9 @@ const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (01:05 - 01:15)",
+      tempoSugerido: "10 min (01:10 - 01:20)",
       objetivoSlide: "Reforçar os protocolos de proteção à privacidade e ensinar a técnica prática de anonimização de dados sensíveis.",
-      oQueFalar: "(Maria) \"Antes de irmos para o intervalo, um lembrete fundamental sobre segurança: lembrem-se da Regra do Cartão-Postal. Nunca insiram dados confidenciais de trabalho ou documentos com nomes reais. Usamos a técnica da anonimização: trocamos nomes por [CLIENTE A] e empresas por [EMPRESA X]. Assim, usaremos a inteligência da IA para estruturar o texto sem expor nenhuma informação sensível!\""
-    }
-  },
-  {
-    numero: 9,
-    id: 9,
-    bloco: 2,
-    tipo: "secao",
-    categoria: "Intervalo Pedagógico",
-    badge: "Café com Prosa • 15 minutos",
-    titulo: "Pausa para Café e Descanso Cognitivo",
-    subtitulo: "Retornaremos em 15 minutos para a Oficina Prática no Computador",
-    pills: [
-      { tipo: "real", texto: "☕ Café & Hidratação" },
-      { tipo: "real", texto: "💬 Troca Informal" },
-      { tipo: "real", texto: "💻 Preparação das Bancadas" }
-    ],
-    conducao: "Co-docência (Laura e Maria)",
-    notasProfessora: {
-      tempoSugerido: "15 min (01:15 - 01:30)",
-      objetivoSlide: "Permitir o descanso cognitivo, interação social e checagem técnica dos computadores pelas professoras.",
-      oQueFalar: "(Laura) \"Chegamos ao nosso intervalo pedagógico de 15 minutos! Aproveitem para tomar um café, esticar as pernas e assimilar o que vimos até aqui. (Maria) Enquanto vocês descansam, eu e a professora Laura vamos passar nos computadores do laboratório para verificar as conexões para a nossa oficina prática na volta. Até já!\""
+      oQueFalar: "(Maria) \"Antes de avançarmos para as técnicas avançadas de diálogo, um lembrete fundamental sobre segurança: lembrem-se da Regra do Cartão-Postal. Nunca insiram dados confidenciais de trabalho ou documentos com nomes reais. Usamos a técnica da anonimização: trocamos nomes por [CLIENTE A] e empresas por [EMPRESA X]. Assim, usaremos a inteligência da IA para estruturar o texto sem expor nenhuma informação sensível!\""
     }
   },
 
@@ -1259,17 +1273,17 @@ const divisaoPapeis = [
   { bloco: "Bloco 1 (00:05 - 00:15)", tema: "Onde Estamos e Aonde Vamos Hoje (Slide 2) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Bloco 1 (00:15 - 00:25)", tema: "A Metáfora do Estagiário Inteligente (Slide 3) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Bloco 1 (00:25 - 00:35)", tema: "Prompt or Flop? O Duelo de 3 Vias (Slide 4) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 1 (00:35 - 00:45)", tema: "Os 4 Blocos da Estrutura Perfeita C-T-F-R (Slide 5) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 2 (00:45 - 00:55)", tema: "Camada 1: Organização Pessoal e Rotina (Slide 6) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 2 (00:55 - 01:05)", tema: "Camada 2: Redação e Simplificação Profissional (Slide 7) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 2 (01:05 - 01:15)", tema: "Regra do Cartão-Postal e Anonimização (Slide 8) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Intervalo (01:15 - 01:30)", tema: "Intervalo Pedagógico / Café com Prosa (Slide 9)", papel: "ambas" },
-  { bloco: "Bloco 3 (01:30 - 01:45)", tema: "Camada 3: Diálogo Iterativo e Meta-Prompting (Slide 10) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 3 (01:45 - 02:00)", tema: "Agência Humana e Validação Crítica (UNESCO) (Slide 11) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 3 (02:00 - 02:20)", tema: "Oficina Prática de Bancada: Missão 1 (Slide 12)", papel: "ambas" },
-  { bloco: "Bloco 3 (02:20 - 02:33)", tema: "Bancada de Testes Empíricos & Quadro Comparativo (Slides 13 a 16)", papel: "ambas" },
-  { bloco: "Bloco 3 (02:33 - 02:48)", tema: "Oficina Prática de Bancada: Missão 2 (Slide 17)", papel: "ambas" },
-  { bloco: "Bloco 4 (02:48 - 03:00)", tema: "Show & Tell, Checklist de Bolso & Referências (Slides 18 a 20)", papel: "ambas" }
+  { bloco: "Bloco 1 (00:35 - 00:40)", tema: "Exemplos no Mundo Real: As 3 Camadas da IA (Slide 5)", papel: "ambas" },
+  { bloco: "Bloco 1 (00:40 - 00:50)", tema: "Os 4 Blocos da Estrutura Perfeita C-T-F-R (Slide 6) • Condução: Maria", papel: "radio", padrao: "maria" },
+  { bloco: "Bloco 2 (00:50 - 01:00)", tema: "Camada 1: Organização Pessoal e Rotina (Slide 7) • Condução: Maria", papel: "radio", padrao: "maria" },
+  { bloco: "Bloco 2 (01:00 - 01:10)", tema: "Camada 2: Redação e Simplificação Profissional (Slide 8) • Condução: Maria", papel: "radio", padrao: "maria" },
+  { bloco: "Bloco 2 (01:10 - 01:20)", tema: "Regra do Cartão-Postal e Anonimização (Slide 9) • Condução: Maria", papel: "radio", padrao: "maria" },
+  { bloco: "Bloco 3 (01:20 - 01:35)", tema: "Camada 3: Diálogo Iterativo e Meta-Prompting (Slide 10) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 3 (01:35 - 01:50)", tema: "Agência Humana e Validação Crítica (UNESCO) (Slide 11) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 3 (01:50 - 02:15)", tema: "Oficina Prática de Bancada: Missão 1 (Slide 12)", papel: "ambas" },
+  { bloco: "Bloco 3 (02:15 - 02:30)", tema: "Bancada de Testes Empíricos & Quadro Comparativo (Slides 13 a 16)", papel: "ambas" },
+  { bloco: "Bloco 3 (02:30 - 02:45)", tema: "Oficina Prática de Bancada: Missão 2 (Slide 17)", papel: "ambas" },
+  { bloco: "Bloco 4 (02:45 - 03:00)", tema: "Show & Tell, Checklist de Bolso & Referências (Slides 18 a 20)", papel: "ambas" }
 ];
 
   // Normalização determinística de numeração e IDs dos slides no bundle

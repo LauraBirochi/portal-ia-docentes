@@ -10,16 +10,16 @@ export const fioDaMeada = {
   atos: [
     {
       ato: 1,
-      tempo: "00:00 às 00:45 (45 min)",
-      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura (Slides 2-4) & Maria (Slide 5)",
-      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Laura conduz o modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25] e o Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Maria assume para apresentar os 4 Blocos C-T-F-R (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
+      tempo: "00:00 às 00:50 (50 min)",
+      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias, As 3 Camadas & Estrutura C-T-F-R — Laura (Slides 2-4), Co-docência (Slide 5) & Maria (Slide 6)",
+      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Laura conduz o modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25] e o Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Em co-docência, Laura e Maria apresentam o mapa dos Exemplos no Mundo Real com as 3 Camadas da IA (Slide 5) [00:35 - 00:42]. Maria assume para apresentar os 4 Blocos C-T-F-R (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) no Slide 6 [00:42 - 00:50].",
       gatilho: "Quem digita um pedido vago recebe um clichê; quem usa adjetivos vazios recebe verborragia; quem faz o handoff estruturado com contexto e restrições recebe trabalho pronto!"
     },
     {
       ato: 2,
-      tempo: "00:45 às 01:30 (45 min c/ Intervalo)",
-      titulo: "Ato 2: Aplicações Realmente Úteis, Regra do Cartão-Postal & Intervalo — Maria (Slides 6 a 8)",
-      desc: "Maria conduz as demonstrações práticas em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas) [00:45 - 00:55] e Camada 2 (redação profissional e simplificação de jargões/editais burocráticos em linguagem clara) [00:55 - 01:05]. Em seguida, Maria aprofunda a blindagem de privacidade através da 'Regra do Cartão-Postal' e da técnica de anonimização com placeholders ([CLIENTE A], [VALOR Y]) [01:05 - 01:15]. Pausa para café e descanso cognitivo de 15 minutos [01:15 - 01:30].",
+      tempo: "00:50 às 01:30 (40 min)",
+      titulo: "Ato 2: Aplicações Práticas nas Camadas 1 e 2 & Regra do Cartão-Postal — Maria (Slides 7 a 9)",
+      desc: "Maria conduz as demonstrações práticas em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas - Slide 7) [00:50 - 01:02] e Camada 2 (redação profissional e simplificação de jargões/editais burocráticos em linguagem clara - Slide 8) [01:02 - 01:16]. Em seguida, Maria aprofunda a blindagem de privacidade através da 'Regra do Cartão-Postal' e da técnica de anonimização com placeholders ([CLIENTE A], [VALOR Y]) no Slide 9 [01:16 - 01:30].",
       gatilho: "Nunca envie à IA o que você não escreveria em um cartão-postal aberto: anonimize identidades, use [CLIENTE A] e proteja seus dados profissionais!"
     },
     {

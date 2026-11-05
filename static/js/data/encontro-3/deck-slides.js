@@ -160,6 +160,41 @@ export const slidesComNotas = [
     numero: 5,
     id: 5,
     bloco: 1,
+    tipo: "pilares",
+    categoria: "Mapa de Aplicação Prática",
+    titulo: "Exemplos no Mundo Real: As 3 Camadas da IA",
+    subtitulo: "Do básico ao avançado: como aplicar comandos estruturados na sua rotina pessoal, acadêmica e profissional",
+    pilares: [
+      {
+        num: "1",
+        icone: "⏱️",
+        titulo: "Camada 1: Organização & Rotina",
+        desc: "Planejamento pessoal, cronogramas de estudo realistas e estruturação de rotinas diárias com restrições claras de tempo."
+      },
+      {
+        num: "2",
+        icone: "💼",
+        titulo: "Camada 2: Redação & Simplificação",
+        desc: "Transformação de rascunhos em e-mails executivos objetivos e tradução de editais ou documentos complexos em linguagem clara."
+      },
+      {
+        num: "3",
+        icone: "🤖",
+        titulo: "Camada 3: Diálogo & Meta-Prompting",
+        desc: "Refinamento iterativo de respostas, auto-entrevista onde a IA formula as perguntas e blindagem com travas anti-alucinação."
+      }
+    ],
+    conducao: "Co-docência (Laura e Maria)",
+    notasProfessora: {
+      tempoSugerido: "5 min (00:35 - 00:40)",
+      objetivoSlide: "Apresentar a arquitetura pedagógica dos exemplos em 3 camadas progressivas antes do detalhamento de cada uma.",
+      oQueFalar: "(Laura) \"Agora que vimos a diferença gritante entre o pedido vago e o comando estruturado, como aplicamos isso na vida real? Organizamos nossos exemplos em 3 camadas de maturidade: primeiro, organizar nossa rotina pessoal; segundo, redação profissional e tradução de burocratês; e terceiro, o diálogo iterativo avançado com a IA.\" (Maria) \"Isso mesmo! E para dominar cada uma dessas 3 camadas com facilidade, vamos conhecer no próximo slide os 4 blocos fundamentais que usamos para construir qualquer prompt de sucesso!\""
+    }
+  },
+  {
+    numero: 6,
+    id: 6,
+    bloco: 1,
     tipo: "apresentacao",
     layout: "grid-4cards",
     categoria: "Framework de Prompting",
@@ -189,18 +224,18 @@ export const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (00:35 - 00:45)",
+      tempoSugerido: "10 min (00:40 - 00:50)",
       objetivoSlide: "Demonstrar que o bloco de Contexto engloba a Persona do Encontro 2 e introduzir marcadores visuais (Markdown) para organizar a atenção do modelo.",
       oQueFalar: "(Maria) \"Pessoal, quando organizamos nosso pedido usando cabeçalhos claros como # Contexto, # Tarefa e # Restrições, estamos literalmente organizando o mapa de atenção da rede neural. A IA não acerta mais porque dissemos que ela é uma 'especialista sênior premiada', mas porque reduzimos a ambiguidade do espaço de busca das palavras! As restrições negativas são a nossa trava de segurança para impedir que ela invente dados onde não deve!\""
     }
   },
 
   // =========================================================================
-  // BLOCO 2: PRÁTICAS NO MUNDO REAL & PRIVACIDADE (Slides 6 a 9)
+  // BLOCO 2: PRÁTICAS NO MUNDO REAL & PRIVACIDADE (Slides 7 a 9)
   // =========================================================================
   {
-    numero: 6,
-    id: 6,
+    numero: 7,
+    id: 7,
     bloco: 2,
     tipo: "comparativo",
     categoria: "Prática no Mundo Real (Camada 1)",
@@ -233,14 +268,14 @@ export const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (00:45 - 00:55)",
+      tempoSugerido: "10 min (00:50 - 01:00)",
       objetivoSlide: "Demonstrar a aplicação da primeira camada de tarefas (organização pessoal e cronogramas de estudo com marcadores visuais).",
       oQueFalar: "(Maria) \"Vamos para a nossa primeira camada prática: organização pessoal! Vejam como o prompt do telão especifica exatamente a disponibilidade de tempo do aluno usando as etiquetas entre colchetes. Em vez de receber conselhos genéricos, o ChatGPT gera uma rotina real cabível na semana. Repararam na restrição final 'não inclua tarefas no domingo'? É esse tipo de trava que garante que o resultado respeite a sua vida real!\""
     }
   },
   {
-    numero: 7,
-    id: 7,
+    numero: 8,
+    id: 8,
     bloco: 2,
     tipo: "comparativo",
     categoria: "Prática no Mundo Real (Camada 2)",
@@ -274,14 +309,14 @@ export const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (00:55 - 01:05)",
+      tempoSugerido: "10 min (01:00 - 01:10)",
       objetivoSlide: "Apresentar a redação executiva e a simplificação de textos complexos (linguagem clara) com preservação de fatos.",
       oQueFalar: "(Maria) \"Na segunda camada, abordamos duas grandes dores do trabalho adulto: transformar anotações soltas de reunião em um e-mail formal e traduzir documentos difíceis — como editais, termos de contrato e regulamentos — em linguagem simples e cidadã! Vejam o Caso B: ao pedir que a IA extraia quem tem direito, prazos e obrigações, eliminamos horas de sofrimento com burocratês, sem perder nenhum dado importante!\""
     }
   },
   {
-    numero: 8,
-    id: 8,
+    numero: 9,
+    id: 9,
     bloco: 2,
     tipo: "comparativo",
     categoria: "Blindagem de Privacidade",
@@ -313,30 +348,9 @@ export const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (01:05 - 01:15)",
+      tempoSugerido: "10 min (01:10 - 01:20)",
       objetivoSlide: "Reforçar os protocolos de proteção à privacidade e ensinar a técnica prática de anonimização de dados sensíveis.",
-      oQueFalar: "(Maria) \"Antes de irmos para o intervalo, um lembrete fundamental sobre segurança: lembrem-se da Regra do Cartão-Postal. Nunca insiram dados confidenciais de trabalho ou documentos com nomes reais. Usamos a técnica da anonimização: trocamos nomes por [CLIENTE A] e empresas por [EMPRESA X]. Assim, usaremos a inteligência da IA para estruturar o texto sem expor nenhuma informação sensível!\""
-    }
-  },
-  {
-    numero: 9,
-    id: 9,
-    bloco: 2,
-    tipo: "secao",
-    categoria: "Intervalo Pedagógico",
-    badge: "Café com Prosa • 15 minutos",
-    titulo: "Pausa para Café e Descanso Cognitivo",
-    subtitulo: "Retornaremos em 15 minutos para a Oficina Prática no Computador",
-    pills: [
-      { tipo: "real", texto: "☕ Café & Hidratação" },
-      { tipo: "real", texto: "💬 Troca Informal" },
-      { tipo: "real", texto: "💻 Preparação das Bancadas" }
-    ],
-    conducao: "Co-docência (Laura e Maria)",
-    notasProfessora: {
-      tempoSugerido: "15 min (01:15 - 01:30)",
-      objetivoSlide: "Permitir o descanso cognitivo, interação social e checagem técnica dos computadores pelas professoras.",
-      oQueFalar: "(Laura) \"Chegamos ao nosso intervalo pedagógico de 15 minutos! Aproveitem para tomar um café, esticar as pernas e assimilar o que vimos até aqui. (Maria) Enquanto vocês descansam, eu e a professora Laura vamos passar nos computadores do laboratório para verificar as conexões para a nossa oficina prática na volta. Até já!\""
+      oQueFalar: "(Maria) \"Antes de avançarmos para as técnicas avançadas de diálogo, um lembrete fundamental sobre segurança: lembrem-se da Regra do Cartão-Postal. Nunca insiram dados confidenciais de trabalho ou documentos com nomes reais. Usamos a técnica da anonimização: trocamos nomes por [CLIENTE A] e empresas por [EMPRESA X]. Assim, usaremos a inteligência da IA para estruturar o texto sem expor nenhuma informação sensível!\""
     }
   },
 
