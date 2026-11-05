@@ -1,5 +1,5 @@
 /**
- * Base de Dados Unificada – Módulo do Encontro 3 (15 Slides)
+ * Base de Dados Unificada – Módulo do Encontro 3 (16 Slides)
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  * 
  * ARQUIVO GERADO AUTOMATICAMENTE POR: scripts/build_data.py
@@ -94,8 +94,8 @@ const blocosTematicos = [
     id: 4,
     icone: "🎉",
     titulo: "Bloco 4: Socialização & Fechamento",
-    subtitulo: "Roda de Conversa (Show & Tell), Checklist de Bolso e Próximos Passos (Multimodalidade no Encontro 4)",
-    slidesRange: [14, 15],
+    subtitulo: "Roda de Conversa (Show & Tell), Checklist de Bolso, Próximos Passos e Referências Bibliográficas",
+    slidesRange: [14, 16],
     tempoEstimado: "20 min",
     conducao: "Co-docência (Laura & Maria)"
   }
@@ -115,22 +115,22 @@ const fioDaMeada = {
     {
       ato: 1,
       tempo: "00:00 às 00:45 (45 min)",
-      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura & Maria",
-      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Introdução do modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25]. Apresentação do Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Apresentação dos 4 Blocos (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
+      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura (Slides 2-4) & Maria (Slide 5)",
+      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Laura conduz o modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25] e o Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Maria assume para apresentar os 4 Blocos C-T-F-R (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
       gatilho: "Quem digita um pedido vago recebe um clichê; quem usa adjetivos vazios recebe verborragia; quem faz o handoff estruturado com contexto e restrições recebe trabalho pronto!"
     },
     {
       ato: 2,
       tempo: "00:45 às 01:30 (45 min c/ Intervalo)",
-      titulo: "Ato 2: Aplicações Realmente Úteis, Regra do Cartão-Postal & Intervalo — Maria & Laura",
-      desc: "Demonstração de casos práticos em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas) [00:45 - 00:55] e Camada 2 (redação profissional e simplificação de jargões/editais burocráticos em linguagem clara) [00:55 - 01:05]. Blindagem de privacidade através da 'Regra do Cartão-Postal' e da técnica de anonimização com placeholders ([CLIENTE A], [VALOR Y]) [01:05 - 01:15]. Pausa para café e descanso cognitivo de 15 minutos [01:15 - 01:30].",
+      titulo: "Ato 2: Aplicações Realmente Úteis, Regra do Cartão-Postal & Intervalo — Maria (Slides 6 a 8)",
+      desc: "Maria conduz as demonstrações práticas em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas) [00:45 - 00:55] e Camada 2 (redação profissional e simplificação de jargões/editais burocráticos em linguagem clara) [00:55 - 01:05]. Em seguida, Maria aprofunda a blindagem de privacidade através da 'Regra do Cartão-Postal' e da técnica de anonimização com placeholders ([CLIENTE A], [VALOR Y]) [01:05 - 01:15]. Pausa para café e descanso cognitivo de 15 minutos [01:15 - 01:30].",
       gatilho: "Nunca envie à IA o que você não escreveria em um cartão-postal aberto: anonimize identidades, use [CLIENTE A] e proteja seus dados profissionais!"
     },
     {
       ato: 3,
       tempo: "01:30 às 03:00 (90 min)",
-      titulo: "Ato 3: Meta-Prompting Guiado, Bancada em 3 Níveis & Show and Tell — Laura & Maria",
-      desc: "Retorno do intervalo com a Camada 3: diálogo iterativo e Meta-Prompting com escopo prévio delimitado, incluindo modelagem visual guiada de 3 minutos no projetor [01:30 - 01:45]. Alinhamento ético com as diretrizes da UNESCO (Agência Humana, Revisão Textual ≠ Checagem Factual e Trava [necessita verificação]) [01:45 - 02:00]. Condução da Oficina de Bancada nos computadores com scaffolding em 3 níveis (Transformar o Vago, Limpar o Ruído e Auto-Entrevista) [02:00 - 02:40]. Roda de socialização (Show & Tell) [02:40 - 02:52] e consolidação do Checklist de Bolso com spoiler da multimodalidade do Encontro 4 [02:52 - 03:00].",
+      titulo: "Ato 3: Meta-Prompting Guiado, Bancada em 3 Níveis & Referências — Laura (Slides 10-11) & Maria",
+      desc: "Retorno do intervalo com Laura conduzindo a Camada 3: diálogo iterativo e Meta-Prompting com escopo prévio delimitado [01:30 - 01:45], seguido dos princípios éticos da UNESCO (Agência Humana, Revisão Textual ≠ Checagem Factual e Trava [necessita verificação]) [01:45 - 02:00]. Condução conjunta da Oficina de Bancada nos computadores com scaffolding em 3 níveis (Transformar o Vago, Limpar o Ruído e Auto-Entrevista) [02:00 - 02:40]. Roda de socialização (Show & Tell) [02:40 - 02:50] e consolidação do Checklist de Bolso, referências bibliográficas da OpenAI/UNESCO/OSSE e spoiler do Encontro 4 [02:50 - 03:00].",
       gatilho: "Quando você não souber como estruturar todos os detalhes, delimite o escopo e faça a IA perguntar: o Meta-Prompting transfere o esforço da pergunta para a máquina!"
     }
   ],
@@ -228,7 +228,7 @@ const slidesComNotas = [
     categoria: "Devolutiva Acolhedora",
     titulo: "Onde Estamos e Aonde Vamos Hoje",
     subtitulo: "Conectando os aprendizados anteriores à prática de comunicação com a IA",
-    conducao: "Condução: Maria",
+    conducao: "Condução: Laura",
     colunas: [
       {
         tag: "Revisão Encontros 1 e 2",
@@ -256,7 +256,7 @@ const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "10 min (00:05 - 00:15)",
       objetivoSlide: "Validar o progresso dos alunos e estabelecer a ponte cognitiva entre a teoria inicial e o prompting estruturado.",
-      oQueFalar: "(Maria) \"No Encontro 1, vimos que a IA não é mágica nem robô humanoide, mas sim um poderoso sistema estatístico. No Encontro 2, aprendemos a desativar o treinamento de dados e entendemos que o ChatGPT constrói textos palavra por palavra. Hoje, vamos resolver a principal frustração que vocês relataram: por que às vezes a IA responde algo genérico ou vago? A resposta está na forma como fazemos o pedido. Vamos transformar pedidos simples em comandos profissionais!\""
+      oQueFalar: "(Laura) \"No Encontro 1, vimos que a IA não é mágica nem robô humanoide, mas sim um poderoso sistema estatístico. No Encontro 2, aprendemos a desativar o treinamento de dados e entendemos que o ChatGPT constrói textos palavra por palavra. Hoje, vamos resolver a principal frustração que vocês relataram: por que às vezes a IA responde algo genérico ou vago? A resposta está na forma como fazemos o pedido. Vamos transformar pedidos simples em comandos profissionais!\""
     }
   },
   {
@@ -299,7 +299,7 @@ const slidesComNotas = [
     categoria: "Duelo de 3 Vias (Prompt or Flop)",
     titulo: "Prompt or Flop? O Duelo de 3 Vias",
     subtitulo: "Do pedido vago à ilusão da persona: por que adjetivos vazios não orientam a IA",
-    conducao: "Condução: Maria",
+    conducao: "Condução: Laura",
     colunas: [
       {
         tag: "❌ Prompt Vago (FLOP)",
@@ -338,7 +338,7 @@ const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "10 min (00:25 - 00:35)",
       objetivoSlide: "Desmontar o 'Falso Bom Prompt' e a ilusão da persona, comprovando que adjetivos vazios não orientam o modelo.",
-      oQueFalar: "(Maria) \"Olhem com muita atenção para o telão! Durante muito tempo, ensinaram na internet que para a IA funcionar bem bastava dizer: 'Atue como o maior especialista do mundo e faça algo incrível e perfeito'. Pesquisas científicas recentes comprovaram que essas personas superlativas têm efeito nulo ou até negativo na precisão factual! Elas só geram verborragia e respostas longas sem substância. O que realmente muda o jogo é a terceira coluna: dar contexto real, verbos diretos, formato em tabela e restrições negativas!\""
+      oQueFalar: "(Laura) \"Olhem com muita atenção para o telão! Durante muito tempo, ensinaram na internet que para a IA funcionar bem bastava dizer: 'Atue como o maior especialista do mundo e faça algo incrível e perfeito'. Pesquisas científicas recentes comprovaram que essas personas superlativas têm efeito nulo ou até negativo na precisão factual! Elas só geram verborragia e respostas longas sem substância. O que realmente muda o jogo é a terceira coluna: dar contexto real, verbos diretos, formato em tabela e restrições negativas!\""
     }
   },
   {
@@ -350,7 +350,7 @@ const slidesComNotas = [
     categoria: "Framework de Prompting",
     titulo: "Os 4 Blocos da Estrutura Perfeita (Evolução do PCTFR)",
     subtitulo: "Do método do Encontro 2 à organização modular definitiva com Marcadores Markdown (#)",
-    conducao: "Condução: Laura",
+    conducao: "Condução: Maria",
     itensDestaque: [
       {
         icone: "🧩",
@@ -376,7 +376,7 @@ const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "10 min (00:35 - 00:45)",
       objetivoSlide: "Demonstrar que o bloco de Contexto engloba a Persona do Encontro 2 e introduzir marcadores visuais (Markdown) para organizar a atenção do modelo.",
-      oQueFalar: "(Laura) \"Pessoal, quando organizamos nosso pedido usando cabeçalhos claros como # Contexto, # Tarefa e # Restrições, estamos literalmente organizando o mapa de atenção da rede neural. A IA não acerta mais porque dissemos que ela é uma 'especialista sênior premiada', mas porque reduzimos a ambiguidade do espaço de busca das palavras! As restrições negativas são a nossa trava de segurança para impedir que ela invente dados onde não deve!\""
+      oQueFalar: "(Maria) \"Pessoal, quando organizamos nosso pedido usando cabeçalhos claros como # Contexto, # Tarefa e # Restrições, estamos literalmente organizando o mapa de atenção da rede neural. A IA não acerta mais porque dissemos que ela é uma 'especialista sênior premiada', mas porque reduzimos a ambiguidade do espaço de busca das palavras! As restrições negativas são a nossa trava de segurança para impedir que ela invente dados onde não deve!\""
     }
   },
 
@@ -431,7 +431,7 @@ const slidesComNotas = [
     categoria: "Prática no Mundo Real (Camada 2)",
     titulo: "Camada 2: Redação Profissional & Simplificação",
     subtitulo: "Dois superpoderes do dia a dia: e-mails executivos e tradução de jargões burocráticos",
-    conducao: "Condução: Laura",
+    conducao: "Condução: Maria",
     colunas: [
       {
         tag: "✉️ Caso A: Rascunho ➔ E-mail Executivo",
@@ -461,7 +461,7 @@ const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "10 min (00:55 - 01:05)",
       objetivoSlide: "Apresentar a redação executiva e a simplificação de textos complexos (linguagem clara) com preservação de fatos.",
-      oQueFalar: "(Laura) \"Na segunda camada, abordamos duas grandes dores do trabalho adulto: transformar anotações soltas de reunião em um e-mail formal e traduzir documentos difíceis — como editais, termos de contrato e regulamentos — em linguagem simples e cidadã! Vejam o Caso B: ao pedir que a IA extraia quem tem direito, prazos e obrigações, eliminamos horas de sofrimento com burocratês, sem perder nenhum dado importante!\""
+      oQueFalar: "(Maria) \"Na segunda camada, abordamos duas grandes dores do trabalho adulto: transformar anotações soltas de reunião em um e-mail formal e traduzir documentos difíceis — como editais, termos de contrato e regulamentos — em linguagem simples e cidadã! Vejam o Caso B: ao pedir que a IA extraia quem tem direito, prazos e obrigações, eliminamos horas de sofrimento com burocratês, sem perder nenhum dado importante!\""
     }
   },
   {
@@ -536,7 +536,7 @@ const slidesComNotas = [
     categoria: "Técnica de Diálogo (Camada 3)",
     titulo: "Camada 3: Diálogo Iterativo & Meta-Prompting",
     subtitulo: "Como fazer o ChatGPT entrevistar você para criar o prompt perfeito (com escopo delimitado)",
-    conducao: "Condução: Laura (com Demonstração de 3 min ao vivo no telão)",
+    conducao: "Condução: Laura",
     colunas: [
       {
         tag: "🔄 Diálogo Iterativo & Escopo Prévio",
@@ -564,8 +564,8 @@ const slidesComNotas = [
     ],
     notasProfessora: {
       tempoSugerido: "15 min (01:30 - 01:45)",
-      objetivoSlide: "Apresentar o Meta-Prompting com escopo prévio e realizar uma MODELAGEM VISUAL GUIADA DE 3 MINUTOS no projetor antes da prática dos alunos.",
-      oQueFalar: "(Laura) \"Bem-vindos de volta do café! Agora entramos na Camada 3: o Diálogo Iterativo e o Meta-Prompting! Mas atenção a uma regra de ouro dos nossos diagnósticos: o Meta-Prompting só funciona bem se você já tiver um escopo mínimo na cabeça. Se você disser apenas 'me faça perguntas sobre qualquer coisa', a IA vai travar ou fazer perguntas genéricas. Vejam o telão: delimitamos o escopo — 'Quero criar um modelo de e-mail de cobrança para minha rotina'. E pedimos 4 perguntas. Olhem aqui ao vivo: ela fez 4 perguntas cirúrgicas sobre tom, prazo e valores! Agora a Maria responde a primeira pergunta... viram como o rascunho nasce perfeito? É essa dinâmica que faremos no laboratório!\""
+      objetivoSlide: "Apresentar o Meta-Prompting com escopo prévio delimitado para a prática dos alunos.",
+      oQueFalar: "(Laura) \"Bem-vindos de volta do café! Agora entramos na Camada 3: o Diálogo Iterativo e o Meta-Prompting! Mas atenção a uma regra de ouro dos nossos diagnósticos: o Meta-Prompting só funciona bem se você já tiver um escopo mínimo na cabeça. Se você disser apenas 'me faça perguntas sobre qualquer coisa', a IA vai travar ou fazer perguntas genéricas. Vejam o telão: delimitamos o escopo — 'Quero criar um modelo de e-mail de cobrança para minha rotina'. E pedimos 4 perguntas. Ela fará perguntas cirúrgicas sobre tom, prazo e valores, ajudando você a clarear o seu pensamento antes de gerar o rascunho final! É essa dinâmica que faremos no laboratório!\""
     }
   },
   {
@@ -576,7 +576,7 @@ const slidesComNotas = [
     categoria: "Responsabilidade Humana",
     titulo: "Agência Humana & Travas de Incerteza (UNESCO)",
     subtitulo: "A IA gera rascunhos; a decisão, a curadoria e a responsabilidade final são sempre humanas",
-    conducao: "Condução: Maria",
+    conducao: "Condução: Laura",
     colunas: [
       {
         tag: "⚖️ Princípio da UNESCO & Revisão Crítica",
@@ -604,7 +604,7 @@ const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "15 min (01:45 - 02:00)",
       objetivoSlide: "Conscientizar sobre os limites factuais da IA, desmistificar a falsa segurança de textos bem escritos e ensinar a trava '[necessita verificação]'.",
-      oQueFalar: "(Maria) \"Atenção máxima para este ponto ético da UNESCO: 100% das pessoas revisam se o texto está bonito e bem escrito. Mas coerência gramatical NÃO significa verdade! O ChatGPT é um escritor improvisador que prevê a próxima palavra; ele não confere se a lei existe ou se a data é real. Por isso, nunca assinem nada sem checar. Usem sempre a nossa Trava Anti-Alucinação no prompt: exijam que a IA marque dados duvidosos com o rótulo '[necessita verificação]'!\""
+      oQueFalar: "(Laura) \"Atenção máxima para este ponto ético da UNESCO: 100% das pessoas revisam se o texto está bonito e bem escrito. Mas coerência gramatical NÃO significa verdade! O ChatGPT é um escritor improvisador que prevê a próxima palavra; ele não confere se a lei existe ou se a data é real. Por isso, nunca assinem nada sem checar. Usem sempre a nossa Trava Anti-Alucinação no prompt: exijam que a IA marque dados duvidosos com o rótulo '[necessita verificação]'!\""
     }
   },
   {
@@ -729,6 +729,48 @@ const slidesComNotas = [
       tempoSugerido: "10 min (02:50 - 03:00)",
       objetivoSlide: "Síntese final dos pilares da aula, reforço da reflexão ética e motivação para o próximo encontro.",
       oQueFalar: "(Maria) \"Para encerrar o nosso Encontro 3, levem este checklist de bolso para a vida de vocês! Sempre que abrirem o ChatGPT, lembrem-se: nada de pedidos genéricos e nada de personas mágicas. O que funciona é Contexto, Tarefa, Formato e Restrições!\" (Laura) \"E lembrem-se da nossa mensagem central: a agência e a validação crítica continuam com vocês. No Encontro 4, daremos um salto fascinante: sairemos do texto puro e entraremos na IA Multimodal, analisando imagens, documentos em PDF e áudios! Um grande abraço a todos e até a próxima semana!\""
+    }
+  },
+  {
+    numero: 16,
+    id: 16,
+    bloco: 4,
+    tipo: "comparativo",
+    categoria: "Referências Bibliográficas",
+    titulo: "Referências Bibliográficas & Leituras Recomendadas",
+    subtitulo: "Fundamentação técnica e marcos regulatórios: guias oficiais da OpenAI, UNESCO e OSSE",
+    conducao: "Co-docência (Laura e Maria)",
+    colunas: [
+      {
+        tag: "🤖 Fontes da OpenAI (Técnica & Estrutura de Prompting)",
+        icone: "📖",
+        tipo: "marrom",
+        bullet: "•",
+        itens: [
+          "OpenAI — ChatGPT Enterprise Prompting Guide",
+          "OpenAI Help Center — Prompt engineering best practices for ChatGPT",
+          "OpenAI Help Center — How do I create a good prompt for an AI model?",
+          "OpenAI Platform — Prompt engineering"
+        ]
+      },
+      {
+        tag: "🏛️ UNESCO & OSSE (Agência Humana, Ética & Educação)",
+        icone: "🎓",
+        tipo: "positivo",
+        bullet: "•",
+        itens: [
+          "UNESCO — AI Competency Framework for Teachers (PDF)",
+          "UNESCO — AI competency framework for teachers",
+          "UNESCO — What you need to know about UNESCO’s new AI competency frameworks for students and teachers",
+          "UNESCO — Artificial intelligence in education: UNESCO advances key competencies for teachers and learners",
+          "OSSE — Designing Effective Prompts: Enhancing Educational and Professional Practice with ChatGPT (PDF)"
+        ]
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "5 min (ou consulta assíncrona)",
+      objetivoSlide: "Apresentar as fontes primárias internacionais que embasam o conteúdo e as diretrizes pedagógicas do Encontro 3.",
+      oQueFalar: "(Laura) \"Para quem quiser aprofundar os estudos, reunimos aqui as referências primárias que embasam a nossa aula. De um lado, os guias oficiais da OpenAI sobre as melhores práticas de engenharia de prompt.\" (Maria) \"E do outro lado, os marcos da UNESCO sobre competências docentes em IA e o guia da OSSE, que garantem a nossa visão de que a agência crítica e a curadoria humana são o coração da educação! Todos esses materiais estão disponíveis para consulta no portal!\""
     }
   }
 ];
@@ -1005,18 +1047,19 @@ const perguntasAlunos = [
  */
 
 const divisaoPapeis = [
-  { bloco: "Bloco 1 (00:00 - 00:15)", tema: "Acolhimento, Conexão com Encontros 1 & 2 e Onde Vamos Hoje (Slides 1 e 2)", papel: "ambas" },
+  { bloco: "Bloco 1 (00:00 - 00:05)", tema: "Abertura & Conexão Inicial (Slide 1)", papel: "ambas" },
+  { bloco: "Bloco 1 (00:05 - 00:15)", tema: "Onde Estamos e Aonde Vamos Hoje (Slide 2) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Bloco 1 (00:15 - 00:25)", tema: "A Metáfora do Estagiário Inteligente (Slide 3) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 1 (00:25 - 00:35)", tema: "Prompt or Flop? O Impacto da Clareza (Slide 4) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 1 (00:35 - 00:45)", tema: "Os 4 Blocos da Estrutura Perfeita (Slide 5) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 1 (00:25 - 00:35)", tema: "Prompt or Flop? O Duelo de 3 Vias (Slide 4) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 1 (00:35 - 00:45)", tema: "Os 4 Blocos da Estrutura Perfeita C-T-F-R (Slide 5) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Bloco 2 (00:45 - 00:55)", tema: "Camada 1: Organização Pessoal e Rotina (Slide 6) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 2 (00:55 - 01:05)", tema: "Camada 2: Redação e Simplificação Profissional (Slide 7) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 2 (00:55 - 01:05)", tema: "Camada 2: Redação e Simplificação Profissional (Slide 7) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Bloco 2 (01:05 - 01:15)", tema: "Regra do Cartão-Postal e Anonimização (Slide 8) • Condução: Maria", papel: "radio", padrao: "maria" },
   { bloco: "Intervalo (01:15 - 01:30)", tema: "Intervalo Pedagógico / Café com Prosa (Slide 9)", papel: "ambas" },
   { bloco: "Bloco 3 (01:30 - 01:45)", tema: "Camada 3: Diálogo Iterativo e Meta-Prompting (Slide 10) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 3 (01:45 - 02:00)", tema: "Agência Humana e Validação Crítica (UNESCO) (Slide 11) • Condução: Maria", papel: "radio", padrao: "maria" },
+  { bloco: "Bloco 3 (01:45 - 02:00)", tema: "Agência Humana e Validação Crítica (UNESCO) (Slide 11) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Bloco 3 (02:00 - 02:40)", tema: "Oficina Prática de Bancada: Missão 1 e Missão 2 (Slides 12 e 13)", papel: "ambas" },
-  { bloco: "Bloco 4 (02:40 - 03:00)", tema: "Roda de Socialização (Show & Tell) e Checklist de Bolso (Slides 14 e 15)", papel: "ambas" }
+  { bloco: "Bloco 4 (02:40 - 03:00)", tema: "Show & Tell, Checklist de Bolso & Referências (Slides 14 a 16)", papel: "ambas" }
 ];
 
   // Normalização determinística de numeração e IDs dos slides no bundle

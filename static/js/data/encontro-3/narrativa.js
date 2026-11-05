@@ -11,22 +11,22 @@ export const fioDaMeada = {
     {
       ato: 1,
       tempo: "00:00 às 00:45 (45 min)",
-      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura & Maria",
-      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Introdução do modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25]. Apresentação do Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Apresentação dos 4 Blocos (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
+      titulo: "Ato 1: O Handoff do Estagiário, Duelo de 3 Vias & Estrutura C-T-F-R — Laura (Slides 2-4) & Maria (Slide 5)",
+      desc: "Acolhimento da turma e conexão com os aprendizados dos Encontros 1 e 2 [00:00 - 00:15]. Laura conduz o modelo mental do estagiário inteligente no 1º dia (alta capacidade, contexto zero) [00:15 - 00:25] e o Duelo de 3 Vias ('Prompt or Flop') para desconstruir a ilusão da persona e provar que adjetivos vazios geram verborragia sem formato [00:25 - 00:35]. Maria assume para apresentar os 4 Blocos C-T-F-R (Contexto & Papel, Tarefa, Formato e Restrições) com organização via Markdown (#) [00:35 - 00:45].",
       gatilho: "Quem digita um pedido vago recebe um clichê; quem usa adjetivos vazios recebe verborragia; quem faz o handoff estruturado com contexto e restrições recebe trabalho pronto!"
     },
     {
       ato: 2,
       tempo: "00:45 às 01:30 (45 min c/ Intervalo)",
-      titulo: "Ato 2: Aplicações Realmente Úteis, Regra do Cartão-Postal & Intervalo — Maria & Laura",
-      desc: "Demonstração de casos práticos em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas) [00:45 - 00:55] e Camada 2 (redação profissional e simplificação de jargões/editais burocráticos em linguagem clara) [00:55 - 01:05]. Blindagem de privacidade através da 'Regra do Cartão-Postal' e da técnica de anonimização com placeholders ([CLIENTE A], [VALOR Y]) [01:05 - 01:15]. Pausa para café e descanso cognitivo de 15 minutos [01:15 - 01:30].",
+      titulo: "Ato 2: Aplicações Realmente Úteis, Regra do Cartão-Postal & Intervalo — Maria (Slides 6 a 8)",
+      desc: "Maria conduz as demonstrações práticas em camadas: Camada 1 (organização pessoal, rotinas e cronogramas de estudos realistas) [00:45 - 00:55] e Camada 2 (redação profissional e simplificação de jargões/editais burocráticos em linguagem clara) [00:55 - 01:05]. Em seguida, Maria aprofunda a blindagem de privacidade através da 'Regra do Cartão-Postal' e da técnica de anonimização com placeholders ([CLIENTE A], [VALOR Y]) [01:05 - 01:15]. Pausa para café e descanso cognitivo de 15 minutos [01:15 - 01:30].",
       gatilho: "Nunca envie à IA o que você não escreveria em um cartão-postal aberto: anonimize identidades, use [CLIENTE A] e proteja seus dados profissionais!"
     },
     {
       ato: 3,
       tempo: "01:30 às 03:00 (90 min)",
-      titulo: "Ato 3: Meta-Prompting Guiado, Bancada em 3 Níveis & Show and Tell — Laura & Maria",
-      desc: "Retorno do intervalo com a Camada 3: diálogo iterativo e Meta-Prompting com escopo prévio delimitado, incluindo modelagem visual guiada de 3 minutos no projetor [01:30 - 01:45]. Alinhamento ético com as diretrizes da UNESCO (Agência Humana, Revisão Textual ≠ Checagem Factual e Trava [necessita verificação]) [01:45 - 02:00]. Condução da Oficina de Bancada nos computadores com scaffolding em 3 níveis (Transformar o Vago, Limpar o Ruído e Auto-Entrevista) [02:00 - 02:40]. Roda de socialização (Show & Tell) [02:40 - 02:52] e consolidação do Checklist de Bolso com spoiler da multimodalidade do Encontro 4 [02:52 - 03:00].",
+      titulo: "Ato 3: Meta-Prompting Guiado, Bancada em 3 Níveis & Referências — Laura (Slides 10-11) & Maria",
+      desc: "Retorno do intervalo com Laura conduzindo a Camada 3: diálogo iterativo e Meta-Prompting com escopo prévio delimitado [01:30 - 01:45], seguido dos princípios éticos da UNESCO (Agência Humana, Revisão Textual ≠ Checagem Factual e Trava [necessita verificação]) [01:45 - 02:00]. Condução conjunta da Oficina de Bancada nos computadores com scaffolding em 3 níveis (Transformar o Vago, Limpar o Ruído e Auto-Entrevista) [02:00 - 02:40]. Roda de socialização (Show & Tell) [02:40 - 02:50] e consolidação do Checklist de Bolso, referências bibliográficas da OpenAI/UNESCO/OSSE e spoiler do Encontro 4 [02:50 - 03:00].",
       gatilho: "Quando você não souber como estruturar todos os detalhes, delimite o escopo e faça a IA perguntar: o Meta-Prompting transfere o esforço da pergunta para a máquina!"
     }
   ],

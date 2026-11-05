@@ -37,7 +37,8 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
 - **Tema:** *ChatGPT na Prática: Do Comando Simples ao Trabalho Real – Como instruir, refinar e colaborar com a IA de forma produtiva, ética e segura.*
 - **Diretriz de Ferramentas:** Foco exclusivo no ChatGPT durante o encontro para evitar sobrecarga cognitiva nos alunos e acolher o aluno iniciante.
 - **Paleta Óptica dos Slides (Deep Navy):** Aplicada também no Encontro 3 (`body[data-meeting="3"]` em `static/css/projector.css`), mantendo a identidade visual de alto contraste e legibilidade com fundo Deep Navy `#0f172a` e cartões Slate Navy `#1e293b`.
-- **Deck Consolidado (15 Slides):** 15 slides distribuídos em 4 blocos temáticos (Fundamentos & Estrutura dos 4 Blocos, Práticas no Mundo Real & Blindagem de Privacidade com Cartão-Postal, Diálogo Iterativo & Oficina nos Computadores com Missões 1 e 2 no Portfólio Digital, e Socialização & Fechamento com Checklist de Bolso).
+- **Deck Consolidado (16 Slides):** 16 slides distribuídos em 4 blocos temáticos, incluindo referências bibliográficas da OpenAI e UNESCO/OSSE (Slide 16).
+- **Divisão de Palco Atualizada:** Laura assume os Slides 2 a 4 (Revisão, Estagiário e Duelo de 3 Vias) e Slides 10 e 11 (Diálogo Iterativo e Agência Humana UNESCO); Maria assume os Slides 5 a 8 (Framework C-T-F-R, Aplicações no Mundo Real e Cartão-Postal/Anonimização); co-docência integrada na Abertura (Slide 1), Intervalo (Slide 9), Oficina nos Computadores (Slides 12-13), Fechamento (Slide 15) e Referências (Slide 16).
 - **Refinamento Pedagógico (NotebookLM):**
   - *Duelo de 3 Vias (Slide 4):* Desconstrução da Ilusão da Persona (`❌ Vago` vs `⚠️ Falso Bom Prompt` vs `✅ Mestre C-T-F-R`), comprovando que adjetivos vazios geram verborragia sem ganho factual.
   - *Framework C-T-F-R com Markdown (Slide 5):* Persona integrada a Contexto e padronização com cabeçalhos `#`.

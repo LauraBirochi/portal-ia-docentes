@@ -48,8 +48,8 @@ export const blocosTematicos = [
     id: 4,
     icone: "🎉",
     titulo: "Bloco 4: Socialização & Fechamento",
-    subtitulo: "Roda de Conversa (Show & Tell), Checklist de Bolso e Próximos Passos (Multimodalidade no Encontro 4)",
-    slidesRange: [14, 15],
+    subtitulo: "Roda de Conversa (Show & Tell), Checklist de Bolso, Próximos Passos e Referências Bibliográficas",
+    slidesRange: [14, 16],
     tempoEstimado: "20 min",
     conducao: "Co-docência (Laura & Maria)"
   }
