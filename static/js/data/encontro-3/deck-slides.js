@@ -160,41 +160,6 @@ export const slidesComNotas = [
     numero: 5,
     id: 5,
     bloco: 1,
-    tipo: "pilares",
-    categoria: "Mapa de Aplicação Prática",
-    titulo: "Exemplos no Mundo Real: As 3 Camadas da IA",
-    subtitulo: "Do básico ao avançado: como aplicar comandos estruturados na sua rotina pessoal, acadêmica e profissional",
-    pilares: [
-      {
-        num: "1",
-        icone: "⏱️",
-        titulo: "Camada 1: Organização & Rotina",
-        desc: "Planejamento pessoal, cronogramas de estudo realistas e estruturação de rotinas diárias com restrições claras de tempo."
-      },
-      {
-        num: "2",
-        icone: "💼",
-        titulo: "Camada 2: Redação & Simplificação",
-        desc: "Transformação de rascunhos em e-mails executivos objetivos e tradução de editais ou documentos complexos em linguagem clara."
-      },
-      {
-        num: "3",
-        icone: "🤖",
-        titulo: "Camada 3: Diálogo & Meta-Prompting",
-        desc: "Refinamento iterativo de respostas, auto-entrevista onde a IA formula as perguntas e blindagem com travas anti-alucinação."
-      }
-    ],
-    conducao: "Co-docência (Laura e Maria)",
-    notasProfessora: {
-      tempoSugerido: "5 min (00:35 - 00:40)",
-      objetivoSlide: "Apresentar a arquitetura pedagógica dos exemplos em 3 camadas progressivas antes do detalhamento de cada uma.",
-      oQueFalar: "(Laura) \"Agora que vimos a diferença gritante entre o pedido vago e o comando estruturado, como aplicamos isso na vida real? Organizamos nossos exemplos em 3 camadas de maturidade: primeiro, organizar nossa rotina pessoal; segundo, redação profissional e tradução de burocratês; e terceiro, o diálogo iterativo avançado com a IA.\" (Maria) \"Isso mesmo! E para dominar cada uma dessas 3 camadas com facilidade, vamos conhecer no próximo slide os 4 blocos fundamentais que usamos para construir qualquer prompt de sucesso!\""
-    }
-  },
-  {
-    numero: 6,
-    id: 6,
-    bloco: 1,
     tipo: "apresentacao",
     layout: "grid-4cards",
     categoria: "Framework de Prompting",
@@ -224,15 +189,36 @@ export const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (00:40 - 00:50)",
+      tempoSugerido: "10 min (00:35 - 00:45)",
       objetivoSlide: "Demonstrar que o bloco de Contexto engloba a Persona do Encontro 2 e introduzir marcadores visuais (Markdown) para organizar a atenção do modelo.",
       oQueFalar: "(Maria) \"Pessoal, quando organizamos nosso pedido usando cabeçalhos claros como # Contexto, # Tarefa e # Restrições, estamos literalmente organizando o mapa de atenção da rede neural. A IA não acerta mais porque dissemos que ela é uma 'especialista sênior premiada', mas porque reduzimos a ambiguidade do espaço de busca das palavras! As restrições negativas são a nossa trava de segurança para impedir que ela invente dados onde não deve!\""
     }
   },
 
   // =========================================================================
-  // BLOCO 2: PRÁTICAS NO MUNDO REAL & PRIVACIDADE (Slides 7 a 9)
+  // BLOCO 2: PRÁTICAS NO MUNDO REAL & PRIVACIDADE (Slides 6 a 9)
   // =========================================================================
+  {
+    numero: 6,
+    id: 6,
+    bloco: 2,
+    tipo: "secao",
+    categoria: "Aplicações Práticas • Casos de Uso",
+    badge: "APLICAÇÕES PRÁTICAS • CASOS DE USO",
+    titulo: "Exemplos Práticos: Onde Usar um Prompt Estruturado?",
+    subtitulo: "Do planejamento pessoal à comunicação de trabalho: como aplicar a estrutura C-T-F-R na sua rotina em 3 camadas",
+    pills: [
+      { tipo: "real", texto: "📅 Camada 1: Organização & Estudos" },
+      { tipo: "real", texto: "✉️ Camada 2: Redação & Simplificação" },
+      { tipo: "real", texto: "🤖 Camada 3: Diálogo & Meta-Prompting" }
+    ],
+    conducao: "Condução: Maria",
+    notasProfessora: {
+      tempoSugerido: "5 min (00:45 - 00:50)",
+      objetivoSlide: "Apresentar a visão geral das 3 camadas de aplicação do framework C-T-F-R no dia a dia acadêmico e profissional.",
+      oQueFalar: "(Maria) \"Agora que dominamos a arquitetura dos 4 blocos C-T-F-R, surge a grande pergunta: onde e como colocar isso para rodar na vida real? Para que vocês tenham um roteiro claro de aplicação, dividimos o uso prático em 3 camadas: primeiro na nossa rotina pessoal e organização de estudos; segundo no trabalho e comunicação profissional; e terceiro no diálogo iterativo com a máquina. Vamos começar pela nossa Camada 1!\""
+    }
+  },
   {
     numero: 7,
     id: 7,
@@ -350,7 +336,7 @@ export const slidesComNotas = [
     notasProfessora: {
       tempoSugerido: "10 min (01:10 - 01:20)",
       objetivoSlide: "Reforçar os protocolos de proteção à privacidade e ensinar a técnica prática de anonimização de dados sensíveis.",
-      oQueFalar: "(Maria) \"Antes de avançarmos para as técnicas avançadas de diálogo, um lembrete fundamental sobre segurança: lembrem-se da Regra do Cartão-Postal. Nunca insiram dados confidenciais de trabalho ou documentos com nomes reais. Usamos a técnica da anonimização: trocamos nomes por [CLIENTE A] e empresas por [EMPRESA X]. Assim, usaremos a inteligência da IA para estruturar o texto sem expor nenhuma informação sensível!\""
+      oQueFalar: "(Maria) \"Antes de seguirmos para as técnicas avançadas de diálogo, um lembrete fundamental sobre segurança: lembrem-se da Regra do Cartão-Postal. Nunca insiram dados confidenciais de trabalho ou documentos com nomes reais. Usamos a técnica da anonimização: trocamos nomes por [CLIENTE A] e empresas por [EMPRESA X]. Assim, usaremos a inteligência da IA para estruturar o texto sem expor nenhuma informação sensível!\""
     }
   },
 

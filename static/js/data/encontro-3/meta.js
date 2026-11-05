@@ -20,19 +20,19 @@ export const blocosTematicos = [
   {
     id: 1,
     icone: "🧩",
-    titulo: "Bloco 1: Fundamentos, As 3 Camadas & Estrutura C-T-F-R",
-    subtitulo: "Acolhimento, Handoff do Estagiário Inteligente, Visão Geral das 3 Camadas e Framework C-T-F-R",
-    slidesRange: [1, 6],
-    tempoEstimado: "50 min",
+    titulo: "Bloco 1: Fundamentos & Estrutura C-T-F-R",
+    subtitulo: "Acolhimento, Handoff do Estagiário Inteligente e a Evolução do PCTFR para os 4 Blocos",
+    slidesRange: [1, 5],
+    tempoEstimado: "45 min",
     conducao: "Co-docência (Laura & Maria)"
   },
   {
     id: 2,
     icone: "⚡",
     titulo: "Bloco 2: Práticas no Mundo Real & Blindagem de Privacidade",
-    subtitulo: "Camadas 1 e 2 na Prática (Rotina e Redação Executiva) + Regra do Cartão-Postal e Anonimização",
-    slidesRange: [7, 9],
-    tempoEstimado: "30 min",
+    subtitulo: "Abertura das 3 Camadas Práticas, Organização Pessoal, Redação de E-mails/Editais e Regra do Cartão-Postal",
+    slidesRange: [6, 9],
+    tempoEstimado: "45 min (c/ intervalo)",
     conducao: "Co-docência (Laura & Maria)"
   },
   {
