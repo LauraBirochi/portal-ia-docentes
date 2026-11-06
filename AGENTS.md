@@ -47,7 +47,7 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
   - *Regra do Cartão-Postal (Slide 9):* Protocolo de segurança e anonimização de dados sensíveis antes das técnicas de diálogo.
   - *Meta-Prompting Ancorado (Slide 10):* Inversão de papel com escopo prévio delimitado para evitar travamento da IA.
   - *Agência Humana UNESCO (Slide 11):* Diferenciação entre *Revisão Textual* e *Checagem Factual* com trava operacional `[necessita verificação]`.
-  - *Scaffolding em 3 Níveis & Dontpad (Slides 12, 17 e Cockpit):* Oficina de bancada com andaime gradual (Vago ➔ Limpar Ruído ➔ Auto-Entrevista) e suporte a clipboard ágil via Dontpad (`dontpad.com/CURSO-IA-2026-IFSP`).
+  - *Scaffolding em 3 Níveis & Dontpad (Slides 12, 17 e Cockpit):* Oficina de bancada com andaime gradual (Vago ➔ Limpar Ruído ➔ Auto-Entrevista) e suporte a clipboard ágil via Dontpad (`dontpad.com/CURSO-IA-2026-IFSP`). Pílula de apresentador flutuante omitida nos slides práticos de bancada (12 e 17) para focar a atenção dos alunos exclusivamente no roteiro de passos e no timer de atividade.
   - *Bancada de Testes Empíricos (Slides 13 a 15):* Demonstração real com receita de Macarrão Parisiense nos 3 níveis:
     - *Teste 1 (Vago - Slide 13):* 1 linha simples gerou receita convencional, mas arbitrou 2-3 pessoas, tempo de 30 min e terminou com pergunta sobre estilo.
     - *Teste 2 (Falso Bom - Slide 14):* Persona de chef francês gerou tom teatral, incluiu vinho branco, aumentou tempo para 40 min, 5 segredos de chef e 3 perguntas complexas ao final.
