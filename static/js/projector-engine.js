@@ -574,14 +574,20 @@ function initProjectorEngine() {
 
     'teste-prompt': (s) => {
       const resp = s.respostaObtida || {};
-      const promptBorderColor = s.tipoPrompt === 'positivo' ? '#10b981' : (s.tipoPrompt === 'marrom' ? '#f59e0b' : '#ef4444');
-      const promptBadgeBg = s.tipoPrompt === 'positivo' ? 'rgba(16, 185, 129, 0.15)' : (s.tipoPrompt === 'marrom' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(239, 68, 68, 0.15)');
-      const promptBadgeColor = s.tipoPrompt === 'positivo' ? 'var(--text-green)' : (s.tipoPrompt === 'marrom' ? 'var(--text-amber)' : 'var(--text-red)');
+      const isMeta = s.tipoPrompt === 'meta';
+      const promptBorderColor = isMeta ? '#38bdf8' : (s.tipoPrompt === 'positivo' ? '#10b981' : (s.tipoPrompt === 'marrom' ? '#f59e0b' : '#ef4444'));
+      const promptBadgeBg = isMeta ? 'rgba(56, 189, 248, 0.15)' : (s.tipoPrompt === 'positivo' ? 'rgba(16, 185, 129, 0.15)' : (s.tipoPrompt === 'marrom' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(239, 68, 68, 0.15)'));
+      const promptBadgeColor = isMeta ? '#38bdf8' : (s.tipoPrompt === 'positivo' ? 'var(--text-green)' : (s.tipoPrompt === 'marrom' ? 'var(--text-amber)' : 'var(--text-red)'));
 
-      const cardTipoClass = s.tipoPrompt === 'positivo' ? 'tipo-positivo' : (s.tipoPrompt === 'marrom' ? 'tipo-marrom' : 'tipo-negativo');
-      const ausentesTitle = s.tipoPrompt === 'positivo' ? 'Ganhos da Estruturação (C-T-F-R):' : (s.tipoPrompt === 'marrom' ? 'Distorções da Persona (Ilusão):' : 'Lacunas Críticas (Decisões Arbitrárias):');
-      const ausentesIcon = s.tipoPrompt === 'positivo' ? '✅' : (s.tipoPrompt === 'marrom' ? '⚠️' : '❌');
-      const bulletChar = s.tipoPrompt === 'positivo' ? '✓' : (s.tipoPrompt === 'marrom' ? '⚠️' : '✕');
+      const cardTipoClass = isMeta ? 'tipo-meta' : (s.tipoPrompt === 'positivo' ? 'tipo-positivo' : (s.tipoPrompt === 'marrom' ? 'tipo-marrom' : 'tipo-negativo'));
+      const ausentesTitle = s.tituloParametros || (isMeta ? 'Ganhos da Auto-Entrevista (Meta-Prompting):' : (s.tipoPrompt === 'positivo' ? 'Ganhos da Estruturação (C-T-F-R):' : (s.tipoPrompt === 'marrom' ? 'Distorções da Persona (Ilusão):' : 'Lacunas Críticas (Decisões Arbitrárias):')));
+      const ausentesIcon = isMeta ? '🔄' : (s.tipoPrompt === 'positivo' ? '✅' : (s.tipoPrompt === 'marrom' ? '⚠️' : '❌'));
+      const bulletChar = isMeta ? '✓' : (s.tipoPrompt === 'positivo' ? '✓' : (s.tipoPrompt === 'marrom' ? '⚠️' : '✕'));
+
+      const badgeText = s.badgePrompt || (isMeta ? '🔄 META-PROMPTING (AUTO-ENTREVISTA)' : (s.tipoPrompt === 'positivo' ? '✅ PROMPT ESTRUTURADO (C-T-F-R)' : (s.tipoPrompt === 'marrom' ? '⚠️ FALSO BOM PROMPT' : '❌ PROMPT VAGO')));
+      const origemLabel = s.origemComando || (isMeta ? 'Entrada 1: Inversão de Papel' : 'Comando do Usuário');
+      const badgeAiText = s.badgeRespostaAI || resp.badgeRespostaAI || (isMeta ? '🤖 Prompt Mestre Gerado pelo ChatGPT' : '🤖 Resposta Entregue pelo ChatGPT');
+      const origemAiText = s.origemRespostaAI || resp.origemRespostaAI || (isMeta ? 'Saída Final do Modelo' : 'Saída do Modelo');
 
       return `
         <div class="layout-teste-prompt-wrap" data-prompt-tipo="${s.tipoPrompt || ''}">
@@ -589,9 +595,9 @@ function initProjectorEngine() {
           <div class="teste-prompt-col-left" style="border-top: 4px solid ${promptBorderColor};">
             <div class="teste-col-header">
               <span class="teste-badge" style="background: ${promptBadgeBg}; color: ${promptBadgeColor};">
-                ${s.tipoPrompt === 'positivo' ? '✅ PROMPT ESTRUTURADO (C-T-F-R)' : (s.tipoPrompt === 'marrom' ? '⚠️ FALSO BOM PROMPT' : '❌ PROMPT VAGO')}
+                ${badgeText}
               </span>
-              <span class="teste-origem-label">Comando do Usuário</span>
+              <span class="teste-origem-label">${origemLabel}</span>
             </div>
             
             <div class="prompt-box-terminal">
@@ -606,7 +612,7 @@ function initProjectorEngine() {
 
             <div class="diagnostico-prompt-card">
               <div class="diag-header">
-                <span>🔍</span> <strong>Diagnóstico da Instrução:</strong>
+                <span>🔍</span> <strong>${s.tituloDiagnostico || 'Diagnóstico da Instrução:'}</strong>
               </div>
               <p>${s.diagnosticoPrompt || ''}</p>
             </div>
@@ -636,7 +642,9 @@ function initProjectorEngine() {
                   if (ml.includes('rendimento') || ml.includes('pessoas') || ml.includes('família')) chipIcon = '👥';
                   else if (ml.includes('nível') || ml.includes('fácil') || ml.includes('intermediário')) chipIcon = '📊';
                   else if (ml.includes('etapas') || ml.includes('segredos') || ml.includes('kg') || ml.includes('paralelo') || ml.includes('tempo')) chipIcon = '⚡';
-                  else if (ml.includes('pergunta') || ml.includes('briefing')) chipIcon = '🎯';
+                  else if (ml.includes('meta') || ml.includes('inversão') || ml.includes('papel')) chipIcon = '🔄';
+                  else if (ml.includes('pergunta') || ml.includes('briefing') || ml.includes('chave')) chipIcon = '🎯';
+                  else if (ml.includes('esforço') || ml.includes('prévio')) chipIcon = '✨';
                   return `<span class="metrica-chip">${chipIcon} ${m}</span>`;
                 }).join('')}
               </div>
@@ -646,8 +654,8 @@ function initProjectorEngine() {
           <!-- Coluna 2: A Resposta Entregue pelo ChatGPT -->
           <div class="teste-prompt-col-right">
             <div class="teste-col-header">
-              <span class="teste-badge-ai">🤖 Resposta Entregue pelo ChatGPT</span>
-              <span class="teste-origem-label">Saída do Modelo</span>
+              <span class="teste-badge-ai">${badgeAiText}</span>
+              <span class="teste-origem-label">${origemAiText}</span>
             </div>
 
             <div class="ai-response-summary-card">
@@ -655,33 +663,52 @@ function initProjectorEngine() {
             </div>
 
             <div class="ai-details-grid">
-              ${resp.ingredientes ? `
+              ${resp.secoesPersonalizadas ? resp.secoesPersonalizadas.map(sec => `
                 <div class="ai-detail-block">
-                  <div class="detail-label">🛒 Ingredientes Apresentados:</div>
-                  <p class="detail-content">${resp.ingredientes}</p>
+                  <div class="detail-label">${sec.titulo}</div>
+                  ${sec.texto ? `<p class="detail-content">${sec.texto}</p>` : ''}
+                  ${sec.itens && sec.itens.length ? `
+                    <ul class="detail-list">
+                      ${sec.itens.map(et => `<li>${et}</li>`).join('')}
+                    </ul>
+                  ` : ''}
                 </div>
-              ` : ''}
+              `).join('') : `
+                ${resp.ingredientes ? `
+                  <div class="ai-detail-block">
+                    <div class="detail-label">🛒 Ingredientes Apresentados:</div>
+                    <p class="detail-content">${resp.ingredientes}</p>
+                  </div>
+                ` : ''}
 
-              ${resp.modoPreparo && resp.modoPreparo.length ? `
-                <div class="ai-detail-block">
-                  <div class="detail-label">🍳 Modo de Preparo / Etapas:</div>
-                  <ul class="detail-list">
-                    ${resp.modoPreparo.map(et => `<li>${et}</li>`).join('')}
-                  </ul>
-                </div>
-              ` : ''}
+                ${resp.modoPreparo && resp.modoPreparo.length ? `
+                  <div class="ai-detail-block">
+                    <div class="detail-label">🍳 Modo de Preparo / Etapas:</div>
+                    <ul class="detail-list">
+                      ${resp.modoPreparo.map(et => `<li>${et}</li>`).join('')}
+                    </ul>
+                  </div>
+                ` : ''}
 
-              ${resp.orientacoesAdicionais && resp.orientacoesAdicionais.length ? `
-                <div class="ai-detail-block">
-                  <div class="detail-label">💡 Orientações / Segredos Adicionais:</div>
-                  <ul class="detail-list">
-                    ${resp.orientacoesAdicionais.map(or => `<li>${or}</li>`).join('')}
-                  </ul>
-                </div>
-              ` : ''}
+                ${resp.orientacoesAdicionais && resp.orientacoesAdicionais.length ? `
+                  <div class="ai-detail-block">
+                    <div class="detail-label">💡 Orientações / Segredos Adicionais:</div>
+                    <ul class="detail-list">
+                      ${resp.orientacoesAdicionais.map(or => `<li>${or}</li>`).join('')}
+                    </ul>
+                  </div>
+                ` : ''}
+              `}
             </div>
 
-            ${resp.perguntaAssistente ? `
+            ${resp.destaqueConclusao ? `
+              <div class="ai-pergunta-destaque-card sem-pergunta" style="border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.08);">
+                <div class="pergunta-header" style="color: #38bdf8;">
+                  <span>${resp.destaqueConclusao.icone || '🎯'}</span> <strong>${resp.destaqueConclusao.titulo || 'Conclusão da Auto-Entrevista:'}</strong>
+                </div>
+                <p class="pergunta-content" style="color: #ffffff;">${resp.destaqueConclusao.texto}</p>
+              </div>
+            ` : resp.perguntaAssistente ? `
               <div class="ai-pergunta-destaque-card">
                 <div class="pergunta-header">
                   <span>❓</span> <strong>Pergunta Adicional do Assistente:</strong>

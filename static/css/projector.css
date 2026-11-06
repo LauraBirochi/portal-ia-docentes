@@ -1957,6 +1957,22 @@
       color: #10b981;
     }
 
+    .parametros-ausentes-card.tipo-meta {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1.5px solid rgba(56, 189, 248, 0.32);
+    }
+    .parametros-ausentes-card.tipo-meta .ausentes-header {
+      color: #7dd3fc;
+    }
+    .parametros-ausentes-card.tipo-meta .ausente-pill-item {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #bae6fd;
+    }
+    .parametros-ausentes-card.tipo-meta .ausente-pill-item .pill-bullet {
+      color: #38bdf8;
+    }
+
     .teste-metricas-chips {
       display: flex;
       gap: 0.45rem;

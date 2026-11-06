@@ -702,13 +702,139 @@ export const slidesComNotas = [
       oQueFalar: "(Maria) \"Viram no comparativo como o prompt estruturado eliminou o retrabalho e zerou as perguntas desnecessárias? Agora é a vez de vocês dominarem a Etapa 2: vamos praticar a Auto-Entrevista guiada (Meta-Prompting) e aplicar a Trava de Segurança [necessita verificação]! Definam o escopo da tarefa de vocês e deixem a IA formular 4 perguntas essenciais. 15 minutos focados na bancada!\""
     }
   },
-
-  // =========================================================================
-  // BLOCO 4: SOCIALIZAÇÃO & FECHAMENTO (Slides 18 a 20)
-  // =========================================================================
   {
     numero: 18,
     id: 18,
+    bloco: 3,
+    tipo: "teste-prompt",
+    tipoPrompt: "meta",
+    ocultarPresenterPill: true,
+    categoria: "Bancada de Testes Empíricos (Teste 4 • Parte 1)",
+    titulo: "Teste 4: Auto-Entrevista — O Comando & As Perguntas da IA",
+    subtitulo: "Turno 1: Usuário solicita diagnóstico e o ChatGPT formula 4 perguntas essenciais de escopo",
+    origemComando: "Entrada 1: Inversão de Papel",
+    badgePrompt: "🔄 META-PROMPTING (INVERSÃO DE PAPEL)",
+    promptUtilizado: "Quero fazer macarrão parisiense para minha família.\nAntes de responder, atue como especialista e me faça 4 perguntas (contexto, público, formato e restrições).\nApós minhas respostas, apresente o prompt mestre (# Contexto, # Instruções, # Restrições).",
+    tituloDiagnostico: "Estratégia do Meta-Prompting:",
+    diagnosticoPrompt: "O usuário não tenta adivinhar os detalhes: transfere o esforço da estruturação para o modelo pedindo uma auto-entrevista prévia.",
+    tituloParametros: "Ganhos da Inversão de Papel (Turno 1):",
+    parametrosAusentes: [
+      "Inversão de esforço: a IA diagnostica as necessidades",
+      "Escopo delimitado: 4 perguntas cobrem todo o briefing",
+      "Sem tela em branco: usuário não precisa começar do zero"
+    ],
+    respostaObtida: {
+      badgeRespostaAI: "🤖 Perguntas Formuladas pelo ChatGPT",
+      origemRespostaAI: "Saída 1: As 4 Perguntas da IA",
+      resumo: "Perfeito! Antes de elaborar o prompt, preciso de 4 respostas essenciais:",
+      metricas: [
+        "Inversão de Papel",
+        "4 Perguntas da IA",
+        "Turno 1 de 2"
+      ],
+      secoesPersonalizadas: [
+        {
+          titulo: "1. Contexto:",
+          texto: "Para quantas pessoas pretende preparar o macarrão? Almoço especial, jantar ou refeição do dia a dia?"
+        },
+        {
+          titulo: "2. Público:",
+          texto: "Quem vai comer? Crianças, adultos ou idosos? Alergias ou restrições a presunto, ervilha ou creme?"
+        },
+        {
+          titulo: "3. Formato desejado:",
+          texto: "Passo a passo de chef ensinando, receita simples e prática sem complicações, sofisticada ou completa?"
+        },
+        {
+          titulo: "4. Restrições:",
+          texto: "Orçamento, equipamentos disponíveis, versão econômica/tradicional e limite de tempo?"
+        }
+      ],
+      destaqueConclusao: {
+        icone: "🎯",
+        titulo: "Diagnóstico Ativo da IA:",
+        texto: "A IA não tentou adivinhar nem inventou dados: mapeou exatamente as 4 lacunas que precisavam ser preenchidas antes de agir!"
+      }
+    },
+    conducao: "Co-docência (Laura e Maria)",
+    notasProfessora: {
+      tempoSugerido: "2 min (02:48 - 02:50)",
+      objetivoSlide: "Demonstrar o Turno 1 do Meta-Prompting: como um comando de inversão de papel faz a IA formular perguntas de diagnóstico em vez de gerar uma resposta precipitada.",
+      oQueFalar: "(Maria) \"Olhem que fantástico o primeiro turno do Meta-Prompting: em vez de você sofrer tentando lembrar de todas as regras do C-T-F-R na hora, você pede para o ChatGPT agir como entrevistador! Nós mandamos o comando dizendo: 'me faça 4 perguntas essenciais sobre contexto, público, formato e restrições'. E vejam a resposta da IA na direita: ela gerou exatamente as 4 perguntas certeiras para fechar o escopo! No próximo slide, vamos ver como respondemos e o que ela entregou!\""
+    }
+  },
+  {
+    numero: 19,
+    id: 19,
+    bloco: 3,
+    tipo: "teste-prompt",
+    tipoPrompt: "meta",
+    ocultarPresenterPill: true,
+    categoria: "Bancada de Testes Empíricos (Teste 4 • Parte 2)",
+    titulo: "Teste 4: Auto-Entrevista — Respostas & Prompt Mestre Gerado",
+    subtitulo: "Turno 2: Usuário responde 4 tópicos curtos e a IA gera o briefing executivo em C-T-F-R",
+    origemComando: "Entrada 2: Respostas do Usuário",
+    badgePrompt: "💬 RESPOSTAS DO USUÁRIO",
+    promptUtilizado: "1. 5 pessoas, será um almoço\n2. Adultos, ninguém tem alergias\n3. Receita simples e prática, sem complicações\n4. O macarrão não pode levar mais de 2 horas de preparo, siga a receita tradicional",
+    tituloDiagnostico: "Esforço Humano no Diálogo:",
+    diagnosticoPrompt: "O usuário respondeu em linguagem natural e direta, sem comandos complexos. Apenas forneceu os dados da sua realidade cotidiana em 4 linhas.",
+    tituloParametros: "Ganhos da Entrada 2 (Turno 2):",
+    parametrosAusentes: [
+      "Zero esforço de redação: apenas dados factuais",
+      "Sem comandos mágicos: linguagem natural direta",
+      "Briefing completo: a IA estrutura as seções (#)"
+    ],
+    respostaObtida: {
+      badgeRespostaAI: "🤖 Prompt Mestre Gerado pelo ChatGPT",
+      origemRespostaAI: "Saída Final: Artefato C-T-F-R",
+      resumo: "Prompt Mestre gerado pela IA a partir das 4 respostas do usuário:",
+      metricas: [
+        "4 Respostas Curtas",
+        "< 1 Minuto",
+        "Turno 2 de 2"
+      ],
+      secoesPersonalizadas: [
+        {
+          titulo: "# Contexto (Gerado pela IA):",
+          texto: "Almoço para 5 adultos. Receita tradicional caseira, saborosa e sem complicações técnicas."
+        },
+        {
+          titulo: "# Instruções (Gerado pela IA):",
+          itens: [
+            "Atuar como chef em culinária tradicional ítalo-brasileira.",
+            "Ingredientes exatos para 5 pessoas de supermercado comum.",
+            "Passo a passo simples, molho cremoso e dicas para servir."
+          ]
+        },
+        {
+          titulo: "# Restrições (Gerado pela IA):",
+          itens: [
+            "Tempo máximo de 2 horas e seguir receita tradicional.",
+            "Sem ingredientes exóticos ou gourmetização desnecessária.",
+            "Medidas exatas e lista de compras organizada ao final."
+          ]
+        }
+      ],
+      destaqueConclusao: {
+        icone: "🎯",
+        titulo: "Conclusão da Auto-Entrevista:",
+        texto: "A IA assumiu toda a engenharia de instrução: 4 respostas sucintas geraram um Prompt Mestre executivo pronto para uso!"
+      }
+    },
+    conducao: "Co-docência (Laura e Maria)",
+    notasProfessora: {
+      tempoSugerido: "2 min (02:50 - 02:52)",
+      objetivoSlide: "Demonstrar o Turno 2 do Meta-Prompting: como respostas telegráficas do usuário geram um Prompt Mestre estruturado em seções (# Contexto, # Instruções, # Restrições).",
+      oQueFalar: "(Laura) \"E agora olhem a mágica do Turno 2: na esquerda, o usuário apenas digitou 4 linhas simples, como quem responde no WhatsApp: 5 pessoas, adultos, receita prática e até 2 horas. E na direita, olhem o que o ChatGPT entregou: o Prompt Mestre completo, dividido em # Contexto, # Instruções e # Restrições, calculando quantidades e orientando o modo de preparo! Vocês não precisam ser especialistas em engenharia de prompt: basta saber fazer a IA perguntar!\""
+    }
+  },
+
+  // =========================================================================
+  // BLOCO 4: SOCIALIZAÇÃO & FECHAMENTO (Slides 20 a 22)
+  // =========================================================================
+  {
+    numero: 20,
+    id: 20,
     bloco: 4,
     tipo: "apresentacao",
     categoria: "Avaliação & Socialização",
@@ -738,14 +864,14 @@ export const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (02:51 - 03:01)",
+      tempoSugerido: "10 min (02:52 - 03:02)",
       objetivoSlide: "Consolidar o aprendizado por meio da aprendizagem entre pares e realizar a avaliação formativa contínua.",
       oQueFalar: "(Laura) \"Que oficina produtiva! Vamos abrir a nossa roda de socialização. Quem gostaria de projetar o seu exercício e mostrar como o prompt evoluiu do vago para o estruturado?\" (Maria) \"Vejam que fascinante o relato do colega: a IA só entregou um resultado de alto nível porque ele assumiu o comando do contexto e das restrições. A inteligência da entrega continua sendo 100% de vocês!\""
     }
   },
   {
-    numero: 19,
-    id: 19,
+    numero: 21,
+    id: 21,
     bloco: 4,
     tipo: "fechamento",
     categoria: "Fechamento & Ponte",
@@ -763,14 +889,14 @@ export const slidesComNotas = [
     ],
     conducao: "Co-docência (Laura e Maria)",
     notasProfessora: {
-      tempoSugerido: "6 min (03:01 - 03:07)",
+      tempoSugerido: "5 min (03:02 - 03:07)",
       objetivoSlide: "Síntese final dos pilares da aula, reforço da reflexão ética e motivação para o próximo encontro.",
       oQueFalar: "(Maria) \"Para encerrar o nosso Encontro 3, levem este checklist de bolso para a vida de vocês! Sempre que abrirem o ChatGPT, lembrem-se: nada de pedidos genéricos e nada de personas mágicas. O que funciona é Contexto, Tarefa, Formato e Restrições!\" (Laura) \"E lembrem-se da nossa mensagem central: a agência e a validação crítica continuam com vocês. No Encontro 4, daremos um salto fascinante: sairemos do texto puro e entraremos na IA Multimodal, analisando imagens, documentos em PDF e áudios! Um grande abraço a todos e até a próxima semana!\""
     }
   },
   {
-    numero: 20,
-    id: 20,
+    numero: 22,
+    id: 22,
     bloco: 4,
     tipo: "comparativo",
     categoria: "Referências Bibliográficas",

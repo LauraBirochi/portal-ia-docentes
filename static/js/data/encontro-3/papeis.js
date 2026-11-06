@@ -19,5 +19,6 @@ export const divisaoPapeis = [
   { bloco: "Bloco 3 (02:00 - 02:20)", tema: "Oficina Prática de Bancada: Missão 1 (Slide 12)", papel: "ambas" },
   { bloco: "Bloco 3 (02:20 - 02:33)", tema: "Bancada de Testes Empíricos & Quadro Comparativo (Slides 13 a 16)", papel: "ambas" },
   { bloco: "Bloco 3 (02:33 - 02:48)", tema: "Oficina Prática de Bancada: Missão 2 (Slide 17)", papel: "ambas" },
-  { bloco: "Bloco 4 (02:48 - 03:00)", tema: "Show & Tell, Checklist de Bolso & Referências (Slides 18 a 20)", papel: "ambas" }
+  { bloco: "Bloco 3 (02:48 - 02:52)", tema: "Teste 4: Auto-Entrevista (Comando, Perguntas e Prompt Mestre) (Slides 18 e 19)", papel: "ambas" },
+  { bloco: "Bloco 4 (02:52 - 03:00)", tema: "Show & Tell, Checklist de Bolso & Referências (Slides 20 a 22)", papel: "ambas" }
 ];
