@@ -465,34 +465,37 @@ export const slidesComNotas = [
     bloco: 3,
     tipo: "teste-prompt",
     tipoPrompt: "negativo",
+    ocultarPresenterPill: true,
     categoria: "Bancada de Testes Empíricos (Teste 1)",
     titulo: "Teste 1: Prompt Vago (1 Linha Sem Parâmetros)",
     subtitulo: "Resultado obtido com pedido genérico: ausência de contexto e decisões arbitrárias do modelo",
     promptUtilizado: "Quero aprender a fazer macarrão parisiense.",
-    diagnosticoPrompt: "Pedido de uma única linha. O modelo não tem nenhuma pista sobre para quem é a refeição, quanto tempo há disponível ou restrições de porções. Por padrão, ele assume um cenário médio arbitrário.",
+    diagnosticoPrompt: "Pedido de uma linha sem contexto. O modelo não sabe quem come, o tempo nem restrições, assumindo um cenário médio arbitrário.",
+    parametrosAusentes: [
+      "Sem público: arbitrou 2 a 3 pessoas",
+      "Sem tempo: arbitrou 30 minutos",
+      "Sem restrições: receita convencional de internet",
+      "Dúvida transferida: encerrou com pergunta aberta"
+    ],
     respostaObtida: {
-      resumo: "Receita descrita como cremosa, deliciosa e fácil de fazer.",
+      resumo: "Receita descrita como cremosa, deliciosa e fácil.",
       metricas: [
         "Tempo: 30 minutos",
-        "Rendimento: 2 a 3 pessoas (arbitrado)",
+        "Rendimento: 2 a 3 pessoas",
         "Nível: fácil",
         "5 etapas convencionais"
       ],
-      ingredientes: "Macarrão, presunto, ervilha, cebola, manteiga, creme de leite, leite, farinha de trigo, parmesão e temperos.",
+      ingredientes: "Massa, presunto, ervilha, cebola, manteiga, creme de leite, leite e queijo.",
       modoPreparo: [
-        "1. Cozinhar o macarrão.",
-        "2. Refogar a cebola.",
-        "3. Preparar o molho branco.",
-        "4. Acrescentar os ingredientes.",
-        "5. Finalizar misturando o macarrão ao molho."
+        "1. Cozinhar macarrão até ficar al dente.",
+        "2. Refogar cebola na manteiga.",
+        "3. Preparar molho branco e juntar presunto e ervilha.",
+        "4. Misturar o macarrão ao molho e servir."
       ],
       orientacoesAdicionais: [
-        "Não deixar o molho muito grosso.",
-        "Utilizar parmesão ralado na hora.",
-        "Acrescentar leite caso o molho fique muito consistente.",
-        "Evitar ferver demais o creme de leite."
+        "4 dicas genéricas sobre ponto do molho, queijo e creme."
       ],
-      perguntaAssistente: "Ao final, o assistente perguntou se o usuário preferia aprender a fazer o macarrão à parisiense com molho bem branquinho e cremoso, no estilo de restaurante, ou uma versão mais simples e econômica para fazer em casa."
+      perguntaAssistente: "A IA perguntou se o usuário preferia estilo restaurante (bem cremoso) ou versão caseira econômica."
     },
     conducao: "Co-docência (Laura e Maria)",
     notasProfessora: {
@@ -507,35 +510,37 @@ export const slidesComNotas = [
     bloco: 3,
     tipo: "teste-prompt",
     tipoPrompt: "marrom",
+    ocultarPresenterPill: true,
     categoria: "Bancada de Testes Empíricos (Teste 2)",
     titulo: "Teste 2: Falso Bom Prompt (A Ilusão da Persona)",
     subtitulo: "Papel de 'melhor chef da França' gera tom teatral, aumenta tempo e adiciona itens sem resolver restrições",
-    promptUtilizado: "Atua como o melhor cozinheiro chef da França para me ensinar a fazer um verdadeiro macarrão parisiense.",
-    diagnosticoPrompt: "Uso de adjetivos superlativos e persona exagerada sem parâmetros técnicos. O modelo adota uma postura teatral, introduz ingredientes não solicitados (vinho branco) e expande o tempo de preparo.",
+    promptUtilizado: "Atua como o melhor chef da França para me ensinar a fazer um verdadeiro macarrão parisiense.",
+    diagnosticoPrompt: "Adjetivos superlativos e persona exagerada. O modelo inflou complexidade e tempo sem parâmetros reais.",
+    parametrosAusentes: [
+      "Persona sem escopo: gerou teatro de bistrô",
+      "Adicionou vinho branco e elevou para 40 min",
+      "Manteve rendimento arbitrário em 2 a 3 pessoas",
+      "Encerrou com 3 perguntas complexas da IA"
+    ],
     respostaObtida: {
-      resumo: "O assistente assumiu o papel de um chef francês e apresentou uma receita descrita como cremosa, elegante e com toque de bistrô francês.",
+      resumo: "Receita com vocabulário rebuscado de bistrô francês.",
       metricas: [
-        "Tempo: 30 a 40 minutos",
-        "Rendimento: 2 a 3 pessoas (arbitrado)",
-        "Nível: fácil a intermediário",
-        "5 segredos de chef incluídos"
+        "Tempo: 40 minutos",
+        "Rendimento: 2 a 3 pessoas",
+        "Nível: intermediário",
+        "5 segredos de chef"
       ],
-      ingredientes: "Massa (fettuccine, tagliatelle ou penne, água e sal), molho parisiense (presunto cozido, ervilhas, creme de leite fresco, cebola, manteiga, azeite, parmesão, noz-moscada, pimenta e sal). Opcionais: vinho branco seco e salsinha fresca.",
+      ingredientes: "Fettuccine, presunto cozido, ervilha, creme fresco, manteiga, noz-moscada e vinho branco opcional.",
       modoPreparo: [
-        "1. Começar pelo refogado de cebola, manteiga e azeite.",
-        "2. Acrescentar presunto, vinho branco (opcional), ervilhas e creme de leite.",
-        "3. Cozinhar a massa até ficar al dente e reservar a água do cozimento.",
-        "4. Finalizar a massa diretamente na frigideira com o molho, parmesão e água do cozimento.",
-        "Montagem do prato: disposição no prato com finalização de parmesão, pimenta e salsinha."
+        "1. Refogar na manteiga com toque de vinho branco.",
+        "2. Cozinhar massa e reservar água do cozimento.",
+        "3. Emulsionar o molho na frigideira com a massa.",
+        "4. Finalizar com parmesão legítimo e noz-moscada."
       ],
       orientacoesAdicionais: [
-        "1. Utilizar creme de leite fresco.",
-        "2. Não exagerar na quantidade de presunto.",
-        "3. Utilizar noz-moscada com moderação.",
-        "4. Utilizar parmesão de verdade.",
-        "5. Finalizar a massa na frigideira."
+        "5 segredos de chef incluídos (creme fresco e finalização na frigideira)."
       ],
-      perguntaAssistente: "Ao final, solicitou mais informações sobre três aspectos: estilo de preparo (bistrô francês, luxo ou tradicional brasileiro); proteína (presunto, frango ou ambos); e tipo de molho (branco/delicado, béchamel francês ou alta gastronomia). Ofereceu também preparar a receita de chef."
+      perguntaAssistente: "Fez 3 perguntas complexas: estilo de preparo (bistrô ou tradicional), escolha de proteína e tipo de molho."
     },
     conducao: "Co-docência (Laura e Maria)",
     notasProfessora: {
@@ -550,32 +555,35 @@ export const slidesComNotas = [
     bloco: 3,
     tipo: "teste-prompt",
     tipoPrompt: "positivo",
+    ocultarPresenterPill: true,
     categoria: "Bancada de Testes Empíricos (Teste 3)",
     titulo: "Teste 3: Prompt Estruturado (Framework C-T-F-R)",
     subtitulo: "Contexto, Tarefa, Formato e Restrições Negativas: resposta exata na primeira tentativa, sem perguntas residuais",
-    promptUtilizado: "Contexto:\nQuero fazer um macarrão parisiense para a minha família, somos em 5 pessoas, tenho pouco tempo para fazer.\n\nTarefa:\nMe ensine como fazer o macarrão parisiense.\n\nFormato:\nListe todos os ingredientes primeiro, depois a ordem de execução com esses ingredientes. Não deixe instruções essenciais ao final da receita e sim no momento de sua execução.\n\nRestrição:\nNão invente dados, não dê porções limitadas a cada pessoa da minha família, quero que eles possam comer à vontade.",
-    diagnosticoPrompt: "Prompt com 4 blocos explícitos: público definido (família, 5 pessoas), restrição de tempo (pouco tempo), formato funcional (ingredientes primeiro + ordem sem pontas soltas) e restrição negativa de abundância (comer à vontade, sem limites artificiais).",
+    promptUtilizado: "Contexto: Família de 5 pessoas, pouco tempo.\nTarefa: Receita de macarrão parisiense.\nFormato: Ingredientes e preparo em ordem lógica.\nRestrição: Sem inventar dados, farto para repetir.",
+    diagnosticoPrompt: "Briefing C-T-F-R completo: público definido, tempo otimizado, formato lógico e restrição de fartura.",
+    parametrosAusentes: [
+      "Cálculo exato: ajustou 1 kg para 5 pessoas",
+      "Preparo paralelo: molho enquanto a água ferve",
+      "Restrição atendida: rendimento farto para repetir",
+      "Zero perguntas: briefing autônomo sem dúvidas"
+    ],
     respostaObtida: {
-      resumo: "Receita para cinco pessoas, descrita como prática e cremosa, com possibilidade de repetição à vontade e estruturação rigorosa.",
+      resumo: "Receita prática e farta calculada exatamente para 5 pessoas.",
       metricas: [
-        "Rendimento: 5 pessoas com fartura",
-        "Preparo paralelo (ganho de tempo)",
-        "1 kg de macarrão (calculado)",
-        "Zero perguntas adicionais"
+        "Rendimento: 5 pessoas",
+        "Preparo paralelo",
+        "1 kg de macarrão",
+        "0 perguntas adicionais"
       ],
-      ingredientes: "1 kg de macarrão (penne, parafuso ou espaguete), 400g a 500g de presunto picado, 2 latas ou 300g de ervilha (preferência congelada), 2 caixinhas de creme de leite (400g), 1 copo de requeijão ou 200g de queijo cremoso, 1 cebola média picada, 2 dentes de alho picados, 2 colheres de sopa de manteiga ou azeite, 1 xícara de leite (se necessário), 100g de queijo parmesão ralado e temperos (sal, noz-moscada, pimenta-do-reino).",
+      ingredientes: "1 kg de massa, 500g de presunto picado, 300g de ervilha, 2 cremes de leite, requeijão, alho, cebola e queijo.",
       modoPreparo: [
-        "1. Colocar água para ferver com sal em panela grande.",
-        "2. Em fogo médio, refogar cebola e alho na manteiga até dourar levemente.",
-        "3. Adicionar presunto picado e refogar por 2 a 3 minutos.",
-        "4. Acrescentar ervilha e misturar delicadamente.",
-        "5. Abaixar o fogo, colocar creme de leite e requeijão; mexer até formar creme homogêneo. Adicionar leite caso fique muito espesso. Ajustar sal, noz-moscada e pimenta.",
-        "6. Cozinhar macarrão até al dente; retirar direto da água e juntar à panela do molho.",
-        "7. Misturar em fogo baixo por 1 a 2 minutos para absorção do sabor. Adicionar parmesão ralado e servir imediatamente."
+        "1. Ferver água com sal em panela grande.",
+        "2. Preparo paralelo: refogar alho, cebola e presunto.",
+        "3. Adicionar ervilhas, creme de leite e requeijão cremoso.",
+        "4. Escorrer macarrão direto no molho e envolver por 2 min."
       ],
       orientacoesAdicionais: [
-        "Dica de tempo: enquanto a água esquenta e o macarrão cozinha, faça o molho em fogo médio.",
-        "Dica de fartura: a combinação de presunto em cubos com requeijão garante volume e cremosidade para 5 pessoas comerem à vontade."
+        "Dica de tempo: molho feito simultaneamente enquanto a massa ferve."
       ],
       perguntaAssistente: ""
     },

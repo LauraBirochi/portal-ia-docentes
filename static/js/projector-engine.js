@@ -578,8 +578,13 @@ function initProjectorEngine() {
       const promptBadgeBg = s.tipoPrompt === 'positivo' ? 'rgba(16, 185, 129, 0.15)' : (s.tipoPrompt === 'marrom' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(239, 68, 68, 0.15)');
       const promptBadgeColor = s.tipoPrompt === 'positivo' ? 'var(--text-green)' : (s.tipoPrompt === 'marrom' ? 'var(--text-amber)' : 'var(--text-red)');
 
+      const cardTipoClass = s.tipoPrompt === 'positivo' ? 'tipo-positivo' : (s.tipoPrompt === 'marrom' ? 'tipo-marrom' : 'tipo-negativo');
+      const ausentesTitle = s.tipoPrompt === 'positivo' ? 'Ganhos da Estruturação (C-T-F-R):' : (s.tipoPrompt === 'marrom' ? 'Distorções da Persona (Ilusão):' : 'Lacunas Críticas (Decisões Arbitrárias):');
+      const ausentesIcon = s.tipoPrompt === 'positivo' ? '✅' : (s.tipoPrompt === 'marrom' ? '⚠️' : '❌');
+      const bulletChar = s.tipoPrompt === 'positivo' ? '✓' : (s.tipoPrompt === 'marrom' ? '⚠️' : '✕');
+
       return `
-        <div class="layout-teste-prompt-wrap">
+        <div class="layout-teste-prompt-wrap" data-prompt-tipo="${s.tipoPrompt || ''}">
           <!-- Coluna 1: O Prompt Enviado -->
           <div class="teste-prompt-col-left" style="border-top: 4px solid ${promptBorderColor};">
             <div class="teste-col-header">
@@ -606,9 +611,34 @@ function initProjectorEngine() {
               <p>${s.diagnosticoPrompt || ''}</p>
             </div>
 
+            ${s.parametrosAusentes && s.parametrosAusentes.length ? `
+              <div class="parametros-ausentes-card ${cardTipoClass}">
+                <div class="ausentes-header">
+                  <span>${ausentesIcon}</span>
+                  <strong>${ausentesTitle}</strong>
+                </div>
+                <div class="ausentes-grid-pills">
+                  ${s.parametrosAusentes.map(item => `
+                    <div class="ausente-pill-item">
+                      <span class="pill-bullet">${bulletChar}</span>
+                      <span class="pill-text">${item}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+
             ${resp.metricas ? `
               <div class="teste-metricas-chips">
-                ${resp.metricas.map(m => `<span class="metrica-chip">⏱️ ${m}</span>`).join('')}
+                ${resp.metricas.map(m => {
+                  let chipIcon = '⏱️';
+                  const ml = m.toLowerCase();
+                  if (ml.includes('rendimento') || ml.includes('pessoas') || ml.includes('família')) chipIcon = '👥';
+                  else if (ml.includes('nível') || ml.includes('fácil') || ml.includes('intermediário')) chipIcon = '📊';
+                  else if (ml.includes('etapas') || ml.includes('segredos') || ml.includes('kg') || ml.includes('paralelo') || ml.includes('tempo')) chipIcon = '⚡';
+                  else if (ml.includes('pergunta') || ml.includes('briefing')) chipIcon = '🎯';
+                  return `<span class="metrica-chip">${chipIcon} ${m}</span>`;
+                }).join('')}
               </div>
             ` : ''}
           </div>
@@ -681,8 +711,8 @@ function initProjectorEngine() {
             <table class="quadro-comp-table">
               <thead>
                 <tr>
-                  <th style="width: 17%; text-align: left;">${cols[0]}</th>
-                  <th style="width: 27%; border-top: 3px solid #ef4444; background: rgba(239, 68, 68, 0.08); color: var(--text-red);">
+                  <th style="width: 16%; text-align: left;">${cols[0]}</th>
+                  <th style="width: 26%; border-top: 3px solid #ef4444; background: rgba(239, 68, 68, 0.08); color: var(--text-red);">
                     <div style="display: flex; align-items: center; gap: 0.4rem; justify-content: center;">
                       <span>❌</span> <span>${cols[1]}</span>
                     </div>
@@ -692,7 +722,7 @@ function initProjectorEngine() {
                       <span>⚠️</span> <span>${cols[2]}</span>
                     </div>
                   </th>
-                  <th style="width: 28%; border-top: 3px solid #10b981; background: rgba(16, 185, 129, 0.12); color: var(--text-green);">
+                  <th style="width: 30%; border-top: 3px solid #10b981; background: rgba(16, 185, 129, 0.12); color: var(--text-green);">
                     <div style="display: flex; align-items: center; gap: 0.4rem; justify-content: center;">
                       <span>✅</span> <span>${cols[3]}</span>
                     </div>
@@ -734,7 +764,8 @@ function initProjectorEngine() {
     }
 
     const isFullscreenCover = (s.tipo === 'capa' || s.tipo === 'secao' || s.tipo === 'titulo-secao');
-    const condutor = (!isFullscreenCover && (s.conducao || s.docente)) ? (s.conducao || s.docente) : null;
+    const hidePresenterPill = isFullscreenCover || s.tipo === 'teste-prompt' || s.ocultarPresenterPill;
+    const condutor = (!hidePresenterPill && (s.conducao || s.docente)) ? (s.conducao || s.docente) : null;
     const presenterHTML = condutor ? `
       <div class="slide-presenter-pill" title="Apresentação: ${condutor}">
         <span class="presenter-dot"></span>
