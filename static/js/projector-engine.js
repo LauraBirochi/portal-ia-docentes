@@ -855,16 +855,83 @@ function initProjectorEngine() {
     }
 
     if (s.notasProfessora) {
+      const np = s.notasProfessora;
       const conducaoLabel = condutor ? ` • Condução: ${condutor}` : '';
-      notesTitle.textContent = `Slide ${s.numero}: ${s.titulo}${conducaoLabel} (Tempo Sugerido: ${s.notasProfessora.tempoSugerido})`;
-      notesBody.innerHTML = `
-        ${condutor ? `<p style="margin-bottom: 0.5rem;"><span class="capa-chip" style="font-size: 0.88rem; padding: 0.25rem 0.75rem; background: rgba(212, 163, 115, 0.2); color: var(--text-amber); border: 1px solid var(--border-amber);">👩‍🏫 Condução Principal: <strong>${condutor}</strong></span></p>` : ''}
-        <p style="margin-bottom: 0.75rem;"><strong>🎯 Objetivo Pedagógico:</strong> ${s.notasProfessora.objetivoSlide}</p>
-        <p style="margin-bottom: 0.5rem;"><strong>🎙️ O que falar para a turma:</strong></p>
-        <blockquote style="background: rgba(0,0,0,0.3); border-left: 4px solid var(--text-amber); padding: 0.75rem 1.25rem; border-radius: 4px; font-style: italic; color: var(--text-main); font-size: 1.15rem; line-height: 1.5;">
-          ${s.notasProfessora.oQueFalar}
-        </blockquote>
-      `;
+      notesTitle.textContent = `Slide ${s.numero}: ${s.titulo}${conducaoLabel}`;
+
+      if (np.conceito) {
+        // Nova Ficha Técnica Conceitual em 4 Blocos
+        const faqHtml = (np.faqAlunos && np.faqAlunos.length) ? np.faqAlunos.map(faq => `
+          <div class="notes-faq-item">
+            <div class="notes-faq-q"><strong>❓ Dúvida:</strong> ${faq.pergunta}</div>
+            <div class="notes-faq-a"><strong>💬 Resposta-Chave:</strong> ${faq.resposta}</div>
+          </div>
+        `).join('') : '<p style="color: #94a3b8; font-style: italic;">Nenhuma dúvida crítica mapeada para este slide.</p>';
+
+        notesBody.innerHTML = `
+          <div class="notes-meta-bar">
+            ${condutor ? `<span class="notes-badge-conductor">👩‍🏫 Condução: <strong>${condutor}</strong></span>` : ''}
+            <span class="notes-badge-time">⏱️ ${np.tempoSugerido || 'Tempo flexível'}</span>
+            ${np.objetivoSlide ? `<div class="notes-obj-line"><strong>🎯 Objetivo Pedagógico:</strong> ${np.objetivoSlide}</div>` : ''}
+          </div>
+
+          <div class="notes-grid-cards">
+            <!-- Bloco 1: O Que É o Conceito -->
+            <div class="notes-card conceito">
+              <div class="notes-card-header">
+                <span class="notes-card-icon">📖</span>
+                <span class="notes-card-title">${np.conceito.titulo || 'O Que É o Conceito'}</span>
+              </div>
+              <div class="notes-card-body">
+                <p>${np.conceito.definicao || ''}</p>
+              </div>
+            </div>
+
+            <!-- Bloco 2: Mecânica do Slide -->
+            <div class="notes-card mecanica">
+              <div class="notes-card-header">
+                <span class="notes-card-icon">⚙️</span>
+                <span class="notes-card-title">Mecânica do Slide (O Que Está na Tela)</span>
+              </div>
+              <div class="notes-card-body">
+                <p>${np.mecanica || ''}</p>
+              </div>
+            </div>
+
+            <!-- Bloco 3: Armadilha Comum -->
+            <div class="notes-card armadilha">
+              <div class="notes-card-header">
+                <span class="notes-card-icon">⚠️</span>
+                <span class="notes-card-title">Armadilha Comum / Vício do Aluno</span>
+              </div>
+              <div class="notes-card-body">
+                <p>${np.armadilhaComum || ''}</p>
+              </div>
+            </div>
+
+            <!-- Bloco 4: FAQ / Dúvidas dos Alunos -->
+            <div class="notes-card faq">
+              <div class="notes-card-header">
+                <span class="notes-card-icon">💡</span>
+                <span class="notes-card-title">Dúvidas dos Alunos (Como Responder)</span>
+              </div>
+              <div class="notes-card-body">
+                ${faqHtml}
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        // Fallback para formato legado com oQueFalar
+        notesBody.innerHTML = `
+          ${condutor ? `<p style="margin-bottom: 0.5rem;"><span class="capa-chip" style="font-size: 0.88rem; padding: 0.25rem 0.75rem; background: rgba(212, 163, 115, 0.2); color: var(--text-amber); border: 1px solid var(--border-amber);">👩‍🏫 Condução Principal: <strong>${condutor}</strong></span></p>` : ''}
+          <p style="margin-bottom: 0.75rem;"><strong>🎯 Objetivo Pedagógico:</strong> ${np.objetivoSlide}</p>
+          <p style="margin-bottom: 0.5rem;"><strong>🎙️ O que falar para a turma:</strong></p>
+          <blockquote style="background: rgba(0,0,0,0.3); border-left: 4px solid var(--text-amber); padding: 0.75rem 1.25rem; border-radius: 4px; font-style: italic; color: var(--text-main); font-size: 1.15rem; line-height: 1.5;">
+            ${np.oQueFalar || ''}
+          </blockquote>
+        `;
+      }
     } else {
       notesTitle.textContent = `Slide ${s.numero}: ${s.titulo}`;
       notesBody.innerHTML = '<p>Sem notas pedagógicas adicionais para este slide.</p>';

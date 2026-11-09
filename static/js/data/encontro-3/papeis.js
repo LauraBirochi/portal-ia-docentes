@@ -1,24 +1,12 @@
 /**
- * Módulo 3 – Divisão de Papéis e Momentos da Co-Docência (Laura & Maria)
+ * Módulo 3 – Divisão de Papéis e Co-Docência
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
 export const divisaoPapeis = [
-  { bloco: "Bloco 1 (00:00 - 00:05)", tema: "Abertura & Conexão Inicial (Slide 1)", papel: "ambas" },
-  { bloco: "Bloco 1 (00:05 - 00:15)", tema: "Onde Estamos e Aonde Vamos Hoje (Slide 2) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 1 (00:15 - 00:25)", tema: "A Metáfora do Estagiário Inteligente (Slide 3) • Condução: Laura", papel: "radio", padrao: "laura" },
-  { bloco: "Bloco 1 (00:25 - 00:35)", tema: "Prompt or Flop? O Duelo de 3 Vias (Slide 4) • Condução: Laura", papel: "radio", padrao: "laura", condutor: "Laura", conducao: "Laura" },
-  { bloco: "Bloco 1 (00:35 - 00:45)", tema: "Os 4 Blocos da Estrutura Perfeita C-T-F-R (Slide 5) • Condução: Laura", papel: "radio", padrao: "laura", condutor: "Laura", conducao: "Laura" },
-  { bloco: "Bloco 2 (00:45 - 00:50)", tema: "Exemplos Práticos: Onde Usar um Prompt Estruturado? (Slide 6) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 2 (00:50 - 01:00)", tema: "Camada 1: Organização Pessoal e Rotina (Slide 7) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 2 (01:00 - 01:10)", tema: "Camada 2: Redação e Simplificação Profissional (Slide 8) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 2 (01:10 - 01:20)", tema: "Regra do Cartão-Postal e Anonimização (Slide 9) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Intervalo (01:20 - 01:35)", tema: "Intervalo Pedagógico / Café com Prosa (Momento de Pausa)", papel: "ambas" },
-  { bloco: "Bloco 3 (01:30 - 01:45)", tema: "Camada 3: Diálogo Iterativo e Meta-Prompting (Slide 10) • Condução: Maria", papel: "radio", padrao: "maria", condutor: "Maria", conducao: "Maria" },
-  { bloco: "Bloco 3 (01:45 - 02:00)", tema: "Agência Humana e Validação Crítica (UNESCO) (Slide 11) • Condução: Maria", papel: "radio", padrao: "maria", condutor: "Maria", conducao: "Maria" },
-  { bloco: "Bloco 3 (02:00 - 02:20)", tema: "Oficina Prática de Bancada: Missão 1 (Slide 12)", papel: "ambas" },
-  { bloco: "Bloco 3 (02:20 - 02:33)", tema: "Bancada de Testes Empíricos & Quadro Comparativo (Slides 13 a 16)", papel: "ambas" },
-  { bloco: "Bloco 3 (02:33 - 02:48)", tema: "Oficina Prática de Bancada: Missão 2 (Slide 17)", papel: "ambas" },
-  { bloco: "Bloco 3 (02:48 - 02:52)", tema: "Teste 4: Auto-Entrevista (Comando, Perguntas e Prompt Mestre) (Slides 18 e 19)", papel: "ambas" },
-  { bloco: "Bloco 4 (02:52 - 03:00)", tema: "Show & Tell, Checklist de Bolso & Referências (Slides 20 a 22)", papel: "ambas" }
+  {
+    bloco: "Período Completo (180 min)",
+    tema: "Aula privada com aluno",
+    papel: "ambas"
+  }
 ];

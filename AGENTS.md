@@ -34,9 +34,19 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
 - **Base Documental Pedagógica:** Síntese diagnóstica dos formulários dos alunos arquivada em `docs/encontro-2-assuntos/00_sintese_diagnostico_forms_alunos.md`.
 
 ### 🎯 Encontro 3 (06/11)
+- **Tema:** *Aula privada com aluno.*
+- **Natureza do Encontro:** Sessão reservada exclusivamente para atendimento pedagógico individualizado e acompanhamento privado com aluno no laboratório.
+- **Inacessibilidade & Popup de Bloqueio:** O Módulo 3 foi configurado como inativo/inacessível (`isAccessible: false`, `isReady: false`). No Dashboard, a tentativa de abertura do cockpit emite um popup notificando a indisponibilidade por se tratar de aula privada. As rotas `/encontro/3` e `/slides/3` redirecionam automaticamente ao dashboard com mensagem de bloqueio.
+
+### 🎯 Encontro 4 (13/11)
 - **Tema:** *ChatGPT na Prática: Do Comando Simples ao Trabalho Real – Como instruir, refinar e colaborar com a IA de forma produtiva, ética e segura.*
 - **Diretriz de Ferramentas:** Foco exclusivo no ChatGPT durante o encontro para evitar sobrecarga cognitiva nos alunos e acolher o aluno iniciante.
-- **Paleta Óptica dos Slides (Deep Navy):** Aplicada também no Encontro 3 (`body[data-meeting="3"]` em `static/css/projector.css`), mantendo a identidade visual de alto contraste e legibilidade com fundo Deep Navy `#0f172a` e cartões Slate Navy `#1e293b`.
+- **Paleta Óptica dos Slides (CKW Clean Light - Fundo Branco):** Implementada a paleta **Clean Light (`#ffffff` e `#f8fafc`)** para o Encontro 4 (`body[data-meeting="4"]` em `static/css/projector.css`), orientada pelo CKW Design System:
+  - Fundo do palco em branco puro (`#ffffff`) com cartões brancos e bordas sutis Slate-200 (`#e2e8f0`).
+  - Tipografia de alto contraste Slate-900 (`#0f172a`) e Slate-700 (`#334155`) garantindo legibilidade 14:1+ no telão.
+  - Acentos funcionais em Azul Real (`#0284c7`), Esmeralda (`#059669`) e Âmbar (`#d97706`).
+  - Terminais de prompt preservados em ardósia escura (`#0f172a`) para ancoragem visual e autenticidade de ferramenta técnica.
+  - O Encontro 2 permanece 100% preservado em Deep Navy (`#0f172a`) e o Encontro 1 em Warm Walnut (`#fdfbf7`).
 - **Deck Consolidado (22 Slides):** 22 slides distribuídos em 4 blocos temáticos, incluindo abertura das 3 camadas práticas (Slide 6), bancada de testes reais de prompts (Slides 13 a 15), quadro comparativo (Slide 16), exercício 2 de auto-entrevista ancorada (Slide 17), demonstração empírica do teste 4 em dois atos (Slide 18: Turno 1 Comando & 4 Perguntas da IA; Slide 19: Turno 2 Respostas do Usuário & Prompt Mestre Gerado), roda show & tell (Slide 20), checklist de bolso (Slide 21) e referências bibliográficas da OpenAI e UNESCO/OSSE (Slide 22).
 - **Divisão de Palco Atualizada:** Laura assume os Slides 2 a 5 (Revisão, Estagiário, Duelo de 3 Vias e Framework C-T-F-R); Maria assume os Slides 6 a 9 (Abertura das 3 Camadas, Camadas 1 e 2 e Cartão-Postal/Anonimização) e Slides 10 e 11 (Diálogo Iterativo e Agência Humana UNESCO); co-docência integrada na Abertura (Slide 1), Missão 1 (Slide 12), Bancada de Testes Empíricos e Quadro Comparativo (Slides 13 a 16), Missão 2 (Slide 17), Teste 4 Parte 1 (Slide 18), Teste 4 Parte 2 (Slide 19), Roda Show & Tell (Slide 20), Fechamento (Slide 21) e Referências (Slide 22).
 - **Refinamento Pedagógico (NotebookLM & CKW Design System):**
@@ -59,8 +69,14 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
     - *Slide 18 (Turno 1):* Comando solicitando 4 perguntas essenciais + as 4 perguntas geradas pelo ChatGPT (Contexto, Público, Formato, Restrições) cobrindo todo o escopo antes da resposta.
     - *Slide 19 (Turno 2):* As 4 respostas sucintas fornecidas pelo usuário + geração automática do Prompt Mestre estruturado em `# Contexto`, `# Instruções` e `# Restrições` com tema Cyan Deep Navy (`#38bdf8`), tipografia calibrada a `1.5rem` (24px) e zero overflow.
   - *Calibração Espacial CKW (Zero Overflow):* Otimização tipográfica e dimensional de cartões, terminais e tabelas para eliminar cortes ou overflow em 1920x1080 Full Bleed.
-- **Roteiro de Palco Completo:** Co-docência equilibrada entre Laura e Maria com tempos sugeridos (minuto a minuto), objetivos pedagógicos e falas em primeira pessoa.
-- **Infraestrutura Modular & PDF 16:9:** Compilado em `static/js/data/encontro3-data.js` via `python scripts/build_data.py 3` e exportado como PDF vetorial nativo em `static/pdf/slides-encontro-3.pdf`. Rota `/slides/3` e Cockpit `/encontro/3` ativos e 100% integrados.
+  - *Ficha Técnica Conceitual Docente (Atalho N / Drawer de Notas):* Reestruturação completa do eixo do painel de notas do projetor (tecla `N`). Substituição dos roteiros de fala teatralizada em primeira pessoa por uma ficha técnica estruturada em 4 blocos rigorosos para todos os 22 slides do Encontro 4:
+    1. 📖 **O Que É o Conceito:** Definição teórica e epistemológica do conceito (ex: Meta-Prompting, Inversão de Papel, C-T-F-R, Regressão à Média, Trava de Grounding UNESCO).
+    2. ⚙️ **Mecânica do Slide:** Como ler o que está na tela, articulação dos elementos visuais e o que demonstrar.
+    3. ⚠️ **Armadilha Comum:** Vício típico dos alunos/usuários e erros clássicos de formulação.
+    4. 💡 **Dúvidas dos Alunos (FAQ):** Perguntas frequentes e difíceis com respostas-chave fundamentadas.
+    O layout foi desenhado com visual Deep Navy em grid responsivo de 2 colunas com cartões coloridos (`#38bdf8`, `#10b981`, `#f59e0b`, `#a78bfa`), garantindo ao professor domínio substancial do conteúdo com consulta ágil no palco sem depender de falas decoradas.
+- **Roteiro de Palco Completo:** Co-docência equilibrada entre Laura e Maria com tempos sugeridos (minuto a minuto), objetivos pedagógicos e fichas conceituais para cada slide.
+- **Infraestrutura Modular & PDF 16:9:** Compilado em `static/js/data/encontro4-data.js` via `python scripts/build_data.py 4` e exportado como PDF vetorial nativo em `static/pdf/slides-encontro-4.pdf`. Rota `/slides/4` e Cockpit `/encontro/4` ativos e 100% integrados.
 
 ---
 

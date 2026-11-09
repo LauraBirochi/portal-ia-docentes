@@ -1,952 +1,1012 @@
-/**
- * Cockpit Renderer – Motor Modular de Renderização Pedagógica (4 Abas)
- * Renderiza dinamicamente as abas do Cockpit a partir do Schema de Encontro (encontroX-data.js).
- */
-
-const CockpitRenderer = {
-  /**
-   * Renderiza todas as abas do Cockpit para o encontro fornecido
-   * @param {Object} data - Objeto de dados do encontro (ex: ENCONTRO_1_DATA)
-   */
-  renderAll(data) {
-    if (!data) return;
-
-    // Garante bijeção estrita 1..N nos slides antes de qualquer renderização
-    if (Array.isArray(data.slidesComNotas)) {
-      data.slidesComNotas.forEach((slide, idx) => {
-        slide.numero = idx + 1;
-        slide.id = idx + 1;
-      });
-    }
-
-    this.renderHeaderInfo(data);
-    this.renderFioDaMeada(data);
-    this.renderSlidesList(data);
-    this.renderAtividadesGabarito(data);
-    this.renderPerguntas(data);
-    this.renderAnotacoesPapeis(data);
-  },
-
-  /**
-   * Atualiza cabeçalho do módulo
-   */
-  renderHeaderInfo(data) {
-    const info = data.moduloInfo || {};
-    const titleEl = document.getElementById('cockpit-module-title');
-    const chipEl = document.getElementById('cockpit-module-chip');
-    if (titleEl && info.titulo) {
-      titleEl.textContent = `Módulo ${info.numero}: ${info.titulo}`;
-    }
-    if (chipEl && info.numero) {
-      chipEl.textContent = `Módulo ${info.numero} • ${info.cargaHoraria || '3h Presenciais'}`;
-    }
-    const openSlidesBtns = document.querySelectorAll('.btn-open-slides');
-    openSlidesBtns.forEach(btn => {
-      btn.setAttribute('href', `/slides/${info.numero || 1}`);
-    });
-  },
-
-  /**
-   * ABA 1: O Fio da Meada (Narrativa & Conceitos)
-   */
-  renderFioDaMeada(data) {
-    const container = document.getElementById('cockpit-fio-meada-container');
-    if (!container) return;
-
-    const fio = data.fioDaMeada || {};
-    const info = data.moduloInfo || {};
-    const atos = fio.atos || [];
-    const glossario = fio.glossario || [];
-
-    container.innerHTML = `
-      <div class="fio-hero-card">
-        <div class="fio-hero-header">
-          <span class="chip chip-warm">🎯 Bússola Pedagógica • Módulo ${info.numero || 1}</span>
-          <span class="chip">🤝 Alinhamento Co-Docência (Laura & Maria)</span>
-        </div>
-        
-        <h2 class="fio-hero-title">
-          ${fio.objetivoCentral || 'Qual é a grande mensagem deste encontro?'}
-        </h2>
-
-        <div class="fio-hero-quote">
-          <div class="fio-quote-icon">“</div>
-          <blockquote class="fio-quote-text">
-            ${fio.mensagemChave || ''}
-          </blockquote>
-        </div>
-
-        ${fio.explicacaoObjetivo ? `
-          <div class="fio-hero-explanation">
-            <span class="fio-explanation-icon">🧭</span>
-            <div class="fio-explanation-body">
-              <strong>Diretriz de Condução Docente:</strong>
-              <p>${fio.explicacaoObjetivo}</p>
-            </div>
-          </div>
-        ` : ''}
-      </div>
-
-      <div class="fio-acts-section">
-        <div class="section-title-wrap" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span style="font-size: 1.3rem;">🎭</span>
-            <h3 style="margin: 0; font-size: 1.25rem;">A Linha Narrativa da Aula (Os 3 Atos do Encontro)</h3>
-          </div>
-          <span class="chip" style="font-size: 0.78rem;">Jornada Completa de 180 min</span>
-        </div>
-
-        <div class="fio-acts-timeline">
-          ${atos.map(a => `
-            <div class="fio-act-card act-${a.ato}">
-              <div class="fio-act-topbar">
-                <span class="fio-act-badge">Ato ${a.ato}</span>
-                <span class="fio-act-time">⏱️ ${a.tempo}</span>
-              </div>
-              <h4 class="fio-act-title">${a.titulo}</h4>
-              <p class="fio-act-desc">${a.desc}</p>
-              ${a.gatilho ? `
-                <div class="fio-speech-trigger">
-                  <div class="fio-trigger-header">
-                    <span class="fio-trigger-icon">💡</span>
-                    <strong>Gatilho de fala em sala:</strong>
-                  </div>
-                  <p class="fio-trigger-text">"${a.gatilho}"</p>
-                </div>
-              ` : ''}
-            </div>
-          `).join('')}
-        </div>
-      </div>
-
-      ${glossario.length ? `
-        <details class="fio-glossary-details">
-          <summary class="fio-glossary-summary">
-            <div class="fio-glossary-summary-content">
-              <span class="fio-glossary-summary-icon">📖</span>
-              <div>
-                <strong>Glossário Rápido de Conceitos Alinhados (${glossario.length} termos)</strong>
-                <span class="fio-glossary-hint">Clique para expandir e consultar vocabulário técnico padronizado para a dupla</span>
-              </div>
-            </div>
-            <span class="fio-glossary-toggle-pill">Consultar Termos ▾</span>
-          </summary>
-          
-          <div class="fio-glossary-grid">
-            ${glossario.map(g => `
-              <div class="fio-glossary-card">
-                <div class="fio-glossary-term-wrap">
-                  <span class="fio-glossary-bullet">✦</span>
-                  <h5 class="fio-glossary-term">${g.termo}</h5>
-                </div>
-                <p class="fio-glossary-def">${g.def}</p>
-              </div>
-            `).join('')}
-          </div>
-        </details>
-      ` : ''}
-    `;
-  },
-
-  /**
-   * Identifica se o dossiê é jurídico/regulatório (usando metadado explícito com fallback)
-   */
-  isLegalDossier(emb) {
-    if (!emb) return false;
-    if (emb.tipoDossie) return emb.tipoDossie === 'juridico';
-    const titleLower = (emb.titulo || '').toLowerCase();
-    return (
-      titleLower.includes('jurídico') ||
-      titleLower.includes('legal') ||
-      titleLower.includes('governo') ||
-      titleLower.includes('pbia') ||
-      titleLower.includes('regulamentação')
-    );
-  },
-
-  /**
-   * Renderiza o acordeão de aprofundamento científico/jurídico de um slide
-   */
-  renderTechDeepdive(emb, slideNum) {
-    if (!emb) return '';
-    const isLegal = this.isLegalDossier(emb);
-
-    return `
-      <div class="tech-deepdive-wrapper">
-        <button type="button" class="btn-tech-deepdive" id="btn-deepdive-${slideNum}" onclick="window.CockpitRenderer.toggleDeepdive('${slideNum}')" aria-expanded="false" aria-controls="deepdive-${slideNum}">
-          <span class="tech-btn-icon-wrapper">
-            <span class="tech-btn-icon">${isLegal ? '🏛️' : '🔬'}</span>
-          </span>
-          <span class="tech-btn-text">
-            <span class="tech-btn-title">${isLegal ? 'Dossiê Jurídico & Legislação Brasileira' : 'Embasamento Científico & Fórmulas'}</span>
-            <span class="tech-btn-sub">${isLegal ? 'Marco Legal (PL 2338/23), PBIA e LGPD' : 'Fundamentação Acadêmica e Artigos Primários'}</span>
-          </span>
-          <span class="badge-tech">
-            <span class="badge-dot"></span>
-            <span>${isLegal ? 'Fontes Oficiais' : 'Fontes Acadêmicas'}</span>
-          </span>
-          <span class="chevron" id="chevron-${slideNum}">▾</span>
-        </button>
-
-        <div id="deepdive-${slideNum}" class="tech-deepdive-panel" role="region" aria-labelledby="btn-deepdive-${slideNum}">
-          <div class="tech-deepdive-header">
-            <div class="tech-header-lead">
-              <span class="tech-header-icon">${isLegal ? '⚖️' : '🏛️'}</span>
-              <div>
-                <h4 class="tech-deepdive-title">${emb.titulo}</h4>
-                <p class="tech-deepdive-subtitle">${isLegal ? 'Dossiê Governamental e Regulatório de IA' : 'Dossiê Técnico & Fundamentação Matemática de NLP / Deep Learning'}</p>
-              </div>
-            </div>
-            <div class="tech-header-tags">
-              <span class="chip chip-warm">
-                <span class="chip-dot"></span>
-                ${isLegal ? 'Marco Normativo Oficial' : 'Referencial Teórico Primário'}
-              </span>
-            </div>
-          </div>
-
-          <div class="tech-summary-banner">
-            <div class="tech-summary-badge">Visão Geral</div>
-            <p class="tech-summary-text">${emb.resumo}</p>
-          </div>
-
-          <div class="tech-topics-list">
-            ${(emb.topicos || []).map((t, idx) => {
-              const cleanTitle = (t.titulo || '').replace(/^\d+\.\s*/, '');
-              return `
-                <div class="tech-topic-item">
-                  <div class="tech-topic-header">
-                    <span class="tech-topic-index">${idx + 1}</span>
-                    <h5 class="tech-topic-heading">${cleanTitle}</h5>
-                  </div>
-                  <div class="tech-topic-content">${t.conteudo}</div>
-                </div>
-              `;
-            }).join('')}
-          </div>
-
-          ${(emb.fontesCientificas && emb.fontesCientificas.length) ? `
-            <div class="citations-section">
-              <div class="citations-header">
-                <span class="citations-icon">${isLegal ? '📜' : '📚'}</span>
-                <div>
-                  <h5 class="citations-title">${isLegal ? 'Documentos Oficiais & Textos de Lei' : 'Artigos Científicos Primários (Peer-Reviewed & Preprints)'}</h5>
-                  <span class="citations-subtitle">Referências fundamentais que sustentam este conteúdo em sala</span>
-                </div>
-              </div>
-              <div class="citations-grid">
-                ${emb.fontesCientificas.map(f => `
-                  <div class="citation-card">
-                    <div class="citation-top">
-                      <span class="citation-author-tag">${f.autor}</span>
-                      <span class="citation-pub-tag">${f.publicacao}</span>
-                    </div>
-                    <h6 class="citation-title">"${f.titulo}"</h6>
-                    <div class="citation-relevance">
-                      <span class="relevance-label">💡 Relevância:</span>
-                      <span class="relevance-text">${f.relevancia}</span>
-                    </div>
-                    <a href="${f.link}" target="_blank" rel="noopener noreferrer" class="citation-link-btn" title="Acessar publicação em nova aba">
-                      <span>Acessar Documento Original</span>
-                      <span class="link-arrow">↗</span>
-                    </a>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          ` : ''}
-        </div>
-      </div>
-    `;
-  },
-
-  /**
-   * Renderiza a prévia visual contextual do slide no Cockpit
-   */
-  renderSlidePreview(slide) {
-    if (slide.tipo === 'secao' || slide.tipo === 'titulo-secao') {
-      const innerContent = slide.citacao ? `
-        <div style="margin-top: 0.6rem; font-style: italic; font-size: 0.88rem; color: var(--text-main); line-height: 1.5; background: rgba(217, 119, 6, 0.08); padding: 0.75rem 1rem; border-radius: 6px; border-left: 3px solid #d97706;">
-          "${slide.citacao}"
-          ${slide.autor ? `<div style="font-style: normal; font-weight: 700; font-size: 0.78rem; color: #d97706; margin-top: 0.35rem; text-align: right;">— ${slide.autor}</div>` : ''}
-        </div>
-      ` : (slide.pills && slide.pills.length) ? `
-        <div style="display: flex; gap: 0.6rem; justify-content: center; margin-top: 0.5rem; flex-wrap: wrap;">
-          ${slide.pills.map((p, idx) => `
-            <span style="font-size: 0.78rem; background: ${p.tipo === 'ficcao' ? 'rgba(220,53,69,0.15)' : 'rgba(40,167,69,0.15)'}; color: ${p.tipo === 'ficcao' ? '#e03131' : '#2f9e44'}; padding: 0.25rem 0.65rem; border-radius: 4px; font-weight: 600;">${p.texto}</span>
-            ${idx < slide.pills.length - 1 ? '<span style="font-size: 0.78rem; color: var(--text-muted); font-weight: bold;">➔</span>' : ''}
-          `).join('')}
-        </div>
-      ` : slide.subtitulo ? `
-        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.4;">${slide.subtitulo}</div>
-      ` : '';
-
-      return `
-        <div style="background: var(--bg-surface); border: 1px solid var(--border-amber); border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem; text-align: center;">
-          <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-amber); text-transform: uppercase; letter-spacing: 0.5px;">📌 ${slide.badge || 'Abertura de Bloco • Título de Impacto'}</span>
-          ${innerContent}
-        </div>
-      `;
-    }
-
-    if (slide.tipo === 'ia-ficcao') {
-      return `
-        <div style="background: var(--bg-surface); border: 1px solid rgba(220,53,69,0.35); border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-          <div style="width: 140px; height: 95px; border-radius: var(--radius-sm); overflow: hidden; background: #000; flex-shrink: 0;">
-            <img src="${slide.imagem || '/static/img/ia_ficcao_rosie.jpg'}" alt="${slide.titulo}" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-          <div style="flex: 1; min-width: 200px;">
-            <span style="font-size: 0.75rem; font-weight: 700; color: #e03131; text-transform: uppercase;">${slide.badge || 'Ficção Científica'}</span>
-            <p style="font-size: 0.85rem; color: var(--text-main); margin: 0.25rem 0 0 0; font-weight: 600;">${slide.conclusaoFiccao || 'Robôs conscientes com sentimentos (0% real hoje).'}</p>
-          </div>
-        </div>
-      `;
-    }
-
-    if (slide.tipo === 'ia-estreita') {
-      return `
-        <div style="background: var(--bg-surface); border: 1px solid rgba(40,167,69,0.35); border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem;">
-          <div style="font-size: 0.75rem; font-weight: 700; color: #2f9e44; text-transform: uppercase; margin-bottom: 0.5rem;">${slide.badge || 'IA Estreita Real (100% da IA de hoje)'}</div>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem;">
-            ${(slide.recursos || []).slice(0, 6).map(r => `
-              <div style="font-size: 0.8rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.35rem;">
-                <span>${r.icone || '⚙️'}</span>
-                <strong style="color: var(--text-main);">${r.titulo}</strong>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    }
-
-    if (slide.tipo === 'fechamento') {
-      return `
-        <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem;">
-          <div style="font-size: 0.82rem; font-weight: 700; color: var(--accent); margin-bottom: 0.35rem;">🚀 Próximo Encontro: ${slide.proximoEncontro || slide.titulo || ''}</div>
-          ${(slide.referencias && slide.referencias.length) ? `
-            <div style="margin-top: 0.5rem; border-top: 1px solid var(--border); padding-top: 0.5rem;">
-              <strong style="color: var(--text-main); font-size: 0.8rem;">📚 Referências da Aula de Hoje:</strong>
-              <div style="display: flex; flex-direction: column; gap: 0.25rem; margin-top: 0.35rem;">
-                ${slide.referencias.map(r => `
-                  <a href="${r}" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-family: var(--font-mono); font-size: 0.82rem; text-decoration: underline; word-break: break-all;">${r}</a>
-                `).join('')}
-              </div>
-            </div>
-          ` : ''}
-        </div>
-      `;
-    }
-
-    return '';
-  },
-
-  /**
-   * Renderiza o card individual de um slide dentro do seu bloco temático
-   */
-  renderSlideCard(slide, totalSlides, moduloNum) {
-    const notas = slide.notasProfessora || {};
-    const slideNum = slide.numero;
-    const condutor = slide.conducao || slide.docente || '';
-
-    return `
-      <article class="pedagogical-highlight-card" style="border-left: 4px solid var(--accent); transition: transform 0.2s ease;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
-          <div>
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
-              <span class="chip chip-warm" style="font-weight: 700;">Slide ${slideNum} de ${totalSlides}</span>
-              <span class="chip" style="font-size: 0.75rem;">${slide.categoria || 'Pedagógico'}</span>
-              ${condutor ? `
-                <span class="chip" style="font-size: 0.75rem; font-weight: 700; background: rgba(212, 163, 115, 0.15); border: 1px solid var(--border-amber); color: var(--text-amber);">
-                  👩‍🏫 Condução: ${condutor}
-                </span>
-              ` : ''}
-              <span style="font-size: 0.8rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.25rem;">
-                ⏱️ ${notas.tempoSugerido || '5 min'}
-              </span>
-            </div>
-            <h4 style="font-size: 1.15rem; color: var(--text-main); margin: 0;">${slide.titulo}</h4>
-          </div>
-          <a href="/slides/${moduloNum}?slide=${slideNum}" target="portal_ia_slides_window" class="btn btn-sm" style="font-size: 0.82rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;" title="Abrir este slide exato no projetor">
-            <span>🖥️</span> Ver no Projetor
-          </a>
-        </div>
-
-        <div style="background: var(--bg-subtle-warm); padding: 0.85rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); margin-bottom: 0.75rem;">
-          <strong style="color: var(--accent); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Objetivo Pedagógico deste Momento:</strong>
-          <p style="font-size: 0.88rem; color: var(--text-main); margin: 0.35rem 0 0 0; line-height: 1.5;">${notas.objetivoSlide || 'Contextualização pedagógica para a turma.'}</p>
-        </div>
-
-        <div style="background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-sm); border: 1px dashed var(--border);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
-            <strong style="color: var(--text-main); font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem;">
-              <span>🎙️</span> ${condutor ? `Roteiro Sugerido de Fala (${condutor}):` : `Roteiro Sugerido de Fala para a Dupla (Laura & Maria):`}
-            </strong>
-            <button type="button" class="btn btn-sm" onclick="window.CockpitRenderer.copySpeech('${slideNum}')" id="copy-btn-${slideNum}" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-radius: var(--radius-pill);" title="Copiar roteiro de fala">
-              📋 Copiar Fala
-            </button>
-          </div>
-          <p id="speech-text-${slideNum}" style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin: 0; font-style: italic;">
-            "${notas.oQueFalar || 'Conduzir debate aberto e acolhedor.'}"
-          </p>
-        </div>
-
-        ${this.renderSlidePreview(slide)}
-        ${this.renderTechDeepdive(slide.embasamentoCientifico, slideNum)}
-      </article>
-    `;
-  },
-
-  /**
-   * ABA 2: Slides & Roteiro Visual (Agrupados por Blocos Temáticos Recolhíveis)
-   */
-  renderSlidesList(data) {
-    const container = document.getElementById('cockpit-slides-list');
-    if (!container) return;
-
-    const slides = data.slidesComNotas || [];
-    const info = data.moduloInfo || {};
-    const moduloNum = info.numero || 1;
-    const blocos = data.blocosTematicos || [
-      {
-        id: 1,
-        icone: "📚",
-        titulo: "Todos os Slides do Encontro",
-        subtitulo: "Sequência completa de projeção e notas pedagógicas",
-        slidesRange: [1, slides.length || 1],
-        tempoEstimado: info.cargaHoraria || "180 min"
-      }
-    ];
-
-    const toolbarHTML = `
-      <div class="topic-groups-toolbar">
-        <div class="topic-groups-toolbar-info">
-          <span class="topic-groups-count">📚 <strong>${blocos.length} Blocos Temáticos</strong> (${slides.length} Slides no Encontro)</span>
-          <span class="topic-groups-tip">• Clique em qualquer bloco para recolher ou expandir</span>
-        </div>
-        <div class="topic-groups-toolbar-actions">
-          <button type="button" class="btn-group-action" onclick="window.CockpitRenderer.expandAllTopicGroups()" title="Expandir todos os blocos temáticos">
-            <span>📂</span> Expandir Todos
-          </button>
-          <button type="button" class="btn-group-action" onclick="window.CockpitRenderer.collapseAllTopicGroups()" title="Recolher todos os blocos temáticos">
-            <span>📁</span> Recolher Todos
-          </button>
-        </div>
-      </div>
-    `;
-
-    const groupsHTML = blocos.map(bloco => {
-      const slidesDoBloco = slides.filter(slide => {
-        if (typeof slide.bloco === 'number') {
-          return slide.bloco === bloco.id;
-        }
-        const num = slide.numero || 1;
-        return num >= bloco.slidesRange[0] && num <= bloco.slidesRange[1];
-      });
-
-      if (!slidesDoBloco.length) return '';
-
-      const firstNum = slidesDoBloco[0].numero;
-      const lastNum = slidesDoBloco[slidesDoBloco.length - 1].numero;
-      const slidesCardsHTML = slidesDoBloco
-        .map(slide => this.renderSlideCard(slide, slides.length, moduloNum))
-        .join('');
-
-      return `
-        <section class="topic-group-card" id="topic-group-${bloco.id}">
-          <button type="button" class="topic-group-header-btn" id="topic-group-btn-${bloco.id}" onclick="window.CockpitRenderer.toggleTopicGroup(${bloco.id})" aria-expanded="true" aria-controls="topic-group-body-${bloco.id}">
-            <div class="topic-group-header-main">
-              <span class="topic-group-icon">${bloco.icone || '📌'}</span>
-              <div class="topic-group-header-text">
-                <div class="topic-group-header-title-row">
-                  <h3 class="topic-group-title">${bloco.titulo}</h3>
-                  <span class="chip chip-warm topic-group-range-badge">Slides ${firstNum} a ${lastNum}</span>
-                </div>
-                <p class="topic-group-sub">${bloco.subtitulo || ''}</p>
-              </div>
-            </div>
-            <div class="topic-group-header-meta">
-              <span class="topic-group-meta-pill">⏱️ ${bloco.tempoEstimado || ''}</span>
-              <span class="topic-group-meta-pill topic-group-count-pill">${slidesDoBloco.length} ${slidesDoBloco.length === 1 ? 'slide' : 'slides'}</span>
-              <span class="topic-group-chevron" id="topic-group-chevron-${bloco.id}">▾</span>
-            </div>
-          </button>
-
-          <div class="topic-group-body open" id="topic-group-body-${bloco.id}" role="region" aria-labelledby="topic-group-btn-${bloco.id}">
-            <div class="topic-group-slides-grid">
-              ${slidesCardsHTML}
-            </div>
-          </div>
-        </section>
-      `;
-    }).join('');
-
-    container.innerHTML = toolbarHTML + groupsHTML;
-  },
-
-  /**
-   * Alterna recolhimento/expansão de um bloco temático
-   */
-  toggleTopicGroup(blocoId) {
-    const body = document.getElementById(`topic-group-body-${blocoId}`);
-    const btn = document.getElementById(`topic-group-btn-${blocoId}`);
-    const chevron = document.getElementById(`topic-group-chevron-${blocoId}`);
-    const card = document.getElementById(`topic-group-${blocoId}`);
-    if (!body) return;
-
-    const isCollapsed = body.classList.contains('collapsed');
-    body.classList.toggle('collapsed', !isCollapsed);
-    body.classList.toggle('open', isCollapsed);
-    if (btn) btn.setAttribute('aria-expanded', isCollapsed ? 'true' : 'false');
-    if (chevron) chevron.classList.toggle('rotated', !isCollapsed);
-    if (card) card.classList.toggle('is-collapsed', !isCollapsed);
-  },
-
-  /**
-   * Expande todos os blocos temáticos em uma única passagem sobre os cards
-   */
-  expandAllTopicGroups() {
-    document.querySelectorAll('.topic-group-card').forEach(card => {
-      card.classList.remove('is-collapsed');
-      const body = card.querySelector('.topic-group-body');
-      const btn = card.querySelector('.topic-group-header-btn');
-      const ch = card.querySelector('.topic-group-chevron');
-      if (body) {
-        body.classList.remove('collapsed');
-        body.classList.add('open');
-      }
-      if (btn) btn.setAttribute('aria-expanded', 'true');
-      if (ch) ch.classList.remove('rotated');
-    });
-  },
-
-  /**
-   * Recolhe todos os blocos temáticos em uma única passagem sobre os cards
-   */
-  collapseAllTopicGroups() {
-    document.querySelectorAll('.topic-group-card').forEach(card => {
-      card.classList.add('is-collapsed');
-      const body = card.querySelector('.topic-group-body');
-      const btn = card.querySelector('.topic-group-header-btn');
-      const ch = card.querySelector('.topic-group-chevron');
-      if (body) {
-        body.classList.remove('open');
-        body.classList.add('collapsed');
-      }
-      if (btn) btn.setAttribute('aria-expanded', 'false');
-      if (ch) ch.classList.add('rotated');
-    });
-  },
-
-  /**
-   * Copia o roteiro de fala para a área de transferência (idempotente contra duplo clique)
-   */
-  copySpeech(slideNum) {
-    const speechEl = document.getElementById(`speech-text-${slideNum}`);
-    const btn = document.getElementById(`copy-btn-${slideNum}`);
-    if (!speechEl || !navigator.clipboard) return;
-
-    const text = speechEl.textContent.trim().replace(/^"|"$/g, '');
-    navigator.clipboard.writeText(text).then(() => {
-      if (!btn) return;
-      if (!btn.dataset.originalHtml) {
-        btn.dataset.originalHtml = btn.innerHTML;
-      }
-      if (btn._copyTimer) {
-        clearTimeout(btn._copyTimer);
-      }
-      btn.innerHTML = '✓ Copiado!';
-      btn.style.color = 'var(--accent, #d4a373)';
-      btn._copyTimer = setTimeout(() => {
-        btn.innerHTML = btn.dataset.originalHtml;
-        btn.style.color = '';
-        btn._copyTimer = null;
-      }, 2000);
-    }).catch(err => {
-      console.warn('Não foi possível copiar para a área de transferência:', err);
-    });
-  },
-
-  /**
-   * Alterna a visualização do painel de aprofundamento técnico
-   */
-  toggleDeepdive(slideId) {
-    const panel = document.getElementById(`deepdive-${slideId}`);
-    const chevron = document.getElementById(`chevron-${slideId}`);
-    const btn = document.getElementById(`btn-deepdive-${slideId}`) || (chevron ? chevron.closest('.btn-tech-deepdive') : null);
-    if (!panel) return;
-
-    const isOpen = panel.classList.contains('open');
-    panel.classList.toggle('open', !isOpen);
-    if (btn) {
-      btn.classList.toggle('active', !isOpen);
-      btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
-    }
-  },
-
-  /**
-   * ABA 3: Prova Diagnóstica & Atividades de Laboratório
-   */
-  renderAtividadesGabarito(data) {
-    const container = document.getElementById('cockpit-gabarito-container');
-    if (!container) return;
-
-    const oficina = data.oficinaPratica || {};
-    const diretrizes = oficina.diretrizesDocentes || [
-      "Acolhimento da turma: tranquilizar os alunos de que não há nota punitiva nem reprovação.",
-      "Orientar o preenchimento com sinceridade e foco no que já conhecem.",
-      "Laura & Maria circulam ativamente entre as mesas para tirar dúvidas de acesso ou uso do computador.",
-      "Verificar se todos os alunos clicaram no botão de envio ao final."
-    ];
-
-    let extraSectionsHTML = '';
-
-    if (oficina.situacaoProblema) {
-      extraSectionsHTML = `
-        <!-- Situação Problema -->
-        <div class="pedagogical-highlight-card" style="margin-top: 1.5rem; border-left: 4px solid var(--accent);">
-          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
-            <span style="font-size: 1.25rem;">🎯</span>
-            <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">1. Situação-Problema do Aluno</h4>
-          </div>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
-            <em>"${oficina.situacaoProblema.contexto}"</em>
-          </p>
-          <div style="background: var(--bg-surface); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
-            <strong style="color: var(--accent);">Missão:</strong> <span style="color: var(--text-main);">${oficina.situacaoProblema.missao}</span>
-          </div>
-        </div>
-
-        <!-- Roteiro de Execução em 5 Passos -->
-        ${oficina.comoExecutar ? `
-          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-              <span style="font-size: 1.25rem;">🚀</span>
-              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">2. Roteiro de Execução em 5 Passos no Computador</h4>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 0.65rem;">
-              ${oficina.comoExecutar.map(e => `
-                <div style="display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.6rem 0.8rem; background: var(--bg-surface); border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
-                  <span style="font-family: var(--font-mono); font-weight: bold; color: var(--accent);">${e.etapa}º</span>
-                  <div>
-                    <strong style="color: var(--text-main); font-size: 0.92rem;">${e.titulo}:</strong>
-                    <span style="color: var(--text-secondary); font-size: 0.9rem;"> ${e.desc}</span>
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        ` : ''}
-
-        <!-- Duelo dos Prompts: Livre vs. Falso Bom vs. Estruturado -->
-        <div style="display: grid; grid-template-columns: ${oficina.falsoBomPrompt ? 'repeat(auto-fit, minmax(280px, 1fr))' : '1fr 1fr'}; gap: 1.25rem; margin-top: 1.5rem;">
-          <div class="pedagogical-highlight-card" style="border-top: 4px solid #ef4444;">
-            <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
-              <span>❌</span>
-              <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">1ª Tentativa: Prompt Livre (Vago)</h4>
-            </div>
-            <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; margin-bottom: 0.75rem; border: 1px solid var(--border);">${oficina.primeiraTentativa?.prompt || ''}</pre>
-            <div style="font-size: 0.85rem; color: var(--text-secondary);">
-              <strong style="color: #ef4444;">Falhas prováveis:</strong>
-              <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0;">
-                ${(oficina.primeiraTentativa?.problemasProvaveis || []).map(p => `<li>${p}</li>`).join('')}
-              </ul>
-            </div>
-          </div>
-
-          ${oficina.falsoBomPrompt ? `
-            <div class="pedagogical-highlight-card" style="border-top: 4px solid #f59e0b;">
-              <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
-                <span>⚠️</span>
-                <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">2ª Tentativa: Falso Bom Prompt (Ilusão da Persona)</h4>
-              </div>
-              <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; margin-bottom: 0.75rem; border: 1px solid var(--border); line-height: 1.45;">${oficina.falsoBomPrompt?.prompt || ''}</pre>
-              <div style="font-size: 0.85rem; color: var(--text-secondary);">
-                <strong style="color: #f59e0b;">Falhas prováveis:</strong>
-                <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0;">
-                  ${(oficina.falsoBomPrompt?.problemasProvaveis || []).map(p => `<li>${p}</li>`).join('')}
-                </ul>
-              </div>
-            </div>
-          ` : ''}
-
-          <div class="pedagogical-highlight-card" style="border-top: 4px solid #22c55e;">
-            <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
-              <span>✅</span>
-              <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">${oficina.falsoBomPrompt ? '3ª Tentativa: Prompt Mestre (C-T-F-R)' : '2ª Tentativa: Prompt Aprimorado (5 Elementos)'}</h4>
-            </div>
-            <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; border: 1px solid var(--border); line-height: 1.45;">${oficina.segundaTentativa?.prompt || ''}</pre>
-          </div>
-        </div>
-
-        <!-- Cards de Modelos de Prompts (Portfólio Digital) -->
-        ${oficina.promptsModelo ? `
-          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-              <span style="font-size: 1.25rem;">📌</span>
-              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Cards de Prompts-Modelo para Bancada (Portfólio Digital do Aluno)</h4>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-              ${oficina.promptsModelo.map(pm => `
-                <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem; border-top: 3px solid ${pm.cor || 'var(--accent)'}; display: flex; flex-direction: column;">
-                  <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
-                    <span>${pm.icone || '📝'}</span>
-                    <strong style="color: var(--text-main); font-size: 0.95rem;">${pm.titulo}</strong>
-                  </div>
-                  <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.6rem; line-height: 1.4;">${pm.descricao}</p>
-                  <pre style="background: var(--bg-body); color: var(--text-main); padding: 0.6rem; border-radius: 4px; font-size: 0.8rem; font-family: var(--font-mono); white-space: pre-wrap; margin-top: auto; border: 1px solid var(--border);">${pm.codigo}</pre>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        ` : ''}
-
-        <!-- Tabela dos 5 Elementos -->
-        ${oficina.cincoElementos ? `
-          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-              <span style="font-size: 1.25rem;">🧩</span>
-              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Anatomia dos 5 Elementos Essenciais do Prompt</h4>
-            </div>
-            <div style="overflow-x: auto;">
-              <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
-                <thead>
-                  <tr style="border-bottom: 2px solid var(--border); background: var(--bg-surface);">
-                    <th style="padding: 0.6rem 0.8rem; color: var(--accent);">Elemento</th>
-                    <th style="padding: 0.6rem 0.8rem; color: var(--text-main);">Como Aparece no Prompt</th>
-                    <th style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">Função Pedagógica</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${oficina.cincoElementos.map(el => `
-                    <tr style="border-bottom: 1px solid var(--border);">
-                      <td style="padding: 0.6rem 0.8rem; font-weight: bold; color: var(--accent);">${el.elemento}</td>
-                      <td style="padding: 0.6rem 0.8rem; color: var(--text-main); font-family: var(--font-mono); font-size: 0.82rem;">${el.comoAparece}</td>
-                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${el.funcao}</td>
-                    </tr>
-                  `).join('')}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        ` : ''}
-
-        <!-- Checklist de Configuração ChatGPT -->
-        ${oficina.configuracaoChatGPT ? `
-          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.3);">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
-              <span>🛡️</span>
-              <h4 style="color: #38bdf8; font-size: 1.05rem; margin: 0;">Configuração Obrigatória do ChatGPT (Segurança & LGPD)</h4>
-            </div>
-            <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.88rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.4rem;">
-              ${oficina.configuracaoChatGPT.map(c => `<li>${c}</li>`).join('')}
-            </ul>
-          </div>
-        ` : ''}
-
-        <!-- Rubrica de Avaliação Formativa -->
-        ${oficina.criteriosAvaliacao ? `
-          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-              <span style="font-size: 1.25rem;">📊</span>
-              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Critérios de Avaliação Formativa (Rubrica)</h4>
-            </div>
-            <div style="overflow-x: auto;">
-              <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
-                <thead>
-                  <tr style="border-bottom: 2px solid var(--border); background: var(--bg-surface);">
-                    <th style="padding: 0.6rem 0.8rem; color: var(--accent);">Critério</th>
-                    <th style="padding: 0.6rem 0.8rem; color: #ef4444;">1 Ponto (Iniciante)</th>
-                    <th style="padding: 0.6rem 0.8rem; color: #f59e0b;">2 Pontos (Intermediário)</th>
-                    <th style="padding: 0.6rem 0.8rem; color: #22c55e;">3 Pontos (Avançado)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${oficina.criteriosAvaliacao.map(cr => `
-                    <tr style="border-bottom: 1px solid var(--border);">
-                      <td style="padding: 0.6rem 0.8rem; font-weight: bold; color: var(--text-main);">${cr.criterio}</td>
-                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${cr.ponto1}</td>
-                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${cr.ponto2}</td>
-                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary); font-weight: 500;">${cr.ponto3}</td>
-                    </tr>
-                  `).join('')}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        ` : ''}
-      `;
-    }
-
-    container.innerHTML = `
-      <div class="pedagogical-highlight-card">
-        <div class="module-meta-tags">
-          <span class="chip chip-warm">⏱️ ${oficina.duracao || '25 a 30 min em Laboratório'}</span>
-          <span class="chip">📋 ${oficina.peso || 'Instrumento Formativo'}</span>
-          <span class="chip chip-warm">Zero Pressão • Aprendizado Prático</span>
-        </div>
-        <h3 style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 0.5rem;">
-          ${oficina.titulo || 'Atividade Prática de Laboratório'}
-        </h3>
-        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
-          ${oficina.objetivo || oficina.descricao || 'Aplicação prática no computador do laboratório.'}
-        </p>
-      </div>
-
-      ${extraSectionsHTML}
-
-      <div style="margin-top: 1.75rem;">
-        <div class="section-title-wrap" style="border-color: var(--accent);">
-          <span style="font-size: 1.3rem;">📋</span>
-          <h3 style="color: var(--accent);">Diretrizes Pedagógicas para a Condução da Dupla</h3>
-        </div>
-
-        <div class="pedagogical-highlight-card" style="border-left: 4px solid var(--accent); margin-top: 1rem;">
-          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem;">
-            ${diretrizes.map(d => `
-              <li style="display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5;">
-                <span style="color: var(--accent); font-weight: bold; font-size: 1.1rem;">•</span>
-                <span>${d}</span>
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-
-        ${oficina.planoB ? `
-          <div class="pedagogical-highlight-card" style="background: var(--bg-subtle-warm); margin-top: 1.5rem;">
-            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">🚨 Plano B de Contingência Técnica (Se o laboratório oscilar)</h4>
-            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
-              ${oficina.planoB}
-            </p>
-          </div>
-        ` : ''}
-      </div>
-    `;
-  },
-
-  /**
-   * ABA 4: Perguntas dos Alunos & Armadilhas
-   */
-  renderPerguntas(data) {
-    const container = document.getElementById('cockpit-perguntas-container');
-    if (!container) return;
-
-    const perguntas = data.perguntasAlunos || [];
-
-    container.innerHTML = `
-      <div class="pedagogical-highlight-card">
-        <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 0.5rem;">
-          Perguntas Capciosas & Dúvidas Clássicas dos Alunos (Encontro ${data.moduloInfo?.numero || 1})
-        </h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary);">
-          Fichas com respostas orientadas para que Laura e Maria respondam com segurança, precisão e firmeza pedagógica.
-        </p>
-      </div>
-
-      <div style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem;">
-        ${perguntas.map((p, idx) => {
-          const num = p.numero || p.id || (idx + 1);
-          const duvida = p.duvida || p.pergunta || '';
-          const resposta = p.resposta || p.explicacaoDetalhada || p.respostaCurta || '';
-          const ponto = p.pontoDidatico || '';
-          const dica = p.dicaPratica || '';
-
-          return `
-          <div class="pedagogical-highlight-card">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-              <span class="chip chip-warm">Dúvida ${num}</span>
-              <strong style="color: var(--text-main); font-size: 1.05rem;">"${duvida}"</strong>
-            </div>
-            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
-              <strong>Como responder:</strong> "${resposta}"
-            </p>
-            ${ponto ? `
-              <div style="font-size: 0.85rem; color: var(--accent); background: var(--bg-subtle-warm); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
-                🎯 <strong>Ponto Didático:</strong> ${ponto}
-              </div>
-            ` : ''}
-            ${dica ? `
-              <div style="font-size: 0.84rem; color: var(--text-secondary); background: var(--bg-surface); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); border-left: 3px solid #38bdf8;">
-                💡 <strong>Dica Prática de Prompt:</strong> ${dica}
-              </div>
-            ` : ''}
-          </div>
-        `;
-        }).join('')}
-      </div>
-    `;
-  },
-
-  /**
-   * ABA 1 (Rodapé): Anotações & Combinados da Dupla Docente
-   */
-  renderAnotacoesPapeis(data) {
-    const container = document.getElementById('cockpit-papeis-container');
-    if (!container) return;
-
-    const papeis = data.divisaoPapeis || [];
-    const meetingNum = data.moduloInfo?.numero || 1;
-
-    container.innerHTML = `
-      <div class="fio-papeis-card">
-        <div class="fio-papeis-header">
-          <h4><span>📋</span> Divisão de Condução & Momentos da Co-Docência</h4>
-          <p>Combinados rápidos de quem assume a voz principal em cada bloco da aula (Encontro ${meetingNum}). As marcações são salvas automaticamente no seu navegador.</p>
-        </div>
-
-        <div class="fio-papeis-grid">
-          ${papeis.map((p, idx) => {
-            const inputName = `role_m${meetingNum}_b${idx + 1}`;
-            const savedRole = localStorage.getItem(inputName) || localStorage.getItem(`role_${inputName}`);
-            const currentRole = savedRole || p.padrao || '';
-
-            return `
-              <div class="fio-papel-item">
-                <div class="fio-papel-top">
-                  <span class="fio-papel-block-badge">${p.bloco}</span>
-                  ${p.conducao ? `<span class="chip chip-warm" style="font-size: 0.72rem; padding: 0.15rem 0.5rem;">${p.conducao}</span>` : ''}
-                </div>
-                <div class="fio-papel-theme">${p.tema}</div>
-
-                ${p.papel === 'radio' ? `
-                  <div class="role-selector-pills" role="radiogroup" aria-label="Condutor do ${p.bloco}">
-                    <label class="role-pill ${currentRole === 'laura' ? 'active' : ''}">
-                      <input type="radio" name="${inputName}" value="laura" class="role-check" style="position: absolute; opacity: 0; width: 0; height: 0;" ${currentRole === 'laura' ? 'checked' : ''}>
-                      <span>👩‍🏫 Laura conduz</span>
-                    </label>
-                    <label class="role-pill ${currentRole === 'maria' ? 'active' : ''}">
-                      <input type="radio" name="${inputName}" value="maria" class="role-check" style="position: absolute; opacity: 0; width: 0; height: 0;" ${currentRole === 'maria' ? 'checked' : ''}>
-                      <span>👩‍💻 Maria conduz</span>
-                    </label>
-                  </div>
-                ` : `
-                  <div class="role-shared-badge">
-                    <span>🤝 Atuação conjunta / Ambas apoiam a turma</span>
-                  </div>
-                `}
-              </div>
-            `;
-          }).join('')}
-        </div>
-      </div>
-    `;
-
-    // Vincular interações das pílulas e persistência no localStorage
-    const roleRadios = container.querySelectorAll('.role-check');
-    roleRadios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        if (radio.checked) {
-          localStorage.setItem(radio.name, radio.value);
-
-          const parentGroup = radio.closest('.role-selector-pills');
-          if (parentGroup) {
-            parentGroup.querySelectorAll('.role-pill').forEach(pill => pill.classList.remove('active'));
-            const parentLabel = radio.closest('.role-pill');
-            if (parentLabel) parentLabel.classList.add('active');
-          }
-        }
-      });
-    });
-  }
-};
-
-window.CockpitRenderer = CockpitRenderer;
+/**
+ * Cockpit Renderer – Motor Modular de Renderização Pedagógica (4 Abas)
+ * Renderiza dinamicamente as abas do Cockpit a partir do Schema de Encontro (encontroX-data.js).
+ */
+
+const CockpitRenderer = {
+  /**
+   * Renderiza todas as abas do Cockpit para o encontro fornecido
+   * @param {Object} data - Objeto de dados do encontro (ex: ENCONTRO_1_DATA)
+   */
+  renderAll(data) {
+    if (!data) return;
+
+    // Garante bijeção estrita 1..N nos slides antes de qualquer renderização
+    if (Array.isArray(data.slidesComNotas)) {
+      data.slidesComNotas.forEach((slide, idx) => {
+        slide.numero = idx + 1;
+        slide.id = idx + 1;
+      });
+    }
+
+    this.renderHeaderInfo(data);
+    this.renderFioDaMeada(data);
+    this.renderSlidesList(data);
+    this.renderAtividadesGabarito(data);
+    this.renderPerguntas(data);
+    this.renderAnotacoesPapeis(data);
+  },
+
+  /**
+   * Atualiza cabeçalho do módulo
+   */
+  /**
+   * Identifica se o módulo é uma aula privada
+   */
+  isAulaPrivada(data) {
+    return Boolean(
+      data?.isAulaPrivada ||
+      data?.moduloInfo?.isAulaPrivada ||
+      data?.fioDaMeada?.isAulaPrivada ||
+      data?.moduloInfo?.numero === 3
+    );
+  },
+
+  /**
+   * Card padronizado de anúncio de Aula Privada
+   */
+  renderAulaPrivadaCard() {
+    return `
+      <div class="pedagogical-highlight-card" style="padding: 4.5rem 2rem; text-align: center; margin: 1.5rem 0; border: 1.5px dashed var(--border); border-radius: var(--radius-lg); background: var(--bg-surface); box-shadow: var(--shadow-sm);">
+        <div style="font-size: 3.25rem; margin-bottom: 0.85rem; line-height: 1;">🔒</div>
+        <h2 style="font-size: 1.85rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.6rem 0; letter-spacing: -0.01em;">
+          Aula privada com aluno
+        </h2>
+        <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto; line-height: 1.6;">
+          Este encontro foi reservado para atendimento individualizado e acompanhamento pedagógico privado com aluno.
+        </p>
+      </div>
+    `;
+  },
+
+  renderHeaderInfo(data) {
+    const info = data.moduloInfo || {};
+    const titleEl = document.getElementById('cockpit-module-title');
+    const chipEl = document.getElementById('cockpit-module-chip');
+    if (titleEl && info.titulo) {
+      titleEl.textContent = `Módulo ${info.numero}: ${info.titulo}`;
+    }
+    if (chipEl && info.numero) {
+      chipEl.textContent = `Módulo ${info.numero} • ${info.cargaHoraria || '3h Presenciais'}`;
+    }
+    const openSlidesBtns = document.querySelectorAll('.btn-open-slides');
+    openSlidesBtns.forEach(btn => {
+      btn.setAttribute('href', `/slides/${info.numero || 1}`);
+    });
+  },
+
+  /**
+   * ABA 1: O Fio da Meada (Narrativa & Conceitos)
+   */
+  renderFioDaMeada(data) {
+    const container = document.getElementById('cockpit-fio-meada-container');
+    if (!container) return;
+
+    if (this.isAulaPrivada(data)) {
+      container.innerHTML = this.renderAulaPrivadaCard();
+      const papeisContainer = document.getElementById('cockpit-papeis-container');
+      if (papeisContainer) papeisContainer.innerHTML = '';
+      return;
+    }
+
+    const fio = data.fioDaMeada || {};
+    const info = data.moduloInfo || {};
+    const atos = fio.atos || [];
+    const glossario = fio.glossario || [];
+
+    container.innerHTML = `
+      <div class="fio-hero-card">
+        <div class="fio-hero-header">
+          <span class="chip chip-warm">🎯 Bússola Pedagógica • Módulo ${info.numero || 1}</span>
+          <span class="chip">🤝 Alinhamento Co-Docência (Laura & Maria)</span>
+        </div>
+        
+        <h2 class="fio-hero-title">
+          ${fio.objetivoCentral || 'Qual é a grande mensagem deste encontro?'}
+        </h2>
+
+        <div class="fio-hero-quote">
+          <div class="fio-quote-icon">“</div>
+          <blockquote class="fio-quote-text">
+            ${fio.mensagemChave || ''}
+          </blockquote>
+        </div>
+
+        ${fio.explicacaoObjetivo ? `
+          <div class="fio-hero-explanation">
+            <span class="fio-explanation-icon">🧭</span>
+            <div class="fio-explanation-body">
+              <strong>Diretriz de Condução Docente:</strong>
+              <p>${fio.explicacaoObjetivo}</p>
+            </div>
+          </div>
+        ` : ''}
+      </div>
+
+      <div class="fio-acts-section">
+        <div class="section-title-wrap" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.3rem;">🎭</span>
+            <h3 style="margin: 0; font-size: 1.25rem;">A Linha Narrativa da Aula (Os 3 Atos do Encontro)</h3>
+          </div>
+          <span class="chip" style="font-size: 0.78rem;">Jornada Completa de 180 min</span>
+        </div>
+
+        <div class="fio-acts-timeline">
+          ${atos.map(a => `
+            <div class="fio-act-card act-${a.ato}">
+              <div class="fio-act-topbar">
+                <span class="fio-act-badge">Ato ${a.ato}</span>
+                <span class="fio-act-time">⏱️ ${a.tempo}</span>
+              </div>
+              <h4 class="fio-act-title">${a.titulo}</h4>
+              <p class="fio-act-desc">${a.desc}</p>
+              ${a.gatilho ? `
+                <div class="fio-speech-trigger">
+                  <div class="fio-trigger-header">
+                    <span class="fio-trigger-icon">💡</span>
+                    <strong>Gatilho de fala em sala:</strong>
+                  </div>
+                  <p class="fio-trigger-text">"${a.gatilho}"</p>
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      ${glossario.length ? `
+        <details class="fio-glossary-details">
+          <summary class="fio-glossary-summary">
+            <div class="fio-glossary-summary-content">
+              <span class="fio-glossary-summary-icon">📖</span>
+              <div>
+                <strong>Glossário Rápido de Conceitos Alinhados (${glossario.length} termos)</strong>
+                <span class="fio-glossary-hint">Clique para expandir e consultar vocabulário técnico padronizado para a dupla</span>
+              </div>
+            </div>
+            <span class="fio-glossary-toggle-pill">Consultar Termos ▾</span>
+          </summary>
+          
+          <div class="fio-glossary-grid">
+            ${glossario.map(g => `
+              <div class="fio-glossary-card">
+                <div class="fio-glossary-term-wrap">
+                  <span class="fio-glossary-bullet">✦</span>
+                  <h5 class="fio-glossary-term">${g.termo}</h5>
+                </div>
+                <p class="fio-glossary-def">${g.def}</p>
+              </div>
+            `).join('')}
+          </div>
+        </details>
+      ` : ''}
+    `;
+  },
+
+  /**
+   * Identifica se o dossiê é jurídico/regulatório (usando metadado explícito com fallback)
+   */
+  isLegalDossier(emb) {
+    if (!emb) return false;
+    if (emb.tipoDossie) return emb.tipoDossie === 'juridico';
+    const titleLower = (emb.titulo || '').toLowerCase();
+    return (
+      titleLower.includes('jurídico') ||
+      titleLower.includes('legal') ||
+      titleLower.includes('governo') ||
+      titleLower.includes('pbia') ||
+      titleLower.includes('regulamentação')
+    );
+  },
+
+  /**
+   * Renderiza o acordeão de aprofundamento científico/jurídico de um slide
+   */
+  renderTechDeepdive(emb, slideNum) {
+    if (!emb) return '';
+    const isLegal = this.isLegalDossier(emb);
+
+    return `
+      <div class="tech-deepdive-wrapper">
+        <button type="button" class="btn-tech-deepdive" id="btn-deepdive-${slideNum}" onclick="window.CockpitRenderer.toggleDeepdive('${slideNum}')" aria-expanded="false" aria-controls="deepdive-${slideNum}">
+          <span class="tech-btn-icon-wrapper">
+            <span class="tech-btn-icon">${isLegal ? '🏛️' : '🔬'}</span>
+          </span>
+          <span class="tech-btn-text">
+            <span class="tech-btn-title">${isLegal ? 'Dossiê Jurídico & Legislação Brasileira' : 'Embasamento Científico & Fórmulas'}</span>
+            <span class="tech-btn-sub">${isLegal ? 'Marco Legal (PL 2338/23), PBIA e LGPD' : 'Fundamentação Acadêmica e Artigos Primários'}</span>
+          </span>
+          <span class="badge-tech">
+            <span class="badge-dot"></span>
+            <span>${isLegal ? 'Fontes Oficiais' : 'Fontes Acadêmicas'}</span>
+          </span>
+          <span class="chevron" id="chevron-${slideNum}">▾</span>
+        </button>
+
+        <div id="deepdive-${slideNum}" class="tech-deepdive-panel" role="region" aria-labelledby="btn-deepdive-${slideNum}">
+          <div class="tech-deepdive-header">
+            <div class="tech-header-lead">
+              <span class="tech-header-icon">${isLegal ? '⚖️' : '🏛️'}</span>
+              <div>
+                <h4 class="tech-deepdive-title">${emb.titulo}</h4>
+                <p class="tech-deepdive-subtitle">${isLegal ? 'Dossiê Governamental e Regulatório de IA' : 'Dossiê Técnico & Fundamentação Matemática de NLP / Deep Learning'}</p>
+              </div>
+            </div>
+            <div class="tech-header-tags">
+              <span class="chip chip-warm">
+                <span class="chip-dot"></span>
+                ${isLegal ? 'Marco Normativo Oficial' : 'Referencial Teórico Primário'}
+              </span>
+            </div>
+          </div>
+
+          <div class="tech-summary-banner">
+            <div class="tech-summary-badge">Visão Geral</div>
+            <p class="tech-summary-text">${emb.resumo}</p>
+          </div>
+
+          <div class="tech-topics-list">
+            ${(emb.topicos || []).map((t, idx) => {
+              const cleanTitle = (t.titulo || '').replace(/^\d+\.\s*/, '');
+              return `
+                <div class="tech-topic-item">
+                  <div class="tech-topic-header">
+                    <span class="tech-topic-index">${idx + 1}</span>
+                    <h5 class="tech-topic-heading">${cleanTitle}</h5>
+                  </div>
+                  <div class="tech-topic-content">${t.conteudo}</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+
+          ${(emb.fontesCientificas && emb.fontesCientificas.length) ? `
+            <div class="citations-section">
+              <div class="citations-header">
+                <span class="citations-icon">${isLegal ? '📜' : '📚'}</span>
+                <div>
+                  <h5 class="citations-title">${isLegal ? 'Documentos Oficiais & Textos de Lei' : 'Artigos Científicos Primários (Peer-Reviewed & Preprints)'}</h5>
+                  <span class="citations-subtitle">Referências fundamentais que sustentam este conteúdo em sala</span>
+                </div>
+              </div>
+              <div class="citations-grid">
+                ${emb.fontesCientificas.map(f => `
+                  <div class="citation-card">
+                    <div class="citation-top">
+                      <span class="citation-author-tag">${f.autor}</span>
+                      <span class="citation-pub-tag">${f.publicacao}</span>
+                    </div>
+                    <h6 class="citation-title">"${f.titulo}"</h6>
+                    <div class="citation-relevance">
+                      <span class="relevance-label">💡 Relevância:</span>
+                      <span class="relevance-text">${f.relevancia}</span>
+                    </div>
+                    <a href="${f.link}" target="_blank" rel="noopener noreferrer" class="citation-link-btn" title="Acessar publicação em nova aba">
+                      <span>Acessar Documento Original</span>
+                      <span class="link-arrow">↗</span>
+                    </a>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  },
+
+  /**
+   * Renderiza a prévia visual contextual do slide no Cockpit
+   */
+  renderSlidePreview(slide) {
+    if (slide.tipo === 'secao' || slide.tipo === 'titulo-secao') {
+      const innerContent = slide.citacao ? `
+        <div style="margin-top: 0.6rem; font-style: italic; font-size: 0.88rem; color: var(--text-main); line-height: 1.5; background: rgba(217, 119, 6, 0.08); padding: 0.75rem 1rem; border-radius: 6px; border-left: 3px solid #d97706;">
+          "${slide.citacao}"
+          ${slide.autor ? `<div style="font-style: normal; font-weight: 700; font-size: 0.78rem; color: #d97706; margin-top: 0.35rem; text-align: right;">— ${slide.autor}</div>` : ''}
+        </div>
+      ` : (slide.pills && slide.pills.length) ? `
+        <div style="display: flex; gap: 0.6rem; justify-content: center; margin-top: 0.5rem; flex-wrap: wrap;">
+          ${slide.pills.map((p, idx) => `
+            <span style="font-size: 0.78rem; background: ${p.tipo === 'ficcao' ? 'rgba(220,53,69,0.15)' : 'rgba(40,167,69,0.15)'}; color: ${p.tipo === 'ficcao' ? '#e03131' : '#2f9e44'}; padding: 0.25rem 0.65rem; border-radius: 4px; font-weight: 600;">${p.texto}</span>
+            ${idx < slide.pills.length - 1 ? '<span style="font-size: 0.78rem; color: var(--text-muted); font-weight: bold;">➔</span>' : ''}
+          `).join('')}
+        </div>
+      ` : slide.subtitulo ? `
+        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.4;">${slide.subtitulo}</div>
+      ` : '';
+
+      return `
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-amber); border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem; text-align: center;">
+          <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-amber); text-transform: uppercase; letter-spacing: 0.5px;">📌 ${slide.badge || 'Abertura de Bloco • Título de Impacto'}</span>
+          ${innerContent}
+        </div>
+      `;
+    }
+
+    if (slide.tipo === 'ia-ficcao') {
+      return `
+        <div style="background: var(--bg-surface); border: 1px solid rgba(220,53,69,0.35); border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+          <div style="width: 140px; height: 95px; border-radius: var(--radius-sm); overflow: hidden; background: #000; flex-shrink: 0;">
+            <img src="${slide.imagem || '/static/img/ia_ficcao_rosie.jpg'}" alt="${slide.titulo}" style="width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+          <div style="flex: 1; min-width: 200px;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: #e03131; text-transform: uppercase;">${slide.badge || 'Ficção Científica'}</span>
+            <p style="font-size: 0.85rem; color: var(--text-main); margin: 0.25rem 0 0 0; font-weight: 600;">${slide.conclusaoFiccao || 'Robôs conscientes com sentimentos (0% real hoje).'}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    if (slide.tipo === 'ia-estreita') {
+      return `
+        <div style="background: var(--bg-surface); border: 1px solid rgba(40,167,69,0.35); border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #2f9e44; text-transform: uppercase; margin-bottom: 0.5rem;">${slide.badge || 'IA Estreita Real (100% da IA de hoje)'}</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem;">
+            ${(slide.recursos || []).slice(0, 6).map(r => `
+              <div style="font-size: 0.8rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.35rem;">
+                <span>${r.icone || '⚙️'}</span>
+                <strong style="color: var(--text-main);">${r.titulo}</strong>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    if (slide.tipo === 'fechamento') {
+      return `
+        <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--accent); margin-bottom: 0.35rem;">🚀 Próximo Encontro: ${slide.proximoEncontro || slide.titulo || ''}</div>
+          ${(slide.referencias && slide.referencias.length) ? `
+            <div style="margin-top: 0.5rem; border-top: 1px solid var(--border); padding-top: 0.5rem;">
+              <strong style="color: var(--text-main); font-size: 0.8rem;">📚 Referências da Aula de Hoje:</strong>
+              <div style="display: flex; flex-direction: column; gap: 0.25rem; margin-top: 0.35rem;">
+                ${slide.referencias.map(r => `
+                  <a href="${r}" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-family: var(--font-mono); font-size: 0.82rem; text-decoration: underline; word-break: break-all;">${r}</a>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    return '';
+  },
+
+  /**
+   * Renderiza o card individual de um slide dentro do seu bloco temático
+   */
+  renderSlideCard(slide, totalSlides, moduloNum) {
+    const notas = slide.notasProfessora || {};
+    const slideNum = slide.numero;
+    const condutor = slide.conducao || slide.docente || '';
+
+    return `
+      <article class="pedagogical-highlight-card" style="border-left: 4px solid var(--accent); transition: transform 0.2s ease;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
+              <span class="chip chip-warm" style="font-weight: 700;">Slide ${slideNum} de ${totalSlides}</span>
+              <span class="chip" style="font-size: 0.75rem;">${slide.categoria || 'Pedagógico'}</span>
+              ${condutor ? `
+                <span class="chip" style="font-size: 0.75rem; font-weight: 700; background: rgba(212, 163, 115, 0.15); border: 1px solid var(--border-amber); color: var(--text-amber);">
+                  👩‍🏫 Condução: ${condutor}
+                </span>
+              ` : ''}
+              <span style="font-size: 0.8rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.25rem;">
+                ⏱️ ${notas.tempoSugerido || '5 min'}
+              </span>
+            </div>
+            <h4 style="font-size: 1.15rem; color: var(--text-main); margin: 0;">${slide.titulo}</h4>
+          </div>
+          <a href="/slides/${moduloNum}?slide=${slideNum}" target="portal_ia_slides_window" class="btn btn-sm" style="font-size: 0.82rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;" title="Abrir este slide exato no projetor">
+            <span>🖥️</span> Ver no Projetor
+          </a>
+        </div>
+
+        <div style="background: var(--bg-subtle-warm); padding: 0.85rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); margin-bottom: 0.75rem;">
+          <strong style="color: var(--accent); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Objetivo Pedagógico deste Momento:</strong>
+          <p style="font-size: 0.88rem; color: var(--text-main); margin: 0.35rem 0 0 0; line-height: 1.5;">${notas.objetivoSlide || 'Contextualização pedagógica para a turma.'}</p>
+        </div>
+
+        <div style="background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-sm); border: 1px dashed var(--border);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+            <strong style="color: var(--text-main); font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem;">
+              <span>🎙️</span> ${condutor ? `Roteiro Sugerido de Fala (${condutor}):` : `Roteiro Sugerido de Fala para a Dupla (Laura & Maria):`}
+            </strong>
+            <button type="button" class="btn btn-sm" onclick="window.CockpitRenderer.copySpeech('${slideNum}')" id="copy-btn-${slideNum}" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-radius: var(--radius-pill);" title="Copiar roteiro de fala">
+              📋 Copiar Fala
+            </button>
+          </div>
+          <p id="speech-text-${slideNum}" style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin: 0; font-style: italic;">
+            "${notas.oQueFalar || 'Conduzir debate aberto e acolhedor.'}"
+          </p>
+        </div>
+
+        ${this.renderSlidePreview(slide)}
+        ${this.renderTechDeepdive(slide.embasamentoCientifico, slideNum)}
+      </article>
+    `;
+  },
+
+  /**
+   * ABA 2: Slides & Roteiro Visual (Agrupados por Blocos Temáticos Recolhíveis)
+   */
+  renderSlidesList(data) {
+    const container = document.getElementById('cockpit-slides-list');
+    if (!container) return;
+
+    const slidesTopCard = document.querySelector('#tab-slides .pedagogical-highlight-card:first-child');
+    if (this.isAulaPrivada(data)) {
+      if (slidesTopCard) slidesTopCard.style.display = 'none';
+      container.innerHTML = this.renderAulaPrivadaCard();
+      return;
+    } else {
+      if (slidesTopCard) slidesTopCard.style.display = '';
+    }
+
+    const slides = data.slidesComNotas || [];
+    const info = data.moduloInfo || {};
+    const moduloNum = info.numero || 1;
+    const blocos = data.blocosTematicos || [
+      {
+        id: 1,
+        icone: "📚",
+        titulo: "Todos os Slides do Encontro",
+        subtitulo: "Sequência completa de projeção e notas pedagógicas",
+        slidesRange: [1, slides.length || 1],
+        tempoEstimado: info.cargaHoraria || "180 min"
+      }
+    ];
+
+    const toolbarHTML = `
+      <div class="topic-groups-toolbar">
+        <div class="topic-groups-toolbar-info">
+          <span class="topic-groups-count">📚 <strong>${blocos.length} Blocos Temáticos</strong> (${slides.length} Slides no Encontro)</span>
+          <span class="topic-groups-tip">• Clique em qualquer bloco para recolher ou expandir</span>
+        </div>
+        <div class="topic-groups-toolbar-actions">
+          <button type="button" class="btn-group-action" onclick="window.CockpitRenderer.expandAllTopicGroups()" title="Expandir todos os blocos temáticos">
+            <span>📂</span> Expandir Todos
+          </button>
+          <button type="button" class="btn-group-action" onclick="window.CockpitRenderer.collapseAllTopicGroups()" title="Recolher todos os blocos temáticos">
+            <span>📁</span> Recolher Todos
+          </button>
+        </div>
+      </div>
+    `;
+
+    const groupsHTML = blocos.map(bloco => {
+      const slidesDoBloco = slides.filter(slide => {
+        if (typeof slide.bloco === 'number') {
+          return slide.bloco === bloco.id;
+        }
+        const num = slide.numero || 1;
+        return num >= bloco.slidesRange[0] && num <= bloco.slidesRange[1];
+      });
+
+      if (!slidesDoBloco.length) return '';
+
+      const firstNum = slidesDoBloco[0].numero;
+      const lastNum = slidesDoBloco[slidesDoBloco.length - 1].numero;
+      const slidesCardsHTML = slidesDoBloco
+        .map(slide => this.renderSlideCard(slide, slides.length, moduloNum))
+        .join('');
+
+      return `
+        <section class="topic-group-card" id="topic-group-${bloco.id}">
+          <button type="button" class="topic-group-header-btn" id="topic-group-btn-${bloco.id}" onclick="window.CockpitRenderer.toggleTopicGroup(${bloco.id})" aria-expanded="true" aria-controls="topic-group-body-${bloco.id}">
+            <div class="topic-group-header-main">
+              <span class="topic-group-icon">${bloco.icone || '📌'}</span>
+              <div class="topic-group-header-text">
+                <div class="topic-group-header-title-row">
+                  <h3 class="topic-group-title">${bloco.titulo}</h3>
+                  <span class="chip chip-warm topic-group-range-badge">Slides ${firstNum} a ${lastNum}</span>
+                </div>
+                <p class="topic-group-sub">${bloco.subtitulo || ''}</p>
+              </div>
+            </div>
+            <div class="topic-group-header-meta">
+              <span class="topic-group-meta-pill">⏱️ ${bloco.tempoEstimado || ''}</span>
+              <span class="topic-group-meta-pill topic-group-count-pill">${slidesDoBloco.length} ${slidesDoBloco.length === 1 ? 'slide' : 'slides'}</span>
+              <span class="topic-group-chevron" id="topic-group-chevron-${bloco.id}">▾</span>
+            </div>
+          </button>
+
+          <div class="topic-group-body open" id="topic-group-body-${bloco.id}" role="region" aria-labelledby="topic-group-btn-${bloco.id}">
+            <div class="topic-group-slides-grid">
+              ${slidesCardsHTML}
+            </div>
+          </div>
+        </section>
+      `;
+    }).join('');
+
+    container.innerHTML = toolbarHTML + groupsHTML;
+  },
+
+  /**
+   * Alterna recolhimento/expansão de um bloco temático
+   */
+  toggleTopicGroup(blocoId) {
+    const body = document.getElementById(`topic-group-body-${blocoId}`);
+    const btn = document.getElementById(`topic-group-btn-${blocoId}`);
+    const chevron = document.getElementById(`topic-group-chevron-${blocoId}`);
+    const card = document.getElementById(`topic-group-${blocoId}`);
+    if (!body) return;
+
+    const isCollapsed = body.classList.contains('collapsed');
+    body.classList.toggle('collapsed', !isCollapsed);
+    body.classList.toggle('open', isCollapsed);
+    if (btn) btn.setAttribute('aria-expanded', isCollapsed ? 'true' : 'false');
+    if (chevron) chevron.classList.toggle('rotated', !isCollapsed);
+    if (card) card.classList.toggle('is-collapsed', !isCollapsed);
+  },
+
+  /**
+   * Expande todos os blocos temáticos em uma única passagem sobre os cards
+   */
+  expandAllTopicGroups() {
+    document.querySelectorAll('.topic-group-card').forEach(card => {
+      card.classList.remove('is-collapsed');
+      const body = card.querySelector('.topic-group-body');
+      const btn = card.querySelector('.topic-group-header-btn');
+      const ch = card.querySelector('.topic-group-chevron');
+      if (body) {
+        body.classList.remove('collapsed');
+        body.classList.add('open');
+      }
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+      if (ch) ch.classList.remove('rotated');
+    });
+  },
+
+  /**
+   * Recolhe todos os blocos temáticos em uma única passagem sobre os cards
+   */
+  collapseAllTopicGroups() {
+    document.querySelectorAll('.topic-group-card').forEach(card => {
+      card.classList.add('is-collapsed');
+      const body = card.querySelector('.topic-group-body');
+      const btn = card.querySelector('.topic-group-header-btn');
+      const ch = card.querySelector('.topic-group-chevron');
+      if (body) {
+        body.classList.remove('open');
+        body.classList.add('collapsed');
+      }
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      if (ch) ch.classList.add('rotated');
+    });
+  },
+
+  /**
+   * Copia o roteiro de fala para a área de transferência (idempotente contra duplo clique)
+   */
+  copySpeech(slideNum) {
+    const speechEl = document.getElementById(`speech-text-${slideNum}`);
+    const btn = document.getElementById(`copy-btn-${slideNum}`);
+    if (!speechEl || !navigator.clipboard) return;
+
+    const text = speechEl.textContent.trim().replace(/^"|"$/g, '');
+    navigator.clipboard.writeText(text).then(() => {
+      if (!btn) return;
+      if (!btn.dataset.originalHtml) {
+        btn.dataset.originalHtml = btn.innerHTML;
+      }
+      if (btn._copyTimer) {
+        clearTimeout(btn._copyTimer);
+      }
+      btn.innerHTML = '✓ Copiado!';
+      btn.style.color = 'var(--accent, #d4a373)';
+      btn._copyTimer = setTimeout(() => {
+        btn.innerHTML = btn.dataset.originalHtml;
+        btn.style.color = '';
+        btn._copyTimer = null;
+      }, 2000);
+    }).catch(err => {
+      console.warn('Não foi possível copiar para a área de transferência:', err);
+    });
+  },
+
+  /**
+   * Alterna a visualização do painel de aprofundamento técnico
+   */
+  toggleDeepdive(slideId) {
+    const panel = document.getElementById(`deepdive-${slideId}`);
+    const chevron = document.getElementById(`chevron-${slideId}`);
+    const btn = document.getElementById(`btn-deepdive-${slideId}`) || (chevron ? chevron.closest('.btn-tech-deepdive') : null);
+    if (!panel) return;
+
+    const isOpen = panel.classList.contains('open');
+    panel.classList.toggle('open', !isOpen);
+    if (btn) {
+      btn.classList.toggle('active', !isOpen);
+      btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+    }
+  },
+
+  /**
+   * ABA 3: Prova Diagnóstica & Atividades de Laboratório
+   */
+  renderAtividadesGabarito(data) {
+    const container = document.getElementById('cockpit-gabarito-container');
+    if (!container) return;
+
+    if (this.isAulaPrivada(data)) {
+      container.innerHTML = this.renderAulaPrivadaCard();
+      return;
+    }
+
+    const oficina = data.oficinaPratica || {};
+    const diretrizes = oficina.diretrizesDocentes || [
+      "Acolhimento da turma: tranquilizar os alunos de que não há nota punitiva nem reprovação.",
+      "Orientar o preenchimento com sinceridade e foco no que já conhecem.",
+      "Laura & Maria circulam ativamente entre as mesas para tirar dúvidas de acesso ou uso do computador.",
+      "Verificar se todos os alunos clicaram no botão de envio ao final."
+    ];
+
+    let extraSectionsHTML = '';
+
+    if (oficina.situacaoProblema) {
+      extraSectionsHTML = `
+        <!-- Situação Problema -->
+        <div class="pedagogical-highlight-card" style="margin-top: 1.5rem; border-left: 4px solid var(--accent);">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
+            <span style="font-size: 1.25rem;">🎯</span>
+            <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">1. Situação-Problema do Aluno</h4>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+            <em>"${oficina.situacaoProblema.contexto}"</em>
+          </p>
+          <div style="background: var(--bg-surface); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <strong style="color: var(--accent);">Missão:</strong> <span style="color: var(--text-main);">${oficina.situacaoProblema.missao}</span>
+          </div>
+        </div>
+
+        <!-- Roteiro de Execução em 5 Passos -->
+        ${oficina.comoExecutar ? `
+          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
+              <span style="font-size: 1.25rem;">🚀</span>
+              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">2. Roteiro de Execução em 5 Passos no Computador</h4>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+              ${oficina.comoExecutar.map(e => `
+                <div style="display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.6rem 0.8rem; background: var(--bg-surface); border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
+                  <span style="font-family: var(--font-mono); font-weight: bold; color: var(--accent);">${e.etapa}º</span>
+                  <div>
+                    <strong style="color: var(--text-main); font-size: 0.92rem;">${e.titulo}:</strong>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;"> ${e.desc}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Duelo dos Prompts: Livre vs. Falso Bom vs. Estruturado -->
+        <div style="display: grid; grid-template-columns: ${oficina.falsoBomPrompt ? 'repeat(auto-fit, minmax(280px, 1fr))' : '1fr 1fr'}; gap: 1.25rem; margin-top: 1.5rem;">
+          <div class="pedagogical-highlight-card" style="border-top: 4px solid #ef4444;">
+            <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
+              <span>❌</span>
+              <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">1ª Tentativa: Prompt Livre (Vago)</h4>
+            </div>
+            <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; margin-bottom: 0.75rem; border: 1px solid var(--border);">${oficina.primeiraTentativa?.prompt || ''}</pre>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">
+              <strong style="color: #ef4444;">Falhas prováveis:</strong>
+              <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0;">
+                ${(oficina.primeiraTentativa?.problemasProvaveis || []).map(p => `<li>${p}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+
+          ${oficina.falsoBomPrompt ? `
+            <div class="pedagogical-highlight-card" style="border-top: 4px solid #f59e0b;">
+              <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
+                <span>⚠️</span>
+                <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">2ª Tentativa: Falso Bom Prompt (Ilusão da Persona)</h4>
+              </div>
+              <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; margin-bottom: 0.75rem; border: 1px solid var(--border); line-height: 1.45;">${oficina.falsoBomPrompt?.prompt || ''}</pre>
+              <div style="font-size: 0.85rem; color: var(--text-secondary);">
+                <strong style="color: #f59e0b;">Falhas prováveis:</strong>
+                <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0;">
+                  ${(oficina.falsoBomPrompt?.problemasProvaveis || []).map(p => `<li>${p}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+          ` : ''}
+
+          <div class="pedagogical-highlight-card" style="border-top: 4px solid #22c55e;">
+            <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
+              <span>✅</span>
+              <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">${oficina.falsoBomPrompt ? '3ª Tentativa: Prompt Mestre (C-T-F-R)' : '2ª Tentativa: Prompt Aprimorado (5 Elementos)'}</h4>
+            </div>
+            <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; border: 1px solid var(--border); line-height: 1.45;">${oficina.segundaTentativa?.prompt || ''}</pre>
+          </div>
+        </div>
+
+        <!-- Cards de Modelos de Prompts (Portfólio Digital) -->
+        ${oficina.promptsModelo ? `
+          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
+              <span style="font-size: 1.25rem;">📌</span>
+              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Cards de Prompts-Modelo para Bancada (Portfólio Digital do Aluno)</h4>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+              ${oficina.promptsModelo.map(pm => `
+                <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem; border-top: 3px solid ${pm.cor || 'var(--accent)'}; display: flex; flex-direction: column;">
+                  <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
+                    <span>${pm.icone || '📝'}</span>
+                    <strong style="color: var(--text-main); font-size: 0.95rem;">${pm.titulo}</strong>
+                  </div>
+                  <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.6rem; line-height: 1.4;">${pm.descricao}</p>
+                  <pre style="background: var(--bg-body); color: var(--text-main); padding: 0.6rem; border-radius: 4px; font-size: 0.8rem; font-family: var(--font-mono); white-space: pre-wrap; margin-top: auto; border: 1px solid var(--border);">${pm.codigo}</pre>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Tabela dos 5 Elementos -->
+        ${oficina.cincoElementos ? `
+          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
+              <span style="font-size: 1.25rem;">🧩</span>
+              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Anatomia dos 5 Elementos Essenciais do Prompt</h4>
+            </div>
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--border); background: var(--bg-surface);">
+                    <th style="padding: 0.6rem 0.8rem; color: var(--accent);">Elemento</th>
+                    <th style="padding: 0.6rem 0.8rem; color: var(--text-main);">Como Aparece no Prompt</th>
+                    <th style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">Função Pedagógica</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${oficina.cincoElementos.map(el => `
+                    <tr style="border-bottom: 1px solid var(--border);">
+                      <td style="padding: 0.6rem 0.8rem; font-weight: bold; color: var(--accent);">${el.elemento}</td>
+                      <td style="padding: 0.6rem 0.8rem; color: var(--text-main); font-family: var(--font-mono); font-size: 0.82rem;">${el.comoAparece}</td>
+                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${el.funcao}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Checklist de Configuração ChatGPT -->
+        ${oficina.configuracaoChatGPT ? `
+          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.3);">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
+              <span>🛡️</span>
+              <h4 style="color: #38bdf8; font-size: 1.05rem; margin: 0;">Configuração Obrigatória do ChatGPT (Segurança & LGPD)</h4>
+            </div>
+            <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.88rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.4rem;">
+              ${oficina.configuracaoChatGPT.map(c => `<li>${c}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        <!-- Rubrica de Avaliação Formativa -->
+        ${oficina.criteriosAvaliacao ? `
+          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
+              <span style="font-size: 1.25rem;">📊</span>
+              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Critérios de Avaliação Formativa (Rubrica)</h4>
+            </div>
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--border); background: var(--bg-surface);">
+                    <th style="padding: 0.6rem 0.8rem; color: var(--accent);">Critério</th>
+                    <th style="padding: 0.6rem 0.8rem; color: #ef4444;">1 Ponto (Iniciante)</th>
+                    <th style="padding: 0.6rem 0.8rem; color: #f59e0b;">2 Pontos (Intermediário)</th>
+                    <th style="padding: 0.6rem 0.8rem; color: #22c55e;">3 Pontos (Avançado)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${oficina.criteriosAvaliacao.map(cr => `
+                    <tr style="border-bottom: 1px solid var(--border);">
+                      <td style="padding: 0.6rem 0.8rem; font-weight: bold; color: var(--text-main);">${cr.criterio}</td>
+                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${cr.ponto1}</td>
+                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${cr.ponto2}</td>
+                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary); font-weight: 500;">${cr.ponto3}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    container.innerHTML = `
+      <div class="pedagogical-highlight-card">
+        <div class="module-meta-tags">
+          <span class="chip chip-warm">⏱️ ${oficina.duracao || '25 a 30 min em Laboratório'}</span>
+          <span class="chip">📋 ${oficina.peso || 'Instrumento Formativo'}</span>
+          <span class="chip chip-warm">Zero Pressão • Aprendizado Prático</span>
+        </div>
+        <h3 style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 0.5rem;">
+          ${oficina.titulo || 'Atividade Prática de Laboratório'}
+        </h3>
+        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+          ${oficina.objetivo || oficina.descricao || 'Aplicação prática no computador do laboratório.'}
+        </p>
+      </div>
+
+      ${extraSectionsHTML}
+
+      <div style="margin-top: 1.75rem;">
+        <div class="section-title-wrap" style="border-color: var(--accent);">
+          <span style="font-size: 1.3rem;">📋</span>
+          <h3 style="color: var(--accent);">Diretrizes Pedagógicas para a Condução da Dupla</h3>
+        </div>
+
+        <div class="pedagogical-highlight-card" style="border-left: 4px solid var(--accent); margin-top: 1rem;">
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem;">
+            ${diretrizes.map(d => `
+              <li style="display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5;">
+                <span style="color: var(--accent); font-weight: bold; font-size: 1.1rem;">•</span>
+                <span>${d}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+
+        ${oficina.planoB ? `
+          <div class="pedagogical-highlight-card" style="background: var(--bg-subtle-warm); margin-top: 1.5rem;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">🚨 Plano B de Contingência Técnica (Se o laboratório oscilar)</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
+              ${oficina.planoB}
+            </p>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  },
+
+  /**
+   * ABA 4: Perguntas dos Alunos & Armadilhas
+   */
+  renderPerguntas(data) {
+    const container = document.getElementById('cockpit-perguntas-container');
+    if (!container) return;
+
+    if (this.isAulaPrivada(data)) {
+      container.innerHTML = this.renderAulaPrivadaCard();
+      return;
+    }
+
+    const perguntas = data.perguntasAlunos || [];
+
+    container.innerHTML = `
+      <div class="pedagogical-highlight-card">
+        <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 0.5rem;">
+          Perguntas Capciosas & Dúvidas Clássicas dos Alunos (Encontro ${data.moduloInfo?.numero || 1})
+        </h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary);">
+          Fichas com respostas orientadas para que Laura e Maria respondam com segurança, precisão e firmeza pedagógica.
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem;">
+        ${perguntas.map((p, idx) => {
+          const num = p.numero || p.id || (idx + 1);
+          const duvida = p.duvida || p.pergunta || '';
+          const resposta = p.resposta || p.explicacaoDetalhada || p.respostaCurta || '';
+          const ponto = p.pontoDidatico || '';
+          const dica = p.dicaPratica || '';
+
+          return `
+          <div class="pedagogical-highlight-card">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <span class="chip chip-warm">Dúvida ${num}</span>
+              <strong style="color: var(--text-main); font-size: 1.05rem;">"${duvida}"</strong>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+              <strong>Como responder:</strong> "${resposta}"
+            </p>
+            ${ponto ? `
+              <div style="font-size: 0.85rem; color: var(--accent); background: var(--bg-subtle-warm); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                🎯 <strong>Ponto Didático:</strong> ${ponto}
+              </div>
+            ` : ''}
+            ${dica ? `
+              <div style="font-size: 0.84rem; color: var(--text-secondary); background: var(--bg-surface); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); border-left: 3px solid #38bdf8;">
+                💡 <strong>Dica Prática de Prompt:</strong> ${dica}
+              </div>
+            ` : ''}
+          </div>
+        `;
+        }).join('')}
+      </div>
+    `;
+  },
+
+  /**
+   * ABA 1 (Rodapé): Anotações & Combinados da Dupla Docente
+   */
+  renderAnotacoesPapeis(data) {
+    const container = document.getElementById('cockpit-papeis-container');
+    if (!container) return;
+
+    if (this.isAulaPrivada(data)) {
+      container.innerHTML = '';
+      return;
+    }
+
+    const papeis = data.divisaoPapeis || [];
+    const meetingNum = data.moduloInfo?.numero || 1;
+
+    container.innerHTML = `
+      <div class="fio-papeis-card">
+        <div class="fio-papeis-header">
+          <h4><span>📋</span> Divisão de Condução & Momentos da Co-Docência</h4>
+          <p>Combinados rápidos de quem assume a voz principal em cada bloco da aula (Encontro ${meetingNum}). As marcações são salvas automaticamente no seu navegador.</p>
+        </div>
+
+        <div class="fio-papeis-grid">
+          ${papeis.map((p, idx) => {
+            const inputName = `role_m${meetingNum}_b${idx + 1}`;
+            const savedRole = localStorage.getItem(inputName) || localStorage.getItem(`role_${inputName}`);
+            const currentRole = savedRole || p.padrao || '';
+
+            return `
+              <div class="fio-papel-item">
+                <div class="fio-papel-top">
+                  <span class="fio-papel-block-badge">${p.bloco}</span>
+                  ${p.conducao ? `<span class="chip chip-warm" style="font-size: 0.72rem; padding: 0.15rem 0.5rem;">${p.conducao}</span>` : ''}
+                </div>
+                <div class="fio-papel-theme">${p.tema}</div>
+
+                ${p.papel === 'radio' ? `
+                  <div class="role-selector-pills" role="radiogroup" aria-label="Condutor do ${p.bloco}">
+                    <label class="role-pill ${currentRole === 'laura' ? 'active' : ''}">
+                      <input type="radio" name="${inputName}" value="laura" class="role-check" style="position: absolute; opacity: 0; width: 0; height: 0;" ${currentRole === 'laura' ? 'checked' : ''}>
+                      <span>👩‍🏫 Laura conduz</span>
+                    </label>
+                    <label class="role-pill ${currentRole === 'maria' ? 'active' : ''}">
+                      <input type="radio" name="${inputName}" value="maria" class="role-check" style="position: absolute; opacity: 0; width: 0; height: 0;" ${currentRole === 'maria' ? 'checked' : ''}>
+                      <span>👩‍💻 Maria conduz</span>
+                    </label>
+                  </div>
+                ` : `
+                  <div class="role-shared-badge">
+                    <span>🤝 Atuação conjunta / Ambas apoiam a turma</span>
+                  </div>
+                `}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+
+    // Vincular interações das pílulas e persistência no localStorage
+    const roleRadios = container.querySelectorAll('.role-check');
+    roleRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (radio.checked) {
+          localStorage.setItem(radio.name, radio.value);
+
+          const parentGroup = radio.closest('.role-selector-pills');
+          if (parentGroup) {
+            parentGroup.querySelectorAll('.role-pill').forEach(pill => pill.classList.remove('active'));
+            const parentLabel = radio.closest('.role-pill');
+            if (parentLabel) parentLabel.classList.add('active');
+          }
+        }
+      });
+    });
+  }
+};
+
+window.CockpitRenderer = CockpitRenderer;

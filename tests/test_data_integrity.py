@@ -201,5 +201,70 @@ class TestDataIntegrity(unittest.TestCase):
             script_code = f.read()
         self.assertIn("generate_slides_pdf", script_code)
 
+    def test_encontro3_aula_privada_integrity(self):
+        """Valida que o Encontro 3 é exclusivamente um anúncio de Aula privada com aluno."""
+        submodules_dir3 = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro-3')
+        encontro3_path = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro3-data.js')
+
+        self.assertTrue(os.path.exists(encontro3_path))
+        with open(encontro3_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        self.assertIn("window.ENCONTRO_3_DATA = ENCONTRO_3_DATA", content)
+        self.assertIn("Aula privada com aluno", content)
+        self.assertIn("isAulaPrivada: true", content)
+
+    def test_encontro4_submodules_and_bundle_integrity(self):
+        """Valida que o Encontro 4 recebeu com fidelidade o conteúdo de ChatGPT na Prática."""
+        submodules_dir4 = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro-4')
+        encontro4_path = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro4-data.js')
+
+        expected_files = [
+            'meta.js', 'narrativa.js', 'dossies.js', 'deck-slides.js',
+            'atividades.js', 'faq-duvidas.js', 'papeis.js', 'index.js'
+        ]
+        for fname in expected_files:
+            fpath = os.path.join(submodules_dir4, fname)
+            self.assertTrue(os.path.exists(fpath), f"Arquivo do Encontro 4 ausente: {fname}")
+
+        self.assertTrue(os.path.exists(encontro4_path))
+        with open(encontro4_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        self.assertIn("window.ENCONTRO_4_DATA = ENCONTRO_4_DATA", content)
+        self.assertIn("ChatGPT na Prática", content)
+        self.assertIn("C-T-F-R", content)
+
+    def test_meetings_data_in_app(self):
+        """Valida o cronograma oficial em MEETINGS_DATA em app.py para os Módulos 3 e 4."""
+        import app
+        m3 = app.MEETINGS_DATA.get(3)
+        self.assertIsNotNone(m3)
+        self.assertFalse(m3.get('isReady'))
+        self.assertFalse(m3.get('isAccessible'))
+        self.assertIn("Aula privada com aluno", m3.get('title'))
+        self.assertEqual(m3.get('statusBadge'), "🔒 Inacessível")
+
+        m4 = app.MEETINGS_DATA.get(4)
+        self.assertIsNotNone(m4)
+        self.assertTrue(m4.get('isReady'))
+        self.assertIn("ChatGPT na Prática", m4.get('title'))
+
+    def test_modulo3_inaccessible_redirect(self):
+        """Valida que acessar diretamente as rotas do Módulo 3 redireciona para o dashboard."""
+        import app
+        app.app.config['TESTING'] = True
+        client = app.app.test_client()
+        with client.session_transaction() as sess:
+            sess['user'] = 'laura'
+
+        resp_cockpit = client.get('/encontro/3')
+        self.assertEqual(resp_cockpit.status_code, 302)
+        self.assertIn('/', resp_cockpit.headers['Location'])
+
+        resp_slides = client.get('/slides/3')
+        self.assertEqual(resp_slides.status_code, 302)
+        self.assertIn('/', resp_slides.headers['Location'])
+
 if __name__ == '__main__':
     unittest.main()

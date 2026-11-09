@@ -51,6 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showCockpit(moduleId = 1) {
     const meeting = getMeetingRecord(moduleId);
+    if (Number(moduleId) === 3 || (meeting && meeting.isAccessible === false)) {
+      showInaccessibleCockpitPopup();
+      return;
+    }
     const targetId = (meeting && meeting.isReady) ? Number(meeting.num) : 1;
     const shortTitle = (meeting && meeting.shortTitle) ? meeting.shortTitle : 'Desmistificando a IA';
 
@@ -112,7 +116,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (inspectorDesc) inspectorDesc.textContent = data.desc;
 
     if (inspectorActions) {
-      if (data.isReady) {
+      if (Number(data.num) === 3 || data.isAccessible === false) {
+        inspectorActions.innerHTML = `
+          <span id="inspector-action-tip" style="font-size: 0.88rem; color: var(--text-muted);">${data.actionTip}</span>
+          <button class="btn btn-primary" style="font-size: 0.95rem; padding: 0.65rem 1.35rem; background-color: #64748b; border-color: #64748b;" id="btn-enter-cockpit">
+            🔒 Abrir Cockpit da Aula ➔
+          </button>
+        `;
+        const btnEnter = document.getElementById('btn-enter-cockpit');
+        if (btnEnter) {
+          btnEnter.addEventListener('click', () => {
+            showInaccessibleCockpitPopup();
+          });
+        }
+      } else if (data.isReady) {
         inspectorActions.innerHTML = `
           <span id="inspector-action-tip" style="font-size: 0.88rem; color: var(--text-muted);">${data.actionTip}</span>
           <button class="btn btn-primary" style="font-size: 0.95rem; padding: 0.65rem 1.35rem;" id="btn-enter-cockpit">
@@ -240,6 +257,62 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.showToast = showToast;
+
+  // =========================================================================
+  // 5.1. POPUP DE COCKPIT INACESSÍVEL (AULA PRIVADA COM ALUNO)
+  // =========================================================================
+  function showInaccessibleCockpitPopup(customMsg) {
+    const msg = customMsg || "Cockpit inacessível: O Módulo 3 foi reservado para aula privada com aluno.";
+
+    // 1. Popup Modal visual na tela
+    let popupModal = document.getElementById('popup-inaccessible-cockpit');
+    if (!popupModal) {
+      popupModal = document.createElement('div');
+      popupModal.id = 'popup-inaccessible-cockpit';
+      popupModal.className = 'inaccessible-popup-overlay';
+      popupModal.innerHTML = `
+        <div class="inaccessible-popup-card">
+          <div class="inaccessible-popup-icon">🔒</div>
+          <h3 class="inaccessible-popup-title">Cockpit Inacessível</h3>
+          <p class="inaccessible-popup-desc">
+            O cockpit deste módulo está <strong>inacessível</strong>.<br>
+            O <strong>Módulo 3 (06/11)</strong> foi reservado para <em>aula privada com aluno</em> e não possui cockpit público.
+          </p>
+          <button class="btn btn-primary btn-close-inaccessible-modal" id="btn-close-inaccessible-modal">
+            Entendido
+          </button>
+        </div>
+      `;
+      document.body.appendChild(popupModal);
+
+      popupModal.querySelector('#btn-close-inaccessible-modal').addEventListener('click', () => {
+        popupModal.classList.remove('active');
+      });
+
+      popupModal.addEventListener('click', (e) => {
+        if (e.target === popupModal) {
+          popupModal.classList.remove('active');
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popupModal.classList.contains('active')) {
+          popupModal.classList.remove('active');
+        }
+      });
+    }
+
+    popupModal.classList.add('active');
+
+    // 2. Dispara o alert popup nativo
+    try {
+      alert(msg);
+    } catch (e) {
+      console.warn('Alert nativo suprimido:', e);
+    }
+  }
+
+  window.showInaccessibleCockpitPopup = showInaccessibleCockpitPopup;
 
   // =========================================================================
   // 6. GERENCIADOR DA JANELA DE SLIDES & SINCRONIZAÇÃO DE LOGOUT (AUTO-CLOSE)
