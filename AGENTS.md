@@ -36,7 +36,7 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
 ### 🎯 Encontro 3 (06/11)
 - **Tema:** *Aula privada com aluno.*
 - **Natureza do Encontro:** Sessão reservada exclusivamente para atendimento pedagógico individualizado e acompanhamento privado com aluno no laboratório.
-- **Inacessibilidade & Popup de Bloqueio:** O Módulo 3 foi configurado como inativo/inacessível (`isAccessible: false`, `isReady: false`). No Dashboard, a tentativa de abertura do cockpit emite um popup notificando a indisponibilidade por se tratar de aula privada. As rotas `/encontro/3` e `/slides/3` redirecionam automaticamente ao dashboard com mensagem de bloqueio.
+- **Inacessibilidade & Popup de Bloqueio:** O Módulo 3 foi configurado como inativo/inacessível (`isAccessible: false`, `isReady: false`). No Dashboard, a tentativa de abertura do cockpit emite um popup modal estilizado único notificando a indisponibilidade por se tratar de aula privada (sem duplicar com alert nativo). As rotas `/encontro/3` e `/slides/3` redirecionam automaticamente ao dashboard com mensagem de bloqueio.
 
 ### 🎯 Encontro 4 (13/11)
 - **Tema:** *ChatGPT na Prática: Do Comando Simples ao Trabalho Real – Como instruir, refinar e colaborar com a IA de forma produtiva, ética e segura.*

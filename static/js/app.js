@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function showInaccessibleCockpitPopup(customMsg) {
     const msg = customMsg || "Cockpit inacessível: O Módulo 3 foi reservado para aula privada com aluno.";
 
-    // 1. Popup Modal visual na tela
+    // Popup Modal visual único na tela (sem alert nativo duplicado)
     let popupModal = document.getElementById('popup-inaccessible-cockpit');
     if (!popupModal) {
       popupModal = document.createElement('div');
@@ -302,14 +302,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    popupModal.classList.add('active');
-
-    // 2. Dispara o alert popup nativo
-    try {
-      alert(msg);
-    } catch (e) {
-      console.warn('Alert nativo suprimido:', e);
+    if (customMsg) {
+      const descEl = popupModal.querySelector('.inaccessible-popup-desc');
+      if (descEl) descEl.textContent = customMsg;
     }
+
+    popupModal.classList.add('active');
   }
 
   window.showInaccessibleCockpitPopup = showInaccessibleCockpitPopup;
