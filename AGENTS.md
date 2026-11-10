@@ -76,6 +76,7 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
     4. 💡 **Dúvidas dos Alunos (FAQ):** Perguntas frequentes e difíceis com respostas-chave fundamentadas.
     O layout foi desenhado com visual Deep Navy em grid responsivo de 2 colunas com cartões coloridos (`#38bdf8`, `#10b981`, `#f59e0b`, `#a78bfa`), garantindo ao professor domínio substancial do conteúdo com consulta ágil no palco sem depender de falas decoradas.
 - **Roteiro de Palco Completo:** Co-docência equilibrada entre Laura e Maria com tempos sugeridos (minuto a minuto), objetivos pedagógicos e fichas conceituais para cada slide.
+- **Harmonização da Aba "Atividade em Aula" (Cockpit Encontro 4):** Conteúdo prático reformulado em `static/js/data/encontro-4/atividades.js` para espelhar integralmente o estudo de caso empírico dos slides: duelo de prompts de 3 vias baseado no caso do *Macarrão Parisiense* (Slide 13 a 15), quadro comparativo de 9 critérios (Slide 16), auto-entrevista guiada em dois atos (Slides 18 e 19), anatomia C-T-F-R, protocolo de anonimização (Slide 9) e trava de checagem factual UNESCO `[necessita verificação]` (Slide 11).
 - **Infraestrutura Modular & PDF 16:9:** Compilado em `static/js/data/encontro4-data.js` via `python scripts/build_data.py 4` e exportado como PDF vetorial nativo em `static/pdf/slides-encontro-4.pdf`. Rota `/slides/4` e Cockpit `/encontro/4` ativos e 100% integrados.
 
 ---
