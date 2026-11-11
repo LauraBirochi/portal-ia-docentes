@@ -3500,6 +3500,222 @@ body[data-meeting="3"], body[data-meeting="4"] .fechamento-lembrete-pill,
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
 }
 
+/* ==========================================================================
+   CALIBRAÇÃO TIPOGRÁFICA DO ENCONTRO 4 (CKW PROJECTION CRISP RESOLUTION)
+   Aumento das fontes de parágrafos, listas e blocos intermediários no palco
+   16:9 para eliminar pixelização e maximizar nitidez sob luz ambiente no projetor.
+   ========================================================================== */
+
+/* 1. Parágrafos gerais no corpo do slide (excluindo títulos e subtítulos de capa/seção) */
+body[data-meeting="4"] .slide-body p:not(.capa-sub):not(.secao-sub):not(.slide-subtitle),
+.meeting-4 .slide-body p:not(.capa-sub):not(.secao-sub):not(.slide-subtitle),
+body[data-meeting="4"] .slide-card p:not(.slide-subtitle):not(.capa-sub):not(.secao-sub),
+.meeting-4 .slide-card p:not(.slide-subtitle):not(.capa-sub):not(.secao-sub) {
+  font-size: 1.62rem !important;
+  line-height: 1.48 !important;
+}
+
+/* 2. Cards de Apresentação / Destaque (Slides 3, 5, 20) */
+body[data-meeting="4"] .card-item-destaque p,
+.meeting-4 .card-item-destaque p {
+  font-size: 1.62rem !important;
+  line-height: 1.48 !important;
+  color: #334155 !important;
+}
+
+body[data-meeting="4"] .grid-3cards .card-item-destaque p,
+.meeting-4 .grid-3cards .card-item-destaque p {
+  font-size: 1.62rem !important;
+  line-height: 1.48 !important;
+}
+
+/* Slide 5: Grid de 4 Cards (C-T-F-R) */
+body[data-meeting="4"] .grid-4cards .card-item-destaque,
+.meeting-4 .grid-4cards .card-item-destaque {
+  padding: 1.6rem 1.25rem !important;
+  gap: 0.75rem !important;
+}
+
+body[data-meeting="4"] .grid-4cards .card-item-destaque h4,
+.meeting-4 .grid-4cards .card-item-destaque h4 {
+  font-size: 1.62rem !important;
+}
+
+body[data-meeting="4"] .slide-body .grid-4cards .card-item-destaque p,
+.meeting-4 .slide-body .grid-4cards .card-item-destaque p,
+body[data-meeting="4"] .grid-4cards .card-item-destaque p,
+.meeting-4 .grid-4cards .card-item-destaque p {
+  font-size: 1.4rem !important;
+  line-height: 1.45 !important;
+}
+
+/* 3. Colunas Comparativas (Slides 2, 4, 7, 8, 9, 10, 11, 22) */
+body[data-meeting="4"] .card-col-list li,
+.meeting-4 .card-col-list li {
+  font-size: 1.68rem !important;
+  line-height: 1.45 !important;
+  color: #334155 !important;
+}
+
+body[data-meeting="4"] .card-col-list li .bullet,
+.meeting-4 .card-col-list li .bullet {
+  font-size: 1.95rem !important;
+}
+
+/* Slide 4: Duelo de 3 Vias (Grid de 3 Colunas) */
+body[data-meeting="4"] .grid-colunas.grid-3colunas .card-col-header,
+.meeting-4 .grid-colunas.grid-3colunas .card-col-header {
+  font-size: 1.55rem !important;
+  padding-bottom: 0.8rem !important;
+  margin-bottom: 1rem !important;
+}
+
+body[data-meeting="4"] .grid-colunas.grid-3colunas .card-col-list li,
+.meeting-4 .grid-colunas.grid-3colunas .card-col-list li {
+  font-size: 1.36rem !important;
+  line-height: 1.42 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* 4. Missão de Bancada / Oficinas Práticas (Slides 12, 17) */
+body[data-meeting="4"] .diag-step-item .step-text,
+.meeting-4 .diag-step-item .step-text {
+  font-size: 1.52rem !important;
+  line-height: 1.42 !important;
+}
+
+body[data-meeting="4"] .diagnostica-info-card p,
+.meeting-4 .diagnostica-info-card p {
+  font-size: 1.62rem !important;
+  line-height: 1.48 !important;
+  color: #334155 !important;
+}
+
+body[data-meeting="4"] .diag-support-banner,
+.meeting-4 .diag-support-banner {
+  font-size: 1.45rem !important;
+  line-height: 1.4 !important;
+}
+
+body[data-meeting="4"] .diag-badge-pill,
+.meeting-4 .diag-badge-pill {
+  font-size: 1.32rem !important;
+}
+
+/* 5. Bancada de Testes de Prompt (Slides 13, 14, 15, 18, 19) */
+body[data-meeting="4"] .prompt-terminal-text,
+.meeting-4 .prompt-terminal-text {
+  font-size: 1.55rem !important;
+  line-height: 1.36 !important;
+}
+
+body[data-meeting="4"] .diagnostico-prompt-card p,
+.meeting-4 .diagnostico-prompt-card p {
+  font-size: 1.55rem !important;
+  line-height: 1.36 !important;
+}
+
+body[data-meeting="4"] .ai-summary-text,
+.meeting-4 .ai-summary-text {
+  font-size: 1.55rem !important;
+  line-height: 1.36 !important;
+}
+
+body[data-meeting="4"] .detail-content,
+body[data-meeting="4"] .detail-list,
+.meeting-4 .detail-content,
+.meeting-4 .detail-list {
+  font-size: 1.55rem !important;
+  line-height: 1.36 !important;
+}
+
+body[data-meeting="4"] .detail-list li,
+.meeting-4 .detail-list li {
+  font-size: 1.55rem !important;
+  line-height: 1.36 !important;
+}
+
+body[data-meeting="4"] .pergunta-content,
+.meeting-4 .pergunta-content {
+  font-size: 1.55rem !important;
+  line-height: 1.36 !important;
+}
+
+body[data-meeting="4"] .detail-label,
+.meeting-4 .detail-label {
+  font-size: 1.42rem !important;
+}
+
+body[data-meeting="4"] .ausente-pill-item,
+.meeting-4 .ausente-pill-item {
+  font-size: 1.42rem !important;
+  line-height: 1.3 !important;
+}
+
+body[data-meeting="4"] .metrica-chip,
+.meeting-4 .metrica-chip {
+  font-size: 1.35rem !important;
+}
+
+/* 6. Quadro Comparativo das Diferenças (Slide 16) */
+body[data-meeting="4"] .quadro-comp-table thead tr th,
+.meeting-4 .quadro-comp-table thead tr th {
+  font-size: 1.52rem !important;
+  padding: 0.85rem 1rem !important;
+}
+
+body[data-meeting="4"] .quadro-comp-table td,
+.meeting-4 .quadro-comp-table td {
+  font-size: 1.35rem !important;
+  line-height: 1.38 !important;
+  padding: 0.85rem 1rem !important;
+}
+
+/* 7. Fechamento e Encerramento (Slide 21) */
+body[data-meeting="4"] .layout-fechamento-wrap,
+.meeting-4 .layout-fechamento-wrap {
+  gap: 1.15rem !important;
+}
+
+body[data-meeting="4"] .fechamento-banner-card,
+.meeting-4 .fechamento-banner-card {
+  padding: 1.85rem 3rem !important;
+}
+
+body[data-meeting="4"] .fechamento-next-card,
+.meeting-4 .fechamento-next-card {
+  padding: 1.35rem 2.25rem !important;
+}
+
+body[data-meeting="4"] .fechamento-lembrete-pill,
+.meeting-4 .fechamento-lembrete-pill {
+  font-size: 1.45rem !important;
+  line-height: 1.35 !important;
+  padding: 0.8rem 1.4rem !important;
+}
+
+body[data-meeting="4"] .next-label,
+.meeting-4 .next-label {
+  font-size: 1.32rem !important;
+}
+
+body[data-meeting="4"] .fechamento-referencias-card,
+.meeting-4 .fechamento-referencias-card {
+  font-size: 1.35rem !important;
+}
+
+body[data-meeting="4"] .fechamento-referencias-card a,
+.meeting-4 .fechamento-referencias-card a {
+  font-size: 1.28rem !important;
+}
+
+/* 8. Transição de Seção (Slide 6) */
+body[data-meeting="4"] .secao-pill,
+.meeting-4 .secao-pill {
+  font-size: 1.65rem !important;
+  padding: 1rem 2.5rem !important;
+}
+
 /* Painel de Notas (Drawer N) em Meeting 3 */
 body[data-meeting="3"], body[data-meeting="4"] .presenter-notes-drawer,
 .meeting-3, .meeting-4 .presenter-notes-drawer {
