@@ -66,7 +66,7 @@ export const blocosTematicos = [
     icone: "🎯",
     titulo: "Bloco 6: Síntese Formativa & Fechamento",
     subtitulo: "As 4 certezas para a prática docente cotidiana e convite para o Encontro 3",
-    slidesRange: [30, 32],
+    slidesRange: [30, 33],
     tempoEstimado: "10 min",
     conducao: "Co-docência (Laura & Maria)"
   }

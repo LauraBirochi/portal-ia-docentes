@@ -887,5 +887,59 @@ export const slidesComNotas = [
       oQueFalar: "Finalizem calorosamente: 'Parabéns a todos! Vocês deram hoje um passo fundamental. Desmistificamos a ficção, entendemos como a IA invisível funciona no nosso cotidiano, testamos o e-mail de todos e concluímos nossa avaliação diagnóstica. No dia 30 de outubro, traremos O Salto da IA Generativa: entenderemos o funcionamento das LLMs e abriremos os modelos na prática para criar nossos primeiros prompts no laboratório. Excelente semana a todos e até o Módulo 2!'",
       tempoSugerido: "5 minutos de encerramento"
     }
+  },
+  {
+    numero: 33,
+    id: 33,
+    bloco: 6,
+    tipo: "comparativo",
+    categoria: "Referências Bibliográficas",
+    titulo: "Referências Bibliográficas & Leituras Recomendadas",
+    subtitulo: "Fontes seminais da computação, epistemologia da IA, desmistificação e marcos regulatórios no Brasil",
+    conducao: "Co-docência (Laura & Maria)",
+    colunas: [
+      {
+        tag: "🏛️ Marcos Históricos, Teoria & Epistemologia da IA",
+        icone: "📜",
+        tipo: "marrom",
+        bullet: "•",
+        itens: [
+          "Turing, Alan M. (1950) — Computing Machinery and Intelligence (Mind — Teste de Turing)",
+          "McCarthy et al. (1955/1956) — Proposal for Dartmouth Research Project (Criação do Termo IA)",
+          "Russell, S. & Norvig, P. (2020) — Artificial Intelligence: A Modern Approach (4th Ed. — Pearson)",
+          "Hofstadter, Douglas (1979) — Gödel, Escher, Bach (Teorema de Tesler: 'IA é o que ainda não foi feito')",
+          "McCorduck, Pamela (2004) — Machines Who Think (Análise Sociotécnica do 'Efeito IA')"
+        ]
+      },
+      {
+        tag: "🇧🇷 Desmistificação, Soberania & Governança Ética",
+        icone: "🛡️",
+        tipo: "positivo",
+        bullet: "•",
+        itens: [
+          "Kaufman, Dora (2022) — Desmistificando a Inteligência Artificial (Autêntica / PUC-SP)",
+          "Kaufman, Dora (2019) — A Inteligência Artificial Irá nos Submeter aos seus Algoritmos? (Planeta)",
+          "Governo Federal / MCTI (2024) — Plano Brasileiro de IA: 'IA para o Bem de Todos' (PBIA 2024–2028)",
+          "Senado Federal (2023/2024) — Marco Legal da IA (PL 2338/2023 — Classificação de Riscos)",
+          "Brasil (2018) / UNESCO (2021) — LGPD (Lei 13.709/2018) & Recomendação sobre Ética da IA"
+        ]
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "3 min (ou consulta assíncrona)",
+      objetivoSlide: "Apresentar as fontes primárias acadêmicas, livros clássicos e marcos legais que fundamentam os conceitos históricos, desmistificadores e regulatórios do Encontro 1.",
+      conceito: {
+        titulo: "Fundamentação Histórico-Crítica e Soberania Regulatória",
+        definicao: "Articulação de duas vertentes: de um lado, a epistemologia e história da computação (Turing, Dartmouth, Russell & Norvig, Tesler, McCorduck); de outro, o pensamento crítico brasileiro sobre IA e seus marcos legais (Dora Kaufman, PBIA, PL 2338, LGPD e UNESCO)."
+      },
+      mecanica: "Quadro comparativo de 2 colunas categorizando a literatura clássica fundacional e os marcos regulatórios/desmistificadores contemporâneos para consulta assíncrona dos participantes.",
+      armadilhaComum: "Achar que a IA começou recentemente com o marketing das big techs, sem compreender suas raízes científicas de 70 anos e as leis que resguardam a cidadania e a soberania nacional.",
+      faqAlunos: [
+        {
+          pergunta: "Onde posso ler o documento oficial do Plano Brasileiro de IA (PBIA)?",
+          resposta: "O documento completo de 2024–2028 do MCTI/CNDI está disponível no portal do governo e pode ser acessado pelo link na aba de materiais do curso."
+        }
+      ]
+    }
   }
 ];

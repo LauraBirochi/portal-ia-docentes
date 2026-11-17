@@ -343,10 +343,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const exportBtn = e.target.closest('#btn-export-slides, .btn-export-slides');
     if (exportBtn) {
       e.preventDefault();
+      if (exportBtn.dataset.downloading === 'true') {
+        return;
+      }
+      exportBtn.dataset.downloading = 'true';
+      const originalHtml = exportBtn.innerHTML;
+      exportBtn.style.opacity = '0.65';
+      exportBtn.style.pointerEvents = 'none';
+      exportBtn.innerHTML = '<span>⏳</span> <span>Preparando PDF...</span>';
+
       const match = window.location.pathname.match(/^\/encontro\/(\d+)/);
       const meetingId = match ? match[1] : 1;
       showToast('Iniciando download do PDF oficial 16:9 widescreen...');
-      window.location.href = `/download/slides/${meetingId}.pdf`;
+
+      const downloadLink = document.createElement('a');
+      downloadLink.href = `/download/slides/${meetingId}.pdf`;
+      downloadLink.download = `slides-encontro-${meetingId}.pdf`;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      setTimeout(() => {
+        exportBtn.innerHTML = originalHtml;
+        exportBtn.style.opacity = '1';
+        exportBtn.style.pointerEvents = '';
+        delete exportBtn.dataset.downloading;
+      }, 4000);
       return;
     }
 

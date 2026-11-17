@@ -202,11 +202,11 @@ MEETINGS_DATA: Dict[int, Dict[str, Any]] = {
     },
     5: {
         "num": 5,
-        "date": "20/11",
+        "date": "27/11",
         "duration": "3 Horas Presenciais",
         "location": "Laboratório X",
         "shortTitle": "Olhar Crítico & Auditoria",
-        "title": "Módulo 5 (20/11): Olhar Crítico e Oficina de Prompts – Alucinações, limitações, verificação de fatos e auditoria de respostas.",
+        "title": "Módulo 5 (27/11): Olhar Crítico e Oficina de Prompts – Alucinações, limitações, verificação de fatos e auditoria de respostas.",
         "desc": "Oficina prática voltada à postura crítica diante da IA: identificação de alucinações, compreensão das limitações técnicas dos modelos, checagem de fatos e auditoria de respostas.",
         "statusBadge": "⚪ Sequência",
         "isReady": False,
@@ -343,19 +343,26 @@ def slides(meeting_id: int = 1) -> Any:
 @login_required
 def download_slides_pdf(meeting_id: int = 1) -> Any:
     """Rota para download do PDF oficial 16:9 widescreen dos slides."""
-    meeting = MEETINGS_DATA.get(meeting_id, MEETINGS_DATA[1])
-    effective_id = meeting['num'] if meeting.get('isReady') else 1
-    pdf_filename = f"slides-encontro-{effective_id}.pdf"
+    meeting = MEETINGS_DATA.get(meeting_id)
+    if not meeting:
+        abort(404, description="Encontro não encontrado.")
+    if meeting_id == 3 or not meeting.get('isAccessible', True):
+        flash("Download indisponível: O Módulo 3 foi reservado para aula privada com aluno.", "warning")
+        return redirect(url_for('dashboard'))
+    if not meeting.get('isReady', False):
+        flash(f"Download indisponível: Os slides do Encontro {meeting_id} ainda estão em preparação pedagógica.", "info")
+        return redirect(url_for('dashboard'))
+    pdf_filename = f"slides-encontro-{meeting_id}.pdf"
     pdf_path = os.path.join(app.root_path, 'static', 'pdf', pdf_filename)
     # Se o PDF ainda não foi compilado no disco, compila sob demanda usando a URL do host da requisição
     if not os.path.exists(pdf_path):
         try:
             from scripts.export_pdf import generate_slides_pdf
             current_host_url = request.host_url.rstrip('/')
-            generate_slides_pdf(effective_id, pdf_path, base_url=current_host_url)
+            generate_slides_pdf(meeting_id, pdf_path, base_url=current_host_url)
         except Exception as e:
-            app.logger.error(f"Erro ao gerar PDF sob demanda para o encontro {effective_id}: {e}")
-            abort(404, description=f"Arquivo PDF dos slides do Encontro {effective_id} não encontrado. Execute 'python scripts/export_pdf.py {effective_id}' no terminal para gerá-lo.")
+            app.logger.error(f"Erro ao gerar PDF sob demanda para o encontro {meeting_id}: {e}")
+            abort(404, description=f"Arquivo PDF dos slides do Encontro {meeting_id} não encontrado. Execute 'python scripts/export_pdf.py {meeting_id}' no terminal para gerá-lo.")
 
     return send_file(pdf_path, as_attachment=True, download_name=pdf_filename, mimetype='application/pdf')
 

@@ -235,8 +235,30 @@ class TestDataIntegrity(unittest.TestCase):
         self.assertIn("ChatGPT na Prática", content)
         self.assertIn("C-T-F-R", content)
 
+    def test_encontro5_submodules_and_bundle_integrity(self):
+        """Valida a preparação estrutural dos submódulos e bundle do Encontro 5 (27/11)."""
+        submodules_dir5 = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro-5')
+        encontro5_path = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro5-data.js')
+
+        expected_files = [
+            'meta.js', 'narrativa.js', 'dossies.js', 'deck-slides.js',
+            'atividades.js', 'faq-duvidas.js', 'papeis.js', 'index.js'
+        ]
+        for fname in expected_files:
+            fpath = os.path.join(submodules_dir5, fname)
+            self.assertTrue(os.path.exists(fpath), f"Arquivo do Encontro 5 ausente: {fname}")
+
+        self.assertTrue(os.path.exists(encontro5_path))
+        with open(encontro5_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        self.assertIn("window.ENCONTRO_5_DATA = ENCONTRO_5_DATA", content)
+        self.assertIn("Ferramentas de IA na Prática", content)
+        self.assertIn("NotebookLM", content)
+        self.assertIn("Perplexity", content)
+
     def test_meetings_data_in_app(self):
-        """Valida o cronograma oficial em MEETINGS_DATA em app.py para os Módulos 3 e 4."""
+        """Valida o cronograma oficial em MEETINGS_DATA em app.py para os Módulos 3, 4 e 5."""
         import app
         m3 = app.MEETINGS_DATA.get(3)
         self.assertIsNotNone(m3)
@@ -249,6 +271,11 @@ class TestDataIntegrity(unittest.TestCase):
         self.assertIsNotNone(m4)
         self.assertTrue(m4.get('isReady'))
         self.assertIn("ChatGPT na Prática", m4.get('title'))
+
+        m5 = app.MEETINGS_DATA.get(5)
+        self.assertIsNotNone(m5)
+        self.assertEqual(m5.get('date'), "27/11")
+        self.assertFalse(m5.get('isReady'))
 
     def test_modulo3_inaccessible_redirect(self):
         """Valida que acessar diretamente as rotas do Módulo 3 redireciona para o dashboard."""

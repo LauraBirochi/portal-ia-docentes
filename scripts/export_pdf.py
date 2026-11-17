@@ -169,6 +169,15 @@ def generate_slides_pdf(meeting_id: int = 1, output_path: str = None, base_url: 
             body[data-meeting="2"] #slide-container.slide-card {
                 background: #0f172a !important;
             }
+            body[data-meeting="4"] {
+                background: #ffffff !important;
+            }
+            body[data-meeting="4"] #deck-viewport {
+                background: #f8fafc !important;
+            }
+            body[data-meeting="4"] #slide-container.slide-card {
+                background: #ffffff !important;
+            }
         """)
 
         total_slides = page.evaluate("() => window.__projectorEngine ? window.__projectorEngine.getSlideCount() : 32")
@@ -221,11 +230,12 @@ def main():
     if args.encontro.lower() == 'all':
         generate_slides_pdf(1)
         generate_slides_pdf(2)
+        generate_slides_pdf(4)
     else:
         try:
             meeting_id = int(args.encontro)
         except ValueError:
-            print(f"[ERRO] Encontro inválido: {args.encontro}. Use um número como 1 ou 2, ou 'all'.")
+            print(f"[ERRO] Encontro inválido: {args.encontro}. Use um número como 1, 2, 4 ou 'all'.")
             sys.exit(1)
 
         generate_slides_pdf(meeting_id, args.output)

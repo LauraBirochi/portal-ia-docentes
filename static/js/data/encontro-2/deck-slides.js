@@ -1181,5 +1181,59 @@ export const slidesComNotas = [
       objetivoSlide: "Agradecer a dedicação da turma, celebrar a evolução do dia e criar expectativa motivadora para o Encontro 3.",
       oQueFalar: "Laura e Maria encerram a aula calorosamente: 'Parabéns a todos vocês pela dedicação e pelo salto gigantesco que demos hoje! No projetor estão os links com as referências primárias da aula de hoje para quem quiser aprofundar na literatura acadêmica: o paper do ArXiv sobre alinhamento e o estudo da PMC. No próximo encontro, em 06 de novembro, vamos dar o passo definitivo na Engenharia de Prompts com a metodologia completa PCTFR e criar juntos avaliações formativas e planos reais de aula. Tragam suas ideias, bom descanso e até a próxima semana!'"
     }
+  },
+  {
+    numero: 33,
+    id: 33,
+    bloco: 6,
+    tipo: "comparativo",
+    categoria: "Referências Bibliográficas",
+    titulo: "Referências Bibliográficas & Leituras Recomendadas",
+    subtitulo: "Artigos seminais de LLMs (NeurIPS/arXiv), tokenização, alucinações e governança da IA generativa",
+    conducao: "Co-docência (Laura & Maria)",
+    colunas: [
+      {
+        tag: "⚡ Artigos Seminais de Arquitetura & LLMs (Técnica)",
+        icone: "🔬",
+        tipo: "marrom",
+        bullet: "•",
+        itens: [
+          "Vaswani et al. (2017) — Attention Is All You Need (NeurIPS — Arquitetura Transformer)",
+          "Brown et al. (2020) — Language Models are Few-Shot Learners (NeurIPS — GPT-3 & In-Context)",
+          "Radford et al. (2019) — Language Models are Unsupervised Multitask Learners (Previsão de Tokens)",
+          "Wei et al. (2022) — Chain-of-Thought Prompting Elicits Reasoning in LLMs (NeurIPS — CoT)",
+          "Ji et al. (2023) — Survey of Hallucination in Natural Language Generation (ACM Computing Surveys)"
+        ]
+      },
+      {
+        tag: "🛠️ Engenharia de Prompts & Governança de IAGen",
+        icone: "📖",
+        tipo: "positivo",
+        bullet: "•",
+        itens: [
+          "Sennrich et al. (2016) / Schuster (2012) — Tokenização BPE & WordPiece (ACL / ICASSP)",
+          "OpenAI Platform (2024–2026) — Official Prompt Engineering Guide & Best Practices",
+          "Anthropic Documentation (2024–) — Prompt Engineering Interactive Tutorial",
+          "UNESCO (2023) — Guidance for Generative AI in Education and Research (IAGen na Educação)",
+          "ANPD (2024) — Notas Técnicas nº 27 e 39/2024 (Tratamento de Dados & Treinamento de IAGen)"
+        ]
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "3 min (ou consulta assíncrona)",
+      objetivoSlide: "Apresentar aos docentes as fontes primárias acadêmicas e técnicas que respaldam a arquitetura de LLMs, engenharia de prompts e governança da IAGen do Encontro 2.",
+      conceito: {
+        titulo: "Bases Científicas de LLMs e Governança de IAGen",
+        definicao: "Articulação de duas vertentes: a arquitetura técnica seminal das LLMs (Transformers, BPE/WordPiece, Few-Shot, CoT e Alucinações) e as diretrizes oficiais de engenharia de prompt e governança educacional de IAGen (OpenAI, Anthropic, UNESCO 2023 e ANPD 2024)."
+      },
+      mecanica: "Quadro comparativo de 2 colunas categorizando a literatura técnica seminal e as diretrizes práticas e regulatórias de IA Generativa para consulta assíncrona.",
+      armadilhaComum: "Achar que prompting e LLMs funcionam por 'mágica', ignorando os fundamentos probabilísticos de autoatenção, tokenização e previsão autorregressiva comprovados cientificamente.",
+      faqAlunos: [
+        {
+          pergunta: "Esses artigos e guias estão disponíveis gratuitamente?",
+          resposta: "Sim, os artigos técnicos estão abertos no repositório arXiv e NeurIPS Proceedings, os guias da OpenAI e Anthropic são públicos, e as diretrizes da UNESCO e ANPD são de livre acesso."
+        }
+      ]
+    }
   }
 ];

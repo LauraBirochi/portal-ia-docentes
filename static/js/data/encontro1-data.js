@@ -1,5 +1,5 @@
 /**
- * Base de Dados Unificada – Módulo do Encontro 1 (32 Slides)
+ * Base de Dados Unificada – Módulo do Encontro 1 (33 Slides)
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  * 
  * ARQUIVO GERADO AUTOMATICAMENTE POR: scripts/build_data.py
@@ -173,6 +173,46 @@ const dossies = {
         link: "http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
       }
     ]
+  },
+
+  // Dossiê 5: Slides 18-26 (Desmistificação da IA, Autonomia e Governança Ética)
+  desmistificacaoKaufman: {
+    tipoDossie: "filosofico",
+    titulo: "Desmistificação da IA, Ilusão de Consciência e Governança Ética",
+    resumo: "A desconstrução crítica dos mitos de inteligência e consciência pela Profa. Dra. Dora Kaufman (PUC-SP) e as diretrizes globais da UNESCO sobre ética em IA.",
+    topicos: [
+      {
+        titulo: "1. A Opacidade Algorítmica e a Falácia da Consciência (Dora Kaufman)",
+        conteudo: "Dora Kaufman demonstra que sistemas de IA não pensam, não sentem e não possuem intencionalidade: operam por modelos estatísticos e reconhecimento de padrões em dados, exigindo que a sociedade compreenda suas limitações para evitar tanto o pânico infundado quanto a fé cega nas respostas automáticas."
+      },
+      {
+        titulo: "2. Autonomia Humana e a Recomendação da UNESCO (2021)",
+        conteudo: "A recomendação global da UNESCO estabelece que as tecnologias de IA devem sempre salvaguardar a agência e os direitos humanos, garantindo que decisões de impacto crítico permaneçam sob supervisão e responsabilidade humana indelegável."
+      }
+    ],
+    fontesCientificas: [
+      {
+        autor: "Kaufman, Dora (2022)",
+        titulo: "Desmistificando a Inteligência Artificial",
+        publicacao: "São Paulo: Autêntica (ISBN: 978-6559281589)",
+        relevancia: "Obra de referência nacional analisando a opacidade, governança e desconstrução de mitos em torno da IA.",
+        link: "https://loja.editora.unb.br/comunicacao/desmistificando-a-inteligencia-artificial-3068/p"
+      },
+      {
+        autor: "Kaufman, Dora (2019)",
+        titulo: "A Inteligência Artificial Irá nos Submeter aos seus Algoritmos?",
+        publicacao: "São Paulo: Planeta (ISBN: 978-85-422-1203-6)",
+        relevancia: "Exame das transformações da autonomia humana e do impacto social da mediação por algoritmos.",
+        link: "https://www.grupoplaneta.com.br/livro/a-inteligencia-artificial-ira-nos-submeter-aos-seus-algoritmos/"
+      },
+      {
+        autor: "UNESCO (2021)",
+        titulo: "Recommendation on the Ethics of Artificial Intelligence",
+        publicacao: "Paris: UNESCO",
+        relevancia: "Primeiro instrumento normativo global adotado por 193 países com princípios de supervisão e agência humana em IA.",
+        link: "https://unesdoc.unesco.org/ark:/48223/pf0000381137"
+      }
+    ]
   }
 };
 
@@ -243,7 +283,7 @@ const blocosTematicos = [
     icone: "💻",
     titulo: "Bloco 6: Laboratório Prático & Fechamento",
     subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
-    slidesRange: [30, 32],
+    slidesRange: [30, 33],
     tempoEstimado: "35 min"
   }
 ];
@@ -1209,6 +1249,60 @@ const slidesComNotas = [
       objetivoSlide: "Fechar o Encontro 1 com celebração, sensação de vitória pedagógica e grande expectativa para a oficina do ChatGPT.",
       oQueFalar: "Finalizem calorosamente: 'Parabéns a todos! Vocês deram hoje um passo fundamental. Desmistificamos a ficção, entendemos como a IA invisível funciona no nosso cotidiano, testamos o e-mail de todos e concluímos nossa avaliação diagnóstica. No dia 30 de outubro, traremos O Salto da IA Generativa: entenderemos o funcionamento das LLMs e abriremos os modelos na prática para criar nossos primeiros prompts no laboratório. Excelente semana a todos e até o Módulo 2!'",
       tempoSugerido: "5 minutos de encerramento"
+    }
+  },
+  {
+    numero: 33,
+    id: 33,
+    bloco: 6,
+    tipo: "comparativo",
+    categoria: "Referências Bibliográficas",
+    titulo: "Referências Bibliográficas & Leituras Recomendadas",
+    subtitulo: "Fontes seminais da computação, epistemologia da IA, desmistificação e marcos regulatórios no Brasil",
+    conducao: "Co-docência (Laura & Maria)",
+    colunas: [
+      {
+        tag: "🏛️ Marcos Históricos, Teoria & Epistemologia da IA",
+        icone: "📜",
+        tipo: "marrom",
+        bullet: "•",
+        itens: [
+          "Turing, Alan M. (1950) — Computing Machinery and Intelligence (Mind — Teste de Turing)",
+          "McCarthy et al. (1955/1956) — Proposal for Dartmouth Research Project (Criação do Termo IA)",
+          "Russell, S. & Norvig, P. (2020) — Artificial Intelligence: A Modern Approach (4th Ed. — Pearson)",
+          "Hofstadter, Douglas (1979) — Gödel, Escher, Bach (Teorema de Tesler: 'IA é o que ainda não foi feito')",
+          "McCorduck, Pamela (2004) — Machines Who Think (Análise Sociotécnica do 'Efeito IA')"
+        ]
+      },
+      {
+        tag: "🇧🇷 Desmistificação, Soberania & Governança Ética",
+        icone: "🛡️",
+        tipo: "positivo",
+        bullet: "•",
+        itens: [
+          "Kaufman, Dora (2022) — Desmistificando a Inteligência Artificial (Autêntica / PUC-SP)",
+          "Kaufman, Dora (2019) — A Inteligência Artificial Irá nos Submeter aos seus Algoritmos? (Planeta)",
+          "Governo Federal / MCTI (2024) — Plano Brasileiro de IA: 'IA para o Bem de Todos' (PBIA 2024–2028)",
+          "Senado Federal (2023/2024) — Marco Legal da IA (PL 2338/2023 — Classificação de Riscos)",
+          "Brasil (2018) / UNESCO (2021) — LGPD (Lei 13.709/2018) & Recomendação sobre Ética da IA"
+        ]
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "3 min (ou consulta assíncrona)",
+      objetivoSlide: "Apresentar as fontes primárias acadêmicas, livros clássicos e marcos legais que fundamentam os conceitos históricos, desmistificadores e regulatórios do Encontro 1.",
+      conceito: {
+        titulo: "Fundamentação Histórico-Crítica e Soberania Regulatória",
+        definicao: "Articulação de duas vertentes: de um lado, a epistemologia e história da computação (Turing, Dartmouth, Russell & Norvig, Tesler, McCorduck); de outro, o pensamento crítico brasileiro sobre IA e seus marcos legais (Dora Kaufman, PBIA, PL 2338, LGPD e UNESCO)."
+      },
+      mecanica: "Quadro comparativo de 2 colunas categorizando a literatura clássica fundacional e os marcos regulatórios/desmistificadores contemporâneos para consulta assíncrona dos participantes.",
+      armadilhaComum: "Achar que a IA começou recentemente com o marketing das big techs, sem compreender suas raízes científicas de 70 anos e as leis que resguardam a cidadania e a soberania nacional.",
+      faqAlunos: [
+        {
+          pergunta: "Onde posso ler o documento oficial do Plano Brasileiro de IA (PBIA)?",
+          resposta: "O documento completo de 2024–2028 do MCTI/CNDI está disponível no portal do governo e pode ser acessado pelo link na aba de materiais do curso."
+        }
+      ]
     }
   }
 ];

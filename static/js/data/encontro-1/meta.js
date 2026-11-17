@@ -64,7 +64,7 @@ export const blocosTematicos = [
     icone: "💻",
     titulo: "Bloco 6: Laboratório Prático & Fechamento",
     subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
-    slidesRange: [30, 32],
+    slidesRange: [30, 33],
     tempoEstimado: "35 min"
   }
 ];

@@ -160,5 +160,45 @@ export const dossies = {
         link: "http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
       }
     ]
+  },
+
+  // Dossiê 5: Slides 18-26 (Desmistificação da IA, Autonomia e Governança Ética)
+  desmistificacaoKaufman: {
+    tipoDossie: "filosofico",
+    titulo: "Desmistificação da IA, Ilusão de Consciência e Governança Ética",
+    resumo: "A desconstrução crítica dos mitos de inteligência e consciência pela Profa. Dra. Dora Kaufman (PUC-SP) e as diretrizes globais da UNESCO sobre ética em IA.",
+    topicos: [
+      {
+        titulo: "1. A Opacidade Algorítmica e a Falácia da Consciência (Dora Kaufman)",
+        conteudo: "Dora Kaufman demonstra que sistemas de IA não pensam, não sentem e não possuem intencionalidade: operam por modelos estatísticos e reconhecimento de padrões em dados, exigindo que a sociedade compreenda suas limitações para evitar tanto o pânico infundado quanto a fé cega nas respostas automáticas."
+      },
+      {
+        titulo: "2. Autonomia Humana e a Recomendação da UNESCO (2021)",
+        conteudo: "A recomendação global da UNESCO estabelece que as tecnologias de IA devem sempre salvaguardar a agência e os direitos humanos, garantindo que decisões de impacto crítico permaneçam sob supervisão e responsabilidade humana indelegável."
+      }
+    ],
+    fontesCientificas: [
+      {
+        autor: "Kaufman, Dora (2022)",
+        titulo: "Desmistificando a Inteligência Artificial",
+        publicacao: "São Paulo: Autêntica (ISBN: 978-6559281589)",
+        relevancia: "Obra de referência nacional analisando a opacidade, governança e desconstrução de mitos em torno da IA.",
+        link: "https://loja.editora.unb.br/comunicacao/desmistificando-a-inteligencia-artificial-3068/p"
+      },
+      {
+        autor: "Kaufman, Dora (2019)",
+        titulo: "A Inteligência Artificial Irá nos Submeter aos seus Algoritmos?",
+        publicacao: "São Paulo: Planeta (ISBN: 978-85-422-1203-6)",
+        relevancia: "Exame das transformações da autonomia humana e do impacto social da mediação por algoritmos.",
+        link: "https://www.grupoplaneta.com.br/livro/a-inteligencia-artificial-ira-nos-submeter-aos-seus-algoritmos/"
+      },
+      {
+        autor: "UNESCO (2021)",
+        titulo: "Recommendation on the Ethics of Artificial Intelligence",
+        publicacao: "Paris: UNESCO",
+        relevancia: "Primeiro instrumento normativo global adotado por 193 países com princípios de supervisão e agência humana em IA.",
+        link: "https://unesdoc.unesco.org/ark:/48223/pf0000381137"
+      }
+    ]
   }
 };

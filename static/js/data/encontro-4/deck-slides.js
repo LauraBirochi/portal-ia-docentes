@@ -1099,7 +1099,7 @@ export const slidesComNotas = [
     subtitulo: "Diretrizes práticas para consolidar o aprendizado na sua rotina",
     conclusao: "A qualidade e a utilidade da resposta da IA não dependem de tentar fazê-la parecer esperta, mas sim da clareza, especificidade e limitação do contexto humano que a orienta.",
     badge: "ENCONTRO 4 CONCLUÍDO COM SUCESSO!",
-    proximoEncontro: "Encontro 5 (20/11): Olhar Crítico e Oficina de Prompts",
+    proximoEncontro: "Encontro 5 (27/11): Ferramentas de IA na Prática",
     lembretesFinais: [
       "Tratei a IA como um estagiário inteligente no 1º dia (capacidade alta, contexto zero)?",
       "Estruturei meu pedido nos 4 blocos: Contexto, Tarefa, Formato e Restrições Negativas?",
