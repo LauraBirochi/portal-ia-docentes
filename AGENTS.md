@@ -82,6 +82,25 @@ Este arquivo contém as diretrizes principais, notas de alinhamento e instruçõ
 - **Calibração Tipográfica do Meio do Palco (Projetor HD):** Aumento das fontes de parágrafos gerais (`<p>`), itens de lista (`li`), passos de bancada e descrições dos cards no Encontro 4 (elevação de 1.12rem~1.45rem para 1.36rem~1.68rem / 21.8px~26.9px), preservando a escala dos grandes títulos e garantindo nitidez óptica sem pixelização ou overflow em 1920x1080.
 - **Infraestrutura Modular & PDF 16:9:** Compilado em `static/js/data/encontro4-data.js` via `python scripts/build_data.py 4` e exportado como PDF vetorial nativo em `static/pdf/slides-encontro-4.pdf`. Rota `/slides/4` e Cockpit `/encontro/4` ativos e 100% integrados.
 
+### 🎯 Encontro 5 (27/11)
+- **Tema:** *Ferramentas de IA na Prática – Perplexity, NotebookLM e Ecossistema Especializado.*
+- **Data Oficial:** Atualizada de `20/11` para **`27/11`** em `MEETINGS_DATA[5]` (`app.py`), metadados e slides.
+- **Paleta Óptica dos Slides (Clean Light):** Adoção do tema Clean Light widescreen 16:9 (`body[data-meeting="5"]` em `static/css/projector.css`), com fundo branco puro, tipografia de alto contraste Slate-900/Slate-700 e acentos funcionais azul/esmeralda/âmbar.
+- **Deck Consolidado (17 Slides):**
+  - *Bloco 1 (Slides 1 a 4) — Estritamente Preservados:* Slide 1 (Capa temática), Slide 2 (Etapa 1: As Ferramentas), Slide 3 (Metáfora dos 3 Especialistas: Conversador Geral vs. Pesquisador Web vs. Assistente Documental) e Slide 4 (Tabela Comparativa RAG Aberto vs. RAG Fechado).
+  - *Bloco 2 (Slides 5 a 8) — Perplexity na Prática (RAG Aberto):* Slide 5 (Recursos gratuitos do Perplexity), Slide 6 (Rótulos de fontes e anatomia das citações), Slide 7 (Duelo empírico factual ChatGPT vs. Perplexity) e Slide 8 (Oficina de bancada: Missão 1 - O Detetive de Fontes com Dontpad e timer de 15 min).
+  - *Bloco 3 (Slides 9 a 13) — NotebookLM na Prática (RAG Fechado):* Slide 9 (Conceito de caderno e limites gratuitos: até 50 fontes, 500k palavras/200MB), Slide 10 (Recursos do Studio: Guia de Estudo, FAQ, Briefing e Linha do Tempo), Slide 11 (Audio Overview: podcast com dois apresentadores e limites críticos), Slide 12 (Duelo empírico de análise documental ChatGPT vs. NotebookLM) e Slide 13 (Oficina de bancada: Missão 2 - Do PDF ao Guia e Áudio com timer de 20 min).
+  - *Bloco 4 (Slides 14 a 17) — Armadilhas, Ética UNESCO & Fechamento:* Slide 14 (Quadro comparativo das 6 armadilhas clássicas para iniciantes), Slide 15 (Transição de impacto: Integridade, Privacidade e Agência Humana), Slide 16 (Protocolo de bolso: As 4 Perguntas de Ouro antes de usar IA) e Slide 17 (Fechamento com documentações oficiais Perplexity, Google Labs e guias UNESCO).
+- **Ficha Técnica Conceitual Docente (Atalho N / Drawer de Notas):** Todos os 17 slides equipados com fichas técnicas estruturadas em 4 eixos (O Que É o Conceito, Mecânica do Slide, Armadilha Comum e Dúvidas dos Alunos).
+- **Submódulos Docentes e Cockpit:**
+  - `meta.js`: Configurado com os 4 blocos temáticos e metadados curriculares.
+  - `narrativa.js`: Objetivo central, mensagem-chave, os 3 Atos narrativos e 6 termos no glossário técnico.
+  - `atividades.js`: Roteiro das oficinas práticas de bancada Missão 1 e Missão 2 com plano B e critérios formativos.
+  - `faq-duvidas.js`: 7 dúvidas clássicas e armadilhas mapeadas pela pesquisa documental do Perplexity.
+  - `papeis.js`: Divisão equilibrada de co-docência minuto a minuto entre Laura e Maria nos 4 blocos (180 min totais).
+  - `dossies.js`: 3 dossiês aprofundados (`arquiteturaRAG`, `pesquisaAcademicaIA`, `diretrizesUNESCO`).
+- **Compilador e Integridade:** Bundle compilado via `python scripts/build_data.py 5` (`encontro5-data.js`), suite completa de 38 testes passando com sucesso. Regra #6 mantida: exportação de PDF (`scripts/export_pdf.py 5`) sob demanda expressa do usuário.
+
 ---
 
 ## 🤖 Instruções para Agentes de IA

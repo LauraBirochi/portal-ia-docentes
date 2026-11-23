@@ -132,6 +132,9 @@ function initProjectorEngine() {
     if (col.tipo === 'alerta' || col.tipo === 'vermelho') {
       return { colClass: 'col-alerta', bulletChar: col.bullet || '✕', defaultIcon: '⚠️' };
     }
+    if (col.tipo === 'azul' || col.tipo === 'blue') {
+      return { colClass: 'col-azul', bulletChar: col.bullet || '•', defaultIcon: '🔍' };
+    }
     if (col.classe) {
       const isPos = col.classe.includes('positivo');
       const isMid = col.classe.includes('marrom') || col.classe.includes('amber');
@@ -731,27 +734,39 @@ function initProjectorEngine() {
     'quadro-comparativo': (s) => {
       const cols = s.colunasTabela || ["Critério", "1. Prompt Vago", "2. Falso Bom Prompt", "3. Prompt Estruturado (C-T-F-R)"];
       const rows = s.linhasTabela || [];
+      const isFerramentas = s.estiloColunas === 'ferramentas';
+      const icons = s.iconesColunas || (isFerramentas ? ["💬", "🔍", "📓"] : ["❌", "⚠️", "✅"]);
+
+      const th1Style = isFerramentas
+        ? 'width: 28%; border-top: 3px solid #0284c7; background: rgba(2, 132, 199, 0.08); color: #0284c7;'
+        : 'width: 26%; border-top: 3px solid #ef4444; background: rgba(239, 68, 68, 0.08); color: var(--text-red);';
+      const th2Style = isFerramentas
+        ? 'width: 28%; border-top: 3px solid #0d9488; background: rgba(13, 148, 136, 0.08); color: #0d9488;'
+        : 'width: 28%; border-top: 3px solid #f59e0b; background: rgba(245, 158, 11, 0.08); color: var(--text-amber);';
+      const th3Style = isFerramentas
+        ? 'width: 28%; border-top: 3px solid #6366f1; background: rgba(99, 102, 241, 0.08); color: #6366f1;'
+        : 'width: 30%; border-top: 3px solid #10b981; background: rgba(16, 185, 129, 0.12); color: var(--text-green);';
 
       return `
-        <div class="layout-quadro-comparativo-wrap">
+        <div class="layout-quadro-comparativo-wrap ${isFerramentas ? 'quadro-ferramentas' : ''}">
           <div class="quadro-table-container">
-            <table class="quadro-comp-table">
+            <table class="quadro-comp-table ${isFerramentas ? 'quadro-ferramentas' : ''}">
               <thead>
                 <tr>
                   <th style="width: 16%; text-align: left;">${cols[0]}</th>
-                  <th style="width: 26%; border-top: 3px solid #ef4444; background: rgba(239, 68, 68, 0.08); color: var(--text-red);">
+                  <th style="${th1Style}">
                     <div style="display: flex; align-items: center; gap: 0.4rem; justify-content: center;">
-                      <span>❌</span> <span>${cols[1]}</span>
+                      <span>${icons[0]}</span> <span>${cols[1]}</span>
                     </div>
                   </th>
-                  <th style="width: 28%; border-top: 3px solid #f59e0b; background: rgba(245, 158, 11, 0.08); color: var(--text-amber);">
+                  <th style="${th2Style}">
                     <div style="display: flex; align-items: center; gap: 0.4rem; justify-content: center;">
-                      <span>⚠️</span> <span>${cols[2]}</span>
+                      <span>${icons[1]}</span> <span>${cols[2]}</span>
                     </div>
                   </th>
-                  <th style="width: 30%; border-top: 3px solid #10b981; background: rgba(16, 185, 129, 0.12); color: var(--text-green);">
+                  <th style="${th3Style}">
                     <div style="display: flex; align-items: center; gap: 0.4rem; justify-content: center;">
-                      <span>✅</span> <span>${cols[3]}</span>
+                      <span>${icons[2]}</span> <span>${cols[3]}</span>
                     </div>
                   </th>
                 </tr>
@@ -760,9 +775,9 @@ function initProjectorEngine() {
                 ${rows.map((r, idx) => `
                   <tr class="${idx % 2 === 0 ? 'row-even' : 'row-odd'}">
                     <td class="col-criterio"><strong>${r.criterio}</strong></td>
-                    <td class="col-vago">${r.vago}</td>
-                    <td class="col-falso">${r.falsoBom}</td>
-                    <td class="col-estruturado">${r.estruturado}</td>
+                    <td class="col-vago ${isFerramentas ? 'col-ferramenta-1' : ''}">${r.vago}</td>
+                    <td class="col-falso ${isFerramentas ? 'col-ferramenta-2' : ''}">${r.falsoBom}</td>
+                    <td class="col-estruturado ${isFerramentas ? 'col-ferramenta-3' : ''}">${r.estruturado}</td>
                   </tr>
                 `).join('')}
               </tbody>
