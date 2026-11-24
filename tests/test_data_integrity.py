@@ -275,7 +275,9 @@ class TestDataIntegrity(unittest.TestCase):
         m5 = app.MEETINGS_DATA.get(5)
         self.assertIsNotNone(m5)
         self.assertEqual(m5.get('date'), "27/11")
-        self.assertFalse(m5.get('isReady'))
+        self.assertTrue(m5.get('isReady'))
+        self.assertIn("Ferramentas de IA na Prática", m5.get('title'))
+        self.assertEqual(m5.get('statusBadge'), "🟢 Cockpit Liberado")
 
     def test_modulo3_inaccessible_redirect(self):
         """Valida que acessar diretamente as rotas do Módulo 3 redireciona para o dashboard."""

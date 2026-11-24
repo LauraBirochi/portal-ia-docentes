@@ -205,12 +205,12 @@ MEETINGS_DATA: Dict[int, Dict[str, Any]] = {
         "date": "27/11",
         "duration": "3 Horas Presenciais",
         "location": "Laboratório X",
-        "shortTitle": "Olhar Crítico & Auditoria",
-        "title": "Módulo 5 (27/11): Olhar Crítico e Oficina de Prompts – Alucinações, limitações, verificação de fatos e auditoria de respostas.",
-        "desc": "Oficina prática voltada à postura crítica diante da IA: identificação de alucinações, compreensão das limitações técnicas dos modelos, checagem de fatos e auditoria de respostas.",
-        "statusBadge": "⚪ Sequência",
-        "isReady": False,
-        "actionTip": "Encontro programado na sequência da grade curricular (32h)."
+        "shortTitle": "Ferramentas de IA",
+        "title": "Módulo 5 (27/11): Ferramentas de IA na Prática – Perplexity, NotebookLM e ecossistema especializado.",
+        "desc": "Diferenciação entre chatbots generalistas, RAG aberto na web (Perplexity) e RAG fechado em corpus documental (NotebookLM), com oficinas de bancada, armadilhas e diretrizes éticas da UNESCO.",
+        "statusBadge": "🟢 Cockpit Liberado",
+        "isReady": True,
+        "actionTip": "Módulo 5 estruturado com Fio da Meada, Projetor de Slides, Oficinas de Bancada e FAQ."
     },
     6: {
         "num": 6,
