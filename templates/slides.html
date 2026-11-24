@@ -25,7 +25,7 @@
 <body class="meeting-{{ meeting_id or 1 }}" data-meeting="{{ meeting_id or 1 }}">
 
   <!-- Topbar de Controles do Apresentador (CKW HUD de Palco) -->
-  <header class="projector-topbar" id="projector-topbar">
+  <header class="projector-topbar" id="projector-topbar" role="toolbar" aria-label="Controles do apresentador">
     <div class="projector-brand">
       <div class="brand-pill-module">
         <span class="brand-icon">✨</span>
@@ -37,32 +37,41 @@
 
     <div class="projector-controls">
       <!-- Cluster 1: Navegação de Slides (Segmented Capsule) -->
-      <div class="control-cluster nav-capsule">
-        <button class="btn-slide-nav btn-nav-arrow" id="btn-prev" title="Slide anterior (Atalho: ← ou PageUp)">
+      <div class="control-cluster nav-capsule" role="group" aria-label="Navegação entre slides">
+        <button class="btn-slide-nav btn-nav-arrow" id="btn-prev" title="Slide anterior (Atalho: ← ou PageUp)" aria-label="Slide anterior (Atalho: ← ou PageUp)">
           <span>←</span>
         </button>
-        <span id="slide-counter" class="slide-counter-badge" title="Slide atual / Total">1 / 32</span>
-        <button class="btn-slide-nav btn-next-primary btn-nav-arrow" id="btn-next" title="Próximo slide (Atalho: → ou Espaço)">
+        <span id="slide-counter" class="slide-counter-badge" title="Slide atual / Total" aria-live="polite" aria-atomic="true">1 / 32</span>
+        <button class="btn-slide-nav btn-next-primary btn-nav-arrow" id="btn-next" title="Próximo slide (Atalho: → ou Espaço)" aria-label="Próximo slide (Atalho: → ou Espaço)">
           <span>➔</span>
         </button>
       </div>
 
       <!-- Cluster 2: Ferramentas Docentes com Micro-Dot Indicador -->
-      <div class="control-cluster tools-cluster">
+      <div class="control-cluster tools-cluster" role="group" aria-label="Ferramentas pedagógicas">
         <button class="btn-slide-nav btn-tool btn-notes-toggle" id="btn-notes"
-          title="Abrir/Fechar notas pedagógicas da fala docente (Atalho: N)">
+          title="Abrir/Fechar notas pedagógicas da fala docente (Atalho: N)"
+          aria-label="Notas pedagógicas da fala docente (Atalho: N)"
+          aria-expanded="false"
+          aria-controls="notes-drawer">
           <span class="tool-icon">🎙️</span>
           <span class="btn-text-full">Notas</span>
           <span class="tool-active-dot" aria-hidden="true"></span>
         </button>
         <button class="btn-slide-nav btn-tool btn-questions-toggle" id="btn-questions"
-          title="Abrir/Fechar tela de perguntas e dúvidas da turma (Atalho: P)">
+          title="Abrir/Fechar tela de perguntas e dúvidas da turma (Atalho: P)"
+          aria-label="Tela de perguntas e dúvidas da turma (Atalho: P)"
+          aria-expanded="false"
+          aria-controls="questions-overlay">
           <span class="tool-icon">💬</span>
           <span class="btn-text-full">Perguntas</span>
           <span class="tool-active-dot" aria-hidden="true"></span>
         </button>
         <button class="btn-slide-nav btn-tool btn-interval-nav" id="btn-interval"
-          title="Abrir/Fechar tela de intervalo e café (Atalho: I)">
+          title="Abrir/Fechar tela de intervalo e café (Atalho: I)"
+          aria-label="Tela de intervalo e café (Atalho: I)"
+          aria-expanded="false"
+          aria-controls="interval-overlay">
           <span class="tool-icon">☕</span>
           <span class="btn-text-full">Intervalo</span>
           <span class="tool-active-dot" aria-hidden="true"></span>
@@ -70,11 +79,11 @@
       </div>
 
       <!-- Cluster 3: Utilitários de Palco (Tela Cheia & Fechar Isolado) -->
-      <div class="control-cluster utility-cluster">
-        <button class="btn-slide-nav btn-icon-only btn-fullscreen-toggle" id="btn-fullscreen" title="Modo Tela Cheia (Atalho: F)">
+      <div class="control-cluster utility-cluster" role="group" aria-label="Utilitários de visualização">
+        <button class="btn-slide-nav btn-icon-only btn-fullscreen-toggle" id="btn-fullscreen" title="Modo Tela Cheia (Atalho: F)" aria-label="Modo Tela Cheia (Atalho: F)">
           <span class="btn-icon">⛶</span>
         </button>
-        <button class="btn-slide-nav btn-icon-only btn-exit-nav" id="btn-close-projector" title="Fechar o projetor (Atalho: Esc)">
+        <button class="btn-slide-nav btn-icon-only btn-exit-nav" id="btn-close-projector" title="Fechar o projetor (Atalho: Esc)" aria-label="Fechar o projetor (Atalho: Esc)">
           <span class="btn-icon">✕</span>
         </button>
       </div>
@@ -96,27 +105,27 @@
   </main>
 
   <!-- Gaveta de Notas da Professora (Ativada com a Tecla N) -->
-  <div id="notes-drawer" class="presenter-notes-drawer">
+  <aside id="notes-drawer" class="presenter-notes-drawer" role="region" aria-label="Notas pedagógicas do apresentador">
     <div class="notes-drawer-header">
       <div class="notes-drawer-title">
         <span>🎙️</span>
         <span id="notes-title">Notas Pedagógicas do Slide</span>
       </div>
-      <button id="btn-close-notes" class="btn-slide-nav" style="padding: 0.25rem 0.75rem; font-size: 0.82rem;" title="Fechar notas (Atalho: Esc ou N)">✕ Fechar (N)</button>
+      <button id="btn-close-notes" class="btn-slide-nav" style="padding: 0.25rem 0.75rem; font-size: 0.82rem;" title="Fechar notas (Atalho: Esc ou N)" aria-label="Fechar notas (Atalho: Esc ou N)">✕ Fechar (N)</button>
     </div>
     <div id="notes-body" class="notes-drawer-content">
       <!-- Conteúdo da fala sugerida e tempo -->
     </div>
-  </div>
+  </aside>
 
   <!-- Overlay de Perguntas (Atalho: Tecla P) -->
-  <div id="questions-overlay" class="interval-overlay-stage" style="display: none;">
+  <div id="questions-overlay" class="interval-overlay-stage" role="dialog" aria-modal="true" aria-labelledby="questions-overlay-title" style="display: none;">
     <div class="interval-content-card">
       <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: -0.5rem;">
-        <button id="btn-close-questions" class="btn-slide-nav" style="padding: 0.35rem 0.8rem; font-size: 0.85rem;" title="Fechar perguntas (Atalho: Esc ou P)">✕ Fechar (P)</button>
+        <button id="btn-close-questions" class="btn-slide-nav" style="padding: 0.35rem 0.8rem; font-size: 0.85rem;" title="Fechar perguntas (Atalho: Esc ou P)" aria-label="Fechar perguntas (Atalho: Esc ou P)">✕ Fechar (P)</button>
       </div>
       <div class="interval-icon">❓</div>
-      <h2 class="interval-title">Perguntas??</h2>
+      <h2 class="interval-title" id="questions-overlay-title">Perguntas??</h2>
       <div class="interval-badge">Momento de Diálogo • Dúvidas & Reflexões da Turma</div>
 
       <div style="display: flex; justify-content: center; width: 100%; margin: 1rem 0;">
@@ -130,13 +139,13 @@
   </div>
 
   <!-- Overlay de Intervalo Pedagógico (Atalho: Tecla I) -->
-  <div id="interval-overlay" class="interval-overlay-stage" style="display: none;">
+  <div id="interval-overlay" class="interval-overlay-stage" role="dialog" aria-modal="true" aria-labelledby="interval-overlay-title" style="display: none;">
     <div class="interval-content-card">
       <div style="width: 100%; display: flex; justify-content: flex-end; margin-bottom: -0.5rem;">
-        <button id="btn-close-interval" class="btn-slide-nav" style="padding: 0.35rem 0.8rem; font-size: 0.85rem;" title="Fechar intervalo (Atalho: Esc ou I)">✕ Fechar (I)</button>
+        <button id="btn-close-interval" class="btn-slide-nav" style="padding: 0.35rem 0.8rem; font-size: 0.85rem;" title="Fechar intervalo (Atalho: Esc ou I)" aria-label="Fechar intervalo (Atalho: Esc ou I)">✕ Fechar (I)</button>
       </div>
       <div class="interval-icon">☕</div>
-      <h2 class="interval-title">Intervalo Pedagógico</h2>
+      <h2 class="interval-title" id="interval-overlay-title">Intervalo Pedagógico</h2>
       <div class="interval-badge">Pausa de 15 Minutos • Café & Descanso Cognitivo</div>
 
       <div class="interval-tips-grid">

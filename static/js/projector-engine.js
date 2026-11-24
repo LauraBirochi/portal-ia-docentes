@@ -497,11 +497,16 @@ function initProjectorEngine() {
               <span>📚</span> <span>Referências da Aula de Hoje:</span>
             </div>
             <div style="display: flex; flex-direction: column; gap: 0.55rem;">
-              ${s.referencias.map(ref => `
-                <a href="${ref}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-warm); font-family: var(--font-mono); font-size: 1.15rem; text-decoration: underline; word-break: break-all;">
-                  ${ref}
+              ${s.referencias.map(ref => {
+                const urlMatch = ref.match(/(https?:\/\/[^\s\)]+)/);
+                const url = urlMatch ? urlMatch[1] : ref;
+                const label = ref.replace(/\s*\((https?:\/\/[^\s\)]+)\)\s*/, ' — $1');
+                return `
+                <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-warm); font-family: var(--font-mono); font-size: 1.15rem; text-decoration: underline; word-break: break-all;">
+                  ${label}
                 </a>
-              `).join('')}
+              `;
+              }).join('')}
             </div>
           </div>
         ` : ''}
@@ -991,8 +996,9 @@ function initProjectorEngine() {
   }
 
   function toggleNotes() {
-    notesDrawer.classList.toggle('open');
-    btnNotes.classList.toggle('active');
+    const isOpen = notesDrawer.classList.toggle('open');
+    btnNotes.classList.toggle('active', isOpen);
+    btnNotes.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   }
 
   function toggleQuestions() {
@@ -1000,10 +1006,16 @@ function initProjectorEngine() {
     const isHidden = (questionsOverlay.style.display === 'none' || !questionsOverlay.style.display);
     if (isHidden && intervalOverlay && intervalOverlay.style.display === 'flex') {
       intervalOverlay.style.display = 'none';
-      if (btnInterval) btnInterval.classList.remove('active');
+      if (btnInterval) {
+        btnInterval.classList.remove('active');
+        btnInterval.setAttribute('aria-expanded', 'false');
+      }
     }
     questionsOverlay.style.display = isHidden ? 'flex' : 'none';
-    if (btnQuestions) btnQuestions.classList.toggle('active', isHidden);
+    if (btnQuestions) {
+      btnQuestions.classList.toggle('active', isHidden);
+      btnQuestions.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    }
   }
 
   function toggleInterval() {
@@ -1011,10 +1023,16 @@ function initProjectorEngine() {
     const isHidden = (intervalOverlay.style.display === 'none' || !intervalOverlay.style.display);
     if (isHidden && questionsOverlay && questionsOverlay.style.display === 'flex') {
       questionsOverlay.style.display = 'none';
-      if (btnQuestions) btnQuestions.classList.remove('active');
+      if (btnQuestions) {
+        btnQuestions.classList.remove('active');
+        btnQuestions.setAttribute('aria-expanded', 'false');
+      }
     }
     intervalOverlay.style.display = isHidden ? 'flex' : 'none';
-    if (btnInterval) btnInterval.classList.toggle('active', isHidden);
+    if (btnInterval) {
+      btnInterval.classList.toggle('active', isHidden);
+      btnInterval.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    }
   }
 
   btnNext.addEventListener('click', nextSlide);
