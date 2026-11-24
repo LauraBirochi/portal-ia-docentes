@@ -6,7 +6,11 @@
 function initProjectorEngine() {
   'use strict';
 
-  const data = window.CURSO_IA_CURRENT_DATA || window.ENCONTRO_1_DATA || {};
+  const meetingId = (document.body && document.body.getAttribute('data-meeting')) || '1';
+  const data = window.CURSO_IA_CURRENT_DATA ||
+               window['ENCONTRO_' + meetingId + '_DATA'] ||
+               window.ENCONTRO_1_DATA ||
+               {};
   const slides = Array.isArray(data.slidesComNotas) ? data.slidesComNotas : [];
   slides.forEach((s, idx) => {
     s.numero = idx + 1;
@@ -739,23 +743,31 @@ function initProjectorEngine() {
     'quadro-comparativo': (s) => {
       const cols = s.colunasTabela || ["Critério", "1. Prompt Vago", "2. Falso Bom Prompt", "3. Prompt Estruturado (C-T-F-R)"];
       const rows = s.linhasTabela || [];
-      const isFerramentas = s.estiloColunas === 'ferramentas';
-      const icons = s.iconesColunas || (isFerramentas ? ["💬", "🔍", "📓"] : ["❌", "⚠️", "✅"]);
+      const isArmadilhas = s.estiloColunas === 'armadilhas' || (s.iconesColunas && s.iconesColunas[0] === '⚠️');
+      const isFerramentas = s.estiloColunas === 'ferramentas' && !isArmadilhas;
+      const icons = s.iconesColunas || (isFerramentas ? ["💬", "🔍", "📓"] : (isArmadilhas ? ["⚠️", "🧠", "💡"] : ["❌", "⚠️", "✅"]));
 
-      const th1Style = isFerramentas
-        ? 'width: 28%; border-top: 3px solid #0284c7; background: rgba(2, 132, 199, 0.08); color: #0284c7;'
-        : 'width: 26%; border-top: 3px solid #ef4444; background: rgba(239, 68, 68, 0.08); color: var(--text-red);';
-      const th2Style = isFerramentas
-        ? 'width: 28%; border-top: 3px solid #0d9488; background: rgba(13, 148, 136, 0.08); color: #0d9488;'
-        : 'width: 28%; border-top: 3px solid #f59e0b; background: rgba(245, 158, 11, 0.08); color: var(--text-amber);';
-      const th3Style = isFerramentas
-        ? 'width: 28%; border-top: 3px solid #6366f1; background: rgba(99, 102, 241, 0.08); color: #6366f1;'
-        : 'width: 30%; border-top: 3px solid #10b981; background: rgba(16, 185, 129, 0.12); color: var(--text-green);';
+      let th1Style, th2Style, th3Style;
+      if (isArmadilhas) {
+        th1Style = 'width: 28%; border-top: 3px solid #ef4444; background: rgba(239, 68, 68, 0.08); color: var(--text-red);';
+        th2Style = 'width: 28%; border-top: 3px solid #f59e0b; background: rgba(245, 158, 11, 0.08); color: var(--text-amber);';
+        th3Style = 'width: 28%; border-top: 3px solid #10b981; background: rgba(16, 185, 129, 0.08); color: var(--text-green);';
+      } else if (isFerramentas) {
+        th1Style = 'width: 28%; border-top: 3px solid #f59e0b; background: rgba(245, 158, 11, 0.08); color: #d97706;';
+        th2Style = 'width: 28%; border-top: 3px solid #0284c7; background: rgba(2, 132, 199, 0.08); color: #0284c7;';
+        th3Style = 'width: 28%; border-top: 3px solid #10b981; background: rgba(16, 185, 129, 0.08); color: #047857;';
+      } else {
+        th1Style = 'width: 26%; border-top: 3px solid #ef4444; background: rgba(239, 68, 68, 0.08); color: var(--text-red);';
+        th2Style = 'width: 28%; border-top: 3px solid #f59e0b; background: rgba(245, 158, 11, 0.08); color: var(--text-amber);';
+        th3Style = 'width: 30%; border-top: 3px solid #10b981; background: rgba(16, 185, 129, 0.12); color: var(--text-green);';
+      }
+
+      const wrapClass = (isFerramentas || isArmadilhas) ? 'quadro-ferramentas' : '';
 
       return `
-        <div class="layout-quadro-comparativo-wrap ${isFerramentas ? 'quadro-ferramentas' : ''}">
+        <div class="layout-quadro-comparativo-wrap ${wrapClass}">
           <div class="quadro-table-container">
-            <table class="quadro-comp-table ${isFerramentas ? 'quadro-ferramentas' : ''}">
+            <table class="quadro-comp-table ${wrapClass}">
               <thead>
                 <tr>
                   <th style="width: 16%; text-align: left;">${cols[0]}</th>
@@ -780,9 +792,9 @@ function initProjectorEngine() {
                 ${rows.map((r, idx) => `
                   <tr class="${idx % 2 === 0 ? 'row-even' : 'row-odd'}">
                     <td class="col-criterio"><strong>${r.criterio}</strong></td>
-                    <td class="col-vago ${isFerramentas ? 'col-ferramenta-1' : ''}">${r.vago}</td>
-                    <td class="col-falso ${isFerramentas ? 'col-ferramenta-2' : ''}">${r.falsoBom}</td>
-                    <td class="col-estruturado ${isFerramentas ? 'col-ferramenta-3' : ''}">${r.estruturado}</td>
+                    <td class="col-vago ${wrapClass ? 'col-ferramenta-1' : ''}">${r.col1 || r.vago || ''}</td>
+                    <td class="col-falso ${wrapClass ? 'col-ferramenta-2' : ''}">${r.col2 || r.falsoBom || ''}</td>
+                    <td class="col-estruturado ${wrapClass ? 'col-ferramenta-3' : ''}">${r.col3 || r.estruturado || ''}</td>
                   </tr>
                 `).join('')}
               </tbody>
@@ -792,8 +804,6 @@ function initProjectorEngine() {
       `;
     }
   };
-
-  const meetingId = document.body.getAttribute('data-meeting') || '1';
 
   function buildSlideHTML(s, idx, totalSlides, currentMeetingId) {
     const renderer = SLIDE_RENDERERS[s.tipo];

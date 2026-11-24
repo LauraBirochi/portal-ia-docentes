@@ -37,7 +37,6 @@ export const slidesComNotas = [
       },
       mecanica: "Capa oficial do Encontro 5 no padrão Clean Light. Situa o aluno na transição do domínio de prompts no ChatGPT (Encontro 4) para a seleção estratégica de ferramentas gratuitas.",
       armadilhaComum: "O aluno acreditar que aprender ferramentas diferentes exige reaprender tudo do zero, quando na verdade os 4 blocos do C-T-F-R continuam sendo a base de comando.",
-      oQueFalar: "Na aula passada dominamos o ChatGPT com a estrutura C-T-F-R e vimos que precisávamos da trava [necessita verificação]. Hoje vamos dar um passo além: conhecer ferramentas gratuitas feitas para pesquisar com fontes reais e estudar seus próprios arquivos sem invenções.",
       faqAlunos: [
         {
           pergunta: "As ferramentas que veremos hoje são pagas ou funcionam na conta gratuita?",
@@ -61,7 +60,7 @@ export const slidesComNotas = [
       { tipo: "real", texto: "🔍 Perplexity: Pesquisar na Web" },
       { tipo: "real", texto: "📓 NotebookLM: Dominar Seus Arquivos" }
     ],
-    conducao: "Co-docência (Laura & Maria)",
+    conducao: "Condução: Laura",
     notasProfessora: {
       tempoSugerido: "5 min (00:05 - 00:10)",
       objetivoSlide: "Provocar a turma a superar a visão de 'IA = ChatGPT' e apresentar a tríade inicial de ferramentas do encontro.",
@@ -71,7 +70,6 @@ export const slidesComNotas = [
       },
       mecanica: "Slide de transição de etapa com metáfora visual do martelo e 3 pílulas horizontais sintetizando os papéis de ChatGPT, Perplexity e NotebookLM.",
       armadilhaComum: "Usar o ChatGPT como substituto direto do Google para dados factuais recentes e depois se frustrar com links quebrados ou dados inventados.",
-      oQueFalar: "Lembram que no Encontro 4 precisávamos colocar a trava [necessita verificação] sempre que pedíamos fatos reais ao ChatGPT? Hoje vamos abrir nossa caixa de ferramentas especializadas e descobrir qual IA usar em cada situação.",
       faqAlunos: [
         {
           pergunta: "Se o ChatGPT já tem botão de busca na internet hoje, por que ainda precisamos do Perplexity e do NotebookLM?",
@@ -88,7 +86,7 @@ export const slidesComNotas = [
     categoria: "Etapa 1 • As Ferramentas",
     titulo: "Os 3 Especialistas: Quem Faz o Quê na Sua Rotina?",
     subtitulo: "Entenda o modo de trabalho de cada ferramenta antes de digitar seu comando",
-    conducao: "Co-docência (Laura & Maria)",
+    conducao: "Condução: Maria",
     colunas: [
       {
         tag: "💬 ChatGPT: O Roteirista Criativo",
@@ -133,7 +131,6 @@ export const slidesComNotas = [
       },
       mecanica: "Layout comparativo em 3 colunas coloridas por identidade funcional: Âmbar (ChatGPT / criação), Azul Real (Perplexity / web ao vivo) e Esmeralda (NotebookLM / documentos ancorados).",
       armadilhaComum: "Achar que o NotebookLM vai 'pesquisar no Google' informações que faltam no PDF enviado, ou esperar que o Perplexity escreva longos textos literários criativos no estilo do ChatGPT.",
-      oQueFalar: "Pensem neles como 3 especialistas diferentes na sua equipe: o ChatGPT é o roteirista que trabalha de cabeça; o Perplexity é o detetive que vai na rua checar os sites ao vivo; e o NotebookLM é o bibliotecário que tranca a porta e só responde olhando os seus PDFs.",
       faqAlunos: [
         {
           pergunta: "Se eu subir um arquivo errado no NotebookLM, ele percebe ou usa o dado errado?",
@@ -212,7 +209,6 @@ export const slidesComNotas = [
       },
       mecanica: "Quadro comparativo lado a lado com 7 linhas de alta legibilidade em 16:9, utilizando código de cores por especialista (Âmbar para ChatGPT, Azul Real para Perplexity e Esmeralda para NotebookLM).",
       armadilhaComum: "Encarar as ferramentas como rivais ('qual é a melhor de todas?') em vez de peças complementares de um mesmo fluxo de trabalho.",
-      oQueFalar: "Não existe uma única ferramenta campeã em tudo. Quando precisar pesquisar fatos reais na web, abra o Perplexity; quando precisar estudar um PDF ou edital sem erro, jogue no NotebookLM; quando precisar redigir ou estruturar a entrega final, leve para o ChatGPT.",
       faqAlunos: [
         {
           pergunta: "Eu posso combinar as três ferramentas na mesma tarefa?",
@@ -260,7 +256,6 @@ export const slidesComNotas = [
       },
       mecanica: "Sequência de 3 cards ilustrando os 3 passos: Entrada humana em linguagem natural -> Recuperação ativa de fontes na internet -> Síntese com citações numeradas clicáveis.",
       armadilhaComum: "Achar que o Perplexity é apenas um 'Google tradicional com texto em cima'. A diferença é que ele lê os sites inteiros para você e sintetiza a resposta direta com rastreabilidade.",
-      oQueFalar: "Observem a diferença: o ChatGPT tenta lembrar o que leu meses atrás. O Perplexity corre na internet no segundo em que você aperta Enter, lê várias páginas e devolve o resumo dizendo exatamente onde achou cada dado.",
       faqAlunos: [
         {
           pergunta: "O Perplexity consegue ler páginas que exigem assinatura ou senha?",
@@ -304,7 +299,6 @@ export const slidesComNotas = [
       },
       mecanica: "Grid de 3 cards destacando o modo Pro Search (para perguntas que exigem pesquisa em várias etapas), o seletor Focus (Academic vs. Web) e a leitura dos rótulos de procedência das fontes.",
       armadilhaComum: "Gastar todos os Pro Searches gratuitos em perguntas simples de 'sim ou não' ou fatos triviais que a busca padrão gratuita resolve perfeitamente.",
-      oQueFalar: "No plano gratuito temos buscas normais ilimitadas e algumas buscas Pro diárias. Usem a busca normal para o dia a dia e guardem o Pro Search para quando estiverem montando um trabalho acadêmico ou relatório de peso.",
       faqAlunos: [
         {
           pergunta: "O que muda ao ativar o filtro 'Academic'?",
@@ -355,7 +349,6 @@ export const slidesComNotas = [
       },
       mecanica: "Quadro comparativo de dois lados: o erro de confundir link com verdade vs. os 3 passos do protocolo crítico de conferência.",
       armadilhaComum: "Achar que ter um link de artigo científico encerra a discussão, sem perceber que artigos antigos ou preliminares podem ter sido refutados pela comunidade.",
-      oQueFalar: "Cuidado: a IA achou um link real, mas quem garante que aquela página diz a verdade ou que a IA não distorceu uma frase? O trabalho do detetive só termina quando você clica e confere o original com seus próprios olhos.",
       faqAlunos: [
         {
           pergunta: "A Perplexity já foi pega citando links que não diziam exatamente o que ela escreveu?",
@@ -387,7 +380,7 @@ export const slidesComNotas = [
       desc: "Experimente a transição prática entre uma resposta plausível gerada de memória e uma síntese com links reais auditáveis.",
       tagAviso: "RAG Aberto & Checagem Factual"
     },
-    conducao: "Co-docência (Laura e Maria circulando pelas mesas)",
+    conducao: "Co-docência (Laura & Maria)",
     notasProfessora: {
       tempoSugerido: "15 min (01:10 - 01:25)",
       objetivoSlide: "Conduzir a Missão 1 de bancada no laboratório, garantindo que cada aluno abra e confira ao menos um link real no Perplexity.",
@@ -397,7 +390,6 @@ export const slidesComNotas = [
       },
       mecanica: "Roteiro de 5 passos no laboratório. As professoras circulam conferindo se os alunos conseguiram ativar o filtro de foco e abrir a aba da fonte primária.",
       armadilhaComum: "O aluno apenas ler a tela do Perplexity sem clicar no link [1] para ver a página original.",
-      oQueFalar: "Todo mundo abrindo o perplexity.ai no navegador. Podem logar com a conta Google. Escolham uma afirmação comum e vamos ver se a ciência confirma ou se é mito de internet!",
       faqAlunos: [
         {
           pergunta: "Preciso pagar para usar o filtro Academic?",
@@ -445,7 +437,6 @@ export const slidesComNotas = [
       },
       mecanica: "Sequência visual de 3 etapas demonstrando a barreira contra a internet aberta: upload dos documentos do aluno -> resposta 100% ancorada -> destaque visual no parágrafo original.",
       armadilhaComum: "Achar que o NotebookLM vai atualizar o arquivo sozinho se ele mudar no Google Drive. As fontes importadas são cópias estáticas no momento do envio.",
-      oQueFalar: "Aqui a lógica muda completamente: enquanto o Perplexity abre a porta para a internet inteira, o NotebookLM tranca a porta. Ele vira o seu bibliotecário pessoal: ele só fala do que está dentro dos arquivos que você colocou na mesa dele.",
       faqAlunos: [
         {
           pergunta: "Quantos documentos posso colocar em um caderno gratuito?",
@@ -489,7 +480,6 @@ export const slidesComNotas = [
       },
       mecanica: "3 cards práticos explicando a navegação da tela: o clique na citação que leva ao texto original, o filtro por caixas de seleção (checkboxes) e o guia do documento gerado na hora.",
       armadilhaComum: "Deixar 20 PDFs marcados com temas totalmente diferentes e fazer uma pergunta genérica, fazendo a IA misturar conceitos de matérias distintas.",
-      oQueFalar: "Vejam que recurso fantástico: você não precisa ler 80 páginas procurando uma linha. Você pergunta no chat, ele responde e você clica no número: o PDF abre ao lado com o texto pintado de amarelo para você conferir.",
       faqAlunos: [
         {
           pergunta: "Posso colocar links de vídeos do YouTube como fonte?",
@@ -539,7 +529,6 @@ export const slidesComNotas = [
       },
       mecanica: "Grid de 4 cards ilustrando os 4 grandes artefatos do painel Studio. Destaque especial para a geração do Audio Overview e do Guia de Estudo.",
       armadilhaComum: "Achar que o podcast é gerado instantaneamente como uma resposta de chat. Ele exige processamento de voz e leva de 2 a 5 minutos para ficar pronto.",
-      oQueFalar: "O painel Studio é onde a mágica acontece. Você joga a apostila e pede um Guia de Estudo para testar seus conhecimentos, ou clica em Audio Overview e vai ouvindo o podcast no ônibus enquanto volta para casa.",
       faqAlunos: [
         {
           pergunta: "O podcast funciona em português?",
@@ -590,7 +579,6 @@ export const slidesComNotas = [
       },
       mecanica: "Quadro comparativo de dois lados: equívocos comuns no uso do NotebookLM vs. boas práticas de alimentação documental e privacidade.",
       armadilhaComum: "Achar que carregar um único PDF desatualizado é suficiente para ter uma visão completa e moderna sobre um tema complexo.",
-      oQueFalar: "Lembrem-se: o NotebookLM é tão bom quanto os arquivos que você colocar nele. Se você subir um texto enviesado ou incompleto, a resposta dele será enviesada ou incompleta. E nunca subam documentos confidenciais com dados pessoais!",
       faqAlunos: [
         {
           pergunta: "A Google usa os documentos que eu subo no NotebookLM para treinar os modelos dela?",
@@ -622,7 +610,7 @@ export const slidesComNotas = [
       desc: "Transforme um documento estático em um espaço interativo de estudo com citações linha a linha, guia de perguntas e áudio.",
       tagAviso: "RAG Fechado & Painel Studio"
     },
-    conducao: "Co-docência (Laura e Maria circulando pelas mesas)",
+    conducao: "Co-docência (Laura & Maria)",
     notasProfessora: {
       tempoSugerido: "20 min (02:05 - 02:25)",
       objetivoSlide: "Conduzir a Missão 2 de bancada, garantindo que cada participante consiga subir um arquivo, fazer uma pergunta ancorada e gerar um output no Studio.",
@@ -632,7 +620,6 @@ export const slidesComNotas = [
       },
       mecanica: "Slide de bancada com 5 passos claros. As professoras auxiliam na conexão da conta Google e na exploração do painel Studio.",
       armadilhaComum: "Ficar esperando o áudio na tela sem fazer outras perguntas no chat. Explique que o áudio renderiza em segundo plano na nuvem enquanto eles podem continuar conversando com o PDF.",
-      oQueFalar: "Todos no notebooklm.google.com! Vamos criar o caderno e subir o documento da aula. Reparem como ao clicar nas citações o texto do PDF acende na tela ao lado. E não deixem de colocar o áudio para gerar!",
       faqAlunos: [
         {
           pergunta: "Posso fechar a aba enquanto o áudio está gerando?",
@@ -650,7 +637,7 @@ export const slidesComNotas = [
     id: 14,
     bloco: 4,
     tipo: "quadro-comparativo",
-    estiloColunas: "ferramentas",
+    estiloColunas: "armadilhas",
     iconesColunas: ["⚠️", "🧠", "💡"],
     categoria: "Etapa 4 • Armadilhas & Pensamento Crítico",
     titulo: "Quadro de Armadilhas: Evite os 6 Erros Clássicos de Iniciante",
@@ -709,7 +696,6 @@ export const slidesComNotas = [
       },
       mecanica: "Tabela comparativa de 4 colunas analisando 6 armadilhas clássicas lado a lado (Ação do usuário -> Por que dá errado -> Como corrigir).",
       armadilhaComum: "Achar que basta aprender a ferramenta uma vez para não cometer mais esses erros. Essas armadilhas decorrem da pressa do dia a dia.",
-      oQueFalar: "Reparem como a maioria desses erros vem da pressa. Quando vocês sentirem a tentação de copiar direto sem abrir a fonte, lembrem-se desta tabela. É ela que separa o amador de quem usa IA com postura profissional.",
       faqAlunos: [
         {
           pergunta: "Qual dessas 6 armadilhas é a mais perigosa na prática?",
@@ -735,7 +721,7 @@ export const slidesComNotas = [
       { tipo: "real", texto: "🔍 Curadoria & Checagem Ativa" },
       { tipo: "real", texto: "🛡️ Agência Humana Inegociável" }
     ],
-    conducao: "Co-docência (Laura & Maria)",
+    conducao: "Condução: Laura",
     notasProfessora: {
       tempoSugerido: "10 min (02:35 - 02:45)",
       objetivoSlide: "Fundamentar a postura ética do curso nas diretrizes internacionais da UNESCO para uso de IA na educação e pesquisa.",
@@ -745,7 +731,6 @@ export const slidesComNotas = [
       },
       mecanica: "Slide solene de transição conceitual destacando a citação da UNESCO e as 3 pílulas de princípio ético do curso.",
       armadilhaComum: "Achar que ter ferramentas eficientes significa ler menos. O objetivo da IA é nos poupar do trabalho mecânico de busca para sobrar mais tempo para a reflexão profunda.",
-      oQueFalar: "A UNESCO deixa um recado muito claro para todos nós: a IA pode resumir, encontrar links e montar podcasts, mas ela não pensa por nós. A responsabilidade por qualquer trabalho entregue é sempre do ser humano que assina embaixo.",
       faqAlunos: [
         {
           pergunta: "O que a UNESCO recomenda sobre o uso de IA por alunos em sala de aula?",
@@ -762,7 +747,7 @@ export const slidesComNotas = [
     categoria: "Etapa 4 • Síntese Prática",
     titulo: "Checklist de Bolso: Qual Ferramenta Abrir?",
     subtitulo: "Três perguntas simples para escolher o especialista certo antes de iniciar qualquer tarefa",
-    conducao: "Co-docência (Laura & Maria)",
+    conducao: "Condução: Maria",
     itensDestaque: [
       {
         icone: "💬",
@@ -789,7 +774,6 @@ export const slidesComNotas = [
       },
       mecanica: "3 cards de síntese em formato de pergunta direta e ação correspondente em cada uma das ferramentas exploradas.",
       armadilhaComum: "Tentar memorizar nomes técnicos de modelos e versões em vez de memorizar a finalidade prática de cada plataforma.",
-      oQueFalar: "Gravem este slide no celular ou na memória. Quando sentarem no computador para trabalhar: vou criar do zero? ChatGPT. Vou pesquisar dados reais na web? Perplexity. Vou estudar um PDF meu? NotebookLM.",
       faqAlunos: [
         {
           pergunta: "Posso manter as três abas abertas no navegador durante o trabalho?",
@@ -832,7 +816,6 @@ export const slidesComNotas = [
       },
       mecanica: "Slide de encerramento com badge comemorativa, frase-síntese de impacto, 5 perguntas de autoavaliação e links das referências oficiais.",
       armadilhaComum: "Achar que o curso terminou aqui. O Encontro 6 amarrará como proteger seus dados pessoais na LGPD e comparar modelos avançados.",
-      oQueFalar: "Parabéns a todos! Hoje quebramos a barreira de usar apenas o ChatGPT. Vocês agora dominam o Perplexity para buscar evidências reais e o NotebookLM para estudar qualquer documento com tranquilidade. Na próxima aula, vamos falar de privacidade, LGPD e comparar grandes modelos!",
       faqAlunos: [
         {
           pergunta: "Os cadernos que criamos no NotebookLM continuam salvos para a próxima aula?",
