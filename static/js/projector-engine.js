@@ -440,7 +440,7 @@ function initProjectorEngine() {
                 <span>🚀</span>
                 <span>Roteiro Prático no Computador</span>
               </div>
-              <span class="tempo-chip">⏱️ ${s.tempoEstimado || '25 min'}</span>
+              ${(s.tempoEstimado === null || s.tempoEstimado === '') ? '' : `<span class="tempo-chip">⏱️ ${s.tempoEstimado || '25 min'}</span>`}
             </div>
             <div class="diagnostica-steps-list">
               ${(s.passos || []).map((p, idx) => `

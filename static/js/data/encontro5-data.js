@@ -1,5 +1,5 @@
 /**
- * Base de Dados Unificada – Módulo do Encontro 5 (21 Slides)
+ * Base de Dados Unificada – Módulo do Encontro 5 (23 Slides)
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  * 
  * ARQUIVO GERADO AUTOMATICAMENTE POR: scripts/build_data.py
@@ -251,7 +251,7 @@ const slidesComNotas = [
     categoria: "Etapa 1 • As Ferramentas",
     titulo: "Os 3 Especialistas: Adequação à Tarefa e Tipo de Evidência",
     subtitulo: "A escolha depende da tarefa e da evidência necessária, não de uma especialização rígida absoluta",
-    conducao: "Condução: Maria",
+    conducao: "Condução: Laura",
     colunas: [
       {
         tag: "💬 ChatGPT: Raciocínio & Estruturação",
@@ -364,7 +364,7 @@ const slidesComNotas = [
         estruturado: "\"Preciso estudar e organizar os materiais que selecionei\""
       }
     ],
-    conducao: "Condução: Maria",
+    conducao: "Condução: Laura",
     notasProfessora: {
       tempoSugerido: "15 min (00:25 - 00:40)",
       objetivoSlide: "Consolidar a matriz comparativa explícita em 7 dimensões cruciais: fonte primária, atualização, verificabilidade, risco principal, privacidade, tarefas ideais e regra de bolso.",
@@ -831,7 +831,7 @@ const slidesComNotas = [
   },
 
   // =========================================================================
-  // BLOCO 4: ARMADILHAS, ÉTICA UNESCO & FECHAMENTO (Slides 17 a 21)
+  // BLOCO 4: ARMADILHAS, ÉTICA UNESCO & FECHAMENTO (Slides 17 a 23)
   // =========================================================================
   {
     numero: 17,
@@ -887,7 +887,7 @@ const slidesComNotas = [
         estruturado: "Trate a IA como andaime cognitivo; a decisão é intransferível"
       }
     ],
-    conducao: "Co-docência (Laura & Maria)",
+    conducao: "Condução: Maria",
     notasProfessora: {
       tempoSugerido: "15 min (02:20 - 02:35)",
       objetivoSlide: "Sistematizar os 6 erros típicos observados na prática com o ecossistema de ferramentas e fixar posturas corretivas operacionais.",
@@ -909,34 +909,43 @@ const slidesComNotas = [
     numero: 18,
     id: 18,
     bloco: 4,
-    tipo: "secao",
-    categoria: "Etapa 4 • Governança & Ética UNESCO",
-    badge: "DIRETRIZES DA UNESCO • ABORDAGEM CENTRADA NO SER HUMANO",
-    titulo: "A IA Não Substitui a Leitura: Ela Organiza o Caminho Até Ela",
-    citacao: "A inteligência artificial generativa na educação e na pesquisa exige uma abordagem centrada no ser humano: protegendo a agência humana, a inclusão, a equidade, a diversidade linguística e cultural e a validação ética e pedagógica.",
-    autor: "UNESCO (2023–2024)",
-    autorDesc: "Guidance for Generative AI in Education and Research",
-    subtitulo: "A IA pode organizar o caminho para a leitura, mas não pode assumir a responsabilidade pela compreensão, pela validação das fontes ou pela autoria.",
-    pills: [
-      { tipo: "real", texto: "🧭 Abordagem Centrada no Humano" },
-      { tipo: "real", texto: "🛡️ Proteção da Agência Humana" },
-      { tipo: "real", texto: "🌐 Inclusão & Diversidade Cultural" },
-      { tipo: "real", texto: "⚖️ Validação Ética & Pedagógica" }
+    tipo: "missao-diagnostica",
+    ocultarPresenterPill: true,
+    categoria: "Prática de Bancada • Missão 4",
+    titulo: "Fato ou Informação Duvidosa?",
+    subtitulo: "Investigue uma afirmação, encontre evidências e construa seu próprio veredito.",
+    tempoEstimado: null,
+    passos: [
+      "1. Escolha: Selecione uma afirmação da lista de investigação.",
+      "2. Investigue: Use o Perplexity para pesquisar e encontrar fontes confiáveis.",
+      "3. Organize: Reúna as fontes no NotebookLM e questione as evidências.",
+      "4. Verifique: Identifique fatos, limitações e possíveis informações enganosas.",
+      "5. Conclua: Registre seu veredito e compartilhe uma descoberta."
     ],
-    conducao: "Condução: Laura",
+    destaqueDiagnostica: {
+      icone: "🔎",
+      titulo: "Não aceite de primeira!",
+      desc: "Uma afirmação convincente não significa que ela seja verdadeira. Investigue antes de concluir.",
+      tagAviso: "Verifique as evidências, não apenas a resposta da IA."
+    },
+    conducao: "Co-docência (Laura & Maria)",
     notasProfessora: {
-      tempoSugerido: "10 min (02:35 - 02:45)",
-      objetivoSlide: "Fundamentar a postura ética do curso nas diretrizes internacionais da UNESCO para uso de IA generativa na educação e pesquisa.",
+      tempoSugerido: "20 min (atividade após o Slide 17)",
+      objetivoSlide: "Desenvolver o pensamento crítico e a capacidade de utilizar prompts para investigar afirmações, confrontar evidências e avaliar informações geradas por IA.",
       conceito: {
-        titulo: "Abordagem Centrada no Ser Humano e Diretrizes da UNESCO",
-        definicao: "Conforme preconizado pela UNESCO (2023), o uso de IAGen deve obedecer a cinco pilares: (1) abordagem centrada no ser humano, (2) proteção intransferível da agência humana e da autonomia pedagógica, (3) garantia de inclusão e equidade, (4) respeito à diversidade linguística e cultural, e (5) validação ética e pedagógica prévia antes de qualquer adoção curricular."
+        titulo: "Investigação crítica assistida por IA",
+        definicao: "A IA pode apoiar a pesquisa, síntese e interpretação de informações, mas suas respostas não constituem evidências por si só. A investigação exige consulta às fontes originais, avaliação de credibilidade, contextualização e reconhecimento de incertezas. O aluno deve assumir a responsabilidade pelo veredito, utilizando as ferramentas como apoio, não como substitutas de seu julgamento."
       },
-      mecanica: "Slide solene de transição conceitual destacando a citação oficial da UNESCO e as 4 pílulas com os pilares normativos de governança.",
-      armadilhaComum: "Achar que ter ferramentas eficientes significa ler menos. O objetivo da IA é nos poupar do trabalho mecânico de busca para sobrar mais tempo para a reflexão profunda.",
+      mecanica: "Laura apresenta a missão e orienta a escolha das afirmações. Maria acompanha a pesquisa no Perplexity, incentivando prompts que solicitem evidências, fontes e explicações. Em seguida, os alunos transferem as fontes para o NotebookLM, questionam os documentos e formulam um veredito. Observar se consultam as fontes originais, refinam perguntas e diferenciam evidência de opinião. Ao final, solicitar breves compartilhamentos.",
+      armadilhaComum: "Os alunos podem copiar a primeira resposta do Perplexity ou considerar o NotebookLM confiável apenas porque respondeu com citações. Intervir solicitando que abram a fonte original, verifiquem se ela realmente sustenta a afirmação e identifiquem possíveis limitações, contradições ou ausência de evidências.",
       faqAlunos: [
         {
-          pergunta: "O que a UNESCO recomenda sobre o uso de IA por alunos em sala de aula?",
-          resposta: "A UNESCO recomenda que as ferramentas sejam usadas para estimular o questionamento crítico, a inclusão e o debate, e jamais para terceirizar a reflexão ou entregar trabalhos sem compreensão do conteúdo."
+          pergunta: "Se a IA encontrou uma fonte, significa que a informação é verdadeira?",
+          resposta: "Não. A fonte precisa ser aberta e verificada. Confira autoria, contexto e se o conteúdo realmente sustenta a afirmação investigada."
+        },
+        {
+          pergunta: "E se encontrarmos fontes que discordam?",
+          resposta: "Compare a qualidade, a metodologia, a data e as evidências de cada fonte. Registre a divergência e explique por que sua conclusão é mais sustentada, sem forçar uma resposta definitiva."
         }
       ]
     }
@@ -944,6 +953,103 @@ const slidesComNotas = [
   {
     numero: 19,
     id: 19,
+    bloco: 4,
+    tipo: "apresentacao",
+    layout: "grid-4cards",
+    categoria: "Etapa 4 • Governança & Ética UNESCO",
+    titulo: "Diretrizes da UNESCO (2023): O Que Muda na Nossa Bancada",
+    subtitulo: "Os pilares do \"Guidance for Generative AI in Education and Research\" aplicados ao ChatGPT, Perplexity e NotebookLM",
+    conducao: "Condução: Laura",
+    itensDestaque: [
+      {
+        icone: "🧭",
+        titulo: "1. Agência Humana Intransferível",
+        desc: "A IA organiza buscas no Perplexity e materiais no NotebookLM, mas a leitura, a verificação das fontes e a autoria do veredito continuam sendo suas."
+      },
+      {
+        icone: "🛡️",
+        titulo: "2. Privacidade & Proteção de Dados",
+        desc: "Não envie dados pessoais, identificáveis ou institucionais sensíveis para a nuvem sem base legal e autorização — cuidado direto com a LGPD."
+      },
+      {
+        icone: "🌐",
+        titulo: "3. Inclusão, Equidade & Diversidade",
+        desc: "Priorizar ferramentas com acesso gratuito (sem barreiras financeiras) e manter atenção a vieses de idioma, cultura e contexto nas respostas."
+      },
+      {
+        icone: "⚖️",
+        titulo: "4. Validação Ética e Pedagógica",
+        desc: "Não adotar respostas ou áudios/guias gerados pela IA no piloto automático; conferir se a ferramenta é adequada ao objetivo e às evidências exigidas."
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "8 min (02:35 - 02:43)",
+      objetivoSlide: "Traduzir as diretrizes do guia UNESCO (2023) em regras concretas de bancada para o uso de ChatGPT, Perplexity e NotebookLM.",
+      conceito: {
+        titulo: "Abordagem Centrada no Ser Humano (UNESCO, 2023)",
+        definicao: "O guia 'Guidance for Generative AI in Education and Research' estabelece que o uso de IA generativa na educação deve proteger a agência humana, garantir inclusão e equidade, preservar a diversidade linguística e cultural, proteger dados pessoais e passar por validação ética e pedagógica antes de ser adotado."
+      },
+      mecanica: "Grid de 4 cards conectando diretamente cada pilar da UNESCO (2023) ao que a turma acabou de praticar com Perplexity, NotebookLM e ChatGPT.",
+      armadilhaComum: "Achar que ética da IA é um debate abstrato distante da prática, quando ela se traduz em decisões concretas: não subir CPF de terceiros e não delegar o julgamento final à máquina.",
+      faqAlunos: [
+        {
+          pergunta: "O que a UNESCO recomenda sobre o uso de IA por alunos em sala de aula?",
+          resposta: "A UNESCO recomenda usar a IA para apoiar o questionamento crítico, a inclusão e a compreensão ativa, e nunca para terceirizar a leitura ou entregar respostas sem validação."
+        }
+      ]
+    }
+  },
+  {
+    numero: 20,
+    id: 20,
+    bloco: 4,
+    tipo: "comparativo",
+    categoria: "Etapa 4 • Competências UNESCO (2024)",
+    titulo: "UNESCO (2024): As 4 Dimensões de Competência em IA",
+    subtitulo: "O que o \"AI Competency Framework\" (Estudantes e Docentes) espera de quem usa IA no dia a dia",
+    conducao: "Condução: Laura",
+    colunas: [
+      {
+        tag: "🧠 Mentalidade & Ética (Por que e com quais limites?)",
+        icone: "🧭",
+        tipo: "azul",
+        bullet: "•",
+        itens: [
+          "Mentalidade centrada no ser humano: saber decidir quando vale a pena usar a IA e quando é melhor pensar e ler sem ela, sem terceirizar sua decisão.",
+          "Ética da IA: proteger dados pessoais (LGPD) e direitos autorais, reconhecer limitações e possíveis vieses e assumir responsabilidade pelo resultado final."
+        ]
+      },
+      {
+        tag: "🛠️ Domínio Prático & Uso Crítico (Como usar bem?)",
+        icone: "⚙️",
+        tipo: "positivo",
+        bullet: "✓",
+        itens: [
+          "Entender como cada ferramenta trabalha: diferenciar quando a IA responde pelo que já aprendeu (ChatGPT), busca na internet (Perplexity) ou usa só seus arquivos (NotebookLM).",
+          "Combinar ferramentas e conferir fontes: escolher a opção certa para cada tarefa, checar citações em 4 passos e conferir se o PDF está legível (OCR)."
+        ]
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "7 min (02:43 - 02:50)",
+      objetivoSlide: "Apresentar de forma simples as quatro dimensões do framework de competências da UNESCO (2024) para estudantes e docentes, conectando-as às ferramentas vistas no encontro.",
+      conceito: {
+        titulo: "AI Competency Framework for Students & Teachers (UNESCO, 2024)",
+        definicao: "Os referenciais de 2024 organizam a formação em IA em quatro grandes eixos complementares: mentalidade centrada no ser humano, ética da IA, compreensão das técnicas/aplicações e desenho de uso prático no cotidiano."
+      },
+      mecanica: "Quadro comparativo de 2 colunas com linguagem acessível e livre de jargões técnicos, traduzindo os dois frameworks da UNESCO (2024) para a rotina dos alunos.",
+      armadilhaComum: "Achar que competência em IA significa apenas saber decorar comandos ou nomes de ferramentas, esquecendo o senso crítico, a ética e a escolha da ferramenta certa.",
+      faqAlunos: [
+        {
+          pergunta: "Esses guias da UNESCO servem só para professores ou para alunos também?",
+          resposta: "A UNESCO publicou em 2024 dois documentos complementares: um focado nas competências para estudantes e outro para docentes — ambos reforçam autonomia, ética e uso crítico."
+        }
+      ]
+    }
+  },
+  {
+    numero: 21,
+    id: 21,
     bloco: 4,
     tipo: "apresentacao",
     categoria: "Etapa 4 • Síntese Prática",
@@ -968,11 +1074,11 @@ const slidesComNotas = [
       }
     ],
     notasProfessora: {
-      tempoSugerido: "5 min (02:45 - 02:50)",
+      tempoSugerido: "5 min (02:50 - 02:55)",
       objetivoSlide: "Fornecer uma regra mnemônica de sobrevivência para a rotina diária dos alunos após o término da aula.",
       conceito: {
         titulo: "Heurística de Decisão Rápida para Seleção de Ferramentas",
-        definicao: "Regra heurística de bolso que reduz a sobrecarga de escolha do usuário: classificar a intenção da tarefa em Criação/Estruturação (Chatbot), Verificação na Web Aberta (Search RAG) ou Domínio de Corpus Próprio (Grounded Workspace)."
+        definicao: "Regra prática de bolso que reduz a dúvida na hora de começar uma tarefa: identificar se o objetivo é escrever/organizar ideias (ChatGPT), investigar na web com fontes (Perplexity) ou estudar arquivos selecionados (NotebookLM)."
       },
       mecanica: "3 cards de síntese em formato de pergunta direta e ação correspondente em cada uma das ferramentas exploradas.",
       armadilhaComum: "Tentar memorizar nomes técnicos de modelos e versões em vez de memorizar a finalidade prática de cada plataforma.",
@@ -985,33 +1091,46 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 20,
-    id: 20,
+    numero: 22,
+    id: 22,
     bloco: 4,
-    tipo: "fechamento",
-    categoria: "Fechamento & Consolidação",
-    titulo: "Fechamento do Encontro 5: O Ecossistema na Prática",
-    subtitulo: "Consolidação dos aprendizados do dia e preparação para o Encontro 6",
-    badge: "MÓDULO 5 CONCLUÍDO COM SUCESSO!",
-    conclusao: "Use o Perplexity para encontrar e checar, o NotebookLM para estudar o que você escolheu e o ChatGPT para conversar, criar e reformular — sempre conferindo as fontes antes de decidir.",
-    proximoEncontro: "Encontro 6 (04/12): Refinamento Contínuo e Uso Responsável (Comparação entre Modelos, LGPD e Vieses)",
-    lembretesFinais: [
-      "Testei a mesma pergunta no ChatGPT e no Perplexity para contrastar raciocínio e fontes?",
-      "Apliquei os 4 passos do protocolo para auditar se o link [1] realmente sustentava a frase?",
-      "Criei meu primeiro caderno no NotebookLM e explorei o destaque de citação no PDF?",
-      "Usei os recursos do Studio como andaimes de estudo, lembrando que não substituem o texto original?",
-      "Lembrei das regras da UNESCO e da LGPD: abordagem centrada no ser humano e proteção de dados de terceiros?"
-    ],
+    tipo: "apresentacao",
+    layout: "grid-4cards",
+    categoria: "Fechamento & Escolha da Turma",
+    titulo: "Vocês escolhem a próxima aula do dia 04/12, nossa penúltima",
+    subtitulo: "Escolha qual tema vocês querem aprofundar no nosso próximo encontro",
     conducao: "Co-docência (Laura & Maria)",
-    notasProfessora: {
-      tempoSugerido: "5 min (02:50 - 02:55)",
-      objetivoSlide: "Encerrar o encontro celebrando o domínio prático do ecossistema de ferramentas, consolidar autoavaliação e fazer a ponte para o Módulo 6.",
-      conceito: {
-        titulo: "Consolidação Curricular e Autoavaliação Formativa",
-        definicao: "Fechamento formativo que valida as competências adquiridas nas oficinas de bancada, estimula a metacognição através de um checklist reflexivo e prepara o terreno para os debates de privacidade, governança e LGPD do próximo encontro."
+    itensDestaque: [
+      {
+        icone: "🛠️",
+        titulo: "1. Prática Integrada com as 3 Ferramentas",
+        desc: "Mão na massa combinando ChatGPT + NotebookLM + Perplexity em desafios práticos passo a passo."
       },
-      mecanica: "Slide solene de encerramento com badge comemorativa, frase-síntese de impacto, card do próximo encontro e 5 perguntas de autoavaliação formativa.",
-      armadilhaComum: "Achar que o curso terminou aqui. O Encontro 6 amarrará como proteger seus dados pessoais na LGPD e comparar modelos avançados.",
+      {
+        icone: "🤖",
+        titulo: "2. Conhecer Mais Ferramentas de IA",
+        desc: "Explorar Claude, Gemini e outros modelos: no que cada um é melhor e comparativo lado a lado."
+      },
+      {
+        icone: "🎨",
+        titulo: "3. IAs para Criação Visual e Apresentações",
+        desc: "Produzir imagens, slides e materiais visuais com soluções gratuitas na prática."
+      },
+      {
+        icone: "💡",
+        titulo: "4. Oficina Aberta com Desafios da Turma",
+        desc: "Trazer um problema ou projeto real do seu dia a dia (trabalho ou estudo) para resolvermos juntos."
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "5 min (02:55 - 03:00)",
+      objetivoSlide: "Abrir votação rápida para os alunos escolherem o tema da penúltima aula (dia 04/12) entre as 4 opções exibidas.",
+      conceito: {
+        titulo: "Encerramento Participativo e Curadoria Centrada no Estudante",
+        definicao: "Em alinhamento com a abordagem centrada no ser humano, envolver a turma na escolha do Encontro 6 aumenta o engajamento e direciona a penúltima aula para a necessidade prática mais votada pelo grupo."
+      },
+      mecanica: "Apresentar somente as 4 opções na tela e conduzir votação rápida com a turma (mãos levantadas ou registro no Dontpad), anotando o tema vencedor.",
+      armadilhaComum: "Deixar o encerramento corrido sem registrar claramente qual opção venceu a votação da turma.",
       faqAlunos: [
         {
           pergunta: "Os cadernos que criamos no NotebookLM continuam salvos para a próxima aula?",
@@ -1021,53 +1140,53 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 21,
-    id: 21,
+    numero: 23,
+    id: 23,
     bloco: 4,
     tipo: "comparativo",
     categoria: "Referências Bibliográficas",
     titulo: "Referências Bibliográficas & Leituras Recomendadas",
-    subtitulo: "Fundamentação técnica e marcos regulatórios: guias oficiais da Perplexity, Google, UNESCO e ANPD",
+    subtitulo: "Fontes oficiais e primárias citadas ao longo do Encontro 5: OpenAI, Perplexity, Google, UNESCO e LGPD",
     conducao: "Co-docência (Laura & Maria)",
     colunas: [
       {
-        tag: "🛠️ Documentações Oficiais de Ferramentas",
+        tag: "🛠️ Documentações Oficiais das Ferramentas",
         icone: "📖",
         tipo: "azul",
         bullet: "•",
         itens: [
-          "Perplexity AI — Help Center: How Perplexity Works, Verification & Source Labels",
-          "Perplexity AI — Help Center: How Perplexity Works, Verification & Citation Architecture",
-          "Google Support — Google NotebookLM Sources, Studio & Audio Overviews",
-          "Google Labs — Grounded Generation, Context Pruning & Privacy Controls"
+          "OpenAI Help Center — <a href=\"https://help.openai.com/en/articles/9237897-conducting-your-searches-on-searchgpt\" target=\"_blank\" rel=\"noopener noreferrer\">Busca na Web com ChatGPT</a> & <a href=\"https://help.openai.com/en/articles/7730893-data-controls-faq\" target=\"_blank\" rel=\"noopener noreferrer\">Controles de Dados (Opt-Out)</a>",
+          "Perplexity AI — <a href=\"https://www.perplexity.ai/help-center/pt-BR/articles/10352895-como-o-perplexity-funciona\" target=\"_blank\" rel=\"noopener noreferrer\">Help Center: Como o Perplexity Funciona e Citações</a>",
+          "Google NotebookLM — <a href=\"https://support.google.com/notebooklm/answer/16164461?hl=pt-BR\" target=\"_blank\" rel=\"noopener noreferrer\">Respostas Fundamentadas e Fontes</a> & <a href=\"https://support.google.com/notebooklm/answer/16215270?hl=pt-BR\" target=\"_blank\" rel=\"noopener noreferrer\">Limites do Plano Gratuito</a>",
+          "Google NotebookLM — <a href=\"https://support.google.com/notebooklm/answer/16213268?hl=en&visit_id=638937446223760309-759331358&rd=1\" target=\"_blank\" rel=\"noopener noreferrer\">Painel Studio</a> & <a href=\"https://support.google.com/gemininotebook/answer/16269187?hl=pt-BR\" target=\"_blank\" rel=\"noopener noreferrer\">FAQ Oficial</a>"
         ]
       },
       {
-        tag: "🏛️ Governança, Ética & Diretrizes Oficiais",
+        tag: "🏛️ Privacidade, Diretrizes UNESCO & Legislação",
         icone: "⚖️",
         tipo: "positivo",
         bullet: "✓",
         itens: [
-          "UNESCO (2023) — Guidance for Generative AI in Education and Research (Abordagem centrada no ser humano, agência, inclusão e ética)",
-          "UNESCO (2024) — AI Competency Framework for Students and Teachers",
-          "ANPD (2024) — Guia Orientativo: Tratamento de Dados Pessoais e Inteligência Artificial",
-          "Brasil (Lei 13.709/2018) — LGPD: Regras de Consentimento e Proteção de Dados de Terceiros"
+          "Google — <a href=\"https://policies.google.com/privacy?hl=pt-BR\" target=\"_blank\" rel=\"noopener noreferrer\">Política de Privacidade</a> & <a href=\"https://edu.google.com/intl/ALL_br/privacy/\" target=\"_blank\" rel=\"noopener noreferrer\">Workspace for Education Privacy</a>",
+          "UNESCO (2023) — <a href=\"https://unesdoc.unesco.org/ark:/48223/pf0000390241\" target=\"_blank\" rel=\"noopener noreferrer\">Guia para a IA Generativa na Educação e Pesquisa</a> (<a href=\"https://unesdoc.unesco.org/ark:/48223/pf0000386693.locale=en\" target=\"_blank\" rel=\"noopener noreferrer\">EN</a>)",
+          "UNESCO (2024) — AI Competency Framework (<a href=\"https://unesdoc.unesco.org/ark:/48223/pf0000391105\" target=\"_blank\" rel=\"noopener noreferrer\">Estudantes</a> & <a href=\"https://unesdoc.unesco.org/ark:/48223/pf0000391104\" target=\"_blank\" rel=\"noopener noreferrer\">Docentes</a>)",
+          "Brasil — <a href=\"https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm\" target=\"_blank\" rel=\"noopener noreferrer\">Lei nº 13.709/2018 (LGPD — Proteção de Dados Pessoais)</a>"
         ]
       }
     ],
     notasProfessora: {
-      tempoSugerido: "5 min (02:55 - 03:00)",
-      objetivoSlide: "Apresentar a fundamentação acadêmica, técnica e regulatória oficial que ancora o uso responsável do ecossistema de ferramentas.",
+      tempoSugerido: "3 min (ou consulta assíncrona)",
+      objetivoSlide: "Apresentar exclusivamente as fontes oficiais e documentos primários diretamente citados nos slides do Encontro 5.",
       conceito: {
-        titulo: "Fundamentação Técnica Oficial e Conformidade Regulatória",
-        definicao: "Adoção rigorosa de fontes primárias de documentação dos mantenedores de tecnologia e marcos internacionais (UNESCO) e nacionais (ANPD/LGPD) para respaldar o letramento em IA em ambiente educacional público."
+        titulo: "Rastreabilidade Curricular das Fontes do Encontro 5",
+        definicao: "Seleção fiel de referências primárias vinculadas ponto a ponto ao conteúdo apresentado na aula: documentação oficial de ChatGPT/OpenAI, Perplexity e Google NotebookLM, política de privacidade e Google Workspace for Education, diretrizes da UNESCO (2023 e 2024) e texto legal da LGPD."
       },
-      mecanica: "Layout comparativo de 2 colunas em Clean Light: Azul Real para manuais técnicos de ferramentas e Esmeralda para marcos éticos e regulatórios da UNESCO e ANPD.",
-      armadilhaComum: "Achar que as referências são apenas teóricas; elas contêm as diretrizes exatas de como a IA deve ser implementada em sala de aula de acordo com a legislação brasileira.",
+      mecanica: "Layout comparativo de 2 colunas (4 itens por lado) com links clicáveis diretos para consulta após a aula.",
+      armadilhaComum: "Listar referências genéricas que não foram efetivamente trabalhadas na aula; este quadro reúne apenas as fontes correspondentes aos slides apresentados.",
       faqAlunos: [
         {
           pergunta: "Onde posso acessar esses guias e links oficiais?",
-          resposta: "Todos os links e documentos completos estão disponibilizados com acesso direto no Cockpit Docente e no Dontpad da turma."
+          resposta: "Todos os títulos deste slide funcionam como links clicáveis diretos no projetor e no PDF exportado, além de ficarem disponíveis no Dontpad da turma."
         }
       ]
     }
@@ -1081,41 +1200,41 @@ const slidesComNotas = [
  */
 
 const oficinaPratica = {
-  titulo: "Oficina de Bancada: Do Detetive da Web ao Bibliotecário de Arquivos",
-  duracao: "40 min em Laboratório (Missão 1: Perplexity • Missão 2: NotebookLM)",
+  titulo: "Oficina de Bancada: Fato ou Informação Duvidosa?",
+  duracao: "20 min em Laboratório (Investigação no Perplexity + NotebookLM)",
   peso: "Instrumento Formativo e Prático (Rubrica de 3 Pontos no Portfólio Digital)",
-  objetivo: "Capacitar o participante a escolher a ferramenta certa para cada desafio: realizar buscas na web com links auditáveis (Perplexity) e converter documentos estáticos em recursos interativos de estudo fundamentados nas fontes (NotebookLM).",
+  objetivo: "Desenvolver o pensamento crítico e a capacidade de utilizar prompts para investigar afirmações no Perplexity, organizar evidências no NotebookLM, confrontar fontes originais e construir um veredito fundamentado.",
 
   situacaoProblema: {
-    contexto: "No dia a dia acadêmico e profissional, precisamos tanto investigar informações atualizadas na web aberta quanto estudar documentos extensos sem que a IA invente dados de fora. Confiar cegamente em um número de citação [1] ou em um resumo em áudio sem conferir o texto original pode levar a erros graves.",
-    missao: "Executar duas missões práticas de bancada: (1) Investigar uma dúvida prática no Perplexity aplicando o Protocolo de Auditoria em 4 Passos sobre a fonte citada; e (2) Criar um caderno fundamentado em fontes próprias no Google NotebookLM, auditando os trechos originais e testando os artefatos de estudo do painel Studio."
+    contexto: "Na internet, muitas afirmações são compartilhadas como fatos, mesmo quando são incompletas, exageradas ou não possuem comprovação suficiente. Como diferenciar informação confiável de conteúdo duvidoso?",
+    missao: "Investigue uma afirmação usando Perplexity e NotebookLM. Confronte as informações encontradas, avalie as fontes e produza um veredito fundamentado em evidências."
   },
 
   comoExecutar: [
     {
       etapa: 1,
-      titulo: "Missão 1 (Perplexity | 5 min) — Pergunta Prática e Leitura das Fontes",
-      desc: "Escolha uma dúvida cotidiana ou do curso (ex.: regras institucionais, documentos para renovação, recomendações oficiais). Faça a pergunta no Perplexity e observe a resposta, as citações numeradas [1], [2] e os links de origem antes de copiar qualquer trecho."
+      titulo: "Escolha sua afirmação",
+      desc: "Selecione uma afirmação da lista disponibilizada pelas professoras. Não pesquise a resposta antecipadamente."
     },
     {
       etapa: 2,
-      titulo: "Missão 1 (Auditoria | 10 min) — Protocolo de Conferência e Veredito",
-      desc: "Abra uma fonte citada e verifique: Quem publicou? Quando? A página realmente sustenta o que o Perplexity afirmou? Registre o veredito ('Confirmada / Parcialmente confirmada / Não confirmada pela fonte') e compartilhe com a turma."
+      titulo: "Investigue no Perplexity",
+      desc: "Pesquise a afirmação. Solicite explicações, evidências, fontes confiáveis e possíveis contrapontos."
     },
     {
       etapa: 3,
-      titulo: "Missão 2 (NotebookLM | 5 min) — Criação do Caderno e Checagem de OCR",
-      desc: "Acesse notebooklm.google.com, crie um caderno e importe um PDF autorizado com texto selecionável (OCR) ou link público. Atenção à LGPD: nunca envie dados pessoais de terceiros sem base legal e autorização institucional."
+      titulo: "Reúna no NotebookLM",
+      desc: "Adicione as fontes encontradas e pergunte o que elas comprovam, quais limitações possuem e se existem divergências."
     },
     {
       etapa: 4,
-      titulo: "Missão 2 (Ancoragem | 10 min) — Interrogação e Rastreabilidade por Citações",
-      desc: "Pergunte no chat: 'Quais são as três ideias centrais deste material? Indique os trechos de onde tirou cada uma.' Clique nos marcadores numéricos das citações para conferir o destaque direto no trecho original do documento."
+      titulo: "Analise e formule o veredito",
+      desc: "Classifique a afirmação como verdadeira, falsa, parcialmente verdadeira ou inconclusiva. Justifique com evidências."
     },
     {
       etapa: 5,
-      titulo: "Missão 2 (Painel Studio | 10 min) — Artefatos de Estudo e Revisão",
-      desc: "Gere um 'Guia de Estudo' ou 'Audio Overview' no painel Studio como andaime de revisão e compare com o texto original para identificar eventuais simplificações."
+      titulo: "Registre sua descoberta",
+      desc: "Produza um breve registro com a afirmação, o veredito, duas evidências e as fontes consultadas."
     }
   ],
 
@@ -1139,33 +1258,35 @@ const oficinaPratica = {
 
   criteriosAvaliacao: [
     {
-      criterio: "1. Auditoria Crítica de Fontes (Perplexity)",
-      ponto1: "Aceitou a resposta da IA sem clicar nos links ou confiou cegamente apenas na presença da citação.",
-      ponto2: "Clicou no link [1], mas apenas conferiu superficialmente sem confrontar a afirmação.",
-      ponto3: "Aplicou o protocolo de 4 passos: checou autor/data, validou a frase e triangulou com fonte independente."
+      criterio: "Qualidade da investigação",
+      ponto1: "Pesquisa superficial, sem evidências verificadas.",
+      ponto2: "Pesquisa com evidências, mas verificação parcial das fontes.",
+      ponto3: "Pesquisa consistente, fontes verificadas e análise crítica das evidências."
     },
     {
-      criterio: "2. Ancoragem e Governança no NotebookLM",
-      ponto1: "Subiu arquivos desordenados ou com dados pessoais de terceiros sem base legal ou orientação institucional.",
-      ponto2: "Carregou fontes e conversou no chat, mas tratou o áudio/resumo como verdade pronta sem ler o texto ou checar citações.",
-      ponto3: "Dominou a navegação por citações, respeitou as regras de LGPD de terceiros e usou o Studio como andaime de revisão temporário."
+      criterio: "Uso do prompting",
+      ponto1: "Prompts genéricos, sem direcionamento ou refinamento.",
+      ponto2: "Prompts contextualizados, com solicitações parcialmente estruturadas.",
+      ponto3: "Prompts claros e direcionados, solicitando evidências, explicações e contrapontos."
     },
     {
-      criterio: "3. Abordagem Centrada no Humano (UNESCO)",
-      ponto1: "Tratou as ferramentas com divisão rígida ou terceirizou a decisão crítica e autoral para a IA.",
-      ponto2: "Compreendeu a adequação à tarefa, mas ainda tem dúvidas sobre quando aplicar supervisão humana.",
-      ponto3: "Aplica com autonomia a regra de adequação à tarefa e tipo de evidência, mantendo a agência humana inegociável."
+      criterio: "Conclusão fundamentada",
+      ponto1: "Veredito sem justificativa ou baseado apenas na resposta da IA.",
+      ponto2: "Veredito com justificativa, mas pouco relacionado às fontes.",
+      ponto3: "Veredito coerente, sustentado por evidências e reconhecimento de limitações."
     }
   ],
 
   diretrizesDocentes: [
-    "Circulação ativa da dupla: Laura orienta o protocolo de 4 passos e triangulação no Perplexity, e Maria apoia o upload, ancoragem e Studio no NotebookLM.",
-    "Acolhimento e verificação de OCR: orientar alunos a testar se conseguem selecionar texto no PDF com o mouse antes de carregar no caderno.",
-    "Rigor com LGPD e dados de terceiros: alertar explicitamente para não subirem prontuários, dados de pesquisa identificáveis, atas com CPFs ou gravações de aula sem base legal e autorização institucional.",
-    "Postura com artefatos do Studio: lembrar que o áudio e os resumos são andaimes temporários de revisão que podem comprimir nuances."
+    "Disponibilizar previamente uma lista de afirmações para investigação, evitando temas sensíveis, informações pessoais ou conteúdos que possam expor os alunos.",
+    "Orientar os alunos a verificar as fontes originais, não apenas os resumos ou citações apresentados pelas IAs.",
+    "Incentivar a elaboração e o refinamento de prompts, sem fornecer comandos prontos para todas as etapas.",
+    "Reforçar que as ferramentas são auxiliares e que o veredito deve ser construído pelos alunos, com autonomia, senso crítico e responsabilidade.",
+    "Não inserir dados pessoais, documentos privados ou informações identificáveis de terceiros nas ferramentas.",
+    "Priorizar fontes científicas, institucionais, acadêmicas e especializadas, considerando autoria, data, contexto e qualidade das evidências."
   ],
 
-  planoB: "Se o áudio do Studio demorar ou não carregar no idioma desejado, orientar a pedir no chat 'um resumo estruturado de revisão em tópicos'. Se a internet do laboratório oscilar ou houver bloqueio de login Google, as professoras projetam a demonstração ao vivo no telão e os alunos realizam o teste de busca no Duck.ai (que roda sem login) ou trabalham com PDFs baixados localmente."
+  planoB: "Se o Perplexity estiver indisponível, realizar a investigação com pesquisa manual em buscadores e selecionar duas fontes confiáveis. Se o NotebookLM falhar, ler e comparar as fontes diretamente, registrando evidências, divergências e veredito em um documento ou bloco de notas local. A missão e os critérios de investigação permanecem os mesmos, independentemente das ferramentas."
 };
 
   // 5. Perguntas dos Alunos e Dúvidas Frequentes
@@ -1257,7 +1378,7 @@ const divisaoPapeis = [
   },
   {
     bloco: "Bloco 4 (02:20 - 03:00)",
-    tema: "Quadro das 6 Armadilhas, Diretrizes UNESCO, Checklist de Bolso e Fechamento (Slides 17 a 21)",
+    tema: "Quadro das 6 Armadilhas, Oficina 'Fato ou Informação Duvidosa?', Diretrizes e Competências UNESCO (2023/2024), Checklist de Bolso e Votação do Encontro 6 (Slides 17 a 23)",
     papel: "ambas"
   }
 ];

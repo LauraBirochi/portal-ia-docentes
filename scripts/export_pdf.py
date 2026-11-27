@@ -169,13 +169,15 @@ def generate_slides_pdf(meeting_id: int = 1, output_path: str = None, base_url: 
             body[data-meeting="2"] #slide-container.slide-card {
                 background: #0f172a !important;
             }
-            body[data-meeting="4"] {
+            body[data-meeting="4"], body[data-meeting="5"] {
                 background: #ffffff !important;
             }
-            body[data-meeting="4"] #deck-viewport {
+            body[data-meeting="4"] #deck-viewport,
+            body[data-meeting="5"] #deck-viewport {
                 background: #f8fafc !important;
             }
-            body[data-meeting="4"] #slide-container.slide-card {
+            body[data-meeting="4"] #slide-container.slide-card,
+            body[data-meeting="5"] #slide-container.slide-card {
                 background: #ffffff !important;
             }
         """)

@@ -28,7 +28,7 @@ export const divisaoPapeis = [
   },
   {
     bloco: "Bloco 4 (02:20 - 03:00)",
-    tema: "Quadro das 6 Armadilhas, Diretrizes UNESCO, Checklist de Bolso e Fechamento (Slides 17 a 21)",
+    tema: "Quadro das 6 Armadilhas, Oficina 'Fato ou Informação Duvidosa?', Diretrizes e Competências UNESCO (2023/2024), Checklist de Bolso e Votação do Encontro 6 (Slides 17 a 23)",
     papel: "ambas"
   }
 ];

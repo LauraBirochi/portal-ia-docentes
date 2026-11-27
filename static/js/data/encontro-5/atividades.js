@@ -4,41 +4,41 @@
  */
 
 export const oficinaPratica = {
-  titulo: "Oficina de Bancada: Do Detetive da Web ao Bibliotecário de Arquivos",
-  duracao: "40 min em Laboratório (Missão 1: Perplexity • Missão 2: NotebookLM)",
+  titulo: "Oficina de Bancada: Fato ou Informação Duvidosa?",
+  duracao: "20 min em Laboratório (Investigação no Perplexity + NotebookLM)",
   peso: "Instrumento Formativo e Prático (Rubrica de 3 Pontos no Portfólio Digital)",
-  objetivo: "Capacitar o participante a escolher a ferramenta certa para cada desafio: realizar buscas na web com links auditáveis (Perplexity) e converter documentos estáticos em recursos interativos de estudo fundamentados nas fontes (NotebookLM).",
+  objetivo: "Desenvolver o pensamento crítico e a capacidade de utilizar prompts para investigar afirmações no Perplexity, organizar evidências no NotebookLM, confrontar fontes originais e construir um veredito fundamentado.",
 
   situacaoProblema: {
-    contexto: "No dia a dia acadêmico e profissional, precisamos tanto investigar informações atualizadas na web aberta quanto estudar documentos extensos sem que a IA invente dados de fora. Confiar cegamente em um número de citação [1] ou em um resumo em áudio sem conferir o texto original pode levar a erros graves.",
-    missao: "Executar duas missões práticas de bancada: (1) Investigar uma dúvida prática no Perplexity aplicando o Protocolo de Auditoria em 4 Passos sobre a fonte citada; e (2) Criar um caderno fundamentado em fontes próprias no Google NotebookLM, auditando os trechos originais e testando os artefatos de estudo do painel Studio."
+    contexto: "Na internet, muitas afirmações são compartilhadas como fatos, mesmo quando são incompletas, exageradas ou não possuem comprovação suficiente. Como diferenciar informação confiável de conteúdo duvidoso?",
+    missao: "Investigue uma afirmação usando Perplexity e NotebookLM. Confronte as informações encontradas, avalie as fontes e produza um veredito fundamentado em evidências."
   },
 
   comoExecutar: [
     {
       etapa: 1,
-      titulo: "Missão 1 (Perplexity | 5 min) — Pergunta Prática e Leitura das Fontes",
-      desc: "Escolha uma dúvida cotidiana ou do curso (ex.: regras institucionais, documentos para renovação, recomendações oficiais). Faça a pergunta no Perplexity e observe a resposta, as citações numeradas [1], [2] e os links de origem antes de copiar qualquer trecho."
+      titulo: "Escolha sua afirmação",
+      desc: "Selecione uma afirmação da lista disponibilizada pelas professoras. Não pesquise a resposta antecipadamente."
     },
     {
       etapa: 2,
-      titulo: "Missão 1 (Auditoria | 10 min) — Protocolo de Conferência e Veredito",
-      desc: "Abra uma fonte citada e verifique: Quem publicou? Quando? A página realmente sustenta o que o Perplexity afirmou? Registre o veredito ('Confirmada / Parcialmente confirmada / Não confirmada pela fonte') e compartilhe com a turma."
+      titulo: "Investigue no Perplexity",
+      desc: "Pesquise a afirmação. Solicite explicações, evidências, fontes confiáveis e possíveis contrapontos."
     },
     {
       etapa: 3,
-      titulo: "Missão 2 (NotebookLM | 5 min) — Criação do Caderno e Checagem de OCR",
-      desc: "Acesse notebooklm.google.com, crie um caderno e importe um PDF autorizado com texto selecionável (OCR) ou link público. Atenção à LGPD: nunca envie dados pessoais de terceiros sem base legal e autorização institucional."
+      titulo: "Reúna no NotebookLM",
+      desc: "Adicione as fontes encontradas e pergunte o que elas comprovam, quais limitações possuem e se existem divergências."
     },
     {
       etapa: 4,
-      titulo: "Missão 2 (Ancoragem | 10 min) — Interrogação e Rastreabilidade por Citações",
-      desc: "Pergunte no chat: 'Quais são as três ideias centrais deste material? Indique os trechos de onde tirou cada uma.' Clique nos marcadores numéricos das citações para conferir o destaque direto no trecho original do documento."
+      titulo: "Analise e formule o veredito",
+      desc: "Classifique a afirmação como verdadeira, falsa, parcialmente verdadeira ou inconclusiva. Justifique com evidências."
     },
     {
       etapa: 5,
-      titulo: "Missão 2 (Painel Studio | 10 min) — Artefatos de Estudo e Revisão",
-      desc: "Gere um 'Guia de Estudo' ou 'Audio Overview' no painel Studio como andaime de revisão e compare com o texto original para identificar eventuais simplificações."
+      titulo: "Registre sua descoberta",
+      desc: "Produza um breve registro com a afirmação, o veredito, duas evidências e as fontes consultadas."
     }
   ],
 
@@ -62,31 +62,33 @@ export const oficinaPratica = {
 
   criteriosAvaliacao: [
     {
-      criterio: "1. Auditoria Crítica de Fontes (Perplexity)",
-      ponto1: "Aceitou a resposta da IA sem clicar nos links ou confiou cegamente apenas na presença da citação.",
-      ponto2: "Clicou no link [1], mas apenas conferiu superficialmente sem confrontar a afirmação.",
-      ponto3: "Aplicou o protocolo de 4 passos: checou autor/data, validou a frase e triangulou com fonte independente."
+      criterio: "Qualidade da investigação",
+      ponto1: "Pesquisa superficial, sem evidências verificadas.",
+      ponto2: "Pesquisa com evidências, mas verificação parcial das fontes.",
+      ponto3: "Pesquisa consistente, fontes verificadas e análise crítica das evidências."
     },
     {
-      criterio: "2. Ancoragem e Governança no NotebookLM",
-      ponto1: "Subiu arquivos desordenados ou com dados pessoais de terceiros sem base legal ou orientação institucional.",
-      ponto2: "Carregou fontes e conversou no chat, mas tratou o áudio/resumo como verdade pronta sem ler o texto ou checar citações.",
-      ponto3: "Dominou a navegação por citações, respeitou as regras de LGPD de terceiros e usou o Studio como andaime de revisão temporário."
+      criterio: "Uso do prompting",
+      ponto1: "Prompts genéricos, sem direcionamento ou refinamento.",
+      ponto2: "Prompts contextualizados, com solicitações parcialmente estruturadas.",
+      ponto3: "Prompts claros e direcionados, solicitando evidências, explicações e contrapontos."
     },
     {
-      criterio: "3. Abordagem Centrada no Humano (UNESCO)",
-      ponto1: "Tratou as ferramentas com divisão rígida ou terceirizou a decisão crítica e autoral para a IA.",
-      ponto2: "Compreendeu a adequação à tarefa, mas ainda tem dúvidas sobre quando aplicar supervisão humana.",
-      ponto3: "Aplica com autonomia a regra de adequação à tarefa e tipo de evidência, mantendo a agência humana inegociável."
+      criterio: "Conclusão fundamentada",
+      ponto1: "Veredito sem justificativa ou baseado apenas na resposta da IA.",
+      ponto2: "Veredito com justificativa, mas pouco relacionado às fontes.",
+      ponto3: "Veredito coerente, sustentado por evidências e reconhecimento de limitações."
     }
   ],
 
   diretrizesDocentes: [
-    "Circulação ativa da dupla: Laura orienta o protocolo de 4 passos e triangulação no Perplexity, e Maria apoia o upload, ancoragem e Studio no NotebookLM.",
-    "Acolhimento e verificação de OCR: orientar alunos a testar se conseguem selecionar texto no PDF com o mouse antes de carregar no caderno.",
-    "Rigor com LGPD e dados de terceiros: alertar explicitamente para não subirem prontuários, dados de pesquisa identificáveis, atas com CPFs ou gravações de aula sem base legal e autorização institucional.",
-    "Postura com artefatos do Studio: lembrar que o áudio e os resumos são andaimes temporários de revisão que podem comprimir nuances."
+    "Disponibilizar previamente uma lista de afirmações para investigação, evitando temas sensíveis, informações pessoais ou conteúdos que possam expor os alunos.",
+    "Orientar os alunos a verificar as fontes originais, não apenas os resumos ou citações apresentados pelas IAs.",
+    "Incentivar a elaboração e o refinamento de prompts, sem fornecer comandos prontos para todas as etapas.",
+    "Reforçar que as ferramentas são auxiliares e que o veredito deve ser construído pelos alunos, com autonomia, senso crítico e responsabilidade.",
+    "Não inserir dados pessoais, documentos privados ou informações identificáveis de terceiros nas ferramentas.",
+    "Priorizar fontes científicas, institucionais, acadêmicas e especializadas, considerando autoria, data, contexto e qualidade das evidências."
   ],
 
-  planoB: "Se o áudio do Studio demorar ou não carregar no idioma desejado, orientar a pedir no chat 'um resumo estruturado de revisão em tópicos'. Se a internet do laboratório oscilar ou houver bloqueio de login Google, as professoras projetam a demonstração ao vivo no telão e os alunos realizam o teste de busca no Duck.ai (que roda sem login) ou trabalham com PDFs baixados localmente."
+  planoB: "Se o Perplexity estiver indisponível, realizar a investigação com pesquisa manual em buscadores e selecionar duas fontes confiáveis. Se o NotebookLM falhar, ler e comparar as fontes diretamente, registrando evidências, divergências e veredito em um documento ou bloco de notas local. A missão e os critérios de investigação permanecem os mesmos, independentemente das ferramentas."
 };

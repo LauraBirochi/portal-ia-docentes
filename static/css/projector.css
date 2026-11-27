@@ -3885,6 +3885,20 @@ body[data-meeting="4"], body[data-meeting="5"] .card-col-list li .bullet,
   font-size: 1.95rem !important;
 }
 
+body[data-meeting="5"] .card-col-list li a,
+.meeting-5 .card-col-list li a {
+  color: #0369a1;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+body[data-meeting="5"] .card-col-list li a:hover,
+.meeting-5 .card-col-list li a:hover {
+  color: #0284c7;
+}
+
 /* Slide 4: Duelo de 3 Vias (Grid de 3 Colunas) */
 body[data-meeting="4"], body[data-meeting="5"] .grid-colunas.grid-3colunas .card-col-header,
 .meeting-4, .meeting-5 .grid-colunas.grid-3colunas .card-col-header {
