@@ -1,70 +1,10 @@
 /**
- * Módulo 1 – Metadados Curriculares e Blocos Temáticos
+ * Módulo 1 – Metadados Curriculares
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
 export const moduloInfo = {
   numero: 1,
-  total: 7,
   titulo: "Desmistificando a IA: Da Ficção Científica à Realidade",
-  subtitulo: "Gênese histórica, definição descomplicada, a IA invisível do dia a dia, mitos, visão do Brasil, regulação e fundamentos de aprendizado",
-  cargaHoraria: "Encontro 1 • 3 horas presenciais (180 min)",
-  modalidade: "Presencial em Laboratório de Informática",
-  publico: "Iniciantes e público geral (sem pré-requisitos técnicos ou matemáticos)",
-  ferramentaPrincipal: "Navegador Web + Template do Portfólio Digital individual",
-  avaliacao: "Prova Diagnóstica de Nivelamento (Instrumento Formativo / Sem Nota Punitiva)"
+  cargaHoraria: "3h Presenciais (180 min)"
 };
-
-export const blocosTematicos = [
-  {
-    id: 1,
-    icone: "🤝",
-    titulo: "Bloco 1: Acolhimento, Contrato Pedagógico & Estrutura",
-    subtitulo: "Apresentação da co-docência, cronograma dos 7 encontros, alívio de ansiedade e requisito de e-mail",
-    slidesRange: [1, 6],
-    tempoEstimado: "30 min"
-  },
-  {
-    id: 2,
-    icone: "🕰️",
-    titulo: "Bloco 2: Gênese Histórica, Definição & Os 3 Ingredientes (Condução: Maria)",
-    subtitulo: "Conduzido por Maria: Origem (Turing 1950, Dartmouth 1956), programação vs padrões e os 3 ingredientes da IA moderna",
-    slidesRange: [7, 11],
-    tempoEstimado: "25 min",
-    conducao: "Maria"
-  },
-  {
-    id: 3,
-    icone: "📱",
-    titulo: "Bloco 3: A IA Invisível do Dia a Dia & Teorema de Tesler (Condução: Laura)",
-    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie/Skynet/Baymax) vs robótica real, por que robôs conscientes não virão em 10 anos, Teorema de Larry Tesler e os 4 exemplos cotidianos",
-    slidesRange: [12, 19],
-    tempoEstimado: "35 min",
-    conducao: "Laura"
-  },
-  {
-    id: 4,
-    icone: "🎭",
-    titulo: "Bloco 4: Desmistificando a IA – Os 5 Grandes Mitos",
-    subtitulo: "Conduzido por Maria (Mitos 1-2) e Laura (Mitos 3-5): Desconstrução de mitos sobre consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
-    slidesRange: [20, 26],
-    tempoEstimado: "30 min"
-  },
-  {
-    id: 5,
-    icone: "🇧🇷",
-    titulo: "Bloco 5: Brasil, Cidadania & Legislação (Condução: Maria)",
-    subtitulo: "Conduzido por Maria: Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
-    slidesRange: [27, 29],
-    tempoEstimado: "20 min",
-    conducao: "Maria"
-  },
-  {
-    id: 6,
-    icone: "💻",
-    titulo: "Bloco 6: Laboratório Prático & Fechamento",
-    subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
-    slidesRange: [30, 33],
-    tempoEstimado: "35 min"
-  }
-];

@@ -43,21 +43,23 @@ def build_meeting_bundle(meeting_num: int = 1, base_dir: Optional[str] = None) -
 
     # Lista dos submódulos esperados na ordem correta de dependências
     files_order = [
-        ('dossies.js', 'Dossiês Científicos e Jurídicos'),
-        ('meta.js', 'Metadados Curriculares e Blocos Temáticos'),
-        ('narrativa.js', 'Fio da Meada e Narrativa Pedagógica'),
-        ('deck-slides.js', 'Slides com Notas da Professora'),
-        ('atividades.js', 'Atividades Práticas e Laboratório'),
-        ('faq-duvidas.js', 'Perguntas dos Alunos e Dúvidas Frequentes'),
-        ('papeis.js', 'Divisão de Papéis e Co-Docência')
+        ('meta.js', 'Metadados Curriculares', True),
+        ('narrativa.js', 'Fio da Meada e Narrativa Pedagógica', True),
+        ('deck-slides.js', 'Slides com Notas da Professora', True),
+        ('atividades.js', 'Atividades Práticas e Laboratório', True),
+        ('faq-duvidas.js', 'Perguntas dos Alunos e Dúvidas Frequentes', True),
+        ('papeis.js', 'Divisão de Papéis e Co-Docência', True)
     ]
 
     parts = []
     deck_content = ''
-    for idx, (filename, description) in enumerate(files_order, start=1):
+    step_idx = 1
+    for filename, description, required in files_order:
         filepath = os.path.join(submodules_dir, filename)
         if not os.path.exists(filepath):
-            raise FileNotFoundError(f"Submódulo obrigatório ausente: {filepath}")
+            if required:
+                raise FileNotFoundError(f"Submódulo obrigatório ausente: {filepath}")
+            continue
 
         with open(filepath, 'r', encoding='utf-8') as f:
             raw_content = f.read()
@@ -66,7 +68,8 @@ def build_meeting_bundle(meeting_num: int = 1, base_dir: Optional[str] = None) -
             deck_content = raw_content
 
         cleaned = clean_module_code(raw_content)
-        parts.append(f"  // {idx}. {description}\n  {cleaned}\n")
+        parts.append(f"  // {step_idx}. {description}\n  {cleaned}\n")
+        step_idx += 1
 
     # Contagem exata de objetos de slide de nível superior em slidesComNotas
     slide_matches = SLIDE_OBJECT_RE.findall(deck_content)
@@ -96,12 +99,10 @@ def build_meeting_bundle(meeting_num: int = 1, base_dir: Optional[str] = None) -
   const ENCONTRO_{meeting_num}_DATA = {{
     moduloInfo: moduloInfo,
     fioDaMeada: fioDaMeada,
-    blocosTematicos: blocosTematicos,
     slidesComNotas: slidesComNotas,
     oficinaPratica: oficinaPratica,
     perguntasAlunos: perguntasAlunos,
-    divisaoPapeis: divisaoPapeis,
-    dossies: dossies
+    divisaoPapeis: divisaoPapeis
   }};
 
   // Exposição Global no Navegador (Window) e Node.js

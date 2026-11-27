@@ -2,7 +2,7 @@
  * Aplicação Principal – Portal & Cockpit de Co-Docência (Minicurso de IA)
  * Arquitetura SPA em 2 Níveis:
  * - Nível 1: Dashboard Geral do Minicurso
- * - Nível 2: Cockpit da Aula (Módulo Âncora com 4 Abas Pedagógicas)
+ * - Nível 2: Cockpit da Aula (Módulo Âncora com 3 Abas Pedagógicas)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 4. COCKPIT: NAVEGADOR DAS 4 ABAS DE FOCO
+  // 4. COCKPIT: NAVEGADOR DAS 3 ABAS DE FOCO
   // =========================================================================
   const cockpitTabBtns = document.querySelectorAll('.cockpit-tab-btn');
   const tabPanels = document.querySelectorAll('.tab-content-panel');

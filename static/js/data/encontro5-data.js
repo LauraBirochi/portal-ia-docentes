@@ -1,5 +1,5 @@
 /**
- * Base de Dados Unificada – Módulo do Encontro 5 (17 Slides)
+ * Base de Dados Unificada – Módulo do Encontro 5 (21 Slides)
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  * 
  * ARQUIVO GERADO AUTOMATICAMENTE POR: scripts/build_data.py
@@ -10,203 +10,49 @@
 (function (global) {
   'use strict';
 
-  // 1. Dossiês Científicos e Jurídicos
+  // 1. Metadados Curriculares
   /**
- * Módulo 5 – Dossiês de Embasamento Científico, Técnico e Pedagógico
- * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
- */
-
-const dossies = {
-  arquiteturaRAG: {
-    tipoDossie: "cientifico",
-    titulo: "Arquiteturas RAG (Retrieval-Augmented Generation): Aberto vs. Fechado",
-    resumo: "Fundamentos teóricos e técnicos de modelos de linguagem combinados com mecanismos de recuperação de informação, comparando busca aberta na web com indexação vetorial em corpus documental fechado.",
-    topicos: [
-      {
-        titulo: "1. O Paradigma RAG (Lewis et al., 2020)",
-        conteudo: "Modelos de linguagem paramétricos (como GPT-4) possuem limites rígidos de data de corte e tendência a alucinações factuais. A técnica de Recuperação Aumentada por Geração (RAG) desacopla a memória paramétrica da factual: diante de uma pergunta, um módulo recuperador busca passagens relevantes em bases externas e as injeta no contexto da janela de atenção antes da geração da resposta."
-      },
-      {
-        titulo: "2. RAG Aberto na Web (Perplexity & Search Engines Neurais)",
-        conteudo: "No RAG aberto, o recuperador faz varreduras em motores de busca na internet em tempo real, filtra os trechos mais promissores, atribui índices numéricos de citação e instrui o modelo sintetizador a apoiar cada oração declarativa em uma fonte URL rastreável."
-      },
-      {
-        titulo: "3. RAG Fechado em Corpus Pessoal (NotebookLM & Embeddings Locais)",
-        conteudo: "No RAG fechado, o espaço de busca é rigidamente delimitado aos documentos fornecidos pelo usuário (PDFs, Docs, apresentações). Os textos são fragmentados em pedaços (chunks), convertidos em vetores semânticos (embeddings) e armazenados em uma base vetorial. O modelo é instruído a responder estritamente com base nesses fragmentos e a recusar extrapolações se o dado estiver ausente."
-      }
-    ],
-    fontesCientificas: [
-      {
-        autor: "Lewis, P. et al. (2020)",
-        titulo: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
-        publicacao: "Advances in Neural Information Processing Systems (NeurIPS 2020)",
-        relevancia: "Artigo seminal que formalizou a arquitetura RAG combinando modelos neurais geradores e recuperadores densos.",
-        link: "https://arxiv.org/abs/2005.11401"
-      },
-      {
-        autor: "Gao, Y. et al. (2023)",
-        titulo: "Retrieval-Augmented Generation for Large Language Models: A Survey",
-        publicacao: "arXiv preprint arXiv:2312.10997",
-        relevancia: "Mapeamento sistemático das arquiteturas Naive RAG, Advanced RAG e Modular RAG aplicadas a LLMs.",
-        link: "https://arxiv.org/abs/2312.10997"
-      }
-    ]
-  },
-
-  pesquisaAcademicaIA: {
-    tipoDossie: "tecnico",
-    titulo: "Pesquisa Factual, Rotulagem de Fontes e Alucinação (Perplexity & Google)",
-    resumo: "Análise das metodologias de ancoragem de motores neurais, categorização de fontes de informação e mitigação de erros na síntese de conhecimento.",
-    topicos: [
-      {
-        titulo: "1. A Ilusão da Citação Perfeita",
-        conteudo: "A presença de uma citação ou link [1] não garante a veracidade do conteúdo. Motores neurais podem citar sites comerciais com conflitos de interesse, notícias falsas ou artigos refutados. O rótulo 'Academic' filtra repositórios científicos, mas inclui pré-prints que ainda não passaram pelo crivo de revisão por pares."
-      },
-      {
-        titulo: "2. Grounding e Citações em Linha (In-line Grounding)",
-        conteudo: "O diferencial de ferramentas como NotebookLM e Perplexity é a ancoragem auditável: cada afirmação carrega um identificador clicável que remete o leitor ao parágrafo exato do documento original, permitindo checagem humana em segundos."
-      }
-    ],
-    fontesCientificas: [
-      {
-        autor: "Perplexity AI (2024–2026)",
-        titulo: "Understanding Sources, Source Labels & Pro Search Architecture",
-        publicacao: "Perplexity Help Center & Documentation",
-        relevancia: "Documentação oficial dos algoritmos de busca, síntese e rotulagem de fontes públicas.",
-        link: "https://www.perplexity.ai/help-center"
-      },
-      {
-        autor: "Google Labs (2024–2026)",
-        titulo: "NotebookLM Product Documentation, Source Grounding & Audio Overview Guidelines",
-        publicacao: "Google Support & Labs Hub",
-        relevancia: "Diretrizes de engenharia de ancoragem documental, limites de cadernos e geração de áudio explicativo.",
-        link: "https://support.google.com/notebooklm"
-      }
-    ]
-  },
-
-  diretrizesUNESCO: {
-    tipoDossie: "juridico",
-    titulo: "Diretrizes Internacionais de Ética, Integridade e Agência Humana (UNESCO)",
-    resumo: "Marcos éticos e normativos para o uso responsável de ferramentas de IA generativa em ambientes acadêmicos e educacionais.",
-    topicos: [
-      {
-        titulo: "1. Agência Humana Centrada no Educando e no Docente",
-        conteudo: "A UNESCO recomenda que as ferramentas de IA sejam empregadas como andaimes cognitivos de apoio, e nunca como substitutas da reflexão crítica, do esforço de leitura e da autoria intelectual dos estudantes."
-      },
-      {
-        titulo: "2. Privacidade, Proteção de Dados e Transparência",
-        conteudo: "Instituições educacionais devem assegurar a conformidade com leis de proteção de dados (como LGPD e GDPR), orientando alunos e docentes a não alimentar modelos abertos com informações pessoais sensíveis ou propriedade intelectual não autorizada."
-      }
-    ],
-    fontesCientificas: [
-      {
-        autor: "UNESCO (2023)",
-        titulo: "Guidance for Generative AI in Education and Research",
-        publicacao: "Paris: United Nations Educational, Scientific and Cultural Organization",
-        relevancia: "Guia global normativo com princípios éticos para integração de ferramentas de IA no ensino e na ciência.",
-        link: "https://unesdoc.unesco.org/ark:/48223/pf0000386693"
-      },
-      {
-        autor: "UNESCO (2024)",
-        titulo: "AI Competency Framework for Students and Teachers",
-        publicacao: "Paris: UNESCO",
-        relevancia: "Matriz internacional de competências em IA, dividida em agência humana, ética e domínio técnico.",
-        link: "https://www.unesco.org/en/articles/ai-competency-frameworks"
-      }
-    ]
-  }
-};
-
-  // 2. Metadados Curriculares e Blocos Temáticos
-  /**
- * Módulo 5 – Metadados Curriculares e Blocos Temáticos
+ * Módulo 5 – Metadados Curriculares
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
 const moduloInfo = {
   numero: 5,
-  total: 7,
-  data: "27/11",
-  titulo: "Encontro 5: Ferramentas de IA na Prática",
-  subtitulo: "Do Chatbot Generalista aos Especialistas em Busca (Perplexity) e Ancoragem em Documentos (NotebookLM)",
-  cargaHoraria: "Encontro 5 • 3 horas presenciais (180 min)",
-  modalidade: "Presencial em Laboratório de Informática",
-  publico: "Iniciantes e público geral (sem pré-requisitos técnicos)",
-  ferramentaPrincipal: "Perplexity AI + Google NotebookLM (+ ChatGPT)",
-  avaliacao: "Oficina de Bancada em Duas Etapas: Missão 1 (Detetive de Fontes) e Missão 2 (Do PDF ao Guia e Áudio)"
+  titulo: "Ferramentas de IA na Prática",
+  cargaHoraria: "3h Presenciais (180 min)"
 };
 
-const blocosTematicos = [
-  {
-    id: 1,
-    icone: "🧰",
-    titulo: "Bloco 1: As Ferramentas (ChatGPT, Perplexity e NotebookLM)",
-    subtitulo: "A metáfora dos 3 especialistas, origem das respostas e matriz de decisão",
-    slidesRange: [1, 4],
-    tempoEstimado: "40 min",
-    conducao: "Co-docência (Laura & Maria)"
-  },
-  {
-    id: 2,
-    icone: "🔍",
-    titulo: "Bloco 2: Perplexity na Prática — O Detetive da Web",
-    subtitulo: "RAG em web aberta, busca com links auditáveis, filtros e oficina de checagem",
-    slidesRange: [5, 8],
-    tempoEstimado: "45 min",
-    conducao: "Condução: Laura"
-  },
-  {
-    id: 3,
-    icone: "📓",
-    titulo: "Bloco 3: Google NotebookLM — O Bibliotecário Particular",
-    subtitulo: "RAG fechado nos seus documentos, citações linha a linha, painel Studio e oficina",
-    slidesRange: [9, 13],
-    tempoEstimado: "55 min",
-    conducao: "Condução: Maria"
-  },
-  {
-    id: 4,
-    icone: "⚖️",
-    titulo: "Bloco 4: Armadilhas Críticas, Ética UNESCO & Fechamento",
-    subtitulo: "Vícios de iniciantes, agência humana, checklist de bolso e referências oficiais",
-    slidesRange: [14, 17],
-    tempoEstimado: "40 min",
-    conducao: "Co-docência (Laura & Maria)"
-  }
-];
-
-  // 3. Fio da Meada e Narrativa Pedagógica
+  // 2. Fio da Meada e Narrativa Pedagógica
   /**
  * Módulo 5 – Fio da Meada e Narrativa Pedagógica
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
 const fioDaMeada = {
-  objetivoCentral: "Superar o uso exclusivo do ChatGPT, dominando a escolha e a combinação estratégica de ferramentas gratuitas especializadas: Perplexity (pesquisa na web aberta com fontes verificáveis) e Google NotebookLM (estudo ancorado em documentos próprios sem alucinação).",
-  mensagemChave: "Use o Perplexity para encontrar e checar, o NotebookLM para estudar o que você escolheu e o ChatGPT para conversar, criar e reformular — sempre conferindo as fontes antes de decidir.",
-  explicacaoObjetivo: "No Encontro 4, a turma aprendeu a instruir o ChatGPT com C-T-F-R e a colocar a trava [necessita verificação]. No Encontro 5, mostramos que o docente não precisa forçar um assistente de texto a atuar como buscador ou leitor de PDFs. Apresentamos a 'Caixa de Ferramentas Especializadas', desmistificando o RAG aberto e fechado e praticando a verificação de fontes e a geração de artefatos de estudo (guias, mapas e podcasts).",
+  objetivoCentral: "Superar o uso exclusivo do ChatGPT, dominando a escolha e a combinação estratégica de ferramentas gratuitas a partir da adequação à tarefa e tipo de evidência: Perplexity (investigação na web com fontes verificáveis) e Google NotebookLM (respostas fundamentadas no material selecionado e artefatos de estudo).",
+  mensagemChave: "Use o Perplexity para investigar com fontes atuais, o NotebookLM para interrogar e organizar seu material próprio e o ChatGPT para conversar, raciocinar e criar — sempre com supervisão humana e validação crítica antes de decidir.",
+  explicacaoObjetivo: "No Encontro 4, a turma aprendeu a instruir o ChatGPT com C-T-F-R e a colocar a trava [necessita verificação]. No Encontro 5, mostramos que o docente não precisa forçar um único assistente para todas as tarefas. Apresentamos o ecossistema especializado fundamentado na adequação à tarefa e à proveniência da evidência, operacionalizando a auditoria de fontes em 4 passos, o estudo com corpus próprio e a abordagem centrada no ser humano da UNESCO.",
   atos: [
     {
       ato: 1,
-      titulo: "A Metáfora dos 3 Especialistas & O Roteamento de Tarefas",
+      titulo: "Adequação à Tarefa & Os 3 Especialistas (Sem Divisão Rígida)",
       tempo: "40 min",
-      desc: "Desconstrução da ideia de 'IA única faz-tudo'. Apresentação dos 3 papéis: ChatGPT (Roteirista Criativo que trabalha de cabeça), Perplexity (Detetive que pesquisa na web aberta) e NotebookLM (Bibliotecário que tranca a porta e só lê seus arquivos). Análise da tabela comparativa dos 7 critérios.",
-      gatilho: "Tentar usar só o ChatGPT para tudo na vida é como tentar consertar uma casa inteira usando apenas um martelo. Hoje vamos abrir a nossa caixa de ferramentas especializadas."
+      desc: "Desconstrução da ideia de 'IA única faz-tudo' e matização da metáfora: o ChatGPT também ajuda na busca com navegação, o Perplexity estrutura ideias e o NotebookLM gera resumos. O foco é a adequação à tarefa e à fonte de evidência necessária. Análise da matriz comparativa com critérios explícitos de atualização, risco, verificabilidade e privacidade.",
+      gatilho: "Tentar usar só o ChatGPT para tudo na vida é como tentar consertar uma casa inteira usando apenas um martelo. Hoje vamos abrir a nossa caixa de ferramentas a partir do tipo de evidência necessária."
     },
     {
       ato: 2,
-      titulo: "Perplexity na Prática: O Detetive da Web e a Checagem de Fatos",
+      titulo: "Perplexity na Prática: Investigação e Protocolo de Auditoria em 4 Passos",
       tempo: "45 min",
-      desc: "Como funciona o RAG aberto em tempo real. Demonstração dos recursos gratuitos: buscas básicas ilimitadas, Pro Search diário, filtros de foco (Academic/Web) e rótulos de fontes. Alerta crítico sobre a ilusão do hiperlink e realização da Missão 1 de bancada ('Detetive de Fontes').",
-      gatilho: "Citação com link não é sinônimo automático de verdade. A IA encontrou a página, mas cabe a você abrir e conferir se o dado procede."
+      desc: "Como funciona o RAG aberto em tempo real. Desmistificação da ilusão da citação: número [1] só prova que o link existe na web. Apresentação da anatomia da interface (painel de fontes no topo, citações no texto e perguntas de desdobramento). Operacionalização do Protocolo de Auditoria em 4 Passos (Fonte, Afirmação, Método, Triangulação) na Missão 1 com uma pergunta prática do dia a dia.",
+      gatilho: "Citação não é sinônimo de verdade. A IA encontrou a página, mas cabe a você abrir o link, checar a afirmação e triangular com uma fonte independente."
     },
     {
       ato: 3,
-      titulo: "Google NotebookLM: Estudo Ativo, Studio Multimodal & Agência Humana",
+      titulo: "Google NotebookLM: Fontes Selecionadas, Artefatos de Estudo & Agência Humana",
       tempo: "95 min",
-      desc: "Como funciona o RAG fechado nos seus próprios documentos. Upload de até 50 fontes, chat com citação que destaca a linha exata no PDF e exploração do painel Studio (Guia de Estudo, Mapa Mental, Audio Overview em português e Video Overview). Realização da Missão 2 de bancada ('Do PDF ao Guia e Áudio'), quadro de 6 armadilhas e fechamento com as diretrizes da UNESCO.",
-      gatilho: "A IA não substitui a leitura: ela organiza o caminho até a leitura, mas a responsabilidade pela verificação continua sendo humana."
+      desc: "Como funciona o NotebookLM com respostas fundamentadas nas fontes selecionadas. Regra de ouro: 'O NotebookLM é excelente para interrogar e organizar seu material; não é substituto da leitura nem fonte autônoma de verdade.' Os outputs do Studio (áudio, mapas, guias) são andaimes temporários de estudo e revisão, não conhecimento acabado. Rigor na governança de dados pessoais de terceiros (LGPD), verificação prévia de OCR, quadro das 6 armadilhas e diretrizes da UNESCO.",
+      gatilho: "A IA generativa na educação deve seguir uma abordagem centrada no ser humano, protegendo a agência humana, a diversidade cultural e a validação ética e pedagógica."
     }
   ],
   glossario: [
@@ -215,29 +61,29 @@ const fioDaMeada = {
       def: "Arquitetura usada pelo Perplexity: o modelo busca ativamente em páginas públicas da internet em tempo real e sintetiza a resposta acompanhada de links numerados para cada afirmação."
     },
     {
-      termo: "RAG Fechado (Closed-Corpus Grounding)",
-      def: "Arquitetura usada pelo NotebookLM: a geração da IA é estritamente restrita aos arquivos carregados pelo usuário no caderno, impedindo alucinações baseadas na internet externa."
+      termo: "Respostas Fundamentadas em Fontes (Grounding)",
+      def: "Arquitetura usada pelo NotebookLM: a geração da IA é fundamentada nas fontes selecionadas pelo usuário no caderno, reduzindo consideravelmente o risco de informações externas inventadas, embora não elimine erros de leitura, interpretação ou síntese."
     },
     {
-      termo: "Citação em Linha (In-line Citation)",
-      def: "Marcador interativo presente na resposta da IA que, ao ser clicado, abre o documento original e destaca visualmente o parágrafo exato de onde a informação foi extraída."
+      termo: "Protocolo de Auditoria em 4 Passos",
+      def: "Procedimento crítico de conferência: (1) Identificar quem publicou e a competência da fonte; (2) Conferir se a citação sustenta a frase específica; (3) Avaliar metodologia e data; (4) Triangular com ao menos uma fonte independente."
     },
     {
-      termo: "Audio Overview (Podcast Sintético)",
-      def: "Recurso do painel Studio do NotebookLM que gera uma discussão em áudio entre dois apresentadores virtuais em português sintetizando os pontos-chave das fontes importadas."
+      termo: "Artefatos de Estudo do Studio",
+      def: "Outputs sintéticos gerados pelo NotebookLM (Audio Overview, Mapas Mentais, FAQ e Guia de Estudo) que atuam como andaimes cognitivos de revisão e fixação, mas podem simplificar nuances e não substituem a leitura do material-fonte."
     },
     {
-      termo: "Foco de Busca (Search Focus)",
-      def: "Seletor do Perplexity que delimita o escopo de varredura a repositórios acadêmicos (Academic), páginas financeiras (Finance) ou busca aberta (Web)."
+      termo: "Governança de Dados de Terceiros (LGPD)",
+      def: "Princípio legal e ético que exige base legal adequada e autorização institucional antes de carregar documentos contendo dados pessoais de terceiros (estudantes, pacientes, colegas, gravações ou atas com CPFs) em serviços de IA na nuvem, aplicando anonimização sempre que possível."
     },
     {
-      termo: "Agência Humana na Curadoria (UNESCO)",
-      def: "Princípio ético que estabelece que a IA deve atuar apenas como andaime cognitivo de apoio, cabendo exclusivamente ao ser humano a validação final, a interpretação crítica e a responsabilidade autoral."
+      termo: "Abordagem Centrada no Ser Humano (UNESCO)",
+      def: "Diretriz internacional que estabelece a primazia da agência humana, da inclusão, da equidade e da validação ética e pedagógica, assegurando que a tecnologia apoie o educando sem terceirizar o pensamento crítico."
     }
   ]
 };
 
-  // 4. Slides com Notas da Professora
+  // 3. Slides com Notas da Professora
   /**
  * Módulo 5 – Deck de Slides com Ficha Técnica Conceitual Docente para o Projetor
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -251,7 +97,7 @@ const fioDaMeada = {
 
 const slidesComNotas = [
   // =========================================================================
-  // BLOCO 1: AS FERRAMENTAS – OS 3 ESPECIALISTAS (Slides 1 a 4)
+  // BLOCO 1: AS FERRAMENTAS – OS 3 ESPECIALISTAS (Slides 1 a 6)
   // =========================================================================
   {
     numero: 1,
@@ -296,24 +142,24 @@ const slidesComNotas = [
     citacao: "Tentar usar apenas o ChatGPT para todas as tarefas da rotina é como tentar consertar uma casa inteira usando apenas um martelo.",
     subtitulo: "Da IA única faz-tudo para a caixa de ferramentas especializadas: qual abrir para cada problema?",
     pills: [
-      { tipo: "real", texto: "💬 ChatGPT: Criar & Estruturar" },
-      { tipo: "real", texto: "🔍 Perplexity: Pesquisar na Web" },
-      { tipo: "real", texto: "📓 NotebookLM: Dominar Seus Arquivos" }
+      { tipo: "real", texto: "💬 ChatGPT: Elaborar, Estruturar & Raciocinar" },
+      { tipo: "real", texto: "🔍 Perplexity: Investigar na Web com Fontes" },
+      { tipo: "real", texto: "📓 NotebookLM: Dominar Corpus Próprio Rastreável" }
     ],
     conducao: "Condução: Laura",
     notasProfessora: {
       tempoSugerido: "5 min (00:05 - 00:10)",
-      objetivoSlide: "Provocar a turma a superar a visão de 'IA = ChatGPT' e apresentar a tríade inicial de ferramentas do encontro.",
+      objetivoSlide: "Provocar a turma a superar a visão de 'IA = ChatGPT' e apresentar o ecossistema a partir da adequação à tarefa e tipo de evidência necessária.",
       conceito: {
-        titulo: "Especialização Arquitetural (Chatbot vs. Search RAG vs. Grounded Workspace)",
-        definicao: "Cada plataforma utiliza uma arquitetura de recuperação e geração distinta. Chatbots geram texto a partir de pesos paramétricos pré-treinados; motores de busca generativos acoplam recuperação em tempo real na web (Open-Web RAG); espaços de trabalho ancorados restringem a janela de contexto exclusivamente aos arquivos carregados pelo usuário (Closed-Corpus RAG)."
+        titulo: "Adequação à Tarefa e Tipo de Evidência (Não Especialização Absoluta)",
+        definicao: "Embora a metáfora dos '3 especialistas' seja didática, cada ferramenta não possui uma divisão rígida absoluta: o ChatGPT também pode pesquisar com navegação, o Perplexity ajuda a estruturar ideias e o NotebookLM gera textos. O critério determinante é a origem da evidência e a adequação à tarefa pretendida."
       },
-      mecanica: "Slide de transição de etapa com metáfora visual do martelo e 3 pílulas horizontais sintetizando os papéis de ChatGPT, Perplexity e NotebookLM.",
+      mecanica: "Slide de transição de etapa com metáfora visual da caixa de ferramentas e 3 pílulas sintetizando os papéis centrais de elaboração (ChatGPT), investigação na web (Perplexity) e domínio de corpus próprio (NotebookLM).",
       armadilhaComum: "Usar o ChatGPT como substituto direto do Google para dados factuais recentes e depois se frustrar com links quebrados ou dados inventados.",
       faqAlunos: [
         {
           pergunta: "Se o ChatGPT já tem botão de busca na internet hoje, por que ainda precisamos do Perplexity e do NotebookLM?",
-          resposta: "Porque o Perplexity é projetado do zero como motor de pesquisa com citações numeradas frase a frase, e o NotebookLM trava a IA apenas nos seus documentos, impedindo mistura com a internet aberta."
+          resposta: "Porque o Perplexity foi arquitetado como motor de investigação com citações verificáveis frase a frase, e o NotebookLM restringe a IA aos seus documentos, impedindo mistura com a internet aberta."
         }
       ]
     }
@@ -322,55 +168,134 @@ const slidesComNotas = [
     numero: 3,
     id: 3,
     bloco: 1,
+    tipo: "apresentacao",
+    categoria: "Etapa 1 • Preparando a Bancada",
+    titulo: "Antes de Tudo: Preparando Nossa Bancada",
+    subtitulo: "Abra estas três abas essenciais no seu navegador para acompanhar a aula prática de hoje",
+    conducao: "Co-docência (Laura & Maria)",
+    itensDestaque: [
+      {
+        icone: "📋",
+        titulo: "1. Dontpad da Turma",
+        desc: "Acesse <strong>dontpad.com/CURSO-IA-2026-IFSPCAT</strong> para copiar links, textos de exemplo, prompts e materiais de apoio compartilhados em tempo real."
+      },
+      {
+        icone: "📓",
+        titulo: "2. Google NotebookLM",
+        desc: "Acesse <strong>notebooklm.google.com</strong> e faça login com sua conta Google para criar cadernos de estudo e carregar documentos."
+      },
+      {
+        icone: "🔍",
+        titulo: "3. Perplexity AI",
+        desc: "Acesse <strong>perplexity.ai</strong> no navegador (gratuito) para realizar investigações na web com fontes e citações verificáveis."
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "5 min (00:10 - 00:15)",
+      objetivoSlide: "Garantir que todos os alunos estejam com o Dontpad, o NotebookLM e o Perplexity abertos em abas do navegador antes de aprofundar os conceitos teóricos.",
+      conceito: {
+        titulo: "Setup Operacional e Redução do Atrito de Laboratório",
+        definicao: "A preparação antecipada do ambiente de trabalho garante fluidez pedagógica: o Dontpad serve como área de transferência coletiva de links e roteiros, enquanto NotebookLM e Perplexity permanecem autenticados e prontos para alternância imediata durante a aula."
+      },
+      mecanica: "Slide com 3 cards limpos no padrão Clean Light destacando as URLs exatas para digitação direta pelos alunos.",
+      armadilhaComum: "Alunos deixarem para abrir as ferramentas ou fazer login apenas na hora das missões práticas, gerando filas de dúvidas técnicas pontuais.",
+      faqAlunos: [
+        {
+          pergunta: "Preciso pagar ou cadastrar cartão para abrir o NotebookLM ou o Perplexity?",
+          resposta: "Não! Ambas as ferramentas funcionam com acesso gratuito. No NotebookLM basta usar sua conta Google comum; no Perplexity você pode usar sem conta ou entrar com a conta Google."
+        },
+        {
+          pergunta: "Para que serve o Dontpad?",
+          resposta: "O Dontpad é um bloco de notas online coletivo: tudo o que as professoras colarem no link CURSO-IA-2026-IFSPCAT fica visível na hora para você copiar, sem precisar digitar URLs longas."
+        }
+      ]
+    }
+  },
+  {
+    numero: 4,
+    id: 4,
+    bloco: 1,
+    tipo: "secao",
+    categoria: "Etapa 1 • Introdução aos Especialistas",
+    badge: "ETAPA 1 • VAMOS COMEÇAR!",
+    titulo: "Vamos Começar!",
+    subtitulo: "Do modelo único para o ecossistema: quem são e o que fazem os 3 especialistas?",
+    pills: [
+      { tipo: "real", texto: "💬 ChatGPT" },
+      { tipo: "real", texto: "🔍 Perplexity" },
+      { tipo: "real", texto: "📓 NotebookLM" }
+    ],
+    conducao: "Co-docência (Laura & Maria)",
+    notasProfessora: {
+      tempoSugerido: "2 min (00:15 - 00:17)",
+      objetivoSlide: "Slide-título de transição de impacto para abrir a apresentação dos 3 especialistas, alinhando a turma após o setup da bancada.",
+      conceito: {
+        titulo: "Transição e Foco de Palco",
+        definicao: "Momento de ancoragem de atenção que encerra o setup de abas no navegador e direciona os olhares para a tela grande, introduzindo a lógica de adequação à tarefa."
+      },
+      mecanica: "Slide-título minimalista de transição no padrão Clean Light.",
+      armadilhaComum: "Avançar direto para a comparação sem criar a expectativa e o enquadramento mental sobre quem são os 3 especialistas.",
+      faqAlunos: [
+        {
+          pergunta: "Por que não usamos apenas o ChatGPT que já conhecemos?",
+          resposta: "Porque hoje você vai descobrir que combinar as ferramentas certas economiza tempo e evita erros que o ChatGPT sozinho cometeria."
+        }
+      ]
+    }
+  },
+  {
+    numero: 5,
+    id: 5,
+    bloco: 1,
     tipo: "comparativo",
     categoria: "Etapa 1 • As Ferramentas",
-    titulo: "Os 3 Especialistas: Quem Faz o Quê na Sua Rotina?",
-    subtitulo: "Entenda o modo de trabalho de cada ferramenta antes de digitar seu comando",
+    titulo: "Os 3 Especialistas: Adequação à Tarefa e Tipo de Evidência",
+    subtitulo: "A escolha depende da tarefa e da evidência necessária, não de uma especialização rígida absoluta",
     conducao: "Condução: Maria",
     colunas: [
       {
-        tag: "💬 ChatGPT: O Roteirista Criativo",
+        tag: "💬 ChatGPT: Raciocínio & Estruturação",
         icone: "✍️",
         tipo: "marrom",
         bullet: "•",
         itens: [
-          "Como trabalha: Responde 'de cabeça' usando os padrões aprendidos no treinamento.",
-          "Ponto forte: Redigir e-mails, criar ideias, estruturar planos (C-T-F-R) e fazer auto-entrevista.",
-          "Atenção: Pode inventar fatos ou links (alucinar) se usado como buscador sem verificação."
+          "Como trabalha: Responde a partir dos pesos pré-treinados do modelo e do diálogo iterativo com o usuário.",
+          "Ponto forte: Elaborar, reformular, estruturar, brainstormar, revisar e raciocinar passo a passo.",
+          "Atenção: Adequado para pensar junto e criar; alucina com facilidade se usado como fonte factual sem checagem."
         ]
       },
       {
-        tag: "🔍 Perplexity: O Detetive da Web",
+        tag: "🔍 Perplexity: Investigação na Web Aberta",
         icone: "🌐",
         tipo: "azul",
         bullet: "➔",
         itens: [
-          "Como trabalha: Não responde de memória; vasculha a internet em tempo real antes de escrever.",
-          "Ponto forte: Numera cada frase ([1], [2], [3]) com o link clicável da fonte original para checagem.",
-          "Atenção: Ideal para fatos, notícias e normas abertas; não analisa pastas de arquivos privados."
+          "Como trabalha: Vasculha ativamente a internet em tempo real e recupera páginas indexadas para compor a resposta.",
+          "Ponto forte: Investigar na web, encontrar fontes atuais e obter respostas acompanhadas de citações verificáveis.",
+          "Atenção: Depende da qualidade dos sites encontrados; exige auditar se o link sustenta a frase específica."
         ]
       },
       {
-        tag: "📓 NotebookLM: O Bibliotecário",
+        tag: "📓 NotebookLM: Estudo e Síntese em Documentos Próprios",
         icone: "📚",
         tipo: "positivo",
         bullet: "✓",
         itens: [
-          "Como trabalha: Tranca a porta para a internet e lê somente os arquivos que você enviou.",
-          "Ponto forte: Risco mínimo de invenção; aponta o trecho exato do seu PDF e gera Podcast e Mapa Mental.",
-          "Atenção: É cego para o que está fora dos seus documentos; não serve para buscar novidades na web."
+          "Como trabalha: Gera respostas fundamentadas prioritariamente nas fontes que você selecionou para o caderno.",
+          "Ponto forte: Interrogar, comparar e organizar materiais de estudo (PDFs, anotações, slides), com citações aos trechos originais.",
+          "Atenção: Reduz o risco de dados inventados de fora, mas não elimina erros de interpretação ou síntese; não substitui a leitura."
         ]
       }
     ],
     notasProfessora: {
-      tempoSugerido: "15 min (00:10 - 00:25)",
-      objetivoSlide: "Fixar o modelo mental dos 3 Especialistas (Roteirista, Detetive da Web e Bibliotecário Particular) sem jargões técnicos pesados.",
+      tempoSugerido: "8 min (00:17 - 00:25)",
+      objetivoSlide: "Apresentar os 3 especialistas enfatizando a adequação à tarefa e à fonte de evidência, evitando criar uma falsa dicotomia rígida entre eles.",
       conceito: {
-        titulo: "Modelos Mentais de Uso: Memória Paramétrica vs. Web Aberta vs. Corpus Fechado",
-        definicao: "Traduzir a diferença técnica entre geração pura, RAG em web aberta e RAG em corpus fechado em três perfis profissionais intuitivos ajuda o aluno iniciante a prever acertos e falhas de cada ferramenta antes mesmo de enviar o prompt."
+        titulo: "Adequação à Tarefa e Epistemologia da Evidência",
+        definicao: "A metáfora dos especialistas organiza o pensamento do aluno iniciante, mas deve ser matizada: o ChatGPT também auxilia na pesquisa com browsing ativado, o Perplexity organiza raciocínios e o NotebookLM redige resumos. A diferença fundamental reside no tipo de evidência requerida: geração paramétrica, recuperação na web viva ou ancoragem em corpus documental próprio."
       },
-      mecanica: "Layout comparativo em 3 colunas coloridas por identidade funcional: Âmbar (ChatGPT / criação), Azul Real (Perplexity / web ao vivo) e Esmeralda (NotebookLM / documentos ancorados).",
-      armadilhaComum: "Achar que o NotebookLM vai 'pesquisar no Google' informações que faltam no PDF enviado, ou esperar que o Perplexity escreva longos textos literários criativos no estilo do ChatGPT.",
+      mecanica: "Layout comparativo em 3 colunas coloridas por identidade funcional: Âmbar (ChatGPT / elaboração e raciocínio), Azul Real (Perplexity / investigação na web) e Esmeralda (NotebookLM / corpus próprio rastreável).",
+      armadilhaComum: "Achar que as ferramentas são 'gavetas fechadas' que não podem dialogar, ou esperar que o NotebookLM invente dados externos que não constam dos PDFs carregados.",
       faqAlunos: [
         {
           pergunta: "Se eu subir um arquivo errado no NotebookLM, ele percebe ou usa o dado errado?",
@@ -380,15 +305,15 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 4,
-    id: 4,
+    numero: 6,
+    id: 6,
     bloco: 1,
     tipo: "quadro-comparativo",
     estiloColunas: "ferramentas",
     iconesColunas: ["💬", "🔍", "📓"],
     categoria: "Etapa 1 • Síntese Comparativa",
     titulo: "Tabela Comparativa: ChatGPT vs. Perplexity vs. NotebookLM",
-    subtitulo: "Critérios práticos lado a lado para decidir em segundos qual especialista acionar",
+    subtitulo: "Critérios essenciais de evidência, atualização, risco e privacidade lado a lado",
     colunasTabela: [
       "Critério de Escolha",
       "ChatGPT",
@@ -397,58 +322,58 @@ const slidesComNotas = [
     ],
     linhasTabela: [
       {
-        criterio: "Papel principal",
-        vago: "Roteirista e redator criativo",
-        falsoBom: "Pesquisador da internet ao vivo",
-        estruturado: "Bibliotecário dos seus arquivos"
+        criterio: "Fonte primária",
+        vago: "Pesos do modelo de treino (+ busca secundária)",
+        falsoBom: "Páginas e índices da web aberta em tempo real",
+        estruturado: "Fontes e documentos selecionados pelo usuário para o caderno"
       },
       {
-        criterio: "De onde vem a resposta?",
-        vago: "Memória do treinamento (+ busca secundária)",
-        falsoBom: "Sites abertos na web lidos na hora",
-        estruturado: "Exclusivamente dos arquivos que você subiu"
+        criterio: "Atualização",
+        vago: "Pode ser defasada (limite do corte de treino)",
+        falsoBom: "Ao vivo (depende do índice e fontes recuperadas)",
+        estruturado: "Depende do material enviado (verifique a versão do documento)"
       },
       {
-        criterio: "Como mostra a fonte?",
-        vago: "Geralmente não cita ou exige pedir links",
-        falsoBom: "Numera cada frase ([1], [2]) com link real",
-        estruturado: "Cita o trecho e a página exata do seu PDF"
+        criterio: "Verificabilidade",
+        vago: "Geralmente opaca (citações raras ou ausentes)",
+        falsoBom: "Citações e links externos ([1], [2]) para a web",
+        estruturado: "Citações que remetem aos trechos originais no caderno"
       },
       {
-        criterio: "Risco de alucinação",
-        vago: "Médio a alto (exige checagem manual)",
-        falsoBom: "Baixo (permite auditar o link em 1 clique)",
-        estruturado: "Mínimo (restrito 100% às suas fontes)"
+        criterio: "Risco principal",
+        vago: "Alucinação factual e generalização plausível",
+        falsoBom: "Seleção ou interpretação falha de fontes da web",
+        estruturado: "Erro de leitura/síntese ou baixa qualidade das fontes enviadas"
+      },
+      {
+        criterio: "Privacidade",
+        vago: "Prompts podem alimentar treino (salvo opt-out)",
+        falsoBom: "Consultas trafegam na web; política da conta",
+        estruturado: "Base para o caderno; Google diz não treinar (Workspace tem salvaguardas)"
       },
       {
         criterio: "Melhor para...",
-        vago: "Escrever e-mails, planejar e estruturar",
-        falsoBom: "Pesquisar fatos, leis, preços e notícias",
-        estruturado: "Estudar apostilas, editais e resumir aulas"
-      },
-      {
-        criterio: "Destaques gratuitos",
-        vago: "Diálogo iterativo, C-T-F-R e Canvas",
-        falsoBom: "Buscas padrão ilimitadas e filtros por fonte",
-        estruturado: "Podcast em áudio, vídeo, mapa mental e guia"
+        vago: "Elaborar, reformular, estruturar e raciocinar",
+        falsoBom: "Investigar na web, encontrar fontes e checar fatos",
+        estruturado: "Interrogar, comparar e revisar materiais selecionados"
       },
       {
         criterio: "Regra de bolso",
-        vago: "\"Preciso escrever ou criar algo\"",
-        falsoBom: "\"Preciso descobrir ou checar na web\"",
-        estruturado: "\"Preciso dominar este documento\""
+        vago: "\"Preciso criar, raciocinar ou redigir\"",
+        falsoBom: "\"Preciso de fatos e fontes atuais na internet\"",
+        estruturado: "\"Preciso estudar e organizar os materiais que selecionei\""
       }
     ],
-    conducao: "Co-docência (Laura & Maria)",
+    conducao: "Condução: Maria",
     notasProfessora: {
       tempoSugerido: "15 min (00:25 - 00:40)",
-      objetivoSlide: "Consolidar a comparação objetiva em 7 critérios práticos e mostrar como os 3 especialistas se complementam em um único fluxo de trabalho.",
+      objetivoSlide: "Consolidar a matriz comparativa explícita em 7 dimensões cruciais: fonte primária, atualização, verificabilidade, risco principal, privacidade, tarefas ideais e regra de bolso.",
       conceito: {
-        titulo: "Matriz de Decisão por Fonte de Verdade e Fluxo Combinado",
-        definicao: "Tabela de roteamento cognitivo que orienta o usuário a escolher a ferramenta pela origem da verdade necessária (criação autoral, web atualizada ou corpus documental próprio) e abre caminho para pipelines combinados (Pesquisar no Perplexity -> Organizar no NotebookLM -> Redigir no ChatGPT)."
+        titulo: "Matriz Multidimensional de Adequação Tecnológica",
+        definicao: "Quadro de governança cognitiva que avalia cada ferramenta por critérios técnicos explícitos: proveniência da informação (paramétrica vs. web indexada vs. corpus pessoal), janela de atualização temporal, auditabilidade de citações, vetores de vulnerabilidade e conformidade com privacidade e LGPD."
       },
       mecanica: "Quadro comparativo lado a lado com 7 linhas de alta legibilidade em 16:9, utilizando código de cores por especialista (Âmbar para ChatGPT, Azul Real para Perplexity e Esmeralda para NotebookLM).",
-      armadilhaComum: "Encarar as ferramentas como rivais ('qual é a melhor de todas?') em vez de peças complementares de um mesmo fluxo de trabalho.",
+      armadilhaComum: "Encarar as ferramentas como rivais em vez de peças complementares de um fluxo produtivo (Pesquisar no Perplexity -> Dominar no NotebookLM -> Redigir no ChatGPT).",
       faqAlunos: [
         {
           pergunta: "Eu posso combinar as três ferramentas na mesma tarefa?",
@@ -459,11 +384,11 @@ const slidesComNotas = [
   },
 
   // =========================================================================
-  // BLOCO 2: PERPLEXITY NA PRÁTICA – O DETETIVE DA WEB (Slides 5 a 8)
+  // BLOCO 2: PERPLEXITY NA PRÁTICA – O DETETIVE DA WEB (Slides 7 a 10)
   // =========================================================================
   {
-    numero: 5,
-    id: 5,
+    numero: 7,
+    id: 7,
     bloco: 2,
     tipo: "apresentacao",
     categoria: "Etapa 2 • Perplexity AI",
@@ -505,89 +430,90 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 6,
-    id: 6,
+    numero: 8,
+    id: 8,
     bloco: 2,
     tipo: "apresentacao",
     categoria: "Etapa 2 • Perplexity AI",
-    titulo: "Recursos Gratuitos de Destaque no Perplexity",
-    subtitulo: "Filtros de foco, Pro Search diário e identificação rápida de confiabilidade",
+    titulo: "A Anatomia da Resposta no Perplexity",
+    subtitulo: "Painel de fontes, síntese em linguagem natural e perguntas de desdobramento",
     conducao: "Condução: Laura",
     itensDestaque: [
       {
-        icone: "⚡",
-        titulo: "Pro Search Diário",
-        desc: "Aprofunda perguntas complexas com múltiplas rodadas de busca e perguntas de refinamento (uso limitado por dia no plano gratuito)."
+        icone: "🌐",
+        titulo: "Painel de Fontes Consultadas",
+        desc: "Exibe no topo da resposta a lista dos sites e páginas que a IA leu na internet em tempo real para formular a explicação."
       },
       {
-        icone: "🎓",
-        titulo: "Filtros de Foco (Focus)",
-        desc: "Restringe a pesquisa ao tipo desejado: 'Academic' para artigos científicos e teses; 'Web' para varredura aberta; 'Finance' para dados de mercado."
+        icone: "🔗",
+        titulo: "Citações em Linha Clicáveis",
+        desc: "Cada afirmação traz marcadores numerados ([1], [2]) que abrem diretamente a página de origem para conferência imediata."
       },
       {
-        icone: "🏷️",
-        titulo: "Rótulos de Confiabilidade",
-        desc: "Identifica com etiquetas transparentes a categoria da fonte citada (Government, Academic, Trusted) para acelerar sua triagem crítica."
+        icone: "💬",
+        titulo: "Perguntas de Desdobramento",
+        desc: "Ao final da resposta, a ferramenta sugere perguntas complementares para aprofundar a investigação sem recomeçar do zero."
       }
     ],
     notasProfessora: {
       tempoSugerido: "10 min (00:50 - 01:00)",
-      objetivoSlide: "Capacitar o aluno a usar os recursos do plano gratuito do Perplexity que trazem maior ganho de qualidade na pesquisa.",
+      objetivoSlide: "Apresentar a interface de leitura do Perplexity, capacitando os alunos a identificar o painel de fontes, as citações em linha e a continuidade da busca.",
       conceito: {
-        titulo: "Filtros de Domínio e Triagem Rápida de Proveniência",
-        definicao: "Capacidade de restringir o espaço amostral de recuperação documental (Search Scope) a repositórios de alta autoridade epistemológica (como bases acadêmicas indexadas) e utilizar metadados de domínio para acelerar a validação da fonte primária."
+        titulo: "Anatomia da Interface de Resposta Baseada em Evidências",
+        definicao: "A interface do Perplexity é organizada para dar visibilidade imediata à procedência: o painel superior de fontes explicita quais páginas foram lidas, o corpo do texto distribui marcadores numerados e o rodapé oferece perguntas de desdobramento para manter o fluxo investigativo ativo."
       },
-      mecanica: "Grid de 3 cards destacando o modo Pro Search (para perguntas que exigem pesquisa em várias etapas), o seletor Focus (Academic vs. Web) e a leitura dos rótulos de procedência das fontes.",
-      armadilhaComum: "Gastar todos os Pro Searches gratuitos em perguntas simples de 'sim ou não' ou fatos triviais que a busca padrão gratuita resolve perfeitamente.",
+      mecanica: "Grid de 3 cards destacando os elementos centrais da tela de resposta: as fontes no topo, as citações numeradas no texto e as sugestões de continuidade ao final.",
+      armadilhaComum: "O aluno apenas ler o texto gerado sem olhar as fontes listadas no topo ou ignorar os marcadores numerados de citação.",
       faqAlunos: [
         {
-          pergunta: "O que muda ao ativar o filtro 'Academic'?",
-          resposta: "Ele ignora blogs de opinião e redes sociais, priorizando artigos científicos, revistas acadêmicas revisadas por pares e repositórios universitários."
+          pergunta: "A busca padrão do Perplexity é gratuita e ilimitada?",
+          resposta: "Sim! A busca padrão é totalmente gratuita, ilimitada e não exige cartão de crédito nem assinatura paga."
         }
       ]
     }
   },
   {
-    numero: 7,
-    id: 7,
+    numero: 9,
+    id: 9,
     bloco: 2,
     tipo: "comparativo",
     categoria: "Etapa 2 • Pensamento Crítico",
     titulo: "Armadilha do Detetive: Citação Não É Sinônimo de Verdade",
-    subtitulo: "Como avaliar criticamente os links encontrados antes de aceitar uma resposta",
+    subtitulo: "A citação comprova que o link existe na web, não que a afirmação é verdadeira",
     conducao: "Condução: Laura",
     colunas: [
       {
-        tag: "⚠️ O Vício do Usuário Apressado",
+        tag: "⚠️ O Risco da Confiança Cega",
         icone: "❌",
         tipo: "alerta",
         bullet: "✕",
         itens: [
-          "Ver um número de citação [1] e assumir que a afirmação é verdade absoluta.",
-          "Confiar cegamente no selo 'Academic' sem conferir a data ou o resumo do estudo.",
-          "Copiar o texto gerado sem nunca abrir ao menos uma das páginas originais citadas."
+          "Ver o link [1] e aceitar a resposta sem checar: a IA pode sintetizar páginas com boatos ou erros.",
+          "Assumir que qualquer site ou link citado pela IA é infalível ou livre de viés e erros.",
+          "Aceitar conclusões de estudos preliminares (pré-prints) ou pesquisas antigas já refutadas."
         ]
       },
       {
-        tag: "✓ O Protocolo Crítico de Verificação",
+        tag: "✓ Protocolo de Auditoria em 4 Passos",
         icone: "✅",
         tipo: "positivo",
         bullet: "✓",
         itens: [
-          "Clicar na citação e conferir se o número ou afirmação realmente consta no texto original.",
-          "Verificar quem publicou (instituição/autor), em que ano e se o estudo não é preliminar.",
-          "Lembrar que o rótulo ajuda na triagem inicial, mas não substitui a leitura humana atenta."
+          "1. Identificar a fonte: quem publicou, quando, qual a finalidade e a competência do autor.",
+          "2. Conferir a afirmação: a citação no link realmente sustenta a frase específica feita pela IA?",
+          "3. Avaliar o método: verificar data, amostra, se há revisão por pares e se é estudo primário ou notícia.",
+          "4. Triangular: comparar a conclusão com ao menos uma fonte independente e de autoridade reconhecida."
         ]
       }
     ],
     notasProfessora: {
       tempoSugerido: "10 min (01:00 - 01:10)",
-      objetivoSlide: "Alertar a turma sobre a falsa sensação de infalibilidade gerada pela presença de links e números de citação.",
+      objetivoSlide: "Alertar a turma sobre a ilusão do hiperlink e operacionalizar a checagem crítica através do protocolo de auditoria em 4 passos.",
       conceito: {
-        titulo: "A Falácia da Autoridade Rastreável e a Ilusão do Hiperlink",
-        definicao: "A presença de um link válido e numerado comprova a existência de uma página na web, mas não garante a veracidade científica, a contemporaneidade ou a ausência de viés no conteúdo. A verificação humana de autoria, data e método permanece mandatória."
+        titulo: "Protocolo de Auditoria Quadripolar e Checagem da Fonte Primária",
+        definicao: "A presença de um hiperlink válido comprova a indexação de uma URL na web, mas não garante solidez epistemológica. O protocolo de quatro passos (Identificar Fonte -> Conferir Afirmação -> Avaliar Método -> Triangular com Fonte Independente) transforma a leitura passiva em auditoria ativa, deixando claro que a presença de um link é um ponto de partida para a checagem humana, e não um atestado de verdade."
       },
-      mecanica: "Quadro comparativo de dois lados: o erro de confundir link com verdade vs. os 3 passos do protocolo crítico de conferência.",
+      mecanica: "Quadro comparativo de dois lados: os 3 riscos da confiança cega em links vs. os 4 passos operacionais do protocolo de auditoria crítica.",
       armadilhaComum: "Achar que ter um link de artigo científico encerra a discussão, sem perceber que artigos antigos ou preliminares podem ter sido refutados pela comunidade.",
       faqAlunos: [
         {
@@ -598,181 +524,82 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 8,
-    id: 8,
+    numero: 10,
+    id: 10,
     bloco: 2,
     tipo: "missao-diagnostica",
     ocultarPresenterPill: true,
     categoria: "Prática de Bancada • Missão 1",
-    titulo: "Oficina de Bancada: Missão 1 — O Detetive de Fontes",
-    subtitulo: "Comparando uma resposta genérica com uma auditoria de links em tempo real",
+    titulo: "Oficina de Bancada: Missão 1 — Conheça o Perplexity",
+    subtitulo: "Faça uma pergunta prática, abra uma fonte citada e descubra se a resposta é sustentada por ela",
     tempoEstimado: "15 min",
     passos: [
-      "1. Escolha uma afirmação cotidiana ou polêmica (ex.: 'Estudar ouvindo música sempre prejudica a concentração' ou 'Café logo após o almoço impede absorção de nutrientes').",
-      "2. Teste no ChatGPT: Peça uma explicação curta sobre o tema e repare como ele responde 'de cabeça', sem trazer links diretos às fontes.",
-      "3. Teste no Perplexity: Faça a mesma pergunta no perplexity.ai com o filtro 'Academic' ativado e observe as citações [1], [2], [3].",
-      "4. Auditoria da Fonte: Clique em ao menos um link original, abra a página e confirme se o que a IA escreveu realmente está no documento.",
-      "5. Registro Formativo: Registre no seu Portfólio Digital: Afirmação testada, o que o ChatGPT disse, o link auditado no Perplexity e seu veredito."
+      "1. Escolha uma pergunta simples (2 min): Pergunta prática do cotidiano ou do curso (ex.: regras de documentos, serviços públicos, editais ou vagas). Evite polêmicas agora.",
+      "2. Pergunte no Perplexity (3 min): Digite a pergunta e observe 3 elementos: a resposta em texto natural, as citações numeradas [1], [2] e os links. Não copie ainda: veja de onde veio.",
+      "3. Abra 1 fonte e confira (5 min): Abra apenas uma citação e avalie: Quem publicou? Quando? A fonte realmente diz o que a IA afirmou? Ela parece adequada para o tema?",
+      "4. Registre o resultado (3 min): Anote: Pergunta feita, fonte aberta, data e veredito: 'A citação sustenta a resposta? (Sim / Parcialmente / Não)' e o que você verificaria antes de usar.",
+      "5. Pistas, não verdades (2 min): Dois voluntários compartilham. Lembre-se: 'O Perplexity não entrega verdade pronta: entrega pistas. Nossa tarefa é seguir as pistas e julgar a evidência'."
     ],
     destaqueDiagnostica: {
       icone: "🔍",
       titulo: "Missão 1: Da Opinião à Evidência",
-      desc: "Experimente a transição prática entre uma resposta plausível gerada de memória e uma síntese com links reais auditáveis.",
-      tagAviso: "RAG Aberto & Checagem Factual"
+      desc: "O Perplexity não entrega uma verdade pronta: entrega uma resposta com pistas. Nossa tarefa é seguir as pistas e julgar se elas sustentam a afirmação.",
+      tagAviso: "Lembrete: Citação não é verdade — é convite para verificar"
     },
     conducao: "Co-docência (Laura & Maria)",
     notasProfessora: {
       tempoSugerido: "15 min (01:10 - 01:25)",
-      objetivoSlide: "Conduzir a Missão 1 de bancada no laboratório, garantindo que cada aluno abra e confira ao menos um link real no Perplexity.",
+      objetivoSlide: "Conhecer a lógica do Perplexity em perguntas práticas do dia a dia: fazer pergunta em linguagem natural, ler fontes citadas e checar se a citação realmente sustenta a afirmação.",
       conceito: {
-        titulo: "Operacionalização da Checagem de Fatos e Triagem de Fontes",
-        definicao: "Exercício prático de bancada que desenvolve a habilidade de auditoria ativa: comparar a resposta puramente textual de uma LLM com a recuperação de links em tempo real, realizando o confronto empírico da síntese com o texto original da fonte."
+        titulo: "Investigação Prática: A Resposta como Conjunto de Pistas",
+        definicao: "O Perplexity busca na web e entrega respostas conversacionais com citações e links. A missão estabelece o modelo mental central: 'O Perplexity não entrega uma verdade pronta: entrega uma resposta com pistas. Nossa tarefa é seguir as pistas e julgar se elas sustentam a afirmação.' Citação não é sinônimo de verdade — ela é um convite aberto para verificar."
       },
-      mecanica: "Roteiro de 5 passos no laboratório. As professoras circulam conferindo se os alunos conseguiram ativar o filtro de foco e abrir a aba da fonte primária.",
-      armadilhaComum: "O aluno apenas ler a tela do Perplexity sem clicar no link [1] para ver a página original.",
+      mecanica: "Roteiro em 5 momentos: (1) Escolha de pergunta prática simples, sem temas polêmicos; (2) Envio da pergunta e observação dos 3 elementos; (3) Abertura de apenas 1 citação para checar autoria, data e aderência; (4) Registro simples no caderno ou formulário; (5) Compartilhamento com a turma. Em turmas com menos familiaridade digital, adote a 'Versão Ainda Mais Simples' (1 pergunta prática -> abre 1 fonte -> completa a frase 'A resposta foi confirmada/não confirmada porque...').",
+      armadilhaComum: "O aluno copiar a resposta da IA imediatamente sem abrir o link citado, ou escolher temas excessivamente polêmicos/técnicos logo na primeira atividade.",
       faqAlunos: [
         {
-          pergunta: "Preciso pagar para usar o filtro Academic?",
-          resposta: "Não! O botão 'Focus' (Foco) com opção 'Academic' é totalmente gratuito para todos os usuários."
+          pergunta: "A citação com link garante que a informação foi totalmente comprovada?",
+          resposta: "Não! A citação indica onde a IA encontrou o texto, mas a página de origem pode conter erros, boatos ou estar desatualizada. Por isso, abrir a fonte original continua sendo indispensável."
+        },
+        {
+          pergunta: "E se a página que eu abrir disser algo um pouco diferente do resumo da IA?",
+          resposta: "Esse é o maior aprendizado da oficina! Registre 'Parcialmente confirmada' ou 'Não' e anote a diferença. A IA resume, mas a decisão sobre o que é verdadeiro é do olhar humano."
         }
       ]
     }
   },
 
   // =========================================================================
-  // BLOCO 3: GOOGLE NOTEBOOKLM – O BIBLIOTECÁRIO PARTICULAR (Slides 9 a 13)
+  // BLOCO 3: GOOGLE NOTEBOOKLM – O BIBLIOTECÁRIO PARTICULAR (Slides 11 a 16)
   // =========================================================================
-  {
-    numero: 9,
-    id: 9,
-    bloco: 3,
-    tipo: "apresentacao",
-    categoria: "Etapa 3 • Google NotebookLM",
-    titulo: "Como Funciona o NotebookLM: O RAG Fechado nos Seus Documentos",
-    subtitulo: "A tecnologia que fecha as portas para a internet externa e elimina alucinações",
-    conducao: "Condução: Maria",
-    itensDestaque: [
-      {
-        icone: "📂",
-        titulo: "1. Seu Corpus de Confiança",
-        desc: "Você cria um caderno e faz upload de PDFs, apostilas, Google Docs, slides ou vídeos do YouTube (até 50 fontes por caderno no plano gratuito)."
-      },
-      {
-        icone: "🔒",
-        titulo: "2. Ancoragem Estrita (Grounding)",
-        desc: "O modelo responde EXCLUSIVAMENTE a partir do material carregado. Se a informação não estiver nos seus arquivos, ele avisa que não encontrou."
-      },
-      {
-        icone: "📌",
-        titulo: "3. Citação Linha a Linha",
-        desc: "Cada afirmação traz um marcador clicável que abre o PDF e destaca em cor forte o parágrafo exato de onde o dado foi extraído."
-      }
-    ],
-    notasProfessora: {
-      tempoSugerido: "10 min (01:25 - 01:35)",
-      objetivoSlide: "Apresentar a tecnologia de RAG fechado do NotebookLM e demonstrar por que ele é a ferramenta ideal para estudar materiais complexos.",
-      conceito: {
-        titulo: "Closed-Corpus Grounding (Ancoragem em Corpus Fechado)",
-        definicao: "Mecanismo pelo qual a geração da IA é estritamente condicionada e delimitada ao conjunto de documentos estáticos importados pelo usuário. Elimina alucinações exógenas (provenientes de dados de treino abertos) ao priorizar como única fonte de verdade os fragmentos indexados no caderno."
-      },
-      mecanica: "Sequência visual de 3 etapas demonstrando a barreira contra a internet aberta: upload dos documentos do aluno -> resposta 100% ancorada -> destaque visual no parágrafo original.",
-      armadilhaComum: "Achar que o NotebookLM vai atualizar o arquivo sozinho se ele mudar no Google Drive. As fontes importadas são cópias estáticas no momento do envio.",
-      faqAlunos: [
-        {
-          pergunta: "Quantos documentos posso colocar em um caderno gratuito?",
-          resposta: "A Google permite até 50 fontes por caderno, e cada arquivo pode ter até 500 mil palavras (ou 200 MB), o que é mais do que suficiente para livros e apostilas inteiras."
-        }
-      ]
-    }
-  },
-  {
-    numero: 10,
-    id: 10,
-    bloco: 3,
-    tipo: "apresentacao",
-    categoria: "Etapa 3 • Google NotebookLM",
-    titulo: "Navegação e Rastreabilidade: Como Dominar o Caderno",
-    subtitulo: "Citações em linha clicáveis, seleção seletiva de fontes e o Source Guide automático",
-    conducao: "Condução: Maria",
-    itensDestaque: [
-      {
-        icone: "🎯",
-        titulo: "Citação em Linha Clicável",
-        desc: "Ao clicar no número da citação, o painel lateral abre o PDF exatamente no parágrafo original destacado em cor de alto contraste."
-      },
-      {
-        icone: "☑️",
-        titulo: "Seleção Granular de Fontes",
-        desc: "Você pode desmarcar fontes na barra lateral e fazer perguntas focando em apenas um ou dois arquivos específicos, evitando misturas de matérias."
-      },
-      {
-        icone: "🗺️",
-        titulo: "Source Guide Automático",
-        desc: "Assim que um PDF é importado, a ferramenta gera um resumo executivo, tópicos-chave e perguntas sugeridas para guiar sua leitura."
-      }
-    ],
-    notasProfessora: {
-      tempoSugerido: "10 min (01:35 - 01:45)",
-      objetivoSlide: "Demonstrar a usabilidade prática da interface do NotebookLM (citações clicáveis, checkboxes de fontes e Source Guide).",
-      conceito: {
-        titulo: "Rastreabilidade Bidirecional e Escopo Dinâmico de Atenção",
-        definicao: "A interface do NotebookLM implementa um link direto entre a resposta sintetizada e o trecho de origem no visualizador de documentos. A seleção manual de fontes permite ao usuário modular a atenção do modelo (Context Pruning), isolando materiais para evitar contaminação conceitual."
-      },
-      mecanica: "3 cards práticos explicando a navegação da tela: o clique na citação que leva ao texto original, o filtro por caixas de seleção (checkboxes) e o guia do documento gerado na hora.",
-      armadilhaComum: "Deixar 20 PDFs marcados com temas totalmente diferentes e fazer uma pergunta genérica, fazendo a IA misturar conceitos de matérias distintas.",
-      faqAlunos: [
-        {
-          pergunta: "Posso colocar links de vídeos do YouTube como fonte?",
-          resposta: "Sim! Se o vídeo tiver legendas ou transcrição, o NotebookLM importa o texto falado do vídeo como fonte de estudo do caderno."
-        }
-      ]
-    }
-  },
   {
     numero: 11,
     id: 11,
     bloco: 3,
-    tipo: "apresentacao",
-    layout: "grid-4cards",
+    tipo: "secao",
     categoria: "Etapa 3 • Google NotebookLM",
-    titulo: "O Painel Studio: Transformando Documentos em Produtos",
-    subtitulo: "Outputs multimídia gerados automaticamente a partir dos seus arquivos de estudo",
-    conducao: "Condução: Maria",
-    itensDestaque: [
-      {
-        icone: "🎙️",
-        titulo: "Audio Overview (Podcast)",
-        desc: "Dois apresentadores de IA debatem as ideias dos seus PDFs em uma conversa dinâmica e descontraída em português."
-      },
-      {
-        icone: "📋",
-        titulo: "Guia de Estudo & FAQ",
-        desc: "Gera automaticamente questionários de revisão, glossários de conceitos e perguntas frequentes extraídas das fontes."
-      },
-      {
-        icone: "🧠",
-        titulo: "Mapas Mentais & Linha do Tempo",
-        desc: "Visualização esquemática das conexões conceituais do documento e ordem cronológica de acontecimentos históricos ou processos."
-      },
-      {
-        icone: "🎬",
-        titulo: "Video Overview (Vídeo)",
-        desc: "Gera um resumo visual narrado em vídeo (formatos explicativo ou curto) ilustrando os conceitos centrais do seu caderno."
-      }
+    badge: "ETAPA 3 • GOOGLE NOTEBOOKLM",
+    titulo: "Google NotebookLM",
+    subtitulo: "O bibliotecário particular: respostas fundamentadas nos seus materiais e artefatos de estudo com grounding",
+    pills: [
+      { tipo: "real", texto: "📂 Seus Documentos" },
+      { tipo: "real", texto: "🔒 Grounding nas Fontes" },
+      { tipo: "real", texto: "🎙️ Painel Studio" }
     ],
+    conducao: "Condução: Maria",
     notasProfessora: {
-      tempoSugerido: "10 min (01:45 - 01:55)",
-      objetivoSlide: "Apresentar a suíte Studio do NotebookLM (Podcast em áudio, Guia de Estudo, Mapas Mentais e Vídeo explicativo).",
+      tempoSugerido: "2 min (01:40 - 01:42)",
+      objetivoSlide: "Slide-título de transição de impacto para abrir a Etapa 3 após o intervalo, direcionando a atenção para o Google NotebookLM e o conceito de corpus próprio.",
       conceito: {
-        titulo: "Multimodalidade Sintética e Artefatos Derivados de Estudo",
-        definicao: "Capacidade de reconfigurar o mesmo conjunto de dados textuais estruturados em múltiplos formatos sensoriais e cognitivos: áudio dialógico conversacional (podcast sintético), representações diagramáticas em grafos (mapas mentais) e questionários formativos de autoavaliação (guias de estudo)."
+        titulo: "Transição para Grounding Documental",
+        definicao: "Marcação do início da terceira grande etapa do encontro, transacionando da pesquisa na web aberta com o Perplexity para o estudo ancorado nos documentos pessoais do usuário."
       },
-      mecanica: "Grid de 4 cards ilustrando os 4 grandes artefatos do painel Studio. Destaque especial para a geração do Audio Overview e do Guia de Estudo.",
-      armadilhaComum: "Achar que o podcast é gerado instantaneamente como uma resposta de chat. Ele exige processamento de voz e leva de 2 a 5 minutos para ficar pronto.",
+      mecanica: "Slide-título minimalista de transição no padrão Clean Light.",
+      armadilhaComum: "Achar que o NotebookLM é apenas outro buscador como o Perplexity, sem compreender a mudança de foco para o material selecionado pelo próprio usuário.",
       faqAlunos: [
         {
-          pergunta: "O podcast funciona em português?",
-          resposta: "Sim! Se o seu documento estiver em português, os dois apresentadores de IA conversarão em português do Brasil com naturalidade impressionante."
+          pergunta: "Por que mudar de ferramenta agora se o Perplexity já busca tão bem?",
+          resposta: "Porque quando você precisa estudar uma apostila, ler um edital ou preparar uma aula a partir de textos específicos, o NotebookLM garante foco estrito nos seus documentos."
         }
       ]
     }
@@ -781,48 +608,45 @@ const slidesComNotas = [
     numero: 12,
     id: 12,
     bloco: 3,
-    tipo: "comparativo",
-    categoria: "Etapa 3 • Pensamento Crítico",
-    titulo: "Armadilha do Bibliotecário: O Que o NotebookLM NÃO Faz",
-    subtitulo: "Cegueira para fontes externas, sínteses imperfeitas e privacidade de dados",
+    tipo: "apresentacao",
+    categoria: "Etapa 3 • Google NotebookLM",
+    titulo: "Como Funciona o NotebookLM: Respostas Fundamentadas nas Fontes",
+    subtitulo: "Respostas geradas a partir do material que você seleciona, com citações para facilitar a conferência",
     conducao: "Condução: Maria",
-    colunas: [
+    itensDestaque: [
       {
-        tag: "⚠️ Cuidados Críticos de Uso",
-        icone: "❌",
-        tipo: "alerta",
-        bullet: "✕",
-        itens: [
-          "Usar o NotebookLM como buscador geral (ele é cego para o que você não subiu no caderno).",
-          "Ouvir o Audio Overview (podcast) achando que ele substitui a leitura atenta do documento.",
-          "Subir documentos com dados pessoais sigilosos ou materiais de terceiros sem autorização."
-        ]
+        icone: "📂",
+        titulo: "1. Seu Caderno de Fontes",
+        desc: "Você cria um caderno e adiciona arquivos locais ou da web (PDFs, Docs, Slides, texto ou links do YouTube, dependendo da disponibilidade de legendas)."
       },
       {
-        tag: "✓ As Boas Práticas do Caderno",
-        icone: "✅",
-        tipo: "positivo",
-        bullet: "✓",
-        itens: [
-          "Carregar materiais complementares (ex: um artigo científico, uma lei oficial e uma cartilha).",
-          "Conferir as citações nos trechos originais antes de usar resumos em relatórios de trabalho.",
-          "Usar o áudio, o mapa mental e o FAQ como andaimes de revisão para fixar os conceitos."
-        ]
+        icone: "🔒",
+        titulo: "2. Respostas Fundamentadas (Grounding)",
+        desc: "O modelo responde prioritariamente a partir das fontes selecionadas. Reduz o risco de dados externos inventados, mas não elimina erros de leitura ou síntese."
+      },
+      {
+        icone: "📌",
+        titulo: "3. Citação para Conferência",
+        desc: "Cada afirmação traz citações que levam diretamente ao trecho original usado na fonte, facilitando a verificação humana ativa."
       }
     ],
     notasProfessora: {
-      tempoSugerido: "10 min (01:55 - 02:05)",
-      objetivoSlide: "Alertar a turma sobre as limitações do NotebookLM e reforçar os princípios de privacidade e direitos autorais.",
+      tempoSugerido: "8 min (01:42 - 01:50)",
+      objetivoSlide: "Apresentar o funcionamento do NotebookLM com foco em respostas fundamentadas nas fontes selecionadas pelo usuário, desfazendo mitos de infalibilidade.",
       conceito: {
-        titulo: "Limites Epistêmicos do RAG Fechado e Governança de Dados",
-        definicao: "A robustez do RAG fechado contra alucinações externas cria, por design, uma fronteira epistêmica rígida: o modelo ignora o mundo fora do caderno. Paralelamente, materiais importados para a nuvem devem respeitar as diretrizes da LGPD e os direitos autorais aplicáveis."
+        titulo: "Respostas Fundamentadas em Fontes Selecionadas (Grounding)",
+        definicao: "O NotebookLM cria respostas fundamentadas nas fontes que você selecionou para o caderno e usa citações para ajudar você a localizar e conferir os trechos originais. Importante: isso reduz o risco de respostas baseadas em informações externas, mas não elimina erros de leitura, interpretação, inferência ou síntese. Em geral, se uma informação não constar das fontes, o modelo deve indicar isso; ainda assim, teste com perguntas fora do corpus e confira as respostas."
       },
-      mecanica: "Quadro comparativo de dois lados: equívocos comuns no uso do NotebookLM vs. boas práticas de alimentação documental e privacidade.",
-      armadilhaComum: "Achar que carregar um único PDF desatualizado é suficiente para ter uma visão completa e moderna sobre um tema complexo.",
+      mecanica: "Sequência visual de 3 etapas: seleção do caderno de fontes -> geração fundamentada no material -> citação que leva ao trecho original.",
+      armadilhaComum: "Achar que a ferramenta elimina alucinações por completo ou que sincroniza arquivos dinamicamente. Verifique sempre se a versão no caderno corresponde à versão atual do documento; não assuma sincronização automática.",
       faqAlunos: [
         {
-          pergunta: "A Google usa os documentos que eu subo no NotebookLM para treinar os modelos dela?",
-          resposta: "A Google documenta oficialmente que os dados e documentos que você envia para o NotebookLM pessoal não são utilizados para treinar novos modelos públicos de IA."
+          pergunta: "Quantos documentos posso colocar em um caderno gratuito?",
+          resposta: "No plano gratuito, até 50 fontes por caderno; cada fonte pode ter até 500.000 palavras ou até 200 MB (para arquivos enviados localmente)."
+        },
+        {
+          pergunta: "Ele pesquisa na internet se a informação não estiver no meu PDF?",
+          resposta: "O NotebookLM é projetado para trabalhar com o material que você selecionou. Ele não é um buscador geral: se uma informação não estiver nas fontes do caderno, ela não deveria ser tratada como verificada."
         }
       ]
     }
@@ -831,115 +655,94 @@ const slidesComNotas = [
     numero: 13,
     id: 13,
     bloco: 3,
-    tipo: "missao-diagnostica",
-    ocultarPresenterPill: true,
-    categoria: "Prática de Bancada • Missão 2",
-    titulo: "Oficina de Bancada: Missão 2 — Do PDF ao Guia e Áudio",
-    subtitulo: "Carregando materiais no caderno, explorando citações e gerando recursos de estudo",
-    tempoEstimado: "20 min",
-    passos: [
-      "1. Acesse notebooklm.google.com com sua conta Google e crie um novo caderno de estudos.",
-      "2. Importe uma fonte: Faça o upload de um PDF curto fornecido pelas professoras (ou adicione o link de um artigo ou vídeo da aula).",
-      "3. Explore as Citações: No chat, pergunte: 'Quais são as três ideias centrais deste material? Indique os trechos de onde tirou cada uma.' Clique nos números e veja o destaque no PDF.",
-      "4. Teste o Painel Studio: Clique em 'Guia de Estudo' para gerar perguntas de revisão e clique em 'Gerar' no Audio Overview.",
-      "5. Validação Humana: Ouça um minuto do podcast gerado e confira se a conversa sintetiza fielmente o que está escrito no seu material."
-    ],
-    destaqueDiagnostica: {
-      icone: "📓",
-      titulo: "Missão 2: Estudo Ativo com Grounding",
-      desc: "Transforme um documento estático em um espaço interativo de estudo com citações linha a linha, guia de perguntas e áudio.",
-      tagAviso: "RAG Fechado & Painel Studio"
-    },
-    conducao: "Co-docência (Laura & Maria)",
-    notasProfessora: {
-      tempoSugerido: "20 min (02:05 - 02:25)",
-      objetivoSlide: "Conduzir a Missão 2 de bancada, garantindo que cada participante consiga subir um arquivo, fazer uma pergunta ancorada e gerar um output no Studio.",
-      conceito: {
-        titulo: "Operacionalização de Cadernos Inteligentes e Aprendizagem Aumentada",
-        definicao: "Exercício prático de bancada que consolida o fluxo completo de estudo aumentado por IA: ingestão documental -> extração orientada por prompts -> navegação por citações interativas -> produção de artefatos de revisão multimídia."
+    tipo: "apresentacao",
+    categoria: "Etapa 3 • Google NotebookLM",
+    titulo: "Navegação e Rastreabilidade: Como Dominar o Caderno",
+    subtitulo: "Citações diretas aos trechos originais, seleção granular de fontes e resumo automático das fontes",
+    conducao: "Condução: Maria",
+    itensDestaque: [
+      {
+        icone: "🎯",
+        titulo: "Citação ao Trecho Original",
+        desc: "A citação leva ao trecho original usado na resposta, facilitando a conferência e o cotejamento direto com a fonte."
       },
-      mecanica: "Slide de bancada com 5 passos claros. As professoras auxiliam na conexão da conta Google e na exploração do painel Studio.",
-      armadilhaComum: "Ficar esperando o áudio na tela sem fazer outras perguntas no chat. Explique que o áudio renderiza em segundo plano na nuvem enquanto eles podem continuar conversando com o PDF.",
+      {
+        icone: "☑️",
+        titulo: "Seleção Granular de Fontes",
+        desc: "Você pode marcar ou desmarcar fontes na barra lateral para direcionar o foco da IA a arquivos específicos, modulando a atenção da IA."
+      },
+      {
+        icone: "🗺️",
+        titulo: "Resumo Automático e Tópicos-Chave",
+        desc: "Ao importar um documento, a ferramenta gera um sumário executivo e tópicos centrais para orientar sua leitura inicial."
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "10 min (01:35 - 01:45)",
+      objetivoSlide: "Demonstrar a usabilidade prática da interface do NotebookLM (citações clicáveis, checkboxes de fontes e resumo inicial).",
+      conceito: {
+        titulo: "Rastreabilidade Documental e Escopo Modular de Atenção",
+        definicao: "A interface do NotebookLM implementa um link direto entre a resposta sintetizada e o trecho de origem no documento. A seleção manual de fontes modula a atenção do modelo. Porém, citação interna não valida a qualidade da fonte: um PDF ruim ou enviesado continuará ruim — apenas mais fácil de interrogar."
+      },
+      mecanica: "3 cards práticos explicando a navegação da tela: citação com atalho ao trecho, filtro por checkboxes e sumário executivo gerado na importação.",
+      armadilhaComum: "Achar que mais fontes significam um caderno melhor. Mais fontes não significam melhor resultado: selecione materiais relevantes, confiáveis, atuais e complementares.",
       faqAlunos: [
         {
-          pergunta: "Posso fechar a aba enquanto o áudio está gerando?",
-          resposta: "Sim! Como o processamento acontece nos servidores da Google, você pode fechar o navegador e voltar mais tarde que o áudio estará salvo no seu caderno."
+          pergunta: "Por que às vezes subo um PDF e ele não consegue ler ou destacar citações?",
+          resposta: "Antes de culpar a IA, verifique se o PDF permite seleção de texto e se o OCR reconheceu corretamente o conteúdo. PDFs escaneados como imagem podem gerar extração incompleta ou erros de leitura."
+        },
+        {
+          pergunta: "Posso colocar links de vídeos do YouTube como fonte?",
+          resposta: "Sim, dependendo do vídeo e da disponibilidade de transcrição ou legendas na plataforma."
         }
       ]
     }
   },
-
-  // =========================================================================
-  // BLOCO 4: ARMADILHAS, ÉTICA UNESCO & FECHAMENTO (Slides 14 a 17)
-  // =========================================================================
   {
     numero: 14,
     id: 14,
-    bloco: 4,
-    tipo: "quadro-comparativo",
-    estiloColunas: "armadilhas",
-    iconesColunas: ["⚠️", "🧠", "💡"],
-    categoria: "Etapa 4 • Armadilhas & Pensamento Crítico",
-    titulo: "Quadro de Armadilhas: Evite os 6 Erros Clássicos de Iniciante",
-    subtitulo: "Os equívocos mais comuns mapeados na pesquisa e como superá-los na prática cotidiana",
-    colunasTabela: [
-      "Armadilha Comum",
-      "O Que o Usuário Faz",
-      "Por Que Dá Errado",
-      "Como Corrigir"
-    ],
-    linhasTabela: [
+    bloco: 3,
+    tipo: "apresentacao",
+    layout: "grid-4cards",
+    categoria: "Etapa 3 • Google NotebookLM",
+    titulo: "O Painel Studio: Artefatos de Estudo e Revisão",
+    subtitulo: "Recursos sintéticos para revisão e engajamento — andaimes temporários que não substituem o material-fonte",
+    conducao: "Condução: Maria",
+    itensDestaque: [
       {
-        criterio: "1. Tratar Perplexity como ChatGPT",
-        vago: "Pede criação livre ou texto sem fontes",
-        falsoBom: "Estranha resposta cheia de links curtos",
-        estruturado: "Use Perplexity para fatos e ChatGPT para rascunho"
+        icone: "🎙️",
+        titulo: "Audio Overview (Áudio)",
+        desc: "Resumo em áudio conduzido por apresentadores de IA (quando disponível no idioma selecionado), útil para introdução ou revisão auditiva."
       },
       {
-        criterio: "2. Citação = Verdade Absoluta",
-        vago: "Vê o link [1] e aceita sem conferir",
-        falsoBom: "O link pode ser defasado ou fora de contexto",
-        estruturado: "Abra o link e leia ao menos um parágrafo original"
+        icone: "📋",
+        titulo: "Guia de Estudo & FAQ",
+        desc: "Gera questionários de revisão, glossários e perguntas frequentes ancoradas nos arquivos para autoavaliação formativa."
       },
       {
-        criterio: "3. Confundir 'Academic' com Fato",
-        vago: "Acha que selo 'Academic' valida a resposta",
-        falsoBom: "O selo indica tipo de site, não verdade do estudo",
-        estruturado: "Use o selo como triagem inicial, avaliando autoria"
+        icone: "🧠",
+        titulo: "Mapas Mentais & Linha do Tempo",
+        desc: "Visualização esquemática das conexões conceituais do documento e ordem cronológica para suporte visual e síntese prévia."
       },
       {
-        criterio: "4. NotebookLM como Buscador Aberto",
-        vago: "Pergunta fatos que não estão no PDF",
-        falsoBom: "A IA avisa que não achou ou fica sem resposta",
-        estruturado: "Lembre-se: ele só lê o que você colocou no caderno"
-      },
-      {
-        criterio: "5. Ouvir Áudio sem Ler o Texto",
-        vago: "Usa o podcast como única fonte de estudo",
-        falsoBom: "O áudio é uma síntese que pode omitir detalhes",
-        estruturado: "Use o áudio como revisão e fixação, nunca substituto"
-      },
-      {
-        criterio: "6. Subir Documentos sem Autorização",
-        vago: "Carrega contratos ou dados pessoais sigilosos",
-        falsoBom: "Viola privacidade, termos de uso e a LGPD",
-        estruturado: "Suba materiais públicos, didáticos ou próprios"
+        icone: "🎬",
+        titulo: "Video Overview (Vídeo)",
+        desc: "Transforma as fontes em visualizações ou sínteses em vídeo para introdução temática (formato e disponibilidade podem variar)."
       }
     ],
-    conducao: "Co-docência (Laura & Maria)",
     notasProfessora: {
-      tempoSugerido: "10 min (02:25 - 02:35)",
-      objetivoSlide: "Sistematizar os 6 principais erros operacionais identificados em usuários iniciantes e fixar os comportamentos corretivos.",
+      tempoSugerido: "10 min (01:45 - 01:55)",
+      objetivoSlide: "Apresentar a suíte Studio do NotebookLM destacando que seus outputs multimídia são andaimes temporários de estudo, e não conhecimento pronto.",
       conceito: {
-        titulo: "Matriz de Vulnerabilidades Operacionais e Vícios de Transferência",
-        definicao: "Sistematização dos vícios gerados pela transferência indiscriminada de hábitos: o usuário acostumado com chatbots generalistas tenta aplicar as mesmas expectativas em ferramentas de busca ou de ancoragem documental fechada, gerando falhas de alinhamento."
+        titulo: "Andaimes de Aprendizagem (Scaffolding) vs. Compreensão Ativa",
+        definicao: "Os recursos do painel Studio (Audio Overview, Video Overview, mapas conceituais, guias e briefings) constituem andaimes de aprendizagem (Scaffolding). São valiosos para mobilização prévia, acessibilidade e revisão, mas representam compressões sintéticas que podem simplificar ou distorcer nuances dos textos originais. Jamais substituem a construção de compreensão autônoma pelo estudante."
       },
-      mecanica: "Tabela comparativa de 4 colunas analisando 6 armadilhas clássicas lado a lado (Ação do usuário -> Por que dá errado -> Como corrigir).",
-      armadilhaComum: "Achar que basta aprender a ferramenta uma vez para não cometer mais esses erros. Essas armadilhas decorrem da pressa do dia a dia.",
+      mecanica: "Grid de 4 cards ilustrando os 4 grandes artefatos do painel Studio. Destaque para o valor pedagógico de apoio e a advertência contra a ilusão de 'conhecimento pronto'.",
+      armadilhaComum: "Achar que ouvir o áudio elimina a necessidade de ler as páginas do material fornecido pelas professoras.",
       faqAlunos: [
         {
-          pergunta: "Qual dessas 6 armadilhas é a mais perigosa na prática?",
-          resposta: "A número 6 (subir dados pessoais sigilosos sem autorização) por riscos jurídicos, e a número 2 (achar que link [1] é verdade inquestionável) por riscos acadêmicos e profissionais."
+          pergunta: "O áudio funciona em qualquer idioma e conta?",
+          resposta: "A disponibilidade de idiomas e recursos de geração de áudio depende da sua conta e das configurações de idioma do Google; em geral o suporte ao português tem se expandido, mas sempre teste no seu ambiente."
         }
       ]
     }
@@ -947,41 +750,200 @@ const slidesComNotas = [
   {
     numero: 15,
     id: 15,
-    bloco: 4,
-    tipo: "secao",
-    categoria: "Etapa 4 • Governança & Ética UNESCO",
-    badge: "DIRETRIZES DA UNESCO • AGÊNCIA HUMANA NA EDUCAÇÃO",
-    titulo: "A IA Não Substitui a Leitura: Ela Organiza o Caminho Até Ela",
-    citacao: "A inteligência artificial generativa deve ser utilizada para potencializar e apoiar a capacidade crítica humana, e jamais para terceirizar a reflexão e a responsabilidade ética pela verdade.",
-    autor: "UNESCO (2023–2024)",
-    autorDesc: "Guidance for Generative AI in Education and Research",
-    subtitulo: "A tecnologia organiza o volume de dados e acelera o acesso; a validação e o discernimento continuam sendo prerrogativas humanas.",
-    pills: [
-      { tipo: "real", texto: "🧭 IA como Andaime Cognitivo" },
-      { tipo: "real", texto: "🔍 Curadoria & Checagem Ativa" },
-      { tipo: "real", texto: "🛡️ Agência Humana Inegociável" }
-    ],
-    conducao: "Condução: Laura",
-    notasProfessora: {
-      tempoSugerido: "10 min (02:35 - 02:45)",
-      objetivoSlide: "Fundamentar a postura ética do curso nas diretrizes internacionais da UNESCO para uso de IA na educação e pesquisa.",
-      conceito: {
-        titulo: "Agência Humana, Andaime Cognitivo e Responsabilidade Epistêmica",
-        definicao: "Conforme preconizado pela UNESCO, as ferramentas de IA devem atuar estritamente como andaimes de suporte ao desenvolvimento cognitivo (Cognitive Scaffolding), preservando a centralidade da agência humana, a autonomia do julgamento crítico e a responsabilidade intransferível do autor."
+    bloco: 3,
+    tipo: "comparativo",
+    categoria: "Etapa 3 • Pensamento Crítico",
+    titulo: "Armadilha do Bibliotecário: O Que o NotebookLM NÃO Faz",
+    subtitulo: "“O NotebookLM é excelente para interrogar e organizar o seu material; ele não é um substituto da leitura, nem uma fonte autônoma de verdade.”",
+    conducao: "Condução: Maria",
+    colunas: [
+      {
+        tag: "⚠️ Riscos Críticos & Ilusões Comuns",
+        icone: "❌",
+        tipo: "alerta",
+        bullet: "✕",
+        itens: [
+          "Achar que citação interna é atestado de verdade: um PDF ruim ou desatualizado continuará sendo ruim — apenas mais fácil de interrogar.",
+          "Enviar dados pessoais ou sensíveis de terceiros (prontuários, dados de pesquisa identificáveis, atas com CPFs, gravações) sem base legal, autorização e orientação institucional.",
+          "Tratar o NotebookLM como buscador geral ou assumir que arquivos desatualizados se corrigem sozinhos sem conferência da versão."
+        ]
       },
-      mecanica: "Slide solene de transição conceitual destacando a citação da UNESCO e as 3 pílulas de princípio ético do curso.",
-      armadilhaComum: "Achar que ter ferramentas eficientes significa ler menos. O objetivo da IA é nos poupar do trabalho mecânico de busca para sobrar mais tempo para a reflexão profunda.",
+      {
+        tag: "✓ Boas Práticas & Uso Responsável",
+        icone: "✅",
+        tipo: "positivo",
+        bullet: "✓",
+        itens: [
+          "Conferir a citação no trecho original: rastrear o trecho não garante que a interpretação da IA esteja 100% correta.",
+          "Regra prática da LGPD: se o documento não fosse seguro para envio público ou institucional, não envie à IA; aplique anonimização.",
+          "Verificar a versão do documento e a qualidade do OCR antes de concluir que a ferramenta 'não encontrou' uma informação."
+        ]
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "10 min (01:55 - 02:05)",
+      objetivoSlide: "Fixar a regra de ouro do NotebookLM e aprofundar os cuidados de LGPD relativos a dados pessoais de terceiros, bases legais e direitos autorais.",
+      conceito: {
+        titulo: "Governança de Dados, Base Legal e Limites da Ancoragem",
+        definicao: "Regra norteadora: 'O NotebookLM é excelente para interrogar e organizar o seu material; ele não é um substituto da leitura, nem uma fonte autônoma de verdade.' Em governança e LGPD, o consentimento é apenas uma das bases legais; para dados sensíveis (saúde, biometria, dados de menores) os cuidados são ainda mais rigorosos. Citação interna não valida a qualidade da fonte: 'lixo entra, lixo sai'. A ferramenta potencializa o material que recebe."
+      },
+      mecanica: "Quadro comparativo de dois lados: os 3 riscos críticos (qualidade das fontes e LGPD de terceiros) vs. as 3 boas práticas fundamentadas de uso ético e seguro.",
+      armadilhaComum: "Achar que a política de privacidade da plataforma autoriza subir qualquer documento de terceiros sem base legal e orientação institucional prévia.",
       faqAlunos: [
         {
-          pergunta: "O que a UNESCO recomenda sobre o uso de IA por alunos em sala de aula?",
-          resposta: "A UNESCO recomenda que as ferramentas sejam usadas para estimular o questionamento crítico e o debate, e nunca como atalhos para entregar trabalhos sem compreensão do conteúdo."
+          pergunta: "A Google usa os arquivos que eu subo no NotebookLM para treinar a inteligência artificial?",
+          resposta: "A Google informa que uploads, perguntas e respostas são usados para construir a base do caderno e não são usados para treinar seus modelos fundamentais, salvo quando o usuário opta por enviar feedback. Em contas Google Workspace for Education, há proteções contratuais adicionais. Porém, as regras dependem do tipo de conta e da política da sua instituição."
+        }
+      ]
+    }
+  },
+
+  {
+    numero: 16,
+    id: 16,
+    bloco: 3,
+    tipo: "somente-imagem",
+    categoria: "Etapa 3 • Google NotebookLM",
+    titulo: "Interface Real do NotebookLM: O Projeto Tila na Prática",
+    subtitulo: "Visualização empírica das 3 zonas de trabalho: fontes selecionadas, guia/chat fundamentado e painel Estúdio",
+    imagem: "/static/img/notebooklm_interface_tila.jpg",
+    conducao: "Condução: Maria",
+    notasProfessora: {
+      tempoSugerido: "8 min (02:05 - 02:13)",
+      objetivoSlide: "Apresentar a interface real do Google NotebookLM aos alunos utilizando o projeto Tila (saúde digital), demonstrando visualmente onde ficam as fontes, o chat e o Estúdio.",
+      conceito: {
+        titulo: "Topologia Visual do NotebookLM: As 3 Zonas Operacionais",
+        definicao: "O NotebookLM organiza o fluxo de trabalho do pesquisador em três colunas simultâneas: 1. Curadoria de Fontes (alimentação e filtros via checkboxes); 2. Diálogo & Raciocínio Grounded (o modelo consulta as fontes ativas para responder); 3. Estúdio de Síntese Multimodal (conversão do conhecimento em áudio, vídeo, mapas, relatórios e quizzes didáticos)."
+      },
+      mecanica: "Projetar a interface em tela inteira sem ruído visual para que a turma leia com nitidez cada detalhe: apontar à esquerda as 4 fontes com checkboxes; no centro o resumo do projeto Tila com 3 perguntas sugeridas e a barra de chat; à direita o Estúdio com os botões de ferramentas e os artefatos já gerados.",
+      armadilhaComum: "O aluno achar que o Estúdio substitui o estudo aprofundado dos textos ou esquecer de conferir se as checkboxes corretas estão ativadas antes de fazer uma pergunta no chat.",
+      faqAlunos: [
+        {
+          pergunta: "Posso desmarcar fontes para perguntar sobre um documento específico?",
+          resposta: "Sim! Ao desmarcar checkboxes na coluna esquerda, o NotebookLM foca o raciocínio apenas nos arquivos selecionados, permitindo testes isolados de conteúdo."
+        },
+        {
+          pergunta: "Por que os arquivos gerados no Estúdio têm ícones diferentes?",
+          resposta: "Cada formato de artefato tem um ícone próprio: o microfone/ondas sonoras para Áudio, a câmera para Vídeo, o diagrama para Mapa Mental e a prancheta para Relatórios."
+        }
+      ]
+    }
+  },
+
+  // =========================================================================
+  // BLOCO 4: ARMADILHAS, ÉTICA UNESCO & FECHAMENTO (Slides 17 a 21)
+  // =========================================================================
+  {
+    numero: 17,
+    id: 17,
+    bloco: 4,
+    tipo: "quadro-comparativo",
+    estiloColunas: "armadilhas",
+    iconesColunas: ["⚠️", "🧠", "💡"],
+    categoria: "Etapa 4 • Armadilhas & Pensamento Crítico",
+    titulo: "Quadro de Armadilhas: 6 Erros Típicos de Iniciantes",
+    subtitulo: "Armadilhas frequentes observadas na prática com o ecossistema e as posturas corretivas recomendadas",
+    colunasTabela: [
+      "Armadilha Típica",
+      "O Que o Usuário Faz",
+      "Por Que Dá Errado",
+      "Como Corrigir"
+    ],
+    linhasTabela: [
+      {
+        criterio: "1. Perplexity como Chatbot Criativo",
+        vago: "Pede criação livre ou texto sem fontes",
+        falsoBom: "Estranha respostas curtas fatiadas por links",
+        estruturado: "Use Perplexity para investigar fatos e ChatGPT para rascunhar"
+      },
+      {
+        criterio: "2. NotebookLM como Buscador Geral",
+        vago: "Pergunta sobre fatos externos ou espera busca viva na web",
+        falsoBom: "A ferramenta trabalha com o material selecionado, não como buscador",
+        estruturado: "Use Perplexity para investigar a web e NotebookLM para seus documentos"
+      },
+      {
+        criterio: "3. Confundir Citação com Verificação",
+        vago: "Vê o número [1] e aceita sem conferir",
+        falsoBom: "O link pode ser defasado, preliminar ou distorcido",
+        estruturado: "Aplique o protocolo de 4 passos: fonte, afirmação, método e triangulação"
+      },
+      {
+        criterio: "4. Aceitar a Primeira Resposta",
+        vago: "Adota o primeiro texto gerado sem checagem",
+        falsoBom: "A primeira fonte pode ser incompleta ou enviesada",
+        estruturado: "Compare múltiplos links, alterne termos e cruze visões"
+      },
+      {
+        criterio: "5. Enviar Dados sem Base Legal ou Autorização",
+        vago: "Sobe prontuários, atas com CPFs ou dados identificáveis",
+        falsoBom: "Viola a LGPD e expõe dados pessoais/sensíveis na nuvem",
+        estruturado: "Verifique base legal e orientação institucional; aplique anonimização"
+      },
+      {
+        criterio: "6. Terceirizar a Aprendizagem",
+        vago: "Delega a autoria e a decisão crítica para a IA",
+        falsoBom: "Atrofia o raciocínio e anula a responsabilidade ética",
+        estruturado: "Trate a IA como andaime cognitivo; a decisão é intransferível"
+      }
+    ],
+    conducao: "Co-docência (Laura & Maria)",
+    notasProfessora: {
+      tempoSugerido: "15 min (02:20 - 02:35)",
+      objetivoSlide: "Sistematizar os 6 erros típicos observados na prática com o ecossistema de ferramentas e fixar posturas corretivas operacionais.",
+      conceito: {
+        titulo: "Armadilhas Frequentes Observadas na Prática e Alinhamento Operacional",
+        definicao: "Mapeamento dos 6 desvios operacionais mais recorrentes no uso prático de IA: transferência inadequada de papéis (Perplexity como chatbot criativo ou NotebookLM como buscador geral), falácias de autoridade (confundir link com verificação e aceitar a primeira resposta sem checar datas), violação de privacidade (envio de dados sensíveis de terceiros sem autorização) e terceirização indevida da autoria ou da aprendizagem."
+      },
+      mecanica: "Tabela comparativa de 4 colunas analisando 6 armadilhas típicas lado a lado (Ação do usuário -> Por que dá errado -> Como corrigir).",
+      armadilhaComum: "Achar que basta aprender a ferramenta uma vez para não cometer mais esses erros. Essas armadilhas decorrem da pressa do dia a dia.",
+      faqAlunos: [
+        {
+          pergunta: "Qual dessas 6 armadilhas é a mais perigosa na prática?",
+          resposta: "A número 5 (subir dados pessoais de terceiros sem autorização) por graves riscos jurídicos e éticos, e a número 3 (achar que link [1] é verdade inquestionável) por riscos conceituais e profissionais."
         }
       ]
     }
   },
   {
-    numero: 16,
-    id: 16,
+    numero: 18,
+    id: 18,
+    bloco: 4,
+    tipo: "secao",
+    categoria: "Etapa 4 • Governança & Ética UNESCO",
+    badge: "DIRETRIZES DA UNESCO • ABORDAGEM CENTRADA NO SER HUMANO",
+    titulo: "A IA Não Substitui a Leitura: Ela Organiza o Caminho Até Ela",
+    citacao: "A inteligência artificial generativa na educação e na pesquisa exige uma abordagem centrada no ser humano: protegendo a agência humana, a inclusão, a equidade, a diversidade linguística e cultural e a validação ética e pedagógica.",
+    autor: "UNESCO (2023–2024)",
+    autorDesc: "Guidance for Generative AI in Education and Research",
+    subtitulo: "A IA pode organizar o caminho para a leitura, mas não pode assumir a responsabilidade pela compreensão, pela validação das fontes ou pela autoria.",
+    pills: [
+      { tipo: "real", texto: "🧭 Abordagem Centrada no Humano" },
+      { tipo: "real", texto: "🛡️ Proteção da Agência Humana" },
+      { tipo: "real", texto: "🌐 Inclusão & Diversidade Cultural" },
+      { tipo: "real", texto: "⚖️ Validação Ética & Pedagógica" }
+    ],
+    conducao: "Condução: Laura",
+    notasProfessora: {
+      tempoSugerido: "10 min (02:35 - 02:45)",
+      objetivoSlide: "Fundamentar a postura ética do curso nas diretrizes internacionais da UNESCO para uso de IA generativa na educação e pesquisa.",
+      conceito: {
+        titulo: "Abordagem Centrada no Ser Humano e Diretrizes da UNESCO",
+        definicao: "Conforme preconizado pela UNESCO (2023), o uso de IAGen deve obedecer a cinco pilares: (1) abordagem centrada no ser humano, (2) proteção intransferível da agência humana e da autonomia pedagógica, (3) garantia de inclusão e equidade, (4) respeito à diversidade linguística e cultural, e (5) validação ética e pedagógica prévia antes de qualquer adoção curricular."
+      },
+      mecanica: "Slide solene de transição conceitual destacando a citação oficial da UNESCO e as 4 pílulas com os pilares normativos de governança.",
+      armadilhaComum: "Achar que ter ferramentas eficientes significa ler menos. O objetivo da IA é nos poupar do trabalho mecânico de busca para sobrar mais tempo para a reflexão profunda.",
+      faqAlunos: [
+        {
+          pergunta: "O que a UNESCO recomenda sobre o uso de IA por alunos em sala de aula?",
+          resposta: "A UNESCO recomenda que as ferramentas sejam usadas para estimular o questionamento crítico, a inclusão e o debate, e jamais para terceirizar a reflexão ou entregar trabalhos sem compreensão do conteúdo."
+        }
+      ]
+    }
+  },
+  {
+    numero: 19,
+    id: 19,
     bloco: 4,
     tipo: "apresentacao",
     categoria: "Etapa 4 • Síntese Prática",
@@ -997,7 +959,7 @@ const slidesComNotas = [
       {
         icone: "🔍",
         titulo: "2. Preciso PESQUISAR, CHECAR ou COMPARAR NA WEB?",
-        desc: "Abra o Perplexity. Use filtros por foco (Web/Academic) e audite os links [1], [2] para garantir notícias e dados factuais atualizados."
+        desc: "Abra o Perplexity. Faça sua pergunta em linguagem natural e audite as citações [1], [2] para checar fatos e notícias com fontes abertas."
       },
       {
         icone: "📓",
@@ -1023,38 +985,32 @@ const slidesComNotas = [
     }
   },
   {
-    numero: 17,
-    id: 17,
+    numero: 20,
+    id: 20,
     bloco: 4,
     tipo: "fechamento",
-    categoria: "Fechamento & Referências Bibliográficas",
-    titulo: "Fechamento do Encontro 5 & Referências Oficiais",
-    subtitulo: "Consolidação dos aprendizados do dia e fundamentação técnica oficial",
+    categoria: "Fechamento & Consolidação",
+    titulo: "Fechamento do Encontro 5: O Ecossistema na Prática",
+    subtitulo: "Consolidação dos aprendizados do dia e preparação para o Encontro 6",
     badge: "MÓDULO 5 CONCLUÍDO COM SUCESSO!",
     conclusao: "Use o Perplexity para encontrar e checar, o NotebookLM para estudar o que você escolheu e o ChatGPT para conversar, criar e reformular — sempre conferindo as fontes antes de decidir.",
     proximoEncontro: "Encontro 6 (04/12): Refinamento Contínuo e Uso Responsável (Comparação entre Modelos, LGPD e Vieses)",
     lembretesFinais: [
-      "Testei a mesma pergunta no ChatGPT e no Perplexity para ver a diferença das fontes?",
-      "Abri ao menos um link de citação para auditar se o dado procedia?",
+      "Testei a mesma pergunta no ChatGPT e no Perplexity para contrastar raciocínio e fontes?",
+      "Apliquei os 4 passos do protocolo para auditar se o link [1] realmente sustentava a frase?",
       "Criei meu primeiro caderno no NotebookLM e explorei o destaque de citação no PDF?",
-      "Gerei um resumo em áudio ou guia de estudo no painel Studio?",
-      "Lembrei da regra da UNESCO: a IA organiza o caminho, mas a responsabilidade pela leitura é minha?"
-    ],
-    referencias: [
-      "Perplexity AI Help Center: How Perplexity Works & Source Labels (https://www.perplexity.ai/help-center)",
-      "Google Support: Google NotebookLM Sources, Studio & Audio Overviews (https://support.google.com/notebooklm)",
-      "UNESCO (2023–2024): Guidance for Generative AI in Education and Research (https://unesdoc.unesco.org/ark:/48223/pf0000386693)",
-      "ANPD: Guia Orientativo para Tratamento de Dados Pessoais e Inteligência Artificial (https://www.gov.br/anpd)"
+      "Usei os recursos do Studio como andaimes de estudo, lembrando que não substituem o texto original?",
+      "Lembrei das regras da UNESCO e da LGPD: abordagem centrada no ser humano e proteção de dados de terceiros?"
     ],
     conducao: "Co-docência (Laura & Maria)",
     notasProfessora: {
-      tempoSugerido: "10 min (02:50 - 03:00)",
-      objetivoSlide: "Encerrar o encontro celebrando o domínio prático do ecossistema de ferramentas e fazer a ponte para o Módulo 6.",
+      tempoSugerido: "5 min (02:50 - 02:55)",
+      objetivoSlide: "Encerrar o encontro celebrando o domínio prático do ecossistema de ferramentas, consolidar autoavaliação e fazer a ponte para o Módulo 6.",
       conceito: {
-        titulo: "Consolidação Curricular e Fundamentação Documental",
-        definicao: "Fechamento formativo que valida as competências adquiridas nas oficinas de bancada, ancora o aprendizado em literatura técnica oficial (Google, Perplexity, UNESCO e ANPD) e prepara o terreno para os debates de privacidade, governança e LGPD do próximo encontro."
+        titulo: "Consolidação Curricular e Autoavaliação Formativa",
+        definicao: "Fechamento formativo que valida as competências adquiridas nas oficinas de bancada, estimula a metacognição através de um checklist reflexivo e prepara o terreno para os debates de privacidade, governança e LGPD do próximo encontro."
       },
-      mecanica: "Slide de encerramento com badge comemorativa, frase-síntese de impacto, 5 perguntas de autoavaliação e links das referências oficiais.",
+      mecanica: "Slide solene de encerramento com badge comemorativa, frase-síntese de impacto, card do próximo encontro e 5 perguntas de autoavaliação formativa.",
       armadilhaComum: "Achar que o curso terminou aqui. O Encontro 6 amarrará como proteger seus dados pessoais na LGPD e comparar modelos avançados.",
       faqAlunos: [
         {
@@ -1063,98 +1019,156 @@ const slidesComNotas = [
         }
       ]
     }
+  },
+  {
+    numero: 21,
+    id: 21,
+    bloco: 4,
+    tipo: "comparativo",
+    categoria: "Referências Bibliográficas",
+    titulo: "Referências Bibliográficas & Leituras Recomendadas",
+    subtitulo: "Fundamentação técnica e marcos regulatórios: guias oficiais da Perplexity, Google, UNESCO e ANPD",
+    conducao: "Co-docência (Laura & Maria)",
+    colunas: [
+      {
+        tag: "🛠️ Documentações Oficiais de Ferramentas",
+        icone: "📖",
+        tipo: "azul",
+        bullet: "•",
+        itens: [
+          "Perplexity AI — Help Center: How Perplexity Works, Verification & Source Labels",
+          "Perplexity AI — Help Center: How Perplexity Works, Verification & Citation Architecture",
+          "Google Support — Google NotebookLM Sources, Studio & Audio Overviews",
+          "Google Labs — Grounded Generation, Context Pruning & Privacy Controls"
+        ]
+      },
+      {
+        tag: "🏛️ Governança, Ética & Diretrizes Oficiais",
+        icone: "⚖️",
+        tipo: "positivo",
+        bullet: "✓",
+        itens: [
+          "UNESCO (2023) — Guidance for Generative AI in Education and Research (Abordagem centrada no ser humano, agência, inclusão e ética)",
+          "UNESCO (2024) — AI Competency Framework for Students and Teachers",
+          "ANPD (2024) — Guia Orientativo: Tratamento de Dados Pessoais e Inteligência Artificial",
+          "Brasil (Lei 13.709/2018) — LGPD: Regras de Consentimento e Proteção de Dados de Terceiros"
+        ]
+      }
+    ],
+    notasProfessora: {
+      tempoSugerido: "5 min (02:55 - 03:00)",
+      objetivoSlide: "Apresentar a fundamentação acadêmica, técnica e regulatória oficial que ancora o uso responsável do ecossistema de ferramentas.",
+      conceito: {
+        titulo: "Fundamentação Técnica Oficial e Conformidade Regulatória",
+        definicao: "Adoção rigorosa de fontes primárias de documentação dos mantenedores de tecnologia e marcos internacionais (UNESCO) e nacionais (ANPD/LGPD) para respaldar o letramento em IA em ambiente educacional público."
+      },
+      mecanica: "Layout comparativo de 2 colunas em Clean Light: Azul Real para manuais técnicos de ferramentas e Esmeralda para marcos éticos e regulatórios da UNESCO e ANPD.",
+      armadilhaComum: "Achar que as referências são apenas teóricas; elas contêm as diretrizes exatas de como a IA deve ser implementada em sala de aula de acordo com a legislação brasileira.",
+      faqAlunos: [
+        {
+          pergunta: "Onde posso acessar esses guias e links oficiais?",
+          resposta: "Todos os links e documentos completos estão disponibilizados com acesso direto no Cockpit Docente e no Dontpad da turma."
+        }
+      ]
+    }
   }
 ];
 
-  // 5. Atividades Práticas e Laboratório
+  // 4. Atividades Práticas e Laboratório
   /**
  * Módulo 5 – Atividades Práticas e Laboratório
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
 const oficinaPratica = {
-  isDiagnostica: false,
   titulo: "Oficina de Bancada: Do Detetive da Web ao Bibliotecário de Arquivos",
-  tema: "Pesquisa Rastreável com Perplexity e Estudo Ancorado em Documentos com NotebookLM",
-  duracao: "40 min em Laboratório (divididos em Etapa 1 e Etapa 2)",
+  duracao: "40 min em Laboratório (Missão 1: Perplexity • Missão 2: NotebookLM)",
   peso: "Instrumento Formativo e Prático (Rubrica de 3 Pontos no Portfólio Digital)",
-  conducao: "Co-docência (Laura e Maria circulando pelas mesas)",
-  ferramenta: "Navegador Web + Perplexity AI (Gratuito) + Google NotebookLM (Gratuito)",
-  objetivo: "Capacitar o participante a escolher a ferramenta certa para cada desafio: realizar buscas na web com links auditáveis (Perplexity) e converter documentos estáticos em recursos interativos de estudo sem alucinação (NotebookLM).",
+  objetivo: "Capacitar o participante a escolher a ferramenta certa para cada desafio: realizar buscas na web com links auditáveis (Perplexity) e converter documentos estáticos em recursos interativos de estudo fundamentados nas fontes (NotebookLM).",
 
-  etapa1: {
-    titulo: "Etapa 1: Missão 'O Detetive de Fontes' (Perplexity AI • 15 min)",
-    foco: "Pesquisa na web aberta com citações numeradas [1], [2] e auditoria ativa do link original.",
-    passoAPasso: [
-      "1. Escolha uma afirmação controversa ou comum (ex.: 'Estudar ouvindo música prejudica a memória' ou 'Café após o almoço atrapalha a absorção de nutrientes').",
-      "2. Teste inicial no ChatGPT: Faça a pergunta e observe como ele responde 'de cabeça', sem trazer links diretos às fontes.",
-      "3. Teste no Perplexity: Acesse perplexity.ai, ative o filtro Focus em 'Academic' e faça a mesma pergunta observando as fontes [1], [2], [3].",
-      "4. Auditoria de Link: Abra ao menos uma fonte primária clicando no número correspondente e confira se a síntese da IA é fiel ao artigo.",
-      "5. Registro no Portfólio: Anote: Afirmação testada, evidência encontrada no artigo e o link auditado."
-    ]
+  situacaoProblema: {
+    contexto: "No dia a dia acadêmico e profissional, precisamos tanto investigar informações atualizadas na web aberta quanto estudar documentos extensos sem que a IA invente dados de fora. Confiar cegamente em um número de citação [1] ou em um resumo em áudio sem conferir o texto original pode levar a erros graves.",
+    missao: "Executar duas missões práticas de bancada: (1) Investigar uma dúvida prática no Perplexity aplicando o Protocolo de Auditoria em 4 Passos sobre a fonte citada; e (2) Criar um caderno fundamentado em fontes próprias no Google NotebookLM, auditando os trechos originais e testando os artefatos de estudo do painel Studio."
   },
 
-  etapa2: {
-    titulo: "Etapa 2: Missão 'Do PDF ao Guia e Áudio' (Google NotebookLM • 20 min)",
-    foco: "Criação de caderno inteligente, perguntas com destaque de linha e geração de artefatos multimídia no Studio.",
-    passoAPasso: [
-      "1. Acesse notebooklm.google.com com sua conta Google e crie um novo caderno de estudos.",
-      "2. Faça o upload do PDF da aula (ou adicione o link de um artigo ou vídeo do YouTube da disciplina).",
-      "3. Pergunte no Chat: 'Quais são as três ideias centrais deste material? Indique os trechos de onde tirou cada uma.'",
-      "4. Clique nas citações numeradas e veja o painel lateral destacar a linha exata no PDF original.",
-      "5. No painel Studio, clique em 'Guia de Estudo' e coloque o 'Audio Overview' para gerar, ouvindo um trecho da conversa dos apresentadores."
-    ]
-  },
+  comoExecutar: [
+    {
+      etapa: 1,
+      titulo: "Missão 1 (Perplexity | 5 min) — Pergunta Prática e Leitura das Fontes",
+      desc: "Escolha uma dúvida cotidiana ou do curso (ex.: regras institucionais, documentos para renovação, recomendações oficiais). Faça a pergunta no Perplexity e observe a resposta, as citações numeradas [1], [2] e os links de origem antes de copiar qualquer trecho."
+    },
+    {
+      etapa: 2,
+      titulo: "Missão 1 (Auditoria | 10 min) — Protocolo de Conferência e Veredito",
+      desc: "Abra uma fonte citada e verifique: Quem publicou? Quando? A página realmente sustenta o que o Perplexity afirmou? Registre o veredito ('Confirmada / Parcialmente confirmada / Não confirmada pela fonte') e compartilhe com a turma."
+    },
+    {
+      etapa: 3,
+      titulo: "Missão 2 (NotebookLM | 5 min) — Criação do Caderno e Checagem de OCR",
+      desc: "Acesse notebooklm.google.com, crie um caderno e importe um PDF autorizado com texto selecionável (OCR) ou link público. Atenção à LGPD: nunca envie dados pessoais de terceiros sem base legal e autorização institucional."
+    },
+    {
+      etapa: 4,
+      titulo: "Missão 2 (Ancoragem | 10 min) — Interrogação e Rastreabilidade por Citações",
+      desc: "Pergunte no chat: 'Quais são as três ideias centrais deste material? Indique os trechos de onde tirou cada uma.' Clique nos marcadores numéricos das citações para conferir o destaque direto no trecho original do documento."
+    },
+    {
+      etapa: 5,
+      titulo: "Missão 2 (Painel Studio | 10 min) — Artefatos de Estudo e Revisão",
+      desc: "Gere um 'Guia de Estudo' ou 'Audio Overview' no painel Studio como andaime de revisão e compare com o texto original para identificar eventuais simplificações."
+    }
+  ],
 
   cincoElementos: [
     {
       elemento: "ChatGPT",
-      comoAparece: "Roteirista Criativo (de cabeça)",
-      funcao: "Redigir e-mails, estruturar planos com C-T-F-R, reformular textos e fazer auto-entrevista."
+      comoAparece: "Raciocínio & Estruturação (Paramétrico)",
+      funcao: "Elaborar, reformular, estruturar com C-T-F-R, brainstormar e raciocinar interativamente com o usuário."
     },
     {
       elemento: "Perplexity",
-      comoAparece: "Detetive da Web (Open RAG)",
-      funcao: "Vasculhar a internet em tempo real, filtrar por periódicos (Academic) e trazer links auditáveis."
+      comoAparece: "Investigação na Web (Open-Web RAG)",
+      funcao: "Vasculhar a internet em tempo real, trazendo respostas com links auditáveis e painel de fontes."
     },
     {
       elemento: "NotebookLM",
-      comoAparece: "Bibliotecário Particular (Closed RAG)",
-      funcao: "Travar a IA estritamente nos seus PDFs, destacar trechos no original e gerar podcasts e guias de estudo."
+      comoAparece: "Estudo Ancorado em Fontes Selecionadas (Grounding)",
+      funcao: "Interrogar e organizar o material selecionado, com citações que remetem aos trechos originais e artefatos de revisão."
     }
   ],
 
   criteriosAvaliacao: [
     {
-      criterio: "1. Auditoria de Fontes no Perplexity",
-      ponto1: "Aceitou a resposta da IA sem clicar nem conferir os links originais.",
-      ponto2: "Clicou no link [1], mas apenas passou o olho sem confrontar com a afirmação.",
-      ponto3: "Abriu a fonte original, checou autoria/data e registrou a evidência fundamentada."
+      criterio: "1. Auditoria Crítica de Fontes (Perplexity)",
+      ponto1: "Aceitou a resposta da IA sem clicar nos links ou confiou cegamente apenas na presença da citação.",
+      ponto2: "Clicou no link [1], mas apenas conferiu superficialmente sem confrontar a afirmação.",
+      ponto3: "Aplicou o protocolo de 4 passos: checou autor/data, validou a frase e triangulou com fonte independente."
     },
     {
-      criterio: "2. Ancoragem no NotebookLM",
-      ponto1: "Fez perguntas desconectadas do material e estranhou a falta de resposta.",
-      ponto2: "Carregou o PDF e conversou no chat, mas não explorou os cliques de citação.",
-      ponto3: "Importou fontes, navegou pelos destaques no PDF e gerou guia ou áudio no Studio."
+      criterio: "2. Ancoragem e Governança no NotebookLM",
+      ponto1: "Subiu arquivos desordenados ou com dados pessoais de terceiros sem base legal ou orientação institucional.",
+      ponto2: "Carregou fontes e conversou no chat, mas tratou o áudio/resumo como verdade pronta sem ler o texto ou checar citações.",
+      ponto3: "Dominou a navegação por citações, respeitou as regras de LGPD de terceiros e usou o Studio como andaime de revisão temporário."
     },
     {
-      criterio: "3. Postura Crítica e Discernimento (UNESCO)",
-      ponto1: "Tratou todas as ferramentas como concorrentes idênticas ao ChatGPT.",
-      ponto2: "Compreendeu a diferença de uso, mas ainda tem dúvidas sobre quando abrir cada uma.",
-      ponto3: "Aplica com autonomia a regra de bolso: criar (ChatGPT), pesquisar (Perplexity) e estudar (NotebookLM)."
+      criterio: "3. Abordagem Centrada no Humano (UNESCO)",
+      ponto1: "Tratou as ferramentas com divisão rígida ou terceirizou a decisão crítica e autoral para a IA.",
+      ponto2: "Compreendeu a adequação à tarefa, mas ainda tem dúvidas sobre quando aplicar supervisão humana.",
+      ponto3: "Aplica com autonomia a regra de adequação à tarefa e tipo de evidência, mantendo a agência humana inegociável."
     }
   ],
 
-  diretrizes: [
-    "Circulação ativa da dupla: Laura auxilia na checagem de links no Perplexity e Maria apoia o upload e áudio no NotebookLM.",
-    "Acolhimento a alunos com conexão lenta: o NotebookLM processa na nuvem da Google; tranquilize o aluno de que o áudio não trava a máquina.",
-    "Reforço de privacidade: lembrar aos alunos para não subirem documentos com dados sigilosos ou pessoais durante a aula."
+  diretrizesDocentes: [
+    "Circulação ativa da dupla: Laura orienta o protocolo de 4 passos e triangulação no Perplexity, e Maria apoia o upload, ancoragem e Studio no NotebookLM.",
+    "Acolhimento e verificação de OCR: orientar alunos a testar se conseguem selecionar texto no PDF com o mouse antes de carregar no caderno.",
+    "Rigor com LGPD e dados de terceiros: alertar explicitamente para não subirem prontuários, dados de pesquisa identificáveis, atas com CPFs ou gravações de aula sem base legal e autorização institucional.",
+    "Postura com artefatos do Studio: lembrar que o áudio e os resumos são andaimes temporários de revisão que podem comprimir nuances."
   ],
 
-  planoB: "Se a internet do laboratório oscilar ou houver bloqueio de login Google, as professoras projetam a demonstração ao vivo no telão e os alunos realizam o teste de busca no Duck.ai (que roda sem login) ou trabalham com PDFs baixados localmente."
+  planoB: "Se o áudio do Studio demorar ou não carregar no idioma desejado, orientar a pedir no chat 'um resumo estruturado de revisão em tópicos'. Se a internet do laboratório oscilar ou houver bloqueio de login Google, as professoras projetam a demonstração ao vivo no telão e os alunos realizam o teste de busca no Duck.ai (que roda sem login) ou trabalham com PDFs baixados localmente."
 };
 
-  // 6. Perguntas dos Alunos e Dúvidas Frequentes
+  // 5. Perguntas dos Alunos e Dúvidas Frequentes
   /**
  * Módulo 5 – Perguntas dos Alunos, Dúvidas Frequentes e Armadilhas de Ferramentas de IA
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -1164,55 +1178,55 @@ const perguntasAlunos = [
   {
     numero: 1,
     duvida: "Se o Perplexity colocou um número com link [1], significa que a informação é 100% verdadeira e comprovada?",
-    resposta: "Não! O número indica apenas onde a IA encontrou aquele fragmento de texto na internet, mas não atesta que o site original seja confiável, imparcial ou cientificamente correto. Se a página de origem contiver um boato, erro de dados ou viés ideológico, o Perplexity irá sintetizar o erro e citar o link. O papel do pesquisador é sempre clicar na citação e avaliar a autoridade da instituição e a data da publicação.",
-    pontoDidatico: "Diferencie 'Rastreabilidade' de 'Veracidade Absoluta': a citação permite checagem humana rápida, mas nunca substitui o julgamento crítico do leitor.",
-    dicaPratica: "Ensine os alunos a abrir a citação [1] em uma nova aba e fazer a pergunta de ouro: 'Quem publicou isso, quando foi publicado e qual a metodologia usada?'"
+    resposta: "Não! O número indica apenas onde a IA encontrou aquele fragmento de texto na internet, mas não atesta que o site original seja confiável, imparcial ou cientificamente correto. Se a página de origem contiver um boato, erro de dados ou viés, o Perplexity irá sintetizar o erro e citar o link. Ter um link citado não atesta a qualidade da página. O pesquisador deve aplicar o Protocolo de 4 Passos: (1) Identificar a fonte, (2) Conferir se o trecho sustenta a frase gerada, (3) Avaliar a metodologia e data, e (4) Triangular com ao menos uma fonte independente.",
+    pontoDidatico: "Diferencie 'Rastreabilidade' de 'Veracidade Absoluta': a citação permite auditoria humana rápida, mas jamais substitui o julgamento crítico e a triangulação de fontes.",
+    dicaPratica: "Ensine os alunos a abrir a citação [1] em uma nova aba e aplicar o protocolo: 'Quem publicou isso, a frase da IA é fiel ao original, qual o método do estudo e outra fonte confirma?'"
   },
   {
     numero: 2,
     duvida: "O NotebookLM vai na internet buscar informações complementares se o meu PDF for antigo ou incompleto?",
-    resposta: "Não! Por arquitetura fundamental, o NotebookLM opera em 'RAG fechado' (Retrieval-Augmented Generation restrito ao corpus do usuário). Ele lê, indexa e consulta estritamente os documentos que você carregou no caderno. Se você fizer uma pergunta sobre um fato que não consta nos seus arquivos, ele responderá com honestidade que a informação não foi encontrada nas fontes adicionadas.",
-    pontoDidatico: "Destaque a fronteira de segurança: o confinamento no corpus fechado é a maior defesa contra alucinações de modelos de linguagem em ambientes acadêmicos e técnicos.",
-    dicaPratica: "Se precisar de dados externos para enriquecer seu caderno, use o recurso 'Fast Research' para pesquisar na web ou Drive e deliberadamente importar novas fontes validadas."
+    resposta: "O NotebookLM foi projetado para trabalhar prioritariamente com o material que você selecionou para o caderno. Ele não é um buscador geral: em geral, se a informação não constar das fontes adicionadas, ele indicará que não encontrou. Contudo, ele não valida se o seu PDF está desatualizado, equivocado ou incompleto: um material com erros continuará gerando respostas com erros. Para complementar, o usuário pode adicionar deliberadamente novas fontes da web ou arquivos atualizados ao caderno.",
+    pontoDidatico: "Destaque a fronteira de segurança: a ancoragem nas fontes selecionadas reduz alucinações exógenas, mas a qualidade da resposta depende estritamente da qualidade das fontes escolhidas pelo usuário.",
+    dicaPratica: "Se precisar de dados externos para enriquecer seu caderno, pesquise fontes confiáveis na web e adicione novos links ou PDFs deliberadamente ao caderno."
   },
   {
     numero: 3,
     duvida: "A Google ou a Perplexity usam os documentos confidenciais que eu subo para treinar seus modelos de IA?",
-    resposta: "A Google declara formalmente na documentação de privacidade do NotebookLM que os arquivos, anotações e perguntas dos cadernos não são utilizados para treinar seus modelos fundamentais e permanecem privados para a sua conta. No Perplexity e no ChatGPT gratuito, os dados de busca podem ser anonimizados e usados para aperfeiçoar o serviço, a menos que o usuário desative a opção de compartilhamento nas configurações de privacidade.",
-    pontoDidatico: "Relembre a Regra do Cartão-Postal vista no Encontro 4: nunca suba dados sensíveis de alunos, senhas, prontuários médicos ou dados pessoais não anonimizados em ferramentas públicas de IA.",
-    dicaPratica: "Antes de carregar documentos de trabalho, faça uma higienização prévia (tarjando nomes reais, CPFs e matrículas) ou consulte a política de privacidade institucional da sua instituição."
+    resposta: "No NotebookLM, uploads, perguntas e respostas são usados para construir a base de conhecimento do caderno. A Google informa que esse conteúdo não é usado para treinar diretamente seus modelos fundamentais, salvo quando o usuário opta por enviar feedback. Em contas corporativas ou educacionais (Google Workspace for Education), há proteções contratuais adicionais. Porém, as regras dependem do tipo de conta e da política institucional. Mais importante: em termos de LGPD, antes de enviar materiais com dados pessoais de terceiros, verifique se há base legal adequada, autorização e orientação institucional, aplicando pseudonimização ou anonimização sempre que possível.",
+    pontoDidatico: "Destaque a responsabilidade ética e jurídica: nunca suba dados sensíveis de terceiros para a nuvem sem base legal adequada, consentimento e higienização prévia.",
+    dicaPratica: "Antes de carregar documentos institucionais, higienize os arquivos tarjando dados de identificação pessoal ou utilize apenas materiais públicos e didáticos autorizados."
   },
   {
     numero: 4,
-    duvida: "Qual é a diferença real entre a busca gratuita do Perplexity e o 'Pro Search'?",
-    resposta: "A busca gratuita padrão faz uma consulta rápida em um motor de busca na web e sintetiza 3 a 5 fontes diretas. Já o 'Pro Search' (disponível com cota diária limitada no plano gratuito) atua como um pesquisador em múltiplos turnos: ele analisa a complexidade da pergunta, elabora subperguntas de refinamento, consulta dezenas de fontes em paralelo e produz uma resposta mais estruturada e aprofundada.",
-    pontoDidatico: "Ensine economia de recursos: use a busca comum para checagens factuais pontuais e reserve o Pro Search para dúvidas conceituais densas ou comparativos de teses.",
-    dicaPratica: "Se o Pro Search sugerir perguntas de esclarecimento, clique nelas para orientar a pesquisa com mais precisão antes da geração final."
+    duvida: "Como o Perplexity escolhe quais sites e fontes vai consultar para responder à minha pergunta?",
+    resposta: "O Perplexity analisa a sua pergunta em linguagem natural, identifica os conceitos-chave, realiza buscas simultâneas na internet pública em tempo real e seleciona as páginas mais relevantes para compor a resposta acompanhada de citações numeradas.",
+    pontoDidatico: "Explique o processo de recuperação e síntese: a IA não responde de cabeça nem inventa links; ela lê a web viva e extrai os trechos mais aderentes à dúvida do usuário.",
+    dicaPratica: "Perguntas claras, objetivas e com contexto prático ajudam o Perplexity a encontrar fontes muito mais precisas e pertinentes."
   },
   {
     numero: 5,
-    duvida: "O resumo em áudio (Audio Overview / 'podcast') do NotebookLM substitui a leitura integral dos textos e livros?",
-    resposta: "De forma alguma! O Audio Overview é uma síntese em formato de diálogo informal entre dois apresentadores virtuais. É uma ferramenta espetacular para introdução rápida, revisão auditiva ou assimilação de ideias centrais, mas a própria Google adverte que os apresentadores de IA podem simplificar conceitos complexos, emitir analogias imprecisas ou omitir dados numéricos essenciais.",
-    pontoDidatico: "Enfatize a Agência Humana da UNESCO: a IA apoia a cognição, mas a apropriação do saber exige leitura ativa, reflexão analítica e anotações próprias.",
-    dicaPratica: "Ouça o áudio como um panorama prévio do tema antes de mergulhar na leitura aprofundada dos trechos-chave do documento."
+    duvida: "Os recursos do painel Studio (Audio Overview, Video Overview, Mapas Mentais) substituem a leitura integral dos textos?",
+    resposta: "De forma alguma! Há um risco pedagógico importante em encarar esses recursos como 'conhecimento pronto'. Eles são artefatos de estudo e revisão — excelentes para mobilização prévia, acessibilidade e fixação —, mas representam sínteses automatizadas que comprimem, simplificam e podem até distorcer nuances dos textos originais. Lembre-se sempre da regra de ouro: 'O NotebookLM é excelente para interrogar e organizar seu material; ele não é um substituto da leitura, nem uma fonte autônoma de verdade.'",
+    pontoDidatico: "Enfatize a Agência Humana da UNESCO: a IA apoia a cognição como andaime, mas a apropriação do saber exige leitura crítica, reflexão analítica e anotações próprias.",
+    dicaPratica: "Ouça o áudio ou explore o mapa mental como panorama prévio ou andaime de revisão, retornando sempre ao texto original para aprofundar."
   },
   {
     numero: 6,
-    duvida: "Ao selecionar o filtro 'Academic' no Perplexity, posso confiar que todos os artigos retornados foram revisados por pares?",
-    resposta: "Não necessariamente. O filtro Academic direciona as buscas para repositórios como Semantic Scholar, PubMed, arXiv e JSTOR. Contudo, plataformas como arXiv hospedam 'pré-prints' (artigos científicos ainda não submetidos a revisão por pares). Além disso, artigos podem ter sido contestados ou superados por evidências mais recentes.",
-    pontoDidatico: "Treine a competência de curadoria acadêmica: ler o título e a citação da IA não basta; é preciso verificar o veículo de publicação, o método e o ano.",
-    dicaPratica: "Ao citar em aula ou pesquisa, abra o PDF original pelo DOI ou link do artigo e valide a seção de metodologia e conclusões."
+    duvida: "Se o link citado pelo Perplexity for de uma fonte oficial ou governamental, a resposta é 100% garantida?",
+    resposta: "Não necessariamente! Embora portais institucionais e oficiais tenham alta credibilidade, a IA pode interpretar ou sintetizar o dado de forma incompleta, ou a regra citada pode ter sofrido alterações posteriores. O protocolo de abrir o link, checar o trecho original e triangular continua indispensável.",
+    pontoDidatico: "Treine a competência de curadoria e checagem: fontes oficiais são excelentes aliadas, mas a leitura humana direta do documento original é o que garante a precisão.",
+    dicaPratica: "Ao consultar editais, prazos ou regras oficiais, sempre abra o link de origem e confirme a data da publicação oficial."
   },
   {
     numero: 7,
-    duvida: "Quantos documentos posso colocar no NotebookLM e quais formatos são aceitos no plano gratuito?",
-    resposta: "A Google documenta que cada caderno gratuito suporta até 50 fontes distintas. Cada fonte pode ter até 500.000 palavras ou até 200 MB de tamanho. Os formatos aceitos incluem arquivos PDF, documentos do Google Docs, apresentações do Google Slides, URLs de sites da web, texto colado diretamente e até links de vídeos do YouTube com legendas ativadas.",
-    pontoDidatico: "Mostre o poder da curadoria focada: é muito mais eficaz subir 3 a 5 fontes excelentes sobre um tema específico do que 40 documentos genéricos que dispersam o foco do modelo.",
-    dicaPratica: "Organize cadernos temáticos separados por disciplina ou projeto em vez de criar um caderno único para tudo."
+    duvida: "Quantos documentos posso colocar no NotebookLM e por que às vezes ele parece não ler ou destacar um PDF?",
+    resposta: "A Google documenta que cada caderno suporta até 50 fontes no plano gratuito. Cada fonte pode ter até 500.000 palavras ou até 200 MB (para arquivos enviados localmente). Suporta PDFs, Google Docs, Slides, URLs da web, texto colado e links de vídeos do YouTube (dependendo da disponibilidade de legendas). Se o NotebookLM parecer não encontrar trechos de um PDF, verifique antes se o arquivo possui OCR e permite seleção de texto com o cursor: PDFs digitalizados como imagem pura não permitem extração correta de texto.",
+    pontoDidatico: "Destaque que mais fontes não significam melhor caderno: é muito mais eficaz subir 3 a 5 fontes excelentes e com bom OCR sobre um tema específico do que 40 documentos heterogêneos que dispersam a atenção do modelo.",
+    dicaPratica: "Antes de carregar um PDF digitalizado, passe o mouse para testar se as palavras são selecionáveis como texto; se não forem, aplique uma ferramenta de OCR antes."
   }
 ];
 
-  // 7. Divisão de Papéis e Co-Docência
+  // 6. Divisão de Papéis e Co-Docência
   /**
  * Módulo 5 – Divisão de Papéis e Momentos da Co-Docência (Laura & Maria)
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -1220,59 +1234,15 @@ const perguntasAlunos = [
 
 const divisaoPapeis = [
   {
-    bloco: "Bloco 1 (00:00 - 00:05)",
-    tema: "Abertura & Conexão: Ferramentas de IA na Prática (Slide 1)",
+    bloco: "Bloco 1 (00:00 - 00:40)",
+    tema: "As Ferramentas: Bancada, Os 3 Especialistas e Tabela Comparativa (Slides 1 a 6)",
     papel: "ambas"
   },
   {
-    bloco: "Bloco 1 (00:05 - 00:15)",
-    tema: "Etapa 1: As Ferramentas — A Caixa Especializada (Slide 2) • Condução: Laura",
+    bloco: "Bloco 2 (00:40 - 01:25)",
+    tema: "Perplexity na Prática: RAG Aberto, Protocolo de Auditoria em 4 Passos e Missão 1 (Slides 7 a 10)",
     papel: "radio",
-    padrao: "laura",
-    condutor: "Laura",
-    conducao: "Laura"
-  },
-  {
-    bloco: "Bloco 1 (00:15 - 00:25)",
-    tema: "Os 3 Especialistas: Quem Faz o Quê na Sua Rotina? (Slide 3) • Condução: Maria",
-    papel: "radio",
-    padrao: "maria",
-    condutor: "Maria",
-    conducao: "Maria"
-  },
-  {
-    bloco: "Bloco 1 (00:25 - 00:40)",
-    tema: "Tabela Comparativa: ChatGPT vs. Perplexity vs. NotebookLM (Slide 4) • Condução: Ambas",
-    papel: "ambas"
-  },
-  {
-    bloco: "Bloco 2 (00:40 - 00:50)",
-    tema: "Como Funciona o Perplexity: O RAG em Web Aberta (Slide 5) • Condução: Laura",
-    papel: "radio",
-    padrao: "laura",
-    condutor: "Laura",
-    conducao: "Laura"
-  },
-  {
-    bloco: "Bloco 2 (00:50 - 01:00)",
-    tema: "Recursos Gratuitos de Destaque no Perplexity (Slide 6) • Condução: Laura",
-    papel: "radio",
-    padrao: "laura",
-    condutor: "Laura",
-    conducao: "Laura"
-  },
-  {
-    bloco: "Bloco 2 (01:00 - 01:10)",
-    tema: "Armadilha do Detetive: Citação Não É Sinônimo de Verdade (Slide 7) • Condução: Laura",
-    papel: "radio",
-    padrao: "laura",
-    condutor: "Laura",
-    conducao: "Laura"
-  },
-  {
-    bloco: "Bloco 2 (01:10 - 01:25)",
-    tema: "Oficina de Bancada: Missão 1 — O Detetive de Fontes (Slide 8) • Prática Guiada",
-    papel: "ambas"
+    padrao: "laura"
   },
   {
     bloco: "Intervalo (01:25 - 01:40)",
@@ -1280,66 +1250,14 @@ const divisaoPapeis = [
     papel: "ambas"
   },
   {
-    bloco: "Bloco 3 (01:40 - 01:50)",
-    tema: "Como Funciona o NotebookLM: O RAG Fechado nos Seus Documentos (Slide 9) • Condução: Maria",
+    bloco: "Bloco 3 (01:40 - 02:20)",
+    tema: "Google NotebookLM: Respostas Fundamentadas, Rastreabilidade, Studio e Governança LGPD (Slides 11 a 16)",
     papel: "radio",
-    padrao: "maria",
-    condutor: "Maria",
-    conducao: "Maria"
+    padrao: "maria"
   },
   {
-    bloco: "Bloco 3 (01:50 - 02:00)",
-    tema: "Navegação e Rastreabilidade: Como Dominar o Caderno (Slide 10) • Condução: Maria",
-    papel: "radio",
-    padrao: "maria",
-    condutor: "Maria",
-    conducao: "Maria"
-  },
-  {
-    bloco: "Bloco 3 (02:00 - 02:10)",
-    tema: "O Painel Studio: Transformando Documentos em Produtos (Slide 11) • Condução: Maria",
-    papel: "radio",
-    padrao: "maria",
-    condutor: "Maria",
-    conducao: "Maria"
-  },
-  {
-    bloco: "Bloco 3 (02:10 - 02:20)",
-    tema: "Armadilha do Bibliotecário: O Que o NotebookLM NÃO Faz (Slide 12) • Condução: Maria",
-    papel: "radio",
-    padrao: "maria",
-    condutor: "Maria",
-    conducao: "Maria"
-  },
-  {
-    bloco: "Bloco 3 (02:20 - 02:35)",
-    tema: "Oficina de Bancada: Missão 2 — Do PDF ao Guia e Áudio (Slide 13) • Prática Guiada",
-    papel: "ambas"
-  },
-  {
-    bloco: "Bloco 4 (02:35 - 02:45)",
-    tema: "Quadro de Armadilhas: Evite os 6 Erros Clássicos de Iniciante (Slide 14) • Condução: Ambas",
-    papel: "ambas"
-  },
-  {
-    bloco: "Bloco 4 (02:45 - 02:50)",
-    tema: "Diretrizes da UNESCO: Agência Humana na Educação (Slide 15) • Condução: Laura",
-    papel: "radio",
-    padrao: "laura",
-    condutor: "Laura",
-    conducao: "Laura"
-  },
-  {
-    bloco: "Bloco 4 (02:50 - 02:55)",
-    tema: "Checklist de Bolso: Qual Ferramenta Abrir? (Slide 16) • Condução: Maria",
-    papel: "radio",
-    padrao: "maria",
-    condutor: "Maria",
-    conducao: "Maria"
-  },
-  {
-    bloco: "Bloco 4 (02:55 - 03:00)",
-    tema: "Fechamento do Encontro 5 & Referências Oficiais (Slide 17) • Condução: Ambas",
+    bloco: "Bloco 4 (02:20 - 03:00)",
+    tema: "Quadro das 6 Armadilhas, Diretrizes UNESCO, Checklist de Bolso e Fechamento (Slides 17 a 21)",
     papel: "ambas"
   }
 ];
@@ -1355,12 +1273,10 @@ const divisaoPapeis = [
   const ENCONTRO_5_DATA = {
     moduloInfo: moduloInfo,
     fioDaMeada: fioDaMeada,
-    blocosTematicos: blocosTematicos,
     slidesComNotas: slidesComNotas,
     oficinaPratica: oficinaPratica,
     perguntasAlunos: perguntasAlunos,
-    divisaoPapeis: divisaoPapeis,
-    dossies: dossies
+    divisaoPapeis: divisaoPapeis
   };
 
   // Exposição Global no Navegador (Window) e Node.js

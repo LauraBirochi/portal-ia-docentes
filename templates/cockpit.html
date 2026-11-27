@@ -14,12 +14,16 @@
         <span class="chip" style="font-size: 0.78rem; opacity: 0.9;">🛠️ Modo Condução Docente</span>
       </div>
       <h1 id="cockpit-module-title" class="cockpit-module-heading">
-        Módulo {{ active_meeting_id or 1 }}: Desmistificando a IA
+        Módulo {{ active_meeting_id or 1 }}: {{ active_meeting.shortTitle if active_meeting else 'Desmistificando a IA' }}
       </h1>
     </div>
   </div>
 
-  <div class="cockpit-header-actions">
+  <div class="cockpit-header-actions" style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+    <!-- Botão de Exportação do PDF Oficial 16:9 -->
+    <button type="button" id="btn-export-slides" class="btn btn-export-slides" title="Baixar PDF oficial 16:9 dos slides deste encontro" style="display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.65rem 1.1rem;">
+      <span>📥</span> <span>Exportar Slides em PDF</span>
+    </button>
     <!-- Botão de Abertura dos Slides para o Computador 1 (Projetor) -->
     <a href="{{ url_for('slides', meeting_id=active_meeting_id or 1) }}" target="portal_ia_slides_window" class="btn btn-primary btn-open-slides" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.65rem 1.25rem;">
       <span>🖥️</span> <strong>Abrir Slides no Projetor</strong>
@@ -35,16 +39,13 @@
     <button class="cockpit-tab-btn active" data-tab="fio-meada">
       <span>🎯</span> 1. Fio da Meada
     </button>
-    <button class="cockpit-tab-btn" data-tab="slides">
-      <span>🖥️</span> 2. Slides & Roteiro
-    </button>
     
     <!-- Abas Pedagógicas e de Apoio Docente -->
-    <button class="cockpit-tab-btn docente-tab" data-tab="atividades">
-      <span>📋</span> 3. Atividade em Aula
+    <button class="cockpit-tab-btn docente-tab" data-tab="atividades" id="tab-btn-atividades">
+      <span>📋</span> 2. Atividade em Aula
     </button>
-    <button class="cockpit-tab-btn docente-tab" data-tab="perguntas">
-      <span>⚠️</span> 4. Perguntas dos Alunos
+    <button class="cockpit-tab-btn docente-tab" data-tab="perguntas" id="tab-btn-perguntas">
+      <span>⚠️</span> 3. Perguntas dos Alunos
     </button>
   </div>
 </nav>
@@ -66,34 +67,7 @@
 </div>
 
 <!-- ==============================================================
-     PAINEL 2: 🖥️ SLIDES & ROTEIRO VISUAL
-     ============================================================== -->
-<div id="tab-slides" class="tab-content-panel">
-  <div class="pedagogical-highlight-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-    <div>
-      <h3 id="cockpit-slides-header-title" style="font-size: 1.25rem; color: var(--text-main);">Apresentação de Slides da Aula (Modo Projetor)</h3>
-      <p style="font-size: 0.9rem; color: var(--text-secondary);">
-        Projetados para o <strong>Computador 1 (Projetor)</strong>. Cada ficha abaixo contém o roteiro sugerido da fala para a condução da aula.
-      </p>
-    </div>
-    <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
-      <button type="button" class="btn btn-export-slides" id="btn-export-slides" style="background-color: var(--bg-surface); border: 1px solid var(--border); color: var(--text-main); font-size: 0.9rem; padding: 0.6rem 1.1rem; border-radius: var(--radius-sm); cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600;" title="Exportar apenas a apresentação de slides para impressão ou PDF">
-        <span>📥</span> <span>Exportar Apenas Slides</span>
-      </button>
-      <a href="{{ url_for('slides', meeting_id=active_meeting_id or 1) }}" target="portal_ia_slides_window" class="btn btn-primary btn-open-slides" style="text-decoration: none;">
-        🖥️ Abrir Slides em Tela Cheia (16:9)
-      </a>
-    </div>
-  </div>
-
-  <!-- Container dinâmico populado via JavaScript -->
-  <div id="cockpit-slides-list" style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem;">
-    <!-- Renderizado dinamicamente por cockpit-renderer.js -->
-  </div>
-</div>
-
-<!-- ==============================================================
-     PAINEL 3: 📋 ATIVIDADE EM AULA / LABORATÓRIO
+     PAINEL 2: 📋 ATIVIDADE EM AULA / LABORATÓRIO
      ============================================================== -->
 <div id="tab-atividades" class="tab-content-panel">
   <div id="cockpit-gabarito-container">
@@ -102,7 +76,7 @@
 </div>
 
 <!-- ==============================================================
-     PAINEL 4: ⚠️ PERGUNTAS DOS ALUNOS & ARMADILHAS
+     PAINEL 3: ⚠️ PERGUNTAS DOS ALUNOS & ARMADILHAS
      ============================================================== -->
 <div id="tab-perguntas" class="tab-content-panel">
   <div id="cockpit-perguntas-container">

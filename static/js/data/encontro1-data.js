@@ -10,285 +10,19 @@
 (function (global) {
   'use strict';
 
-  // 1. Dossiês Científicos e Jurídicos
+  // 1. Metadados Curriculares
   /**
- * Módulo 1 – Dossiês de Embasamento Científico, Filosófico e Jurídico
- * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
- */
-
-const dossies = {
-  // Dossiê 1: Slide 8 (Alan Turing e Conferência de Dartmouth)
-  turingDartmouth: {
-    tipoDossie: "cientifico",
-    titulo: "Gênese Histórica e Epistemológica da Inteligência Artificial (1950–1956)",
-    resumo: "Como os trabalhos seminais de Alan Turing, John McCarthy, Marvin Minsky e Claude Shannon estabeleceram as bases da computação neural e simbólica.",
-    topicos: [
-      {
-        titulo: "1. O Artigo Seminal de Turing (1950) e o Jogo da Imitação",
-        conteudo: "Em 1950, Alan M. Turing publicou na revista <em>Mind</em> o artigo <em>'Computing Machinery and Intelligence'</em>. Turing contornou a armadilha filosófica de definir 'pensamento biológico' propondo o <strong>Jogo da Imitação (The Imitation Game)</strong>, hoje conhecido como Teste de Turing: se um interrogador humano não conseguir distinguir as respostas textuais de uma máquina das de um humano, o comportamento da máquina é funcionalmente inteligente."
-      },
-      {
-        titulo: "2. O Workshop de Dartmouth (1956) e a Criação da Disciplina",
-        conteudo: "No verão de 1956, John McCarthy (Dartmouth), Marvin Minsky (Harvard), Nathaniel Rochester (IBM) e Claude Shannon (Bell Labs) submeteram a proposta da <em>'Dartmouth Summer Research Project on Artificial Intelligence'</em>. Foi nessa proposta que a expressão <strong>'Artificial Intelligence'</strong> foi cunhada formalmente com a premissa de que: <em>'cada aspecto da aprendizagem ou qualquer outro traço de inteligência pode, em princípio, ser tão precisamente descrito que uma máquina possa ser programada para simulá-lo'</em>."
-      },
-      {
-        titulo: "3. As Três Ondas da IA: Simbólica, Conexionista e Generativa",
-        conteudo: "A evolução histórica divide-se em 3 eras:<br>• <strong>1ª Onda (1956–1980): IA Simbólica / Baseada em Regras:</strong> Lógica proposicional e sistemas especialistas (*SE... ENTÃO*). Falhava pela incapacidade de lidar com incerteza.<br>• <strong>2ª Onda (1980–2010): Aprendizado Estatístico & Redes Neurais (ML):</strong> Backpropagation e algoritmos estatísticos alimentados por dados.<br>• <strong>3ª Onda (2012–Presente): Deep Learning & Transformers:</strong> Redes profundas aceleradas por GPUs (AlexNet 2012) e arquiteturas de auto-atenção (Transformer 2017) que viabilizaram os LLMs modernos."
-      }
-    ],
-    fontesCientificas: [
-      {
-        autor: "Alan M. Turing (1950)",
-        titulo: "Computing Machinery and Intelligence",
-        publicacao: "Mind, 59(236), 433-460",
-        relevancia: "Artigo fundador da filosofia da computação e do Teste de Turing.",
-        link: "https://doi.org/10.1093/mind/LIX.236.433"
-      },
-      {
-        autor: "McCarthy, Minsky, Rochester & Shannon (1955/1956)",
-        titulo: "A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence",
-        publicacao: "Dartmouth College Technical Report / AI Magazine",
-        relevancia: "Documento histórico onde o termo 'Inteligência Artificial' foi formalmente cunhado.",
-        link: "http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html"
-      },
-      {
-        autor: "Russell, S. & Norvig, P. (2020)",
-        titulo: "Artificial Intelligence: A Modern Approach (4th Edition)",
-        publicacao: "Pearson Education",
-        relevancia: "O livro-texto universitário padrão mundial de IA em Ciência da Computação.",
-        link: "http://aima.cs.berkeley.edu/"
-      }
-    ]
-  },
-
-  // Dossiê 2: Slide 18 (Teorema de Larry Tesler e o Efeito IA)
-  teslerAiEffect: {
-    tipoDossie: "cientifico",
-    titulo: "O Teorema de Larry Tesler e a Epistemologia do 'AI Effect'",
-    resumo: "Como o efeito de fronteira móvel (moving baseline) na ciência da computação faz com que problemas resolvidos deixem de ser considerados inteligentes pelo público.",
-    topicos: [
-      {
-        titulo: "1. A Formulação Original do Teorema de Tesler",
-        conteudo: "Larry Tesler (pioneiro de interfaces e ex-vice-presidente da Apple) formulou o axioma citado por Douglas Hofstadter em <em>Gödel, Escher, Bach</em> (1979): <em>'AI is whatever hasn't been done yet'</em> (IA é tudo aquilo que ainda não foi feito)."
-      },
-      {
-        titulo: "2. O Fenômeno Sociotécnico do 'Efeito IA'",
-        conteudo: "Pamela McCorduck documentou em <em>Machines Who Think</em> que o sucesso da IA acarreta sua própria descaracterização: o reconhecimento óptico de caracteres (OCR), o xadrez computacional (Deep Blue 1997) e a transcrição de voz deixaram de ser vistos como 'IA' assim que se tornaram comoditizados."
-      }
-    ],
-    fontesCientificas: [
-      {
-        autor: "Hofstadter, Douglas R. (1979)",
-        titulo: "Gödel, Escher, Bach: An Eternal Golden Braid",
-        publicacao: "Basic Books (Prêmio Pulitzer)",
-        relevancia: "Registro seminal do Teorema de Larry Tesler sobre a fronteira móvel da IA.",
-        link: "https://www.pulitzer.org/winners/douglas-r-hofstadter"
-      },
-      {
-        autor: "McCorduck, Pamela (2004)",
-        titulo: "Machines Who Think: A Personal Inquiry into the History and Prospects of Artificial Intelligence",
-        publicacao: "A K Peters/CRC Press",
-        relevancia: "Análise histórica e sociológica detalhada do Efeito IA.",
-        link: "https://www.crcpress.com/Machines-Who-Think/McCorduck/p/book/9781568812113"
-      }
-    ]
-  },
-
-  // Dossiê 3: Slide 28 (Plano Brasileiro de IA - PBIA 2024-2028)
-  pbiaBrasil: {
-    tipoDossie: "juridico",
-    titulo: "Dossiê Oficial: Plano Brasileiro de Inteligência Artificial (PBIA 2024–2028)",
-    resumo: "Estrutura programática, investimentos de R$ 23 bilhões, infraestrutura computacional soberana e eixos estratégicos do CNDI e MCTI.",
-    topicos: [
-      {
-        titulo: "1. O Lançamento do PBIA 'IA para o Bem de Todos' (MCTI / CNDI)",
-        conteudo: "Apresentado oficialmente na 5ª Conferência Nacional de Ciência, Tecnologia e Inovação (julho de 2024), o <strong>PBIA 2024–2028</strong> prevê R$ 23,03 bilhões distribuídos em 5 eixos estruturantes: (1) Infraestrutura e Supercomputação; (2) Difusão, Formação e Capacitação; (3) Melhoria dos Serviços Públicos; (4) Inovação Empresarial; (5) Apoio ao Processo Regulatório e Governança."
-      },
-      {
-        titulo: "2. Soberania de Dados e Expansão do Supercomputador Santos Dumont",
-        conteudo: "O plano destina mais de R$ 1,8 bilhão para a aquisição de um novo supercomputador de alta performance no <strong>LNCC (Laboratório Nacional de Computação Científica)</strong> em Petrópolis-RJ, posicionando o Brasil entre os 5 maiores centros públicos de supercomputação do mundo para treinamento de LLMs soberanos em português e dados biomédicos tropicais."
-      },
-      {
-        titulo: "3. Aplicações Prioritárias no Setor Público (Saúde, Meio Ambiente e Gestão)",
-        conteudo: "Projetos de impacto imediato:<br>• <strong>Saúde Digital (SUS):</strong> Triagem inteligente de exames de imagem e otimização do complexo econômico-industrial da saúde.<br>• <strong>Transição Ecológica e Clima:</strong> Modelagem preditiva de desmatamento e queimadas no INPE/Cemaden.<br>• <strong>Educação e Inclusão:</strong> Financiamento de programas de extensão universitária e bolsas de letramento em IA para a população geral."
-      }
-    ],
-    fontesCientificas: [
-      {
-        autor: "Governo Federal do Brasil / MCTI / CNDI (2024)",
-        titulo: "Plano Brasileiro de Inteligência Artificial 2024-2028: IA para o Bem de Todos",
-        publicacao: "Ministério da Ciência, Tecnologia e Inovação (MCTI)",
-        relevancia: "Documento oficial da estratégia nacional de IA do Brasil.",
-        link: "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2024/07/conheca-o-plano-brasileiro-de-inteligencia-artificial"
-      },
-      {
-        autor: "Conselho Nacional de Desenvolvimento Industrial - CNDI (2024)",
-        titulo: "Nova Indústria Brasil (NIB) - Missão 4: Transformação Digital da Indústria",
-        publicacao: "MDIC / Governo Federal",
-        relevancia: "Diretrizes industriais de digitalização e inteligência de dados.",
-        link: "https://www.gov.br/mdic/pt-br/assuntos/noticias/2024/janeiro/conheca-as-metas-da-nova-industria-brasil"
-      }
-    ]
-  },
-
-  // Dossiê 4: Slide 29 (Marco Legal da IA - PL 2338/2023 e LGPD)
-  marcoLegal: {
-    tipoDossie: "juridico",
-    titulo: "Dossiê Jurídico: Marco Legal da IA (PL 2338/2023) e Normas Globais",
-    resumo: "Análise técnica do Projeto de Lei nº 2338/2023 no Senado Federal, matriz de riscos (Risk-Based Approach), direitos dos afetados e conformidade com a LGPD.",
-    topicos: [
-      {
-        titulo: "1. Estrutura do PL 2338/2023 no Senado Federal",
-        conteudo: "Elaborado a partir da Comissão de Juristas (CJIAEX), o <strong>PL 2338/2023</strong> adota a abordagem baseada em risco (inspirada no <em>EU AI Act</em> da União Europeia). Divide os sistemas em:<br>• <strong>Risco Excessivo / Inaceitável (Proibidos):</strong> Técnicas subliminares, pontuação social governamental (social scoring) e identificação biométrica remota contínua em massa.<br>• <strong>Alto Risco (Regulamentados):</strong> Sistemas em veículos autônomos, diagnósticos de saúde, triagem de empregos e concessão de crédito, exigindo Avaliação de Impacto Algorítmico (AIA).<br>• <strong>Baixo Risco:</strong> Livres de obrigações pesadas, com incentivo a boas práticas e transparência."
-      },
-      {
-        titulo: "2. Direitos Fundamentais dos Titulares (Cidadãos)",
-        conteudo: "O Marco Legal estabelece garantias essenciais:<br>• <strong>Direito à Informação Prévia:</strong> O usuário deve saber se está interagindo com IA.<br>• <strong>Direito à Explicação:</strong> Obter explicação inteligível sobre a lógica de uma decisão automatizada.<br>• <strong>Direito à Revisão Humana:</strong> Exigir que uma decisão tomada por IA que gere prejuízo seja revisada por um profissional humano.<br>• <strong>Não Discriminação Algorítmica:</strong> Obrigação de mitigar vieses sobre raça, etnia, gênero, orientação sexual e idade."
-      },
-      {
-        titulo: "3. Intersecção com a LGPD (Lei 13.709/2018) e Direitos Autorais",
-        conteudo: "O treinamento de IA deve respeitar as bases legais da LGPD. Além disso, o texto do marco legal inclui mecanismos de compensação e transparência para o uso de obras intelectuais protegidas por direitos autorais no treinamento de modelos generativos (*Text and Data Mining - TDM* com cláusula de *opt-out*)."
-      }
-    ],
-    fontesCientificas: [
-      {
-        autor: "Senado Federal do Brasil (2023/2024)",
-        titulo: "Projeto de Lei nº 2338, de 2023 (Marco Legal da Inteligência Artificial)",
-        publicacao: "Comissão Temporária sobre Inteligência Artificial no Brasil (CTIA)",
-        relevancia: "Texto legislativo principal em tramitação no Congresso Nacional.",
-        link: "https://www25.senado.leg.br/web/atividade/materias/-/materia/157233"
-      },
-      {
-        autor: "União Europeia (2024)",
-        titulo: "Artificial Intelligence Act (Regulation EU 2024/1689)",
-        publicacao: "Official Journal of the European Union",
-        relevancia: "Primeira legislação abrangente do mundo sobre IA baseada em riscos.",
-        link: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
-      },
-      {
-        autor: "Presidência da República do Brasil (2018)",
-        titulo: "Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018)",
-        publicacao: "Diário Oficial da União",
-        relevancia: "Norma brasileira de proteção de dados pessoais e privacidade.",
-        link: "http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
-      }
-    ]
-  },
-
-  // Dossiê 5: Slides 18-26 (Desmistificação da IA, Autonomia e Governança Ética)
-  desmistificacaoKaufman: {
-    tipoDossie: "filosofico",
-    titulo: "Desmistificação da IA, Ilusão de Consciência e Governança Ética",
-    resumo: "A desconstrução crítica dos mitos de inteligência e consciência pela Profa. Dra. Dora Kaufman (PUC-SP) e as diretrizes globais da UNESCO sobre ética em IA.",
-    topicos: [
-      {
-        titulo: "1. A Opacidade Algorítmica e a Falácia da Consciência (Dora Kaufman)",
-        conteudo: "Dora Kaufman demonstra que sistemas de IA não pensam, não sentem e não possuem intencionalidade: operam por modelos estatísticos e reconhecimento de padrões em dados, exigindo que a sociedade compreenda suas limitações para evitar tanto o pânico infundado quanto a fé cega nas respostas automáticas."
-      },
-      {
-        titulo: "2. Autonomia Humana e a Recomendação da UNESCO (2021)",
-        conteudo: "A recomendação global da UNESCO estabelece que as tecnologias de IA devem sempre salvaguardar a agência e os direitos humanos, garantindo que decisões de impacto crítico permaneçam sob supervisão e responsabilidade humana indelegável."
-      }
-    ],
-    fontesCientificas: [
-      {
-        autor: "Kaufman, Dora (2022)",
-        titulo: "Desmistificando a Inteligência Artificial",
-        publicacao: "São Paulo: Autêntica (ISBN: 978-6559281589)",
-        relevancia: "Obra de referência nacional analisando a opacidade, governança e desconstrução de mitos em torno da IA.",
-        link: "https://loja.editora.unb.br/comunicacao/desmistificando-a-inteligencia-artificial-3068/p"
-      },
-      {
-        autor: "Kaufman, Dora (2019)",
-        titulo: "A Inteligência Artificial Irá nos Submeter aos seus Algoritmos?",
-        publicacao: "São Paulo: Planeta (ISBN: 978-85-422-1203-6)",
-        relevancia: "Exame das transformações da autonomia humana e do impacto social da mediação por algoritmos.",
-        link: "https://www.grupoplaneta.com.br/livro/a-inteligencia-artificial-ira-nos-submeter-aos-seus-algoritmos/"
-      },
-      {
-        autor: "UNESCO (2021)",
-        titulo: "Recommendation on the Ethics of Artificial Intelligence",
-        publicacao: "Paris: UNESCO",
-        relevancia: "Primeiro instrumento normativo global adotado por 193 países com princípios de supervisão e agência humana em IA.",
-        link: "https://unesdoc.unesco.org/ark:/48223/pf0000381137"
-      }
-    ]
-  }
-};
-
-  // 2. Metadados Curriculares e Blocos Temáticos
-  /**
- * Módulo 1 – Metadados Curriculares e Blocos Temáticos
+ * Módulo 1 – Metadados Curriculares
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
 const moduloInfo = {
   numero: 1,
-  total: 7,
   titulo: "Desmistificando a IA: Da Ficção Científica à Realidade",
-  subtitulo: "Gênese histórica, definição descomplicada, a IA invisível do dia a dia, mitos, visão do Brasil, regulação e fundamentos de aprendizado",
-  cargaHoraria: "Encontro 1 • 3 horas presenciais (180 min)",
-  modalidade: "Presencial em Laboratório de Informática",
-  publico: "Iniciantes e público geral (sem pré-requisitos técnicos ou matemáticos)",
-  ferramentaPrincipal: "Navegador Web + Template do Portfólio Digital individual",
-  avaliacao: "Prova Diagnóstica de Nivelamento (Instrumento Formativo / Sem Nota Punitiva)"
+  cargaHoraria: "3h Presenciais (180 min)"
 };
 
-const blocosTematicos = [
-  {
-    id: 1,
-    icone: "🤝",
-    titulo: "Bloco 1: Acolhimento, Contrato Pedagógico & Estrutura",
-    subtitulo: "Apresentação da co-docência, cronograma dos 7 encontros, alívio de ansiedade e requisito de e-mail",
-    slidesRange: [1, 6],
-    tempoEstimado: "30 min"
-  },
-  {
-    id: 2,
-    icone: "🕰️",
-    titulo: "Bloco 2: Gênese Histórica, Definição & Os 3 Ingredientes (Condução: Maria)",
-    subtitulo: "Conduzido por Maria: Origem (Turing 1950, Dartmouth 1956), programação vs padrões e os 3 ingredientes da IA moderna",
-    slidesRange: [7, 11],
-    tempoEstimado: "25 min",
-    conducao: "Maria"
-  },
-  {
-    id: 3,
-    icone: "📱",
-    titulo: "Bloco 3: A IA Invisível do Dia a Dia & Teorema de Tesler (Condução: Laura)",
-    subtitulo: "Conduzido por Laura: A IA da ficção (Rosie/Skynet/Baymax) vs robótica real, por que robôs conscientes não virão em 10 anos, Teorema de Larry Tesler e os 4 exemplos cotidianos",
-    slidesRange: [12, 19],
-    tempoEstimado: "35 min",
-    conducao: "Laura"
-  },
-  {
-    id: 4,
-    icone: "🎭",
-    titulo: "Bloco 4: Desmistificando a IA – Os 5 Grandes Mitos",
-    subtitulo: "Conduzido por Maria (Mitos 1-2) e Laura (Mitos 3-5): Desconstrução de mitos sobre consciência, alucinações, linguagem/matemática, ética/trapaça e o futuro do trabalho",
-    slidesRange: [20, 26],
-    tempoEstimado: "30 min"
-  },
-  {
-    id: 5,
-    icone: "🇧🇷",
-    titulo: "Bloco 5: Brasil, Cidadania & Legislação (Condução: Maria)",
-    subtitulo: "Conduzido por Maria: Plano Brasileiro de IA (PBIA 2024–2028: SUS, Soberania) e o Marco Legal da IA (PL 2338/2023 / LGPD)",
-    slidesRange: [27, 29],
-    tempoEstimado: "20 min",
-    conducao: "Maria"
-  },
-  {
-    id: 6,
-    icone: "💻",
-    titulo: "Bloco 6: Laboratório Prático & Fechamento",
-    subtitulo: "Missão 1: Acesso de e-mail no laboratório, Missão 2: Prova Diagnóstica de Nivelamento e síntese do Encontro 1",
-    slidesRange: [30, 33],
-    tempoEstimado: "35 min"
-  }
-];
-
-  // 3. Fio da Meada e Narrativa Pedagógica
+  // 2. Fio da Meada e Narrativa Pedagógica
   /**
  * Módulo 1 – Fio da Meada, Narrativa em 3 Atos e Glossário Rápido
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -361,12 +95,11 @@ const fioDaMeada = {
   ]
 };
 
-  // 4. Slides com Notas da Professora
+  // 3. Slides com Notas da Professora
   /**
- * Módulo 1 – Deck Completo de Slides (32 Slides) & Notas da Professora
+ * Módulo 1 – Deck Completo de Slides (33 Slides) & Notas da Professora
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
-
 
 const slidesComNotas = [
   // -----------------------------------------------------------------------
@@ -417,9 +150,9 @@ const slidesComNotas = [
     encontros: [
       { data: "09/10", num: "1", tema: "Gênese da IA & Ética", status: "Hoje (Módulo 1)" },
       { data: "30/10", num: "2", tema: "O Salto da IA Generativa", status: "Próxima" },
-      { data: "06/11", num: "3", tema: "A Arte do Prompt (PCTFR)", status: "Planejado" },
-      { data: "13/11", num: "4", tema: "IA na Prática", status: "Planejado" },
-      { data: "20/11", num: "5", tema: "Olhar Crítico & Auditoria", status: "Planejado" },
+      { data: "06/11", num: "3", tema: "Aula Privada com Aluno", status: "Planejado" },
+      { data: "13/11", num: "4", tema: "ChatGPT na Prática", status: "Planejado" },
+      { data: "27/11", num: "5", tema: "Ferramentas de IA", status: "Planejado" },
       { data: "27/11", num: "6", tema: "Refinamento & Uso Responsável", status: "Planejado" },
       { data: "04/12", num: "7", tema: "Fechamento & Avaliação Final", status: "Encerramento" }
     ],
@@ -559,8 +292,7 @@ const slidesComNotas = [
       objetivoSlide: "Desfazer a falsa impressão de que IA é modismo recente de 2022 e valorizar a profundidade histórica da ciência da computação.",
       oQueFalar: "Diga com entusiasmo: 'Muita gente acha que IA é uma invenção novinha de 2022 porque o ChatGPT ficou famoso. Mas a verdade é fascinante: cientistas pesquisam IA há mais de 70 anos! O que mudou é que antes as máquinas eram lentas e caras; hoje, temos supercomputadores na nuvem e celulares potentes em nossos bolsos.'",
       tempoSugerido: "6 minutos"
-    },
-    embasamentoCientifico: dossies.turingDartmouth
+    }
   },
   {
     numero: 9,
@@ -818,8 +550,7 @@ const slidesComNotas = [
       objetivoSlide: "Apresentar a grande lei sociotécnica que explica por que a sociedade normaliza a tecnologia e esquece que biometria e câmeras são IA.",
       oQueFalar: "Leiam a frase no telão com calma e ênfase: 'Esta frase clássica, atribuída ao pioneiro da computação Larry Tesler e popularizada pelo cientista cognitivo Douglas Hofstadter, resume o chamado Teorema de Tesler: toda vez que a IA resolve um problema difícil, as pessoas se acostumam e dizem: \"ah, isso é só um recurso normal do computador\". A IA parece invisível porque ela venceu e virou rotina!'",
       tempoSugerido: "5 minutos"
-    },
-    embasamentoCientifico: dossies.teslerAiEffect
+    }
   },
   {
     numero: 19,
@@ -1117,7 +848,6 @@ const slidesComNotas = [
     bloco: 5,
     tipo: "apresentacao",
     categoria: "Plano Brasileiro de IA",
-    badge: "Plano Brasileiro de IA",
     conducao: "Maria",
     titulo: "O Plano Brasileiro de IA (PBIA): 'IA para o Bem de Todos'",
     subtitulo: "Os 3 eixos estratégicos do investimento público nacional: supercomputadores, SUS e inclusão digital",
@@ -1142,8 +872,7 @@ const slidesComNotas = [
       objetivoSlide: "Conduzido por Maria: Mostrar a política pública oficial do Brasil e valorizar a presença dos alunos como agentes de transformação e soberania digital.",
       oQueFalar: "Maria apresenta com orgulho e cidadania: 'O Brasil não quer ser apenas um comprador de tecnologia de outros países. O Governo Federal lançou o Plano Brasileiro de IA com foco em usar a inteligência artificial para melhorar o SUS, proteger o meio ambiente e, principalmente, capacitar as pessoas. Vocês estarem aqui hoje faz parte dessa missão nacional de inclusão digital!'",
       tempoSugerido: "7 minutos"
-    },
-    embasamentoCientifico: dossies.pbiaBrasil
+    }
   },
   {
     numero: 29,
@@ -1151,7 +880,6 @@ const slidesComNotas = [
     bloco: 5,
     tipo: "apresentacao",
     categoria: "Legislação & Direitos",
-    badge: "Marco Legal da IA",
     conducao: "Maria",
     titulo: "Regulamentação da IA: Leis, Direitos e Proteção ao Cidadão",
     subtitulo: "Como o Marco Legal da IA (PL 2338/2023) e a LGPD protegem você de abusos",
@@ -1176,12 +904,11 @@ const slidesComNotas = [
       objetivoSlide: "Conduzido por Maria: Transmitir segurança jurídica e cidadã, mostrando que regular não é proibir, mas garantir que a tecnologia sirva à dignidade humana.",
       oQueFalar: "Maria explica com clareza: 'Regulamentar a IA não é proibir a tecnologia, mas colocar regras claras e cinto de segurança no carro! O Congresso Nacional está votando o Marco Legal da IA para garantir que nenhum algoritmo possa discriminar pessoas por idade, gênero ou cor, e que nossa privacidade seja respeitada.'",
       tempoSugerido: "7 minutos"
-    },
-    embasamentoCientifico: dossies.marcoLegal
+    }
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 6: LABORATÓRIO PRÁTICO & FECHAMENTO (SLIDES 30 A 32)
+  // BLOCO 6: LABORATÓRIO PRÁTICO & FECHAMENTO (SLIDES 30 A 33)
   // -----------------------------------------------------------------------
   {
     numero: 30,
@@ -1307,18 +1034,16 @@ const slidesComNotas = [
   }
 ];
 
-  // 5. Atividades Práticas e Laboratório
+  // 4. Atividades Práticas e Laboratório
   /**
  * Módulo 1 – Atividade Prática de Laboratório: Prova Diagnóstica
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
 const oficinaPratica = {
-  isDiagnostica: true,
   titulo: "Missão 2 no Computador: Prova Diagnóstica",
   duracao: "25 a 30 minutos em Laboratório",
   peso: "Instrumento Formativo de Nivelamento (Zero Pressão / Sem Nota Punitiva)",
-  ferramenta: "Formulário Online / Navegador Web",
   descricao: "Aplicação individual da Prova Diagnóstica nos computadores do laboratório. O objetivo é realizar um mapeamento formativo dos conhecimentos prévios e expectativas da turma sobre tecnologia e IA, orientando a calibração pedagógica das próximas oficinas práticas.",
   diretrizesDocentes: [
     "Acolhimento da turma: tranquilizar os alunos de que não há nota punitiva nem reprovação.",
@@ -1329,7 +1054,7 @@ const oficinaPratica = {
   planoB: "Caso a conexão de internet do laboratório oscile, a Prova Diagnóstica poderá ser aplicada via questionário impresso ou respondida em formato assíncrono antes do Encontro 2."
 };
 
-  // 6. Perguntas dos Alunos e Dúvidas Frequentes
+  // 5. Perguntas dos Alunos e Dúvidas Frequentes
   /**
  * Módulo 1 – Perguntas dos Alunos, Dúvidas Clássicas e Armadilhas Pedagógicas
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -1340,49 +1065,49 @@ const perguntasAlunos = [
     numero: 1,
     duvida: "Se a Inteligência Artificial já existe desde os anos 1950 (Turing e Dartmouth), por que ela 'explodiu' e virou febre só agora?",
     resposta: "A teoria matemática e os algoritmos fundamentais já existiam há quase 70 anos, mas faltavam dois ingredientes físicos indispensáveis: um volume astronômico de dados digitalizados pela internet (Big Data) e chips de processamento gráfico hiperpotentes (GPUs). Quando a tríade Dados + Chips + Algoritmos se encontrou na última década, a IA deu o salto gigantesco que hoje vemos no bolso e nos serviços.",
-    pontoDidatico: "Conecte a linha do tempo (Slide 7) diretamente aos 3 Ingredientes (Slide 10), demonstrando que a ciência depende de infraestrutura tecnológica para florescer."
+    pontoDidatico: "Conecte a linha do tempo (Slide 8) diretamente aos 3 Ingredientes (Slide 11), demonstrando que a ciência depende de infraestrutura tecnológica para florescer."
   },
   {
     numero: 2,
     duvida: "Isso tudo não é só um monte de comandos IF/ELSE (Se/Então) gigante programado por alguém?",
     resposta: "Na programação tradicional, sim: cada regra e exceção precisa ser escrita manualmente por um ser humano (como uma receita de bolo estrita). No aprendizado de máquina (Machine Learning), nenhum programador escreveu regras para cada situação: o computador analisou milhões de exemplos e ajustou pesos matemáticos sozinho para reconhecer padrões. Se fosse IF/ELSE humano, seria humanamente impossível programar todas as variações de um rosto ou da fala humana!",
-    pontoDidatico: "Fixe a metáfora do Slide 9: regra estrita prescrita versus observação estatística de padrões em escala."
+    pontoDidatico: "Fixe a metáfora do Slide 10: regra estrita prescrita versus observação estatística de padrões em escala."
   },
   {
     numero: 3,
     duvida: "Se o corretor do celular, o filtro antispam e o reconhecimento de voz são IA, por que a gente nunca chamou isso de Inteligência Artificial?",
     resposta: "Isso é exatamente o que chamamos de 'Teorema de Larry Tesler' ou 'Efeito IA': quando uma tecnologia de inteligência artificial funciona com extrema estabilidade e vira rotina no nosso dia a dia, ela perde o mistério de 'mágica' e passa a ser chamada apenas de 'recurso comum de informática'. A IA costuma parecer IA apenas enquanto ainda é novidade ou está no cinema.",
-    pontoDidatico: "Reforce o conceito de invisibilidade da IA cotidiana trabalhado nos Slides 14 e 15."
+    pontoDidatico: "Reforce o conceito de invisibilidade da IA cotidiana trabalhado nos Slides 17, 18 e 19."
   },
   {
     numero: 4,
     duvida: "A IA pode desenvolver sentimentos, ter consciência própria e se rebelar contra a humanidade?",
     resposta: "Cientificamente não há base real para isso. A IA que existe no mundo é 100% IA Estreita (ANI): não possui biologia, desejos, instinto de sobrevivência, sentimentos ou consciência. Ela é código calculando probabilidades estatísticas a partir de dados do passado. O risco real da IA não são robôs rebeldes da ficção científica, mas o uso humano irresponsável com dados tendenciosos (vieses) ou decisões automatizadas sem supervisão ética.",
-    pontoDidatico: "Redirecione o pânico da ficção científica (Slides 12, 16 e 17) para a responsabilidade ética e governança humana no mundo real."
+    pontoDidatico: "Redirecione o pânico da ficção científica (Slides 13 a 16 e 22) para a responsabilidade ética e governança humana no mundo real."
   },
   {
     numero: 5,
     duvida: "Se a IA responde com tanta certeza, fluência e vocabulário formal, como descubro se ela está inventando (alucinando)?",
     resposta: "A IA não tem compromisso ético com a verdade nem 'compreende' o sentido real das palavras: ela prevê a combinação estatística mais provável e gramaticalmente convincente de termos. Por isso, fatos históricos, leis, autores, referências e cálculos nunca devem ser aceitos cegamente. A IA é uma excelente copiloto para sugerir caminhos, mas a validação factual e o senso crítico final são sempre 100% responsabilidade do usuário (Human-in-the-loop).",
-    pontoDidatico: "Ensine a postura de verificação ativa contra a alucinação (Slide 18), antecipando a postura crítica necessária para o ChatGPT no Encontro 2."
+    pontoDidatico: "Ensine a postura de verificação ativa contra a alucinação (Slide 23), antecipando a postura crítica necessária para o ChatGPT no Encontro 2."
   },
   {
     numero: 6,
     duvida: "Usar IA no trabalho, nos estudos ou para escrever e-mails não é uma forma de trapaça ou plágio?",
     resposta: "Usar IA para copiar e colar respostas cegas sem ler, sem pensar e sem declarar autoria é plágio e desonestidade. Por outro lado, usar a IA como copiloto — para destravar a folha em branco, pedir analogias, organizar tópicos de uma aula ou revisar clareza — é potencialização do intelecto humano. A calculadora não acabou com a matemática; ela tirou o esforço mecânico da conta para permitir que o humano resolva problemas mais complexos.",
-    pontoDidatico: "Estabeleça a linha clara entre trapaça passiva e coprodução crítica / copilotagem ética (Slide 20)."
+    pontoDidatico: "Estabeleça a linha clara entre trapaça passiva e coprodução crítica / copilotagem ética (Slide 25)."
   },
   {
     numero: 7,
     duvida: "A IA vai roubar todos os empregos e substituir os profissionais?",
     resposta: "A IA automatiza tarefas repetitivas, mecânicas e burocráticas, mas não substitui competências humanas fundamentais: empatia, discernimento ético, criatividade contextual, afeto e negociação. A IA não vai substituir o professor ou o profissional consciente, mas o profissional que aprende a usar IA como copiloto terá enorme vantagem sobre quem a ignora. Este curso existe para nos colocar no controle dessa transformação!",
-    pontoDidatico: "Acolha a ansiedade profissional (Slide 21) e empodere os alunos a assumirem o papel de autores e gestores de tecnologia."
+    pontoDidatico: "Acolha a ansiedade profissional (Slide 26) e empodere os alunos a assumirem o papel de autores e gestores de tecnologia."
   },
   {
     numero: 8,
     duvida: "A IA pode ler minhas mensagens, fotos e dados pessoais sem permissão? O Brasil tem leis para nos proteger?",
     resposta: "Sim, no Brasil temos a LGPD (Lei Geral de Proteção de Dados) e o novo Marco Legal da IA (PL 2338/2023), que exigem consentimento, finalidade legítima e respeito à privacidade para o uso de dados de cidadãos. Além disso, o Plano Brasileiro de IA (PBIA) investe R$ 23 bilhões para garantir que o país desenvolva tecnologia própria e soberana, aplicando IA em benefício público (como no SUS) e capacitando a população.",
-    pontoDidatico: "Valorize a dimensão cidadã, jurídica e soberana da tecnologia (Slides 22 a 24), desmistificando a ideia de que a internet é uma 'terra sem leis'."
+    pontoDidatico: "Valorize a dimensão cidadã, jurídica e soberana da tecnologia (Slides 27 a 29), desmistificando a ideia de que a internet é uma 'terra sem leis'."
   },
   {
     numero: 9,
@@ -1392,7 +1117,7 @@ const perguntasAlunos = [
   }
 ];
 
-  // 7. Divisão de Papéis e Co-Docência
+  // 6. Divisão de Papéis e Co-Docência
   /**
  * Módulo 1 – Divisão de Papéis e Momentos da Co-Docência (Laura & Maria)
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -1401,11 +1126,11 @@ const perguntasAlunos = [
 const divisaoPapeis = [
   { bloco: "Bloco 1 (00h-30m)", tema: "Acolhimento, Contrato Pedagógico & Estrutura (Slides 1 a 6)", papel: "radio" },
   { bloco: "Bloco 2 (30m-55m)", tema: "Gênese Histórica, Definição & Os 3 Ingredientes (Slides 7 a 11) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 3 (55m-85m)", tema: "A IA Invisível do Dia a Dia & Teorema de Tesler (Slides 12 a 18) • Condução: Laura", papel: "radio", padrao: "laura" },
+  { bloco: "Bloco 3 (55m-90m)", tema: "A IA Invisível do Dia a Dia & Teorema de Tesler (Slides 12 a 19) • Condução: Laura", papel: "radio", padrao: "laura" },
   { bloco: "Intervalo (15m)", tema: "Intervalo Pedagógico / Café com Prosa (Atalho Tecla I)", papel: "ambas" },
-  { bloco: "Bloco 4 (100m-130m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 19 a 25) • Mitos 1-2: Maria | Mitos 3-5: Laura", papel: "radio" },
-  { bloco: "Bloco 5 (130m-150m)", tema: "Brasil, Cidadania & Legislação (Slides 26 a 28) • Condução: Maria", papel: "radio", padrao: "maria" },
-  { bloco: "Bloco 6 (150m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica & Fechamento (Slides 29 a 31)", papel: "ambas" }
+  { bloco: "Bloco 4 (105m-135m)", tema: "Desmistificando a IA – Os 5 Grandes Mitos (Slides 20 a 26) • Mitos 1-2: Maria | Mitos 3-5: Laura", papel: "radio" },
+  { bloco: "Bloco 5 (135m-155m)", tema: "Brasil, Cidadania & Legislação (Slides 27 a 29) • Condução: Maria", papel: "radio", padrao: "maria" },
+  { bloco: "Bloco 6 (155m-180m)", tema: "Laboratório de Acesso, Prova Diagnóstica, Fechamento & Referências (Slides 30 a 33)", papel: "ambas" }
 ];
 
   // Normalização determinística de numeração e IDs dos slides no bundle
@@ -1419,12 +1144,10 @@ const divisaoPapeis = [
   const ENCONTRO_1_DATA = {
     moduloInfo: moduloInfo,
     fioDaMeada: fioDaMeada,
-    blocosTematicos: blocosTematicos,
     slidesComNotas: slidesComNotas,
     oficinaPratica: oficinaPratica,
     perguntasAlunos: perguntasAlunos,
-    divisaoPapeis: divisaoPapeis,
-    dossies: dossies
+    divisaoPapeis: divisaoPapeis
   };
 
   // Exposição Global no Navegador (Window) e Node.js

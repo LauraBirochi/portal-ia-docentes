@@ -552,6 +552,160 @@
        6. LAYOUTS DOS 16 SLIDES
        ========================================================================== */
 
+    /* LAYOUT SOMENTE IMAGEM (QUASE DO TAMANHO DO SLIDE) */
+    .slide-card[data-slide-type="somente-imagem"],
+    .slide-card:has(.layout-somente-imagem) {
+      padding: 14px 20px !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 0 !important;
+    }
+
+    .slide-card[data-slide-type="somente-imagem"] .slide-body,
+    .slide-card:has(.layout-somente-imagem) .slide-body {
+      height: 100% !important;
+      width: 100% !important;
+      max-height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+
+    .layout-somente-imagem {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .somente-imagem-img {
+      width: 98% !important;
+      max-width: 98% !important;
+      max-height: 97% !important;
+      height: auto !important;
+      object-fit: contain !important;
+      border-radius: 10px;
+      box-shadow: 0 16px 48px rgba(15, 23, 42, 0.22), 0 2px 8px rgba(15, 23, 42, 0.1);
+      border: 1.5px solid #cbd5e1;
+      display: block;
+    }
+
+    /* LAYOUT SCREENSHOT SHOWCASE (INTERFACE REAL DO NOTEBOOKLM) */
+    .layout-screenshot-showcase {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .screenshot-showcase-media {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .screenshot-frame {
+      max-width: 100%;
+      max-height: 520px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1.5px solid #cbd5e1;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06);
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .screenshot-img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .screenshot-zonas-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      width: 100%;
+      max-width: 1540px;
+    }
+
+    .screenshot-zona-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .screenshot-zona-card.zona-azul {
+      border-left: 4px solid #0284c7;
+    }
+
+    .screenshot-zona-card.zona-verde {
+      border-left: 4px solid #059669;
+    }
+
+    .screenshot-zona-card.zona-roxo {
+      border-left: 4px solid #7c3aed;
+    }
+
+    .zona-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .zona-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .zona-azul .zona-badge {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .zona-verde .zona-badge {
+      background: #d1fae5;
+      color: #047857;
+    }
+
+    .zona-roxo .zona-badge {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+
+    .zona-titulo {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0;
+    }
+
+    .zona-desc {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.35;
+      margin: 0;
+    }
+
     /* --- TIPO 1: CAPA --- */
     .layout-capa {
       text-align: center;
@@ -3223,6 +3377,35 @@ body[data-meeting="3"], body[data-meeting="4"], body[data-meeting="5"] .card-col
   color: #1e293b;
 }
 
+.quadro-comp-table.quadro-ferramentas td.col-armadilha-1 {
+  background: rgba(239, 68, 68, 0.04);
+  border-right: 1px solid #f1f5f9;
+  color: #1e293b;
+}
+
+.quadro-comp-table.quadro-ferramentas td.col-armadilha-2 {
+  background: rgba(245, 158, 11, 0.04);
+  border-right: 1px solid #f1f5f9;
+  color: #1e293b;
+}
+
+.quadro-comp-table.quadro-ferramentas td.col-armadilha-3 {
+  background: rgba(16, 185, 129, 0.04);
+  color: #1e293b;
+}
+
+.quadro-comp-table.quadro-ferramentas tbody tr:hover td.col-armadilha-1 {
+  background-color: rgba(239, 68, 68, 0.08);
+}
+
+.quadro-comp-table.quadro-ferramentas tbody tr:hover td.col-armadilha-2 {
+  background-color: rgba(245, 158, 11, 0.08);
+}
+
+.quadro-comp-table.quadro-ferramentas tbody tr:hover td.col-armadilha-3 {
+  background-color: rgba(16, 185, 129, 0.08);
+}
+
 .quadro-comp-table.quadro-ferramentas tbody tr:last-child td {
   border-bottom: none;
 }
@@ -3521,6 +3704,50 @@ body[data-meeting="3"], body[data-meeting="4"], body[data-meeting="5"] .secao-pi
   box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1) !important;
 }
 
+/* Container de Citação de Impacto em Clean Light (Slides 2, 15) */
+body[data-meeting="3"], body[data-meeting="4"], body[data-meeting="5"] .secao-quote-container,
+.meeting-3, .meeting-4, .meeting-5 .secao-quote-container {
+  background: linear-gradient(145deg, #f0f9ff 0%, #ffffff 100%) !important;
+  border: 2px solid #0284c7 !important;
+  box-shadow: 0 12px 35px rgba(2, 132, 199, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+}
+
+body[data-meeting="3"], body[data-meeting="4"], body[data-meeting="5"] .secao-quote-container::before,
+.meeting-3, .meeting-4, .meeting-5 .secao-quote-container::before {
+  color: #0284c7 !important;
+  opacity: 0.22 !important;
+}
+
+body[data-meeting="3"], body[data-meeting="4"], body[data-meeting="5"] .secao-quote,
+.meeting-3, .meeting-4, .meeting-5 .secao-quote {
+  color: #0f172a !important;
+  text-shadow: none !important;
+  font-size: 2.35rem !important;
+  line-height: 1.42 !important;
+}
+
+body[data-meeting="3"], body[data-meeting="4"], body[data-meeting="5"] .secao-author,
+.meeting-3, .meeting-4, .meeting-5 .secao-author {
+  border-top: 1px dashed #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+body[data-meeting="3"], body[data-meeting="4"], body[data-meeting="5"] .secao-author strong,
+.meeting-3, .meeting-4, .meeting-5 .secao-author strong {
+  color: #0f172a !important;
+  font-size: 1.6rem !important;
+}
+
+body[data-meeting="3"], body[data-meeting="4"], body[data-meeting="5"] .secao-author span,
+.meeting-3, .meeting-4, .meeting-5 .secao-author span {
+  color: #0284c7 !important;
+}
+
+body[data-meeting="3"], body[data-meeting="4"], body[data-meeting="5"] .secao-pill-divider,
+.meeting-3, .meeting-4, .meeting-5 .secao-pill-divider {
+  color: #94a3b8 !important;
+}
+
 /* Missão de Bancada (Slides 12, 17) */
 body[data-meeting="3"], body[data-meeting="4"], body[data-meeting="5"] .diagnostica-info-card,
 .meeting-3, .meeting-4, .meeting-5 .diagnostica-info-card {
@@ -3673,29 +3900,83 @@ body[data-meeting="4"], body[data-meeting="5"] .grid-colunas.grid-3colunas .card
   margin-bottom: 0.75rem !important;
 }
 
-/* 4. Missão de Bancada / Oficinas Práticas (Slides 12, 17) */
+/* 4. Missão de Bancada / Oficinas Práticas (Slides 8, 13) */
+body[data-meeting="4"], body[data-meeting="5"] .layout-diagnostica-wrap,
+.meeting-4, .meeting-5 .layout-diagnostica-wrap {
+  gap: 1.75rem !important;
+}
+
+body[data-meeting="4"], body[data-meeting="5"] .diagnostica-passos-card,
+.meeting-4, .meeting-5 .diagnostica-passos-card {
+  padding: 1.4rem 1.85rem !important;
+  gap: 0.85rem !important;
+}
+
+body[data-meeting="4"], body[data-meeting="5"] .diagnostica-card-header,
+.meeting-4, .meeting-5 .diagnostica-card-header {
+  padding-bottom: 0.65rem !important;
+}
+
+body[data-meeting="4"], body[data-meeting="5"] .diagnostica-steps-list,
+.meeting-4, .meeting-5 .diagnostica-steps-list {
+  gap: 0.6rem !important;
+}
+
+body[data-meeting="4"], body[data-meeting="5"] .diag-step-item,
+.meeting-4, .meeting-5 .diag-step-item {
+  padding: 0.65rem 1rem !important;
+  gap: 0.75rem !important;
+}
+
+body[data-meeting="4"], body[data-meeting="5"] .diag-step-item .step-num,
+.meeting-4, .meeting-5 .diag-step-item .step-num {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  font-size: 0.95rem !important;
+}
+
 body[data-meeting="4"], body[data-meeting="5"] .diag-step-item .step-text,
 .meeting-4, .meeting-5 .diag-step-item .step-text {
-  font-size: 1.52rem !important;
-  line-height: 1.42 !important;
+  font-size: 1.28rem !important;
+  line-height: 1.36 !important;
+}
+
+body[data-meeting="4"], body[data-meeting="5"] .diagnostica-info-card,
+.meeting-4, .meeting-5 .diagnostica-info-card {
+  padding: 1.75rem 1.6rem !important;
+  gap: 0.85rem !important;
+}
+
+body[data-meeting="4"], body[data-meeting="5"] .diag-icon-halo,
+.meeting-4, .meeting-5 .diag-icon-halo {
+  font-size: 3.5rem !important;
+}
+
+body[data-meeting="4"], body[data-meeting="5"] .diag-title,
+.meeting-4, .meeting-5 .diag-title {
+  font-size: 1.85rem !important;
+  line-height: 1.2 !important;
 }
 
 body[data-meeting="4"], body[data-meeting="5"] .diagnostica-info-card p,
 .meeting-4, .meeting-5 .diagnostica-info-card p {
-  font-size: 1.62rem !important;
-  line-height: 1.48 !important;
+  font-size: 1.28rem !important;
+  line-height: 1.38 !important;
   color: #334155 !important;
 }
 
 body[data-meeting="4"], body[data-meeting="5"] .diag-support-banner,
 .meeting-4, .meeting-5 .diag-support-banner {
-  font-size: 1.45rem !important;
-  line-height: 1.4 !important;
+  font-size: 1.18rem !important;
+  line-height: 1.35 !important;
+  padding: 0.65rem 1rem !important;
 }
 
 body[data-meeting="4"], body[data-meeting="5"] .diag-badge-pill,
 .meeting-4, .meeting-5 .diag-badge-pill {
-  font-size: 1.32rem !important;
+  font-size: 1.15rem !important;
+  padding: 0.45rem 1.1rem !important;
 }
 
 /* 5. Bancada de Testes de Prompt (Slides 13, 14, 15, 18, 19) */

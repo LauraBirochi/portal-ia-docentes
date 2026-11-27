@@ -16,15 +16,3 @@ export const moduloInfo = {
   avaliacao: "Acompanhamento formativo individual",
   isAulaPrivada: true
 };
-
-export const blocosTematicos = [
-  {
-    id: 1,
-    icone: "🔒",
-    titulo: "Aula privada com aluno",
-    subtitulo: "Sessão individual / atendimento pedagógico reservado",
-    slidesRange: [1, 1],
-    tempoEstimado: "180 min",
-    conducao: "Co-docência (Laura & Maria)"
-  }
-];

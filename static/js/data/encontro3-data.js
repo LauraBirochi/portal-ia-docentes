@@ -10,15 +10,7 @@
 (function (global) {
   'use strict';
 
-  // 1. Dossiês Científicos e Jurídicos
-  /**
- * Módulo 3 – Dossiês de Embasamento
- * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
- */
-
-const dossies = {};
-
-  // 2. Metadados Curriculares e Blocos Temáticos
+  // 1. Metadados Curriculares
   /**
  * Módulo 3 – Metadados Curriculares
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -38,19 +30,7 @@ const moduloInfo = {
   isAulaPrivada: true
 };
 
-const blocosTematicos = [
-  {
-    id: 1,
-    icone: "🔒",
-    titulo: "Aula privada com aluno",
-    subtitulo: "Sessão individual / atendimento pedagógico reservado",
-    slidesRange: [1, 1],
-    tempoEstimado: "180 min",
-    conducao: "Co-docência (Laura & Maria)"
-  }
-];
-
-  // 3. Fio da Meada e Narrativa Pedagógica
+  // 2. Fio da Meada e Narrativa Pedagógica
   /**
  * Módulo 3 – Fio da Meada e Narrativa Pedagógica
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -65,7 +45,7 @@ const fioDaMeada = {
   glossario: []
 };
 
-  // 4. Slides com Notas da Professora
+  // 3. Slides com Notas da Professora
   /**
  * Módulo 3 – Deck de Slides
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -105,7 +85,7 @@ const slidesComNotas = [
   }
 ];
 
-  // 5. Atividades Práticas e Laboratório
+  // 4. Atividades Práticas e Laboratório
   /**
  * Módulo 3 – Atividades Práticas e Laboratório
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -130,7 +110,7 @@ const oficinaPratica = {
   desafioExtra: null
 };
 
-  // 6. Perguntas dos Alunos e Dúvidas Frequentes
+  // 5. Perguntas dos Alunos e Dúvidas Frequentes
   /**
  * Módulo 3 – Perguntas dos Alunos e Dúvidas Frequentes
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -138,7 +118,7 @@ const oficinaPratica = {
 
 const perguntasAlunos = [];
 
-  // 7. Divisão de Papéis e Co-Docência
+  // 6. Divisão de Papéis e Co-Docência
   /**
  * Módulo 3 – Divisão de Papéis e Co-Docência
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -163,12 +143,10 @@ const divisaoPapeis = [
   const ENCONTRO_3_DATA = {
     moduloInfo: moduloInfo,
     fioDaMeada: fioDaMeada,
-    blocosTematicos: blocosTematicos,
     slidesComNotas: slidesComNotas,
     oficinaPratica: oficinaPratica,
     perguntasAlunos: perguntasAlunos,
-    divisaoPapeis: divisaoPapeis,
-    dossies: dossies
+    divisaoPapeis: divisaoPapeis
   };
 
   // Exposição Global no Navegador (Window) e Node.js

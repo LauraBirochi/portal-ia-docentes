@@ -517,6 +517,35 @@ function initProjectorEngine() {
       </div>
     `,
 
+    'somente-imagem': (s) => `
+      <div class="layout-somente-imagem">
+        <img src="${s.imagem}" alt="${s.titulo || 'Imagem do slide'}" title="${s.titulo || ''}" class="somente-imagem-img" />
+      </div>
+    `,
+
+    'screenshot-showcase': (s) => `
+      <div class="layout-screenshot-showcase">
+        <div class="screenshot-showcase-media">
+          <div class="screenshot-frame">
+            <img src="${s.imagem}" alt="${s.titulo}" class="screenshot-img" />
+          </div>
+        </div>
+        ${s.legendasZonas && s.legendasZonas.length ? `
+          <div class="screenshot-zonas-bar">
+            ${s.legendasZonas.map(z => `
+              <div class="screenshot-zona-card ${z.classe || ''}">
+                <div class="zona-header">
+                  <span class="zona-badge">${z.tag}</span>
+                  <h4 class="zona-titulo">${z.titulo}</h4>
+                </div>
+                <p class="zona-desc">${z.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `,
+
     'ia-ficcao': (s) => `
       <div class="layout-ia-ficcao-wrap">
         <div class="ia-ficcao-media-card">
@@ -789,14 +818,19 @@ function initProjectorEngine() {
                 </tr>
               </thead>
               <tbody>
-                ${rows.map((r, idx) => `
+                ${rows.map((r, idx) => {
+                  const col1Class = isArmadilhas ? 'col-armadilha-1' : (wrapClass ? 'col-ferramenta-1' : '');
+                  const col2Class = isArmadilhas ? 'col-armadilha-2' : (wrapClass ? 'col-ferramenta-2' : '');
+                  const col3Class = isArmadilhas ? 'col-armadilha-3' : (wrapClass ? 'col-ferramenta-3' : '');
+                  return `
                   <tr class="${idx % 2 === 0 ? 'row-even' : 'row-odd'}">
                     <td class="col-criterio"><strong>${r.criterio}</strong></td>
-                    <td class="col-vago ${wrapClass ? 'col-ferramenta-1' : ''}">${r.col1 || r.vago || ''}</td>
-                    <td class="col-falso ${wrapClass ? 'col-ferramenta-2' : ''}">${r.col2 || r.falsoBom || ''}</td>
-                    <td class="col-estruturado ${wrapClass ? 'col-ferramenta-3' : ''}">${r.col3 || r.estruturado || ''}</td>
+                    <td class="col-vago ${col1Class}">${r.col1 || r.vago || ''}</td>
+                    <td class="col-falso ${col2Class}">${r.col2 || r.falsoBom || ''}</td>
+                    <td class="col-estruturado ${col3Class}">${r.col3 || r.estruturado || ''}</td>
                   </tr>
-                `).join('')}
+                `;
+                }).join('')}
               </tbody>
             </table>
           </div>
@@ -820,7 +854,7 @@ function initProjectorEngine() {
       `;
     }
 
-    const isFullscreenCover = (s.tipo === 'capa' || s.tipo === 'secao' || s.tipo === 'titulo-secao');
+    const isFullscreenCover = (s.tipo === 'capa' || s.tipo === 'secao' || s.tipo === 'titulo-secao' || s.tipo === 'somente-imagem' || s.somenteImagem);
     const hidePresenterPill = isFullscreenCover || s.tipo === 'teste-prompt' || s.ocultarPresenterPill;
     const condutor = (!hidePresenterPill && (s.conducao || s.docente)) ? (s.conducao || s.docente) : null;
     const presenterHTML = condutor ? `
@@ -835,15 +869,15 @@ function initProjectorEngine() {
 
     return `
       ${presenterHTML}
-      <div>
-        ${!isFullscreenCover ? `
+      ${!isFullscreenCover ? `
+        <div>
           <div class="slide-header">
             <span class="slide-tag">${modLabel} • Slide ${slideNum} de ${totalSlides}</span>
             <h2 class="slide-title">${s.titulo}</h2>
             ${s.subtitulo ? `<p class="slide-subtitle">${s.subtitulo}</p>` : ''}
           </div>
-        ` : ''}
-      </div>
+        </div>
+      ` : ''}
 
       <div class="slide-body">
         ${bodyHTML}
@@ -873,6 +907,7 @@ function initProjectorEngine() {
     const condutor = s.conducao || s.docente || null;
 
     container.innerHTML = buildSlideHTML(s, safeIndex, slides.length, meetingId);
+    container.dataset.slideType = s.tipo || '';
 
     counter.textContent = `${safeIndex + 1} / ${slides.length}`;
     btnPrev.disabled = (safeIndex === 0);

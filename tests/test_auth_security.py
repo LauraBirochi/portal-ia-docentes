@@ -107,10 +107,10 @@ class TestAuthAndSecurity(unittest.TestCase):
         self.assertIn('Lúcio Rodrigo'.encode('utf-8'), res.data)
 
     # ==========================================================================
-    # 3. RBAC: VISÕES DIFERENCIADAS (COORDENADOR 2 ABAS vs DOCENTE 4 ABAS)
+    # 3. RBAC: VISÕES DIFERENCIADAS (COORDENADOR vs DOCENTE)
     # ==========================================================================
     def test_coordinator_view_cockpit_tabs(self):
-        """Coordenador vê Fio da Meada e Slides, mas não vê Atividades/Perguntas exclusivas de aula nem Parecer."""
+        """Coordenador vê Fio da Meada, mas não vê Atividades/Perguntas exclusivas de aula nem Parecer."""
         # Login como Lúcio (Coordenador)
         self.client.post('/login', data={
             'username': 'lucio',
@@ -118,16 +118,20 @@ class TestAuthAndSecurity(unittest.TestCase):
         })
         res = self.client.get('/encontro/1')
         self.assertEqual(res.status_code, 200)
-        # Deve ter Fio da Meada e Slides
+        # Deve ter Fio da Meada, botões de ação no cabeçalho e não ter a aba removida Slides & Roteiro
         self.assertIn('Fio da Meada'.encode('utf-8'), res.data)
-        self.assertIn('Slides & Roteiro'.encode('utf-8'), res.data)
+        self.assertIn('btn-export-slides'.encode('utf-8'), res.data)
+        self.assertIn('Exportar Slides em PDF'.encode('utf-8'), res.data)
+        self.assertIn('Abrir Slides no Projetor'.encode('utf-8'), res.data)
+        self.assertNotIn('Slides & Roteiro'.encode('utf-8'), res.data)
+        self.assertNotIn('tab-slides-roteiro'.encode('utf-8'), res.data)
         # Não deve ter Parecer do Professor nem painéis exclusivos de sala de aula
         self.assertNotIn('Parecer do Professor'.encode('utf-8'), res.data)
         self.assertNotIn('btn-export-notes'.encode('utf-8'), res.data)
         self.assertNotIn('PAINEL 3: 🧪 ATIVIDADES & GABARITO COMENTADO (DOCENTES ONLY)'.encode('utf-8'), res.data)
 
     def test_docente_view_cockpit_tabs(self):
-        """Docente (Laura) vê as 4 abas pedagógicas e a divisão de papéis da dupla docente."""
+        """Docente (Laura) vê as 3 abas pedagógicas e a divisão de papéis da dupla docente."""
         # Login como Laura (Docente)
         self.client.post('/login', data={
             'username': 'laura',
@@ -135,11 +139,15 @@ class TestAuthAndSecurity(unittest.TestCase):
         })
         res = self.client.get('/encontro/1')
         self.assertEqual(res.status_code, 200)
-        # Deve ter todas as 4 abas e a divisão de papéis
-        self.assertIn('Fio da Meada'.encode('utf-8'), res.data)
-        self.assertIn('Slides & Roteiro'.encode('utf-8'), res.data)
-        self.assertIn('Atividade em Aula'.encode('utf-8'), res.data)
-        self.assertIn('Perguntas dos Alunos'.encode('utf-8'), res.data)
+        # Deve ter as 3 abas ativas, botões do cabeçalho e divisão de papéis, sem a aba Slides & Roteiro
+        self.assertIn('1. Fio da Meada'.encode('utf-8'), res.data)
+        self.assertIn('2. Atividade em Aula'.encode('utf-8'), res.data)
+        self.assertIn('3. Perguntas dos Alunos'.encode('utf-8'), res.data)
+        self.assertIn('btn-export-slides'.encode('utf-8'), res.data)
+        self.assertIn('Exportar Slides em PDF'.encode('utf-8'), res.data)
+        self.assertIn('Abrir Slides no Projetor'.encode('utf-8'), res.data)
+        self.assertNotIn('Slides & Roteiro'.encode('utf-8'), res.data)
+        self.assertNotIn('tab-slides-roteiro'.encode('utf-8'), res.data)
         self.assertIn('cockpit-papeis-container'.encode('utf-8'), res.data)
         # Parecer do Professor foi removido da arquitetura
         self.assertNotIn('Parecer do Professor'.encode('utf-8'), res.data)
@@ -240,10 +248,13 @@ class TestAuthAndSecurity(unittest.TestCase):
             'password': os.getenv('USER3_PASSWORD', 'coord@lucio2026')
         })
         res = self.client.get('/download/slides/1.pdf')
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(res.content_type, 'application/pdf')
-        self.assertIn('slides-encontro-1.pdf', res.headers.get('Content-Disposition', ''))
-        self.assertGreater(len(res.data), 1000)
+        try:
+            self.assertEqual(res.status_code, 200)
+            self.assertEqual(res.content_type, 'application/pdf')
+            self.assertIn('slides-encontro-1.pdf', res.headers.get('Content-Disposition', ''))
+            self.assertGreater(len(res.data), 1000)
+        finally:
+            res.close()
 
     def test_authenticated_download_slides_meeting_2_returns_pdf(self):
         """Download de PDF do Encontro 2 autenticado entrega os 32 slides em PDF válido."""
@@ -252,10 +263,13 @@ class TestAuthAndSecurity(unittest.TestCase):
             'password': os.getenv('USER3_PASSWORD', 'coord@lucio2026')
         })
         res = self.client.get('/download/slides/2.pdf')
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(res.content_type, 'application/pdf')
-        self.assertIn('slides-encontro-2.pdf', res.headers.get('Content-Disposition', ''))
-        self.assertGreater(len(res.data), 100000)
+        try:
+            self.assertEqual(res.status_code, 200)
+            self.assertEqual(res.content_type, 'application/pdf')
+            self.assertIn('slides-encontro-2.pdf', res.headers.get('Content-Disposition', ''))
+            self.assertGreater(len(res.data), 100000)
+        finally:
+            res.close()
 
 
 if __name__ == '__main__':

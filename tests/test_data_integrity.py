@@ -1,5 +1,5 @@
 """
-Suíte de Testes Automatizados de Integridade da Camada de Dados (Encontros 1 e 2)
+Suíte de Testes Automatizados de Integridade da Camada de Dados (Encontros 1 a 5)
 Valida se a estrutura modular e os bundles unificados contêm todos os dados pedagógicos e contratos arquiteturais.
 """
 
@@ -21,11 +21,10 @@ class TestDataIntegrity(unittest.TestCase):
         self.assertGreater(os.path.getsize(self.encontro1_path), 5000)
 
     def test_submodules_exist(self):
-        """Verifica se todos os 8 arquivos submódulos existem no diretório encontro-1."""
+        """Verifica se todos os submódulos ativos existem no diretório encontro-1."""
         expected_files = [
             'meta.js',
             'narrativa.js',
-            'dossies.js',
             'deck-slides.js',
             'atividades.js',
             'faq-duvidas.js',
@@ -77,23 +76,38 @@ class TestDataIntegrity(unittest.TestCase):
         for term in glossary_terms:
             self.assertIn(term, content)
 
-    def test_dossies_completeness(self):
-        """Garante que os 4 grandes dossiês estejam presentes em dossies.js."""
-        dossies_path = os.path.join(self.submodules_dir, 'dossies.js')
-        with open(dossies_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+    def test_dead_code_and_orphan_slides_tab_removed(self):
+        """Garante que código morto e dados órfãos da antiga aba Slides & Roteiro foram removidos."""
+        for m in range(1, 6):
+            sub_dir = os.path.join(self.base_dir, 'static', 'js', 'data', f'encontro-{m}')
+            self.assertFalse(
+                os.path.exists(os.path.join(sub_dir, 'dossies.js')),
+                f"dossies.js órfão ainda presente em encontro-{m}"
+            )
+            for fname in os.listdir(sub_dir):
+                if fname.endswith('.js'):
+                    with open(os.path.join(sub_dir, fname), 'r', encoding='utf-8') as f:
+                        content = f.read()
+                    self.assertNotIn('blocosTematicos', content, f"blocosTematicos órfão em encontro-{m}/{fname}")
+                    self.assertNotIn('embasamentoCientifico', content, f"embasamentoCientifico órfão em encontro-{m}/{fname}")
 
-        self.assertIn("turingDartmouth", content)
-        self.assertIn("teslerAiEffect", content)
-        self.assertIn("pbiaBrasil", content)
-        self.assertIn("marcoLegal", content)
+            bundle_path = os.path.join(self.base_dir, 'static', 'js', 'data', f'encontro{m}-data.js')
+            with open(bundle_path, 'r', encoding='utf-8') as f:
+                bundle = f.read()
+            self.assertNotIn('blocosTematicos', bundle)
+            self.assertNotIn('dossies:', bundle)
 
-        # Referências cruciais
-        self.assertIn("Alan M. Turing (1950)", content)
-        self.assertIn("Larry Tesler", content)
-        self.assertIn("Santos Dumont", content)
-        self.assertIn("PL 2338/2023", content)
-        self.assertIn("LGPD", content)
+        renderer_path = os.path.join(self.base_dir, 'static', 'js', 'cockpit-renderer.js')
+        with open(renderer_path, 'r', encoding='utf-8') as f:
+            renderer = f.read()
+        for dead_fn in ['renderSlidesList', 'renderSlideCard', 'renderSlidePreview', 'renderTechDeepdive', 'toggleTopicGroup', 'copySpeech', 'toggleDeepdive']:
+            self.assertNotIn(dead_fn, renderer)
+
+        css_path = os.path.join(self.base_dir, 'static', 'css', 'components.css')
+        with open(css_path, 'r', encoding='utf-8') as f:
+            css = f.read()
+        for dead_cls in ['.topic-groups-toolbar', '.topic-group-card', '.tech-deepdive-wrapper', '.btn-tech-deepdive', '.citations-grid', '.citation-card']:
+            self.assertNotIn(dead_cls, css)
 
     def test_faq_contains_9_questions(self):
         """Garante que faq-duvidas.js contenha todas as 9 perguntas com pontoDidatico."""
@@ -135,13 +149,10 @@ class TestDataIntegrity(unittest.TestCase):
         if scripts_dir not in sys.path:
             sys.path.insert(0, scripts_dir)
         import build_data
-        result_path1 = build_data.build_meeting_bundle(1, self.base_dir)
-        self.assertTrue(os.path.exists(result_path1))
-        self.assertGreater(os.path.getsize(result_path1), 5000)
-
-        result_path2 = build_data.build_meeting_bundle(2, self.base_dir)
-        self.assertTrue(os.path.exists(result_path2))
-        self.assertGreater(os.path.getsize(result_path2), 5000)
+        for m in range(1, 6):
+            result_path = build_data.build_meeting_bundle(m, self.base_dir)
+            self.assertTrue(os.path.exists(result_path))
+            self.assertGreater(os.path.getsize(result_path), 1000)
 
     def test_encontro2_submodules_and_bundle(self):
         """Valida a integridade arquitetural dos submódulos e bundle do Encontro 2."""
@@ -149,7 +160,7 @@ class TestDataIntegrity(unittest.TestCase):
         encontro2_path = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro2-data.js')
 
         expected_files = [
-            'meta.js', 'narrativa.js', 'dossies.js', 'deck-slides.js',
+            'meta.js', 'narrativa.js', 'deck-slides.js',
             'atividades.js', 'faq-duvidas.js', 'papeis.js', 'index.js'
         ]
         for fname in expected_files:
@@ -220,7 +231,7 @@ class TestDataIntegrity(unittest.TestCase):
         encontro4_path = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro4-data.js')
 
         expected_files = [
-            'meta.js', 'narrativa.js', 'dossies.js', 'deck-slides.js',
+            'meta.js', 'narrativa.js', 'deck-slides.js',
             'atividades.js', 'faq-duvidas.js', 'papeis.js', 'index.js'
         ]
         for fname in expected_files:
@@ -241,8 +252,8 @@ class TestDataIntegrity(unittest.TestCase):
         encontro5_path = os.path.join(self.base_dir, 'static', 'js', 'data', 'encontro5-data.js')
 
         expected_files = [
-            'meta.js', 'narrativa.js', 'dossies.js', 'deck-slides.js',
-            'atividades.js', 'faq-duvidas.js', 'papeis.js', 'index.js'
+            'meta.js', 'narrativa.js', 'deck-slides.js',
+            'atividades.js', 'faq-duvidas.js', 'papeis.js'
         ]
         for fname in expected_files:
             fpath = os.path.join(submodules_dir5, fname)

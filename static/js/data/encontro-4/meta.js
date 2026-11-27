@@ -1,5 +1,5 @@
 /**
- * Módulo 4 – Metadados Curriculares e Blocos Temáticos
+ * Módulo 4 – Metadados Curriculares
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
@@ -15,42 +15,3 @@ export const moduloInfo = {
   ferramentaPrincipal: "Navegador Web + ChatGPT (OpenAI)",
   avaliacao: "Oficina de Bancada: Desafios Práticos no Portfólio Digital (Etapa 1: Duelo C-T-F-R • Etapa 2: Meta-Prompting)"
 };
-
-export const blocosTematicos = [
-  {
-    id: 1,
-    icone: "🧩",
-    titulo: "Bloco 1: Fundamentos & Estrutura C-T-F-R",
-    subtitulo: "Acolhimento, Handoff do Estagiário Inteligente e a Evolução do PCTFR para os 4 Blocos",
-    slidesRange: [1, 5],
-    tempoEstimado: "45 min",
-    conducao: "Co-docência (Laura & Maria)"
-  },
-  {
-    id: 2,
-    icone: "⚡",
-    titulo: "Bloco 2: Práticas no Mundo Real & Blindagem de Privacidade",
-    subtitulo: "Abertura das 3 Camadas Práticas, Organização Pessoal, Redação de E-mails/Editais e Regra do Cartão-Postal",
-    slidesRange: [6, 9],
-    tempoEstimado: "45 min (c/ intervalo)",
-    conducao: "Co-docência (Laura & Maria)"
-  },
-  {
-    id: 3,
-    icone: "🤖",
-    titulo: "Bloco 3: Diálogo Iterativo, Ética & Oficina de Bancada",
-    subtitulo: "Meta-Prompting, Travas [necessita verificação], Oficina nos Computadores e Bancada de Testes Empíricos",
-    slidesRange: [10, 19],
-    tempoEstimado: "70 min",
-    conducao: "Co-docência (Laura & Maria)"
-  },
-  {
-    id: 4,
-    icone: "🎉",
-    titulo: "Bloco 4: Socialização & Fechamento",
-    subtitulo: "Roda de Conversa (Show & Tell), Checklist de Bolso, Próximos Passos e Referências Bibliográficas",
-    slidesRange: [20, 22],
-    tempoEstimado: "20 min",
-    conducao: "Co-docência (Laura & Maria)"
-  }
-];

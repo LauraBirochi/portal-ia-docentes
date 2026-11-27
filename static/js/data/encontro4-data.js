@@ -10,74 +10,9 @@
 (function (global) {
   'use strict';
 
-  // 1. Dossiês Científicos e Jurídicos
+  // 1. Metadados Curriculares
   /**
- * Módulo 4 – Dossiês de Embasamento Científico e Prático
- * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
- */
-
-const dossies = {
-  engenhariaInstrucoes: {
-    tipoDossie: "cientifico",
-    titulo: "Engenharia de Instruções e Interação Humano-IA",
-    resumo: "Princípios teóricos e práticos para guiar a atenção dos modelos de linguagem através de instruções claras, especificações de contexto e restrições de formato.",
-    topicos: [
-      {
-        titulo: "1. Clareza e Especificidade sobre Ambiguidade",
-        conteudo: "Modelos de linguagem respondem de forma genérica quando instruções não delimitam escopo, público-alvo ou formato esperado."
-      },
-      {
-        titulo: "2. O Paradigma do Diálogo Iterativo",
-        conteudo: "A interação com IA é um processo conversacional: a melhor resposta geralmente decorre de ajustes e refinamentos sucessivos, e não de um comando isolado."
-      }
-    ],
-    fontesCientificas: [
-      {
-        autor: "OpenAI (2024–2026)",
-        titulo: "Prompt Engineering Guide & Best Practices for ChatGPT",
-        publicacao: "OpenAI Developer Platform & Help Center",
-        relevancia: "Guia oficial de boas práticas para formulação de instruções em modelos GPT.",
-        link: "https://platform.openai.com/docs/guides/prompt-engineering"
-      }
-    ]
-  },
-
-  competenciasDocentesUNESCO: {
-    tipoDossie: "juridico",
-    titulo: "Marcos de Competências em IA para Docentes e Agência Humana (UNESCO & OSSE)",
-    resumo: "Diretrizes internacionais sobre agência humana, integridade ética, prevenção de dependência cognitiva e design de prompts em contextos educacionais.",
-    topicos: [
-      {
-        titulo: "1. AI Competency Framework for Teachers (UNESCO 2024)",
-        conteudo: "O referencial internacional da UNESCO estabelece competências centrais para educadores: uso ético, agência centrada no humano, supervisão pedagógica crítica e salvaguarda da autonomia intelectual dos alunos."
-      },
-      {
-        titulo: "2. Desenho Efetivo de Prompts na Prática Educacional (OSSE 2024)",
-        conteudo: "Metodologias práticas para educadores transformarem o diálogo com modelos generativos em instrumentos de planejamento, diferenciação instrucional e cocriação formativa com verificação factual ativa."
-      }
-    ],
-    fontesCientificas: [
-      {
-        autor: "UNESCO (2024)",
-        titulo: "AI Competency Framework for Teachers",
-        publicacao: "Paris: UNESCO",
-        relevancia: "Referencial global oficial de competências docentes em inteligência artificial e agência humana.",
-        link: "https://unesdoc.unesco.org/ark:/48223/pf0000391104"
-      },
-      {
-        autor: "Office of the State Superintendent of Education - OSSE (2024)",
-        titulo: "Designing Effective Prompts: Enhancing Educational and Professional Practice with ChatGPT",
-        publicacao: "District of Columbia: OSSE",
-        relevancia: "Guia prático para desenho de prompts educacionais, ética e supervisão docente com ChatGPT.",
-        link: "https://osse.dc.gov/"
-      }
-    ]
-  }
-};
-
-  // 2. Metadados Curriculares e Blocos Temáticos
-  /**
- * Módulo 4 – Metadados Curriculares e Blocos Temáticos
+ * Módulo 4 – Metadados Curriculares
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
 
@@ -94,46 +29,7 @@ const moduloInfo = {
   avaliacao: "Oficina de Bancada: Desafios Práticos no Portfólio Digital (Etapa 1: Duelo C-T-F-R • Etapa 2: Meta-Prompting)"
 };
 
-const blocosTematicos = [
-  {
-    id: 1,
-    icone: "🧩",
-    titulo: "Bloco 1: Fundamentos & Estrutura C-T-F-R",
-    subtitulo: "Acolhimento, Handoff do Estagiário Inteligente e a Evolução do PCTFR para os 4 Blocos",
-    slidesRange: [1, 5],
-    tempoEstimado: "45 min",
-    conducao: "Co-docência (Laura & Maria)"
-  },
-  {
-    id: 2,
-    icone: "⚡",
-    titulo: "Bloco 2: Práticas no Mundo Real & Blindagem de Privacidade",
-    subtitulo: "Abertura das 3 Camadas Práticas, Organização Pessoal, Redação de E-mails/Editais e Regra do Cartão-Postal",
-    slidesRange: [6, 9],
-    tempoEstimado: "45 min (c/ intervalo)",
-    conducao: "Co-docência (Laura & Maria)"
-  },
-  {
-    id: 3,
-    icone: "🤖",
-    titulo: "Bloco 3: Diálogo Iterativo, Ética & Oficina de Bancada",
-    subtitulo: "Meta-Prompting, Travas [necessita verificação], Oficina nos Computadores e Bancada de Testes Empíricos",
-    slidesRange: [10, 19],
-    tempoEstimado: "70 min",
-    conducao: "Co-docência (Laura & Maria)"
-  },
-  {
-    id: 4,
-    icone: "🎉",
-    titulo: "Bloco 4: Socialização & Fechamento",
-    subtitulo: "Roda de Conversa (Show & Tell), Checklist de Bolso, Próximos Passos e Referências Bibliográficas",
-    slidesRange: [20, 22],
-    tempoEstimado: "20 min",
-    conducao: "Co-docência (Laura & Maria)"
-  }
-];
-
-  // 3. Fio da Meada e Narrativa Pedagógica
+  // 2. Fio da Meada e Narrativa Pedagógica
   /**
  * Módulo 3 – Fio da Meada, Narrativa Pedagógica e Glossário de Engenharia de Prompt
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -214,7 +110,7 @@ const fioDaMeada = {
   ]
 };
 
-  // 4. Slides com Notas da Professora
+  // 3. Slides com Notas da Professora
   /**
  * Encontro 4 – Deck de Slides com Ficha Técnica Conceitual Docente para o Projetor
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -1397,7 +1293,7 @@ const slidesComNotas = [
   }
 ];
 
-  // 5. Atividades Práticas e Laboratório
+  // 4. Atividades Práticas e Laboratório
   /**
  * Módulo 4 – Atividades Práticas e Laboratório: ChatGPT no Mundo Real
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -1601,7 +1497,7 @@ Texto base: [cole o texto com dados mascarados aqui]`
   planoB: "Caso a conexão com o ChatGPT oscile no laboratório, as docentes projetarão o ChatGPT na tela central e conduzirão a oficina em modo de 'Bancada Coletiva': os alunos ditarão em voz alta as restrições e o contexto a partir das suas bancadas, acompanhando o antes e o depois no telão."
 };
 
-  // 6. Perguntas dos Alunos e Dúvidas Frequentes
+  // 5. Perguntas dos Alunos e Dúvidas Frequentes
   /**
  * Módulo 3 – Perguntas dos Alunos, Dúvidas Clássicas e Armadilhas de Engenharia de Prompt
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -1666,7 +1562,7 @@ const perguntasAlunos = [
   }
 ];
 
-  // 7. Divisão de Papéis e Co-Docência
+  // 6. Divisão de Papéis e Co-Docência
   /**
  * Módulo 3 – Divisão de Papéis e Momentos da Co-Docência (Laura & Maria)
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
@@ -1703,12 +1599,10 @@ const divisaoPapeis = [
   const ENCONTRO_4_DATA = {
     moduloInfo: moduloInfo,
     fioDaMeada: fioDaMeada,
-    blocosTematicos: blocosTematicos,
     slidesComNotas: slidesComNotas,
     oficinaPratica: oficinaPratica,
     perguntasAlunos: perguntasAlunos,
-    divisaoPapeis: divisaoPapeis,
-    dossies: dossies
+    divisaoPapeis: divisaoPapeis
   };
 
   // Exposição Global no Navegador (Window) e Node.js

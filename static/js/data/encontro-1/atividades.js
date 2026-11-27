@@ -4,11 +4,9 @@
  */
 
 export const oficinaPratica = {
-  isDiagnostica: true,
   titulo: "Missão 2 no Computador: Prova Diagnóstica",
   duracao: "25 a 30 minutos em Laboratório",
   peso: "Instrumento Formativo de Nivelamento (Zero Pressão / Sem Nota Punitiva)",
-  ferramenta: "Formulário Online / Navegador Web",
   descricao: "Aplicação individual da Prova Diagnóstica nos computadores do laboratório. O objetivo é realizar um mapeamento formativo dos conhecimentos prévios e expectativas da turma sobre tecnologia e IA, orientando a calibração pedagógica das próximas oficinas práticas.",
   diretrizesDocentes: [
     "Acolhimento da turma: tranquilizar os alunos de que não há nota punitiva nem reprovação.",

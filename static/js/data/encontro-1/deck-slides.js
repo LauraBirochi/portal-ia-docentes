@@ -1,9 +1,7 @@
 /**
- * Módulo 1 – Deck Completo de Slides (32 Slides) & Notas da Professora
+ * Módulo 1 – Deck Completo de Slides (33 Slides) & Notas da Professora
  * Portal de Apoio Docente: Inteligência Artificial: Fundamentos e Boas Práticas (32h)
  */
-
-import { dossies } from './dossies.js';
 
 export const slidesComNotas = [
   // -----------------------------------------------------------------------
@@ -54,9 +52,9 @@ export const slidesComNotas = [
     encontros: [
       { data: "09/10", num: "1", tema: "Gênese da IA & Ética", status: "Hoje (Módulo 1)" },
       { data: "30/10", num: "2", tema: "O Salto da IA Generativa", status: "Próxima" },
-      { data: "06/11", num: "3", tema: "A Arte do Prompt (PCTFR)", status: "Planejado" },
-      { data: "13/11", num: "4", tema: "IA na Prática", status: "Planejado" },
-      { data: "20/11", num: "5", tema: "Olhar Crítico & Auditoria", status: "Planejado" },
+      { data: "06/11", num: "3", tema: "Aula Privada com Aluno", status: "Planejado" },
+      { data: "13/11", num: "4", tema: "ChatGPT na Prática", status: "Planejado" },
+      { data: "27/11", num: "5", tema: "Ferramentas de IA", status: "Planejado" },
       { data: "27/11", num: "6", tema: "Refinamento & Uso Responsável", status: "Planejado" },
       { data: "04/12", num: "7", tema: "Fechamento & Avaliação Final", status: "Encerramento" }
     ],
@@ -196,8 +194,7 @@ export const slidesComNotas = [
       objetivoSlide: "Desfazer a falsa impressão de que IA é modismo recente de 2022 e valorizar a profundidade histórica da ciência da computação.",
       oQueFalar: "Diga com entusiasmo: 'Muita gente acha que IA é uma invenção novinha de 2022 porque o ChatGPT ficou famoso. Mas a verdade é fascinante: cientistas pesquisam IA há mais de 70 anos! O que mudou é que antes as máquinas eram lentas e caras; hoje, temos supercomputadores na nuvem e celulares potentes em nossos bolsos.'",
       tempoSugerido: "6 minutos"
-    },
-    embasamentoCientifico: dossies.turingDartmouth
+    }
   },
   {
     numero: 9,
@@ -455,8 +452,7 @@ export const slidesComNotas = [
       objetivoSlide: "Apresentar a grande lei sociotécnica que explica por que a sociedade normaliza a tecnologia e esquece que biometria e câmeras são IA.",
       oQueFalar: "Leiam a frase no telão com calma e ênfase: 'Esta frase clássica, atribuída ao pioneiro da computação Larry Tesler e popularizada pelo cientista cognitivo Douglas Hofstadter, resume o chamado Teorema de Tesler: toda vez que a IA resolve um problema difícil, as pessoas se acostumam e dizem: \"ah, isso é só um recurso normal do computador\". A IA parece invisível porque ela venceu e virou rotina!'",
       tempoSugerido: "5 minutos"
-    },
-    embasamentoCientifico: dossies.teslerAiEffect
+    }
   },
   {
     numero: 19,
@@ -754,7 +750,6 @@ export const slidesComNotas = [
     bloco: 5,
     tipo: "apresentacao",
     categoria: "Plano Brasileiro de IA",
-    badge: "Plano Brasileiro de IA",
     conducao: "Maria",
     titulo: "O Plano Brasileiro de IA (PBIA): 'IA para o Bem de Todos'",
     subtitulo: "Os 3 eixos estratégicos do investimento público nacional: supercomputadores, SUS e inclusão digital",
@@ -779,8 +774,7 @@ export const slidesComNotas = [
       objetivoSlide: "Conduzido por Maria: Mostrar a política pública oficial do Brasil e valorizar a presença dos alunos como agentes de transformação e soberania digital.",
       oQueFalar: "Maria apresenta com orgulho e cidadania: 'O Brasil não quer ser apenas um comprador de tecnologia de outros países. O Governo Federal lançou o Plano Brasileiro de IA com foco em usar a inteligência artificial para melhorar o SUS, proteger o meio ambiente e, principalmente, capacitar as pessoas. Vocês estarem aqui hoje faz parte dessa missão nacional de inclusão digital!'",
       tempoSugerido: "7 minutos"
-    },
-    embasamentoCientifico: dossies.pbiaBrasil
+    }
   },
   {
     numero: 29,
@@ -788,7 +782,6 @@ export const slidesComNotas = [
     bloco: 5,
     tipo: "apresentacao",
     categoria: "Legislação & Direitos",
-    badge: "Marco Legal da IA",
     conducao: "Maria",
     titulo: "Regulamentação da IA: Leis, Direitos e Proteção ao Cidadão",
     subtitulo: "Como o Marco Legal da IA (PL 2338/2023) e a LGPD protegem você de abusos",
@@ -813,12 +806,11 @@ export const slidesComNotas = [
       objetivoSlide: "Conduzido por Maria: Transmitir segurança jurídica e cidadã, mostrando que regular não é proibir, mas garantir que a tecnologia sirva à dignidade humana.",
       oQueFalar: "Maria explica com clareza: 'Regulamentar a IA não é proibir a tecnologia, mas colocar regras claras e cinto de segurança no carro! O Congresso Nacional está votando o Marco Legal da IA para garantir que nenhum algoritmo possa discriminar pessoas por idade, gênero ou cor, e que nossa privacidade seja respeitada.'",
       tempoSugerido: "7 minutos"
-    },
-    embasamentoCientifico: dossies.marcoLegal
+    }
   },
 
   // -----------------------------------------------------------------------
-  // BLOCO 6: LABORATÓRIO PRÁTICO & FECHAMENTO (SLIDES 30 A 32)
+  // BLOCO 6: LABORATÓRIO PRÁTICO & FECHAMENTO (SLIDES 30 A 33)
   // -----------------------------------------------------------------------
   {
     numero: 30,
