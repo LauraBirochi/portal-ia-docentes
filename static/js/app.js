@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (inspectorActions) {
       if (Number(data.num) === 3 || data.isAccessible === false) {
         inspectorActions.innerHTML = `
-          <span id="inspector-action-tip" style="font-size: 0.88rem; color: var(--text-muted);">${data.actionTip}</span>
-          <button class="btn btn-primary" style="font-size: 0.95rem; padding: 0.65rem 1.35rem; background-color: #64748b; border-color: #64748b;" id="btn-enter-cockpit">
+          <span id="inspector-action-tip" class="inspector-action-tip">${data.actionTip}</span>
+          <button class="btn btn-primary btn-enter-cockpit" style="background-color: #64748b; border-color: #64748b;" id="btn-enter-cockpit">
             🔒 Abrir Cockpit da Aula ➔
           </button>
         `;
@@ -131,8 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else if (data.isReady) {
         inspectorActions.innerHTML = `
-          <span id="inspector-action-tip" style="font-size: 0.88rem; color: var(--text-muted);">${data.actionTip}</span>
-          <button class="btn btn-primary" style="font-size: 0.95rem; padding: 0.65rem 1.35rem;" id="btn-enter-cockpit">
+          <span id="inspector-action-tip" class="inspector-action-tip">${data.actionTip}</span>
+          <button class="btn btn-primary btn-enter-cockpit" id="btn-enter-cockpit">
             Entrar no Cockpit da Aula ➔
           </button>
         `;
@@ -142,8 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else {
         inspectorActions.innerHTML = `
-          <span id="inspector-action-tip" style="font-size: 0.88rem; color: var(--text-muted);">${data.actionTip}</span>
-          <button class="btn" style="font-size: 0.9rem; padding: 0.65rem 1.2rem;" id="btn-planned-meeting">
+          <span id="inspector-action-tip" class="inspector-action-tip">${data.actionTip}</span>
+          <button class="btn btn-enter-cockpit" id="btn-planned-meeting">
             📋 Ementa Prevista (${data.date})
           </button>
         `;
@@ -225,34 +225,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!toast) {
       toast = document.createElement('div');
       toast.id = 'app-toast';
-      toast.style.cssText = `
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background-color: var(--text-main);
-        color: var(--bg-surface);
-        padding: 0.85rem 1.35rem;
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-lg);
-        font-size: 0.9rem;
-        font-weight: 500;
-        z-index: 9999;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: all 0.25s ease;
-      `;
+      toast.className = 'app-toast';
       document.body.appendChild(toast);
     }
     toast.textContent = msg;
-    toast.style.opacity = '1';
-    toast.style.transform = 'translateY(0)';
+    toast.classList.add('show');
 
     if (toastTimer) {
       clearTimeout(toastTimer);
     }
     toastTimer = setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(10px)';
+      toast.classList.remove('show');
     }, 3200);
   }
 

@@ -19,13 +19,13 @@
     </div>
   </div>
 
-  <div class="cockpit-header-actions" style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+  <div class="cockpit-header-actions">
     <!-- Botão de Exportação do PDF Oficial 16:9 -->
-    <button type="button" id="btn-export-slides" class="btn btn-export-slides" title="Baixar PDF oficial 16:9 dos slides deste encontro" style="display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.65rem 1.1rem;">
+    <button type="button" id="btn-export-slides" class="btn btn-export-slides" title="Baixar PDF oficial 16:9 dos slides deste encontro">
       <span>📥</span> <span>Exportar Slides em PDF</span>
     </button>
     <!-- Botão de Abertura dos Slides para o Computador 1 (Projetor) -->
-    <a href="{{ url_for('slides', meeting_id=active_meeting_id or 1) }}" target="portal_ia_slides_window" class="btn btn-primary btn-open-slides" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.65rem 1.25rem;">
+    <a href="{{ url_for('slides', meeting_id=active_meeting_id or 1) }}" target="portal_ia_slides_window" class="btn btn-primary btn-open-slides">
       <span>🖥️</span> <strong>Abrir Slides no Projetor</strong>
     </a>
   </div>

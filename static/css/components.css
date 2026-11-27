@@ -438,7 +438,7 @@
 
 .materials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 1.25rem;
 }
 
@@ -563,14 +563,30 @@ body.mode-aula .timer-container {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1.25rem;
   margin-bottom: 1.5rem;
+}
+
+.dashboard-hero-copy {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.dashboard-hero-title {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-top: 0.5rem;
+}
+
+.mode-indicator-chip {
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  max-width: 100%;
 }
 
 .dashboard-team-strip {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0.85rem 1.25rem;
   flex-wrap: wrap;
   padding: 1rem 1.25rem;
   background-color: var(--bg-subtle-warm);
@@ -582,8 +598,18 @@ body.mode-aula .timer-container {
 .team-member-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
   font-size: 0.85rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 901px) {
+  .team-member-divider {
+    border-left: 1px solid var(--border);
+    padding-left: 1.25rem;
+  }
 }
 
 .team-member-item strong {
@@ -807,6 +833,19 @@ body.mode-aula .timer-container {
   border-top: 1px solid var(--border);
 }
 
+.inspector-action-tip {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+.btn-enter-cockpit {
+  font-size: 0.95rem;
+  padding: 0.65rem 1.35rem;
+  justify-content: center;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
@@ -815,7 +854,7 @@ body.mode-aula .timer-container {
 /* Vitrine dos 7 Módulos */
 .modules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
@@ -946,8 +985,25 @@ body.mode-aula .timer-container {
 .cockpit-header-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   flex-wrap: wrap;
+}
+
+.btn-export-slides {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.1rem;
+}
+
+.btn-open-slides {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.25rem;
 }
 
 .btn-back-dashboard {
@@ -973,41 +1029,41 @@ body.mode-aula .timer-container {
   background-color: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 0.5rem;
-  margin-bottom: 2rem;
+  padding: 0.45rem;
+  margin-bottom: 1.75rem;
   box-shadow: var(--shadow-sm);
   position: sticky;
-  top: 4.5rem;
-  z-index: 90;
+  top: 58px;
+  z-index: 35;
 }
 
 .cockpit-tabs-list {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding: 0.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0.45rem;
+  padding: 0.15rem;
   list-style: none;
   margin: 0;
 }
 
 .cockpit-tab-btn {
-  flex: 1;
-  min-width: 170px;
+  min-width: 0;
   background: transparent;
   border: 1px solid transparent;
-  padding: 0.75rem 1rem;
+  padding: 0.7rem 0.85rem;
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  white-space: nowrap;
+  gap: 0.45rem;
+  text-align: center;
+  line-height: 1.25;
   transition: all var(--transition);
 }
 
@@ -1050,6 +1106,8 @@ body.mode-aula .timer-container {
   padding: 1.75rem;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-sm);
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 /* ==========================================================================
@@ -1392,7 +1450,7 @@ body.mode-aula .timer-container {
 
 .fio-glossary-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 1rem;
 }
 
@@ -1402,6 +1460,8 @@ body.mode-aula .timer-container {
   border-radius: var(--radius-md);
   padding: 1rem 1.15rem;
   transition: border-color var(--transition);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .fio-glossary-card:hover {
@@ -1467,7 +1527,7 @@ body.mode-aula .timer-container {
 
 .fio-papeis-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 1rem;
 }
 
@@ -1479,12 +1539,15 @@ body.mode-aula .timer-container {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  min-width: 0;
 }
 
 .fio-papel-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
 .fio-papel-block-badge {
@@ -1512,12 +1575,13 @@ body.mode-aula .timer-container {
 .role-selector-pills {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: auto;
 }
 
 .role-pill {
-  flex: 1;
+  flex: 1 1 120px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1532,6 +1596,7 @@ body.mode-aula .timer-container {
   cursor: pointer;
   transition: all var(--transition);
   user-select: none;
+  text-align: center;
 }
 
 .role-pill:hover {
@@ -1568,7 +1633,7 @@ body.mode-aula .timer-container {
 /* Backward compatibility for generic grid */
 .three-acts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 1.25rem;
   margin-top: 1.25rem;
 }
@@ -1765,4 +1830,539 @@ body.mode-aula .timer-container {
   font-weight: 600;
   border-radius: var(--radius-md, 8px);
   cursor: pointer;
+}
+
+/* ==========================================================================
+   9. CLASSES DINÂMICAS DO COCKPIT RENDERER & TOAST RESPONSIVO
+   ========================================================================== */
+.aula-privada-card {
+  padding: 4.5rem 2rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.aula-privada-icon {
+  font-size: 3.25rem;
+  margin-bottom: 0.85rem;
+  line-height: 1;
+}
+
+.aula-privada-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 0.6rem 0;
+  letter-spacing: -0.01em;
+}
+
+.aula-privada-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.cockpit-section-spacer {
+  margin-top: 1.5rem;
+}
+
+.cockpit-card-heading-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.cockpit-card-heading-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.cockpit-card-heading-title {
+  color: var(--text-main);
+  font-size: 1.1rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.cockpit-card-heading-title-sm {
+  color: var(--text-main);
+  font-size: 1rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.como-executar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.como-executar-step {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.65rem 0.85rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent);
+  min-width: 0;
+}
+
+.como-executar-step-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.como-executar-step-body {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.como-executar-step-title {
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+.como-executar-step-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.prompt-duel-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.prompt-duel-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.prompt-duel-grid--three {
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+}
+
+.prompt-duel-card {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cockpit-pre-block {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  font-family: var(--font-mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border);
+  line-height: 1.45;
+}
+
+.cockpit-pre-block--compact {
+  background: var(--bg-subtle-warm);
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.prompt-duel-issues {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.prompt-duel-issues ul {
+  margin: 0.4rem 0 0 1.2rem;
+  padding: 0;
+}
+
+.prompts-modelo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 1rem;
+}
+
+.prompt-modelo-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.prompt-modelo-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.prompt-modelo-title-row strong {
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.prompt-modelo-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.cockpit-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cockpit-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+  min-width: 480px;
+}
+
+.cockpit-data-table--rubric {
+  font-size: 0.85rem;
+  min-width: 560px;
+}
+
+.cockpit-data-table thead tr {
+  border-bottom: 2px solid var(--border);
+  background: var(--bg-surface);
+}
+
+.cockpit-data-table th,
+.cockpit-data-table td {
+  padding: 0.6rem 0.8rem;
+  vertical-align: top;
+}
+
+.cockpit-data-table tbody tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.cockpit-data-table .col-strong-accent {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.cockpit-data-table .col-strong-main {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.cockpit-data-table .col-mono {
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
+.cockpit-data-table .col-secondary {
+  color: var(--text-secondary);
+}
+
+.cockpit-data-table .col-medium {
+  font-weight: 500;
+}
+
+.cockpit-lgpd-card {
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.cockpit-lgpd-title {
+  color: #0284c7;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+[data-theme="dark"] .cockpit-lgpd-title {
+  color: #38bdf8;
+}
+
+.cockpit-lgpd-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.faq-question-card {
+  margin-bottom: 0;
+}
+
+.faq-question-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.faq-question-title {
+  color: var(--text-main);
+  font-size: 1.05rem;
+  overflow-wrap: anywhere;
+}
+
+.faq-question-answer,
+.faq-question-point,
+.faq-question-tip {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.faq-question-answer {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.faq-question-point {
+  font-size: 0.85rem;
+  color: var(--accent);
+  background: var(--bg-subtle-warm);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+}
+
+.faq-question-tip {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid #38bdf8;
+}
+
+.app-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  max-width: min(420px, calc(100vw - 2rem));
+  background-color: var(--text-main);
+  color: var(--bg-surface);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  font-size: 0.88rem;
+  font-weight: 500;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.app-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   10. BREAKPOINTS RESPONSIVOS DO PORTAL & COCKPIT COMPLETO
+   ========================================================================== */
+@media (max-width: 900px) {
+  .dashboard-hero,
+  .timeline-card,
+  .module-header-card,
+  .fio-hero-card,
+  .fio-papeis-card,
+  .fio-glossary-section,
+  .pedagogical-highlight-card,
+  .doc-card,
+  .notes-workspace-card {
+    padding: 1.35rem;
+  }
+
+  .prompt-duel-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .cockpit-header-bar {
+    padding: 1rem 1.25rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-hero,
+  .timeline-card,
+  .module-header-card,
+  .fio-hero-card,
+  .fio-papeis-card,
+  .fio-glossary-section,
+  .pedagogical-highlight-card,
+  .doc-card,
+  .notes-workspace-card {
+    padding: 1.05rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .dashboard-team-strip {
+    padding: 0.85rem 1rem;
+    gap: 0.65rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .meeting-inspector-card {
+    padding: 1.05rem;
+  }
+
+  .meeting-inspector-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inspector-action-tip {
+    flex: none;
+  }
+
+  .btn-enter-cockpit {
+    width: 100%;
+  }
+
+  .cockpit-header-bar {
+    padding: 0.95rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .cockpit-module-heading {
+    font-size: 1.15rem;
+  }
+
+  .cockpit-header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-export-slides,
+  .btn-open-slides {
+    width: 100%;
+  }
+
+  .cockpit-tabs-container {
+    top: 58px;
+    padding: 0.35rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .cockpit-tabs-list {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .cockpit-tab-btn {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.84rem;
+    justify-content: flex-start;
+  }
+
+  .fio-hero-title {
+    font-size: 1.2rem;
+  }
+
+  .fio-hero-quote {
+    padding: 1rem 1rem 1rem 2.25rem;
+  }
+
+  .fio-quote-icon {
+    left: 0.6rem;
+    font-size: 2.1rem;
+  }
+
+  .fio-quote-text {
+    font-size: 0.96rem;
+  }
+
+  .fio-hero-explanation {
+    padding: 0.85rem 0.95rem;
+    gap: 0.6rem;
+  }
+
+  .fio-act-card {
+    padding: 1.1rem;
+  }
+
+  .fio-glossary-summary {
+    padding: 0.95rem 1rem;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .fio-glossary-details[open] .fio-glossary-grid {
+    padding: 1rem;
+  }
+
+  .aula-privada-card {
+    padding: 2.5rem 1.15rem;
+  }
+
+  .aula-privada-title {
+    font-size: 1.45rem;
+  }
+
+  .inaccessible-popup-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .app-toast {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    max-width: none;
+    text-align: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .timeline-track {
+    gap: 0.4rem;
+  }
+
+  .timeline-step {
+    padding: 0.4rem 0.25rem;
+  }
+
+  .como-executar-step {
+    padding: 0.55rem 0.65rem;
+    gap: 0.5rem;
+  }
+
+  .cockpit-pre-block {
+    padding: 0.6rem;
+    font-size: 0.78rem;
+  }
 }

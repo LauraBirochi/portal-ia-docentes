@@ -35,12 +35,12 @@ const CockpitRenderer = {
    */
   renderAulaPrivadaCard() {
     return `
-      <div class="pedagogical-highlight-card" style="padding: 4.5rem 2rem; text-align: center; margin: 1.5rem 0; border: 1.5px dashed var(--border); border-radius: var(--radius-lg); background: var(--bg-surface); box-shadow: var(--shadow-sm);">
-        <div style="font-size: 3.25rem; margin-bottom: 0.85rem; line-height: 1;">🔒</div>
-        <h2 style="font-size: 1.85rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.6rem 0; letter-spacing: -0.01em;">
+      <div class="pedagogical-highlight-card aula-privada-card">
+        <div class="aula-privada-icon">🔒</div>
+        <h2 class="aula-privada-title">
           Aula privada com aluno
         </h2>
-        <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto; line-height: 1.6;">
+        <p class="aula-privada-desc">
           Este encontro foi reservado para atendimento individualizado e acompanhamento pedagógico privado com aluno.
         </p>
       </div>
@@ -219,18 +219,18 @@ const CockpitRenderer = {
 
         <!-- Roteiro de Execução em 5 Passos -->
         ${oficina.comoExecutar ? `
-          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-              <span style="font-size: 1.25rem;">🚀</span>
-              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">2. Roteiro de Execução em 5 Passos no Computador</h4>
+          <div class="pedagogical-highlight-card cockpit-section-spacer">
+            <div class="cockpit-card-heading-row">
+              <span class="cockpit-card-heading-icon">🚀</span>
+              <h4 class="cockpit-card-heading-title">2. Roteiro de Execução em 5 Passos no Computador</h4>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+            <div class="como-executar-list">
               ${oficina.comoExecutar.map(e => `
-                <div style="display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.6rem 0.8rem; background: var(--bg-surface); border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
-                  <span style="font-family: var(--font-mono); font-weight: bold; color: var(--accent);">${e.etapa}º</span>
-                  <div>
-                    <strong style="color: var(--text-main); font-size: 0.92rem;">${e.titulo}:</strong>
-                    <span style="color: var(--text-secondary); font-size: 0.9rem;"> ${e.desc}</span>
+                <div class="como-executar-step">
+                  <span class="como-executar-step-num">${e.etapa}º</span>
+                  <div class="como-executar-step-body">
+                    <strong class="como-executar-step-title">${e.titulo}:</strong>
+                    <span class="como-executar-step-desc"> ${e.desc}</span>
                   </div>
                 </div>
               `).join('')}
@@ -240,63 +240,63 @@ const CockpitRenderer = {
 
         <!-- Duelo dos Prompts: Livre vs. Falso Bom vs. Estruturado -->
         ${(oficina.primeiraTentativa || oficina.segundaTentativa) ? `
-        <div style="display: grid; grid-template-columns: ${oficina.falsoBomPrompt ? 'repeat(auto-fit, minmax(280px, 1fr))' : '1fr 1fr'}; gap: 1.25rem; margin-top: 1.5rem;">
-          <div class="pedagogical-highlight-card" style="border-top: 4px solid #ef4444;">
-            <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
+        <div class="prompt-duel-grid ${oficina.falsoBomPrompt ? 'prompt-duel-grid--three' : 'prompt-duel-grid--two'}">
+          <div class="pedagogical-highlight-card prompt-duel-card" style="border-top: 4px solid #ef4444;">
+            <div class="cockpit-card-heading-row">
               <span>❌</span>
-              <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">1ª Tentativa: Prompt Livre (Vago)</h4>
+              <h4 class="cockpit-card-heading-title-sm">1ª Tentativa: Prompt Livre (Vago)</h4>
             </div>
-            <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; margin-bottom: 0.75rem; border: 1px solid var(--border);">${oficina.primeiraTentativa?.prompt || ''}</pre>
-            <div style="font-size: 0.85rem; color: var(--text-secondary);">
+            <pre class="cockpit-pre-block">${oficina.primeiraTentativa?.prompt || ''}</pre>
+            <div class="prompt-duel-issues">
               <strong style="color: #ef4444;">Falhas prováveis:</strong>
-              <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0;">
+              <ul>
                 ${(oficina.primeiraTentativa?.problemasProvaveis || []).map(p => `<li>${p}</li>`).join('')}
               </ul>
             </div>
           </div>
 
           ${oficina.falsoBomPrompt ? `
-            <div class="pedagogical-highlight-card" style="border-top: 4px solid #f59e0b;">
-              <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
+            <div class="pedagogical-highlight-card prompt-duel-card" style="border-top: 4px solid #f59e0b;">
+              <div class="cockpit-card-heading-row">
                 <span>⚠️</span>
-                <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">2ª Tentativa: Falso Bom Prompt (Ilusão da Persona)</h4>
+                <h4 class="cockpit-card-heading-title-sm">2ª Tentativa: Falso Bom Prompt (Ilusão da Persona)</h4>
               </div>
-              <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; margin-bottom: 0.75rem; border: 1px solid var(--border); line-height: 1.45;">${oficina.falsoBomPrompt?.prompt || ''}</pre>
-              <div style="font-size: 0.85rem; color: var(--text-secondary);">
+              <pre class="cockpit-pre-block">${oficina.falsoBomPrompt?.prompt || ''}</pre>
+              <div class="prompt-duel-issues">
                 <strong style="color: #f59e0b;">Falhas prováveis:</strong>
-                <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0;">
+                <ul>
                   ${(oficina.falsoBomPrompt?.problemasProvaveis || []).map(p => `<li>${p}</li>`).join('')}
                 </ul>
               </div>
             </div>
           ` : ''}
 
-          <div class="pedagogical-highlight-card" style="border-top: 4px solid #22c55e;">
-            <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;">
+          <div class="pedagogical-highlight-card prompt-duel-card" style="border-top: 4px solid #22c55e;">
+            <div class="cockpit-card-heading-row">
               <span>✅</span>
-              <h4 style="color: var(--text-main); font-size: 1rem; margin: 0;">${oficina.falsoBomPrompt ? '3ª Tentativa: Prompt Mestre (C-T-F-R)' : '2ª Tentativa: Prompt Aprimorado (5 Elementos)'}</h4>
+              <h4 class="cockpit-card-heading-title-sm">${oficina.falsoBomPrompt ? '3ª Tentativa: Prompt Mestre (C-T-F-R)' : '2ª Tentativa: Prompt Aprimorado (5 Elementos)'}</h4>
             </div>
-            <pre style="background: var(--bg-surface); color: var(--text-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-mono); white-space: pre-wrap; border: 1px solid var(--border); line-height: 1.45;">${oficina.segundaTentativa?.prompt || ''}</pre>
+            <pre class="cockpit-pre-block">${oficina.segundaTentativa?.prompt || ''}</pre>
           </div>
         </div>
         ` : ''}
 
         <!-- Cards de Modelos de Prompts (Portfólio Digital) -->
         ${oficina.promptsModelo ? `
-          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-              <span style="font-size: 1.25rem;">📌</span>
-              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Cards de Prompts-Modelo para Bancada (Portfólio Digital do Aluno)</h4>
+          <div class="pedagogical-highlight-card cockpit-section-spacer">
+            <div class="cockpit-card-heading-row">
+              <span class="cockpit-card-heading-icon">📌</span>
+              <h4 class="cockpit-card-heading-title">Cards de Prompts-Modelo para Bancada (Portfólio Digital do Aluno)</h4>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+            <div class="prompts-modelo-grid">
               ${oficina.promptsModelo.map(pm => `
-                <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.9rem; border-top: 3px solid ${pm.cor || 'var(--accent)'}; display: flex; flex-direction: column;">
-                  <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
+                <div class="prompt-modelo-card" style="border-top: 3px solid ${pm.cor || 'var(--accent)'};">
+                  <div class="prompt-modelo-title-row">
                     <span>${pm.icone || '📝'}</span>
-                    <strong style="color: var(--text-main); font-size: 0.95rem;">${pm.titulo}</strong>
+                    <strong>${pm.titulo}</strong>
                   </div>
-                  <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.6rem; line-height: 1.4;">${pm.descricao}</p>
-                  <pre style="background: var(--bg-body); color: var(--text-main); padding: 0.6rem; border-radius: 4px; font-size: 0.8rem; font-family: var(--font-mono); white-space: pre-wrap; margin-top: auto; border: 1px solid var(--border);">${pm.codigo}</pre>
+                  <p class="prompt-modelo-desc">${pm.descricao}</p>
+                  <pre class="cockpit-pre-block cockpit-pre-block--compact">${pm.codigo}</pre>
                 </div>
               `).join('')}
             </div>
@@ -305,26 +305,26 @@ const CockpitRenderer = {
 
         <!-- Tabela dos 5 Elementos -->
         ${oficina.cincoElementos ? `
-          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-              <span style="font-size: 1.25rem;">🧩</span>
-              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Anatomia dos 5 Elementos Essenciais do Prompt</h4>
+          <div class="pedagogical-highlight-card cockpit-section-spacer">
+            <div class="cockpit-card-heading-row">
+              <span class="cockpit-card-heading-icon">🧩</span>
+              <h4 class="cockpit-card-heading-title">Anatomia dos 5 Elementos Essenciais do Prompt</h4>
             </div>
-            <div style="overflow-x: auto;">
-              <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+            <div class="cockpit-table-wrap">
+              <table class="cockpit-data-table">
                 <thead>
-                  <tr style="border-bottom: 2px solid var(--border); background: var(--bg-surface);">
-                    <th style="padding: 0.6rem 0.8rem; color: var(--accent);">Elemento</th>
-                    <th style="padding: 0.6rem 0.8rem; color: var(--text-main);">Como Aparece no Prompt</th>
-                    <th style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">Função Pedagógica</th>
+                  <tr>
+                    <th style="color: var(--accent);">Elemento</th>
+                    <th style="color: var(--text-main);">Como Aparece no Prompt</th>
+                    <th style="color: var(--text-secondary);">Função Pedagógica</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${oficina.cincoElementos.map(el => `
-                    <tr style="border-bottom: 1px solid var(--border);">
-                      <td style="padding: 0.6rem 0.8rem; font-weight: bold; color: var(--accent);">${el.elemento}</td>
-                      <td style="padding: 0.6rem 0.8rem; color: var(--text-main); font-family: var(--font-mono); font-size: 0.82rem;">${el.comoAparece}</td>
-                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${el.funcao}</td>
+                    <tr>
+                      <td class="col-strong-accent">${el.elemento}</td>
+                      <td class="col-mono">${el.comoAparece}</td>
+                      <td class="col-secondary">${el.funcao}</td>
                     </tr>
                   `).join('')}
                 </tbody>
@@ -335,12 +335,12 @@ const CockpitRenderer = {
 
         <!-- Checklist de Configuração ChatGPT -->
         ${oficina.configuracaoChatGPT ? `
-          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.3);">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
+          <div class="pedagogical-highlight-card cockpit-section-spacer cockpit-lgpd-card">
+            <div class="cockpit-card-heading-row">
               <span>🛡️</span>
-              <h4 style="color: #38bdf8; font-size: 1.05rem; margin: 0;">Configuração Obrigatória do ChatGPT (Segurança & LGPD)</h4>
+              <h4 class="cockpit-lgpd-title">Configuração Obrigatória do ChatGPT (Segurança & LGPD)</h4>
             </div>
-            <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.88rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.4rem;">
+            <ul class="cockpit-lgpd-list">
               ${oficina.configuracaoChatGPT.map(c => `<li>${c}</li>`).join('')}
             </ul>
           </div>
@@ -348,28 +348,28 @@ const CockpitRenderer = {
 
         <!-- Rubrica de Avaliação Formativa -->
         ${oficina.criteriosAvaliacao ? `
-          <div class="pedagogical-highlight-card" style="margin-top: 1.5rem;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-              <span style="font-size: 1.25rem;">📊</span>
-              <h4 style="color: var(--text-main); font-size: 1.1rem; margin: 0;">Critérios de Avaliação Formativa (Rubrica)</h4>
+          <div class="pedagogical-highlight-card cockpit-section-spacer">
+            <div class="cockpit-card-heading-row">
+              <span class="cockpit-card-heading-icon">📊</span>
+              <h4 class="cockpit-card-heading-title">Critérios de Avaliação Formativa (Rubrica)</h4>
             </div>
-            <div style="overflow-x: auto;">
-              <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+            <div class="cockpit-table-wrap">
+              <table class="cockpit-data-table cockpit-data-table--rubric">
                 <thead>
-                  <tr style="border-bottom: 2px solid var(--border); background: var(--bg-surface);">
-                    <th style="padding: 0.6rem 0.8rem; color: var(--accent);">Critério</th>
-                    <th style="padding: 0.6rem 0.8rem; color: #ef4444;">1 Ponto (Iniciante)</th>
-                    <th style="padding: 0.6rem 0.8rem; color: #f59e0b;">2 Pontos (Intermediário)</th>
-                    <th style="padding: 0.6rem 0.8rem; color: #22c55e;">3 Pontos (Avançado)</th>
+                  <tr>
+                    <th style="color: var(--accent);">Critério</th>
+                    <th style="color: #ef4444;">1 Ponto (Iniciante)</th>
+                    <th style="color: #f59e0b;">2 Pontos (Intermediário)</th>
+                    <th style="color: #22c55e;">3 Pontos (Avançado)</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${oficina.criteriosAvaliacao.map(cr => `
-                    <tr style="border-bottom: 1px solid var(--border);">
-                      <td style="padding: 0.6rem 0.8rem; font-weight: bold; color: var(--text-main);">${cr.criterio}</td>
-                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${cr.ponto1}</td>
-                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary);">${cr.ponto2}</td>
-                      <td style="padding: 0.6rem 0.8rem; color: var(--text-secondary); font-weight: 500;">${cr.ponto3}</td>
+                    <tr>
+                      <td class="col-strong-main">${cr.criterio}</td>
+                      <td class="col-secondary">${cr.ponto1}</td>
+                      <td class="col-secondary">${cr.ponto2}</td>
+                      <td class="col-secondary col-medium">${cr.ponto3}</td>
                     </tr>
                   `).join('')}
                 </tbody>
@@ -459,21 +459,21 @@ const CockpitRenderer = {
           const dica = p.dicaPratica || '';
 
           return `
-          <div class="pedagogical-highlight-card">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <div class="pedagogical-highlight-card faq-question-card">
+            <div class="faq-question-header">
               <span class="chip chip-warm">Dúvida ${num}</span>
-              <strong style="color: var(--text-main); font-size: 1.05rem;">"${duvida}"</strong>
+              <strong class="faq-question-title">"${duvida}"</strong>
             </div>
-            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+            <p class="faq-question-answer">
               <strong>Como responder:</strong> "${resposta}"
             </p>
             ${ponto ? `
-              <div style="font-size: 0.85rem; color: var(--accent); background: var(--bg-subtle-warm); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+              <div class="faq-question-point">
                 🎯 <strong>Ponto Didático:</strong> ${ponto}
               </div>
             ` : ''}
             ${dica ? `
-              <div style="font-size: 0.84rem; color: var(--text-secondary); background: var(--bg-surface); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); border-left: 3px solid #38bdf8;">
+              <div class="faq-question-tip">
                 💡 <strong>Dica Prática de Prompt:</strong> ${dica}
               </div>
             ` : ''}
